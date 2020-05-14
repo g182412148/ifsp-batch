@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="OFF" monitorInterval="1800"> <!-- 1800秒更新一次配置文件 -->
+
+	<properties>
+		<!-- 0.公共配置 -->
+			<!-- 日志目录 -->
+			<property name="LOG_HOME">/home/app/logs/batch</property>
+			<!-- 应用名称 -->
+			<property name="APP_NAME">batch</property>
+		<!-- 1. 生产日志配置 -->
+			<!-- 生产日志级别 -->
+			<property name="PRO_LEVEL">debug</property>
+		<!-- 2. 日志分包备份配置 -->
+			<!-- 日志备份目录 -->
+			<property name="BACKUP_HOME">${LOG_HOME}/backups/</property>
+			<!-- 单个备份文件大小 -->
+			<property name="BACKUP_FILE_SIZE">300 MB</property>
+			<!-- 备份文件最大个数 -->
+			<property name="BACKUP_FILE_MAX">100</property>
+	</properties>
+
+	<appenders>
+		<!-- 控制台输出 -->
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%X{traceId} %date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread] %logger{36} - %msg%n" />
+		</Console>
+
+		<!-- 生产日志(完整) -->
+		<RollingRandomAccessFile name="product"
+			fileName="${LOG_HOME}/${APP_NAME}.log"
+			filePattern="${BACKUP_HOME}/$${date:yyyy-MM}/${APP_NAME}-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout
+				pattern="%X{traceId} %date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread] %logger{36} - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="${BACKUP_FILE_SIZE}" />
+			</Policies>
+			<DefaultRolloverStrategy max="${BACKUP_FILE_MAX}" />
+			<ThresholdFilter level="${PRO_LEVEL}" onMatch="ACCEPT"
+				onMismatch="DENY" />
+		</RollingRandomAccessFile>
+		
+		<!-- 运维日志 (错误)--> 
+		<RollingRandomAccessFile name="productError"
+			fileName="${LOG_HOME}/${APP_NAME}_error.log"
+			filePattern="${BACKUP_HOME}/$${date:yyyy-MM}/${APP_NAME}_error-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout
+				pattern="%X{traceId} %date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread] %logger{36} - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="${BACKUP_FILE_SIZE}" />
+			</Policies>
+			<DefaultRolloverStrategy max="${BACKUP_FILE_MAX}" />
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT"
+				onMismatch="DENY" />
+		</RollingRandomAccessFile>
+	</appenders>
+
+
+	<loggers>
+		<logger name="org.springframework" level="info" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+        </logger> 
+        
+		<logger name="com.alibaba.dubbo" level="info" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+        </logger> 
+        
+       	<logger name="org.apache.commons.beanutils" level="info" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+        </logger> 
+        
+        
+		<logger name="org.mybatis.spring" level="info" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+        </logger>
+
+		<logger name="org.apache.zookeeper" level="info" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+        </logger> 
+        
+		<logger name="com.scrcu.ebank.ebap" level="debug" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+        </logger> 
+        
+		<logger name="org.hibernate.validator.internal.metadata.descriptor" level="info" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+        </logger>
+
+		<logger name="org.I0Itec.zkclient" level="info" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry" level="error" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.WxBillOuterMapper.insertBatch" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.WxBillLocalMapper.insertBatch" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+        <logger name="com.scrcu.ebank.ebap.batch.bean.mapper.AliBillOuterMapper.insertBatch" level="info" additivity="false">
+            <appender-ref ref="product" />
+            <appender-ref ref="productError" />
+        </logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.CoreBillInfoMapper.insertBatch" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+        <logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthSetCapitalDetailMapper.queryClearSumInfoMchtIn" level="info" additivity="false">
+            <appender-ref ref="product" />
+            <appender-ref ref="productError" />
+        </logger>
+
+        <logger name="com.scrcu.ebank.ebap.batch.bean.mapper.IbankBillOuterMapper.insertBatch" level="info" additivity="false">
+            <appender-ref ref="product" />
+            <appender-ref ref="productError" />
+        </logger>
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.UnionBillOuterMapper.insertBatch" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+        <logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthChkRsltInfoMapper.insertBatch" level="info" additivity="false">
+            <appender-ref ref="product" />
+            <appender-ref ref="productError" />
+        </logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccDtlMapper.insertBatch" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+        <logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccDtlMapper.batchUpdate" level="info" additivity="false">
+            <appender-ref ref="product" />
+            <appender-ref ref="productError" />
+        </logger>
+
+        <logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthSetCapitalDetailMapper.batchUpdate" level="info" additivity="false">
+            <appender-ref ref="product" />
+            <appender-ref ref="productError" />
+        </logger>
+
+        <logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccMapper.batchUpdate" level="info" additivity="false">
+            <appender-ref ref="product" />
+            <appender-ref ref="productError" />
+        </logger>
+
+
+        <logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccMapper.insertBatch" level="info" additivity="false">
+            <appender-ref ref="product" />
+            <appender-ref ref="productError" />
+        </logger>
+
+		<!--性能优化后无需打印sql-->
+		<!--清分数据抽取-->
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.PayOrderInfoMapper.selectOrderInfoByReqOrderSsnListAndDate" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.PayOrderInfoMapper.selectOrderInfoByReqOrderSsnList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.PaySubOrderInfoMapper.selectSubOrderByOrderIdList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.PaySubOrderInfoMapper.selectSubOrderInfoBySubOrderNoList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.KeepAccInfoMapper.selectByOrderSsnT0List" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthChkRsltInfoMapper.updateChkOrderStlStatusByOrderIdList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccDtlMapper.batchUpdateForT0" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<!--通道清分-->
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.MchtBaseInfoMapper.selectMerInfoByMchtIdList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.MchtOrgRelMapper.selectMchtOrgRelByMerIdList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.MchtContInfoMapper.selectMerStlInfoByMchtIdList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccDtlMapper.updateOrderStlStatusByTxnSeqIdList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthSetCapitalDetailMapper.insertBatch" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<!--清分汇总-->
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerTxnFeeMapper.queryBthMerTxnFeeByMerIdList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthSetCapitalDetailMapper.updateCapDetailBatch" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccDtlMapper.updateByMerIdList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<!--更新本行或他行入账状态-->
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccMapper.queryByTxnSSnList" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthSetCapitalDetailMapper.queryByCapitalDetailByTxnSsnList_1" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<logger name="com.scrcu.ebank.ebap.batch.bean.mapper.BthSetCapitalDetailMapper.queryByCapitalDetailByTxnSsnList_2" level="info" additivity="false">
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</logger>
+
+		<root level="debug" includeLocation="true">
+			<appender-ref ref="console" />
+			<appender-ref ref="product" />
+			<appender-ref ref="productError" />
+		</root>
+	</loggers>
+</configuration>

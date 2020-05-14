@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtStaffInfoTempMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffInfoTemp">
+    <id column="STAFF_ID" jdbcType="VARCHAR" property="staffId" />
+    <result column="STAFF_NAME" jdbcType="VARCHAR" property="staffName" />
+    <result column="FORCE_UPD_FLAG" jdbcType="CHAR" property="forceUpdFlag" />
+    <result column="STAFF_PHONE" jdbcType="VARCHAR" property="staffPhone" />
+    <result column="STAFF_EMAIL" jdbcType="VARCHAR" property="staffEmail" />
+    <result column="CERT_TYPE" jdbcType="CHAR" property="certType" />
+    <result column="CERT_NO" jdbcType="VARCHAR" property="certNo" />
+    <result column="CERT_EFF_DATE" jdbcType="TIMESTAMP" property="certEffDate" />
+    <result column="CERT_EXP_DATE" jdbcType="TIMESTAMP" property="certExpDate" />
+    <result column="FRONT_CERT_PIC" jdbcType="VARCHAR" property="frontCertPic" />
+    <result column="BACK_CERT_PIC" jdbcType="VARCHAR" property="backCertPic" />
+    <result column="ALLOW_LOGIN" jdbcType="CHAR" property="allowLogin" />
+    <result column="LOGIN_PW" jdbcType="VARCHAR" property="loginPw" />
+    <result column="GEST_PW" jdbcType="VARCHAR" property="gestPw" />
+    <result column="ENCRYPT_ID" jdbcType="VARCHAR" property="encryptId" />
+    <result column="ENCRYPT_CODE" jdbcType="VARCHAR" property="encryptCode" />
+    <result column="LAST_LOGIN_IP" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="LAST_LOGIN_TM" jdbcType="TIMESTAMP" property="lastLoginTm" />
+    <result column="LOGIN_PW_ERROR_CNT" jdbcType="DECIMAL" property="loginPwErrorCnt" />
+    <result column="GEST_PW_ERROR_CNT" jdbcType="DECIMAL" property="gestPwErrorCnt" />
+    <result column="GESTURE_FLAG" jdbcType="CHAR" property="gestureFlag" />
+    <result column="TRACK_FLAG" jdbcType="CHAR" property="trackFlag" />
+    <result column="PUSH_FLAG" jdbcType="CHAR" property="pushFlag" />
+    <result column="VOICE_FLAG" jdbcType="CHAR" property="voiceFlag" />
+    <result column="PRINT_FLAG" jdbcType="CHAR" property="printFlag" />
+    <result column="PRINT_NUM" jdbcType="DECIMAL" property="printNum" />
+    <result column="STAFF_STATE" jdbcType="CHAR" property="staffState" />
+    <result column="LOGIN_PW_ERROR_TM" jdbcType="TIMESTAMP" property="loginPwErrorTm" />
+    <result column="GEST_PW_ERROR_TM" jdbcType="TIMESTAMP" property="gestPwErrorTm" />
+    <result column="MOD_PW_STATE" jdbcType="CHAR" property="modPwState" />
+    <result column="AUDIT_ID" jdbcType="VARCHAR" property="auditId" />
+    <result column="UPD_TM" jdbcType="TIMESTAMP" property="updTm" />
+    <result column="TERM_CODE" jdbcType="VARCHAR" property="termCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    STAFF_ID, STAFF_NAME, FORCE_UPD_FLAG, STAFF_PHONE, STAFF_EMAIL, CERT_TYPE, CERT_NO, 
+    CERT_EFF_DATE, CERT_EXP_DATE, FRONT_CERT_PIC, BACK_CERT_PIC, ALLOW_LOGIN, LOGIN_PW, 
+    GEST_PW, ENCRYPT_ID, ENCRYPT_CODE, LAST_LOGIN_IP, LAST_LOGIN_TM, LOGIN_PW_ERROR_CNT, 
+    GEST_PW_ERROR_CNT, GESTURE_FLAG, TRACK_FLAG, PUSH_FLAG, VOICE_FLAG, PRINT_FLAG, PRINT_NUM, 
+    STAFF_STATE, LOGIN_PW_ERROR_TM, GEST_PW_ERROR_TM, MOD_PW_STATE, AUDIT_ID, UPD_TM, 
+    TERM_CODE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from MCHT_STAFF_INFO_TEMP
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from MCHT_STAFF_INFO_TEMP
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffInfoTemp">
+    insert into MCHT_STAFF_INFO_TEMP (STAFF_ID, STAFF_NAME, FORCE_UPD_FLAG, 
+      STAFF_PHONE, STAFF_EMAIL, CERT_TYPE, 
+      CERT_NO, CERT_EFF_DATE, CERT_EXP_DATE, 
+      FRONT_CERT_PIC, BACK_CERT_PIC, ALLOW_LOGIN, 
+      LOGIN_PW, GEST_PW, ENCRYPT_ID, 
+      ENCRYPT_CODE, LAST_LOGIN_IP, LAST_LOGIN_TM, 
+      LOGIN_PW_ERROR_CNT, GEST_PW_ERROR_CNT, GESTURE_FLAG, 
+      TRACK_FLAG, PUSH_FLAG, VOICE_FLAG, 
+      PRINT_FLAG, PRINT_NUM, STAFF_STATE, 
+      LOGIN_PW_ERROR_TM, GEST_PW_ERROR_TM, MOD_PW_STATE, 
+      AUDIT_ID, UPD_TM, TERM_CODE
+      )
+    values (#{staffId,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR}, #{forceUpdFlag,jdbcType=CHAR}, 
+      #{staffPhone,jdbcType=VARCHAR}, #{staffEmail,jdbcType=VARCHAR}, #{certType,jdbcType=CHAR}, 
+      #{certNo,jdbcType=VARCHAR}, #{certEffDate,jdbcType=TIMESTAMP}, #{certExpDate,jdbcType=TIMESTAMP}, 
+      #{frontCertPic,jdbcType=VARCHAR}, #{backCertPic,jdbcType=VARCHAR}, #{allowLogin,jdbcType=CHAR}, 
+      #{loginPw,jdbcType=VARCHAR}, #{gestPw,jdbcType=VARCHAR}, #{encryptId,jdbcType=VARCHAR}, 
+      #{encryptCode,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=VARCHAR}, #{lastLoginTm,jdbcType=TIMESTAMP}, 
+      #{loginPwErrorCnt,jdbcType=DECIMAL}, #{gestPwErrorCnt,jdbcType=DECIMAL}, #{gestureFlag,jdbcType=CHAR}, 
+      #{trackFlag,jdbcType=CHAR}, #{pushFlag,jdbcType=CHAR}, #{voiceFlag,jdbcType=CHAR}, 
+      #{printFlag,jdbcType=CHAR}, #{printNum,jdbcType=DECIMAL}, #{staffState,jdbcType=CHAR}, 
+      #{loginPwErrorTm,jdbcType=TIMESTAMP}, #{gestPwErrorTm,jdbcType=TIMESTAMP}, #{modPwState,jdbcType=CHAR}, 
+      #{auditId,jdbcType=VARCHAR}, #{updTm,jdbcType=TIMESTAMP}, #{termCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffInfoTemp">
+    insert into MCHT_STAFF_INFO_TEMP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="staffId != null">
+        STAFF_ID,
+      </if>
+      <if test="staffName != null">
+        STAFF_NAME,
+      </if>
+      <if test="forceUpdFlag != null">
+        FORCE_UPD_FLAG,
+      </if>
+      <if test="staffPhone != null">
+        STAFF_PHONE,
+      </if>
+      <if test="staffEmail != null">
+        STAFF_EMAIL,
+      </if>
+      <if test="certType != null">
+        CERT_TYPE,
+      </if>
+      <if test="certNo != null">
+        CERT_NO,
+      </if>
+      <if test="certEffDate != null">
+        CERT_EFF_DATE,
+      </if>
+      <if test="certExpDate != null">
+        CERT_EXP_DATE,
+      </if>
+      <if test="frontCertPic != null">
+        FRONT_CERT_PIC,
+      </if>
+      <if test="backCertPic != null">
+        BACK_CERT_PIC,
+      </if>
+      <if test="allowLogin != null">
+        ALLOW_LOGIN,
+      </if>
+      <if test="loginPw != null">
+        LOGIN_PW,
+      </if>
+      <if test="gestPw != null">
+        GEST_PW,
+      </if>
+      <if test="encryptId != null">
+        ENCRYPT_ID,
+      </if>
+      <if test="encryptCode != null">
+        ENCRYPT_CODE,
+      </if>
+      <if test="lastLoginIp != null">
+        LAST_LOGIN_IP,
+      </if>
+      <if test="lastLoginTm != null">
+        LAST_LOGIN_TM,
+      </if>
+      <if test="loginPwErrorCnt != null">
+        LOGIN_PW_ERROR_CNT,
+      </if>
+      <if test="gestPwErrorCnt != null">
+        GEST_PW_ERROR_CNT,
+      </if>
+      <if test="gestureFlag != null">
+        GESTURE_FLAG,
+      </if>
+      <if test="trackFlag != null">
+        TRACK_FLAG,
+      </if>
+      <if test="pushFlag != null">
+        PUSH_FLAG,
+      </if>
+      <if test="voiceFlag != null">
+        VOICE_FLAG,
+      </if>
+      <if test="printFlag != null">
+        PRINT_FLAG,
+      </if>
+      <if test="printNum != null">
+        PRINT_NUM,
+      </if>
+      <if test="staffState != null">
+        STAFF_STATE,
+      </if>
+      <if test="loginPwErrorTm != null">
+        LOGIN_PW_ERROR_TM,
+      </if>
+      <if test="gestPwErrorTm != null">
+        GEST_PW_ERROR_TM,
+      </if>
+      <if test="modPwState != null">
+        MOD_PW_STATE,
+      </if>
+      <if test="auditId != null">
+        AUDIT_ID,
+      </if>
+      <if test="updTm != null">
+        UPD_TM,
+      </if>
+      <if test="termCode != null">
+        TERM_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="staffId != null">
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null">
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="forceUpdFlag != null">
+        #{forceUpdFlag,jdbcType=CHAR},
+      </if>
+      <if test="staffPhone != null">
+        #{staffPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="staffEmail != null">
+        #{staffEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        #{certType,jdbcType=CHAR},
+      </if>
+      <if test="certNo != null">
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="certEffDate != null">
+        #{certEffDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certExpDate != null">
+        #{certExpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="frontCertPic != null">
+        #{frontCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="backCertPic != null">
+        #{backCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="allowLogin != null">
+        #{allowLogin,jdbcType=CHAR},
+      </if>
+      <if test="loginPw != null">
+        #{loginPw,jdbcType=VARCHAR},
+      </if>
+      <if test="gestPw != null">
+        #{gestPw,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptId != null">
+        #{encryptId,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptCode != null">
+        #{encryptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTm != null">
+        #{lastLoginTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginPwErrorCnt != null">
+        #{loginPwErrorCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="gestPwErrorCnt != null">
+        #{gestPwErrorCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="gestureFlag != null">
+        #{gestureFlag,jdbcType=CHAR},
+      </if>
+      <if test="trackFlag != null">
+        #{trackFlag,jdbcType=CHAR},
+      </if>
+      <if test="pushFlag != null">
+        #{pushFlag,jdbcType=CHAR},
+      </if>
+      <if test="voiceFlag != null">
+        #{voiceFlag,jdbcType=CHAR},
+      </if>
+      <if test="printFlag != null">
+        #{printFlag,jdbcType=CHAR},
+      </if>
+      <if test="printNum != null">
+        #{printNum,jdbcType=DECIMAL},
+      </if>
+      <if test="staffState != null">
+        #{staffState,jdbcType=CHAR},
+      </if>
+      <if test="loginPwErrorTm != null">
+        #{loginPwErrorTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gestPwErrorTm != null">
+        #{gestPwErrorTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPwState != null">
+        #{modPwState,jdbcType=CHAR},
+      </if>
+      <if test="auditId != null">
+        #{auditId,jdbcType=VARCHAR},
+      </if>
+      <if test="updTm != null">
+        #{updTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="termCode != null">
+        #{termCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffInfoTemp">
+    update MCHT_STAFF_INFO_TEMP
+    <set>
+      <if test="staffName != null">
+        STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="forceUpdFlag != null">
+        FORCE_UPD_FLAG = #{forceUpdFlag,jdbcType=CHAR},
+      </if>
+      <if test="staffPhone != null">
+        STAFF_PHONE = #{staffPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="staffEmail != null">
+        STAFF_EMAIL = #{staffEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        CERT_TYPE = #{certType,jdbcType=CHAR},
+      </if>
+      <if test="certNo != null">
+        CERT_NO = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="certEffDate != null">
+        CERT_EFF_DATE = #{certEffDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certExpDate != null">
+        CERT_EXP_DATE = #{certExpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="frontCertPic != null">
+        FRONT_CERT_PIC = #{frontCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="backCertPic != null">
+        BACK_CERT_PIC = #{backCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="allowLogin != null">
+        ALLOW_LOGIN = #{allowLogin,jdbcType=CHAR},
+      </if>
+      <if test="loginPw != null">
+        LOGIN_PW = #{loginPw,jdbcType=VARCHAR},
+      </if>
+      <if test="gestPw != null">
+        GEST_PW = #{gestPw,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptId != null">
+        ENCRYPT_ID = #{encryptId,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptCode != null">
+        ENCRYPT_CODE = #{encryptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null">
+        LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTm != null">
+        LAST_LOGIN_TM = #{lastLoginTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginPwErrorCnt != null">
+        LOGIN_PW_ERROR_CNT = #{loginPwErrorCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="gestPwErrorCnt != null">
+        GEST_PW_ERROR_CNT = #{gestPwErrorCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="gestureFlag != null">
+        GESTURE_FLAG = #{gestureFlag,jdbcType=CHAR},
+      </if>
+      <if test="trackFlag != null">
+        TRACK_FLAG = #{trackFlag,jdbcType=CHAR},
+      </if>
+      <if test="pushFlag != null">
+        PUSH_FLAG = #{pushFlag,jdbcType=CHAR},
+      </if>
+      <if test="voiceFlag != null">
+        VOICE_FLAG = #{voiceFlag,jdbcType=CHAR},
+      </if>
+      <if test="printFlag != null">
+        PRINT_FLAG = #{printFlag,jdbcType=CHAR},
+      </if>
+      <if test="printNum != null">
+        PRINT_NUM = #{printNum,jdbcType=DECIMAL},
+      </if>
+      <if test="staffState != null">
+        STAFF_STATE = #{staffState,jdbcType=CHAR},
+      </if>
+      <if test="loginPwErrorTm != null">
+        LOGIN_PW_ERROR_TM = #{loginPwErrorTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gestPwErrorTm != null">
+        GEST_PW_ERROR_TM = #{gestPwErrorTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPwState != null">
+        MOD_PW_STATE = #{modPwState,jdbcType=CHAR},
+      </if>
+      <if test="auditId != null">
+        AUDIT_ID = #{auditId,jdbcType=VARCHAR},
+      </if>
+      <if test="updTm != null">
+        UPD_TM = #{updTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="termCode != null">
+        TERM_CODE = #{termCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffInfoTemp">
+    update MCHT_STAFF_INFO_TEMP
+    set STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      FORCE_UPD_FLAG = #{forceUpdFlag,jdbcType=CHAR},
+      STAFF_PHONE = #{staffPhone,jdbcType=VARCHAR},
+      STAFF_EMAIL = #{staffEmail,jdbcType=VARCHAR},
+      CERT_TYPE = #{certType,jdbcType=CHAR},
+      CERT_NO = #{certNo,jdbcType=VARCHAR},
+      CERT_EFF_DATE = #{certEffDate,jdbcType=TIMESTAMP},
+      CERT_EXP_DATE = #{certExpDate,jdbcType=TIMESTAMP},
+      FRONT_CERT_PIC = #{frontCertPic,jdbcType=VARCHAR},
+      BACK_CERT_PIC = #{backCertPic,jdbcType=VARCHAR},
+      ALLOW_LOGIN = #{allowLogin,jdbcType=CHAR},
+      LOGIN_PW = #{loginPw,jdbcType=VARCHAR},
+      GEST_PW = #{gestPw,jdbcType=VARCHAR},
+      ENCRYPT_ID = #{encryptId,jdbcType=VARCHAR},
+      ENCRYPT_CODE = #{encryptCode,jdbcType=VARCHAR},
+      LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      LAST_LOGIN_TM = #{lastLoginTm,jdbcType=TIMESTAMP},
+      LOGIN_PW_ERROR_CNT = #{loginPwErrorCnt,jdbcType=DECIMAL},
+      GEST_PW_ERROR_CNT = #{gestPwErrorCnt,jdbcType=DECIMAL},
+      GESTURE_FLAG = #{gestureFlag,jdbcType=CHAR},
+      TRACK_FLAG = #{trackFlag,jdbcType=CHAR},
+      PUSH_FLAG = #{pushFlag,jdbcType=CHAR},
+      VOICE_FLAG = #{voiceFlag,jdbcType=CHAR},
+      PRINT_FLAG = #{printFlag,jdbcType=CHAR},
+      PRINT_NUM = #{printNum,jdbcType=DECIMAL},
+      STAFF_STATE = #{staffState,jdbcType=CHAR},
+      LOGIN_PW_ERROR_TM = #{loginPwErrorTm,jdbcType=TIMESTAMP},
+      GEST_PW_ERROR_TM = #{gestPwErrorTm,jdbcType=TIMESTAMP},
+      MOD_PW_STATE = #{modPwState,jdbcType=CHAR},
+      AUDIT_ID = #{auditId,jdbcType=VARCHAR},
+      UPD_TM = #{updTm,jdbcType=TIMESTAMP},
+      TERM_CODE = #{termCode,jdbcType=VARCHAR}
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </update>
+   
+    
+  <select id="selectMchtStaffInfoTemp_isLimkman" parameterType="string" resultMap="BaseResultMap">
+       SELECT  MP.STAFF_ID,MP.STAFF_NAME,MP.STAFF_PHONE,STAFF_EMAIL,STAFF_STATE FROM  MCHT_STAFF_INFO_TEMP MP LEFT JOIN MCHT_STAFF_REL_TEMP MRP
+       ON MP.STAFF_ID=MRP.STAFF_ID WHERE MP.STAFF_ID=#{staffId,jdbcType=VARCHAR} AND MRP.STAFF_ROLE='02'
+  </select>
+  
+  <!-- 根据子订单查询物流信息 -->
+  <select id="selectStaffByMchtIdAndRole" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select STAFF_ID,STAFF_NAME,STAFF_PHONE,STAFF_EMAIL
+      from MCHT_STAFF_INFO_TEMP WHERE STAFF_ID IN 
+      (
+      		select STAFF_ID from MCHT_STAFF_REL_TEMP 
+      		where 
+      		mcht_id =#{mchtId,jdbcType=VARCHAR} and
+      		STAFF_ROLE =#{staffRole,jdbcType=VARCHAR}
+      )
+  </select>
+
+</mapper>

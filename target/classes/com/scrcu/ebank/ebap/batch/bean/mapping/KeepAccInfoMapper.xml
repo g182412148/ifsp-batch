@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.KeepAccInfoMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    <id column="CORE_SSN" jdbcType="VARCHAR" property="coreSsn" />
+    <result column="ORDER_SSN" jdbcType="VARCHAR" property="orderSsn" />
+    <result column="KEEP_ACC_TIME" jdbcType="VARCHAR" property="keepAccTime" />
+    <result column="STATE" jdbcType="CHAR" property="state" />
+    <result column="KEEP_ACC_TYPE" jdbcType="CHAR" property="keepAccType" />
+    <result column="IN_ACC_NO" jdbcType="VARCHAR" property="inAccNo" />
+    <result column="IN_ACC_NO_NAME" jdbcType="VARCHAR" property="inAccNoName" />
+    <result column="IN_ACC_TYPE" jdbcType="CHAR" property="inAccType" />
+    <result column="OUT_ACC_NO" jdbcType="VARCHAR" property="outAccNo" />
+    <result column="OUT_ACC_NO_NAME" jdbcType="VARCHAR" property="outAccNoName" />
+    <result column="OUT_ACC_TYPE" jdbcType="CHAR" property="outAccType" />
+    <result column="TRANS_AMT" jdbcType="DECIMAL" property="transAmt" />
+    <result column="CHK_ST" jdbcType="CHAR" property="chkSt" />
+    <result column="CHK_RST" jdbcType="CHAR" property="chkRst" />
+    <result column="ORDER_TM" jdbcType="VARCHAR" property="orderTm" />
+    <result column="TXN_DESC" jdbcType="VARCHAR" property="txnDesc" />
+    <result column="PROXY_ORG" jdbcType="VARCHAR" property="proxyOrg" />
+    <result column="TXN_CCY_TYPE" jdbcType="VARCHAR" property="txnCcyType" />
+    <result column="KEEP_ACC_SEQ" jdbcType="DECIMAL" property="keepAccSeq" />
+    <result column="PAGY_RESP_CODE" jdbcType="CHAR" property="pagyRespCode" />
+    <result column="PAGY_RESP_MSG" jdbcType="VARCHAR" property="pagyRespMsg" />
+    <result column="REGISTER_IP" jdbcType="VARCHAR" property="registerIp" />
+    <result column="RESERVED1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="RESERVED2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="DUBIOUS_FLAG" jdbcType="CHAR" property="dubiousFlag" />
+    <result column="IS_SYNC" jdbcType="CHAR" property="isSync" />
+    <result column="ASYNC_LOC" jdbcType="VARCHAR" property="asyncLoc" />
+    <result column="NOTICE_STAT" jdbcType="CHAR" property="noticeStat" />
+    <result column="BATCH_NUM" jdbcType="DECIMAL" property="batchNum" />
+    <result column="SUB_ORDER_SSN" jdbcType="VARCHAR" property="subOrderSsn" />
+    <result column="RERUN_FLAG" jdbcType="CHAR" property="rerunFlag" />
+    <result column="REAL_TM_FLAG" jdbcType="CHAR" property="realTmFlag" />
+    <result column="FEE_AMT" jdbcType="DECIMAL" property="feeAmt" />
+    <result column="COMMISSION_AMT" jdbcType="DECIMAL" property="commissionAmt" />
+    <result column="MEMO" jdbcType="VARCHAR" property="memo" />
+    <result column="UNIQUE_SSN" jdbcType="VARCHAR" property="uniqueSsn" />
+    <result column="ORIG_CORE_SSN" jdbcType="VARCHAR" property="origCoreSsn" />
+    <result column="ORIG_KEEP_ACC_TIME" jdbcType="VARCHAR" property="origKeepAccTime" />
+    <result column="RETRY_COUNT" jdbcType="DECIMAL" property="retryCount" />
+    <result column="VER_NO" jdbcType="VARCHAR" property="verNo" />
+    <result column="IS_REACCOUNT" jdbcType="VARCHAR" property="isReaccount"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    CORE_SSN, ORDER_SSN, KEEP_ACC_TIME, STATE, KEEP_ACC_TYPE, IN_ACC_NO, IN_ACC_NO_NAME, 
+    IN_ACC_TYPE, OUT_ACC_NO, OUT_ACC_NO_NAME, OUT_ACC_TYPE, TRANS_AMT, CHK_ST, CHK_RST, 
+    ORDER_TM, TXN_DESC, PROXY_ORG, TXN_CCY_TYPE, KEEP_ACC_SEQ, PAGY_RESP_CODE, PAGY_RESP_MSG, 
+    REGISTER_IP, RESERVED1, RESERVED2, DUBIOUS_FLAG, IS_SYNC, ASYNC_LOC, NOTICE_STAT, 
+    BATCH_NUM, SUB_ORDER_SSN, RERUN_FLAG, REAL_TM_FLAG, FEE_AMT, COMMISSION_AMT, MEMO, 
+    UNIQUE_SSN, ORIG_CORE_SSN, ORIG_KEEP_ACC_TIME, RETRY_COUNT, VER_NO, IS_REACCOUNT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KEEP_ACC_INFO
+    where CORE_SSN = #{coreSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from KEEP_ACC_INFO
+    where CORE_SSN = #{coreSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    insert into KEEP_ACC_INFO (CORE_SSN, ORDER_SSN, KEEP_ACC_TIME, 
+      STATE, KEEP_ACC_TYPE, IN_ACC_NO, 
+      IN_ACC_NO_NAME, IN_ACC_TYPE, OUT_ACC_NO, 
+      OUT_ACC_NO_NAME, OUT_ACC_TYPE, TRANS_AMT, 
+      CHK_ST, CHK_RST, ORDER_TM, TXN_DESC, 
+      PROXY_ORG, TXN_CCY_TYPE, KEEP_ACC_SEQ, 
+      PAGY_RESP_CODE, PAGY_RESP_MSG, REGISTER_IP, 
+      RESERVED1, RESERVED2, DUBIOUS_FLAG, 
+      IS_SYNC, ASYNC_LOC, NOTICE_STAT, 
+      BATCH_NUM, SUB_ORDER_SSN, RERUN_FLAG, 
+      REAL_TM_FLAG, FEE_AMT, COMMISSION_AMT, 
+      MEMO, UNIQUE_SSN, ORIG_CORE_SSN, 
+      ORIG_KEEP_ACC_TIME, RETRY_COUNT, VER_NO, UPD_TM
+      )
+    values (#{coreSsn,jdbcType=VARCHAR}, #{orderSsn,jdbcType=VARCHAR}, #{keepAccTime,jdbcType=VARCHAR}, 
+      #{state,jdbcType=CHAR}, #{keepAccType,jdbcType=CHAR}, #{inAccNo,jdbcType=VARCHAR}, 
+      #{inAccNoName,jdbcType=VARCHAR}, #{inAccType,jdbcType=CHAR}, #{outAccNo,jdbcType=VARCHAR}, 
+      #{outAccNoName,jdbcType=VARCHAR}, #{outAccType,jdbcType=CHAR}, #{transAmt,jdbcType=DECIMAL}, 
+      #{chkSt,jdbcType=CHAR}, #{chkRst,jdbcType=CHAR}, #{orderTm,jdbcType=VARCHAR}, #{txnDesc,jdbcType=VARCHAR}, 
+      #{proxyOrg,jdbcType=VARCHAR}, #{txnCcyType,jdbcType=VARCHAR}, #{keepAccSeq,jdbcType=DECIMAL}, 
+      #{pagyRespCode,jdbcType=CHAR}, #{pagyRespMsg,jdbcType=VARCHAR}, #{registerIp,jdbcType=VARCHAR}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, #{dubiousFlag,jdbcType=CHAR}, 
+      #{isSync,jdbcType=CHAR}, #{asyncLoc,jdbcType=VARCHAR}, #{noticeStat,jdbcType=CHAR}, 
+      #{batchNum,jdbcType=DECIMAL}, #{subOrderSsn,jdbcType=VARCHAR}, #{rerunFlag,jdbcType=CHAR}, 
+      #{realTmFlag,jdbcType=CHAR}, #{feeAmt,jdbcType=DECIMAL}, #{commissionAmt,jdbcType=DECIMAL}, 
+      #{memo,jdbcType=VARCHAR}, #{uniqueSsn,jdbcType=VARCHAR}, #{origCoreSsn,jdbcType=VARCHAR}, 
+      #{origKeepAccTime,jdbcType=VARCHAR}, #{retryCount,jdbcType=DECIMAL}, #{verNo,jdbcType=VARCHAR},sysdate
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    insert into KEEP_ACC_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="coreSsn != null">
+        CORE_SSN,
+      </if>
+      <if test="orderSsn != null">
+        ORDER_SSN,
+      </if>
+      <if test="keepAccTime != null">
+        KEEP_ACC_TIME,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="keepAccType != null">
+        KEEP_ACC_TYPE,
+      </if>
+      <if test="inAccNo != null">
+        IN_ACC_NO,
+      </if>
+      <if test="inAccNoName != null">
+        IN_ACC_NO_NAME,
+      </if>
+      <if test="inAccType != null">
+        IN_ACC_TYPE,
+      </if>
+      <if test="outAccNo != null">
+        OUT_ACC_NO,
+      </if>
+      <if test="outAccNoName != null">
+        OUT_ACC_NO_NAME,
+      </if>
+      <if test="outAccType != null">
+        OUT_ACC_TYPE,
+      </if>
+      <if test="transAmt != null">
+        TRANS_AMT,
+      </if>
+      <if test="chkSt != null">
+        CHK_ST,
+      </if>
+      <if test="chkRst != null">
+        CHK_RST,
+      </if>
+      <if test="orderTm != null">
+        ORDER_TM,
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC,
+      </if>
+      <if test="proxyOrg != null">
+        PROXY_ORG,
+      </if>
+      <if test="txnCcyType != null">
+        TXN_CCY_TYPE,
+      </if>
+      <if test="keepAccSeq != null">
+        KEEP_ACC_SEQ,
+      </if>
+      <if test="pagyRespCode != null">
+        PAGY_RESP_CODE,
+      </if>
+      <if test="pagyRespMsg != null">
+        PAGY_RESP_MSG,
+      </if>
+      <if test="registerIp != null">
+        REGISTER_IP,
+      </if>
+      <if test="reserved1 != null">
+        RESERVED1,
+      </if>
+      <if test="reserved2 != null">
+        RESERVED2,
+      </if>
+      <if test="dubiousFlag != null">
+        DUBIOUS_FLAG,
+      </if>
+      <if test="isSync != null">
+        IS_SYNC,
+      </if>
+      <if test="asyncLoc != null">
+        ASYNC_LOC,
+      </if>
+      <if test="noticeStat != null">
+        NOTICE_STAT,
+      </if>
+      <if test="batchNum != null">
+        BATCH_NUM,
+      </if>
+      <if test="subOrderSsn != null">
+        SUB_ORDER_SSN,
+      </if>
+      <if test="rerunFlag != null">
+        RERUN_FLAG,
+      </if>
+      <if test="realTmFlag != null">
+        REAL_TM_FLAG,
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT,
+      </if>
+      <if test="commissionAmt != null">
+        COMMISSION_AMT,
+      </if>
+      <if test="memo != null">
+        MEMO,
+      </if>
+      <if test="uniqueSsn != null">
+        UNIQUE_SSN,
+      </if>
+      <if test="origCoreSsn != null">
+        ORIG_CORE_SSN,
+      </if>
+      <if test="origKeepAccTime != null">
+        ORIG_KEEP_ACC_TIME,
+      </if>
+      <if test="retryCount != null">
+        RETRY_COUNT,
+      </if>
+      <if test="verNo != null">
+        VER_NO,
+      </if>
+      UPD_TM
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="coreSsn != null">
+        #{coreSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSsn != null">
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccTime != null">
+        #{keepAccTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="keepAccType != null">
+        #{keepAccType,jdbcType=CHAR},
+      </if>
+      <if test="inAccNo != null">
+        #{inAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccNoName != null">
+        #{inAccNoName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccType != null">
+        #{inAccType,jdbcType=CHAR},
+      </if>
+      <if test="outAccNo != null">
+        #{outAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccNoName != null">
+        #{outAccNoName,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccType != null">
+        #{outAccType,jdbcType=CHAR},
+      </if>
+      <if test="transAmt != null">
+        #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="chkSt != null">
+        #{chkSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null">
+        #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="orderTm != null">
+        #{orderTm,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyOrg != null">
+        #{proxyOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCcyType != null">
+        #{txnCcyType,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccSeq != null">
+        #{keepAccSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyRespCode != null">
+        #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null">
+        #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerIp != null">
+        #{registerIp,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="dubiousFlag != null">
+        #{dubiousFlag,jdbcType=CHAR},
+      </if>
+      <if test="isSync != null">
+        #{isSync,jdbcType=CHAR},
+      </if>
+      <if test="asyncLoc != null">
+        #{asyncLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeStat != null">
+        #{noticeStat,jdbcType=CHAR},
+      </if>
+      <if test="batchNum != null">
+        #{batchNum,jdbcType=DECIMAL},
+      </if>
+      <if test="subOrderSsn != null">
+        #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="rerunFlag != null">
+        #{rerunFlag,jdbcType=CHAR},
+      </if>
+      <if test="realTmFlag != null">
+        #{realTmFlag,jdbcType=CHAR},
+      </if>
+      <if test="feeAmt != null">
+        #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionAmt != null">
+        #{commissionAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueSsn != null">
+        #{uniqueSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origCoreSsn != null">
+        #{origCoreSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origKeepAccTime != null">
+        #{origKeepAccTime,jdbcType=VARCHAR},
+      </if>
+      <if test="retryCount != null">
+        #{retryCount,jdbcType=DECIMAL},
+      </if>
+      <if test="verNo != null">
+        #{verNo,jdbcType=VARCHAR},
+      </if>
+      sysdate
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    update KEEP_ACC_INFO
+    <set>
+      <if test="orderSsn != null">
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccTime != null">
+        KEEP_ACC_TIME = #{keepAccTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="keepAccType != null">
+        KEEP_ACC_TYPE = #{keepAccType,jdbcType=CHAR},
+      </if>
+      <if test="inAccNo != null">
+        IN_ACC_NO = #{inAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccNoName != null">
+        IN_ACC_NO_NAME = #{inAccNoName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccType != null">
+        IN_ACC_TYPE = #{inAccType,jdbcType=CHAR},
+      </if>
+      <if test="outAccNo != null">
+        OUT_ACC_NO = #{outAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccNoName != null">
+        OUT_ACC_NO_NAME = #{outAccNoName,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccType != null">
+        OUT_ACC_TYPE = #{outAccType,jdbcType=CHAR},
+      </if>
+      <if test="transAmt != null">
+        TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="chkSt != null">
+        CHK_ST = #{chkSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null">
+        CHK_RST = #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="orderTm != null">
+        ORDER_TM = #{orderTm,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyOrg != null">
+        PROXY_ORG = #{proxyOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCcyType != null">
+        TXN_CCY_TYPE = #{txnCcyType,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccSeq != null">
+        KEEP_ACC_SEQ = #{keepAccSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyRespCode != null">
+        PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null">
+        PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerIp != null">
+        REGISTER_IP = #{registerIp,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="dubiousFlag != null">
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+      <if test="isSync != null">
+        IS_SYNC = #{isSync,jdbcType=CHAR},
+      </if>
+      <if test="asyncLoc != null">
+        ASYNC_LOC = #{asyncLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeStat != null">
+        NOTICE_STAT = #{noticeStat,jdbcType=CHAR},
+      </if>
+      <if test="batchNum != null">
+        BATCH_NUM = #{batchNum,jdbcType=DECIMAL},
+      </if>
+      <if test="subOrderSsn != null">
+        SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="rerunFlag != null">
+        RERUN_FLAG = #{rerunFlag,jdbcType=CHAR},
+      </if>
+      <if test="realTmFlag != null">
+        REAL_TM_FLAG = #{realTmFlag,jdbcType=CHAR},
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionAmt != null">
+        COMMISSION_AMT = #{commissionAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null">
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueSsn != null">
+        UNIQUE_SSN = #{uniqueSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origCoreSsn != null">
+        ORIG_CORE_SSN = #{origCoreSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origKeepAccTime != null">
+        ORIG_KEEP_ACC_TIME = #{origKeepAccTime,jdbcType=VARCHAR},
+      </if>
+      <if test="retryCount != null">
+        RETRY_COUNT = #{retryCount,jdbcType=DECIMAL},
+      </if>
+      <if test="verNo != null">
+        VER_NO = #{verNo,jdbcType=VARCHAR},
+      </if>
+      UPD_TM = sysdate
+    </set>
+    where CORE_SSN = #{coreSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    update KEEP_ACC_INFO
+    set ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      KEEP_ACC_TIME = #{keepAccTime,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=CHAR},
+      KEEP_ACC_TYPE = #{keepAccType,jdbcType=CHAR},
+      IN_ACC_NO = #{inAccNo,jdbcType=VARCHAR},
+      IN_ACC_NO_NAME = #{inAccNoName,jdbcType=VARCHAR},
+      IN_ACC_TYPE = #{inAccType,jdbcType=CHAR},
+      OUT_ACC_NO = #{outAccNo,jdbcType=VARCHAR},
+      OUT_ACC_NO_NAME = #{outAccNoName,jdbcType=VARCHAR},
+      OUT_ACC_TYPE = #{outAccType,jdbcType=CHAR},
+      TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      CHK_ST = #{chkSt,jdbcType=CHAR},
+      CHK_RST = #{chkRst,jdbcType=CHAR},
+      ORDER_TM = #{orderTm,jdbcType=VARCHAR},
+      TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      PROXY_ORG = #{proxyOrg,jdbcType=VARCHAR},
+      TXN_CCY_TYPE = #{txnCcyType,jdbcType=VARCHAR},
+      KEEP_ACC_SEQ = #{keepAccSeq,jdbcType=DECIMAL},
+      PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      REGISTER_IP = #{registerIp,jdbcType=VARCHAR},
+      RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      IS_SYNC = #{isSync,jdbcType=CHAR},
+      ASYNC_LOC = #{asyncLoc,jdbcType=VARCHAR},
+      NOTICE_STAT = #{noticeStat,jdbcType=CHAR},
+      BATCH_NUM = #{batchNum,jdbcType=DECIMAL},
+      SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR},
+      RERUN_FLAG = #{rerunFlag,jdbcType=CHAR},
+      REAL_TM_FLAG = #{realTmFlag,jdbcType=CHAR},
+      FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      COMMISSION_AMT = #{commissionAmt,jdbcType=DECIMAL},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      UNIQUE_SSN = #{uniqueSsn,jdbcType=VARCHAR},
+      ORIG_CORE_SSN = #{origCoreSsn,jdbcType=VARCHAR},
+      ORIG_KEEP_ACC_TIME = #{origKeepAccTime,jdbcType=VARCHAR},
+      RETRY_COUNT = #{retryCount,jdbcType=DECIMAL},
+      VER_NO = #{verNo,jdbcType=VARCHAR},
+      UPD_TM = sysdate
+    where CORE_SSN = #{coreSsn,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <!-- 记账表状态为记账成功，对账结果为记账失败不更新记账表 -->
+  <update id="updateByPrimaryKeySelectiveState" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    update KEEP_ACC_INFO
+    <set>
+      <if test="orderSsn != null">
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccTime != null">
+        KEEP_ACC_TIME = #{keepAccTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="keepAccType != null">
+        KEEP_ACC_TYPE = #{keepAccType,jdbcType=CHAR},
+      </if>
+      <if test="inAccNo != null">
+        IN_ACC_NO = #{inAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccType != null">
+        IN_ACC_TYPE = #{inAccType,jdbcType=CHAR},
+      </if>
+      <if test="inAccNoName != null">
+        IN_ACC_NO_NAME = #{inAccNoName,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccNo != null">
+        OUT_ACC_NO = #{outAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccType != null">
+        OUT_ACC_TYPE = #{outAccType,jdbcType=CHAR},
+      </if>
+      <if test="outAccNoName != null">
+        OUT_ACC_NO_NAME = #{outAccNoName,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null">
+        TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="chkSt != null">
+        CHK_ST = #{chkSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null">
+        CHK_RST = #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="orderTm != null">
+        ORDER_TM = #{orderTm,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyOrg != null">
+        PROXY_ORG = #{proxyOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCcyType != null">
+        TXN_CCY_TYPE = #{txnCcyType,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccSeq != null">
+        KEEP_ACC_SEQ = #{keepAccSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyRespCode != null">
+        PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null">
+        PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerIp != null">
+        REGISTER_IP = #{registerIp,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="dubiousFlag != null">
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+      <if test="asyncLoc != null">
+        ASYNC_LOC = #{asyncLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNum != null">
+        BATCH_NUM = #{batchNum,jdbcType=DECIMAL},
+      </if>
+      <if test="noticeStat != null">
+        NOTICE_STAT = #{noticeStat,jdbcType=CHAR},
+      </if>
+      <if test="isSync != null">
+        IS_SYNC = #{isSync,jdbcType=CHAR},
+      </if>
+      <if test="subOrderSsn != null">
+        SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="rerunFlag != null">
+        RERUN_FLAG = #{rerunFlag,jdbcType=CHAR},
+      </if>
+      <if test="realTmFlag != null">
+        REAL_TM_FLAG = #{realTmFlag,jdbcType=CHAR},
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionAmt != null">
+        COMMISSION_AMT = #{commissionAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null">
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueSsn != null">
+        UNIQUE_SSN = #{uniqueSsn,jdbcType=VARCHAR},
+      </if>
+      UPD_TM = sysdate
+    </set>
+    where CORE_SSN = #{coreSsn,jdbcType=VARCHAR}
+    <if test="state == 03">
+      AND STATE != '02'
+    </if>
+  </update>
+
+  <!-- 根据记账状态和订单号更新记账表 -->
+  <update id="updateByPrimaryKeyAndSt" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    update KEEP_ACC_INFO
+    <set>
+      <if test="orderSsn != null">
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccTime != null">
+        KEEP_ACC_TIME = #{keepAccTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="keepAccType != null">
+        KEEP_ACC_TYPE = #{keepAccType,jdbcType=CHAR},
+      </if>
+      <if test="inAccNo != null">
+        IN_ACC_NO = #{inAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccType != null">
+        IN_ACC_TYPE = #{inAccType,jdbcType=CHAR},
+      </if>
+      <if test="inAccNoName != null">
+        IN_ACC_NO_NAME = #{inAccNoName,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccNo != null">
+        OUT_ACC_NO = #{outAccNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccType != null">
+        OUT_ACC_TYPE = #{outAccType,jdbcType=CHAR},
+      </if>
+      <if test="outAccNoName != null">
+        OUT_ACC_NO_NAME = #{outAccNoName,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null">
+        TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="chkSt != null">
+        CHK_ST = #{chkSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null">
+        CHK_RST = #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="orderTm != null">
+        ORDER_TM = #{orderTm,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyOrg != null">
+        PROXY_ORG = #{proxyOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCcyType != null">
+        TXN_CCY_TYPE = #{txnCcyType,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccSeq != null">
+        KEEP_ACC_SEQ = #{keepAccSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyRespCode != null">
+        PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null">
+        PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerIp != null">
+        REGISTER_IP = #{registerIp,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="dubiousFlag != null">
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+      <if test="asyncLoc != null">
+        ASYNC_LOC = #{asyncLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNum != null">
+        BATCH_NUM = #{batchNum,jdbcType=DECIMAL},
+      </if>
+      <if test="noticeStat != null">
+        NOTICE_STAT = #{noticeStat,jdbcType=CHAR},
+      </if>
+      <if test="isSync != null">
+        IS_SYNC = #{isSync,jdbcType=CHAR},
+      </if>
+      <if test="subOrderSsn != null">
+        SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="rerunFlag != null">
+        RERUN_FLAG = #{rerunFlag,jdbcType=CHAR},
+      </if>
+      <if test="realTmFlag != null">
+        REAL_TM_FLAG = #{realTmFlag,jdbcType=CHAR},
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionAmt != null">
+        COMMISSION_AMT = #{commissionAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null">
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueSsn != null">
+        UNIQUE_SSN = #{uniqueSsn,jdbcType=VARCHAR},
+      </if>
+      UPD_TM = sysdate
+    </set>
+    where CORE_SSN = #{coreSsn,jdbcType=VARCHAR}
+    AND STATE = '00'
+  </update>
+
+
+
+  	<select id="selectTallyByDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KEEP_ACC_INFO
+    where substr(KEEP_ACC_TIME,0,8) = #{settleDate}
+  </select>
+  	<select id="selectTallyByDateAndChkSt" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KEEP_ACC_INFO
+    where substr(KEEP_ACC_TIME,0,8) = #{settleDate}
+    and CHK_ST=#{chkSt}
+  </select>
+  <select id="selectTallyByDateAndChkRst" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KEEP_ACC_INFO
+    where substr(KEEP_ACC_TIME,0,8) = #{settleDate}
+    and CHK_RST=#{chkRst}
+  </select>
+
+    <!-- 根据订单以及序号进行排序来划账  , 查询锁表防止多台服务器同时查到同一条数据 -->
+    <select id="selectByState" parameterType="string" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from KEEP_ACC_INFO
+        WHERE STATE = #{state,jdbcType=CHAR} ORDER BY ORDER_SSN,KEEP_ACC_SEQ  FOR UPDATE
+    </select>
+    <update id="updateByState" parameterType="string">
+        update KEEP_ACC_INFO set STATE = #{state,jdbcType=CHAR} ,REGISTER_IP = #{registerIp,jdbcType=VARCHAR} ,UPD_TM = sysdate  where CORE_SSN = #{coreSsn,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- 查询记账失败数据总量 -->
+    <select id="countAccFailedData" parameterType="java.util.Map" resultType="int">
+        select
+        count(1)
+        from KEEP_ACC_INFO
+        WHERE 
+        STATE = #{accState} and
+        CHK_ST = #{chkSt} and
+        RERUN_FLAG = #{rerunFlag}
+    </select>
+    
+    <!-- 查询记账失败数据-->
+    <select id="selectAccFailedData" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from KEEP_ACC_INFO
+        WHERE 
+        STATE = #{accState} and
+        CHK_ST = #{chkSt} and
+        RERUN_FLAG = #{rerunFlag}
+    </select>
+    
+    <!-- 查询记账失败数据-->
+    <update id="updateAccFailedDataStsById" parameterType="java.util.Map">
+       update KEEP_ACC_INFO 
+       set STATE = #{accState,jdbcType=CHAR},IS_REACCOUNT = #{isReaccount,jdbcType=VARCHAR} ,UPD_TM = sysdate
+       where CORE_SSN = #{coreSsn}
+    </update>
+<!--     还原可疑数据状态 -->
+     <select id="queryTallyByDateAndFlag" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KEEP_ACC_INFO
+    where substr(KEEP_ACC_TIME,0,8) = #{settleDate} and DUBIOUS_FLAG =#{dubiousFlag} 
+  </select>
+    <!-- HAVING COUNT(0) = MAX(BATCH_NUM)是为了保证 记账成功的条数与该批次发起异步记账的条数一致   -->
+    <select id="keep_selectGroupByOrderSsn" parameterType="map" resultMap="BaseResultMap">
+        SELECT ORDER_SSN FROM KEEP_ACC_INFO WHERE STATE = #{state,jdbcType=CHAR}  AND NOTICE_STAT = #{noticeStat,jdbcType=CHAR}
+        AND IS_SYNC = #{isSync,jdbcType=CHAR} AND ASYNC_LOC IS NOT NULL GROUP BY ORDER_SSN HAVING COUNT(0) = MAX(BATCH_NUM)
+    </select>
+
+    <select id="keep_selectByOrderSsn" parameterType="map" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM KEEP_ACC_INFO WHERE ORDER_SSN = #{orderSsn,jdbcType=VARCHAR} AND IS_SYNC = #{isSync,jdbcType=CHAR}  FOR UPDATE
+    </select>
+
+    <update id="keep_updateByOrderSsn" parameterType="map">
+        UPDATE KEEP_ACC_INFO SET NOTICE_STAT = #{noticeStat,jdbcType=CHAR} ,UPD_TM = sysdate WHERE ORDER_SSN = #{orderSsn,jdbcType=VARCHAR} AND IS_SYNC = #{isSync,jdbcType=CHAR}
+    </update>
+
+
+
+    <select id="selectByOrderSsn" parameterType="string" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM keep_acc_info WHERE ORDER_SSN = #{orderSsn , jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByStateIsSync" parameterType="map" resultType="string">
+        select
+            ORDER_SSN
+        from KEEP_ACC_INFO
+        WHERE STATE = #{state,jdbcType=CHAR} and IS_SYNC = #{isSync,jdbcType=CHAR}  GROUP BY ORDER_SSN HAVING COUNT(0) = MAX(BATCH_NUM)
+    </select>
+
+    <select id="selectByOrderSsnAndState" parameterType="map" resultMap="BaseResultMap">
+      SELECT <include refid="Base_Column_List" />
+      FROM keep_acc_info WHERE STATE = #{state,jdbcType=CHAR} and IS_SYNC = #{isSync,jdbcType=CHAR} and real_tm_flag = #{realTmFlag,jdbcType=CHAR} and
+      ORDER_SSN IN
+      (
+      select
+      ORDER_SSN
+      from KEEP_ACC_INFO
+      WHERE STATE = #{state,jdbcType=CHAR} and IS_SYNC = #{isSync,jdbcType=CHAR}  GROUP BY ORDER_SSN HAVING COUNT(0) = MAX(BATCH_NUM)
+
+      ) FOR UPDATE
+    </select>
+
+  <!--<select id="selectByOrderSsnAndState" parameterType="map" resultMap="BaseResultMap">-->
+    <!--SELECT <include refid="Base_Column_List" />-->
+    <!--from (SELECT *-->
+      <!--from KEEP_ACC_INFO-->
+      <!--WHERE STATE = #{state,jdbcType=CHAR} and IS_SYNC = #{isSync,jdbcType=CHAR}  ORDER BY ORDER_SSN-->
+    <!--)-->
+    <!--WHERE rownum &lt; #{count }-->
+
+  <!--</select>-->
+
+
+  <!-- 执行插表语句时发现唯一索引重复则忽略  -->
+  <insert id="insertIgnoreExist" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    insert into KEEP_ACC_INFO (CORE_SSN, ORDER_SSN, KEEP_ACC_TIME,
+      STATE, KEEP_ACC_TYPE, IN_ACC_NO,
+      IN_ACC_TYPE, IN_ACC_NO_NAME, OUT_ACC_NO,
+      OUT_ACC_TYPE, OUT_ACC_NO_NAME, TRANS_AMT,
+      CHK_ST, CHK_RST, ORDER_TM, TXN_DESC,
+      PROXY_ORG, TXN_CCY_TYPE, KEEP_ACC_SEQ,
+      PAGY_RESP_CODE, PAGY_RESP_MSG, REGISTER_IP,
+      RESERVED1, RESERVED2, DUBIOUS_FLAG,
+      ASYNC_LOC, BATCH_NUM, NOTICE_STAT,
+      IS_SYNC, SUB_ORDER_SSN, RERUN_FLAG,
+      REAL_TM_FLAG, FEE_AMT, COMMISSION_AMT,
+      MEMO, UNIQUE_SSN , ORIG_CORE_SSN,
+      ORIG_KEEP_ACC_TIME, RETRY_COUNT,VER_NO, UPD_TM)
+    select #{coreSsn,jdbcType=VARCHAR}, #{orderSsn,jdbcType=VARCHAR}, #{keepAccTime,jdbcType=VARCHAR},
+      #{state,jdbcType=CHAR}, #{keepAccType,jdbcType=CHAR}, #{inAccNo,jdbcType=VARCHAR},
+      #{inAccType,jdbcType=CHAR}, #{inAccNoName,jdbcType=VARCHAR}, #{outAccNo,jdbcType=VARCHAR},
+      #{outAccType,jdbcType=CHAR}, #{outAccNoName,jdbcType=VARCHAR}, #{transAmt,jdbcType=DECIMAL},
+      #{chkSt,jdbcType=CHAR}, #{chkRst,jdbcType=CHAR}, #{orderTm,jdbcType=VARCHAR}, #{txnDesc,jdbcType=VARCHAR},
+      #{proxyOrg,jdbcType=VARCHAR}, #{txnCcyType,jdbcType=VARCHAR}, #{keepAccSeq,jdbcType=DECIMAL},
+      #{pagyRespCode,jdbcType=CHAR}, #{pagyRespMsg,jdbcType=VARCHAR}, #{registerIp,jdbcType=VARCHAR},
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, #{dubiousFlag,jdbcType=CHAR},
+      #{asyncLoc,jdbcType=VARCHAR}, #{batchNum,jdbcType=DECIMAL}, #{noticeStat,jdbcType=CHAR},
+      #{isSync,jdbcType=CHAR}, #{subOrderSsn,jdbcType=VARCHAR}, #{rerunFlag,jdbcType=CHAR},
+      #{realTmFlag,jdbcType=CHAR}, #{feeAmt,jdbcType=DECIMAL}, #{commissionAmt,jdbcType=DECIMAL},
+      #{memo,jdbcType=VARCHAR}, #{uniqueSsn,jdbcType=VARCHAR},#{origCoreSsn,jdbcType=VARCHAR},
+      #{origKeepAccTime,jdbcType=VARCHAR},#{retryCount,jdbcType=DECIMAL},#{verNo,jdbcType=VARCHAR},sysdate from dual
+      where not exists(select 1 from KEEP_ACC_INFO where UNIQUE_SSN = #{uniqueSsn,jdbcType=VARCHAR})
+  </insert>
+
+  <!-- 还原记账表当天数据 -->
+  <update id="recovery" parameterType="String">
+    update KEEP_ACC_INFO
+    set CHK_ST = '00' ,CHK_RST = '', DUBIOUS_FLAG = '', UPD_TM = sysdate
+    where substr(KEEP_ACC_TIME,0,8) = #{settleDate}
+  </update>
+
+  <!-- 还原记账表前一日可疑数据 -->
+  <update id="recoveryDubious" parameterType="String">
+    update KEEP_ACC_INFO
+    set CHK_ST = '00' ,CHK_RST = '02' ,UPD_TM = sysdate
+    where substr(KEEP_ACC_TIME,0,8) = #{settleDate}
+    AND DUBIOUS_FLAG = '01'
+  </update>
+
+    <!-- 根据订单号与订单时间查询 -->
+    <select id="queryByOrderSsnAndTm" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from keep_acc_info where order_ssn = #{orderSsn , jdbcType=VARCHAR} and order_tm = #{orderTm,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据订单号订单时间与记账批次号查询 -->
+    <select id="queryByOrderSsnAndTmAndVerNo" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from keep_acc_info where order_ssn = #{orderSsn , jdbcType=VARCHAR} and order_tm = #{orderTm,jdbcType=VARCHAR} and VER_NO =  #{verNo,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据订单号,订单时间与批次号查询不是冲正且状态为成功的交易 -->
+    <select id="queryByOrderSsnTmAndVerNoSucc" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from keep_acc_info where order_ssn = #{orderSsn , jdbcType=VARCHAR} and order_tm = #{orderTm,jdbcType=VARCHAR} and STATE = '02' and KEEP_ACC_TYPE != '20' and VER_NO =  #{verNo,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据订单号与订单时间查询不是冲正且状态为成功的交易 -->
+    <select id="queryByOrderSsnTmAndMaxVerNoSucc"  resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from keep_acc_info where order_ssn = #{orderSsn , jdbcType=VARCHAR} and order_tm = #{orderTm,jdbcType=VARCHAR} and STATE = '02' and KEEP_ACC_TYPE != '20'
+        and VER_NO in ( SELECT MAX(VER_NO) FROM keep_acc_info WHERE ORDER_SSN = #{orderSsn , jdbcType=VARCHAR} GROUP BY ORDER_SSN)
+    </select>
+
+
+
+    <!-- 查询待冲正的记录 , 状态为 00-待记账, 03-记账失败, 04-记账超时 ,  重试次数小于3  -->
+    <select id="queryResvRec" resultMap="BaseResultMap">
+        select * from (
+            select <include refid="Base_Column_List" /> from keep_acc_info where state in ('00','03','04') and KEEP_ACC_TYPE = '20' and RETRY_COUNT &lt; #{retryCount,jdbcType=DECIMAL} order by ORDER_TM , KEEP_ACC_SEQ DESC
+        ) where  rownum  &lt;= #{count,jdbcType=DECIMAL}
+
+    </select>
+
+    <!-- 更新记账表 , 尝试次数+1 -->
+    <update id="updateRetryCount">
+        UPDATE KEEP_ACC_INFO SET RETRY_COUNT = RETRY_COUNT +1 , STATE = #{state,jdbcType=CHAR} , PAGY_RESP_CODE = #{respCode,jdbcType=CHAR} , PAGY_RESP_MSG = #{respMsg,jdbcType=VARCHAR} , UPD_TM = sysdate WHERE CORE_SSN = #{coreSsn, jdbcType=VARCHAR}
+    </update>
+
+    <!--根据原核心流水号查询 -->
+    <select id="queryByOrigCoreSsn" resultType="String">
+        select core_ssn from keep_acc_info where ORIG_CORE_SSN = #{origCoreSsn,jdbcType=VARCHAR}
+    </select>
+
+  <select id="selectByOrderSsnAndStateT0" parameterType="map" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    From keep_acc_info a
+    Where a.STATE in ('00')
+    and a.is_sync = '01'
+    and a.REAL_TM_FLAG = '00'
+    <!--and substr(a.order_tm,1,8) = to_char(sysdate,'yyyymmdd')-->
+    and Not Exists
+    (Select 1
+    From keep_acc_info
+    Where keep_acc_info.STATE != '02'
+    And keep_acc_info.IS_SYNC = '01'
+    And keep_acc_info.REAL_TM_FLAG = '01'
+    And keep_acc_info.ORDER_SSN = a.ORDER_SSN)
+    order by order_ssn
+    FOR UPDATE
+  </select>
+
+  <select id="selectByOrderSsnT0" parameterType="java.lang.String" resultType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAccInfo">
+    select
+    <include refid="Base_Column_List" />
+    from KEEP_ACC_INFO a
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+    and a.is_sync = '01'
+    and a.REAL_TM_FLAG = '00'
+  </select>
+
+  <select id="selectByOrderSsnT0List" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from KEEP_ACC_INFO a
+    where ORDER_SSN in
+    <foreach collection="orderSsnList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and a.is_sync = '01'
+    and a.REAL_TM_FLAG = '00'
+  </select>
+</mapper>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PagyFeeCfgDetMapper">
+    <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfgDet">
+        <id column="DET_ID" property="detId" jdbcType="VARCHAR"/>
+        <result column="CFG_ID" property="cfgId" jdbcType="VARCHAR"/>
+        <result column="PAGY_SYS_SOA_NO" property="pagySysSoaNo" jdbcType="CHAR"/>
+        <result column="CARD_TYPE" property="cardType" jdbcType="CHAR"/>
+        <result column="FEE_TP" property="feeTp" jdbcType="CHAR"/>
+        <result column="FEE_AMT" property="feeAmt" jdbcType="DECIMAL"/>
+        <result column="FEE_RATE" property="feeRate" jdbcType="DECIMAL"/>
+        <result column="FEE_MIN_AMT" property="feeMinAmt" jdbcType="DECIMAL"/>
+        <result column="FEE_MAX_AMT" property="feeMaxAmt" jdbcType="DECIMAL"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="CRT_TM" property="crtTm" jdbcType="TIMESTAMP"/>
+        <result column="LAST_UPD_TM" property="lastUpdTm" jdbcType="TIMESTAMP"/>
+        <result column="MCHT_CLASS" property="mchtClass" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    DET_ID, CFG_ID, PAGY_SYS_SOA_NO, CARD_TYPE, FEE_TP, FEE_AMT, FEE_RATE, FEE_MIN_AMT, 
+    FEE_MAX_AMT, REMARK, CRT_TM, LAST_UPD_TM, MCHT_CLASS
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from PAGY_FEE_CFG_DET
+        where DET_ID = #{detId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PAGY_FEE_CFG_DET
+    where DET_ID = #{detId,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfgDet">
+    insert into PAGY_FEE_CFG_DET (DET_ID, CFG_ID, PAGY_SYS_SOA_NO, 
+      CARD_TYPE, FEE_TP, FEE_AMT, 
+      FEE_RATE, FEE_MIN_AMT, FEE_MAX_AMT, 
+      REMARK, CRT_TM, LAST_UPD_TM,MCHT_CLASS
+      )
+    values (#{detId,jdbcType=VARCHAR}, #{cfgId,jdbcType=VARCHAR}, #{pagySysSoaNo,jdbcType=CHAR}, 
+      #{cardType,jdbcType=CHAR}, #{feeTp,jdbcType=CHAR}, #{feeAmt,jdbcType=DECIMAL}, 
+      #{feeRate,jdbcType=DECIMAL}, #{feeMinAmt,jdbcType=DECIMAL}, #{feeMaxAmt,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{lastUpdTm,jdbcType=TIMESTAMP}, #{mchtClass,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfgDet">
+        insert into PAGY_FEE_CFG_DET
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="detId != null">
+                DET_ID,
+            </if>
+            <if test="cfgId != null">
+                CFG_ID,
+            </if>
+            <if test="pagySysSoaNo != null">
+                PAGY_SYS_SOA_NO,
+            </if>
+            <if test="cardType != null">
+                CARD_TYPE,
+            </if>
+            <if test="feeTp != null">
+                FEE_TP,
+            </if>
+            <if test="feeAmt != null">
+                FEE_AMT,
+            </if>
+            <if test="feeRate != null">
+                FEE_RATE,
+            </if>
+            <if test="feeMinAmt != null">
+                FEE_MIN_AMT,
+            </if>
+            <if test="feeMaxAmt != null">
+                FEE_MAX_AMT,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="crtTm != null">
+                CRT_TM,
+            </if>
+            <if test="lastUpdTm != null">
+                LAST_UPD_TM,
+            </if>
+            <if test="mchtClass != null">
+                MCHT_CLASS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="detId != null">
+                #{detId,jdbcType=VARCHAR},
+            </if>
+            <if test="cfgId != null">
+                #{cfgId,jdbcType=VARCHAR},
+            </if>
+            <if test="pagySysSoaNo != null">
+                #{pagySysSoaNo,jdbcType=CHAR},
+            </if>
+            <if test="cardType != null">
+                #{cardType,jdbcType=CHAR},
+            </if>
+            <if test="feeTp != null">
+                #{feeTp,jdbcType=CHAR},
+            </if>
+            <if test="feeAmt != null">
+                #{feeAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="feeRate != null">
+                #{feeRate,jdbcType=DECIMAL},
+            </if>
+            <if test="feeMinAmt != null">
+                #{feeMinAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="feeMaxAmt != null">
+                #{feeMaxAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTm != null">
+                #{crtTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdTm != null">
+                #{lastUpdTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mchtClass != null">
+                #{mchtClass,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfgDet">
+        update PAGY_FEE_CFG_DET
+        <set>
+            <if test="cfgId != null">
+                CFG_ID = #{cfgId,jdbcType=VARCHAR},
+            </if>
+            <if test="pagySysSoaNo != null">
+                PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+            </if>
+            <if test="cardType != null">
+                CARD_TYPE = #{cardType,jdbcType=CHAR},
+            </if>
+            <if test="feeTp != null">
+                FEE_TP = #{feeTp,jdbcType=CHAR},
+            </if>
+            <if test="feeAmt != null">
+                FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="feeRate != null">
+                FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+            </if>
+            <if test="feeMinAmt != null">
+                FEE_MIN_AMT = #{feeMinAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="feeMaxAmt != null">
+                FEE_MAX_AMT = #{feeMaxAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTm != null">
+                CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdTm != null">
+                LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mchtClass != null">
+                MCHT_CLASS = #{mchtClass,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where DET_ID = #{detId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfgDet">
+    update PAGY_FEE_CFG_DET
+    set CFG_ID = #{cfgId,jdbcType=VARCHAR},
+      PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      CARD_TYPE = #{cardType,jdbcType=CHAR},
+      FEE_TP = #{feeTp,jdbcType=CHAR},
+      FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      FEE_MIN_AMT = #{feeMinAmt,jdbcType=DECIMAL},
+      FEE_MAX_AMT = #{feeMaxAmt,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP},
+      MCHT_CLASS = #{mchtClass,jdbcType=VARCHAR}
+    where DET_ID = #{detId,jdbcType=VARCHAR}
+  </update>
+
+    <select id="queryPagyFeeCfgDetByPagyNoAndPagySysNoAndCardType" resultMap="BaseResultMap">
+        select a.* from PAGY_FEE_CFG_DET a inner join PAGY_FEE_CFG b on a.cfg_id=b.cfg_id where b.pagy_no=#{pagyNo}
+        <!--  and a.CARD_TYPE=#{cardType} -->
+    </select>
+
+
+    <select id="queryPagyFeeCfgDetByPagyNoAndPagySysNoAndCardTypeAndOrderSsn" resultMap="BaseResultMap">
+    select distinct a.*
+      from PAGY_FEE_CFG_DET a
+      left join PAGY_FEE_CFG b on a.cfg_id = b.cfg_id
+     inner join PAGY_MCHT_INFO c on b.pagy_no = c.PAGY_NO
+     where c.CHL_MCHT_NO =
+           (select b.mcht_id
+              from BTH_CHK_RSLT_INFO a
+             inner join PAY_ORDER_INFO b on a.order_ssn = b.order_ssn
+             where a.order_ssn = #{orderSsn,jdbcType=VARCHAR}
+               and rownum = 1)
+              and b.pagy_no=#{pagyNo,jdbcType=CHAR}
+       and a.card_type = #{cardType,jdbcType=CHAR}
+       and a.MCHT_CLASS = c.MCHT_CLASS
+  </select>
+
+
+    <!-- 根据通道号查询费率配置信息 -->
+    <select id="queryPagyFeeCfgByPagyNo" resultMap="BaseResultMap">
+        select a.* from PAGY_FEE_CFG_DET a inner join PAGY_FEE_CFG b on a.cfg_id=b.cfg_id where b.pagy_no=#{pagyNo, jdbcType=VARCHAR}
+    </select>
+
+</mapper>

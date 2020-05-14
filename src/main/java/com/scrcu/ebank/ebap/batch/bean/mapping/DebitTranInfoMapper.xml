@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.DebitTranInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.DebitTranInfo" >
+    <id column="CHANNEL_SEQ" property="channelSeq" jdbcType="VARCHAR" />
+    <result column="CHANNEL_NO" property="channelNo" jdbcType="VARCHAR" />
+    <result column="CHANNEL_DATE" property="channelDate" jdbcType="CHAR" />
+    <result column="TXN_DATE" property="txnDate" jdbcType="CHAR" />
+    <result column="TELLER_SEQ" property="tellerSeq" jdbcType="VARCHAR" />
+    <result column="TXN_STATUS" property="txnStatus" jdbcType="CHAR" />
+    <result column="PLATFORM_DATE" property="platformDate" jdbcType="CHAR" />
+    <result column="PLATFORM_SEQ" property="platformSeq" jdbcType="VARCHAR" />
+    <result column="TXN_CODE" property="txnCode" jdbcType="VARCHAR" />
+    <result column="TXN_ORG" property="txnOrg" jdbcType="VARCHAR" />
+    <result column="TXN_TELLER" property="txnTeller" jdbcType="VARCHAR" />
+    <result column="TXN_CUR" property="txnCur" jdbcType="VARCHAR" />
+    <result column="PAY_ACCOUNT" property="payAccount" jdbcType="VARCHAR" />
+    <result column="RECEIVE_ACCOUNT" property="receiveAccount" jdbcType="VARCHAR" />
+    <result column="TXN_AMOUNT" property="txnAmount" jdbcType="DECIMAL" />
+    <result column="RESERVED1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <result column="CHK_DATA_DT" property="chkDataDt" jdbcType="CHAR" />
+    <result column="CHK_ACCT_ST" property="chkAcctSt" jdbcType="CHAR" />
+    <result column="CHK_RST" property="chkRst" jdbcType="CHAR" />
+    <result column="LST_UPD_TM" property="lstUpdTm" jdbcType="CHAR" />
+	<result column="DUBIOUS_FLAG" property="dubiousFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CHANNEL_SEQ, CHANNEL_NO, CHANNEL_DATE, TXN_DATE, TELLER_SEQ, TXN_STATUS, PLATFORM_DATE, 
+    PLATFORM_SEQ, TXN_CODE, TXN_ORG, TXN_TELLER, TXN_CUR, PAY_ACCOUNT, RECEIVE_ACCOUNT, 
+    TXN_AMOUNT, RESERVED1, PAGY_SYS_NO, PAGY_NO, CHK_DATA_DT, CHK_ACCT_ST, CHK_RST, LST_UPD_TM,DUBIOUS_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from DEBIT_TRAN_INFO
+    where CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.DebitTranInfo" >
+    insert into DEBIT_TRAN_INFO (CHANNEL_SEQ, CHANNEL_NO, CHANNEL_DATE, 
+      TXN_DATE, TELLER_SEQ, TXN_STATUS, 
+      PLATFORM_DATE, PLATFORM_SEQ, TXN_CODE, 
+      TXN_ORG, TXN_TELLER, TXN_CUR, 
+      PAY_ACCOUNT, RECEIVE_ACCOUNT, TXN_AMOUNT, 
+      RESERVED1, PAGY_SYS_NO, PAGY_NO, 
+      CHK_DATA_DT, CHK_ACCT_ST, CHK_RST, 
+      LST_UPD_TM,DUBIOUS_FLAG)
+    values (#{channelSeq,jdbcType=VARCHAR}, #{channelNo,jdbcType=VARCHAR}, #{channelDate,jdbcType=CHAR}, 
+      #{txnDate,jdbcType=CHAR}, #{tellerSeq,jdbcType=VARCHAR}, #{txnStatus,jdbcType=CHAR}, 
+      #{platformDate,jdbcType=CHAR}, #{platformSeq,jdbcType=VARCHAR}, #{txnCode,jdbcType=VARCHAR}, 
+      #{txnOrg,jdbcType=VARCHAR}, #{txnTeller,jdbcType=VARCHAR}, #{txnCur,jdbcType=VARCHAR}, 
+      #{payAccount,jdbcType=VARCHAR}, #{receiveAccount,jdbcType=VARCHAR}, #{txnAmount,jdbcType=DECIMAL}, 
+      #{reserved1,jdbcType=VARCHAR}, #{pagySysNo,jdbcType=CHAR}, #{pagyNo,jdbcType=CHAR}, 
+      #{chkDataDt,jdbcType=CHAR}, #{chkAcctSt,jdbcType=CHAR}, #{chkRst,jdbcType=CHAR}, 
+      #{lstUpdTm,jdbcType=CHAR},#{dubiousFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.DebitTranInfo" >
+    insert into DEBIT_TRAN_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="channelSeq != null" >
+        CHANNEL_SEQ,
+      </if>
+      <if test="channelNo != null" >
+        CHANNEL_NO,
+      </if>
+      <if test="channelDate != null" >
+        CHANNEL_DATE,
+      </if>
+      <if test="txnDate != null" >
+        TXN_DATE,
+      </if>
+      <if test="tellerSeq != null" >
+        TELLER_SEQ,
+      </if>
+      <if test="txnStatus != null" >
+        TXN_STATUS,
+      </if>
+      <if test="platformDate != null" >
+        PLATFORM_DATE,
+      </if>
+      <if test="platformSeq != null" >
+        PLATFORM_SEQ,
+      </if>
+      <if test="txnCode != null" >
+        TXN_CODE,
+      </if>
+      <if test="txnOrg != null" >
+        TXN_ORG,
+      </if>
+      <if test="txnTeller != null" >
+        TXN_TELLER,
+      </if>
+      <if test="txnCur != null" >
+        TXN_CUR,
+      </if>
+      <if test="payAccount != null" >
+        PAY_ACCOUNT,
+      </if>
+      <if test="receiveAccount != null" >
+        RECEIVE_ACCOUNT,
+      </if>
+      <if test="txnAmount != null" >
+        TXN_AMOUNT,
+      </if>
+      <if test="reserved1 != null" >
+        RESERVED1,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT,
+      </if>
+      <if test="chkAcctSt != null" >
+        CHK_ACCT_ST,
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST,
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM,
+      </if>
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="channelSeq != null" >
+        #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelNo != null" >
+        #{channelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelDate != null" >
+        #{channelDate,jdbcType=CHAR},
+      </if>
+      <if test="txnDate != null" >
+        #{txnDate,jdbcType=CHAR},
+      </if>
+      <if test="tellerSeq != null" >
+        #{tellerSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnStatus != null" >
+        #{txnStatus,jdbcType=CHAR},
+      </if>
+      <if test="platformDate != null" >
+        #{platformDate,jdbcType=CHAR},
+      </if>
+      <if test="platformSeq != null" >
+        #{platformSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCode != null" >
+        #{txnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="txnOrg != null" >
+        #{txnOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTeller != null" >
+        #{txnTeller,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCur != null" >
+        #{txnCur,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null" >
+        #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAccount != null" >
+        #{receiveAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmount != null" >
+        #{txnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="chkDataDt != null" >
+        #{chkDataDt,jdbcType=CHAR},
+      </if>
+      <if test="chkAcctSt != null" >
+        #{chkAcctSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null" >
+        #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        #{lstUpdTm,jdbcType=CHAR},
+      </if>
+      <if test="dubiousFlag != null" >
+        #{dubiousFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.DebitTranInfo" >
+    update DEBIT_TRAN_INFO
+    <set >
+      <if test="channelNo != null" >
+        CHANNEL_NO = #{channelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelDate != null" >
+        CHANNEL_DATE = #{channelDate,jdbcType=CHAR},
+      </if>
+      <if test="txnDate != null" >
+        TXN_DATE = #{txnDate,jdbcType=CHAR},
+      </if>
+      <if test="tellerSeq != null" >
+        TELLER_SEQ = #{tellerSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnStatus != null" >
+        TXN_STATUS = #{txnStatus,jdbcType=CHAR},
+      </if>
+      <if test="platformDate != null" >
+        PLATFORM_DATE = #{platformDate,jdbcType=CHAR},
+      </if>
+      <if test="platformSeq != null" >
+        PLATFORM_SEQ = #{platformSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCode != null" >
+        TXN_CODE = #{txnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="txnOrg != null" >
+        TXN_ORG = #{txnOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTeller != null" >
+        TXN_TELLER = #{txnTeller,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCur != null" >
+        TXN_CUR = #{txnCur,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null" >
+        PAY_ACCOUNT = #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAccount != null" >
+        RECEIVE_ACCOUNT = #{receiveAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmount != null" >
+        TXN_AMOUNT = #{txnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="reserved1 != null" >
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR},
+      </if>
+      <if test="chkAcctSt != null" >
+        CHK_ACCT_ST = #{chkAcctSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST = #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM = #{lstUpdTm,jdbcType=CHAR},
+      </if>
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.DebitTranInfo" >
+    update DEBIT_TRAN_INFO
+    set CHANNEL_NO = #{channelNo,jdbcType=VARCHAR},
+      CHANNEL_DATE = #{channelDate,jdbcType=CHAR},
+      TXN_DATE = #{txnDate,jdbcType=CHAR},
+      TELLER_SEQ = #{tellerSeq,jdbcType=VARCHAR},
+      TXN_STATUS = #{txnStatus,jdbcType=CHAR},
+      PLATFORM_DATE = #{platformDate,jdbcType=CHAR},
+      PLATFORM_SEQ = #{platformSeq,jdbcType=VARCHAR},
+      TXN_CODE = #{txnCode,jdbcType=VARCHAR},
+      TXN_ORG = #{txnOrg,jdbcType=VARCHAR},
+      TXN_TELLER = #{txnTeller,jdbcType=VARCHAR},
+      TXN_CUR = #{txnCur,jdbcType=VARCHAR},
+      PAY_ACCOUNT = #{payAccount,jdbcType=VARCHAR},
+      RECEIVE_ACCOUNT = #{receiveAccount,jdbcType=VARCHAR},
+      TXN_AMOUNT = #{txnAmount,jdbcType=DECIMAL},
+      RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR},
+      CHK_ACCT_ST = #{chkAcctSt,jdbcType=CHAR},
+      CHK_RST = #{chkRst,jdbcType=CHAR},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=CHAR},
+      DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR}
+    where CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR}
+  </update>
+<!--   本行借记对账文件解析前清理 -->
+  <delete id="deleteByDate" parameterType="java.lang.String">
+    delete from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{settleDate,jdbcType=CHAR} and PAGY_SYS_NO is not null
+  </delete>
+<!--   本行对账 -->
+  <select id="selectDebitFileByDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{settleDate}  and PAGY_SYS_NO is not null
+  </select>
+  <select id="selectDebitFileByDateAndChkstat" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{doubtDate} and CHK_RST= #{chkSt}  and PAGY_SYS_NO is not null
+  </select>
+  
+  <select id="selectDebitFileByDateAndStat" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{settleDate} and CHK_ACCT_ST= #{state} and PAGY_SYS_NO is not null
+  </select>
+  <!--   本行记账文件解析前清理 -->
+  <delete id="deleteTallyByDate" parameterType="java.lang.String">
+    delete from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{settleDate,jdbcType=CHAR} 
+    and PAGY_SYS_NO is null
+  </delete>
+<!--   记账文件对账 -->
+  <select id="selectTallyFileByDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{settleDate} and PAGY_SYS_NO is null
+  </select>
+  <select id="selectTallyFileByDateAndChkstat" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{doubtDate} and CHK_RST= #{chkSt} and PAGY_SYS_NO is null
+  </select>
+  
+  <select id="selectTallyFileByDateAndStat" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{settleDate} and CHK_ACCT_ST= #{state} and PAGY_SYS_NO is null
+  </select>
+<!--   本行对账还原可疑 -->
+   <select id="queryDebitFileByFlagAndDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{settleDate} and DUBIOUS_FLAG =#{dubiousFlag}  and PAGY_SYS_NO is not null
+  </select>
+  <!--   本行记账还原可疑 -->
+   <select id="queryKeepTranByDateAndFlag" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from DEBIT_TRAN_INFO
+    where CHK_DATA_DT = #{settleDate} and DUBIOUS_FLAG =#{dubiousFlag} and PAGY_SYS_NO is null
+  </select>
+</mapper>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthEnterAccountResultMapper">
+    <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthEnterAccountResult">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="TRAN_ORG" property="tranOrg" jdbcType="VARCHAR"/>
+        <result column="FEE_CATALOG" property="feeCatalog" jdbcType="VARCHAR"/>
+        <result column="BORROW_FLAG" property="borrowFlag" jdbcType="VARCHAR"/>
+        <result column="OUT_ACCOUT_ORG" property="outAccoutOrg" jdbcType="VARCHAR"/>
+        <result column="OUT_ACCOUNT_NO" property="outAccountNo" jdbcType="VARCHAR"/>
+        <result column="LEND_FLAG" property="lendFlag" jdbcType="VARCHAR"/>
+        <result column="IN_ACCOUT_ORG" property="inAccoutOrg" jdbcType="VARCHAR"/>
+        <result column="IN_ACCOUNT_NO" property="inAccountNo" jdbcType="VARCHAR"/>
+        <result column="TRANS_AMOUNT" property="transAmount" jdbcType="VARCHAR"/>
+        <result column="TRANS_CUR" property="transCur" jdbcType="VARCHAR"/>
+        <result column="BILL_FLAG" property="billFlag" jdbcType="VARCHAR"/>
+        <result column="SUMMARY_CODE" property="summaryCode" jdbcType="VARCHAR"/>
+        <result column="SUMMARY" property="summary" jdbcType="VARCHAR"/>
+        <result column="RESERVED" property="reserved" jdbcType="VARCHAR"/>
+        <result column="DEAL_RESULT_CODE" property="dealResultCode" jdbcType="VARCHAR"/>
+        <result column="DEAL_RESULT_REMARK" property="dealResultRemark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID
+        ,
+        TRAN_ORG,
+        FEE_CATALOG,
+        BORROW_FLAG,
+        OUT_ACCOUT_ORG,
+        OUT_ACCOUNT_NO,
+        LEND_FLAG,
+        IN_ACCOUT_ORG,
+        IN_ACCOUNT_NO,
+        TRANS_AMOUNT,
+        TRANS_CUR,
+        BILL_FLAG,
+        SUMMARY_CODE,
+        SUMMARY,
+        RESERVED,
+        DEAL_RESULT_CODE,
+        DEAL_RESULT_REMARK
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from BTH_ENTER_ACCOUNT_RESULT
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from BTH_ENTER_ACCOUNT_RESULT
+        where ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthEnterAccountResult">
+        insert into BTH_ENTER_ACCOUNT_RESULT (ID, TRAN_ORG, FEE_CATALOG,
+                                              BORROW_FLAG, OUT_ACCOUT_ORG, OUT_ACCOUNT_NO,
+                                              LEND_FLAG, IN_ACCOUT_ORG, IN_ACCOUNT_NO,
+                                              TRANS_AMOUNT, TRANS_CUR, BILL_FLAG,
+                                              SUMMARY_CODE, SUMMARY, RESERVED,
+                                              DEAL_RESULT_CODE, DEAL_RESULT_REMARK)
+        values (#{id,jdbcType=VARCHAR}, #{tranOrg,jdbcType=VARCHAR}, #{feeCatalog,jdbcType=VARCHAR},
+                #{borrowFlag,jdbcType=VARCHAR}, #{outAccoutOrg,jdbcType=VARCHAR}, #{outAccountNo,jdbcType=VARCHAR},
+                #{lendFlag,jdbcType=VARCHAR}, #{inAccoutOrg,jdbcType=VARCHAR}, #{inAccountNo,jdbcType=VARCHAR},
+                #{transAmount,jdbcType=VARCHAR}, #{transCur,jdbcType=VARCHAR}, #{billFlag,jdbcType=VARCHAR},
+                #{summaryCode,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{reserved,jdbcType=VARCHAR},
+                #{dealResultCode,jdbcType=VARCHAR}, #{dealResultRemark,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthEnterAccountResult">
+        insert into BTH_ENTER_ACCOUNT_RESULT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="tranOrg != null">
+                TRAN_ORG,
+            </if>
+            <if test="feeCatalog != null">
+                FEE_CATALOG,
+            </if>
+            <if test="borrowFlag != null">
+                BORROW_FLAG,
+            </if>
+            <if test="outAccoutOrg != null">
+                OUT_ACCOUT_ORG,
+            </if>
+            <if test="outAccountNo != null">
+                OUT_ACCOUNT_NO,
+            </if>
+            <if test="lendFlag != null">
+                LEND_FLAG,
+            </if>
+            <if test="inAccoutOrg != null">
+                IN_ACCOUT_ORG,
+            </if>
+            <if test="inAccountNo != null">
+                IN_ACCOUNT_NO,
+            </if>
+            <if test="transAmount != null">
+                TRANS_AMOUNT,
+            </if>
+            <if test="transCur != null">
+                TRANS_CUR,
+            </if>
+            <if test="billFlag != null">
+                BILL_FLAG,
+            </if>
+            <if test="summaryCode != null">
+                SUMMARY_CODE,
+            </if>
+            <if test="summary != null">
+                SUMMARY,
+            </if>
+            <if test="reserved != null">
+                RESERVED,
+            </if>
+            <if test="dealResultCode != null">
+                DEAL_RESULT_CODE,
+            </if>
+            <if test="dealResultRemark != null">
+                DEAL_RESULT_REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="tranOrg != null">
+                #{tranOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="feeCatalog != null">
+                #{feeCatalog,jdbcType=VARCHAR},
+            </if>
+            <if test="borrowFlag != null">
+                #{borrowFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccoutOrg != null">
+                #{outAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccountNo != null">
+                #{outAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="lendFlag != null">
+                #{lendFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccoutOrg != null">
+                #{inAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccountNo != null">
+                #{inAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="transAmount != null">
+                #{transAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="transCur != null">
+                #{transCur,jdbcType=VARCHAR},
+            </if>
+            <if test="billFlag != null">
+                #{billFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="summaryCode != null">
+                #{summaryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="summary != null">
+                #{summary,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved != null">
+                #{reserved,jdbcType=VARCHAR},
+            </if>
+            <if test="dealResultCode != null">
+                #{dealResultCode,jdbcType=VARCHAR},
+            </if>
+            <if test="dealResultRemark != null">
+                #{dealResultRemark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthEnterAccountResult">
+        update BTH_ENTER_ACCOUNT_RESULT
+        <set>
+            <if test="tranOrg != null">
+                TRAN_ORG = #{tranOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="feeCatalog != null">
+                FEE_CATALOG = #{feeCatalog,jdbcType=VARCHAR},
+            </if>
+            <if test="borrowFlag != null">
+                BORROW_FLAG = #{borrowFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccoutOrg != null">
+                OUT_ACCOUT_ORG = #{outAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccountNo != null">
+                OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="lendFlag != null">
+                LEND_FLAG = #{lendFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccoutOrg != null">
+                IN_ACCOUT_ORG = #{inAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccountNo != null">
+                IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="transAmount != null">
+                TRANS_AMOUNT = #{transAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="transCur != null">
+                TRANS_CUR = #{transCur,jdbcType=VARCHAR},
+            </if>
+            <if test="billFlag != null">
+                BILL_FLAG = #{billFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="summaryCode != null">
+                SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="summary != null">
+                SUMMARY = #{summary,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved != null">
+                RESERVED = #{reserved,jdbcType=VARCHAR},
+            </if>
+            <if test="dealResultCode != null">
+                DEAL_RESULT_CODE = #{dealResultCode,jdbcType=VARCHAR},
+            </if>
+            <if test="dealResultRemark != null">
+                DEAL_RESULT_REMARK = #{dealResultRemark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthEnterAccountResult">
+        update BTH_ENTER_ACCOUNT_RESULT
+        set TRAN_ORG           = #{tranOrg,jdbcType=VARCHAR},
+            FEE_CATALOG        = #{feeCatalog,jdbcType=VARCHAR},
+            BORROW_FLAG        = #{borrowFlag,jdbcType=VARCHAR},
+            OUT_ACCOUT_ORG     = #{outAccoutOrg,jdbcType=VARCHAR},
+            OUT_ACCOUNT_NO     = #{outAccountNo,jdbcType=VARCHAR},
+            LEND_FLAG          = #{lendFlag,jdbcType=VARCHAR},
+            IN_ACCOUT_ORG      = #{inAccoutOrg,jdbcType=VARCHAR},
+            IN_ACCOUNT_NO      = #{inAccountNo,jdbcType=VARCHAR},
+            TRANS_AMOUNT       = #{transAmount,jdbcType=VARCHAR},
+            TRANS_CUR          = #{transCur,jdbcType=VARCHAR},
+            BILL_FLAG          = #{billFlag,jdbcType=VARCHAR},
+            SUMMARY_CODE       = #{summaryCode,jdbcType=VARCHAR},
+            SUMMARY            = #{summary,jdbcType=VARCHAR},
+            RESERVED           = #{reserved,jdbcType=VARCHAR},
+            DEAL_RESULT_CODE   = #{dealResultCode,jdbcType=VARCHAR},
+            DEAL_RESULT_REMARK = #{dealResultRemark,jdbcType=VARCHAR}
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 批量插入汇总表 -->
+    <insert id="insertBatch">
+        insert into BTH_ENTER_ACCOUNT_RESULT (ID, TRAN_ORG, FEE_CATALOG,
+        BORROW_FLAG, OUT_ACCOUT_ORG, OUT_ACCOUNT_NO,
+        LEND_FLAG, IN_ACCOUT_ORG, IN_ACCOUNT_NO,
+        TRANS_AMOUNT, TRANS_CUR, BILL_FLAG,
+        SUMMARY_CODE, SUMMARY, RESERVED,
+        DEAL_RESULT_CODE, DEAL_RESULT_REMARK)
+        <foreach collection="recordList" index="index" item="item" separator="UNION ALL">
+            select
+            #{item.id,jdbcType=VARCHAR}, #{item.tranOrg,jdbcType=VARCHAR}, #{item.feeCatalog,jdbcType=VARCHAR},
+            #{item.borrowFlag,jdbcType=VARCHAR}, #{item.outAccoutOrg,jdbcType=VARCHAR}, #{item.outAccountNo,jdbcType=VARCHAR},
+            #{item.lendFlag,jdbcType=VARCHAR}, #{item.inAccoutOrg,jdbcType=VARCHAR}, #{item.inAccountNo,jdbcType=VARCHAR},
+            #{item.transAmount,jdbcType=VARCHAR}, #{item.transCur,jdbcType=VARCHAR}, #{item.billFlag,jdbcType=VARCHAR},
+            #{item.summaryCode,jdbcType=VARCHAR}, #{item.summary,jdbcType=VARCHAR}, #{item.reserved,jdbcType=VARCHAR},
+            #{item.dealResultCode,jdbcType=VARCHAR}, #{item.dealResultRemark,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+    </insert>
+
+    <update id="clear">
+        truncate table BTH_ENTER_ACCOUNT_RESULT
+    </update>
+</mapper>

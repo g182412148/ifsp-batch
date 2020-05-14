@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthPagyChkErrInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkErrInfo" >
+    <id column="CHK_ERR_SSN" property="chkErrSsn" jdbcType="VARCHAR" />
+    <result column="PAGY_PAY_TXN_SSN" property="pagyPayTxnSsn" jdbcType="VARCHAR" />
+    <result column="PAGY_PAY_TXN_TM" property="pagyPayTxnTm" jdbcType="TIMESTAMP" />
+    <result column="PAGY_TXN_SSN" property="pagyTxnSsn" jdbcType="VARCHAR" />
+    <result column="PAGY_TXN_TM" property="pagyTxnTm" jdbcType="TIMESTAMP" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="PAGY_SYS_SOA_NO" property="pagySysSoaNo" jdbcType="CHAR" />
+    <result column="PAGY_SYS_SOA_VERSION" property="pagySysSoaVersion" jdbcType="VARCHAR" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <result column="PAGY_MCHT_NO" property="pagyMchtNo" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="TPAM_TXN_SSN" property="tpamTxnSsn" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_TM" property="tpamTxnTm" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_TYPE_NO" property="tpamTxnTypeNo" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_AMT" property="tpamTxnAmt" jdbcType="DECIMAL" />
+    <result column="TPAM_TXN_FEE_AMT" property="tpamTxnFeeAmt" jdbcType="DECIMAL" />
+    <result column="TPAM_SET_AMT" property="tpamSetAmt" jdbcType="DECIMAL" />
+    <result column="CHK_DATA_DT" property="chkDataDt" jdbcType="TIMESTAMP" />
+    <result column="CHK_ERR_DT" property="chkErrDt" jdbcType="TIMESTAMP" />
+    <result column="ERR_TP" property="errTp" jdbcType="VARCHAR" />
+    <result column="ERR_DESC" property="errDesc" jdbcType="VARCHAR" />
+    <result column="PROC_ST" property="procSt" jdbcType="CHAR" />
+    <result column="PROC_DESC" property="procDesc" jdbcType="VARCHAR" />
+    <result column="CRT_TM" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="PROC_TM" property="procTm" jdbcType="TIMESTAMP" />
+    <result column="PROC_TLR_NO" property="procTlrNo" jdbcType="VARCHAR" />
+    <result column="LST_UPD_TM" property="lstUpdTm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CHK_ERR_SSN, PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_TXN_SSN, PAGY_TXN_TM, PAGY_SYS_NO, 
+    PAGY_SYS_SOA_NO, PAGY_SYS_SOA_VERSION, PAGY_NO, PAGY_MCHT_NO, TXN_AMT, TPAM_TXN_SSN, 
+    TPAM_TXN_TM, TPAM_TXN_TYPE_NO, TPAM_TXN_AMT, TPAM_TXN_FEE_AMT, TPAM_SET_AMT, CHK_DATA_DT, 
+    CHK_ERR_DT, ERR_TP, ERR_DESC, PROC_ST, PROC_DESC, CRT_TM, PROC_TM, PROC_TLR_NO, LST_UPD_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_PAGY_CHK_ERR_INFO
+    where CHK_ERR_SSN = #{chkErrSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_PAGY_CHK_ERR_INFO
+    where CHK_ERR_SSN = #{chkErrSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkErrInfo" >
+    insert into BTH_PAGY_CHK_ERR_INFO (CHK_ERR_SSN, PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, 
+      PAGY_TXN_SSN, PAGY_TXN_TM, PAGY_SYS_NO, 
+      PAGY_SYS_SOA_NO, PAGY_SYS_SOA_VERSION, PAGY_NO, 
+      PAGY_MCHT_NO, TXN_AMT, TPAM_TXN_SSN, 
+      TPAM_TXN_TM, TPAM_TXN_TYPE_NO, TPAM_TXN_AMT, 
+      TPAM_TXN_FEE_AMT, TPAM_SET_AMT, CHK_DATA_DT, 
+      CHK_ERR_DT, ERR_TP, ERR_DESC, 
+      PROC_ST, PROC_DESC, CRT_TM, 
+      PROC_TM, PROC_TLR_NO, LST_UPD_TM
+      )
+    values (#{chkErrSsn,jdbcType=VARCHAR}, #{pagyPayTxnSsn,jdbcType=VARCHAR}, #{pagyPayTxnTm,jdbcType=TIMESTAMP}, 
+      #{pagyTxnSsn,jdbcType=VARCHAR}, #{pagyTxnTm,jdbcType=TIMESTAMP}, #{pagySysNo,jdbcType=CHAR}, 
+      #{pagySysSoaNo,jdbcType=CHAR}, #{pagySysSoaVersion,jdbcType=VARCHAR}, #{pagyNo,jdbcType=CHAR}, 
+      #{pagyMchtNo,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, #{tpamTxnSsn,jdbcType=VARCHAR}, 
+      #{tpamTxnTm,jdbcType=VARCHAR}, #{tpamTxnTypeNo,jdbcType=VARCHAR}, #{tpamTxnAmt,jdbcType=DECIMAL}, 
+      #{tpamTxnFeeAmt,jdbcType=DECIMAL}, #{tpamSetAmt,jdbcType=DECIMAL}, #{chkDataDt,jdbcType=TIMESTAMP}, 
+      #{chkErrDt,jdbcType=TIMESTAMP}, #{errTp,jdbcType=VARCHAR}, #{errDesc,jdbcType=VARCHAR},
+      #{procSt,jdbcType=CHAR}, #{procDesc,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{procTm,jdbcType=TIMESTAMP}, #{procTlrNo,jdbcType=VARCHAR}, #{lstUpdTm,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkErrInfo" >
+    insert into BTH_PAGY_CHK_ERR_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chkErrSsn != null" >
+        CHK_ERR_SSN,
+      </if>
+      <if test="pagyPayTxnSsn != null" >
+        PAGY_PAY_TXN_SSN,
+      </if>
+      <if test="pagyPayTxnTm != null" >
+        PAGY_PAY_TXN_TM,
+      </if>
+      <if test="pagyTxnSsn != null" >
+        PAGY_TXN_SSN,
+      </if>
+      <if test="pagyTxnTm != null" >
+        PAGY_TXN_TM,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="pagySysSoaNo != null" >
+        PAGY_SYS_SOA_NO,
+      </if>
+      <if test="pagySysSoaVersion != null" >
+        PAGY_SYS_SOA_VERSION,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="pagyMchtNo != null" >
+        PAGY_MCHT_NO,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="tpamTxnSsn != null" >
+        TPAM_TXN_SSN,
+      </if>
+      <if test="tpamTxnTm != null" >
+        TPAM_TXN_TM,
+      </if>
+      <if test="tpamTxnTypeNo != null" >
+        TPAM_TXN_TYPE_NO,
+      </if>
+      <if test="tpamTxnAmt != null" >
+        TPAM_TXN_AMT,
+      </if>
+      <if test="tpamTxnFeeAmt != null" >
+        TPAM_TXN_FEE_AMT,
+      </if>
+      <if test="tpamSetAmt != null" >
+        TPAM_SET_AMT,
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT,
+      </if>
+      <if test="chkErrDt != null" >
+        CHK_ERR_DT,
+      </if>
+      <if test="errTp != null" >
+        ERR_TP,
+      </if>
+      <if test="errDesc != null" >
+        ERR_DESC,
+      </if>
+      <if test="procSt != null" >
+        PROC_ST,
+      </if>
+      <if test="procDesc != null" >
+        PROC_DESC,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+      <if test="procTm != null" >
+        PROC_TM,
+      </if>
+      <if test="procTlrNo != null" >
+        PROC_TLR_NO,
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chkErrSsn != null" >
+        #{chkErrSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyPayTxnSsn != null" >
+        #{pagyPayTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyPayTxnTm != null" >
+        #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyTxnSsn != null" >
+        #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null" >
+        #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaNo != null" >
+        #{pagySysSoaNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaVersion != null" >
+        #{pagySysSoaVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtNo != null" >
+        #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnSsn != null" >
+        #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null" >
+        #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTypeNo != null" >
+        #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null" >
+        #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnFeeAmt != null" >
+        #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamSetAmt != null" >
+        #{tpamSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="chkDataDt != null" >
+        #{chkDataDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkErrDt != null" >
+        #{chkErrDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errTp != null" >
+        #{errTp,jdbcType=VARCHAR},
+      </if>
+      <if test="errDesc != null" >
+        #{errDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="procSt != null" >
+        #{procSt,jdbcType=CHAR},
+      </if>
+      <if test="procDesc != null" >
+        #{procDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procTm != null" >
+        #{procTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procTlrNo != null" >
+        #{procTlrNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        #{lstUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkErrInfo" >
+    update BTH_PAGY_CHK_ERR_INFO
+    <set >
+      <if test="pagyPayTxnSsn != null" >
+        PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyPayTxnTm != null" >
+        PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyTxnSsn != null" >
+        PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null" >
+        PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaNo != null" >
+        PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaVersion != null" >
+        PAGY_SYS_SOA_VERSION = #{pagySysSoaVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtNo != null" >
+        PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnSsn != null" >
+        TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null" >
+        TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTypeNo != null" >
+        TPAM_TXN_TYPE_NO = #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null" >
+        TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnFeeAmt != null" >
+        TPAM_TXN_FEE_AMT = #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamSetAmt != null" >
+        TPAM_SET_AMT = #{tpamSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT = #{chkDataDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkErrDt != null" >
+        CHK_ERR_DT = #{chkErrDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errTp != null" >
+        ERR_TP = #{errTp,jdbcType=VARCHAR},
+      </if>
+      <if test="errDesc != null" >
+        ERR_DESC = #{errDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="procSt != null" >
+        PROC_ST = #{procSt,jdbcType=CHAR},
+      </if>
+      <if test="procDesc != null" >
+        PROC_DESC = #{procDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procTm != null" >
+        PROC_TM = #{procTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procTlrNo != null" >
+        PROC_TLR_NO = #{procTlrNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM = #{lstUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CHK_ERR_SSN = #{chkErrSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkErrInfo" >
+    update BTH_PAGY_CHK_ERR_INFO
+    set PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR},
+      PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      PAGY_SYS_SOA_VERSION = #{pagySysSoaVersion,jdbcType=VARCHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      TPAM_TXN_TYPE_NO = #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      TPAM_TXN_FEE_AMT = #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      TPAM_SET_AMT = #{tpamSetAmt,jdbcType=DECIMAL},
+      CHK_DATA_DT = #{chkDataDt,jdbcType=TIMESTAMP},
+      CHK_ERR_DT = #{chkErrDt,jdbcType=TIMESTAMP},
+      ERR_TP = #{errTp,jdbcType=VARCHAR},
+      ERR_DESC = #{errDesc,jdbcType=VARCHAR},
+      PROC_ST = #{procSt,jdbcType=CHAR},
+      PROC_DESC = #{procDesc,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      PROC_TM = #{procTm,jdbcType=TIMESTAMP},
+      PROC_TLR_NO = #{procTlrNo,jdbcType=VARCHAR},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=TIMESTAMP}
+    where CHK_ERR_SSN = #{chkErrSsn,jdbcType=VARCHAR}
+  </update>
+  
+    <delete id="deletePagyChkErrInfoBySettleDateAndErrTp"  >
+    delete from BTH_PAGY_CHK_ERR_INFO a where a.chk_data_dt =TO_DATE(#{settleDate},'yyyyMMdd') and a.err_tp=#{errTp}
+  </delete>
+  
+  <select id="selectByStateAndDate" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_PAGY_CHK_ERR_INFO
+    where CHK_ERR_DT = #{settleDate,jdbcType=TIMESTAMP} and ERR_TP = #{state,jdbcType=CHAR} and PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByStlmDateAndPagySysNo" parameterType="java.lang.String" >
+    delete from BTH_PAGY_CHK_ERR_INFO
+    where CHK_ERR_DT = TO_DATE(#{settleDate},'yyyyMMdd') and PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+  </delete>
+
+   <delete id="deleteByChkErrDtAndErrTp04" parameterType="map">
+    delete from BTH_PAGY_CHK_ERR_INFO
+    where to_char(CHK_ERR_DT,'yyyyMMdd') = #{settleDate,jdbcType=VARCHAR} and ERR_TP = #{errTp04,jdbcType=VARCHAR}
+   </delete>
+
+  <select id="selectByAcctInFlagAndDate" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from BTH_PAGY_CHK_ERR_INFO
+    where to_char(CRT_TM,'yyyyMMdd') = #{settleDate,jdbcType=VARCHAR}
+    and NVL(ACCT_IN_FLAG,'00') != '01'
+  </select>
+
+  <select id="selectByFileInFlagAndAcctInFlag" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from BTH_PAGY_CHK_ERR_INFO
+    where NVL(FILE_IN_FLAG,'00') != '01' and ACCT_IN_FLAG = '01'
+  </select>
+
+
+  <!-- 查询银联需要补单的数据  -->
+  <select id="queryUnionTxnByChkErrDtAndProcSt" parameterType="map" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from BTH_PAGY_CHK_ERR_INFO where PROC_ST = '01' and to_char(CHK_ERR_DT,'yyyyMMdd') = #{chkErrDt,jdbcType = VARCHAR }
+    and trim(PAGY_SYS_NO) = '607' and ERR_TP = '02'
+  </select>
+
+  <!--  更新银联被补单的数据  -->
+  <update id="updByChkErrSsn" parameterType="string" >
+        update BTH_PAGY_CHK_ERR_INFO set PROC_ST = '02' , PROC_DESC = '银联单边已通过程序补单', LST_UPD_TM = sysdate
+        where CHK_ERR_SSN = #{chkErrSsn,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 根据日期,类型与通道系统编号删除差错 -->
+  <delete id="deleteByDateErrTpAndPagySysNo">
+    delete from BTH_PAGY_CHK_ERR_INFO  where CHK_ERR_DT = #{chkErrDt,jdbcType=TIMESTAMP} and err_tp=#{errTp,jdbcType = VARCHAR } and PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+  </delete>
+
+
+
+</mapper>

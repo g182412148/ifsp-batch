@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtContInfoTempMapper">
+<resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtContInfoTemp">
+    <id column="CONT_NO" jdbcType="VARCHAR" property="contNo" />
+    <result column="PAPER_CONT_NO" jdbcType="VARCHAR" property="paperContNo" />
+    <result column="CONT_EFF_DATE" jdbcType="TIMESTAMP" property="contEffDate" />
+    <result column="CONT_EXP_DATE" jdbcType="TIMESTAMP" property="contExpDate" />
+    <result column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+    <result column="SETTL_TYPE" jdbcType="CHAR" property="settlType" />
+    <result column="SETTL_ACCT_NAME" jdbcType="VARCHAR" property="settlAcctName" />
+    <result column="SETTL_ACCT_NO" jdbcType="VARCHAR" property="settlAcctNo" />
+    <result column="SETTL_ACCT_TYPE" jdbcType="CHAR" property="settlAcctType" />
+    <result column="SETTL_ACCT_ORG_ID" jdbcType="VARCHAR" property="settlAcctOrgId" />
+    <result column="SETTL_ACCT_ORG_NAME" jdbcType="VARCHAR" property="settlAcctOrgName" />
+    <result column="SETTL_CYCLE_TYPE" jdbcType="CHAR" property="settlCycleType" />
+    <result column="SETTL_CYCLE_PARAM" jdbcType="DECIMAL" property="settlCycleParam" />
+    <result column="DEP_FLAG" jdbcType="CHAR" property="depFlag" />
+    <result column="DEP_ACCT_NO" jdbcType="VARCHAR" property="depAcctNo" />
+    <result column="DEP_ACCT_NAME" jdbcType="VARCHAR" property="depAcctName" />
+    <result column="DEP_ACCT_ORG_ID" jdbcType="VARCHAR" property="depAcctOrgId" />
+    <result column="DEP_AMT" jdbcType="DECIMAL" property="depAmt" />
+    <result column="DEP_INT_FLAG" jdbcType="CHAR" property="depIntFlag" />
+    <result column="DEP_INT_RATE" jdbcType="DECIMAL" property="depIntRate" />
+    <result column="COMM_TYPE" jdbcType="CHAR" property="commType" />
+    <result column="COMM_PARAM" jdbcType="DECIMAL" property="commParam" />
+    <result column="CONT_STATE" jdbcType="CHAR" property="contState" />
+    <result column="AUTO_SETTL_FLAG" jdbcType="CHAR" property="autoSettlFlag" />
+    <result column="LIQ_ACCT_NO" jdbcType="VARCHAR" property="liqAcctNo" />
+    <result column="LIQ_ACCT_NAME" jdbcType="VARCHAR" property="liqAcctName" />
+    <result column="LIQ_ACCT_ORG_ID" jdbcType="VARCHAR" property="liqAcctOrgId" />
+    <result column="ACCT_NAT" jdbcType="VARCHAR" property="acctNat" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONT_NO, PAPER_CONT_NO, CONT_EFF_DATE, CONT_EXP_DATE, MCHT_ID, SETTL_TYPE, SETTL_ACCT_NAME, 
+    SETTL_ACCT_NO, SETTL_ACCT_TYPE, SETTL_ACCT_ORG_ID, SETTL_ACCT_ORG_NAME, SETTL_CYCLE_TYPE, 
+    SETTL_CYCLE_PARAM, DEP_FLAG, DEP_ACCT_NO, DEP_ACCT_NAME, DEP_ACCT_ORG_ID, DEP_AMT, 
+    DEP_INT_FLAG, DEP_INT_RATE, COMM_TYPE, COMM_PARAM, CONT_STATE, AUTO_SETTL_FLAG, LIQ_ACCT_NO, 
+    LIQ_ACCT_NAME, LIQ_ACCT_ORG_ID, ACCT_NAT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from MCHT_CONT_INFO_TEMP
+    where CONT_NO = #{contNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from MCHT_CONT_INFO_TEMP
+    where CONT_NO = #{contNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtContInfoTemp">
+    insert into MCHT_CONT_INFO_TEMP (CONT_NO, PAPER_CONT_NO, CONT_EFF_DATE, 
+      CONT_EXP_DATE, MCHT_ID, SETTL_TYPE, 
+      SETTL_ACCT_NAME, SETTL_ACCT_NO, SETTL_ACCT_TYPE, 
+      SETTL_ACCT_ORG_ID, SETTL_ACCT_ORG_NAME, SETTL_CYCLE_TYPE, 
+      SETTL_CYCLE_PARAM, DEP_FLAG, DEP_ACCT_NO, 
+      DEP_ACCT_NAME, DEP_ACCT_ORG_ID, DEP_AMT, 
+      DEP_INT_FLAG, DEP_INT_RATE, COMM_TYPE, 
+      COMM_PARAM, CONT_STATE, AUTO_SETTL_FLAG, 
+      LIQ_ACCT_NO, LIQ_ACCT_NAME, LIQ_ACCT_ORG_ID, 
+      ACCT_NAT)
+    values (#{contNo,jdbcType=VARCHAR}, #{paperContNo,jdbcType=VARCHAR}, #{contEffDate,jdbcType=TIMESTAMP}, 
+      #{contExpDate,jdbcType=TIMESTAMP}, #{mchtId,jdbcType=VARCHAR}, #{settlType,jdbcType=CHAR}, 
+      #{settlAcctName,jdbcType=VARCHAR}, #{settlAcctNo,jdbcType=VARCHAR}, #{settlAcctType,jdbcType=CHAR}, 
+      #{settlAcctOrgId,jdbcType=VARCHAR}, #{settlAcctOrgName,jdbcType=VARCHAR}, #{settlCycleType,jdbcType=CHAR}, 
+      #{settlCycleParam,jdbcType=DECIMAL}, #{depFlag,jdbcType=CHAR}, #{depAcctNo,jdbcType=VARCHAR}, 
+      #{depAcctName,jdbcType=VARCHAR}, #{depAcctOrgId,jdbcType=VARCHAR}, #{depAmt,jdbcType=DECIMAL}, 
+      #{depIntFlag,jdbcType=CHAR}, #{depIntRate,jdbcType=DECIMAL}, #{commType,jdbcType=CHAR}, 
+      #{commParam,jdbcType=DECIMAL}, #{contState,jdbcType=CHAR}, #{autoSettlFlag,jdbcType=CHAR}, 
+      #{liqAcctNo,jdbcType=VARCHAR}, #{liqAcctName,jdbcType=VARCHAR}, #{liqAcctOrgId,jdbcType=VARCHAR}, 
+      #{acctNat,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtContInfoTemp">
+    insert into MCHT_CONT_INFO_TEMP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contNo != null">
+        CONT_NO,
+      </if>
+      <if test="paperContNo != null">
+        PAPER_CONT_NO,
+      </if>
+      <if test="contEffDate != null">
+        CONT_EFF_DATE,
+      </if>
+      <if test="contExpDate != null">
+        CONT_EXP_DATE,
+      </if>
+      <if test="mchtId != null">
+        MCHT_ID,
+      </if>
+      <if test="settlType != null">
+        SETTL_TYPE,
+      </if>
+      <if test="settlAcctName != null">
+        SETTL_ACCT_NAME,
+      </if>
+      <if test="settlAcctNo != null">
+        SETTL_ACCT_NO,
+      </if>
+      <if test="settlAcctType != null">
+        SETTL_ACCT_TYPE,
+      </if>
+      <if test="settlAcctOrgId != null">
+        SETTL_ACCT_ORG_ID,
+      </if>
+      <if test="settlAcctOrgName != null">
+        SETTL_ACCT_ORG_NAME,
+      </if>
+      <if test="settlCycleType != null">
+        SETTL_CYCLE_TYPE,
+      </if>
+      <if test="settlCycleParam != null">
+        SETTL_CYCLE_PARAM,
+      </if>
+      <if test="depFlag != null">
+        DEP_FLAG,
+      </if>
+      <if test="depAcctNo != null">
+        DEP_ACCT_NO,
+      </if>
+      <if test="depAcctName != null">
+        DEP_ACCT_NAME,
+      </if>
+      <if test="depAcctOrgId != null">
+        DEP_ACCT_ORG_ID,
+      </if>
+      <if test="depAmt != null">
+        DEP_AMT,
+      </if>
+      <if test="depIntFlag != null">
+        DEP_INT_FLAG,
+      </if>
+      <if test="depIntRate != null">
+        DEP_INT_RATE,
+      </if>
+      <if test="commType != null">
+        COMM_TYPE,
+      </if>
+      <if test="commParam != null">
+        COMM_PARAM,
+      </if>
+      <if test="contState != null">
+        CONT_STATE,
+      </if>
+      <if test="autoSettlFlag != null">
+        AUTO_SETTL_FLAG,
+      </if>
+      <if test="liqAcctNo != null">
+        LIQ_ACCT_NO,
+      </if>
+      <if test="liqAcctName != null">
+        LIQ_ACCT_NAME,
+      </if>
+      <if test="liqAcctOrgId != null">
+        LIQ_ACCT_ORG_ID,
+      </if>
+      <if test="acctNat != null">
+        ACCT_NAT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contNo != null">
+        #{contNo,jdbcType=VARCHAR},
+      </if>
+      <if test="paperContNo != null">
+        #{paperContNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contEffDate != null">
+        #{contEffDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contExpDate != null">
+        #{contExpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mchtId != null">
+        #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="settlType != null">
+        #{settlType,jdbcType=CHAR},
+      </if>
+      <if test="settlAcctName != null">
+        #{settlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctNo != null">
+        #{settlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctType != null">
+        #{settlAcctType,jdbcType=CHAR},
+      </if>
+      <if test="settlAcctOrgId != null">
+        #{settlAcctOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctOrgName != null">
+        #{settlAcctOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="settlCycleType != null">
+        #{settlCycleType,jdbcType=CHAR},
+      </if>
+      <if test="settlCycleParam != null">
+        #{settlCycleParam,jdbcType=DECIMAL},
+      </if>
+      <if test="depFlag != null">
+        #{depFlag,jdbcType=CHAR},
+      </if>
+      <if test="depAcctNo != null">
+        #{depAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="depAcctName != null">
+        #{depAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="depAcctOrgId != null">
+        #{depAcctOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="depAmt != null">
+        #{depAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="depIntFlag != null">
+        #{depIntFlag,jdbcType=CHAR},
+      </if>
+      <if test="depIntRate != null">
+        #{depIntRate,jdbcType=DECIMAL},
+      </if>
+      <if test="commType != null">
+        #{commType,jdbcType=CHAR},
+      </if>
+      <if test="commParam != null">
+        #{commParam,jdbcType=DECIMAL},
+      </if>
+      <if test="contState != null">
+        #{contState,jdbcType=CHAR},
+      </if>
+      <if test="autoSettlFlag != null">
+        #{autoSettlFlag,jdbcType=CHAR},
+      </if>
+      <if test="liqAcctNo != null">
+        #{liqAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="liqAcctName != null">
+        #{liqAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="liqAcctOrgId != null">
+        #{liqAcctOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNat != null">
+        #{acctNat,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtContInfoTemp">
+    update MCHT_CONT_INFO_TEMP
+    <set>
+      <if test="paperContNo != null">
+        PAPER_CONT_NO = #{paperContNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contEffDate != null">
+        CONT_EFF_DATE = #{contEffDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contExpDate != null">
+        CONT_EXP_DATE = #{contExpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mchtId != null">
+        MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="settlType != null">
+        SETTL_TYPE = #{settlType,jdbcType=CHAR},
+      </if>
+      <if test="settlAcctName != null">
+        SETTL_ACCT_NAME = #{settlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctNo != null">
+        SETTL_ACCT_NO = #{settlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctType != null">
+        SETTL_ACCT_TYPE = #{settlAcctType,jdbcType=CHAR},
+      </if>
+      <if test="settlAcctOrgId != null">
+        SETTL_ACCT_ORG_ID = #{settlAcctOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctOrgName != null">
+        SETTL_ACCT_ORG_NAME = #{settlAcctOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="settlCycleType != null">
+        SETTL_CYCLE_TYPE = #{settlCycleType,jdbcType=CHAR},
+      </if>
+      <if test="settlCycleParam != null">
+        SETTL_CYCLE_PARAM = #{settlCycleParam,jdbcType=DECIMAL},
+      </if>
+      <if test="depFlag != null">
+        DEP_FLAG = #{depFlag,jdbcType=CHAR},
+      </if>
+      <if test="depAcctNo != null">
+        DEP_ACCT_NO = #{depAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="depAcctName != null">
+        DEP_ACCT_NAME = #{depAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="depAcctOrgId != null">
+        DEP_ACCT_ORG_ID = #{depAcctOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="depAmt != null">
+        DEP_AMT = #{depAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="depIntFlag != null">
+        DEP_INT_FLAG = #{depIntFlag,jdbcType=CHAR},
+      </if>
+      <if test="depIntRate != null">
+        DEP_INT_RATE = #{depIntRate,jdbcType=DECIMAL},
+      </if>
+      <if test="commType != null">
+        COMM_TYPE = #{commType,jdbcType=CHAR},
+      </if>
+      <if test="commParam != null">
+        COMM_PARAM = #{commParam,jdbcType=DECIMAL},
+      </if>
+      <if test="contState != null">
+        CONT_STATE = #{contState,jdbcType=CHAR},
+      </if>
+      <if test="autoSettlFlag != null">
+        AUTO_SETTL_FLAG = #{autoSettlFlag,jdbcType=CHAR},
+      </if>
+      <if test="liqAcctNo != null">
+        LIQ_ACCT_NO = #{liqAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="liqAcctName != null">
+        LIQ_ACCT_NAME = #{liqAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="liqAcctOrgId != null">
+        LIQ_ACCT_ORG_ID = #{liqAcctOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNat != null">
+        ACCT_NAT = #{acctNat,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONT_NO = #{contNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtContInfoTemp">
+    update MCHT_CONT_INFO_TEMP
+    set PAPER_CONT_NO = #{paperContNo,jdbcType=VARCHAR},
+      CONT_EFF_DATE = #{contEffDate,jdbcType=TIMESTAMP},
+      CONT_EXP_DATE = #{contExpDate,jdbcType=TIMESTAMP},
+      MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      SETTL_TYPE = #{settlType,jdbcType=CHAR},
+      SETTL_ACCT_NAME = #{settlAcctName,jdbcType=VARCHAR},
+      SETTL_ACCT_NO = #{settlAcctNo,jdbcType=VARCHAR},
+      SETTL_ACCT_TYPE = #{settlAcctType,jdbcType=CHAR},
+      SETTL_ACCT_ORG_ID = #{settlAcctOrgId,jdbcType=VARCHAR},
+      SETTL_ACCT_ORG_NAME = #{settlAcctOrgName,jdbcType=VARCHAR},
+      SETTL_CYCLE_TYPE = #{settlCycleType,jdbcType=CHAR},
+      SETTL_CYCLE_PARAM = #{settlCycleParam,jdbcType=DECIMAL},
+      DEP_FLAG = #{depFlag,jdbcType=CHAR},
+      DEP_ACCT_NO = #{depAcctNo,jdbcType=VARCHAR},
+      DEP_ACCT_NAME = #{depAcctName,jdbcType=VARCHAR},
+      DEP_ACCT_ORG_ID = #{depAcctOrgId,jdbcType=VARCHAR},
+      DEP_AMT = #{depAmt,jdbcType=DECIMAL},
+      DEP_INT_FLAG = #{depIntFlag,jdbcType=CHAR},
+      DEP_INT_RATE = #{depIntRate,jdbcType=DECIMAL},
+      COMM_TYPE = #{commType,jdbcType=CHAR},
+      COMM_PARAM = #{commParam,jdbcType=DECIMAL},
+      CONT_STATE = #{contState,jdbcType=CHAR},
+      AUTO_SETTL_FLAG = #{autoSettlFlag,jdbcType=CHAR},
+      LIQ_ACCT_NO = #{liqAcctNo,jdbcType=VARCHAR},
+      LIQ_ACCT_NAME = #{liqAcctName,jdbcType=VARCHAR},
+      LIQ_ACCT_ORG_ID = #{liqAcctOrgId,jdbcType=VARCHAR},
+      ACCT_NAT = #{acctNat,jdbcType=VARCHAR}
+    where CONT_NO = #{contNo,jdbcType=VARCHAR}
+  </update>
+
+  <sql id="custom_Column_List">
+    CONT_NO,CONT_EFF_DATE, CONT_EXP_DATE, MCHT_ID, SETTL_TYPE, SETTL_ACCT_NAME,
+    SETTL_ACCT_NO, SETTL_ACCT_TYPE, SETTL_ACCT_ORG_ID, SETTL_CYCLE_TYPE, SETTL_CYCLE_PARAM,
+    DEP_FLAG, DEP_AMT, DEP_INT_FLAG, DEP_INT_RATE, COMM_TYPE, COMM_PARAM,SETTL_ACCT_ORG_NAME,AUTO_SETTL_FLAG, ACCT_NAT
+  </sql>
+  
+  <select id="selectMerTmpStlInfo" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        MCHT_ID,SETTL_ACCT_NO,SETTL_ACCT_NAME,SETTL_ACCT_ORG_ID,SETTL_ACCT_TYPE,ACCT_NAT,SETTL_CYCLE_PARAM
+        from MCHT_CONT_INFO_TEMP
+        where 
+        MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+        order by CONT_NO desc
+   </select>
+
+  <!-- 更新保证金账户 -->
+  <update id="updateMchtContInfoTempDep" parameterType="map">
+    update MCHT_CONT_INFO_TEMP
+    set DEP_ACCT_NO = #{newSettleNo,jdbcType=VARCHAR}
+    where DEP_ACCT_NO = #{oldSettleNo,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 更新待清算账户 -->
+  <update id="updateMchtContInfoTempLiq" parameterType="map">
+    update MCHT_CONT_INFO_TEMP
+    set LIQ_ACCT_NO = #{newSettleNo,jdbcType=VARCHAR}
+    where LIQ_ACCT_NO = #{oldSettleNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 生成商户审核结果文件 -->
+<!-- 
+templateType=READ|WRITE 表示解析文件还是生成文件 
+split分隔符 "\|" , 读文件时竖线分隔需要带转换符，写文件时不需要
+headLength文件头的长度，带换行符的表示文件头占了多少行，不带换行符的应该是字节长度
+endingLength文件尾
+lineSeparator换行符，若无，则表示不换行，换行一般是\r\n 字节文件一般是固定长度不带分隔符不换行
+-->
+<data templateType="WRITE"
+    split="|" 
+    clazz="com.scrcu.ebank.ebap.batch.bean.dto.MchtBaseInfoTemp"
+    charSet="GBK"
+    headLength=""
+    endingLength=""
+    lineSeparator="rn"
+    version="1.1"
+    >
+<!-- 
+regex正则表达式 
+dateFormat日期格式
+numMultiple数字类型需要转换到倍数
+tranSrc要转换到源值，逗号分隔
+tranDest要转换到目标值，逗号分隔
+-->		 
+     <column name="mchtId" length="" regex="" dateFormat="" numMultiple="" desc="商户ID" tranSrc="" tranDest="" />
+     <column name="parMchId" length="" regex="" dateFormat="" numMultiple="" desc="父商户ID" tranSrc="" tranDest="" />
+     <column name="mchtNat" length="" regex="" dateFormat="" numMultiple="" desc="商户级别" tranSrc="" tranDest="" />
+     <column name="mchtName" length="" regex="" dateFormat="" numMultiple="" desc="商户名称" tranSrc="" tranDest="" />
+     <column name="mchtSimName" length="" regex="" dateFormat="" numMultiple="" desc="商户中文名称简写" tranSrc="" tranDest="" />
+     <column name="mchtState" length="" regex="" dateFormat="" numMultiple="" desc="商户状态" tranSrc="" tranDest="" />
+     <column name="contactName" length="" regex="" dateFormat="" numMultiple="" desc="联系人姓名" tranSrc="" tranDest="" />
+     <column name="mobilePhone" length="" regex="" dateFormat="" numMultiple="" desc="手机号码" tranSrc="" tranDest="" />
+     <column name="settlAcctNo" length="" regex="" dateFormat="" numMultiple="" desc="结算账号" tranSrc="" tranDest="" />
+     <column name="settlAcctName" length="" regex="" dateFormat="" numMultiple="" desc="结算账户名" tranSrc="" tranDest="" />
+     <column name="settlAcctOrgId" length="" regex="" dateFormat="" numMultiple="" desc="结算账户开户行（机构）" tranSrc="" tranDest="" />
+     <column name="acctNat" length="" regex="" dateFormat="" numMultiple="" desc="商户结算户类型" tranSrc="" tranDest="" />
+     <column name="settlCycleParam" length="" regex="" dateFormat="" numMultiple="" desc="结算周期" tranSrc="" tranDest="" />
+     <column name="auditTime" length="" regex="" dateFormat="" numMultiple="" desc="审核时间" tranSrc="" tranDest="" />
+
+	 <!--审核文件格式修改 -->
+
+
+</data>

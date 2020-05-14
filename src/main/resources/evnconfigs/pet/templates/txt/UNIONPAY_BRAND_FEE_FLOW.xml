@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--银联品牌服务费文件记录格式 -->
+
+<!-- 中国银联银行卡交换系统技术规范 第3部分 文件接口规范 -->
+<!-- 5.1.6 (LFE)品牌服务费交易流水文件记录格式 -->
+
+<!-- 
+templateType=READ|WRITE 表示解析文件还是生成文件 
+split分隔符 "\|" , 读文件时竖线分隔需要带转换符，写文件时不需要
+headLength文件头的长度，带换行符的表示文件头占了多少行，不带换行符的应该是字节长度
+endingLength文件尾
+lineSeparator换行符，若无，则表示不换行，换行一般是\r\n 字节文件一般是固定长度不带分隔符不换行
+    clazz="com.scrcu.ebank.opac.batch.service.bean.SetUnionpayChanTranInfoBean"
+
+中国银联银行卡交换系统技术规范 第3部分 文件接口规范
+-->
+<data templateType="READ"
+    split="" 
+    clazz="com.scrcu.ebank.ebap.batch.bean.dto.BthUnionBrandFeeInfo"
+    charSet="GBK"
+    headLength=""
+    endingLength=""
+    lineSeparator="rn"
+    >
+<!-- 
+regex正则表达式 
+dateFormat日期格式
+numMultiple数字类型需要转换到倍数
+tranSrc要转换到源值，逗号分隔
+tranDest要转换到目标值，逗号分隔
+-->
+
+    <column name="acquirerFirCode"  length="12" regex="" dateFormat="" numMultiple="" desc="受理方一级分行代码" tranSrc="" tranDest="" />
+    <column name="isUnionCard" length="2" regex="" dateFormat="" numMultiple="" desc="是否银联标准卡" tranSrc="" tranDest="" />
+    <column name="cardFlag" length="3" regex="" dateFormat="" numMultiple="" desc="借贷记卡标志" tranSrc="" tranDest="" />
+    <column name="terminalType"  length="3" regex="" dateFormat="" numMultiple="" desc="终端类型" tranSrc="" tranDest="" />
+    <column name="cardMedia" length="2" regex="" dateFormat="" numMultiple="" desc="卡介质" tranSrc="" tranDest="" />
+    <column name="transRegion"  length="2" regex="" dateFormat="" numMultiple="" desc="交易地域标志" tranSrc="" tranDest="" />
+    <column name="merType"  length="5" regex="" dateFormat="" numMultiple="" desc="商户类型" tranSrc="" tranDest="" />
+    <!-- 29 -->
+
+    <column name="acquirerSecCode"  length="12" regex="" dateFormat="" numMultiple="" desc="受理方二级分行代码" tranSrc="" tranDest="" />
+    <column name="acceptInsCode"  length="12" regex="" dateFormat="" numMultiple="" desc="受理机构代码" tranSrc="" tranDest="" />
+    <column name="sendInsCode"  length="12" regex="" dateFormat="" numMultiple="" desc="转发机构代码" tranSrc="" tranDest="" />
+    <column name="sndCardInsCode"  length="12" regex="" dateFormat="" numMultiple="" desc="发卡机构代码" tranSrc="" tranDest="" />
+    <column name="recInsCode"  length="12" regex="" dateFormat="" numMultiple="" desc="接收机构代码" tranSrc="" tranDest="" />
+    <column name="acquirerInsCode"  length="12" regex="" dateFormat="" numMultiple="" desc="收单机构代码" tranSrc="" tranDest="" />
+    <!-- 101 -->
+
+
+    <column name="msgType"  length="5" regex="" dateFormat="" numMultiple="" desc="报文类型" tranSrc="" tranDest="" />
+    <column name="transDealCode"  length="7" regex="" dateFormat="" numMultiple="" desc="交易处理码" tranSrc="" tranDest="" />
+    <column name="sevCdtCode"  length="3" regex="" dateFormat="" numMultiple="" desc="服务点条件码" tranSrc="" tranDest="" />
+    <column name="sysTrackNum"  length="7" regex="" dateFormat="" numMultiple="" desc="系统跟踪号" tranSrc="" tranDest="" />
+    <column name="transDate"  length="11" regex="" dateFormat="" numMultiple="" desc="交易传输日期时间" tranSrc="" tranDest="" />
+    <column name="acctNo"  length="20" regex="" dateFormat="" numMultiple="" desc="主账号" tranSrc="" tranDest="" />
+    <!-- 154 -->
+
+    <column name="transferOutCard"  length="29" regex="" dateFormat="" numMultiple="" desc="转出卡" tranSrc="" tranDest="" />
+    <column name="transferInCard"  length="29" regex="" dateFormat="" numMultiple="" desc="转入卡" tranSrc="" tranDest="" />
+    <column name="orgTransInfo"  length="43" regex="" dateFormat="" numMultiple="" desc="原始交易信息" tranSrc="" tranDest="" />
+    <column name="recCardTerminalCode"  length="9" regex="" dateFormat="" numMultiple="" desc="受卡方终端标识码" tranSrc="" tranDest="" />
+    <column name="recCardCode"  length="16" regex="" dateFormat="" numMultiple="" desc="受卡方标识码" tranSrc="" tranDest="" />
+    <column name="retrivalNo"  length="13" regex="" dateFormat="" numMultiple="" desc="检索参考号" tranSrc="" tranDest="" />
+    <column name="transAmt"  length="13" regex="" dateFormat="" numMultiple="" desc="交易金额" tranSrc="" tranDest="" />
+    <column name="reserve1"  length="13" regex="" dateFormat="" numMultiple="" desc="保留使用1" tranSrc="" tranDest="" />
+    <!-- 319 -->
+
+    <column name="brandFee"  length="13" regex="" dateFormat="" numMultiple="" desc="品牌服务费" tranSrc="" tranDest="" />
+    <column name="reserve2"  length="13" regex="" dateFormat="" numMultiple="" desc="保留使用2" tranSrc="" tranDest="" />
+    <column name="reserve3"  length="14" regex="" dateFormat="" numMultiple="" desc="保留使用3" tranSrc="" tranDest="" />
+    <column name="transLaunchMode"  length="2" regex="" dateFormat="" numMultiple="" desc="交易发起方式" tranSrc="" tranDest="" />
+    <column name="reserve4"  length="99" regex="" dateFormat="" numMultiple="" desc="保留使用4" tranSrc="" tranDest="" />
+    <!-- 460 -->
+
+</data>

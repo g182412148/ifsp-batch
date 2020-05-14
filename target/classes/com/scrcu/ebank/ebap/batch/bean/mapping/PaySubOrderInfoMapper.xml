@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PaySubOrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PaySubOrderInfo">
+    <id column="SUB_ORDER_SSN" jdbcType="VARCHAR" property="subOrderSsn" />
+    <result column="SUB_ORDER_TM" jdbcType="CHAR" property="subOrderTm" />
+    <result column="ORDER_SSN" jdbcType="VARCHAR" property="orderSsn" />
+    <result column="SUB_MCHT_ID" jdbcType="VARCHAR" property="subMchtId" />
+    <result column="REQ_SUB_ORDER_SSN" jdbcType="VARCHAR" property="reqSubOrderSsn" />
+    <result column="REQ_SUB_ORDER_TM" jdbcType="CHAR" property="reqSubOrderTm" />
+    <result column="ORDER_BIDY" jdbcType="VARCHAR" property="orderBidy" />
+    <result column="SUB_ORDER_AMT" jdbcType="VARCHAR" property="subOrderAmt" />
+    <result column="INIT_LOCALHOST_IP" jdbcType="VARCHAR" property="initLocalhostIp" />
+    <result column="UPD_LOCALHOST_IP" jdbcType="VARCHAR" property="updLocalhostIp" />
+    <result column="SYS_TRACE_ID" jdbcType="VARCHAR" property="sysTraceId" />
+    <result column="CRT_TM" jdbcType="CHAR" property="crtTm" />
+    <result column="UP_TM" jdbcType="CHAR" property="upTm" />
+    <result column="MER_NAME" jdbcType="VARCHAR" property="merName" />
+    <result column="MER_LEVEL" jdbcType="VARCHAR" property="merLevel" />
+    <result column="PARENT_MER_NO" jdbcType="VARCHAR" property="parentMerNo" />
+    <result column="MER_PRO_TYPE" jdbcType="VARCHAR" property="merProType" />
+    <result column="MER_PRO_NAME" jdbcType="VARCHAR" property="merProName" />
+    <result column="PAY_AMOUNT" jdbcType="VARCHAR" property="payAmount" />
+    <result column="ORDER_TYPE" jdbcType="VARCHAR" property="orderType" />
+    <result column="ORDER_STATUS" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="PAY_STATUS" jdbcType="VARCHAR" property="payStatus" />
+    <result column="FUND_CHANNEL" jdbcType="VARCHAR" property="fundChannel" />
+    <result column="ORI_MER_SEQ_ID" jdbcType="VARCHAR" property="oriMerSeqId" />
+    <result column="ORI_DETAILS_ID" jdbcType="VARCHAR" property="oriDetailsId" />
+    <result column="REFUND_AMOUNT" jdbcType="VARCHAR" property="refundAmount" />
+    <result column="DISCOUNT_FLAG" jdbcType="VARCHAR" property="discountFlag" />
+    <result column="ORDER_STATUS_UPDATE_TIME" jdbcType="CHAR" property="orderStatusUpdateTime" />
+    <result column="PAY_STATUS_UPDATE_TIME" jdbcType="CHAR" property="payStatusUpdateTime" />
+    <result column="DETAILS_EXTEND1" jdbcType="VARCHAR" property="detailsExtend1" />
+    <result column="DETAILS_EXTEND5" jdbcType="VARCHAR" property="detailsExtend5" />
+    <result column="OPEN_CLIENT_ID" jdbcType="VARCHAR" property="openClientId" />
+    <result column="CUSTOMER_ID" jdbcType="VARCHAR" property="customerId" />
+    <result column="TRANS_FACT_TIME" jdbcType="VARCHAR" property="transFactTime" />
+    <result column="MCHT_COUPON_AMT" jdbcType="VARCHAR" property="mchtCouponAmt" />
+    <result column="BANK_COUPON_AMT" jdbcType="VARCHAR" property="bankCouponAmt" />
+    <result column="COUOPN_DESC" jdbcType="VARCHAR" property="couopnDesc" />
+    <!-- 结算添加 -->
+    <result column="SETTLE_STATUS" jdbcType="VARCHAR" property="settleStatus" />
+    <result column="NOTICE_TIME" jdbcType="VARCHAR" property="noticeTime" />
+    <result column="AUTO_SETTLE_FLAG" jdbcType="VARCHAR" property="autoSettleFlag" />
+    <!-- 营销新增 -->
+    <result column="MCHT_PAY_AMT" jdbcType="VARCHAR" property="mchtPayAmt" />
+    <result column="BANK_PAY_AMT" jdbcType="VARCHAR" property="bankPayAmt" />
+    <result column="USERORG_PAY_AMT" jdbcType="VARCHAR" property="userorgPayAmt" />
+    <result column="ACTIVE_DESC" jdbcType="VARCHAR" property="activeDesc" />
+    <!-- 结算添加2 -->
+    <result column="SETTLE_DATE" jdbcType="VARCHAR" property="settleDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SUB_ORDER_SSN, SUB_ORDER_TM, ORDER_SSN, SUB_MCHT_ID, REQ_SUB_ORDER_SSN, REQ_SUB_ORDER_TM, 
+    ORDER_BIDY, SUB_ORDER_AMT, INIT_LOCALHOST_IP, UPD_LOCALHOST_IP, SYS_TRACE_ID, CRT_TM, 
+    UP_TM, MER_NAME, MER_LEVEL, PARENT_MER_NO, MER_PRO_TYPE, MER_PRO_NAME, PAY_AMOUNT, 
+    ORDER_TYPE, ORDER_STATUS, PAY_STATUS, FUND_CHANNEL, ORI_MER_SEQ_ID, ORI_DETAILS_ID, 
+    REFUND_AMOUNT, DISCOUNT_FLAG, ORDER_STATUS_UPDATE_TIME, PAY_STATUS_UPDATE_TIME, DETAILS_EXTEND1, 
+    DETAILS_EXTEND5, OPEN_CLIENT_ID, CUSTOMER_ID, TRANS_FACT_TIME,MCHT_COUPON_AMT,BANK_COUPON_AMT,
+    COUOPN_DESC,SETTLE_STATUS,NOTICE_TIME,AUTO_SETTLE_FLAG, MCHT_PAY_AMT, BANK_PAY_AMT, USERORG_PAY_AMT, ACTIVE_DESC,
+    SETTLE_DATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PAY_SUB_ORDER_INFO
+    where SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PAY_SUB_ORDER_INFO
+    where SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PaySubOrderInfo">
+    insert into PAY_SUB_ORDER_INFO (SUB_ORDER_SSN, SUB_ORDER_TM, ORDER_SSN, 
+      SUB_MCHT_ID, REQ_SUB_ORDER_SSN, REQ_SUB_ORDER_TM, 
+      ORDER_BIDY, SUB_ORDER_AMT, INIT_LOCALHOST_IP, 
+      UPD_LOCALHOST_IP, SYS_TRACE_ID, CRT_TM, 
+      UP_TM, MER_NAME, MER_LEVEL, 
+      PARENT_MER_NO, MER_PRO_TYPE, MER_PRO_NAME, 
+      PAY_AMOUNT, ORDER_TYPE, ORDER_STATUS, 
+      PAY_STATUS, FUND_CHANNEL, ORI_MER_SEQ_ID, 
+      ORI_DETAILS_ID, REFUND_AMOUNT, DISCOUNT_FLAG, 
+      ORDER_STATUS_UPDATE_TIME, PAY_STATUS_UPDATE_TIME, DETAILS_EXTEND1, 
+      DETAILS_EXTEND5, OPEN_CLIENT_ID, CUSTOMER_ID, 
+      TRANS_FACT_TIME)
+    values (#{subOrderSsn,jdbcType=VARCHAR}, #{subOrderTm,jdbcType=CHAR}, #{orderSsn,jdbcType=VARCHAR}, 
+      #{subMchtId,jdbcType=VARCHAR}, #{reqSubOrderSsn,jdbcType=VARCHAR}, #{reqSubOrderTm,jdbcType=CHAR}, 
+      #{orderBidy,jdbcType=VARCHAR}, #{subOrderAmt,jdbcType=VARCHAR}, #{initLocalhostIp,jdbcType=VARCHAR}, 
+      #{updLocalhostIp,jdbcType=VARCHAR}, #{sysTraceId,jdbcType=VARCHAR}, #{crtTm,jdbcType=CHAR}, 
+      #{upTm,jdbcType=CHAR}, #{merName,jdbcType=VARCHAR}, #{merLevel,jdbcType=VARCHAR}, 
+      #{parentMerNo,jdbcType=VARCHAR}, #{merProType,jdbcType=VARCHAR}, #{merProName,jdbcType=VARCHAR}, 
+      #{payAmount,jdbcType=VARCHAR}, #{orderType,jdbcType=VARCHAR}, #{orderStatus,jdbcType=VARCHAR}, 
+      #{payStatus,jdbcType=VARCHAR}, #{fundChannel,jdbcType=VARCHAR}, #{oriMerSeqId,jdbcType=VARCHAR}, 
+      #{oriDetailsId,jdbcType=VARCHAR}, #{refundAmount,jdbcType=VARCHAR}, #{discountFlag,jdbcType=VARCHAR}, 
+      #{orderStatusUpdateTime,jdbcType=CHAR}, #{payStatusUpdateTime,jdbcType=CHAR}, #{detailsExtend1,jdbcType=VARCHAR}, 
+      #{detailsExtend5,jdbcType=VARCHAR}, #{openClientId,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, 
+      #{transFactTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PaySubOrderInfo">
+    insert into PAY_SUB_ORDER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="subOrderSsn != null">
+        SUB_ORDER_SSN,
+      </if>
+      <if test="subOrderTm != null">
+        SUB_ORDER_TM,
+      </if>
+      <if test="orderSsn != null">
+        ORDER_SSN,
+      </if>
+      <if test="subMchtId != null">
+        SUB_MCHT_ID,
+      </if>
+      <if test="reqSubOrderSsn != null">
+        REQ_SUB_ORDER_SSN,
+      </if>
+      <if test="reqSubOrderTm != null">
+        REQ_SUB_ORDER_TM,
+      </if>
+      <if test="orderBidy != null">
+        ORDER_BIDY,
+      </if>
+      <if test="subOrderAmt != null">
+        SUB_ORDER_AMT,
+      </if>
+      <if test="initLocalhostIp != null">
+        INIT_LOCALHOST_IP,
+      </if>
+      <if test="updLocalhostIp != null">
+        UPD_LOCALHOST_IP,
+      </if>
+      <if test="sysTraceId != null">
+        SYS_TRACE_ID,
+      </if>
+      <if test="crtTm != null">
+        CRT_TM,
+      </if>
+      <if test="upTm != null">
+        UP_TM,
+      </if>
+      <if test="merName != null">
+        MER_NAME,
+      </if>
+      <if test="merLevel != null">
+        MER_LEVEL,
+      </if>
+      <if test="parentMerNo != null">
+        PARENT_MER_NO,
+      </if>
+      <if test="merProType != null">
+        MER_PRO_TYPE,
+      </if>
+      <if test="merProName != null">
+        MER_PRO_NAME,
+      </if>
+      <if test="payAmount != null">
+        PAY_AMOUNT,
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE,
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS,
+      </if>
+      <if test="payStatus != null">
+        PAY_STATUS,
+      </if>
+      <if test="fundChannel != null">
+        FUND_CHANNEL,
+      </if>
+      <if test="oriMerSeqId != null">
+        ORI_MER_SEQ_ID,
+      </if>
+      <if test="oriDetailsId != null">
+        ORI_DETAILS_ID,
+      </if>
+      <if test="refundAmount != null">
+        REFUND_AMOUNT,
+      </if>
+      <if test="discountFlag != null">
+        DISCOUNT_FLAG,
+      </if>
+      <if test="orderStatusUpdateTime != null">
+        ORDER_STATUS_UPDATE_TIME,
+      </if>
+      <if test="payStatusUpdateTime != null">
+        PAY_STATUS_UPDATE_TIME,
+      </if>
+      <if test="detailsExtend1 != null">
+        DETAILS_EXTEND1,
+      </if>
+      <if test="detailsExtend5 != null">
+        DETAILS_EXTEND5,
+      </if>
+      <if test="openClientId != null">
+        OPEN_CLIENT_ID,
+      </if>
+      <if test="customerId != null">
+        CUSTOMER_ID,
+      </if>
+      <if test="transFactTime != null">
+        TRANS_FACT_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="subOrderSsn != null">
+        #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderTm != null">
+        #{subOrderTm,jdbcType=CHAR},
+      </if>
+      <if test="orderSsn != null">
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="subMchtId != null">
+        #{subMchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="reqSubOrderSsn != null">
+        #{reqSubOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="reqSubOrderTm != null">
+        #{reqSubOrderTm,jdbcType=CHAR},
+      </if>
+      <if test="orderBidy != null">
+        #{orderBidy,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderAmt != null">
+        #{subOrderAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="initLocalhostIp != null">
+        #{initLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="updLocalhostIp != null">
+        #{updLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTraceId != null">
+        #{sysTraceId,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null">
+        #{crtTm,jdbcType=CHAR},
+      </if>
+      <if test="upTm != null">
+        #{upTm,jdbcType=CHAR},
+      </if>
+      <if test="merName != null">
+        #{merName,jdbcType=VARCHAR},
+      </if>
+      <if test="merLevel != null">
+        #{merLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="parentMerNo != null">
+        #{parentMerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merProType != null">
+        #{merProType,jdbcType=VARCHAR},
+      </if>
+      <if test="merProName != null">
+        #{merProName,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmount != null">
+        #{payAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null">
+        #{fundChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="oriMerSeqId != null">
+        #{oriMerSeqId,jdbcType=VARCHAR},
+      </if>
+      <if test="oriDetailsId != null">
+        #{oriDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAmount != null">
+        #{refundAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="discountFlag != null">
+        #{discountFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatusUpdateTime != null">
+        #{orderStatusUpdateTime,jdbcType=CHAR},
+      </if>
+      <if test="payStatusUpdateTime != null">
+        #{payStatusUpdateTime,jdbcType=CHAR},
+      </if>
+      <if test="detailsExtend1 != null">
+        #{detailsExtend1,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsExtend5 != null">
+        #{detailsExtend5,jdbcType=VARCHAR},
+      </if>
+      <if test="openClientId != null">
+        #{openClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="transFactTime != null">
+        #{transFactTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PaySubOrderInfo">
+    update PAY_SUB_ORDER_INFO
+    <set>
+      <if test="subOrderTm != null">
+        SUB_ORDER_TM = #{subOrderTm,jdbcType=CHAR},
+      </if>
+      <if test="orderSsn != null">
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="subMchtId != null">
+        SUB_MCHT_ID = #{subMchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="reqSubOrderSsn != null">
+        REQ_SUB_ORDER_SSN = #{reqSubOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="reqSubOrderTm != null">
+        REQ_SUB_ORDER_TM = #{reqSubOrderTm,jdbcType=CHAR},
+      </if>
+      <if test="orderBidy != null">
+        ORDER_BIDY = #{orderBidy,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderAmt != null">
+        SUB_ORDER_AMT = #{subOrderAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="initLocalhostIp != null">
+        INIT_LOCALHOST_IP = #{initLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="updLocalhostIp != null">
+        UPD_LOCALHOST_IP = #{updLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTraceId != null">
+        SYS_TRACE_ID = #{sysTraceId,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null">
+        CRT_TM = #{crtTm,jdbcType=CHAR},
+      </if>
+      <if test="upTm != null">
+        UP_TM = #{upTm,jdbcType=CHAR},
+      </if>
+      <if test="merName != null">
+        MER_NAME = #{merName,jdbcType=VARCHAR},
+      </if>
+      <if test="merLevel != null">
+        MER_LEVEL = #{merLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="parentMerNo != null">
+        PARENT_MER_NO = #{parentMerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merProType != null">
+        MER_PRO_TYPE = #{merProType,jdbcType=VARCHAR},
+      </if>
+      <if test="merProName != null">
+        MER_PRO_NAME = #{merProName,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmount != null">
+        PAY_AMOUNT = #{payAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        PAY_STATUS = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null">
+        FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="oriMerSeqId != null">
+        ORI_MER_SEQ_ID = #{oriMerSeqId,jdbcType=VARCHAR},
+      </if>
+      <if test="oriDetailsId != null">
+        ORI_DETAILS_ID = #{oriDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAmount != null">
+        REFUND_AMOUNT = #{refundAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="discountFlag != null">
+        DISCOUNT_FLAG = #{discountFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatusUpdateTime != null">
+        ORDER_STATUS_UPDATE_TIME = #{orderStatusUpdateTime,jdbcType=CHAR},
+      </if>
+      <if test="payStatusUpdateTime != null">
+        PAY_STATUS_UPDATE_TIME = #{payStatusUpdateTime,jdbcType=CHAR},
+      </if>
+      <if test="detailsExtend1 != null">
+        DETAILS_EXTEND1 = #{detailsExtend1,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsExtend5 != null">
+        DETAILS_EXTEND5 = #{detailsExtend5,jdbcType=VARCHAR},
+      </if>
+      <if test="openClientId != null">
+        OPEN_CLIENT_ID = #{openClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="transFactTime != null">
+        TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR},
+      </if>
+       <if test="settleStatus != null">
+        SETTLE_STATUS = #{settleStatus,jdbcType=VARCHAR},
+      </if>
+       <if test="noticeTime != null">
+        NOTICE_TIME = #{noticeTime,jdbcType=VARCHAR},
+      </if>
+       <if test="autoSettleFlag != null">
+        AUTO_SETTLE_FLAG = #{autoSettleFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PaySubOrderInfo">
+    update PAY_SUB_ORDER_INFO
+    set SUB_ORDER_TM = #{subOrderTm,jdbcType=CHAR},
+      ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      SUB_MCHT_ID = #{subMchtId,jdbcType=VARCHAR},
+      REQ_SUB_ORDER_SSN = #{reqSubOrderSsn,jdbcType=VARCHAR},
+      REQ_SUB_ORDER_TM = #{reqSubOrderTm,jdbcType=CHAR},
+      ORDER_BIDY = #{orderBidy,jdbcType=VARCHAR},
+      SUB_ORDER_AMT = #{subOrderAmt,jdbcType=VARCHAR},
+      INIT_LOCALHOST_IP = #{initLocalhostIp,jdbcType=VARCHAR},
+      UPD_LOCALHOST_IP = #{updLocalhostIp,jdbcType=VARCHAR},
+      SYS_TRACE_ID = #{sysTraceId,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=CHAR},
+      UP_TM = #{upTm,jdbcType=CHAR},
+      MER_NAME = #{merName,jdbcType=VARCHAR},
+      MER_LEVEL = #{merLevel,jdbcType=VARCHAR},
+      PARENT_MER_NO = #{parentMerNo,jdbcType=VARCHAR},
+      MER_PRO_TYPE = #{merProType,jdbcType=VARCHAR},
+      MER_PRO_NAME = #{merProName,jdbcType=VARCHAR},
+      PAY_AMOUNT = #{payAmount,jdbcType=VARCHAR},
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      PAY_STATUS = #{payStatus,jdbcType=VARCHAR},
+      FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      ORI_MER_SEQ_ID = #{oriMerSeqId,jdbcType=VARCHAR},
+      ORI_DETAILS_ID = #{oriDetailsId,jdbcType=VARCHAR},
+      REFUND_AMOUNT = #{refundAmount,jdbcType=VARCHAR},
+      DISCOUNT_FLAG = #{discountFlag,jdbcType=VARCHAR},
+      ORDER_STATUS_UPDATE_TIME = #{orderStatusUpdateTime,jdbcType=CHAR},
+      PAY_STATUS_UPDATE_TIME = #{payStatusUpdateTime,jdbcType=CHAR},
+      DETAILS_EXTEND1 = #{detailsExtend1,jdbcType=VARCHAR},
+      DETAILS_EXTEND5 = #{detailsExtend5,jdbcType=VARCHAR},
+      OPEN_CLIENT_ID = #{openClientId,jdbcType=VARCHAR},
+      CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR},
+      SETTLE_STATUS = #{settleStatus,jdbcType=VARCHAR},
+      NOTICE_TIME = #{noticeTime,jdbcType=VARCHAR},
+      AUTO_SETTLE_FLAG = #{autoSettleFlag,jdbcType=VARCHAR}
+    where SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="selectByOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from PAY_SUB_ORDER_INFO
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMerOrderNo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from PAY_SUB_ORDER_INFO
+    where REQ_SUB_ORDER_SSN = #{merOrderNo,jdbcType=VARCHAR} and SUB_MCHT_ID  = #{merId,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据主订单查询子订单列表 -->
+  <select id="selectSubOrderByOrderId" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from PAY_SUB_ORDER_INFO
+    where ORDER_SSN = #{orderSsn}
+  </select>
+  <!-- 根据主订单查询子订单列表 -->
+  <select id="selectSubOrderByOrderIdList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from PAY_SUB_ORDER_INFO
+    where ORDER_SSN in
+    <foreach collection="orderSsnList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+  
+  <update id="updateSubOrderStlStatusBySubOrderId" parameterType="java.util.Map">
+      update PAY_SUB_ORDER_INFO
+      set SETTLE_STATUS = #{settleStatus,jdbcType=VARCHAR},
+           SETTLE_DATE = #{settleDate,jdbcType=VARCHAR}
+      where SUB_ORDER_SSN = #{subOrderSsn}
+  </update>
+  
+  <select id="countSCLMDataByDate" parameterType="java.util.Map" resultType="int">
+      select  count(1) from PAY_SUB_ORDER_INFO 
+      WHERE 
+      FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} AND 
+      TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR} and
+      ORDER_STATUS IN ('00','01','02') and
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR} 
+      group by OPEN_CLIENT_ID,CUSTOMER_ID
+   </select>
+   
+   <select id="selectSCLMDataByDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select OPEN_CLIENT_ID,CUSTOMER_ID,sum(pay_amount) PAY_AMOUNT,sum(refund_amount) refund_amount,TRANS_FACT_TIME 
+      from PAY_SUB_ORDER_INFO 
+      WHERE 
+      FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} AND 
+      TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR} and
+      ORDER_STATUS IN ('00','01','02') and
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR} 
+      group by OPEN_CLIENT_ID,CUSTOMER_ID,TRANS_FACT_TIME
+   </select>
+   
+   <!-- 查询当日撤销金额 : 按客户查询 -->
+	<select id="selectRevocationDataOfLastDay" parameterType="java.util.Map" resultMap="BaseResultMap">
+   		SELECT  sum(pay_amount) pay_amount from PAY_SUB_ORDER_INFO
+   		where 
+   		order_ssn in
+   		(
+   			SELECT  order_ssn from PAY_ORDER_INFO
+	   		where txn_type_no = #{txnTypeNo} and 
+	   		ORDER_STATE IN ('00','01','02') and 
+	   		orig_order_ssn in
+	    	 (
+				select order_ssn 
+				from PAY_SUB_ORDER_INFO 
+		        WHERE 
+		     	 FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} AND 
+		     	 TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR} and
+		      	 ORDER_STATUS IN ('00','01','02') and
+		      	 ORDER_TYPE = #{orderType,jdbcType=VARCHAR} 
+	    	) 
+   		) and 
+   		TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="countNoticeOrderOfBatchDate" parameterType="java.util.Map" resultType="int">
+       select count(1) from PAY_SUB_ORDER_INFO where
+	   NOTICE_TIME in( #{noticeTime} ,#{noticeTimeY}) and  settle_date is null and
+	   (AUTO_SETTLE_FLAG = '2' or AUTO_SETTLE_FLAG = '1')
+   </select>
+   
+   <select id="selectNoticeOrderOfBatchDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+       select * from PAY_SUB_ORDER_INFO where
+	   NOTICE_TIME in( #{noticeTime} ,#{noticeTimeY}) and  settle_date is null and
+	   (AUTO_SETTLE_FLAG = '2' or AUTO_SETTLE_FLAG = '1')
+   </select>
+
+  <select id="selectSubOrderInfoBySubOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from PAY_SUB_ORDER_INFO
+    where SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectSubOrderInfoBySubOrderNoList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from PAY_SUB_ORDER_INFO
+    where SUB_ORDER_SSN in
+    <foreach collection="subOrderSsnList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+  
+</mapper>

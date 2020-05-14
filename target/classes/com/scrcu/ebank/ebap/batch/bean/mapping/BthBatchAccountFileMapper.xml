@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthBatchAccountFileMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchAccountFile" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="ACC_DATE" property="accDate" jdbcType="VARCHAR" />
+    <result column="ACC_FILE_NAME" property="accFileName" jdbcType="VARCHAR" />
+    <result column="BK_FILE_NAME" property="bkFileName" jdbcType="VARCHAR" />
+    <result column="FILE_COUNT" property="fileCount" jdbcType="VARCHAR" />
+    <result column="FILE_AMT" property="fileAmt" jdbcType="DECIMAL" />
+    <result column="FILE_TYPE" property="fileType" jdbcType="VARCHAR" />
+    <result column="DEAL_STATUS" property="dealStatus" jdbcType="VARCHAR" />
+    <result column="GEN_FILE_CLASS" property="genFileClass" jdbcType="VARCHAR" />
+    <result column="DEAL_FILE_CLASS" property="dealFileClass" jdbcType="VARCHAR" />
+    <result column="BATCH_NO" property="batchNo" jdbcType="VARCHAR" />
+    <result column="RESERVED1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="RESERVED2" property="reserved2" jdbcType="VARCHAR" />
+    <result column="RESERVED3" property="reserved3" jdbcType="VARCHAR" />
+    <result column="RESERVED4" property="reserved4" jdbcType="DECIMAL" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="VARCHAR" />
+    <result column="UPDATE_DATE" property="updateDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ACC_DATE, ACC_FILE_NAME, BK_FILE_NAME, FILE_COUNT, FILE_AMT, FILE_TYPE, DEAL_STATUS, 
+    GEN_FILE_CLASS, DEAL_FILE_CLASS, BATCH_NO, RESERVED1, RESERVED2, RESERVED3, RESERVED4, 
+    CREATE_DATE, UPDATE_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_BATCH_ACCOUNT_FILE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_BATCH_ACCOUNT_FILE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchAccountFile" >
+    insert into BTH_BATCH_ACCOUNT_FILE (ID, ACC_DATE, ACC_FILE_NAME, 
+      BK_FILE_NAME, FILE_COUNT, FILE_AMT, 
+      FILE_TYPE, DEAL_STATUS, GEN_FILE_CLASS, 
+      DEAL_FILE_CLASS, BATCH_NO, RESERVED1, 
+      RESERVED2, RESERVED3, RESERVED4, 
+      CREATE_DATE, UPDATE_DATE)
+    values (#{id,jdbcType=VARCHAR}, #{accDate,jdbcType=VARCHAR}, #{accFileName,jdbcType=VARCHAR}, 
+      #{bkFileName,jdbcType=VARCHAR}, #{fileCount,jdbcType=VARCHAR}, #{fileAmt,jdbcType=DECIMAL},
+      #{fileType,jdbcType=VARCHAR}, #{dealStatus,jdbcType=VARCHAR}, #{genFileClass,jdbcType=VARCHAR}, 
+      #{dealFileClass,jdbcType=VARCHAR}, #{batchNo,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=DECIMAL}, 
+      #{createDate,jdbcType=VARCHAR}, #{updateDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchAccountFile" >
+    insert into BTH_BATCH_ACCOUNT_FILE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="accDate != null" >
+        ACC_DATE,
+      </if>
+      <if test="accFileName != null" >
+        ACC_FILE_NAME,
+      </if>
+      <if test="bkFileName != null" >
+        BK_FILE_NAME,
+      </if>
+      <if test="fileCount != null" >
+        FILE_COUNT,
+      </if>
+      <if test="fileAmt != null" >
+        FILE_AMT,
+      </if>
+      <if test="fileType != null" >
+        FILE_TYPE,
+      </if>
+      <if test="dealStatus != null" >
+        DEAL_STATUS,
+      </if>
+      <if test="genFileClass != null" >
+        GEN_FILE_CLASS,
+      </if>
+      <if test="dealFileClass != null" >
+        DEAL_FILE_CLASS,
+      </if>
+      <if test="batchNo != null" >
+        BATCH_NO,
+      </if>
+      <if test="reserved1 != null" >
+        RESERVED1,
+      </if>
+      <if test="reserved2 != null" >
+        RESERVED2,
+      </if>
+      <if test="reserved3 != null" >
+        RESERVED3,
+      </if>
+      <if test="reserved4 != null" >
+        RESERVED4,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="accDate != null" >
+        #{accDate,jdbcType=VARCHAR},
+      </if>
+      <if test="accFileName != null" >
+        #{accFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="bkFileName != null" >
+        #{bkFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileCount != null" >
+        #{fileCount,jdbcType=VARCHAR},
+      </if>
+      <if test="fileAmt != null" >
+        #{fileAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="dealStatus != null" >
+        #{dealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="genFileClass != null" >
+        #{genFileClass,jdbcType=VARCHAR},
+      </if>
+      <if test="dealFileClass != null" >
+        #{dealFileClass,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null" >
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null" >
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null" >
+        #{reserved4,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchAccountFile" >
+    update BTH_BATCH_ACCOUNT_FILE
+    <set >
+      <if test="accDate != null" >
+        ACC_DATE = #{accDate,jdbcType=VARCHAR},
+      </if>
+      <if test="accFileName != null" >
+        ACC_FILE_NAME = #{accFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="bkFileName != null" >
+        BK_FILE_NAME = #{bkFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileCount != null" >
+        FILE_COUNT = #{fileCount,jdbcType=VARCHAR},
+      </if>
+      <if test="fileAmt != null" >
+        FILE_AMT = #{fileAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null" >
+        FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="dealStatus != null" >
+        DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="genFileClass != null" >
+        GEN_FILE_CLASS = #{genFileClass,jdbcType=VARCHAR},
+      </if>
+      <if test="dealFileClass != null" >
+        DEAL_FILE_CLASS = #{dealFileClass,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null" >
+        BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null" >
+        RESERVED3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null" >
+        RESERVED4 = #{reserved4,jdbcType=DECIMAL},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchAccountFile" >
+    update BTH_BATCH_ACCOUNT_FILE
+    set ACC_DATE = #{accDate,jdbcType=VARCHAR},
+      ACC_FILE_NAME = #{accFileName,jdbcType=VARCHAR},
+      BK_FILE_NAME = #{bkFileName,jdbcType=VARCHAR},
+      FILE_COUNT = #{fileCount,jdbcType=VARCHAR},
+      FILE_AMT = #{fileAmt,jdbcType=DECIMAL},
+      FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR},
+      GEN_FILE_CLASS = #{genFileClass,jdbcType=VARCHAR},
+      DEAL_FILE_CLASS = #{dealFileClass,jdbcType=VARCHAR},
+      BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      RESERVED3 = #{reserved3,jdbcType=VARCHAR},
+      RESERVED4 = #{reserved4,jdbcType=DECIMAL},
+      CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      UPDATE_DATE = #{updateDate,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+<!--   	List<BthBatchAccountFile> queryByDealtatus(); -->
+  <select id="queryByDealtatus" resultMap="BaseResultMap">
+  	select * from BTH_BATCH_ACCOUNT_FILE where deal_status=#{stus} order by reserved1 
+  </select>
+  
+  <select id="queryByDealtatuss" resultMap="BaseResultMap">
+  	select * from BTH_BATCH_ACCOUNT_FILE where deal_status in(#{fileStatus00},#{fileStatus01},#{fileStatus03}) order by reserved1 
+  </select>
+
+    <select id="accF_selectByState" parameterType="map" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM BTH_BATCH_ACCOUNT_FILE
+        WHERE DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR} AND FILE_TYPE = #{fileType ,jdbcType=VARCHAR}
+    </select>
+    
+    <update id="updateBatchAccFileDealStatus" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchAccountFile" >
+    update BTH_BATCH_ACCOUNT_FILE
+    set 
+      DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR},
+      UPDATE_DATE = #{updateDate,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

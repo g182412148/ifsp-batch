@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PagyChlMchtInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PagyChlMchtInfo" >
+    <id column="CHL_MCHT_NO" property="chlMchtNo" jdbcType="VARCHAR" />
+    <result column="CHL_NO" property="chlNo" jdbcType="CHAR" />
+    <result column="CHL_MCHT_REQ_NO" property="chlMchtReqNo" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_NAME" property="chlMchtName" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_NAME_ABBR" property="chlMchtNameAbbr" jdbcType="VARCHAR" />
+    <result column="PAGY_MCC_ID" property="pagyMccId" jdbcType="CHAR" />
+    <result column="PAGY_CANTON_CODE" property="pagyCantonCode" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_ID_TYPE" property="chlMchtIdType" jdbcType="CHAR" />
+    <result column="CHL_MCHT_ID_NO" property="chlMchtIdNo" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_BUSLIC_TYPE" property="chlMchtBuslicType" jdbcType="CHAR" />
+    <result column="CHL_MCHT_BUSLIC_NO" property="chlMchtBuslicNo" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_ADDR" property="chlMchtAddr" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_SETL_BANK_TYPE" property="chlMchtSetlBankType" jdbcType="CHAR" />
+    <result column="CHL_MCHT_SETL_BANK_NO" property="chlMchtSetlBankNo" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_SETL_BANK_NM" property="chlMchtSetlBankNm" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_SETL_BANK_ADDR" property="chlMchtSetlBankAddr" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_SETL_ACCT_TYPE" property="chlMchtSetlAcctType" jdbcType="CHAR" />
+    <result column="CHL_MCHT_SETL_ACCT_NO" property="chlMchtSetlAcctNo" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_SETL_ACCT_NM" property="chlMchtSetlAcctNm" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_RATE_CODE" property="chlMchtRateCode" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_CONTACT" property="chlMchtContact" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_SER_PHONE" property="chlMchtSerPhone" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_CONTACT_PHONE" property="chlMchtContactPhone" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_CONTACT_EMAIL" property="chlMchtContactEmail" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_AUTH_PATH" property="chlMchtAuthPath" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_RAMAK" property="chlMchtRamak" jdbcType="VARCHAR" />
+    <result column="CHL_MCHT_DATE" property="chlMchtDate" jdbcType="CHAR" />
+    <result column="CHL_MCHT_STATE" property="chlMchtState" jdbcType="CHAR" />
+    <result column="CRT_TLR" property="crtTlr" jdbcType="VARCHAR" />
+    <result column="CRT_TM" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPD_TLR" property="lastUpdTlr" jdbcType="VARCHAR" />
+    <result column="LAST_UPD_TM" property="lastUpdTm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CHL_MCHT_NO, CHL_NO, CHL_MCHT_REQ_NO, CHL_MCHT_NAME, CHL_MCHT_NAME_ABBR, PAGY_MCC_ID, 
+    PAGY_CANTON_CODE, CHL_MCHT_ID_TYPE, CHL_MCHT_ID_NO, CHL_MCHT_BUSLIC_TYPE, CHL_MCHT_BUSLIC_NO, 
+    CHL_MCHT_ADDR, CHL_MCHT_SETL_BANK_TYPE, CHL_MCHT_SETL_BANK_NO, CHL_MCHT_SETL_BANK_NM, 
+    CHL_MCHT_SETL_BANK_ADDR, CHL_MCHT_SETL_ACCT_TYPE, CHL_MCHT_SETL_ACCT_NO, CHL_MCHT_SETL_ACCT_NM, 
+    CHL_MCHT_RATE_CODE, CHL_MCHT_CONTACT, CHL_MCHT_SER_PHONE, CHL_MCHT_CONTACT_PHONE, 
+    CHL_MCHT_CONTACT_EMAIL, CHL_MCHT_AUTH_PATH, CHL_MCHT_RAMAK, CHL_MCHT_DATE, CHL_MCHT_STATE, 
+    CRT_TLR, CRT_TM, LAST_UPD_TLR, LAST_UPD_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAGY_CHL_MCHT_INFO
+    where CHL_MCHT_NO = #{chlMchtNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PAGY_CHL_MCHT_INFO
+    where CHL_MCHT_NO = #{chlMchtNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyChlMchtInfo" >
+    insert into PAGY_CHL_MCHT_INFO (CHL_MCHT_NO, CHL_NO, CHL_MCHT_REQ_NO, 
+      CHL_MCHT_NAME, CHL_MCHT_NAME_ABBR, PAGY_MCC_ID, 
+      PAGY_CANTON_CODE, CHL_MCHT_ID_TYPE, CHL_MCHT_ID_NO, 
+      CHL_MCHT_BUSLIC_TYPE, CHL_MCHT_BUSLIC_NO, CHL_MCHT_ADDR, 
+      CHL_MCHT_SETL_BANK_TYPE, CHL_MCHT_SETL_BANK_NO, CHL_MCHT_SETL_BANK_NM, 
+      CHL_MCHT_SETL_BANK_ADDR, CHL_MCHT_SETL_ACCT_TYPE, 
+      CHL_MCHT_SETL_ACCT_NO, CHL_MCHT_SETL_ACCT_NM, CHL_MCHT_RATE_CODE, 
+      CHL_MCHT_CONTACT, CHL_MCHT_SER_PHONE, CHL_MCHT_CONTACT_PHONE, 
+      CHL_MCHT_CONTACT_EMAIL, CHL_MCHT_AUTH_PATH, CHL_MCHT_RAMAK, 
+      CHL_MCHT_DATE, CHL_MCHT_STATE, CRT_TLR, 
+      CRT_TM, LAST_UPD_TLR, LAST_UPD_TM
+      )
+    values (#{chlMchtNo,jdbcType=VARCHAR}, #{chlNo,jdbcType=CHAR}, #{chlMchtReqNo,jdbcType=VARCHAR}, 
+      #{chlMchtName,jdbcType=VARCHAR}, #{chlMchtNameAbbr,jdbcType=VARCHAR}, #{pagyMccId,jdbcType=CHAR}, 
+      #{pagyCantonCode,jdbcType=VARCHAR}, #{chlMchtIdType,jdbcType=CHAR}, #{chlMchtIdNo,jdbcType=VARCHAR}, 
+      #{chlMchtBuslicType,jdbcType=CHAR}, #{chlMchtBuslicNo,jdbcType=VARCHAR}, #{chlMchtAddr,jdbcType=VARCHAR}, 
+      #{chlMchtSetlBankType,jdbcType=CHAR}, #{chlMchtSetlBankNo,jdbcType=VARCHAR}, #{chlMchtSetlBankNm,jdbcType=VARCHAR}, 
+      #{chlMchtSetlBankAddr,jdbcType=VARCHAR}, #{chlMchtSetlAcctType,jdbcType=CHAR}, 
+      #{chlMchtSetlAcctNo,jdbcType=VARCHAR}, #{chlMchtSetlAcctNm,jdbcType=VARCHAR}, #{chlMchtRateCode,jdbcType=VARCHAR}, 
+      #{chlMchtContact,jdbcType=VARCHAR}, #{chlMchtSerPhone,jdbcType=VARCHAR}, #{chlMchtContactPhone,jdbcType=VARCHAR}, 
+      #{chlMchtContactEmail,jdbcType=VARCHAR}, #{chlMchtAuthPath,jdbcType=VARCHAR}, #{chlMchtRamak,jdbcType=VARCHAR}, 
+      #{chlMchtDate,jdbcType=CHAR}, #{chlMchtState,jdbcType=CHAR}, #{crtTlr,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{lastUpdTlr,jdbcType=VARCHAR}, #{lastUpdTm,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyChlMchtInfo" >
+    insert into PAGY_CHL_MCHT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chlMchtNo != null" >
+        CHL_MCHT_NO,
+      </if>
+      <if test="chlNo != null" >
+        CHL_NO,
+      </if>
+      <if test="chlMchtReqNo != null" >
+        CHL_MCHT_REQ_NO,
+      </if>
+      <if test="chlMchtName != null" >
+        CHL_MCHT_NAME,
+      </if>
+      <if test="chlMchtNameAbbr != null" >
+        CHL_MCHT_NAME_ABBR,
+      </if>
+      <if test="pagyMccId != null" >
+        PAGY_MCC_ID,
+      </if>
+      <if test="pagyCantonCode != null" >
+        PAGY_CANTON_CODE,
+      </if>
+      <if test="chlMchtIdType != null" >
+        CHL_MCHT_ID_TYPE,
+      </if>
+      <if test="chlMchtIdNo != null" >
+        CHL_MCHT_ID_NO,
+      </if>
+      <if test="chlMchtBuslicType != null" >
+        CHL_MCHT_BUSLIC_TYPE,
+      </if>
+      <if test="chlMchtBuslicNo != null" >
+        CHL_MCHT_BUSLIC_NO,
+      </if>
+      <if test="chlMchtAddr != null" >
+        CHL_MCHT_ADDR,
+      </if>
+      <if test="chlMchtSetlBankType != null" >
+        CHL_MCHT_SETL_BANK_TYPE,
+      </if>
+      <if test="chlMchtSetlBankNo != null" >
+        CHL_MCHT_SETL_BANK_NO,
+      </if>
+      <if test="chlMchtSetlBankNm != null" >
+        CHL_MCHT_SETL_BANK_NM,
+      </if>
+      <if test="chlMchtSetlBankAddr != null" >
+        CHL_MCHT_SETL_BANK_ADDR,
+      </if>
+      <if test="chlMchtSetlAcctType != null" >
+        CHL_MCHT_SETL_ACCT_TYPE,
+      </if>
+      <if test="chlMchtSetlAcctNo != null" >
+        CHL_MCHT_SETL_ACCT_NO,
+      </if>
+      <if test="chlMchtSetlAcctNm != null" >
+        CHL_MCHT_SETL_ACCT_NM,
+      </if>
+      <if test="chlMchtRateCode != null" >
+        CHL_MCHT_RATE_CODE,
+      </if>
+      <if test="chlMchtContact != null" >
+        CHL_MCHT_CONTACT,
+      </if>
+      <if test="chlMchtSerPhone != null" >
+        CHL_MCHT_SER_PHONE,
+      </if>
+      <if test="chlMchtContactPhone != null" >
+        CHL_MCHT_CONTACT_PHONE,
+      </if>
+      <if test="chlMchtContactEmail != null" >
+        CHL_MCHT_CONTACT_EMAIL,
+      </if>
+      <if test="chlMchtAuthPath != null" >
+        CHL_MCHT_AUTH_PATH,
+      </if>
+      <if test="chlMchtRamak != null" >
+        CHL_MCHT_RAMAK,
+      </if>
+      <if test="chlMchtDate != null" >
+        CHL_MCHT_DATE,
+      </if>
+      <if test="chlMchtState != null" >
+        CHL_MCHT_STATE,
+      </if>
+      <if test="crtTlr != null" >
+        CRT_TLR,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+      <if test="lastUpdTlr != null" >
+        LAST_UPD_TLR,
+      </if>
+      <if test="lastUpdTm != null" >
+        LAST_UPD_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chlMchtNo != null" >
+        #{chlMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlNo != null" >
+        #{chlNo,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtReqNo != null" >
+        #{chlMchtReqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtName != null" >
+        #{chlMchtName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtNameAbbr != null" >
+        #{chlMchtNameAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyMccId != null" >
+        #{pagyMccId,jdbcType=CHAR},
+      </if>
+      <if test="pagyCantonCode != null" >
+        #{pagyCantonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtIdType != null" >
+        #{chlMchtIdType,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtIdNo != null" >
+        #{chlMchtIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtBuslicType != null" >
+        #{chlMchtBuslicType,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtBuslicNo != null" >
+        #{chlMchtBuslicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtAddr != null" >
+        #{chlMchtAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlBankType != null" >
+        #{chlMchtSetlBankType,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtSetlBankNo != null" >
+        #{chlMchtSetlBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlBankNm != null" >
+        #{chlMchtSetlBankNm,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlBankAddr != null" >
+        #{chlMchtSetlBankAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlAcctType != null" >
+        #{chlMchtSetlAcctType,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtSetlAcctNo != null" >
+        #{chlMchtSetlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlAcctNm != null" >
+        #{chlMchtSetlAcctNm,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtRateCode != null" >
+        #{chlMchtRateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtContact != null" >
+        #{chlMchtContact,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSerPhone != null" >
+        #{chlMchtSerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtContactPhone != null" >
+        #{chlMchtContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtContactEmail != null" >
+        #{chlMchtContactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtAuthPath != null" >
+        #{chlMchtAuthPath,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtRamak != null" >
+        #{chlMchtRamak,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtDate != null" >
+        #{chlMchtDate,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtState != null" >
+        #{chlMchtState,jdbcType=CHAR},
+      </if>
+      <if test="crtTlr != null" >
+        #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTlr != null" >
+        #{lastUpdTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTm != null" >
+        #{lastUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyChlMchtInfo" >
+    update PAGY_CHL_MCHT_INFO
+    <set >
+      <if test="chlNo != null" >
+        CHL_NO = #{chlNo,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtReqNo != null" >
+        CHL_MCHT_REQ_NO = #{chlMchtReqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtName != null" >
+        CHL_MCHT_NAME = #{chlMchtName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtNameAbbr != null" >
+        CHL_MCHT_NAME_ABBR = #{chlMchtNameAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyMccId != null" >
+        PAGY_MCC_ID = #{pagyMccId,jdbcType=CHAR},
+      </if>
+      <if test="pagyCantonCode != null" >
+        PAGY_CANTON_CODE = #{pagyCantonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtIdType != null" >
+        CHL_MCHT_ID_TYPE = #{chlMchtIdType,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtIdNo != null" >
+        CHL_MCHT_ID_NO = #{chlMchtIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtBuslicType != null" >
+        CHL_MCHT_BUSLIC_TYPE = #{chlMchtBuslicType,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtBuslicNo != null" >
+        CHL_MCHT_BUSLIC_NO = #{chlMchtBuslicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtAddr != null" >
+        CHL_MCHT_ADDR = #{chlMchtAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlBankType != null" >
+        CHL_MCHT_SETL_BANK_TYPE = #{chlMchtSetlBankType,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtSetlBankNo != null" >
+        CHL_MCHT_SETL_BANK_NO = #{chlMchtSetlBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlBankNm != null" >
+        CHL_MCHT_SETL_BANK_NM = #{chlMchtSetlBankNm,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlBankAddr != null" >
+        CHL_MCHT_SETL_BANK_ADDR = #{chlMchtSetlBankAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlAcctType != null" >
+        CHL_MCHT_SETL_ACCT_TYPE = #{chlMchtSetlAcctType,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtSetlAcctNo != null" >
+        CHL_MCHT_SETL_ACCT_NO = #{chlMchtSetlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSetlAcctNm != null" >
+        CHL_MCHT_SETL_ACCT_NM = #{chlMchtSetlAcctNm,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtRateCode != null" >
+        CHL_MCHT_RATE_CODE = #{chlMchtRateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtContact != null" >
+        CHL_MCHT_CONTACT = #{chlMchtContact,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtSerPhone != null" >
+        CHL_MCHT_SER_PHONE = #{chlMchtSerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtContactPhone != null" >
+        CHL_MCHT_CONTACT_PHONE = #{chlMchtContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtContactEmail != null" >
+        CHL_MCHT_CONTACT_EMAIL = #{chlMchtContactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtAuthPath != null" >
+        CHL_MCHT_AUTH_PATH = #{chlMchtAuthPath,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtRamak != null" >
+        CHL_MCHT_RAMAK = #{chlMchtRamak,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMchtDate != null" >
+        CHL_MCHT_DATE = #{chlMchtDate,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtState != null" >
+        CHL_MCHT_STATE = #{chlMchtState,jdbcType=CHAR},
+      </if>
+      <if test="crtTlr != null" >
+        CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTlr != null" >
+        LAST_UPD_TLR = #{lastUpdTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTm != null" >
+        LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CHL_MCHT_NO = #{chlMchtNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyChlMchtInfo" >
+    update PAGY_CHL_MCHT_INFO
+    set CHL_NO = #{chlNo,jdbcType=CHAR},
+      CHL_MCHT_REQ_NO = #{chlMchtReqNo,jdbcType=VARCHAR},
+      CHL_MCHT_NAME = #{chlMchtName,jdbcType=VARCHAR},
+      CHL_MCHT_NAME_ABBR = #{chlMchtNameAbbr,jdbcType=VARCHAR},
+      PAGY_MCC_ID = #{pagyMccId,jdbcType=CHAR},
+      PAGY_CANTON_CODE = #{pagyCantonCode,jdbcType=VARCHAR},
+      CHL_MCHT_ID_TYPE = #{chlMchtIdType,jdbcType=CHAR},
+      CHL_MCHT_ID_NO = #{chlMchtIdNo,jdbcType=VARCHAR},
+      CHL_MCHT_BUSLIC_TYPE = #{chlMchtBuslicType,jdbcType=CHAR},
+      CHL_MCHT_BUSLIC_NO = #{chlMchtBuslicNo,jdbcType=VARCHAR},
+      CHL_MCHT_ADDR = #{chlMchtAddr,jdbcType=VARCHAR},
+      CHL_MCHT_SETL_BANK_TYPE = #{chlMchtSetlBankType,jdbcType=CHAR},
+      CHL_MCHT_SETL_BANK_NO = #{chlMchtSetlBankNo,jdbcType=VARCHAR},
+      CHL_MCHT_SETL_BANK_NM = #{chlMchtSetlBankNm,jdbcType=VARCHAR},
+      CHL_MCHT_SETL_BANK_ADDR = #{chlMchtSetlBankAddr,jdbcType=VARCHAR},
+      CHL_MCHT_SETL_ACCT_TYPE = #{chlMchtSetlAcctType,jdbcType=CHAR},
+      CHL_MCHT_SETL_ACCT_NO = #{chlMchtSetlAcctNo,jdbcType=VARCHAR},
+      CHL_MCHT_SETL_ACCT_NM = #{chlMchtSetlAcctNm,jdbcType=VARCHAR},
+      CHL_MCHT_RATE_CODE = #{chlMchtRateCode,jdbcType=VARCHAR},
+      CHL_MCHT_CONTACT = #{chlMchtContact,jdbcType=VARCHAR},
+      CHL_MCHT_SER_PHONE = #{chlMchtSerPhone,jdbcType=VARCHAR},
+      CHL_MCHT_CONTACT_PHONE = #{chlMchtContactPhone,jdbcType=VARCHAR},
+      CHL_MCHT_CONTACT_EMAIL = #{chlMchtContactEmail,jdbcType=VARCHAR},
+      CHL_MCHT_AUTH_PATH = #{chlMchtAuthPath,jdbcType=VARCHAR},
+      CHL_MCHT_RAMAK = #{chlMchtRamak,jdbcType=VARCHAR},
+      CHL_MCHT_DATE = #{chlMchtDate,jdbcType=CHAR},
+      CHL_MCHT_STATE = #{chlMchtState,jdbcType=CHAR},
+      CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      LAST_UPD_TLR = #{lastUpdTlr,jdbcType=VARCHAR},
+      LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP}
+    where CHL_MCHT_NO = #{chlMchtNo,jdbcType=VARCHAR}
+  </update>
+
+   <update id="updateStateByChlMchtNo" parameterType="map">
+        UPDATE PAGY_CHL_MCHT_INFO SET CHL_MCHT_STATE = '99', LAST_UPD_TM = #{date ,jdbcType=TIMESTAMP} WHERE CHL_MCHT_NO = #{chlMchtNo, jdbcType=VARCHAR}
+   </update>
+</mapper>

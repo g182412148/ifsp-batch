@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.TpamCupMchtInfoMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.TpamCupMchtInfo">
+    <id column="MCHNT_CD" jdbcType="VARCHAR" property="mchntCd" />
+    <result column="MCHNT_SVC_TP" jdbcType="CHAR" property="mchntSvcTp" />
+    <result column="MCHNT_CN_NM" jdbcType="VARCHAR" property="mchntCnNm" />
+    <result column="MCHNT_CN_ABBR" jdbcType="VARCHAR" property="mchntCnAbbr" />
+    <result column="ACQ_INS_ID_CD" jdbcType="VARCHAR" property="acqInsIdCd" />
+    <result column="CNTRY_CD" jdbcType="CHAR" property="cntryCd" />
+    <result column="ACQ_REGION_CD" jdbcType="VARCHAR" property="acqRegionCd" />
+    <result column="MCHNT_TP" jdbcType="VARCHAR" property="mchntTp" />
+    <result column="ETPS_ATTR" jdbcType="VARCHAR" property="etpsAttr" />
+    <result column="MCHNT_ST" jdbcType="CHAR" property="mchntSt" />
+    <result column="NET_MCHNT_SVC_TP" jdbcType="VARCHAR" property="netMchntSvcTp" />
+    <result column="LIC_NO" jdbcType="VARCHAR" property="licNo" />
+    <result column="BUSS_ADDR" jdbcType="VARCHAR" property="bussAddr" />
+    <result column="REG_ADDR" jdbcType="VARCHAR" property="regAddr" />
+    <result column="MCHNT_EN_NM" jdbcType="VARCHAR" property="mchntEnNm" />
+    <result column="ARTIF_NM" jdbcType="VARCHAR" property="artifNm" />
+    <result column="ARTIF_CERTIF_TP" jdbcType="CHAR" property="artifCertifTp" />
+    <result column="ARTIF_CERTIF_ID" jdbcType="VARCHAR" property="artifCertifId" />
+    <result column="CONTACT_PERSION_NM" jdbcType="VARCHAR" property="contactPersionNm" />
+    <result column="COMM_ADDR" jdbcType="VARCHAR" property="commAddr" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="MOBILE" jdbcType="VARCHAR" property="mobile" />
+    <result column="RECNCL_TP" jdbcType="CHAR" property="recnclTp" />
+    <result column="PRINCIPAL_NM" jdbcType="VARCHAR" property="principalNm" />
+    <result column="COOKING" jdbcType="VARCHAR" property="cooking" />
+    <result column="MCHNT_ICP" jdbcType="VARCHAR" property="mchntIcp" />
+    <result column="TRAFFIC_LINE" jdbcType="VARCHAR" property="trafficLine" />
+    <result column="DIRECT_ACQ_SETTLE_IN" jdbcType="CHAR" property="directAcqSettleIn" />
+    <result column="PAY_SYS_SETTLE_NO1" jdbcType="VARCHAR" property="paySysSettleNo1" />
+    <result column="SPEC_DISC_TP" jdbcType="CHAR" property="specDiscTp" />
+    <result column="SPEC_DISC_LVL" jdbcType="CHAR" property="specDiscLvl" />
+    <result column="ALLOT_ALGO" jdbcType="VARCHAR" property="allotAlgo" />
+    <result column="ALLOT_CD" jdbcType="VARCHAR" property="allotCd" />
+    <result column="MCHNT_DISC_DET_INDEX" jdbcType="VARCHAR" property="mchntDiscDetIndex" />
+    <result column="SVC_NET_URL" jdbcType="VARCHAR" property="svcNetUrl" />
+    <result column="MCHNT_WEB_SITE_NM" jdbcType="VARCHAR" property="mchntWebSiteNm" />
+    <result column="BUSS_TP" jdbcType="VARCHAR" property="bussTp" />
+    <result column="PROD_FUNC" jdbcType="VARCHAR" property="prodFunc" />
+    <result column="BUSS_CONT1_EMAIL" jdbcType="VARCHAR" property="bussCont1Email" />
+    <result column="SINGLE_AT_LIMIT" jdbcType="CHAR" property="singleAtLimit" />
+    <result column="SINGLE_AT_LIMIT_DESC" jdbcType="VARCHAR" property="singleAtLimitDesc" />
+    <result column="SINGLE_CARD_DAY_AT_LIMIT" jdbcType="CHAR" property="singleCardDayAtLimit" />
+    <result column="SINGLE_CARD_DAY_AT_LIMIT_DESC" jdbcType="VARCHAR" property="singleCardDayAtLimitDesc" />
+    <result column="SUBMCHNT_IN" jdbcType="CHAR" property="submchntIn" />
+    <result column="SVC_INS_NM" jdbcType="VARCHAR" property="svcInsNm" />
+    <result column="HDQRS_BRANCH_IN" jdbcType="CHAR" property="hdqrsBranchIn" />
+    <result column="HDQRS_MCHNT_CD" jdbcType="VARCHAR" property="hdqrsMchntCd" />
+    <result column="CHNL_MCHNT_CD" jdbcType="VARCHAR" property="chnlMchntCd" />
+    <result column="MCC_APPL_RULE" jdbcType="VARCHAR" property="mccApplRule" />
+    <result column="MASTER_PWD" jdbcType="VARCHAR" property="masterPwd" />
+    <result column="INS_RESV1" jdbcType="VARCHAR" property="insResv1" />
+    <result column="INS_RESV2" jdbcType="VARCHAR" property="insResv2" />
+    <result column="INS_RESV3" jdbcType="VARCHAR" property="insResv3" />
+    <result column="INS_RESV4" jdbcType="VARCHAR" property="insResv4" />
+    <result column="INS_RESV5" jdbcType="VARCHAR" property="insResv5" />
+    <result column="INS_RESV6" jdbcType="VARCHAR" property="insResv6" />
+    <result column="INS_RESV9" jdbcType="VARCHAR" property="insResv9" />
+    <result column="INS_RESV10" jdbcType="VARCHAR" property="insResv10" />
+    <result column="CUP_BRANCH_RESV1" jdbcType="VARCHAR" property="cupBranchResv1" />
+    <result column="CHNL_ID" jdbcType="VARCHAR" property="chnlId" />
+    <result column="EBAP_MCHT_STAT" jdbcType="CHAR" property="ebapMchtStat" />
+    <result column="POS_MCHT_STAT" jdbcType="CHAR" property="posMchtStat" />
+    <result column="CRT_TM" jdbcType="TIMESTAMP" property="crtTm" />
+    <result column="CRT_TLR" jdbcType="VARCHAR" property="crtTlr" />
+    <result column="LAST_UPD_TM" jdbcType="TIMESTAMP" property="lastUpdTm" />
+    <result column="LAST_UPD_TLR" jdbcType="VARCHAR" property="lastUpdTlr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MCHNT_CD, MCHNT_SVC_TP, MCHNT_CN_NM, MCHNT_CN_ABBR, ACQ_INS_ID_CD, CNTRY_CD, ACQ_REGION_CD, 
+    MCHNT_TP, ETPS_ATTR, MCHNT_ST, NET_MCHNT_SVC_TP, LIC_NO, BUSS_ADDR, REG_ADDR, MCHNT_EN_NM, 
+    ARTIF_NM, ARTIF_CERTIF_TP, ARTIF_CERTIF_ID, CONTACT_PERSION_NM, COMM_ADDR, PHONE, 
+    MOBILE, RECNCL_TP, PRINCIPAL_NM, COOKING, MCHNT_ICP, TRAFFIC_LINE, DIRECT_ACQ_SETTLE_IN, 
+    PAY_SYS_SETTLE_NO1, SPEC_DISC_TP, SPEC_DISC_LVL, ALLOT_ALGO, ALLOT_CD, MCHNT_DISC_DET_INDEX, 
+    SVC_NET_URL, MCHNT_WEB_SITE_NM, BUSS_TP, PROD_FUNC, BUSS_CONT1_EMAIL, SINGLE_AT_LIMIT, 
+    SINGLE_AT_LIMIT_DESC, SINGLE_CARD_DAY_AT_LIMIT, SINGLE_CARD_DAY_AT_LIMIT_DESC, SUBMCHNT_IN, 
+    SVC_INS_NM, HDQRS_BRANCH_IN, HDQRS_MCHNT_CD, CHNL_MCHNT_CD, MCC_APPL_RULE, MASTER_PWD, 
+    INS_RESV1, INS_RESV2, INS_RESV3, INS_RESV4, INS_RESV5, INS_RESV6, INS_RESV9, INS_RESV10, 
+    CUP_BRANCH_RESV1, CHNL_ID, EBAP_MCHT_STAT, POS_MCHT_STAT, CRT_TM, CRT_TLR, LAST_UPD_TM, 
+    LAST_UPD_TLR
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TPAM_CUP_MCHT_INFO
+    where MCHNT_CD = #{mchntCd,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TPAM_CUP_MCHT_INFO
+    where MCHNT_CD = #{mchntCd,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.TpamCupMchtInfo">
+    insert into TPAM_CUP_MCHT_INFO (MCHNT_CD, MCHNT_SVC_TP, MCHNT_CN_NM, 
+      MCHNT_CN_ABBR, ACQ_INS_ID_CD, CNTRY_CD, 
+      ACQ_REGION_CD, MCHNT_TP, ETPS_ATTR, 
+      MCHNT_ST, NET_MCHNT_SVC_TP, LIC_NO, 
+      BUSS_ADDR, REG_ADDR, MCHNT_EN_NM, 
+      ARTIF_NM, ARTIF_CERTIF_TP, ARTIF_CERTIF_ID, 
+      CONTACT_PERSION_NM, COMM_ADDR, PHONE, 
+      MOBILE, RECNCL_TP, PRINCIPAL_NM, 
+      COOKING, MCHNT_ICP, TRAFFIC_LINE, 
+      DIRECT_ACQ_SETTLE_IN, PAY_SYS_SETTLE_NO1, SPEC_DISC_TP, 
+      SPEC_DISC_LVL, ALLOT_ALGO, ALLOT_CD, 
+      MCHNT_DISC_DET_INDEX, SVC_NET_URL, MCHNT_WEB_SITE_NM, 
+      BUSS_TP, PROD_FUNC, BUSS_CONT1_EMAIL, 
+      SINGLE_AT_LIMIT, SINGLE_AT_LIMIT_DESC, SINGLE_CARD_DAY_AT_LIMIT, 
+      SINGLE_CARD_DAY_AT_LIMIT_DESC, SUBMCHNT_IN, SVC_INS_NM, 
+      HDQRS_BRANCH_IN, HDQRS_MCHNT_CD, CHNL_MCHNT_CD, 
+      MCC_APPL_RULE, MASTER_PWD, INS_RESV1, 
+      INS_RESV2, INS_RESV3, INS_RESV4, 
+      INS_RESV5, INS_RESV6, INS_RESV9, 
+      INS_RESV10, CUP_BRANCH_RESV1, CHNL_ID, 
+      EBAP_MCHT_STAT, POS_MCHT_STAT, CRT_TM, 
+      CRT_TLR, LAST_UPD_TM, LAST_UPD_TLR
+      )
+    values (#{mchntCd,jdbcType=VARCHAR}, #{mchntSvcTp,jdbcType=CHAR}, #{mchntCnNm,jdbcType=VARCHAR}, 
+      #{mchntCnAbbr,jdbcType=VARCHAR}, #{acqInsIdCd,jdbcType=VARCHAR}, #{cntryCd,jdbcType=CHAR}, 
+      #{acqRegionCd,jdbcType=VARCHAR}, #{mchntTp,jdbcType=VARCHAR}, #{etpsAttr,jdbcType=VARCHAR}, 
+      #{mchntSt,jdbcType=CHAR}, #{netMchntSvcTp,jdbcType=VARCHAR}, #{licNo,jdbcType=VARCHAR}, 
+      #{bussAddr,jdbcType=VARCHAR}, #{regAddr,jdbcType=VARCHAR}, #{mchntEnNm,jdbcType=VARCHAR}, 
+      #{artifNm,jdbcType=VARCHAR}, #{artifCertifTp,jdbcType=CHAR}, #{artifCertifId,jdbcType=VARCHAR}, 
+      #{contactPersionNm,jdbcType=VARCHAR}, #{commAddr,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{recnclTp,jdbcType=CHAR}, #{principalNm,jdbcType=VARCHAR}, 
+      #{cooking,jdbcType=VARCHAR}, #{mchntIcp,jdbcType=VARCHAR}, #{trafficLine,jdbcType=VARCHAR}, 
+      #{directAcqSettleIn,jdbcType=CHAR}, #{paySysSettleNo1,jdbcType=VARCHAR}, #{specDiscTp,jdbcType=CHAR}, 
+      #{specDiscLvl,jdbcType=CHAR}, #{allotAlgo,jdbcType=VARCHAR}, #{allotCd,jdbcType=VARCHAR}, 
+      #{mchntDiscDetIndex,jdbcType=VARCHAR}, #{svcNetUrl,jdbcType=VARCHAR}, #{mchntWebSiteNm,jdbcType=VARCHAR}, 
+      #{bussTp,jdbcType=VARCHAR}, #{prodFunc,jdbcType=VARCHAR}, #{bussCont1Email,jdbcType=VARCHAR}, 
+      #{singleAtLimit,jdbcType=CHAR}, #{singleAtLimitDesc,jdbcType=VARCHAR}, #{singleCardDayAtLimit,jdbcType=CHAR}, 
+      #{singleCardDayAtLimitDesc,jdbcType=VARCHAR}, #{submchntIn,jdbcType=CHAR}, #{svcInsNm,jdbcType=VARCHAR}, 
+      #{hdqrsBranchIn,jdbcType=CHAR}, #{hdqrsMchntCd,jdbcType=VARCHAR}, #{chnlMchntCd,jdbcType=VARCHAR}, 
+      #{mccApplRule,jdbcType=VARCHAR}, #{masterPwd,jdbcType=VARCHAR}, #{insResv1,jdbcType=VARCHAR}, 
+      #{insResv2,jdbcType=VARCHAR}, #{insResv3,jdbcType=VARCHAR}, #{insResv4,jdbcType=VARCHAR}, 
+      #{insResv5,jdbcType=VARCHAR}, #{insResv6,jdbcType=VARCHAR}, #{insResv9,jdbcType=VARCHAR}, 
+      #{insResv10,jdbcType=VARCHAR}, #{cupBranchResv1,jdbcType=VARCHAR}, #{chnlId,jdbcType=VARCHAR}, 
+      #{ebapMchtStat,jdbcType=CHAR}, #{posMchtStat,jdbcType=CHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{crtTlr,jdbcType=VARCHAR}, #{lastUpdTm,jdbcType=TIMESTAMP}, #{lastUpdTlr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.TpamCupMchtInfo">
+    insert into TPAM_CUP_MCHT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mchntCd != null">
+        MCHNT_CD,
+      </if>
+      <if test="mchntSvcTp != null">
+        MCHNT_SVC_TP,
+      </if>
+      <if test="mchntCnNm != null">
+        MCHNT_CN_NM,
+      </if>
+      <if test="mchntCnAbbr != null">
+        MCHNT_CN_ABBR,
+      </if>
+      <if test="acqInsIdCd != null">
+        ACQ_INS_ID_CD,
+      </if>
+      <if test="cntryCd != null">
+        CNTRY_CD,
+      </if>
+      <if test="acqRegionCd != null">
+        ACQ_REGION_CD,
+      </if>
+      <if test="mchntTp != null">
+        MCHNT_TP,
+      </if>
+      <if test="etpsAttr != null">
+        ETPS_ATTR,
+      </if>
+      <if test="mchntSt != null">
+        MCHNT_ST,
+      </if>
+      <if test="netMchntSvcTp != null">
+        NET_MCHNT_SVC_TP,
+      </if>
+      <if test="licNo != null">
+        LIC_NO,
+      </if>
+      <if test="bussAddr != null">
+        BUSS_ADDR,
+      </if>
+      <if test="regAddr != null">
+        REG_ADDR,
+      </if>
+      <if test="mchntEnNm != null">
+        MCHNT_EN_NM,
+      </if>
+      <if test="artifNm != null">
+        ARTIF_NM,
+      </if>
+      <if test="artifCertifTp != null">
+        ARTIF_CERTIF_TP,
+      </if>
+      <if test="artifCertifId != null">
+        ARTIF_CERTIF_ID,
+      </if>
+      <if test="contactPersionNm != null">
+        CONTACT_PERSION_NM,
+      </if>
+      <if test="commAddr != null">
+        COMM_ADDR,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="mobile != null">
+        MOBILE,
+      </if>
+      <if test="recnclTp != null">
+        RECNCL_TP,
+      </if>
+      <if test="principalNm != null">
+        PRINCIPAL_NM,
+      </if>
+      <if test="cooking != null">
+        COOKING,
+      </if>
+      <if test="mchntIcp != null">
+        MCHNT_ICP,
+      </if>
+      <if test="trafficLine != null">
+        TRAFFIC_LINE,
+      </if>
+      <if test="directAcqSettleIn != null">
+        DIRECT_ACQ_SETTLE_IN,
+      </if>
+      <if test="paySysSettleNo1 != null">
+        PAY_SYS_SETTLE_NO1,
+      </if>
+      <if test="specDiscTp != null">
+        SPEC_DISC_TP,
+      </if>
+      <if test="specDiscLvl != null">
+        SPEC_DISC_LVL,
+      </if>
+      <if test="allotAlgo != null">
+        ALLOT_ALGO,
+      </if>
+      <if test="allotCd != null">
+        ALLOT_CD,
+      </if>
+      <if test="mchntDiscDetIndex != null">
+        MCHNT_DISC_DET_INDEX,
+      </if>
+      <if test="svcNetUrl != null">
+        SVC_NET_URL,
+      </if>
+      <if test="mchntWebSiteNm != null">
+        MCHNT_WEB_SITE_NM,
+      </if>
+      <if test="bussTp != null">
+        BUSS_TP,
+      </if>
+      <if test="prodFunc != null">
+        PROD_FUNC,
+      </if>
+      <if test="bussCont1Email != null">
+        BUSS_CONT1_EMAIL,
+      </if>
+      <if test="singleAtLimit != null">
+        SINGLE_AT_LIMIT,
+      </if>
+      <if test="singleAtLimitDesc != null">
+        SINGLE_AT_LIMIT_DESC,
+      </if>
+      <if test="singleCardDayAtLimit != null">
+        SINGLE_CARD_DAY_AT_LIMIT,
+      </if>
+      <if test="singleCardDayAtLimitDesc != null">
+        SINGLE_CARD_DAY_AT_LIMIT_DESC,
+      </if>
+      <if test="submchntIn != null">
+        SUBMCHNT_IN,
+      </if>
+      <if test="svcInsNm != null">
+        SVC_INS_NM,
+      </if>
+      <if test="hdqrsBranchIn != null">
+        HDQRS_BRANCH_IN,
+      </if>
+      <if test="hdqrsMchntCd != null">
+        HDQRS_MCHNT_CD,
+      </if>
+      <if test="chnlMchntCd != null">
+        CHNL_MCHNT_CD,
+      </if>
+      <if test="mccApplRule != null">
+        MCC_APPL_RULE,
+      </if>
+      <if test="masterPwd != null">
+        MASTER_PWD,
+      </if>
+      <if test="insResv1 != null">
+        INS_RESV1,
+      </if>
+      <if test="insResv2 != null">
+        INS_RESV2,
+      </if>
+      <if test="insResv3 != null">
+        INS_RESV3,
+      </if>
+      <if test="insResv4 != null">
+        INS_RESV4,
+      </if>
+      <if test="insResv5 != null">
+        INS_RESV5,
+      </if>
+      <if test="insResv6 != null">
+        INS_RESV6,
+      </if>
+      <if test="insResv9 != null">
+        INS_RESV9,
+      </if>
+      <if test="insResv10 != null">
+        INS_RESV10,
+      </if>
+      <if test="cupBranchResv1 != null">
+        CUP_BRANCH_RESV1,
+      </if>
+      <if test="chnlId != null">
+        CHNL_ID,
+      </if>
+      <if test="ebapMchtStat != null">
+        EBAP_MCHT_STAT,
+      </if>
+      <if test="posMchtStat != null">
+        POS_MCHT_STAT,
+      </if>
+      <if test="crtTm != null">
+        CRT_TM,
+      </if>
+      <if test="crtTlr != null">
+        CRT_TLR,
+      </if>
+      <if test="lastUpdTm != null">
+        LAST_UPD_TM,
+      </if>
+      <if test="lastUpdTlr != null">
+        LAST_UPD_TLR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mchntCd != null">
+        #{mchntCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntSvcTp != null">
+        #{mchntSvcTp,jdbcType=CHAR},
+      </if>
+      <if test="mchntCnNm != null">
+        #{mchntCnNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntCnAbbr != null">
+        #{mchntCnAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInsIdCd != null">
+        #{acqInsIdCd,jdbcType=VARCHAR},
+      </if>
+      <if test="cntryCd != null">
+        #{cntryCd,jdbcType=CHAR},
+      </if>
+      <if test="acqRegionCd != null">
+        #{acqRegionCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntTp != null">
+        #{mchntTp,jdbcType=VARCHAR},
+      </if>
+      <if test="etpsAttr != null">
+        #{etpsAttr,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntSt != null">
+        #{mchntSt,jdbcType=CHAR},
+      </if>
+      <if test="netMchntSvcTp != null">
+        #{netMchntSvcTp,jdbcType=VARCHAR},
+      </if>
+      <if test="licNo != null">
+        #{licNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bussAddr != null">
+        #{bussAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="regAddr != null">
+        #{regAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntEnNm != null">
+        #{mchntEnNm,jdbcType=VARCHAR},
+      </if>
+      <if test="artifNm != null">
+        #{artifNm,jdbcType=VARCHAR},
+      </if>
+      <if test="artifCertifTp != null">
+        #{artifCertifTp,jdbcType=CHAR},
+      </if>
+      <if test="artifCertifId != null">
+        #{artifCertifId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPersionNm != null">
+        #{contactPersionNm,jdbcType=VARCHAR},
+      </if>
+      <if test="commAddr != null">
+        #{commAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="recnclTp != null">
+        #{recnclTp,jdbcType=CHAR},
+      </if>
+      <if test="principalNm != null">
+        #{principalNm,jdbcType=VARCHAR},
+      </if>
+      <if test="cooking != null">
+        #{cooking,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntIcp != null">
+        #{mchntIcp,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficLine != null">
+        #{trafficLine,jdbcType=VARCHAR},
+      </if>
+      <if test="directAcqSettleIn != null">
+        #{directAcqSettleIn,jdbcType=CHAR},
+      </if>
+      <if test="paySysSettleNo1 != null">
+        #{paySysSettleNo1,jdbcType=VARCHAR},
+      </if>
+      <if test="specDiscTp != null">
+        #{specDiscTp,jdbcType=CHAR},
+      </if>
+      <if test="specDiscLvl != null">
+        #{specDiscLvl,jdbcType=CHAR},
+      </if>
+      <if test="allotAlgo != null">
+        #{allotAlgo,jdbcType=VARCHAR},
+      </if>
+      <if test="allotCd != null">
+        #{allotCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntDiscDetIndex != null">
+        #{mchntDiscDetIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="svcNetUrl != null">
+        #{svcNetUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntWebSiteNm != null">
+        #{mchntWebSiteNm,jdbcType=VARCHAR},
+      </if>
+      <if test="bussTp != null">
+        #{bussTp,jdbcType=VARCHAR},
+      </if>
+      <if test="prodFunc != null">
+        #{prodFunc,jdbcType=VARCHAR},
+      </if>
+      <if test="bussCont1Email != null">
+        #{bussCont1Email,jdbcType=VARCHAR},
+      </if>
+      <if test="singleAtLimit != null">
+        #{singleAtLimit,jdbcType=CHAR},
+      </if>
+      <if test="singleAtLimitDesc != null">
+        #{singleAtLimitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="singleCardDayAtLimit != null">
+        #{singleCardDayAtLimit,jdbcType=CHAR},
+      </if>
+      <if test="singleCardDayAtLimitDesc != null">
+        #{singleCardDayAtLimitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="submchntIn != null">
+        #{submchntIn,jdbcType=CHAR},
+      </if>
+      <if test="svcInsNm != null">
+        #{svcInsNm,jdbcType=VARCHAR},
+      </if>
+      <if test="hdqrsBranchIn != null">
+        #{hdqrsBranchIn,jdbcType=CHAR},
+      </if>
+      <if test="hdqrsMchntCd != null">
+        #{hdqrsMchntCd,jdbcType=VARCHAR},
+      </if>
+      <if test="chnlMchntCd != null">
+        #{chnlMchntCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mccApplRule != null">
+        #{mccApplRule,jdbcType=VARCHAR},
+      </if>
+      <if test="masterPwd != null">
+        #{masterPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv1 != null">
+        #{insResv1,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv2 != null">
+        #{insResv2,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv3 != null">
+        #{insResv3,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv4 != null">
+        #{insResv4,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv5 != null">
+        #{insResv5,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv6 != null">
+        #{insResv6,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv9 != null">
+        #{insResv9,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv10 != null">
+        #{insResv10,jdbcType=VARCHAR},
+      </if>
+      <if test="cupBranchResv1 != null">
+        #{cupBranchResv1,jdbcType=VARCHAR},
+      </if>
+      <if test="chnlId != null">
+        #{chnlId,jdbcType=VARCHAR},
+      </if>
+      <if test="ebapMchtStat != null">
+        #{ebapMchtStat,jdbcType=CHAR},
+      </if>
+      <if test="posMchtStat != null">
+        #{posMchtStat,jdbcType=CHAR},
+      </if>
+      <if test="crtTm != null">
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTlr != null">
+        #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTm != null">
+        #{lastUpdTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTlr != null">
+        #{lastUpdTlr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.TpamCupMchtInfo">
+    update TPAM_CUP_MCHT_INFO
+    <set>
+      <if test="mchntSvcTp != null">
+        MCHNT_SVC_TP = #{mchntSvcTp,jdbcType=CHAR},
+      </if>
+      <if test="mchntCnNm != null">
+        MCHNT_CN_NM = #{mchntCnNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntCnAbbr != null">
+        MCHNT_CN_ABBR = #{mchntCnAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInsIdCd != null">
+        ACQ_INS_ID_CD = #{acqInsIdCd,jdbcType=VARCHAR},
+      </if>
+      <if test="cntryCd != null">
+        CNTRY_CD = #{cntryCd,jdbcType=CHAR},
+      </if>
+      <if test="acqRegionCd != null">
+        ACQ_REGION_CD = #{acqRegionCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntTp != null">
+        MCHNT_TP = #{mchntTp,jdbcType=VARCHAR},
+      </if>
+      <if test="etpsAttr != null">
+        ETPS_ATTR = #{etpsAttr,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntSt != null">
+        MCHNT_ST = #{mchntSt,jdbcType=CHAR},
+      </if>
+      <if test="netMchntSvcTp != null">
+        NET_MCHNT_SVC_TP = #{netMchntSvcTp,jdbcType=VARCHAR},
+      </if>
+      <if test="licNo != null">
+        LIC_NO = #{licNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bussAddr != null">
+        BUSS_ADDR = #{bussAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="regAddr != null">
+        REG_ADDR = #{regAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntEnNm != null">
+        MCHNT_EN_NM = #{mchntEnNm,jdbcType=VARCHAR},
+      </if>
+      <if test="artifNm != null">
+        ARTIF_NM = #{artifNm,jdbcType=VARCHAR},
+      </if>
+      <if test="artifCertifTp != null">
+        ARTIF_CERTIF_TP = #{artifCertifTp,jdbcType=CHAR},
+      </if>
+      <if test="artifCertifId != null">
+        ARTIF_CERTIF_ID = #{artifCertifId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPersionNm != null">
+        CONTACT_PERSION_NM = #{contactPersionNm,jdbcType=VARCHAR},
+      </if>
+      <if test="commAddr != null">
+        COMM_ADDR = #{commAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="recnclTp != null">
+        RECNCL_TP = #{recnclTp,jdbcType=CHAR},
+      </if>
+      <if test="principalNm != null">
+        PRINCIPAL_NM = #{principalNm,jdbcType=VARCHAR},
+      </if>
+      <if test="cooking != null">
+        COOKING = #{cooking,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntIcp != null">
+        MCHNT_ICP = #{mchntIcp,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficLine != null">
+        TRAFFIC_LINE = #{trafficLine,jdbcType=VARCHAR},
+      </if>
+      <if test="directAcqSettleIn != null">
+        DIRECT_ACQ_SETTLE_IN = #{directAcqSettleIn,jdbcType=CHAR},
+      </if>
+      <if test="paySysSettleNo1 != null">
+        PAY_SYS_SETTLE_NO1 = #{paySysSettleNo1,jdbcType=VARCHAR},
+      </if>
+      <if test="specDiscTp != null">
+        SPEC_DISC_TP = #{specDiscTp,jdbcType=CHAR},
+      </if>
+      <if test="specDiscLvl != null">
+        SPEC_DISC_LVL = #{specDiscLvl,jdbcType=CHAR},
+      </if>
+      <if test="allotAlgo != null">
+        ALLOT_ALGO = #{allotAlgo,jdbcType=VARCHAR},
+      </if>
+      <if test="allotCd != null">
+        ALLOT_CD = #{allotCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntDiscDetIndex != null">
+        MCHNT_DISC_DET_INDEX = #{mchntDiscDetIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="svcNetUrl != null">
+        SVC_NET_URL = #{svcNetUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntWebSiteNm != null">
+        MCHNT_WEB_SITE_NM = #{mchntWebSiteNm,jdbcType=VARCHAR},
+      </if>
+      <if test="bussTp != null">
+        BUSS_TP = #{bussTp,jdbcType=VARCHAR},
+      </if>
+      <if test="prodFunc != null">
+        PROD_FUNC = #{prodFunc,jdbcType=VARCHAR},
+      </if>
+      <if test="bussCont1Email != null">
+        BUSS_CONT1_EMAIL = #{bussCont1Email,jdbcType=VARCHAR},
+      </if>
+      <if test="singleAtLimit != null">
+        SINGLE_AT_LIMIT = #{singleAtLimit,jdbcType=CHAR},
+      </if>
+      <if test="singleAtLimitDesc != null">
+        SINGLE_AT_LIMIT_DESC = #{singleAtLimitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="singleCardDayAtLimit != null">
+        SINGLE_CARD_DAY_AT_LIMIT = #{singleCardDayAtLimit,jdbcType=CHAR},
+      </if>
+      <if test="singleCardDayAtLimitDesc != null">
+        SINGLE_CARD_DAY_AT_LIMIT_DESC = #{singleCardDayAtLimitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="submchntIn != null">
+        SUBMCHNT_IN = #{submchntIn,jdbcType=CHAR},
+      </if>
+      <if test="svcInsNm != null">
+        SVC_INS_NM = #{svcInsNm,jdbcType=VARCHAR},
+      </if>
+      <if test="hdqrsBranchIn != null">
+        HDQRS_BRANCH_IN = #{hdqrsBranchIn,jdbcType=CHAR},
+      </if>
+      <if test="hdqrsMchntCd != null">
+        HDQRS_MCHNT_CD = #{hdqrsMchntCd,jdbcType=VARCHAR},
+      </if>
+      <if test="chnlMchntCd != null">
+        CHNL_MCHNT_CD = #{chnlMchntCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mccApplRule != null">
+        MCC_APPL_RULE = #{mccApplRule,jdbcType=VARCHAR},
+      </if>
+      <if test="masterPwd != null">
+        MASTER_PWD = #{masterPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv1 != null">
+        INS_RESV1 = #{insResv1,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv2 != null">
+        INS_RESV2 = #{insResv2,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv3 != null">
+        INS_RESV3 = #{insResv3,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv4 != null">
+        INS_RESV4 = #{insResv4,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv5 != null">
+        INS_RESV5 = #{insResv5,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv6 != null">
+        INS_RESV6 = #{insResv6,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv9 != null">
+        INS_RESV9 = #{insResv9,jdbcType=VARCHAR},
+      </if>
+      <if test="insResv10 != null">
+        INS_RESV10 = #{insResv10,jdbcType=VARCHAR},
+      </if>
+      <if test="cupBranchResv1 != null">
+        CUP_BRANCH_RESV1 = #{cupBranchResv1,jdbcType=VARCHAR},
+      </if>
+      <if test="chnlId != null">
+        CHNL_ID = #{chnlId,jdbcType=VARCHAR},
+      </if>
+      <if test="ebapMchtStat != null">
+        EBAP_MCHT_STAT = #{ebapMchtStat,jdbcType=CHAR},
+      </if>
+      <if test="posMchtStat != null">
+        POS_MCHT_STAT = #{posMchtStat,jdbcType=CHAR},
+      </if>
+      <if test="crtTm != null">
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTlr != null">
+        CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTm != null">
+        LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTlr != null">
+        LAST_UPD_TLR = #{lastUpdTlr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MCHNT_CD = #{mchntCd,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.TpamCupMchtInfo">
+    update TPAM_CUP_MCHT_INFO
+    set MCHNT_SVC_TP = #{mchntSvcTp,jdbcType=CHAR},
+      MCHNT_CN_NM = #{mchntCnNm,jdbcType=VARCHAR},
+      MCHNT_CN_ABBR = #{mchntCnAbbr,jdbcType=VARCHAR},
+      ACQ_INS_ID_CD = #{acqInsIdCd,jdbcType=VARCHAR},
+      CNTRY_CD = #{cntryCd,jdbcType=CHAR},
+      ACQ_REGION_CD = #{acqRegionCd,jdbcType=VARCHAR},
+      MCHNT_TP = #{mchntTp,jdbcType=VARCHAR},
+      ETPS_ATTR = #{etpsAttr,jdbcType=VARCHAR},
+      MCHNT_ST = #{mchntSt,jdbcType=CHAR},
+      NET_MCHNT_SVC_TP = #{netMchntSvcTp,jdbcType=VARCHAR},
+      LIC_NO = #{licNo,jdbcType=VARCHAR},
+      BUSS_ADDR = #{bussAddr,jdbcType=VARCHAR},
+      REG_ADDR = #{regAddr,jdbcType=VARCHAR},
+      MCHNT_EN_NM = #{mchntEnNm,jdbcType=VARCHAR},
+      ARTIF_NM = #{artifNm,jdbcType=VARCHAR},
+      ARTIF_CERTIF_TP = #{artifCertifTp,jdbcType=CHAR},
+      ARTIF_CERTIF_ID = #{artifCertifId,jdbcType=VARCHAR},
+      CONTACT_PERSION_NM = #{contactPersionNm,jdbcType=VARCHAR},
+      COMM_ADDR = #{commAddr,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      RECNCL_TP = #{recnclTp,jdbcType=CHAR},
+      PRINCIPAL_NM = #{principalNm,jdbcType=VARCHAR},
+      COOKING = #{cooking,jdbcType=VARCHAR},
+      MCHNT_ICP = #{mchntIcp,jdbcType=VARCHAR},
+      TRAFFIC_LINE = #{trafficLine,jdbcType=VARCHAR},
+      DIRECT_ACQ_SETTLE_IN = #{directAcqSettleIn,jdbcType=CHAR},
+      PAY_SYS_SETTLE_NO1 = #{paySysSettleNo1,jdbcType=VARCHAR},
+      SPEC_DISC_TP = #{specDiscTp,jdbcType=CHAR},
+      SPEC_DISC_LVL = #{specDiscLvl,jdbcType=CHAR},
+      ALLOT_ALGO = #{allotAlgo,jdbcType=VARCHAR},
+      ALLOT_CD = #{allotCd,jdbcType=VARCHAR},
+      MCHNT_DISC_DET_INDEX = #{mchntDiscDetIndex,jdbcType=VARCHAR},
+      SVC_NET_URL = #{svcNetUrl,jdbcType=VARCHAR},
+      MCHNT_WEB_SITE_NM = #{mchntWebSiteNm,jdbcType=VARCHAR},
+      BUSS_TP = #{bussTp,jdbcType=VARCHAR},
+      PROD_FUNC = #{prodFunc,jdbcType=VARCHAR},
+      BUSS_CONT1_EMAIL = #{bussCont1Email,jdbcType=VARCHAR},
+      SINGLE_AT_LIMIT = #{singleAtLimit,jdbcType=CHAR},
+      SINGLE_AT_LIMIT_DESC = #{singleAtLimitDesc,jdbcType=VARCHAR},
+      SINGLE_CARD_DAY_AT_LIMIT = #{singleCardDayAtLimit,jdbcType=CHAR},
+      SINGLE_CARD_DAY_AT_LIMIT_DESC = #{singleCardDayAtLimitDesc,jdbcType=VARCHAR},
+      SUBMCHNT_IN = #{submchntIn,jdbcType=CHAR},
+      SVC_INS_NM = #{svcInsNm,jdbcType=VARCHAR},
+      HDQRS_BRANCH_IN = #{hdqrsBranchIn,jdbcType=CHAR},
+      HDQRS_MCHNT_CD = #{hdqrsMchntCd,jdbcType=VARCHAR},
+      CHNL_MCHNT_CD = #{chnlMchntCd,jdbcType=VARCHAR},
+      MCC_APPL_RULE = #{mccApplRule,jdbcType=VARCHAR},
+      MASTER_PWD = #{masterPwd,jdbcType=VARCHAR},
+      INS_RESV1 = #{insResv1,jdbcType=VARCHAR},
+      INS_RESV2 = #{insResv2,jdbcType=VARCHAR},
+      INS_RESV3 = #{insResv3,jdbcType=VARCHAR},
+      INS_RESV4 = #{insResv4,jdbcType=VARCHAR},
+      INS_RESV5 = #{insResv5,jdbcType=VARCHAR},
+      INS_RESV6 = #{insResv6,jdbcType=VARCHAR},
+      INS_RESV9 = #{insResv9,jdbcType=VARCHAR},
+      INS_RESV10 = #{insResv10,jdbcType=VARCHAR},
+      CUP_BRANCH_RESV1 = #{cupBranchResv1,jdbcType=VARCHAR},
+      CHNL_ID = #{chnlId,jdbcType=VARCHAR},
+      EBAP_MCHT_STAT = #{ebapMchtStat,jdbcType=CHAR},
+      POS_MCHT_STAT = #{posMchtStat,jdbcType=CHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP},
+      LAST_UPD_TLR = #{lastUpdTlr,jdbcType=VARCHAR}
+    where MCHNT_CD = #{mchntCd,jdbcType=VARCHAR}
+  </update>
+
+
+    <!--  查询所有需要新增的银联商户 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from TPAM_CUP_MCHT_INFO WHERE CHNL_ID = '00'
+    </select>
+
+
+    <!--  查询需要新增的银联商户 -->
+    <select id="selectBytTimeAdd" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        TPAM_CUP_MCHT_INFO
+        WHERE CHNL_ID = '00' and EBAP_MCHT_STAT = '0'
+        and to_char(CRT_TM,'yyyymmddhh24miss') &gt; #{beginTime,jdbcType=VARCHAR}
+        AND to_char(CRT_TM,'yyyymmddhh24miss') &lt;= #{endTime,jdbcType=VARCHAR}
+    </select>
+
+    <!--  查询需要修改的银联商户 -->
+    <select id="selectBytTimeUpdate" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        TPAM_CUP_MCHT_INFO
+        WHERE CHNL_ID = '00' and  EBAP_MCHT_STAT = '0'
+        AND TO_CHAR(CRT_TM,'yyyymmddhh24miss') &lt;= #{beginTime,jdbcType=VARCHAR}
+        AND  to_char(LAST_UPD_TM,'yyyymmddhh24miss') &gt; #{beginTime,jdbcType=VARCHAR}
+        AND to_char(LAST_UPD_TM,'yyyymmddhh24miss') &lt;= #{endTime,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 查询银联商户号 -->
+    <select id="selectNomalMchts" resultType="string">
+        SELECT MCHNT_CD FROM TPAM_CUP_MCHT_INFO WHERE CHNL_ID = '00'
+    </select>
+
+    <update id="updateStateByMchntCd" parameterType="map" >
+         UPDATE TPAM_CUP_MCHT_INFO set EBAP_MCHT_STAT = '1' , LAST_UPD_TM = #{date,jdbcType=TIMESTAMP} WHERE MCHNT_CD = #{mchntCd,jdbcType=VARCHAR}
+    </update>
+</mapper>

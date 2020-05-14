@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthPagyFileSumMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyFileSum" >
+    <id column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <id column="CHK_DATA_DT" property="chkDataDt" jdbcType="CHAR" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="TXN_TOTAL_CNT" property="txnTotalCnt" jdbcType="DECIMAL" />
+    <result column="TXN_TOTAL_AMT" property="txnTotalAmt" jdbcType="DECIMAL" />
+    <result column="REF_TOTAL_CNT" property="refTotalCnt" jdbcType="DECIMAL" />
+    <result column="REF_TOTAL_AMT" property="refTotalAmt" jdbcType="DECIMAL" />
+    <result column="FEE_TOTAL_AMT" property="feeTotalAmt" jdbcType="DECIMAL" />
+    <result column="RECPT_AMT" property="recptAmt" jdbcType="DECIMAL" />
+    <result column="SUM_RMK" property="sumRmk" jdbcType="VARCHAR" />
+    <result column="CRT_TM" property="crtTm" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PAGY_NO, CHK_DATA_DT, PAGY_SYS_NO, TXN_TOTAL_CNT, TXN_TOTAL_AMT, REF_TOTAL_CNT, REF_TOTAL_AMT, 
+    FEE_TOTAL_AMT, RECPT_AMT, SUM_RMK, CRT_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_PAGY_FILE_SUM
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from BTH_PAGY_FILE_SUM
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyFileSum" >
+    insert into BTH_PAGY_FILE_SUM (PAGY_NO, CHK_DATA_DT, PAGY_SYS_NO, 
+      TXN_TOTAL_CNT, TXN_TOTAL_AMT, REF_TOTAL_CNT, 
+      REF_TOTAL_AMT, FEE_TOTAL_AMT, RECPT_AMT, 
+      SUM_RMK, CRT_TM)
+    values (#{pagyNo,jdbcType=CHAR}, #{chkDataDt,jdbcType=CHAR}, #{pagySysNo,jdbcType=CHAR}, 
+      #{txnTotalCnt,jdbcType=DECIMAL}, #{txnTotalAmt,jdbcType=DECIMAL}, #{refTotalCnt,jdbcType=DECIMAL}, 
+      #{refTotalAmt,jdbcType=DECIMAL}, #{feeTotalAmt,jdbcType=DECIMAL}, #{recptAmt,jdbcType=DECIMAL}, 
+      #{sumRmk,jdbcType=VARCHAR}, #{crtTm,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyFileSum" >
+    insert into BTH_PAGY_FILE_SUM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="txnTotalCnt != null" >
+        TXN_TOTAL_CNT,
+      </if>
+      <if test="txnTotalAmt != null" >
+        TXN_TOTAL_AMT,
+      </if>
+      <if test="refTotalCnt != null" >
+        REF_TOTAL_CNT,
+      </if>
+      <if test="refTotalAmt != null" >
+        REF_TOTAL_AMT,
+      </if>
+      <if test="feeTotalAmt != null" >
+        FEE_TOTAL_AMT,
+      </if>
+      <if test="recptAmt != null" >
+        RECPT_AMT,
+      </if>
+      <if test="sumRmk != null" >
+        SUM_RMK,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="chkDataDt != null" >
+        #{chkDataDt,jdbcType=CHAR},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="txnTotalCnt != null" >
+        #{txnTotalCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnTotalAmt != null" >
+        #{txnTotalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refTotalCnt != null" >
+        #{refTotalCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="refTotalAmt != null" >
+        #{refTotalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeTotalAmt != null" >
+        #{feeTotalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recptAmt != null" >
+        #{recptAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="sumRmk != null" >
+        #{sumRmk,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyFileSum" >
+    update BTH_PAGY_FILE_SUM
+    <set >
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="txnTotalCnt != null" >
+        TXN_TOTAL_CNT = #{txnTotalCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnTotalAmt != null" >
+        TXN_TOTAL_AMT = #{txnTotalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refTotalCnt != null" >
+        REF_TOTAL_CNT = #{refTotalCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="refTotalAmt != null" >
+        REF_TOTAL_AMT = #{refTotalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeTotalAmt != null" >
+        FEE_TOTAL_AMT = #{feeTotalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recptAmt != null" >
+        RECPT_AMT = #{recptAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="sumRmk != null" >
+        SUM_RMK = #{sumRmk,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=CHAR},
+      </if>
+    </set>
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyFileSum" >
+    update BTH_PAGY_FILE_SUM
+    set PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      TXN_TOTAL_CNT = #{txnTotalCnt,jdbcType=DECIMAL},
+      TXN_TOTAL_AMT = #{txnTotalAmt,jdbcType=DECIMAL},
+      REF_TOTAL_CNT = #{refTotalCnt,jdbcType=DECIMAL},
+      REF_TOTAL_AMT = #{refTotalAmt,jdbcType=DECIMAL},
+      FEE_TOTAL_AMT = #{feeTotalAmt,jdbcType=DECIMAL},
+      RECPT_AMT = #{recptAmt,jdbcType=DECIMAL},
+      SUM_RMK = #{sumRmk,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=CHAR}
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR}
+  </update>
+
+  <delete id="deleteByPagySysNoAndDate" parameterType="string">
+    delete from BTH_PAGY_FILE_SUM
+    where PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{settleDate,jdbcType=CHAR}
+  </delete>
+
+</mapper>

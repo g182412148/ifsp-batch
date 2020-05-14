@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.scrcu.ebank.ebap</groupId>
+	<artifactId>batch</artifactId>
+	<version>1.0</version>
+	<properties>
+		<!-- 插件参数 -->
+		<maven.war.plugin.version>3.0.0</maven.war.plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+		<!-- 以下JAR为联机框架公共依赖 -->
+		<!-- ifsp -->
+		<ifsp-core-scrcu-ebap.version>1.0.0.8</ifsp-core-scrcu-ebap.version>
+		<ifsp-util.version>1.0.1.5</ifsp-util.version>
+		<ifsp-dubbo.version>1.0.0.0</ifsp-dubbo.version>
+		<ripples-client.version>1.1.0</ripples-client.version>
+		<ifsp-cache.version>1.0.0.1</ifsp-cache.version>
+		<!-- spring -->
+		<spring.version>4.2.5.RELEASE</spring.version>
+		<aopalliance.version>1.0</aopalliance.version>
+		<aspectjweaver.version>1.7.4</aspectjweaver.version>
+		<!-- 日志 -->
+		<log4j.version>2.6.2</log4j.version>
+		<slf4j.version>1.7.21</slf4j.version>
+		<jackson.version>2.8.2</jackson.version>
+		<!-- 缓存 -->
+		<jedis.version>2.9.0</jedis.version>
+		<spring-data-redis.version>1.7.2.RELEASE</spring-data-redis.version>
+		<!-- validator -->
+		<hibernate-validator.version>4.3.2.Final</hibernate-validator.version>
+		<javassist.version>3.20.0-GA</javassist.version>
+		<dom4j.version>1.6.1</dom4j.version>
+		<jboss-logging.version>3.2.1.Final</jboss-logging.version>
+		<classmate.version>1.1.0</classmate.version>
+		<!-- mybatis -->
+		<mybatis.version>3.3.1</mybatis.version>
+		<mybatis-spring.version>1.2.5</mybatis-spring.version>
+		<ojdbc6.version>11.2.0.3</ojdbc6.version>
+		<pagehelper.version>4.1.6</pagehelper.version>
+		<jsqlparser.version>1.2</jsqlparser.version>
+		<!-- JDBC -->
+		<druid.version>1.1.10</druid.version>
+		<!-- dubbo -->
+		<dubbo.version>2.5.9</dubbo.version>
+		<!-- Zk -->
+		<zkclient.version>0.10</zkclient.version>
+		<zookeeper.version>3.4.8</zookeeper.version>
+		<netty.version>3.10.0.Final</netty.version>
+		<standard.version>1.1.2</standard.version>
+		<netty-all.version>4.1.25.Final</netty-all.version>
+		<!-- JSON -->
+		<gson.version>2.8.5</gson.version>
+		<fastjson.version>1.2.47</fastjson.version>
+		<!-- 签名 -->
+		<bcprov-jdk16.version>1.46</bcprov-jdk16.version>
+		<!-- 日期工具类 -->
+		<joda-time.version>2.9.4</joda-time.version>
+		<!-- 模板 -->
+		<freemarker.version>2.3.28</freemarker.version>
+		<!-- XML -->
+		<jdom.version>1.1.3</jdom.version>
+		<!-- lombok -->
+		<lombok.version>1.18.0</lombok.version>
+		<!-- web -->
+		<jstl.version>1.2</jstl.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<jstl.version>1.2</jstl.version>
+		<javax.el.version>2.2.4</javax.el.version>
+		<javax.el-api.version>2.2.4</javax.el-api.version>
+		<!-- apache -->
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-lang3.version>3.4</commons-lang3.version>
+		<commons-beanutils.version>1.9.2</commons-beanutils.version>
+		<commons-collections4.version>4.1</commons-collections4.version>
+		<commons-logging.version>1.2</commons-logging.version>
+		<commons-dbcp2.version>2.1.1</commons-dbcp2.version>
+		<commons-pool2.version>2.4.2</commons-pool2.version>
+		<commons-codec.version>1.11</commons-codec.version>
+		<commons-io.version>2.6</commons-io.version>
+		<commons-net.version>3.6</commons-net.version>
+		<!-- guava.version -->
+		<guava.version>19.0</guava.version>
+		<!-- junit -->
+		<junit.version>4.12</junit.version>
+		<!-- 四川农信 -->
+		<ebank-common.service.version>0.0.6</ebank-common.service.version>
+		<ebank-common.client.version>0.0.6</ebank-common.client.version>
+		<ebank-common.registry.version>0.0.2</ebank-common.registry.version>
+		<ifsp-scrcu-dubbo.version>1.0</ifsp-scrcu-dubbo.version>
+		<ifsp-scrcu-msg.version>1.0</ifsp-scrcu-msg.version>
+		<!-- 本工程 -->
+		<jsch.version>0.1.54</jsch.version>
+		<quartz.version>2.3.0</quartz.version>
+	</properties>
+
+	<!-- JAR仓库 -->
+	<repositories>
+		<repository>
+			<id>ifsp</id>
+			<url>http://10.16.2.63:8082/nexus/content/repositories/scrcu_ebap_ScaveningPayment/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<!-- 插件仓库 -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ifsp</id>
+			<url>http://10.16.2.63:8082/nexus/content/repositories/scrcu_ebap_ScaveningPayment/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<!-- 定义运行环境 -->
+	<profiles>
+		<!-- 开发环境 -->
+		<profile>
+			<id>dev</id>
+			<properties>
+				<environment>dev</environment>
+			</properties>
+		</profile>
+		<!-- SIT环境 -->
+		<profile>
+			<id>sit</id>
+			<properties>
+				<environment>sit</environment>
+			</properties>
+		</profile>
+		<!-- 性能环境 -->
+		<profile>
+			<id>pet</id>
+			<properties>
+				<environment>pet</environment>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<!-- UAT环境 -->
+		<profile>
+			<id>uat</id>
+			<properties>
+				<environment>uat</environment>
+			</properties>
+		</profile>
+		<!-- 生产环境 -->
+		<profile>
+			<id>prd</id>
+			<properties>
+				<environment>prd</environment>
+			</properties>
+		</profile>
+		<!-- 准生产环境 -->
+		<profile>
+			<id>pre</id>
+			<properties>
+				<environment>pre</environment>
+			</properties>
+		</profile>
+	</profiles>
+	<!--打包本地资源 -->
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources/evnconfigs/${environment}</directory>
+			</resource>
+		</resources>
+		<plugins>
+
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
+<!-- 				<version>2.4</version> -->
+<!-- 				<configuration> -->
+<!-- 					<archive> -->
+<!-- 						<manifest> -->
+<!-- 							<addClasspath>true</addClasspath> -->
+<!-- 							<classpathPrefix>lib/</classpathPrefix> -->
+<!-- 							<mainClass>com.scrcu.ebank.ebap.batch.client.Client</mainClass> -->
+<!-- 						</manifest> -->
+<!-- 					</archive> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Ignore-Scanning-Archives>WEB-INF/lib/mybatis-3.3.1.jar</Ignore-Scanning-Archives>
+							<Ignore-Scanning-Packages>org.apache.ibatis.javassist</Ignore-Scanning-Packages>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<!-- 1. spring -->
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>${aopalliance.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectjweaver.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 2. hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>${javassist.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>${jboss-logging.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml</groupId>
+			<artifactId>classmate</artifactId>
+			<version>${classmate.version}</version>
+		</dependency>
+		<!-- 3. apache commons utils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${commons-collections4.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${commons-dbcp2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>${commons-pool2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>${commons-net.version}</version>
+		</dependency>
+		<!-- 4. xml -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>${jdom.version}</version>
+		</dependency>
+		<!-- 5. alibaba -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>${dubbo.version}</version>
+		</dependency>
+		<!-- 7. jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<!-- 9. log -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-web</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<!-- 10. mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring.version}</version>
+		</dependency>
+		<!-- 引入分页插件(可选) -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>${pagehelper.version}</version>
+		</dependency>
+		<!-- 分页插件(可选)强制依赖 -->
+		<dependency>
+			<groupId>com.github.jsqlparser</groupId>
+			<artifactId>jsqlparser</artifactId>
+			<version>${jsqlparser.version}</version>
+		</dependency>
+		<!-- 11. oracle数据库驱动 -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>${ojdbc6.version}</version>
+		</dependency>
+		<!-- 12. zk -->
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>${zkclient.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>${zookeeper.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>${netty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>${netty-all.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>${standard.version}</version>
+		</dependency>
+		<!-- 其他 -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker.version}</version>
+		</dependency>
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		<!-- guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+		<!-- WEB -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>${javax.el.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${javax.el-api.version}</version>
+		</dependency>
+		<!-- ifsp -->
+		<dependency>
+			<groupId>com.ruim.ifsp</groupId>
+			<artifactId>ifsp-core-scrcu-ebap</artifactId>
+			<version>${ifsp-core-scrcu-ebap.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ruim.ifsp</groupId>
+			<artifactId>ifsp-dubbo</artifactId>
+			<version>${ifsp-dubbo.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ruim.ifsp</groupId>
+			<artifactId>ifsp-util</artifactId>
+			<version>${ifsp-util.version}</version>
+		</dependency>
+		<!-- 时间工具包 -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time.version}</version>
+		</dependency>
+		<!-- 缓存 -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>${spring-data-redis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ruim.ifsp</groupId>
+			<artifactId>ifsp-cache-scrcu-ebap</artifactId>
+			<version>${ifsp-cache.version}</version>
+		</dependency>
+		<!-- 链路监控 -->
+		<dependency>
+			<groupId>com.ruim.ifsp</groupId>
+			<artifactId>ripples-client</artifactId>
+			<version>${ripples-client.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>dubbo-jdk1.7</artifactId>
+					<groupId>com.alibaba</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 测试 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- 四川农信 -->
+		<dependency>
+			<groupId>com.scrcu.ebank</groupId>
+			<artifactId>common.service</artifactId>
+			<version>${ebank-common.service.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.scrcu.ebank</groupId>
+			<artifactId>common.client</artifactId>
+			<version>${ebank-common.client.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.scrcu.ebank</groupId>
+			<artifactId>common.registry</artifactId>
+			<version>${ebank-common.registry.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>dubbo</artifactId>
+					<groupId>com.alibaba</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.scrcu.ebank.ebap</groupId>
+			<artifactId>ifsp-scrcu-dubbo</artifactId>
+			<version>${ifsp-scrcu-dubbo.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ruim.ifsp</groupId>
+			<artifactId>ifsp-scrcu-msg</artifactId>
+			<version>${ifsp-scrcu-msg.version}</version>
+		</dependency>
+		<!-- 本工程 -->
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<version>${jsch.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>3.9</version>
+        </dependency>
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>4.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<version>4.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>curator-framework</artifactId>
+                    <groupId>org.apache.curator</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>4.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>curator-client</artifactId>
+                    <groupId>org.apache.curator</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-client</artifactId>
+			<version>4.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>zookeeper</artifactId>
+                    <groupId>org.apache.zookeeper</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpclient</artifactId>
+		<version>4.5.5</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpmime</artifactId>
+		<version>4.5.5</version>
+	</dependency>
+
+	</dependencies>
+</project>

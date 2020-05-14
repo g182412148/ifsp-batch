@@ -1,0 +1,1857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthSetCapitalDetailMapper">
+    <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="CLEA_TIME" jdbcType="VARCHAR" property="cleaTime"/>
+        <result column="MER_ORDER_ID" jdbcType="VARCHAR" property="merOrderId"/>
+        <result column="ORDER_ID" jdbcType="VARCHAR" property="orderId"/>
+        <result column="TRAN_TIME" jdbcType="VARCHAR" property="tranTime"/>
+        <result column="PAY_SEQ_ID" jdbcType="VARCHAR" property="paySeqId"/>
+        <result column="PAY_SEND_TIME" jdbcType="VARCHAR" property="paySendTime"/>
+        <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId"/>
+        <result column="MER_ID" jdbcType="VARCHAR" property="merId"/>
+        <result column="MER_NAME" jdbcType="VARCHAR" property="merName"/>
+        <result column="SUB_MER_ID" jdbcType="VARCHAR" property="subMerId"/>
+        <result column="SUB_MER_NAME" jdbcType="VARCHAR" property="subMerName"/>
+        <result column="OUT_ACCOUNT_NO" jdbcType="VARCHAR" property="outAccountNo"/>
+        <result column="OUT_ACCOUNT_NAME" jdbcType="VARCHAR" property="outAccountName"/>
+        <result column="OUT_ACCOUT_ORG" jdbcType="VARCHAR" property="outAccoutOrg"/>
+        <result column="IN_ACCOUNT_NO" jdbcType="VARCHAR" property="inAccountNo"/>
+        <result column="IN_ACCOUNT_NAME" jdbcType="VARCHAR" property="inAccountName"/>
+        <result column="IN_ACCOUT_ORG" jdbcType="VARCHAR" property="inAccoutOrg"/>
+        <result column="TRANS_CUR" jdbcType="VARCHAR" property="transCur"/>
+        <result column="TRAN_AMOUNT" jdbcType="VARCHAR" property="tranAmount"/>
+        <result column="ENTRY_TYPE" jdbcType="VARCHAR" property="entryType"/>
+        <result column="ACCOUNT_TYPE" jdbcType="VARCHAR" property="accountType"/>
+        <result column="FUND_CHANNEL" jdbcType="VARCHAR" property="fundChannel"/>
+        <result column="TRAN_TYPE" jdbcType="VARCHAR" property="tranType"/>
+        <result column="DEAL_RESULT" jdbcType="VARCHAR" property="dealResult"/>
+        <result column="ACCOUNT_STAUTS" jdbcType="VARCHAR" property="accountStauts"/>
+        <result column="DEAL_REMARK" jdbcType="VARCHAR" property="dealRemark"/>
+        <result column="CREATE_DATE" jdbcType="VARCHAR" property="createDate"/>
+        <result column="UPDATE_DATE" jdbcType="VARCHAR" property="updateDate"/>
+        <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo"/>
+        <result column="RESERVED1" jdbcType="VARCHAR" property="reserved1"/>
+        <result column="RESERVED2" jdbcType="VARCHAR" property="reserved2"/>
+        <result column="RESERVED3" jdbcType="VARCHAR" property="reserved3"/>
+        <result column="PARTERN_CODE" jdbcType="VARCHAR" property="parternCode"/>
+    </resultMap>
+
+    <resultMap id="NewResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="CLEA_TIME" jdbcType="VARCHAR" property="cleaTime"/>
+        <result column="MER_ORDER_ID" jdbcType="VARCHAR" property="merOrderId"/>
+        <result column="ORDER_ID" jdbcType="VARCHAR" property="orderId"/>
+        <result column="TRAN_TIME" jdbcType="VARCHAR" property="tranTime"/>
+        <result column="PAY_SEQ_ID" jdbcType="VARCHAR" property="paySeqId"/>
+        <result column="PAY_SEND_TIME" jdbcType="VARCHAR" property="paySendTime"/>
+        <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId"/>
+        <result column="MER_ID" jdbcType="VARCHAR" property="merId"/>
+        <result column="MER_NAME" jdbcType="VARCHAR" property="merName"/>
+        <result column="SUB_MER_ID" jdbcType="VARCHAR" property="subMerId"/>
+        <result column="SUB_MER_NAME" jdbcType="VARCHAR" property="subMerName"/>
+        <result column="OUT_ACCOUNT_NO" jdbcType="VARCHAR" property="outAccountNo"/>
+        <result column="OUT_ACCOUNT_NAME" jdbcType="VARCHAR" property="outAccountName"/>
+        <result column="OUT_ACCOUT_ORG" jdbcType="VARCHAR" property="outAccoutOrg"/>
+        <result column="IN_ACCOUNT_NO" jdbcType="VARCHAR" property="inAccountNo"/>
+        <result column="IN_ACCOUNT_NAME" jdbcType="VARCHAR" property="inAccountName"/>
+        <result column="IN_ACCOUT_ORG" jdbcType="VARCHAR" property="inAccoutOrg"/>
+        <result column="TRANS_CUR" jdbcType="VARCHAR" property="transCur"/>
+        <result column="TRAN_AMOUNT" jdbcType="VARCHAR" property="tranAmount"/>
+        <result column="ENTRY_TYPE" jdbcType="VARCHAR" property="entryType"/>
+        <result column="ACCOUNT_TYPE" jdbcType="VARCHAR" property="accountType"/>
+        <result column="FUND_CHANNEL" jdbcType="VARCHAR" property="fundChannel"/>
+        <result column="TRAN_TYPE" jdbcType="VARCHAR" property="tranType"/>
+        <result column="DEAL_RESULT" jdbcType="VARCHAR" property="dealResult"/>
+        <result column="ACCOUNT_STAUTS" jdbcType="VARCHAR" property="accountStauts"/>
+        <result column="DEAL_REMARK" jdbcType="VARCHAR" property="dealRemark"/>
+        <result column="CREATE_DATE" jdbcType="VARCHAR" property="createDate"/>
+        <result column="UPDATE_DATE" jdbcType="VARCHAR" property="updateDate"/>
+        <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo"/>
+        <result column="RESERVED1" jdbcType="VARCHAR" property="reserved1"/>
+        <result column="RESERVED2" jdbcType="VARCHAR" property="reserved2"/>
+        <result column="RESERVED3" jdbcType="VARCHAR" property="reserved3"/>
+        <result column="PARTERN_CODE" jdbcType="VARCHAR" property="parternCode"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID
+        ,
+        CLEA_TIME,
+        MER_ORDER_ID,
+        ORDER_ID,
+        TRAN_TIME,
+        PAY_SEQ_ID,
+        PAY_SEND_TIME,
+        ACCOUNT_ID,
+        MER_ID,
+        MER_NAME,
+        SUB_MER_ID,
+        SUB_MER_NAME,
+        OUT_ACCOUNT_NO,
+        OUT_ACCOUNT_NAME,
+        OUT_ACCOUT_ORG,
+        IN_ACCOUNT_NO,
+        IN_ACCOUNT_NAME,
+        IN_ACCOUT_ORG,
+        TRANS_CUR,
+        TRAN_AMOUNT,
+        ENTRY_TYPE,
+        ACCOUNT_TYPE,
+        FUND_CHANNEL,
+        TRAN_TYPE,
+        DEAL_RESULT,
+        ACCOUNT_STAUTS,
+        DEAL_REMARK,
+        CREATE_DATE,
+        UPDATE_DATE,
+        BATCH_NO,
+        PARTERN_CODE,
+        RESERVED1,
+        RESERVED2,
+        RESERVED3
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from BTH_SET_CAPITAL_DETAIL
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from BTH_SET_CAPITAL_DETAIL
+        where ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        insert into BTH_SET_CAPITAL_DETAIL (ID, CLEA_TIME, MER_ORDER_ID,
+                                            ORDER_ID, TRAN_TIME, PAY_SEQ_ID,
+                                            PAY_SEND_TIME, ACCOUNT_ID, MER_ID,
+                                            MER_NAME, SUB_MER_ID, SUB_MER_NAME,
+                                            OUT_ACCOUNT_NO, OUT_ACCOUNT_NAME, OUT_ACCOUT_ORG,
+                                            IN_ACCOUNT_NO, IN_ACCOUNT_NAME, IN_ACCOUT_ORG,
+                                            TRANS_CUR, TRAN_AMOUNT, ENTRY_TYPE,
+                                            ACCOUNT_TYPE, FUND_CHANNEL, TRAN_TYPE,
+                                            DEAL_RESULT, ACCOUNT_STAUTS, DEAL_REMARK,
+                                            CREATE_DATE, UPDATE_DATE, BATCH_NO, RESERVED1,
+                                            RESERVED2, RESERVED3)
+        values (#{id,jdbcType=VARCHAR}, #{cleaTime,jdbcType=VARCHAR}, #{merOrderId,jdbcType=VARCHAR},
+                #{orderId,jdbcType=VARCHAR}, #{tranTime,jdbcType=VARCHAR}, #{paySeqId,jdbcType=VARCHAR},
+                #{paySendTime,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, #{merId,jdbcType=VARCHAR},
+                #{merName,jdbcType=VARCHAR}, #{subMerId,jdbcType=VARCHAR}, #{subMerName,jdbcType=VARCHAR},
+                #{outAccountNo,jdbcType=VARCHAR}, #{outAccountName,jdbcType=VARCHAR}, #{outAccoutOrg,jdbcType=VARCHAR},
+                #{inAccountNo,jdbcType=VARCHAR}, #{inAccountName,jdbcType=VARCHAR}, #{inAccoutOrg,jdbcType=VARCHAR},
+                #{transCur,jdbcType=VARCHAR}, #{tranAmount,jdbcType=VARCHAR}, #{entryType,jdbcType=VARCHAR},
+                #{accountType,jdbcType=VARCHAR}, #{fundChannel,jdbcType=VARCHAR}, #{tranType,jdbcType=VARCHAR},
+                #{dealResult,jdbcType=VARCHAR}, #{accountStauts,jdbcType=VARCHAR}, #{dealRemark,jdbcType=VARCHAR},
+                 #{createDate,jdbcType=VARCHAR}, to_char(sysdate,'yyyymmddhh24miss'), #{batchNo,jdbcType=VARCHAR},
+                #{reserved1,jdbcType=VARCHAR},
+                #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        insert into BTH_SET_CAPITAL_DETAIL
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="cleaTime != null">
+                CLEA_TIME,
+            </if>
+            <if test="merOrderId != null">
+                MER_ORDER_ID,
+            </if>
+            <if test="orderId != null">
+                ORDER_ID,
+            </if>
+            <if test="tranTime != null">
+                TRAN_TIME,
+            </if>
+            <if test="paySeqId != null">
+                PAY_SEQ_ID,
+            </if>
+            <if test="paySendTime != null">
+                PAY_SEND_TIME,
+            </if>
+            <if test="accountId != null">
+                ACCOUNT_ID,
+            </if>
+            <if test="merId != null">
+                MER_ID,
+            </if>
+            <if test="merName != null">
+                MER_NAME,
+            </if>
+            <if test="subMerId != null">
+                SUB_MER_ID,
+            </if>
+            <if test="subMerName != null">
+                SUB_MER_NAME,
+            </if>
+            <if test="outAccountNo != null">
+                OUT_ACCOUNT_NO,
+            </if>
+            <if test="outAccountName != null">
+                OUT_ACCOUNT_NAME,
+            </if>
+            <if test="outAccoutOrg != null">
+                OUT_ACCOUT_ORG,
+            </if>
+            <if test="inAccountNo != null">
+                IN_ACCOUNT_NO,
+            </if>
+            <if test="inAccountName != null">
+                IN_ACCOUNT_NAME,
+            </if>
+            <if test="inAccoutOrg != null">
+                IN_ACCOUT_ORG,
+            </if>
+            <if test="transCur != null">
+                TRANS_CUR,
+            </if>
+            <if test="tranAmount != null">
+                TRAN_AMOUNT,
+            </if>
+            <if test="entryType != null">
+                ENTRY_TYPE,
+            </if>
+            <if test="accountType != null">
+                ACCOUNT_TYPE,
+            </if>
+            <if test="fundChannel != null">
+                FUND_CHANNEL,
+            </if>
+            <if test="tranType != null">
+                TRAN_TYPE,
+            </if>
+            <if test="dealResult != null">
+                DEAL_RESULT,
+            </if>
+            <if test="accountStauts != null">
+                ACCOUNT_STAUTS,
+            </if>
+            <if test="dealRemark != null">
+                DEAL_REMARK,
+            </if>
+<!--             <if test="createDate != null"> -->
+                CREATE_DATE,
+<!--             </if> -->
+<!--             <if test="updateDate != null"> -->
+                UPDATE_DATE,
+<!--             </if> -->
+            <if test="batchNo != null">
+                BATCH_NO,
+            </if>
+            <if test="reserved1 != null">
+                RESERVED1,
+            </if>
+            <if test="reserved2 != null">
+                RESERVED2,
+            </if>
+            <if test="reserved3 != null">
+                RESERVED3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="cleaTime != null">
+                #{cleaTime,jdbcType=VARCHAR},
+            </if>
+            <if test="merOrderId != null">
+                #{merOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTime != null">
+                #{tranTime,jdbcType=VARCHAR},
+            </if>
+            <if test="paySeqId != null">
+                #{paySeqId,jdbcType=VARCHAR},
+            </if>
+            <if test="paySendTime != null">
+                #{paySendTime,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null">
+                #{accountId,jdbcType=VARCHAR},
+            </if>
+            <if test="merId != null">
+                #{merId,jdbcType=VARCHAR},
+            </if>
+            <if test="merName != null">
+                #{merName,jdbcType=VARCHAR},
+            </if>
+            <if test="subMerId != null">
+                #{subMerId,jdbcType=VARCHAR},
+            </if>
+            <if test="subMerName != null">
+                #{subMerName,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccountNo != null">
+                #{outAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccountName != null">
+                #{outAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccoutOrg != null">
+                #{outAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccountNo != null">
+                #{inAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccountName != null">
+                #{inAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccoutOrg != null">
+                #{inAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="transCur != null">
+                #{transCur,jdbcType=VARCHAR},
+            </if>
+            <if test="tranAmount != null">
+                #{tranAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="entryType != null">
+                #{entryType,jdbcType=VARCHAR},
+            </if>
+            <if test="accountType != null">
+                #{accountType,jdbcType=VARCHAR},
+            </if>
+            <if test="fundChannel != null">
+                #{fundChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="tranType != null">
+                #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="dealResult != null">
+                #{dealResult,jdbcType=VARCHAR},
+            </if>
+            <if test="accountStauts != null">
+                #{accountStauts,jdbcType=VARCHAR},
+            </if>
+            <if test="dealRemark != null">
+                #{dealRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=VARCHAR},
+            </if>
+<!--             <if test="updateDate != null"> -->
+                to_char(sysdate,'yyyymmddhh24miss'),
+<!--             </if> -->
+            <if test="batchNo != null">
+                #{batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved1 != null">
+                #{reserved1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved2 != null">
+                #{reserved2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved3 != null">
+                #{reserved3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        update BTH_SET_CAPITAL_DETAIL
+        <set>
+            <if test="cleaTime != null">
+                CLEA_TIME = #{cleaTime,jdbcType=VARCHAR},
+            </if>
+            <if test="merOrderId != null">
+                MER_ORDER_ID = #{merOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                ORDER_ID = #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTime != null">
+                TRAN_TIME = #{tranTime,jdbcType=VARCHAR},
+            </if>
+            <if test="paySeqId != null">
+                PAY_SEQ_ID = #{paySeqId,jdbcType=VARCHAR},
+            </if>
+            <if test="paySendTime != null">
+                PAY_SEND_TIME = #{paySendTime,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null">
+                ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+            </if>
+            <if test="merId != null">
+                MER_ID = #{merId,jdbcType=VARCHAR},
+            </if>
+            <if test="merName != null">
+                MER_NAME = #{merName,jdbcType=VARCHAR},
+            </if>
+            <if test="subMerId != null">
+                SUB_MER_ID = #{subMerId,jdbcType=VARCHAR},
+            </if>
+            <if test="subMerName != null">
+                SUB_MER_NAME = #{subMerName,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccountNo != null">
+                OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccountName != null">
+                OUT_ACCOUNT_NAME = #{outAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccoutOrg != null">
+                OUT_ACCOUT_ORG = #{outAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccountNo != null">
+                IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccountName != null">
+                IN_ACCOUNT_NAME = #{inAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccoutOrg != null">
+                IN_ACCOUT_ORG = #{inAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="transCur != null">
+                TRANS_CUR = #{transCur,jdbcType=VARCHAR},
+            </if>
+            <if test="tranAmount != null">
+                TRAN_AMOUNT = #{tranAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="entryType != null">
+                ENTRY_TYPE = #{entryType,jdbcType=VARCHAR},
+            </if>
+            <if test="accountType != null">
+                ACCOUNT_TYPE = #{accountType,jdbcType=VARCHAR},
+            </if>
+            <if test="fundChannel != null">
+                FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="tranType != null">
+                TRAN_TYPE = #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="dealResult != null">
+                DEAL_RESULT = #{dealResult,jdbcType=VARCHAR},
+            </if>
+            <if test="accountStauts != null">
+                ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            </if>
+            <if test="dealRemark != null">
+                DEAL_REMARK = #{dealRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+            </if>
+<!--             <if test="updateDate != null"> -->
+                UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss'),
+<!--             </if> -->
+            <if test="batchNo != null">
+                BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved1 != null">
+                RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved2 != null">
+                RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved3 != null">
+                RESERVED3 = #{reserved3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        update BTH_SET_CAPITAL_DETAIL
+        set CLEA_TIME        = #{cleaTime,jdbcType=VARCHAR},
+            MER_ORDER_ID     = #{merOrderId,jdbcType=VARCHAR},
+            ORDER_ID         = #{orderId,jdbcType=VARCHAR},
+            TRAN_TIME        = #{tranTime,jdbcType=VARCHAR},
+            PAY_SEQ_ID       = #{paySeqId,jdbcType=VARCHAR},
+            PAY_SEND_TIME    = #{paySendTime,jdbcType=VARCHAR},
+            ACCOUNT_ID       = #{accountId,jdbcType=VARCHAR},
+            MER_ID           = #{merId,jdbcType=VARCHAR},
+            MER_NAME         = #{merName,jdbcType=VARCHAR},
+            SUB_MER_ID       = #{subMerId,jdbcType=VARCHAR},
+            SUB_MER_NAME     = #{subMerName,jdbcType=VARCHAR},
+            OUT_ACCOUNT_NO   = #{outAccountNo,jdbcType=VARCHAR},
+            OUT_ACCOUNT_NAME = #{outAccountName,jdbcType=VARCHAR},
+            OUT_ACCOUT_ORG   = #{outAccoutOrg,jdbcType=VARCHAR},
+            IN_ACCOUNT_NO    = #{inAccountNo,jdbcType=VARCHAR},
+            IN_ACCOUNT_NAME  = #{inAccountName,jdbcType=VARCHAR},
+            IN_ACCOUT_ORG    = #{inAccoutOrg,jdbcType=VARCHAR},
+            TRANS_CUR        = #{transCur,jdbcType=VARCHAR},
+            TRAN_AMOUNT      = #{tranAmount,jdbcType=VARCHAR},
+            ENTRY_TYPE       = #{entryType,jdbcType=VARCHAR},
+            ACCOUNT_TYPE     = #{accountType,jdbcType=VARCHAR},
+            FUND_CHANNEL     = #{fundChannel,jdbcType=VARCHAR},
+            TRAN_TYPE        = #{tranType,jdbcType=VARCHAR},
+            DEAL_RESULT      = #{dealResult,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS   = #{accountStauts,jdbcType=VARCHAR},
+            DEAL_REMARK      = #{dealRemark,jdbcType=VARCHAR},
+            CREATE_DATE      = #{createDate,jdbcType=VARCHAR},
+            UPDATE_DATE      = to_char(sysdate,'yyyymmddhh24miss'),
+            BATCH_NO         = #{batchNo,jdbcType=VARCHAR},
+            RESERVED1        = #{reserved1,jdbcType=VARCHAR},
+            RESERVED2        = #{reserved2,jdbcType=VARCHAR},
+            RESERVED3        = #{reserved3,jdbcType=VARCHAR}
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- ************************************system add******************************************** -->
+
+    <!-- <delete id="delete" parameterType="SetCapitalDetail">
+        delete from
+        <include refid="Table_Name" />
+        <where>
+            <include refid="Base_Where" />
+        </where>
+    </delete>
+
+    <select id="count" parameterType="java.util.Map" resultType="int">
+        select count(1) from
+        <include refid="Table_Name" />
+        <where>
+            <include refid="Base_Where" />
+        </where>
+    </select>
+
+    <select id="selectOne" parameterType="SetCapitalDetail" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column" />
+        from
+        <include refid="Table_Name" />
+        <where>
+            <include refid="Base_Where" />
+        </where>
+    </select>
+
+    <select id="selectList" parameterType="SetCapitalDetail" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column" />
+        from
+        <include refid="Table_Name" />
+        <where>
+            <include refid="Base_Where" />
+        </where>
+        <include refid="com.pactera.dipper.mybatis.common.Comm_Order_By"/>
+    </select>
+
+
+    <select id="selectListOrderBy" parameterType="java.util.Map"
+        resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column" />
+        from
+        <include refid="Table_Name" />
+        <where>
+            <include refid="Base_Where" />
+        </where>
+        order by
+        <include refid="Base_OrderBy" />
+    </select> -->
+    <!-- ************************************user add******************************************** -->
+    <!-- 根据(OUT_ACCOUNT_NO,IN_ACCOUNT_NO,TRANS_CUR)为条件对资金明细表进行汇总,为避免账户户名变更的情形导致group by报错，此处查询不查户名等相关信息 -->
+    <!-- <select id="selectSummaryInfo" parameterType="SetCapitalDetail" resultMap="BaseResultMap">
+      select
+           OUT_ACCOUT_ORG,outAccountNo,IN_ACCOUT_ORG,inAccountNo, tranAmount,transCur,ENTRY_TYPE,MER_ID
+      from
+      (
+          SELECT
+             b.*, ROWNUM rn
+          FROM
+             (
+                      SELECT
+                          OUT_ACCOUT_ORG, OUT_ACCOUNT_NO outAccountNo,  IN_ACCOUT_ORG, IN_ACCOUNT_NO inAccountNo,  SUM(TRAN_AMOUNT) tranAmount,
+                          TRANS_CUR transCur, ENTRY_TYPE,MER_ID
+                      FROM
+                          BTH_SET_CAPITAL_DETAIL a
+                      WHERE
+                          DEAL_RESULT = #{dealResult} and FUND_CHANNEL = #{fundChannel}
+                      GROUP BY  OUT_ACCOUT_ORG,  OUT_ACCOUNT_NO, IN_ACCOUT_ORG, IN_ACCOUNT_NO,  TRANS_CUR , ENTRY_TYPE ,MER_ID
+              ) b
+          ) c
+      WHERE
+      <![CDATA[c.rn >= #{startIdx} AND c.rn <= #{endIdx}]]>
+      ORDER BY ENTRY_TYPE desc
+  </select> -->
+
+    <!-- 查询账户信息：(OUT_ACCOUNT_NO,IN_ACCOUNT_NO) -->
+    <!-- <select id="selectAccountInfo" parameterType="SetCapitalDetail" resultMap="NewResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from BTH_SET_CAPITAL_DETAIL
+      where
+      1 = 1
+      <if test="outAccountNo != null">
+       and OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR}
+     </if>
+     <if test="inAccountNo != null">
+       and IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR}
+     </if>
+  </select> -->
+
+    <!-- 更新订单结算状态 -->
+    <update id="updateDealStatus" parameterType="java.util.Map">
+        update
+            BTH_SET_CAPITAL_DETAIL
+        set DEAL_RESULT  = #{dealResult},
+            FUND_CHANNEL = #{fundChannel},
+            UPDATE_DATE  = to_char(sysdate,'yyyymmddhh24miss'),
+            BATCH_NO     = #{batchNo}
+        where
+            DEAL_RESULT = #{dealStatus}
+          and FUND_CHANNEL = #{fundChannel}
+    </update>
+
+    <!-- 更新订单结算状态 -->
+    <update id="updateDetailStatusByAccountResult" parameterType="java.util.Map">
+        update
+        BTH_SET_CAPITAL_DETAIL
+        set DEAL_RESULT = #{dealResult}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        where 1 = 1
+        <if test="outAccountNo != null">
+            and OUT_ACCOUNT_NO = #{outAccountNo}
+        </if>
+        <if test="outAccoutOrg != null">
+            and OUT_ACCOUT_ORG = #{outAccoutOrg}
+        </if>
+        <if test="inAccountNo != null">
+            and IN_ACCOUNT_NO = #{inAccountNo}
+        </if>
+        <if test="inAccoutOrg != null">
+            and IN_ACCOUT_ORG = #{inAccoutOrg}
+        </if>
+        <if test="transCur != null">
+            and TRANS_CUR = #{transCur}
+        </if>
+        and BATCH_NO = #{batchNo}
+    </update>
+
+
+    <!-- 统计待清分数据 -->
+    <select id="countHandledData" parameterType="java.util.Map" resultType="int">
+        select count(1) from
+        BTH_SET_CAPITAL_DETAIL
+        where
+        <if test="fundChannel != null">
+            FUND_CHANNEL = #{fundChannel} and
+        </if>
+        (ENTRY_TYPE = #{entryType} or ENTRY_TYPE = '99') and
+        UPDATE_DATE like #{updateDate} and
+        (DEAL_RESULT= '02' or DEAL_RESULT= '03')
+    </select>
+
+    <!-- 统计待清分数据 -->
+    <select id="countPlatHandledData" parameterType="java.util.Map" resultType="int">
+        select count(1)
+        from
+            BTH_SET_CAPITAL_DETAIL
+        where
+            (FUND_CHANNEL = '01' or FUND_CHANNEL = '03')
+          and
+            (ENTRY_TYPE = #{entryType} or ENTRY_TYPE = '99')
+          and
+            UPDATE_DATE like #{updateDate}
+          and
+            (DEAL_RESULT = '02' or DEAL_RESULT = '03')
+    </select>
+
+
+    <!-- select range : -->
+    <select id="selectHandledData" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        (
+        SELECT a.*, ROWNUM rn from BTH_SET_CAPITAL_DETAIL a
+        where
+        <if test="fundChannel != null">
+            FUND_CHANNEL = #{fundChannel} and
+        </if>
+        (ENTRY_TYPE = #{entryType} or ENTRY_TYPE = '99') and
+        UPDATE_DATE like #{updateDate} and
+        (DEAL_RESULT= '02' or DEAL_RESULT= '03')
+        ) b
+        WHERE
+        <![CDATA[b.rn >= #{startIdx} AND b.rn <= #{endIdx}]]>
+    </select>
+
+    <!-- select range : -->
+    <select id="selectPlatHandledData" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        (
+        SELECT a.*, ROWNUM rn from BTH_SET_CAPITAL_DETAIL a
+        where
+        (FUND_CHANNEL = '01' or FUND_CHANNEL = '03') and
+        (ENTRY_TYPE = #{entryType} or ENTRY_TYPE = '99') and
+        UPDATE_DATE like #{updateDate} and
+        (DEAL_RESULT= '02' or DEAL_RESULT= '03')
+        ) b
+        WHERE
+        <![CDATA[b.rn >= #{startIdx} AND b.rn <= #{endIdx}]]>
+    </select>
+
+    <!-- 更新订单结算状态 :成功-->
+    <update id="updateDealSuccessResult" parameterType="java.util.Map">
+        update BTH_SET_CAPITAL_DETAIL
+        set deal_result    = '02',
+            update_date    = to_char(sysdate,'yyyymmddhh24miss'),
+            ACCOUNT_STAUTS = '01'
+        where  <![CDATA[DEAL_RESULT <> '02']]>
+          and
+                (BATCH_NO || FUND_CHANNEL || OUT_ACCOUT_ORG || OUT_ACCOUNT_NO || IN_ACCOUT_ORG || IN_ACCOUNT_NO ||
+                 TRANS_CUR) in
+                (
+                    select (BATCH_NO || RESERVED1 || OUT_ACCOUT_ORG || OUT_ACCOUNT_NO || IN_ACCOUT_ORG ||
+                            IN_ACCOUNT_NO || TRANS_CUR)
+                    from T_SET_MER_CAPITAL_SUMMARY
+                    where update_date like #{updateDate}
+                      and DEAL_STATUS = #{dealResult}
+                )
+    </update>
+
+    <!-- 更新订单结算状态 :成功-->
+    <update id="updateDealFailedResult" parameterType="java.util.Map">
+        update BTH_SET_CAPITAL_DETAIL
+        set deal_result    = '03',
+            update_date    = to_char(sysdate,'yyyymmddhh24miss'),
+            ACCOUNT_STAUTS = '02'
+        where  <![CDATA[DEAL_RESULT <> '02'
+          and DEAL_RESULT <> '03']]>
+          and
+                (BATCH_NO || FUND_CHANNEL || OUT_ACCOUT_ORG || OUT_ACCOUNT_NO || IN_ACCOUT_ORG || IN_ACCOUNT_NO ||
+                 TRANS_CUR) in
+                (
+                    select (BATCH_NO || RESERVED1 || OUT_ACCOUT_ORG || OUT_ACCOUNT_NO || IN_ACCOUT_ORG ||
+                            IN_ACCOUNT_NO || TRANS_CUR)
+                    from T_SET_MER_CAPITAL_SUMMARY
+                    where update_date like #{updateDate}
+                      and DEAL_STATUS = #{dealResult}
+                )
+    </update>
+
+    <!-- **********************************phase 2******************************************************* -->
+    <!-- 更新补足保证金操作 :成功-->
+    <update id="updateReplenishGuaranteeAcResult" parameterType="java.util.Map">
+        update BTH_SET_CAPITAL_DETAIL
+        set deal_result = '02',
+            update_date = to_char(sysdate,'yyyymmddhh24miss')
+        where  <![CDATA[DEAL_RESULT <> '02']]>
+          and ENTRY_TYPE = #{entryType}
+          and (BATCH_NO, FUND_CHANNEL, OUT_ACCOUT_ORG, IN_ACCOUT_ORG, IN_ACCOUNT_NO, TRANS_CUR) in
+              (
+                  select BATCH_NO,RESERVED1,OUT_ACCOUT_ORG,IN_ACCOUT_ORG,IN_ACCOUNT_NO,TRANS_CUR
+                  from T_SET_MER_CAPITAL_SUMMARY
+                  where update_date like #{updateDate}
+                    and DEAL_STATUS = #{dealResult}
+                    and IS_GUARANTEE = '1'
+              )
+    </update>
+
+
+    <!--   99-商户退款与 01-商户入账汇总到一起 ,作为商户入账  -->
+    <select id="queryClearSumInfoMchtIn" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        select outaccoutorg,
+               outaccountno,
+               inaccoutorg,
+               inaccountno,
+               tranamount,
+               entrytype,
+               merid,
+               mername,
+               submerid,
+               submername,
+               inaccountname,
+               outaccountname
+        from (select a.*, rownum rn
+              from (select out_accout_org        as outaccoutorg,
+                           out_account_no        as outaccountno,
+                           in_accout_org         as inaccoutorg,
+                           in_account_no         as inaccountno,
+                           entry_type            as entrytype,
+                           mer_id                as merid,
+                           sum(tran_amount)      as tranamount,
+                           max(mer_name)         as mername,
+                           max(sub_mer_id)       as submerid,
+                           max(sub_mer_name)     as submername,
+                           max(in_account_name)  as inaccountname,
+                           max(out_account_name) as outaccountname
+                    from (select t.out_accout_org,
+                                 t.out_account_no,
+                                 t.in_accout_org,
+                                 t.in_account_no,
+                                 case
+                                     when t.entry_type in ('01', '99') then
+                                         '01'
+                                     else
+                                         t.entry_type
+                                     end entry_type,
+                                 t.mer_id,
+                                 t.tran_amount,
+                                 t.mer_name,
+                                 t.sub_mer_id,
+                                 t.sub_mer_name,
+                                 t.in_account_name,
+                                 t.out_account_name
+                          from bth_set_capital_detail t
+                          where batch_no = #{batchNo,jdbcType=VARCHAR}
+                            and account_type = '0')
+                    group by out_accout_org,
+                             out_account_no,
+                             in_accout_org,
+                             in_account_no,
+                             mer_id,
+                             entry_type
+                    order by merid,INACCOUNTNO) a
+              where <![CDATA[rownum <= #{maxIndex}]]>)
+        where <![CDATA[rn >= #{minIndex}
+        ]]>
+    </select>
+
+    <update id="updateBatchNo" parameterType="string">
+        UPDATE BTH_SET_CAPITAL_DETAIL SET BATCH_NO = #{batchNo,jdbcType=VARCHAR}
+        , DEAL_RESULT = #{dealResult,jdbcType=VARCHAR} ,ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR} , DEAL_REMARK
+        = #{dealRemark,jdbcType=VARCHAR}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE 1 = 1
+        AND DEAL_RESULT = '00' and ENTRY_TYPE in (#{entryType,jdbcType=VARCHAR},#{entryType2,jdbcType=VARCHAR})
+        <choose>
+            <when test="outAccoutOrg != null">
+                and OUT_ACCOUT_ORG = #{outAccoutOrg,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and OUT_ACCOUT_ORG is null
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="inAccoutOrg != null">
+                and IN_ACCOUT_ORG = #{inAccoutOrg,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and IN_ACCOUT_ORG is null
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="outAccountNo != null">
+                and OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and OUT_ACCOUNT_NO is null
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="inAccountNo != null">
+                and IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and IN_ACCOUNT_NO is null
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="merId != null">
+                and MER_ID = #{merId,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and MER_ID is null
+            </otherwise>
+        </choose>
+    </update>
+
+    <select id="sdtl_selectByAcct" resultMap="BaseResultMap" parameterType="map">
+        SELECT * FROM BTH_SET_CAPITAL_DETAIL
+        WHERE DEAL_RESULT = '00'
+        <choose>
+            <when test="outAccoutOrg != null">
+                and OUT_ACCOUT_ORG = #{outAccoutOrg,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and OUT_ACCOUT_ORG is null
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="inAccoutOrg != null">
+                and IN_ACCOUT_ORG = #{inAccoutOrg,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and IN_ACCOUT_ORG is null
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="outAccountNo != null">
+                and OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and OUT_ACCOUNT_NO is null
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="inAccountNo != null">
+                and IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and IN_ACCOUNT_NO is null
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="merId != null">
+                and MER_ID = #{merId,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and MER_ID is null
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="querybthMerInAccDtlByWhere" resultMap="BaseResultMap">
+        select ID, ORDER_ID, ENTRY_TYPE, CLEA_TIME
+        from BTH_SET_CAPITAL_DETAIL
+        where batch_no=#{pch,jdbcType=VARCHAR} and MER_ID = #{chlMerId,jdbcType=VARCHAR}
+        AND ENTRY_TYPE IN
+        <foreach collection="entryTypeSets" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectByBatchNo" parameterType="string" resultType="string">
+        SELECT DISTINCT ORDER_ID
+        FROM BTH_SET_CAPITAL_DETAIL
+        WHERE BATCH_NO = #{batchNo,jdbcType=VARCHAR}
+    </select>
+
+    <update id="scdtl_updateByIdList" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL SET BATCH_NO = #{batchNo,jdbcType=VARCHAR} ,
+        DEAL_RESULT = #{dealResult,jdbcType=VARCHAR} ,ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR}
+        , UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE 1=1
+        and ID in
+        <foreach collection="idList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="scdtl_updateByOrderSsn" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL
+        SET BATCH_NO       = #{batchNo,jdbcType=VARCHAR},
+            DEAL_RESULT    = #{dealResult,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE ORDER_ID = #{orderSsn,jdbcType=VARCHAR }
+    </update>
+
+    <!--     List<BthSetCapitalDetail> queryTranAmountAndentryType(String mchtId, String batchNo); -->
+    <select id="queryTranAmountAndentryType" resultMap="BaseResultMap">
+        select sum(TRAN_AMOUNT)*100 TRAN_AMOUNT,ENTRY_TYPE
+        from BTH_SET_CAPITAL_DETAIL a
+        where a.mer_id = #{mchtId}
+        and batch_no in
+        <foreach collection="batchNo" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        group by ENTRY_TYPE
+    </select>
+
+    <update id="updateSubMerStlStatusByBatchNo" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL
+        SET
+            DEAL_RESULT    = #{dealResult,jdbcType=VARCHAR},
+            DEAL_REMARK    = #{dealRemark,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            UPDATE_DATE    = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE
+            BATCH_NO = #{batchNo,jdbcType=VARCHAR}
+          and
+            IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR}
+          and
+            ENTRY_TYPE = #{entryType,jdbcType=VARCHAR}
+          and
+            OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR}
+    </update>
+
+    <select id="countSubMerStlDataByDate" parameterType="string" resultType="int">
+        SELECT count(1)
+        FROM BTH_SET_CAPITAL_DETAIL
+        WHERE
+            UPDATE_DATE like #{updateDate,jdbcType=VARCHAR}
+          and
+            ENTRY_TYPE = #{entryType,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectSubMerStlDataByDate" parameterType="map" resultMap="BaseResultMap">
+        SELECT *
+        FROM BTH_SET_CAPITAL_DETAIL
+        WHERE
+            UPDATE_DATE like #{updateDate,jdbcType=VARCHAR}
+          and
+            ENTRY_TYPE = #{entryType,jdbcType=VARCHAR}
+    </select>
+
+    <!-- ************************************user add******************************************** -->
+    <!-- 根据(OUT_ACCOUNT_NO,IN_ACCOUNT_NO,TRANS_CUR)为条件对资金明细表进行汇总,为避免账户户名变更的情形导致group by报错，此处查询不查户名等相关信息 -->
+    <select id="selectSummaryInfo" parameterType="map" resultMap="BaseResultMap">
+        select
+            OUT_ACCOUT_ORG,
+            outAccountNo,
+            IN_ACCOUT_ORG,
+            inAccountNo,
+            tranAmount,
+            transCur,
+            ENTRY_TYPE,
+            MER_ID,
+            ACCOUNT_TYPE
+        from
+            (
+                SELECT
+                    b.*,
+                    ROWNUM rn
+                FROM
+                    (
+                        SELECT
+                            OUT_ACCOUT_ORG,
+                            OUT_ACCOUNT_NO   outAccountNo,
+                            IN_ACCOUT_ORG,
+                            IN_ACCOUNT_NO    inAccountNo,
+                            SUM(TRAN_AMOUNT) tranAmount,
+                            TRANS_CUR        transCur,
+                            ENTRY_TYPE,
+                            MER_ID,
+                            ACCOUNT_TYPE
+                        FROM
+                            BTH_SET_CAPITAL_DETAIL a
+                        WHERE
+                            DEAL_RESULT = #{dealResult}
+                          and ENTRY_TYPE = #{entryType}
+                        GROUP BY
+                            OUT_ACCOUT_ORG, OUT_ACCOUNT_NO, IN_ACCOUT_ORG, IN_ACCOUNT_NO, TRANS_CUR, ENTRY_TYPE,MER_ID,ACCOUNT_TYPE
+                    ) b
+            ) c
+        WHERE
+		<![CDATA[c.rn >= #{startIdx}
+          AND c.rn <= #{endIdx}]]>
+        ORDER BY ENTRY_TYPE desc
+    </select>
+
+    <!-- 查询  -->
+    <select id="countSummaryInfo" parameterType="java.util.Map" resultType="int">
+        select count(1)
+        from
+            (
+                select count(1) as TRAN_AMOUNT
+                from BTH_SET_CAPITAL_DETAIL
+                where
+                    DEAL_RESULT = #{dealResult}
+                  and
+                    ENTRY_TYPE = #{entryType}
+                group by
+                    OUT_ACCOUT_ORG,OUT_ACCOUNT_NO,IN_ACCOUT_ORG,IN_ACCOUNT_NO,TRANS_CUR,ENTRY_TYPE,ACCOUNT_TYPE
+            )
+    </select>
+
+    <!-- 查询订单分润信息  -->
+    <select id="selectEptDataByEntryType" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select *
+        from BTH_SET_CAPITAL_DETAIL
+        where
+            UPDATE_DATE like #{updateDate}
+            DEAL_RESULT = #{dealResult}
+            and
+            ENTRY_TYPE in ('05'
+            ,'06'
+            ,'08')
+            and
+		<![CDATA[TRAN_AMOUNT > 0]]>
+        group by order_id
+    </select>
+
+    <update id="updateSubmerDealStsOfDtl" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL
+        SET
+            DEAL_RESULT = #{dealResult,jdbcType=VARCHAR},
+            BATCH_NO    = #{batchNo,jdbcType=VARCHAR},
+            UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE
+            ENTRY_TYPE = #{entryType,jdbcType=VARCHAR}
+          and
+            DEAL_RESULT = #{dealStatus,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 查询当日分润订单 -->
+    <select id="selectOrderIdsByUpdateDate" parameterType="java.util.Map" resultType="string">
+        select order_id
+        FROM
+            (
+                select a.*,rownum rn
+                from
+                    (
+                        select distinct(order_id)
+                        from BTH_SET_CAPITAL_DETAIL
+                        where
+                            UPDATE_DATE >= #{updateDateStart}
+                          and
+                            <![CDATA[ UPDATE_DATE <= #{updateDateEnd} ]]>
+                          and
+                            DEAL_RESULT = #{dealResult}
+                          and
+                            ENTRY_TYPE in ('05', '06', '08')
+                          and <![CDATA[TRAN_AMOUNT >= 0 ]]>
+                      order by order_id
+                    ) a
+                where <![CDATA[rownum <= #{endIdx}]]>
+            )
+        WHERE <![CDATA[rn >= #{startIdx}
+        ]]>
+    </select>
+
+    <!-- 查询当日分润订单（行内费率大于渠道费率） -->
+    <select id="countOrderIdsByUpdateDate" parameterType="java.util.Map" resultType="int">
+        select count(distinct (order_id))
+        from BTH_SET_CAPITAL_DETAIL
+        where
+            UPDATE_DATE like #{updateDate}
+          and
+            DEAL_RESULT = #{dealResult}
+          and
+            ENTRY_TYPE in ('05', '06', '08')
+          and
+      <![CDATA[TRAN_AMOUNT > 0
+        ]]>
+    </select>
+
+    <!-- 查询当日分润订单 -->
+    <select id="selectClearDataByOrderSsnList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from BTH_SET_CAPITAL_DETAIL
+        where ORDER_ID in
+        <foreach collection="orderSsnList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        <if test="updateDate != null">
+            and UPDATE_DATE like #{updateDate,jdbcType=VARCHAR}
+        </if>
+        and ENTRY_TYPE in ('05','06','08')
+        and <![CDATA[TRAN_AMOUNT > 0]]>
+    </select>
+
+    <update id="updateCapitalDetailStlAccByMerid" parameterType="map">
+        update BTH_SET_CAPITAL_DETAIL
+        set
+            IN_ACCOUNT_NO   = #{newAcctNo,jdbcType=VARCHAR},
+            IN_ACCOUNT_NAME = #{newAcctName,jdbcType=VARCHAR},
+            IN_ACCOUT_ORG   = #{newAcctOrg,jdbcType=VARCHAR},
+            ACCOUNT_TYPE    = #{newAccType,jdbcType=VARCHAR},
+            UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        where
+            DEAL_RESULT IN ('00', '01', '03')
+          AND MER_ID = #{merId,jdbcType=VARCHAR}
+          and
+            IN_ACCOUNT_NO = #{oldAcctNo,jdbcType=VARCHAR}
+    </update>
+
+
+    <!-- 更新跑批日下清分表 -->
+    <update id="updateAllCapitalByDate" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL
+        SET BATCH_NO       = #{batchNo,jdbcType=VARCHAR},
+            DEAL_RESULT    = #{dealResult,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE CLEA_TIME = #{cleaTime,jdbcType=VARCHAR}
+          and ACCOUNT_STAUTS = '00'
+    </update>
+
+    <!--  更新清分表(非商户入账部分) -->
+    <update id="updateCapDetail" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL
+        SET DEAL_RESULT    = #{dealResult,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            DEAL_REMARK    = #{dealRemark,jdbcType=VARCHAR},
+            UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE BATCH_NO = #{capBatchNo,jdbcType=VARCHAR}
+          and ENTRY_TYPE = #{entryType,jdbcType=VARCHAR}
+          and MER_ID = #{merId,jdbcType=VARCHAR}
+    </update>
+    <!--  更新清分表(非商户入账部分)批量更新 -->
+    <update id="updateCapDetailBatch" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL t
+        SET DEAL_RESULT    = #{dealResult,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            DEAL_REMARK    = #{dealRemark,jdbcType=VARCHAR},
+            update_date    = to_char(sysdate,'yyyymmddhh24miss')
+        where exists (select 1
+                      from
+                    <foreach collection="condList" index="index" item="item" open="(" separator="union all" close=")">
+                        select #{item.batchNo} batch_no,
+                              #{item.entryType} entry_type,
+                              #{item.merId} mer_id,
+                              #{item.outAccoutOrg} out_accout_org,
+                              #{item.inAccoutOrg} in_accout_org
+                                from dual
+                    </foreach>
+                         a
+                      where t.batch_no = a.batch_no
+                        and t.entry_type = a.entry_type
+                        and t.mer_id = a.mer_id
+                        and t.out_accout_org = a.out_accout_org
+                        and t.in_accout_org = a.in_accout_org
+            )
+        and <![CDATA[t.clea_time > #{startDate,jdbcType=VARCHAR}]]>
+        and <![CDATA[t.clea_time <= #{endDate,jdbcType=VARCHAR}]]>
+    </update>
+
+
+    <!--  更新清分表(商户入账部分) -->
+    <update id="updateCapDetailMer" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL
+        SET DEAL_RESULT    = #{dealResult,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            DEAL_REMARK    = #{dealRemark,jdbcType=VARCHAR},
+            UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE BATCH_NO = #{capBatchNo,jdbcType=VARCHAR}
+          and ENTRY_TYPE in ('01', '99')
+          and MER_ID = #{merId,jdbcType=VARCHAR}
+    </update>
+    <!--  更新清分表(商户入账部分) 批量更新-->
+    <update id="updateCapDetailMerBatch" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL
+        SET DEAL_RESULT    = #{dealResult,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            DEAL_REMARK    = #{dealRemark,jdbcType=VARCHAR},
+            UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE BATCH_NO = #{capBatchNo,jdbcType=VARCHAR}
+          and ENTRY_TYPE in ('01', '99')
+          and MER_ID in
+        <foreach collection="merIdList" index="index" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+        and <![CDATA[clea_time > #{startDate,jdbcType=VARCHAR}]]>
+        and <![CDATA[clea_time <= #{endDate,jdbcType=VARCHAR}]]>
+    </update>
+
+    <select id="queryByAccNo" resultMap="BaseResultMap" parameterType="map">
+        select ID, ORDER_ID, ENTRY_TYPE, CLEA_TIME
+        from BTH_SET_CAPITAL_DETAIL
+        where out_account_no = #{outAcctNo,jdbcType=VARCHAR}
+          and in_account_no = #{inAcctNo,jdbcType=VARCHAR}
+          and batch_no = #{pch,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryByCapitalDetailByTxnSsnList_1" resultMap="BaseResultMap" parameterType="map">
+        select c.id,c.order_id,c.entry_type,c.clea_time,a.txn_ssn as reserved3
+        from bth_mer_in_acc a,
+             bth_set_capital_detail c
+        where a.out_acct_no = c.out_account_no
+          and a.in_acct_no = c.in_account_no
+          and a.batch_no = c.batch_no
+          and a.chl_mer_id is null
+          and a.txn_ssn in
+        <foreach collection="orderSsnList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="queryByCapitalDetailByTxnSsnList_2" resultMap="BaseResultMap" parameterType="map">
+        select c.id,
+               c.order_id,
+               c.entry_type,
+               c.clea_time,
+               c.account_stauts,
+               c.deal_result,
+               c.deal_remark,
+               c.update_date,
+               a.txn_ssn as reserved3,
+               e.in_acct_stat as reserved2
+        from bth_mer_in_acc a, bth_set_capital_detail c, bth_entry_type_conf d,BTH_MER_IN_ACC_DTL e
+        where a.batch_no = c.batch_no
+        and a.chl_mer_id = c.mer_id
+        and a.in_acct_type = d.in_acct_type
+        and c.entry_type = d.entry_type
+        and (a.out_acct_no = c.out_account_no or (c.out_account_no is null and a.out_acct_no is null))
+        and a.out_acct_no_org = c.out_accout_org
+        and (a.in_acct_no = c.in_account_no or (c.in_account_no is null and a.in_acct_no is null))
+        and a.in_acct_no_org = c.in_accout_org
+        and c.order_id=e.txn_seq_id
+        and a.entry_type=decode(c.entry_type,'99','01',c.entry_type)
+        and a.txn_ssn in
+        <foreach collection="orderSsnList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and <![CDATA[c.clea_time > #{startDate,jdbcType=VARCHAR}]]>
+        and <![CDATA[c.clea_time <= #{endDate,jdbcType=VARCHAR}]]>
+    </select>
+
+    <!-- 查询服务商手续费支出清分明细 -->
+    <select id="queryByCapitalDetailByTxnSsnList_3" resultMap="BaseResultMap" parameterType="map">
+        select c.id,c.order_id,c.entry_type,c.clea_time,a.txn_ssn as reserved3
+        from bth_mer_in_acc a,
+        bth_set_capital_detail c
+        where a.entry_type=c.entry_type
+        and a.chl_mer_id=c.mer_id
+        and a.partern_code=c.partern_code
+        and a.batch_no = c.batch_no
+        and a.partern_code is not null
+        and a.entry_type='17'
+        and a.txn_ssn in
+        <foreach collection="orderSsnList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <!-- 根据日期查询数据 -->
+    <select id="queryByDate" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from BTH_SET_CAPITAL_DETAIL
+        where
+        CLEA_TIME = #{cleaTime,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据订单/入账类型查询数据 -->
+    <select id="queryByOrderEntry" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from BTH_SET_CAPITAL_DETAIL
+        where
+        ORDER_ID = #{orderId,jdbcType=VARCHAR}
+        and
+        ENTRY_TYPE =  #{entryType,jdbcType=VARCHAR}
+        and
+        DEAL_RESULT = '02'
+    </select>
+
+    <!-- 批量更新状态 -->
+    <update id="batchUpdateBak">
+        begin
+        <foreach collection="updList" separator=";" item="item" index="index">
+            update BTH_SET_CAPITAL_DETAIL
+            <set>
+                <if test="item.accountStauts != null">
+                    ACCOUNT_STAUTS = #{item.accountStauts,jdbcType=VARCHAR},
+                </if>
+                <if test="item.dealResult != null">
+                    DEAL_RESULT = #{item.dealResult,jdbcType=VARCHAR},
+                </if>
+                <if test="item.dealRemark != null">
+                    DEAL_REMARK = #{item.dealRemark,jdbcType=VARCHAR},
+                </if>
+<!--                 <if test="item.updateDate != null"> -->
+                    UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+<!--                 </if> -->
+            </set>
+            where ID = #{item.id,jdbcType=VARCHAR}
+        </foreach>
+        ; end;
+    </update>
+    <update id="batchUpdate">
+        update bth_set_capital_detail a
+            set (a.account_stauts,
+            a.deal_result,
+            a.deal_remark,
+            a.update_date) =
+            (select account_stauts,deal_result,deal_remark,update_date
+            from (
+            <foreach collection="updList" index="index" item="item" separator="union all">
+                select #{item.id,jdbcType=VARCHAR} id,
+                #{item.accountStauts,jdbcType=VARCHAR} account_stauts,
+                #{item.dealResult,jdbcType=VARCHAR} deal_result,
+                #{item.dealRemark,jdbcType=VARCHAR} deal_remark,
+                to_char(sysdate,'yyyymmddhh24miss') update_date
+                from dual
+            </foreach>
+            ) b where a.id=b.id and rownum=1) where exists (select 1 from (
+            <foreach collection="updList" index="index" item="item" separator="union all">
+                select #{item.id,jdbcType=VARCHAR} id from dual
+            </foreach>
+            ) b where a.id=b.id)
+    </update>
+
+    <update id="batchUpdateForPartern">
+        update bth_set_capital_detail a
+        set (a.account_stauts,
+        a.deal_result,
+        a.deal_remark,
+        a.update_date,
+        a.OUT_ACCOUNT_NO,
+        a.OUT_ACCOUNT_NAME,
+        a.OUT_ACCOUT_ORG) =
+        (select account_stauts,deal_result,deal_remark,update_date,OUT_ACCOUNT_NO,OUT_ACCOUNT_NAME,OUT_ACCOUT_ORG
+        from (
+        <foreach collection="updList" index="index" item="item" separator="union all">
+            select #{item.id,jdbcType=VARCHAR} id,
+            #{item.accountStauts,jdbcType=VARCHAR} account_stauts,
+            #{item.dealResult,jdbcType=VARCHAR} deal_result,
+            #{item.dealRemark,jdbcType=VARCHAR} deal_remark,
+            to_char(sysdate,'yyyymmddhh24miss') update_date,
+            #{item.outAccountNo,jdbcType=VARCHAR} OUT_ACCOUNT_NO,
+            #{item.outAccountName,jdbcType=VARCHAR} OUT_ACCOUNT_NAME,
+            #{item.outAccoutOrg,jdbcType=VARCHAR} OUT_ACCOUT_ORG
+            from dual
+        </foreach>
+        ) b where a.id=b.id and rownum=1) where exists (select 1 from (
+        <foreach collection="updList" index="index" item="item" separator="union all">
+            select #{item.id,jdbcType=VARCHAR} id from dual
+        </foreach>
+        ) b where a.id=b.id)
+    </update>
+
+    <!-- 统计待汇总的条数 -->
+    <select id="countInAccSum" resultType="int">
+        select count(*)
+        from (select out_accout_org        as outaccoutorg,
+                     out_account_no        as outaccountno,
+                     in_accout_org         as inaccoutorg,
+                     in_account_no         as inaccountno,
+                     entry_type            as entrytype,
+                     mer_id                as merid,
+                     sum(tran_amount)      as tranamount,
+                     max(mer_name)         as mername,
+                     max(sub_mer_id)       as submerid,
+                     max(sub_mer_name)     as submername,
+                     max(in_account_name)  as inaccountname,
+                     max(out_account_name) as outaccountname
+              from (select t.out_accout_org,
+                           t.out_account_no,
+                           t.in_accout_org,
+                           t.in_account_no,
+                           case
+                               when t.entry_type in ('01', '99') then
+                                   '01'
+                               else
+                                   t.entry_type
+                               end entry_type,
+                           t.mer_id,
+                           t.tran_amount,
+                           t.mer_name,
+                           t.sub_mer_id,
+                           t.sub_mer_name,
+                           t.in_account_name,
+                           t.out_account_name
+                    from bth_set_capital_detail t
+                    where batch_no = #{batchNo,jdbcType=VARCHAR}
+                      and account_type = '0')
+              group by out_accout_org,
+                       out_account_no,
+                       in_accout_org,
+                       in_account_no,
+                       mer_id,
+                       entry_type
+              order by merid,INACCOUNTNO)
+    </select>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch">
+        INSERT INTO BTH_SET_CAPITAL_DETAIL
+        (
+        ID, CLEA_TIME, MER_ORDER_ID,
+        ORDER_ID, TRAN_TIME, PAY_SEQ_ID,
+        PAY_SEND_TIME, ACCOUNT_ID, MER_ID,
+        MER_NAME, SUB_MER_ID, SUB_MER_NAME,
+        OUT_ACCOUNT_NO, OUT_ACCOUNT_NAME, OUT_ACCOUT_ORG,
+        IN_ACCOUNT_NO, IN_ACCOUNT_NAME, IN_ACCOUT_ORG,
+        TRANS_CUR, TRAN_AMOUNT, ENTRY_TYPE,
+        ACCOUNT_TYPE, FUND_CHANNEL, TRAN_TYPE,
+        DEAL_RESULT, ACCOUNT_STAUTS, DEAL_REMARK,
+        CREATE_DATE, UPDATE_DATE,BATCH_NO, RESERVED1,
+        RESERVED2, RESERVED3,PARTERN_CODE
+        )
+        <foreach collection="insertList" index="index" item="item" separator="union all">
+            (SELECT #{item.id,jdbcType=VARCHAR}, #{item.cleaTime,jdbcType=VARCHAR}, #{item.merOrderId,jdbcType=VARCHAR},
+            #{item.orderId,jdbcType=VARCHAR}, #{item.tranTime,jdbcType=VARCHAR}, #{item.paySeqId,jdbcType=VARCHAR},
+            #{item.paySendTime,jdbcType=VARCHAR}, #{item.accountId,jdbcType=VARCHAR}, #{item.merId,jdbcType=VARCHAR},
+            #{item.merName,jdbcType=VARCHAR}, #{item.subMerId,jdbcType=VARCHAR}, #{item.subMerName,jdbcType=VARCHAR},
+            #{item.outAccountNo,jdbcType=VARCHAR}, #{item.outAccountName,jdbcType=VARCHAR},
+            #{item.outAccoutOrg,jdbcType=VARCHAR},
+            #{item.inAccountNo,jdbcType=VARCHAR}, #{item.inAccountName,jdbcType=VARCHAR},
+            #{item.inAccoutOrg,jdbcType=VARCHAR},
+            #{item.transCur,jdbcType=VARCHAR}, #{item.tranAmount,jdbcType=VARCHAR}, #{item.entryType,jdbcType=VARCHAR},
+            #{item.accountType,jdbcType=VARCHAR}, #{item.fundChannel,jdbcType=VARCHAR},
+            #{item.tranType,jdbcType=VARCHAR},
+            #{item.dealResult,jdbcType=VARCHAR}, #{item.accountStauts,jdbcType=VARCHAR},
+            #{item.dealRemark,jdbcType=VARCHAR},
+            #{item.createDate,jdbcType=VARCHAR}, to_char(sysdate,'yyyymmddhh24miss'), #{item.batchNo,jdbcType=VARCHAR},
+            #{item.reserved1,jdbcType=VARCHAR},
+            #{item.reserved2,jdbcType=VARCHAR}, #{item.reserved3,jdbcType=VARCHAR},
+            #{item.parternCode,jdbcType=VARCHAR}
+            FROM DUAL)
+        </foreach>
+    </insert>
+
+    <delete id="clearCapitalDetailTemp" parameterType="map">
+        truncate table bth_set_capital_dt_temp_${pagyNo}
+    </delete>
+    <insert id="insertFromTempTable">
+        insert /*+ append nologging */ into BTH_SET_CAPITAL_DETAIL select * from bth_set_capital_dt_temp_${pagyNo}
+    </insert>
+
+    <!-- 批量插入临时表 -->
+    <insert id="insertBatchTempTable">
+        INSERT INTO bth_set_capital_dt_temp_${pagyNo}
+        (
+        ID, CLEA_TIME, MER_ORDER_ID,
+        ORDER_ID, TRAN_TIME, PAY_SEQ_ID,
+        PAY_SEND_TIME, ACCOUNT_ID, MER_ID,
+        MER_NAME, SUB_MER_ID, SUB_MER_NAME,
+        OUT_ACCOUNT_NO, OUT_ACCOUNT_NAME, OUT_ACCOUT_ORG,
+        IN_ACCOUNT_NO, IN_ACCOUNT_NAME, IN_ACCOUT_ORG,
+        TRANS_CUR, TRAN_AMOUNT, ENTRY_TYPE,
+        ACCOUNT_TYPE, FUND_CHANNEL, TRAN_TYPE,
+        DEAL_RESULT, ACCOUNT_STAUTS, DEAL_REMARK,
+        CREATE_DATE, UPDATE_DATE,BATCH_NO, RESERVED1,
+        RESERVED2, RESERVED3
+        )
+        <foreach collection="insertList" index="index" item="item" separator="union all">
+            (SELECT #{item.id,jdbcType=VARCHAR}, #{item.cleaTime,jdbcType=VARCHAR}, #{item.merOrderId,jdbcType=VARCHAR},
+            #{item.orderId,jdbcType=VARCHAR}, #{item.tranTime,jdbcType=VARCHAR}, #{item.paySeqId,jdbcType=VARCHAR},
+            #{item.paySendTime,jdbcType=VARCHAR}, #{item.accountId,jdbcType=VARCHAR}, #{item.merId,jdbcType=VARCHAR},
+            #{item.merName,jdbcType=VARCHAR}, #{item.subMerId,jdbcType=VARCHAR}, #{item.subMerName,jdbcType=VARCHAR},
+            #{item.outAccountNo,jdbcType=VARCHAR}, #{item.outAccountName,jdbcType=VARCHAR},
+            #{item.outAccoutOrg,jdbcType=VARCHAR},
+            #{item.inAccountNo,jdbcType=VARCHAR}, #{item.inAccountName,jdbcType=VARCHAR},
+            #{item.inAccoutOrg,jdbcType=VARCHAR},
+            #{item.transCur,jdbcType=VARCHAR}, #{item.tranAmount,jdbcType=VARCHAR}, #{item.entryType,jdbcType=VARCHAR},
+            #{item.accountType,jdbcType=VARCHAR}, #{item.fundChannel,jdbcType=VARCHAR},
+            #{item.tranType,jdbcType=VARCHAR},
+            #{item.dealResult,jdbcType=VARCHAR}, #{item.accountStauts,jdbcType=VARCHAR},
+            #{item.dealRemark,jdbcType=VARCHAR},
+            #{item.createDate,jdbcType=VARCHAR}, to_char(sysdate,'yyyymmddhh24miss'), #{item.batchNo,jdbcType=VARCHAR},
+            #{item.reserved1,jdbcType=VARCHAR},
+            #{item.reserved2,jdbcType=VARCHAR}, #{item.reserved3,jdbcType=VARCHAR}
+            FROM DUAL)
+        </foreach>
+    </insert>
+
+    <!-- 统计待汇总的条数 -->
+    <select id="countInAccSumT0" resultType="int">
+        select count(*)
+        from
+            (
+                SELECT out_accout_org        AS outaccoutorg,
+                       out_account_no        AS outaccountno,
+                       in_accout_org         AS inaccoutorg,
+                       in_account_no         AS inaccountno,
+                       SUM(tran_amount)      AS tranamount,
+                       '01'                  AS entrytype,
+                       mer_id                AS merid,
+                       MAX(mer_name)         AS mername,
+                       MAX(sub_mer_id)       AS submerid,
+                       MAX(sub_mer_name)     AS submername,
+                       MAX(in_account_name)  AS inaccountname,
+                       MAX(out_account_name) AS outaccountname,
+                       CASE
+                           WHEN <![CDATA[MIN(ACCOUNT_STAUTS) <> '02' ]]> THEN
+                               '2'
+                           WHEN MIN(ACCOUNT_STAUTS) = '02' AND
+                                MAX(ACCOUNT_STAUTS) = '02' THEN
+                               '1'
+                           WHEN MIN(ACCOUNT_STAUTS) = '02' AND
+                             <![CDATA[MAX(ACCOUNT_STAUTS) <> '02' ]]> THEN
+                               '3'
+                           ELSE
+                               '0'
+                           END               AS accountStauts
+                FROM bth_set_capital_detail
+                WHERE BATCH_NO = #{batchNo,jdbcType=VARCHAR}
+                  AND entry_type IN ('01')
+                  AND account_type = '0'
+                  AND exists(select 1
+                             from keep_acc_info
+                             where keep_acc_info.order_ssn = bth_set_capital_detail.order_id
+                               and keep_acc_info.STATE IN ('02', '03', '04')
+                               And keep_acc_info.IS_SYNC = '01'
+                               And keep_acc_info.REAL_TM_FLAG = '00')
+                GROUP BY out_accout_org,
+                         out_account_no,
+                         in_accout_org,
+                         in_account_no,
+                         mer_id
+            )
+    </select>
+
+    <!--   01-商户入账汇总 -->
+    <select id="queryClearSumInfoMchtInT0" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        select outAccoutOrg,
+               outAccountNo,
+               inAccoutOrg,
+               inAccountNo,
+               tranAmount,
+               entryType,
+               merId,
+               merName,
+               subMerId,
+               subMerName,
+               inAccountName,
+               outAccountName,
+               accountStauts
+        FROM
+            (
+                select a.*,rownum rn
+                from
+                    (
+                        select *
+                        from
+                            (
+                                SELECT out_accout_org        AS outaccoutorg,
+                                       out_account_no        AS outaccountno,
+                                       in_accout_org         AS inaccoutorg,
+                                       in_account_no         AS inaccountno,
+                                       SUM(tran_amount)      AS tranamount,
+                                       '01'                  AS entrytype,
+                                       mer_id                AS merid,
+                                       MAX(mer_name)         AS mername,
+                                       MAX(sub_mer_id)       AS submerid,
+                                       MAX(sub_mer_name)     AS submername,
+                                       MAX(in_account_name)  AS inaccountname,
+                                       MAX(out_account_name) AS outaccountname,
+                                       CASE
+                                           WHEN MIN(ACCOUNT_STAUTS) = '02' AND
+                                                MAX(ACCOUNT_STAUTS) = '02' THEN
+                                               '2'
+                                           WHEN MIN(ACCOUNT_STAUTS) = '01' AND
+                                                MAX(ACCOUNT_STAUTS) = '01' THEN
+                                               '1'
+                                           ELSE
+                                               '3'
+                                           END               AS accountStauts
+                                FROM bth_set_capital_detail
+                                WHERE BATCH_NO = #{batchNo,jdbcType=VARCHAR}
+                                  AND entry_type IN ('01')
+                                  AND account_type = '0'
+                                  AND exists(select 1
+                                             from keep_acc_info
+                                             where keep_acc_info.order_ssn = bth_set_capital_detail.order_id
+                                               and keep_acc_info.STATE IN ('02', '03', '04')
+                                               And keep_acc_info.IS_SYNC = '01'
+                                               And keep_acc_info.REAL_TM_FLAG = '00')
+                                GROUP BY out_accout_org,
+                                         out_account_no,
+                                         in_accout_org,
+                                         in_account_no,
+                                         mer_id
+                            )
+                        order by outAccoutOrg,outAccountNo,inAccoutOrg,inAccountNo,merId,entryType
+                    ) a
+                where <![CDATA[rownum <= #{maxIndex}]]>
+            )
+        WHERE <![CDATA[rn >= #{minIndex}
+        ]]>
+    </select>
+
+    <!--   01-商户入账汇总 -->
+    <select id="queryOneClearSumInfoMchtInT0" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        select outAccoutOrg,outAccountNo,inAccoutOrg,inAccountNo,tranAmount,entryType,
+        merId,merName,subMerId,subMerName,inAccountName,outAccountName,accountStauts
+        FROM
+        (
+
+        SELECT out_accout_org AS outaccoutorg,
+        out_account_no AS outaccountno,
+        in_accout_org AS inaccoutorg,
+        in_account_no AS inaccountno,
+        SUM(tran_amount) AS tranamount,
+        '01' AS entrytype,
+        mer_id AS merid,
+        MAX(mer_name) AS mername,
+        MAX(sub_mer_id) AS submerid,
+        MAX(sub_mer_name) AS submername,
+        MAX(in_account_name) AS inaccountname,
+        MAX(out_account_name) AS outaccountname,
+        CASE
+        WHEN MIN(ACCOUNT_STAUTS) = '02' AND
+        MAX(ACCOUNT_STAUTS) = '02' THEN
+        '2'
+        WHEN MIN(ACCOUNT_STAUTS) = '01' AND
+        MAX(ACCOUNT_STAUTS) = '01' THEN
+        '1'
+        ELSE
+        '3'
+        END AS accountStauts
+        FROM bth_set_capital_detail
+        WHERE BATCH_NO = #{batchNo,jdbcType=VARCHAR}
+        AND entry_type IN ('01')
+        AND account_type = '0'
+        and out_accout_org = #{outAccoutOrg,jdbcType=VARCHAR}
+        and out_account_no = #{outAccountNo,jdbcType=VARCHAR}
+        and in_accout_org = #{inAccoutOrg,jdbcType=VARCHAR}
+        and in_account_no =#{inAccountNo,jdbcType=VARCHAR}
+        and mer_id = #{merId,jdbcType=VARCHAR}
+        AND exists (select 1
+        from keep_acc_info
+        where keep_acc_info.order_ssn = bth_set_capital_detail.order_id
+        and keep_acc_info.STATE IN( '02','03','04')
+        And keep_acc_info.IS_SYNC = '01'
+        And keep_acc_info.REAL_TM_FLAG = '00')
+        GROUP BY out_accout_org,
+        out_account_no,
+        in_accout_org,
+        in_account_no,
+        mer_id
+        )   order by outAccoutOrg ,outAccountNo,inAccoutOrg,inAccountNo,merId,entryType
+
+    </select>
+
+    <delete id="updateFailureT0" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        update BTH_SET_CAPITAL_DETAIL
+        <set>
+            <if test="cleaTime != null">
+                CLEA_TIME = #{cleaTime,jdbcType=VARCHAR},
+            </if>
+            <if test="merOrderId != null">
+                MER_ORDER_ID = #{merOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                ORDER_ID = #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="tranTime != null">
+                TRAN_TIME = #{tranTime,jdbcType=VARCHAR},
+            </if>
+            <if test="paySeqId != null">
+                PAY_SEQ_ID = #{paySeqId,jdbcType=VARCHAR},
+            </if>
+            <if test="paySendTime != null">
+                PAY_SEND_TIME = #{paySendTime,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null">
+                ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+            </if>
+            <if test="merId != null">
+                MER_ID = #{merId,jdbcType=VARCHAR},
+            </if>
+            <if test="merName != null">
+                MER_NAME = #{merName,jdbcType=VARCHAR},
+            </if>
+            <if test="subMerId != null">
+                SUB_MER_ID = #{subMerId,jdbcType=VARCHAR},
+            </if>
+            <if test="subMerName != null">
+                SUB_MER_NAME = #{subMerName,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccountNo != null">
+                OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccountName != null">
+                OUT_ACCOUNT_NAME = #{outAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="outAccoutOrg != null">
+                OUT_ACCOUT_ORG = #{outAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccountNo != null">
+                IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccountName != null">
+                IN_ACCOUNT_NAME = #{inAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="inAccoutOrg != null">
+                IN_ACCOUT_ORG = #{inAccoutOrg,jdbcType=VARCHAR},
+            </if>
+            <if test="transCur != null">
+                TRANS_CUR = #{transCur,jdbcType=VARCHAR},
+            </if>
+            <if test="tranAmount != null">
+                TRAN_AMOUNT = #{tranAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="entryType != null">
+                ENTRY_TYPE = #{entryType,jdbcType=VARCHAR},
+            </if>
+            <if test="accountType != null">
+                ACCOUNT_TYPE = #{accountType,jdbcType=VARCHAR},
+            </if>
+            <if test="fundChannel != null">
+                FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="tranType != null">
+                TRAN_TYPE = #{tranType,jdbcType=VARCHAR},
+            </if>
+            <if test="dealResult != null">
+                DEAL_RESULT = #{dealResult,jdbcType=VARCHAR},
+            </if>
+            <if test="accountStauts != null">
+                ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            </if>
+            <if test="dealRemark != null">
+                DEAL_REMARK = #{dealRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+            </if>
+<!--             <if test="updateDate != null"> -->
+                UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss'),
+<!--             </if> -->
+            <if test="batchNo != null">
+                BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved1 != null">
+                RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved2 != null">
+                RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserved3 != null">
+                RESERVED3 = #{reserved3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where account_stauts = '02'
+        and account_type = '0'
+        and entry_type IN ('01')
+        and order_ID = #{orderId,jdbcType=VARCHAR}
+        and ORDER_ID = (select order_ssn
+        from keep_acc_info
+        where state = '03'
+        And keep_acc_info.IS_SYNC = '01'
+        and real_tm_flag = '00'
+        and order_ssn = #{orderId,jdbcType=VARCHAR}
+        and order_ssn =Bth_Set_Capital_Detail.order_id)
+    </delete>
+
+    <!--   01-商户入账汇总 -->
+    <select id="selectClearSumInfoMchtInT0" parameterType="map"
+            resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalDetail">
+        SELECT out_accout_org        AS outaccoutorg,
+               out_account_no        AS outaccountno,
+               in_accout_org         AS inaccoutorg,
+               in_account_no         AS inaccountno,
+               SUM(tran_amount)      AS tranamount,
+               '01'                  AS entrytype,
+               mer_id                AS merid,
+               MAX(mer_name)         AS mername,
+               MAX(sub_mer_id)       AS submerid,
+               MAX(sub_mer_name)     AS submername,
+               MAX(in_account_name)  AS inaccountname,
+               MAX(out_account_name) AS outaccountname,
+               CASE
+                   WHEN MIN(ACCOUNT_STAUTS) = '02' AND MAX(ACCOUNT_STAUTS) = '02' THEN
+                       '2'
+                   WHEN MIN(ACCOUNT_STAUTS) = '01' AND MAX(ACCOUNT_STAUTS) = '01' THEN
+                       '1'
+                   ELSE
+                       '3'
+                   END               AS accountStauts
+        FROM bth_set_capital_detail
+        WHERE CLEA_TIME = #{cleaTime,jdbcType=VARCHAR}
+          AND mer_id = #{merId,jdbcType=VARCHAR}
+          AND out_account_no = #{outAccountNo,jdbcType=VARCHAR}
+          AND in_account_no = #{inAccountNo,jdbcType=VARCHAR}
+          AND entry_type IN ('01')
+          AND account_type = '0'
+          AND exists
+            (select 1
+             from keep_acc_info
+             where keep_acc_info.order_ssn = bth_set_capital_detail.order_id
+               and keep_acc_info.STATE IN ('02', '03', '04')
+               And keep_acc_info.IS_SYNC = '01'
+               And keep_acc_info.REAL_TM_FLAG = '00')
+        GROUP BY out_accout_org,
+                 out_account_no,
+                 in_accout_org,
+                 in_account_no,
+                 mer_id
+
+    </select>
+
+    <!--  他行更新清分表(商户入账部分) -->
+    <update id="updateCapDetailMerOther" parameterType="map">
+        UPDATE BTH_SET_CAPITAL_DETAIL
+        SET DEAL_RESULT    = #{dealResult,jdbcType=VARCHAR},
+            ACCOUNT_STAUTS = #{accountStauts,jdbcType=VARCHAR},
+            DEAL_REMARK    = #{dealRemark,jdbcType=VARCHAR},
+            UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE BATCH_NO = #{capBatchNo,jdbcType=VARCHAR}
+          and ENTRY_TYPE in ('01', '99')
+          and MER_ID = #{merId,jdbcType=VARCHAR}
+          and ACCOUNT_TYPE = '1'
+    </update>
+
+
+</mapper>

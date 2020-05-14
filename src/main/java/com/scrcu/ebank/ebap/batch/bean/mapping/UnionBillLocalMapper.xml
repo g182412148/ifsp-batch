@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.UnionBillLocalMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.UnionBillLocal" >
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="SETTLE_KEY" property="settleKey" jdbcType="VARCHAR" />
+    <result column="TXN_TIME" property="txnTime" jdbcType="TIMESTAMP" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="VARCHAR" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="TXN_STATE" property="txnState" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="RECO_STATE" property="recoState" jdbcType="VARCHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="ORDER_DATE" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+    <result column="DUBIOUS_FLAG" property="dubiousFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RECO_DATE, TXN_SSN, SETTLE_KEY, TXN_TIME, PAGY_NO, TXN_TYPE, TXN_STATE, TXN_AMT, RECO_STATE,
+    ORDER_ID, ORDER_DATE, UPD_DATE, DUBIOUS_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_LOCAL
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKeyForSettleKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_LOCAL
+    where SETTLE_KEY = #{settleKey,jdbcType=VARCHAR}
+  </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.UnionBillLocal" >
+    UPDATE UNION_BILL_LOCAL
+    <set >
+      <if test="recoState != null" >
+        RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE = sysdate,
+<!--       </if> -->
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND SETTLE_KEY = #{settleKey,jdbcType=VARCHAR}
+  </update>
+
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.UnionBillLocal" >
+    insert into UNION_BILL_LOCAL (RECO_DATE, TXN_SSN, SETTLE_KEY, 
+      TXN_TIME, PAGY_NO, TXN_TYPE, 
+      TXN_STATE, TXN_AMT, RECO_STATE, 
+      ORDER_ID, ORDER_DATE, UPD_DATE
+      )
+    values (#{recoDate,jdbcType=TIMESTAMP}, #{txnSsn,jdbcType=VARCHAR}, #{settleKey,jdbcType=VARCHAR}, 
+      #{txnTime,jdbcType=TIMESTAMP}, #{pagyNo,jdbcType=VARCHAR}, #{txnType,jdbcType=VARCHAR}, 
+      #{txnState,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, #{recoState,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=VARCHAR}, #{orderDate,jdbcType=TIMESTAMP}, sysdate
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.UnionBillLocal" >
+    insert into UNION_BILL_LOCAL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="settleKey != null" >
+        SETTLE_KEY,
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderDate != null" >
+        ORDER_DATE,
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE,
+<!--       </if> -->
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="settleKey != null" >
+        #{settleKey,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="updDate != null" > -->
+        sysdate,
+<!--       </if> -->
+    </trim>
+  </insert>
+
+  <!-- 清空指定对账日期的数据为未对账 -->
+  <update id="clear" >
+    delete from UNION_BILL_LOCAL
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+  </update>
+
+  <!--
+    按照指定日期 从银联二维码通道流水表复制到本地账单, 同时:
+      交易类型转换
+      交易状态转换
+  -->
+  <update id="copyQrc" >
+    insert into UNION_BILL_LOCAL
+    (
+    reco_date,
+    txn_ssn,
+    settle_key,
+    txn_time,
+    pagy_no,
+    txn_type,
+    txn_state,
+    txn_amt,
+    reco_state,
+    order_id,
+    order_date,
+    UPD_DATE
+    )
+    select
+    #{endDate,jdbcType=TIMESTAMP},
+    a.PAGY_PAY_TXN_SSN,
+    a.TPAM_SETTLE_KEY,
+    a.PAGY_PAY_TXN_TM,
+    '607',
+    decode(a.PAGY_SYS_SOA_ACTION_FLAG, '10', '00', '12', '10', '11', '20', '30', '00', ''),
+    decode(a.PAGY_RESP_CODE, '0000', '00', '0002', '01', '0011', '01', '0020', '01', '0021', '01', '0022', '01',  '99'),
+    a.TPAM_TXN_AMT,
+    '0',
+    c.ORDER_SSN,
+    c.ORDER_TM, sysdate
+    from TPAM_CUP_QRC_TXN_INFO a
+    left join PAGY_TXN_INFO b
+    on a.pagy_txn_ssn=b.pagy_txn_ssn
+    left join PAY_ORDER_INFO c on a.pagy_txn_ssn=c.PAGY_TXN_SSN
+    where
+    a.pagy_pay_txn_tm &gt;= #{startDate,jdbcType=TIMESTAMP}
+    and a.pagy_pay_txn_tm &lt; #{endDate,jdbcType=TIMESTAMP}
+    and (a.PAGY_RESP_CODE = '0000' or a.PAGY_RESP_CODE = '0002'  or a.PAGY_RESP_CODE = '0020' or a.PAGY_RESP_CODE = '0021' or a.PAGY_RESP_CODE = '0022')
+    and c.order_type='0'
+  </update>
+
+  <!--
+    按照指定日期 从银联全渠道流水表复制到本地账单, 同时:
+      交易类型转换
+      交易状态转换
+  -->
+  <update id="copyOnlin" >
+      insert into UNION_BILL_LOCAL
+      (
+      reco_date,
+      txn_ssn,
+      settle_key,
+      txn_time,
+      pagy_no,
+      txn_type,
+      txn_state,
+      txn_amt,
+      reco_state,
+      order_id,
+      order_date,
+      UPD_DATE
+      )
+      SELECT
+        #{endDate,jdbcType=TIMESTAMP},
+        a.PAGY_PAY_TXN_SSN,
+        a.PAGY_PAY_TXN_SSN,
+        a.PAGY_PAY_TXN_TM,
+        '608',
+        decode(a.PAGY_SYS_SOA_ACTION_FLAG, '10', '00', '12', '10', '11', '20', ''),
+        decode(a.PAGY_RESP_CODE, '0000', '00', '0002', '01', '0011', '01', '0020', '01', '0021', '01', '0022', '01',  '99'),
+        a.TPAM_TXN_AMT,
+        '0',
+        c.ORDER_SSN,
+        c.ORDER_TM, sysdate
+        FROM
+            TPAM_UPACP_TXN_INFO a
+        LEFT JOIN
+            PAGY_TXN_INFO b
+        ON
+            a.PAGY_PAY_TXN_SSN=b.pagy_txn_ssn
+        LEFT JOIN
+            PAY_ORDER_INFO c
+        ON
+            a.PAGY_PAY_TXN_SSN=c.PAGY_TXN_SSN
+        WHERE
+             a.pagy_pay_txn_tm &gt;= #{startDate,jdbcType=TIMESTAMP}
+        and a.pagy_pay_txn_tm &lt; #{endDate,jdbcType=TIMESTAMP}
+        and (a.PAGY_RESP_CODE = '0000' or a.PAGY_RESP_CODE = '0002'  or a.PAGY_RESP_CODE = '0020' or a.PAGY_RESP_CODE = '0021' or a.PAGY_RESP_CODE = '0022')
+        and c.order_type='0' and a.pagy_txn_ssn NOT LIKE 'R%'
+  </update>
+
+  <!-- 恢复指定对账日期的数据为未对账 -->
+  <update id="recovery" >
+    update UNION_BILL_LOCAL set RECO_STATE = '0', DUBIOUS_FLAG = '', UPD_DATE = sysdate
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+      AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 恢复指定对账日期前一天可疑的数据为可疑 -->
+  <update id="recoveryDubious" >
+    update UNION_BILL_LOCAL set RECO_STATE = '2', UPD_DATE = sysdate
+    where RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+    AND DUBIOUS_FLAG = '1'
+  </update>
+
+  <!-- 查询指定日期中需要处理 和 前一天可疑的交易 -->
+  <select id="count" resultType="int">
+    SELECT COUNT(1) FROM (
+    select * from UNION_BILL_LOCAL
+    where
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+    UNION ALL
+    select * from UNION_BILL_LOCAL
+    where
+    RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+    AND DUBIOUS_FLAG = '1'
+    )
+  </select>
+
+  <!-- 分页查询 -->
+  <select id="queryByRange" resultMap="BaseResultMap">
+    select * FROM
+    (
+    select a.*,rownum rn from
+    (
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_LOCAL
+    where
+    (
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    or (RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP} AND DUBIOUS_FLAG = '1')
+    )
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+    order by TXN_SSN
+    ) a where <![CDATA[rownum <= #{maxIndex}]]>
+    ) WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+
+
+
+    <!-- 根据对账日期获取银联本地流水 -->
+    <select id="getUnionInfo" resultMap="BaseResultMap">
+        SELECT * FROM UNION_BILL_LOCAL WHERE RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    </select>
+
+  <!--根据银联二维码对账结果更新本地对账状态-->
+  <update id="updateByUnionQrcResult">
+    update union_bill_local a
+    set (a.reco_state, a.dubious_flag, a.UPD_DATE) = (select decode(t.is_dubious_local,
+    '2',
+    '2',
+    '1'),
+    decode(t.is_dubious_local,
+    '2',
+    '1',
+    t.dubis_local_original), sysdate
+    from UNION_QRC_BILL_RESULT t
+    where a.txn_ssn = t.txn_ssn_local)
+    where exists
+    (select 1 from UNION_QRC_BILL_RESULT t where a.txn_ssn = t.txn_ssn_local)
+    and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+    a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+  </update>
+
+  <!--根据银联全渠道对账结果更新本地对账状态-->
+  <update id="updateByUnionAllResult">
+    update union_bill_local a
+    set (a.reco_state, a.dubious_flag, a.UPD_DATE) = (select decode(t.is_dubious_local,
+    '2',
+    '2',
+    '1'),
+    decode(t.is_dubious_local,
+    '2',
+    '1',
+    t.dubis_local_original), sysdate
+    from UNION_ALL_BILL_RESULT t
+    where a.txn_ssn = t.txn_ssn_local)
+    where exists
+    (select 1 from UNION_ALL_BILL_RESULT t where a.txn_ssn = t.txn_ssn_local)
+    and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+    a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+  </update>
+
+
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="quickDeploy" default="genMyBatisFile" basedir=".">
+	
+	<property file="build.properties"/>
+	<!-- 公用目录 -->
+	<property name="local_libs" value="../../lib" />
+	<property name="build" value="../../build/oracle" />
+	
+	<!-- 反向配置 -->
+	<property file="mapper.properties"/>
+	<property name="basePackage" value="com.scrcu.ebank.ebap" />
+	<property name="targetProject" value="../../../../../../src/main/java" />
+	<property name="classPath" value="${classPath}"/>
+    <property name="jdbcDriver" value="${jdbcDriver}"/>
+    <property name="jdbcUrl" value="${jdbcUrl}"/>
+    <property name="jdbcUser" value="${jdbcUser}"/>
+    <property name="jdbcPassword" value="${jdbcPwd}"/>
+    <property name="tableName" value="${tableName}"/>
+    <property name="package" value="${package}"/>
+	
+
+	<!-- 生成MyBatis文件 -->
+	<target name="genMyBatisFile" description="Generate mybatis files">
+		<taskdef name="mbgenerator" classname="org.mybatis.generator.ant.GeneratorAntTask"
+			classpath="${local_libs}/mybatis-generator-core-1.3.2.jar" />
+		<mbgenerator overwrite="false" configfile="${build}/mapperConfig.xml"
+			verbose="true">
+				<propertyset>
+					<propertyref name="mapper.properties"/>
+					<propertyref name="classPath" />
+					<propertyref name="basePackage" />
+					<propertyref name="targetProject" />
+					<propertyref name="jdbcDriver" />
+					<propertyref name="jdbcUrl" />
+					<propertyref name="jdbcUser" />
+					<propertyref name="jdbcPassword" />
+					<propertyref name="tableName" />
+					<propertyref name="package" />
+		         </propertyset>
+		</mbgenerator>
+	</target>
+</project>
+
+

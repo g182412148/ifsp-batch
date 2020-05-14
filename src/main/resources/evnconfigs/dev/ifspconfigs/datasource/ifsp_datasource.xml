@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 数据源配置  pageFlag 启用分页标示：true，false不启用"-->
+<dataSourceConfs pageFlag="true">
+    <dataSource name="defaultDataSource" type="jdbc" desc="数据源1" default="true">
+        <!-- 数据库驱动类型com.mysql.jdbc.Driver -->
+        <dbDriver>oracle.jdbc.driver.OracleDriver</dbDriver>
+        <driverUrl>jdbc:oracle:thin:@10.16.1.94:1521:ebap</driverUrl>
+        <user>BATCHDATA</user>
+        <password>BATCHDATA</password>
+        <filters>stat,wall</filters>
+        <!-- 数据库连接池最小连接数 -->
+        <minimumConnectionCount>10</minimumConnectionCount>
+        <!-- 数据库连接池最大连接数量 -->
+        <maximumConnectionCount>500</maximumConnectionCount>
+        <!-- 数据库连接等待超时的时间，单位是毫秒 -->
+        <maxWaitTime>10000</maxWaitTime>
+        <!-- 间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <timeBetweenEvictionRunsMillis>60000</timeBetweenEvictionRunsMillis>
+        <!-- 一个连接在池中最小生存的时间，单位是毫秒 -->
+        <minEvictableIdleTimeMillis>300000</minEvictableIdleTimeMillis>
+        <!-- 获取连接时测试是否有效 -->
+        <testOnBorrow>false</testOnBorrow>
+        <testOnReturn>false</testOnReturn>
+        <!-- 用来检测连接是否有效的sql-->
+        <validationQuery>SELECT 'x' FROM DUAL</validationQuery>
+        <!-- 是否缓存preparedStatement -->
+        <poolPreparedStatements>true</poolPreparedStatements>
+        <maxPoolPreparedStatementPerConnectionSize>100</maxPoolPreparedStatementPerConnectionSize>
+        <validationQueryTimeout>10</validationQueryTimeout>
+    </dataSource>
+</dataSourceConfs>

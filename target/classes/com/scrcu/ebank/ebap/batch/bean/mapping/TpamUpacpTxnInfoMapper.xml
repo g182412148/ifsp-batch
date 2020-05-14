@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.TpamUpacpTxnInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.TpamUpacpTxnInfo" >
+    <id column="PAGY_PAY_TXN_SSN" property="pagyPayTxnSsn" jdbcType="VARCHAR" />
+    <result column="PAGY_PAY_TXN_TM" property="pagyPayTxnTm" jdbcType="TIMESTAMP" />
+    <result column="PAGY_TXN_SSN" property="pagyTxnSsn" jdbcType="VARCHAR" />
+    <result column="PAGY_TXN_TM" property="pagyTxnTm" jdbcType="TIMESTAMP" />
+    <result column="ORIG_PAGY_PAY_TXN_SSN" property="origPagyPayTxnSsn" jdbcType="VARCHAR" />
+    <result column="ORIG_PAGY_PAY_TXN_TM" property="origPagyPayTxnTm" jdbcType="TIMESTAMP" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="PAGY_SYS_SOA_NO" property="pagySysSoaNo" jdbcType="CHAR" />
+    <result column="PAGY_SYS_SOA_VERSION" property="pagySysSoaVersion" jdbcType="VARCHAR" />
+    <result column="PAGY_SYS_SOA_ACTION_FLAG" property="pagySysSoaActionFlag" jdbcType="CHAR" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <result column="TPAM_SETL_MODEL" property="tpamSetlModel" jdbcType="CHAR" />
+    <result column="TPAM_PAGY_NO" property="tpamPagyNo" jdbcType="VARCHAR" />
+    <result column="PAGY_MCHT_NO" property="pagyMchtNo" jdbcType="VARCHAR" />
+    <result column="TPAM_PAGY_MCHT_NO" property="tpamPagyMchtNo" jdbcType="VARCHAR" />
+    <result column="TPAM_MCHT_NAME" property="tpamMchtName" jdbcType="VARCHAR" />
+    <result column="TPAM_MCHT_ABBR" property="tpamMchtAbbr" jdbcType="VARCHAR" />
+    <result column="TPAM_MCHT_MCC" property="tpamMchtMcc" jdbcType="VARCHAR" />
+    <result column="TPAM_CHANNEL_NO" property="tpamChannelNo" jdbcType="VARCHAR" />
+    <result column="TPAM_CHL_TYPE" property="tpamChlType" jdbcType="CHAR" />
+    <result column="TPAM_BIZ_TYPE" property="tpamBizType" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_TYPE_NO" property="tpamTxnTypeNo" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_SUB_TYPE_NO" property="tpamTxnSubTypeNo" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_SSN" property="tpamTxnSsn" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_TM" property="tpamTxnTm" jdbcType="VARCHAR" />
+    <result column="TPAM_ORIG_TXN_SSN" property="tpamOrigTxnSsn" jdbcType="VARCHAR" />
+    <result column="TPAM_ORIG_TXN_TM" property="tpamOrigTxnTm" jdbcType="VARCHAR" />
+    <result column="TPAM_BATCH_NO" property="tpamBatchNo" jdbcType="CHAR" />
+    <result column="TPAM_PARENT_BATCH_NO" property="tpamParentBatchNo" jdbcType="CHAR" />
+    <result column="TPAM_BATH_TOTAL_QTY" property="tpamBathTotalQty" jdbcType="VARCHAR" />
+    <result column="TPAM_BATH_TOTAL_AMT" property="tpamBathTotalAmt" jdbcType="VARCHAR" />
+    <result column="TAPM_TRACE_NO" property="tapmTraceNo" jdbcType="VARCHAR" />
+    <result column="TPAM_ACCT_TYPE_NO" property="tpamAcctTypeNo" jdbcType="VARCHAR" />
+    <result column="TPAM_ACCT_SUB_TYPE_NO" property="tpamAcctSubTypeNo" jdbcType="VARCHAR" />
+    <result column="TPAM_ACCT_NO" property="tpamAcctNo" jdbcType="VARCHAR" />
+    <result column="TPAM_CUSTOMER_INFO" property="tpamCustomerInfo" jdbcType="VARCHAR" />
+    <result column="TPAM_TOKEN_PAY_ID" property="tpamTokenPayId" jdbcType="VARCHAR" />
+    <result column="TPAM_TOKEN_PAY_INFO" property="tpamTokenPayInfo" jdbcType="VARCHAR" />
+    <result column="TPAM_INS_BANK_ID" property="tpamInsBankId" jdbcType="VARCHAR" />
+    <result column="TPAM_PAY_CARD_TYPE" property="tpamPayCardType" jdbcType="CHAR" />
+    <result column="TPAM_PAY_CARD_NO" property="tpamPayCardNo" jdbcType="VARCHAR" />
+    <result column="TPAM_PAY_CARD_ISSUE_NAME" property="tpamPayCardIssueName" jdbcType="VARCHAR" />
+    <result column="TPAM_ENCRYPT_CERT_ID" property="tpamEncryptCertId" jdbcType="VARCHAR" />
+    <result column="TPAM_CARD_TRANS_DATA" property="tpamCardTransData" jdbcType="VARCHAR" />
+    <result column="TPAM_ISSUER_IDENTIFY_MODE" property="tpamIssuerIdentifyMode" jdbcType="CHAR" />
+    <result column="TPAM_BANK_NO" property="tpamBankNo" jdbcType="VARCHAR" />
+    <result column="TPAM_BANK_TXN_TM" property="tpamBankTxnTm" jdbcType="VARCHAR" />
+    <result column="PAGY_BACKEND_URL" property="pagyBackendUrl" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_START_TM" property="tpamTxnStartTm" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_EXPIRE_TM" property="tpamTxnExpireTm" jdbcType="VARCHAR" />
+    <result column="PAY_BATH_TOTAL_QTY" property="payBathTotalQty" jdbcType="VARCHAR" />
+    <result column="PAY_BATH_TOTAL_AMT" property="payBathTotalAmt" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_AMT" property="tpamTxnAmt" jdbcType="DECIMAL" />
+    <result column="TPAM_BATCH_SUCCESS_QTY" property="tpamBatchSuccessQty" jdbcType="VARCHAR" />
+    <result column="TPAM_BATCH_SUCCESS_AMT" property="tpamBatchSuccessAmt" jdbcType="VARCHAR" />
+    <result column="TPAM_STLM_DT" property="tpamStlmDt" jdbcType="CHAR" />
+    <result column="TPAM_STLM_TM" property="tpamStlmTm" jdbcType="VARCHAR" />
+    <result column="TPAM_STLM_AMT" property="tpamStlmAmt" jdbcType="VARCHAR" />
+    <result column="TPAM_SETTLE_FEE" property="tpamSettleFee" jdbcType="VARCHAR" />
+    <result column="TPAM_STLM_CECY_CODE" property="tpamStlmCecyCode" jdbcType="VARCHAR" />
+    <result column="TPAM_ISSUE_BANK_ID" property="tpamIssueBankId" jdbcType="CHAR" />
+    <result column="TPAM_ISSUE_CARD_TYPE" property="tpamIssueCardType" jdbcType="VARCHAR" />
+    <result column="TPAM_ISSLNS_CODE" property="tpamIsslnsCode" jdbcType="VARCHAR" />
+    <result column="TPAM_RESP_CODE" property="tpamRespCode" jdbcType="VARCHAR" />
+    <result column="TPAM_RESP_MSG" property="tpamRespMsg" jdbcType="VARCHAR" />
+    <result column="PAGY_RESP_CODE" property="pagyRespCode" jdbcType="CHAR" />
+    <result column="PAGY_RESP_MSG" property="pagyRespMsg" jdbcType="VARCHAR" />
+    <result column="PAGY_STE_DATE" property="pagySteDate" jdbcType="CHAR" />
+    <result column="INIT_LOCALHOST_IP" property="initLocalhostIp" jdbcType="VARCHAR" />
+    <result column="UPD_LOCALHOST_IP" property="updLocalhostIp" jdbcType="VARCHAR" />
+    <result column="SYS_TRACE_ID" property="sysTraceId" jdbcType="VARCHAR" />
+    <result column="PAGY_CRT_TM" property="pagyCrtTm" jdbcType="TIMESTAMP" />
+    <result column="PAGY_UP_TM" property="pagyUpTm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_TXN_SSN, PAGY_TXN_TM, ORIG_PAGY_PAY_TXN_SSN, 
+    ORIG_PAGY_PAY_TXN_TM, PAGY_SYS_NO, PAGY_SYS_SOA_NO, PAGY_SYS_SOA_VERSION, PAGY_SYS_SOA_ACTION_FLAG, 
+    PAGY_NO, TPAM_SETL_MODEL, TPAM_PAGY_NO, PAGY_MCHT_NO, TPAM_PAGY_MCHT_NO, TPAM_MCHT_NAME, 
+    TPAM_MCHT_ABBR, TPAM_MCHT_MCC, TPAM_CHANNEL_NO, TPAM_CHL_TYPE, TPAM_BIZ_TYPE, TPAM_TXN_TYPE_NO, 
+    TPAM_TXN_SUB_TYPE_NO, TPAM_TXN_SSN, TPAM_TXN_TM, TPAM_ORIG_TXN_SSN, TPAM_ORIG_TXN_TM, 
+    TPAM_BATCH_NO, TPAM_PARENT_BATCH_NO, TPAM_BATH_TOTAL_QTY, TPAM_BATH_TOTAL_AMT, TAPM_TRACE_NO, 
+    TPAM_ACCT_TYPE_NO, TPAM_ACCT_SUB_TYPE_NO, TPAM_ACCT_NO, TPAM_CUSTOMER_INFO, TPAM_TOKEN_PAY_ID, 
+    TPAM_TOKEN_PAY_INFO, TPAM_INS_BANK_ID, TPAM_PAY_CARD_TYPE, TPAM_PAY_CARD_NO, TPAM_PAY_CARD_ISSUE_NAME, 
+    TPAM_ENCRYPT_CERT_ID, TPAM_CARD_TRANS_DATA, TPAM_ISSUER_IDENTIFY_MODE, TPAM_BANK_NO, 
+    TPAM_BANK_TXN_TM, PAGY_BACKEND_URL, TPAM_TXN_START_TM, TPAM_TXN_EXPIRE_TM, PAY_BATH_TOTAL_QTY, 
+    PAY_BATH_TOTAL_AMT, TPAM_TXN_AMT, TPAM_BATCH_SUCCESS_QTY, TPAM_BATCH_SUCCESS_AMT, 
+    TPAM_STLM_DT, TPAM_STLM_TM, TPAM_STLM_AMT, TPAM_SETTLE_FEE, TPAM_STLM_CECY_CODE, 
+    TPAM_ISSUE_BANK_ID, TPAM_ISSUE_CARD_TYPE, TPAM_ISSLNS_CODE, TPAM_RESP_CODE, TPAM_RESP_MSG, 
+    PAGY_RESP_CODE, PAGY_RESP_MSG, PAGY_STE_DATE, INIT_LOCALHOST_IP, UPD_LOCALHOST_IP, 
+    SYS_TRACE_ID, PAGY_CRT_TM, PAGY_UP_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TPAM_UPACP_TXN_INFO
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TPAM_UPACP_TXN_INFO
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.TpamUpacpTxnInfo" >
+    insert into TPAM_UPACP_TXN_INFO (PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_TXN_SSN, 
+      PAGY_TXN_TM, ORIG_PAGY_PAY_TXN_SSN, ORIG_PAGY_PAY_TXN_TM, 
+      PAGY_SYS_NO, PAGY_SYS_SOA_NO, PAGY_SYS_SOA_VERSION, 
+      PAGY_SYS_SOA_ACTION_FLAG, PAGY_NO, TPAM_SETL_MODEL, 
+      TPAM_PAGY_NO, PAGY_MCHT_NO, TPAM_PAGY_MCHT_NO, 
+      TPAM_MCHT_NAME, TPAM_MCHT_ABBR, TPAM_MCHT_MCC, 
+      TPAM_CHANNEL_NO, TPAM_CHL_TYPE, TPAM_BIZ_TYPE, 
+      TPAM_TXN_TYPE_NO, TPAM_TXN_SUB_TYPE_NO, TPAM_TXN_SSN, 
+      TPAM_TXN_TM, TPAM_ORIG_TXN_SSN, TPAM_ORIG_TXN_TM, 
+      TPAM_BATCH_NO, TPAM_PARENT_BATCH_NO, TPAM_BATH_TOTAL_QTY, 
+      TPAM_BATH_TOTAL_AMT, TAPM_TRACE_NO, TPAM_ACCT_TYPE_NO, 
+      TPAM_ACCT_SUB_TYPE_NO, TPAM_ACCT_NO, TPAM_CUSTOMER_INFO, 
+      TPAM_TOKEN_PAY_ID, TPAM_TOKEN_PAY_INFO, TPAM_INS_BANK_ID, 
+      TPAM_PAY_CARD_TYPE, TPAM_PAY_CARD_NO, TPAM_PAY_CARD_ISSUE_NAME, 
+      TPAM_ENCRYPT_CERT_ID, TPAM_CARD_TRANS_DATA, TPAM_ISSUER_IDENTIFY_MODE, 
+      TPAM_BANK_NO, TPAM_BANK_TXN_TM, PAGY_BACKEND_URL, 
+      TPAM_TXN_START_TM, TPAM_TXN_EXPIRE_TM, PAY_BATH_TOTAL_QTY, 
+      PAY_BATH_TOTAL_AMT, TPAM_TXN_AMT, TPAM_BATCH_SUCCESS_QTY, 
+      TPAM_BATCH_SUCCESS_AMT, TPAM_STLM_DT, TPAM_STLM_TM, 
+      TPAM_STLM_AMT, TPAM_SETTLE_FEE, TPAM_STLM_CECY_CODE, 
+      TPAM_ISSUE_BANK_ID, TPAM_ISSUE_CARD_TYPE, TPAM_ISSLNS_CODE, 
+      TPAM_RESP_CODE, TPAM_RESP_MSG, PAGY_RESP_CODE, 
+      PAGY_RESP_MSG, PAGY_STE_DATE, INIT_LOCALHOST_IP, 
+      UPD_LOCALHOST_IP, SYS_TRACE_ID, PAGY_CRT_TM, 
+      PAGY_UP_TM)
+    values (#{pagyPayTxnSsn,jdbcType=VARCHAR}, #{pagyPayTxnTm,jdbcType=TIMESTAMP}, #{pagyTxnSsn,jdbcType=VARCHAR}, 
+      #{pagyTxnTm,jdbcType=TIMESTAMP}, #{origPagyPayTxnSsn,jdbcType=VARCHAR}, #{origPagyPayTxnTm,jdbcType=TIMESTAMP}, 
+      #{pagySysNo,jdbcType=CHAR}, #{pagySysSoaNo,jdbcType=CHAR}, #{pagySysSoaVersion,jdbcType=VARCHAR}, 
+      #{pagySysSoaActionFlag,jdbcType=CHAR}, #{pagyNo,jdbcType=CHAR}, #{tpamSetlModel,jdbcType=CHAR}, 
+      #{tpamPagyNo,jdbcType=VARCHAR}, #{pagyMchtNo,jdbcType=VARCHAR}, #{tpamPagyMchtNo,jdbcType=VARCHAR}, 
+      #{tpamMchtName,jdbcType=VARCHAR}, #{tpamMchtAbbr,jdbcType=VARCHAR}, #{tpamMchtMcc,jdbcType=VARCHAR}, 
+      #{tpamChannelNo,jdbcType=VARCHAR}, #{tpamChlType,jdbcType=CHAR}, #{tpamBizType,jdbcType=VARCHAR}, 
+      #{tpamTxnTypeNo,jdbcType=VARCHAR}, #{tpamTxnSubTypeNo,jdbcType=VARCHAR}, #{tpamTxnSsn,jdbcType=VARCHAR}, 
+      #{tpamTxnTm,jdbcType=VARCHAR}, #{tpamOrigTxnSsn,jdbcType=VARCHAR}, #{tpamOrigTxnTm,jdbcType=VARCHAR}, 
+      #{tpamBatchNo,jdbcType=CHAR}, #{tpamParentBatchNo,jdbcType=CHAR}, #{tpamBathTotalQty,jdbcType=VARCHAR}, 
+      #{tpamBathTotalAmt,jdbcType=VARCHAR}, #{tapmTraceNo,jdbcType=VARCHAR}, #{tpamAcctTypeNo,jdbcType=VARCHAR}, 
+      #{tpamAcctSubTypeNo,jdbcType=VARCHAR}, #{tpamAcctNo,jdbcType=VARCHAR}, #{tpamCustomerInfo,jdbcType=VARCHAR}, 
+      #{tpamTokenPayId,jdbcType=VARCHAR}, #{tpamTokenPayInfo,jdbcType=VARCHAR}, #{tpamInsBankId,jdbcType=VARCHAR}, 
+      #{tpamPayCardType,jdbcType=CHAR}, #{tpamPayCardNo,jdbcType=VARCHAR}, #{tpamPayCardIssueName,jdbcType=VARCHAR}, 
+      #{tpamEncryptCertId,jdbcType=VARCHAR}, #{tpamCardTransData,jdbcType=VARCHAR}, #{tpamIssuerIdentifyMode,jdbcType=CHAR}, 
+      #{tpamBankNo,jdbcType=VARCHAR}, #{tpamBankTxnTm,jdbcType=VARCHAR}, #{pagyBackendUrl,jdbcType=VARCHAR}, 
+      #{tpamTxnStartTm,jdbcType=VARCHAR}, #{tpamTxnExpireTm,jdbcType=VARCHAR}, #{payBathTotalQty,jdbcType=VARCHAR}, 
+      #{payBathTotalAmt,jdbcType=VARCHAR}, #{tpamTxnAmt,jdbcType=DECIMAL}, #{tpamBatchSuccessQty,jdbcType=VARCHAR}, 
+      #{tpamBatchSuccessAmt,jdbcType=VARCHAR}, #{tpamStlmDt,jdbcType=CHAR}, #{tpamStlmTm,jdbcType=VARCHAR}, 
+      #{tpamStlmAmt,jdbcType=VARCHAR}, #{tpamSettleFee,jdbcType=VARCHAR}, #{tpamStlmCecyCode,jdbcType=VARCHAR}, 
+      #{tpamIssueBankId,jdbcType=CHAR}, #{tpamIssueCardType,jdbcType=VARCHAR}, #{tpamIsslnsCode,jdbcType=VARCHAR}, 
+      #{tpamRespCode,jdbcType=VARCHAR}, #{tpamRespMsg,jdbcType=VARCHAR}, #{pagyRespCode,jdbcType=CHAR}, 
+      #{pagyRespMsg,jdbcType=VARCHAR}, #{pagySteDate,jdbcType=CHAR}, #{initLocalhostIp,jdbcType=VARCHAR}, 
+      #{updLocalhostIp,jdbcType=VARCHAR}, #{sysTraceId,jdbcType=VARCHAR}, #{pagyCrtTm,jdbcType=TIMESTAMP}, 
+      #{pagyUpTm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.TpamUpacpTxnInfo" >
+    insert into TPAM_UPACP_TXN_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pagyPayTxnSsn != null" >
+        PAGY_PAY_TXN_SSN,
+      </if>
+      <if test="pagyPayTxnTm != null" >
+        PAGY_PAY_TXN_TM,
+      </if>
+      <if test="pagyTxnSsn != null" >
+        PAGY_TXN_SSN,
+      </if>
+      <if test="pagyTxnTm != null" >
+        PAGY_TXN_TM,
+      </if>
+      <if test="origPagyPayTxnSsn != null" >
+        ORIG_PAGY_PAY_TXN_SSN,
+      </if>
+      <if test="origPagyPayTxnTm != null" >
+        ORIG_PAGY_PAY_TXN_TM,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="pagySysSoaNo != null" >
+        PAGY_SYS_SOA_NO,
+      </if>
+      <if test="pagySysSoaVersion != null" >
+        PAGY_SYS_SOA_VERSION,
+      </if>
+      <if test="pagySysSoaActionFlag != null" >
+        PAGY_SYS_SOA_ACTION_FLAG,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="tpamSetlModel != null" >
+        TPAM_SETL_MODEL,
+      </if>
+      <if test="tpamPagyNo != null" >
+        TPAM_PAGY_NO,
+      </if>
+      <if test="pagyMchtNo != null" >
+        PAGY_MCHT_NO,
+      </if>
+      <if test="tpamPagyMchtNo != null" >
+        TPAM_PAGY_MCHT_NO,
+      </if>
+      <if test="tpamMchtName != null" >
+        TPAM_MCHT_NAME,
+      </if>
+      <if test="tpamMchtAbbr != null" >
+        TPAM_MCHT_ABBR,
+      </if>
+      <if test="tpamMchtMcc != null" >
+        TPAM_MCHT_MCC,
+      </if>
+      <if test="tpamChannelNo != null" >
+        TPAM_CHANNEL_NO,
+      </if>
+      <if test="tpamChlType != null" >
+        TPAM_CHL_TYPE,
+      </if>
+      <if test="tpamBizType != null" >
+        TPAM_BIZ_TYPE,
+      </if>
+      <if test="tpamTxnTypeNo != null" >
+        TPAM_TXN_TYPE_NO,
+      </if>
+      <if test="tpamTxnSubTypeNo != null" >
+        TPAM_TXN_SUB_TYPE_NO,
+      </if>
+      <if test="tpamTxnSsn != null" >
+        TPAM_TXN_SSN,
+      </if>
+      <if test="tpamTxnTm != null" >
+        TPAM_TXN_TM,
+      </if>
+      <if test="tpamOrigTxnSsn != null" >
+        TPAM_ORIG_TXN_SSN,
+      </if>
+      <if test="tpamOrigTxnTm != null" >
+        TPAM_ORIG_TXN_TM,
+      </if>
+      <if test="tpamBatchNo != null" >
+        TPAM_BATCH_NO,
+      </if>
+      <if test="tpamParentBatchNo != null" >
+        TPAM_PARENT_BATCH_NO,
+      </if>
+      <if test="tpamBathTotalQty != null" >
+        TPAM_BATH_TOTAL_QTY,
+      </if>
+      <if test="tpamBathTotalAmt != null" >
+        TPAM_BATH_TOTAL_AMT,
+      </if>
+      <if test="tapmTraceNo != null" >
+        TAPM_TRACE_NO,
+      </if>
+      <if test="tpamAcctTypeNo != null" >
+        TPAM_ACCT_TYPE_NO,
+      </if>
+      <if test="tpamAcctSubTypeNo != null" >
+        TPAM_ACCT_SUB_TYPE_NO,
+      </if>
+      <if test="tpamAcctNo != null" >
+        TPAM_ACCT_NO,
+      </if>
+      <if test="tpamCustomerInfo != null" >
+        TPAM_CUSTOMER_INFO,
+      </if>
+      <if test="tpamTokenPayId != null" >
+        TPAM_TOKEN_PAY_ID,
+      </if>
+      <if test="tpamTokenPayInfo != null" >
+        TPAM_TOKEN_PAY_INFO,
+      </if>
+      <if test="tpamInsBankId != null" >
+        TPAM_INS_BANK_ID,
+      </if>
+      <if test="tpamPayCardType != null" >
+        TPAM_PAY_CARD_TYPE,
+      </if>
+      <if test="tpamPayCardNo != null" >
+        TPAM_PAY_CARD_NO,
+      </if>
+      <if test="tpamPayCardIssueName != null" >
+        TPAM_PAY_CARD_ISSUE_NAME,
+      </if>
+      <if test="tpamEncryptCertId != null" >
+        TPAM_ENCRYPT_CERT_ID,
+      </if>
+      <if test="tpamCardTransData != null" >
+        TPAM_CARD_TRANS_DATA,
+      </if>
+      <if test="tpamIssuerIdentifyMode != null" >
+        TPAM_ISSUER_IDENTIFY_MODE,
+      </if>
+      <if test="tpamBankNo != null" >
+        TPAM_BANK_NO,
+      </if>
+      <if test="tpamBankTxnTm != null" >
+        TPAM_BANK_TXN_TM,
+      </if>
+      <if test="pagyBackendUrl != null" >
+        PAGY_BACKEND_URL,
+      </if>
+      <if test="tpamTxnStartTm != null" >
+        TPAM_TXN_START_TM,
+      </if>
+      <if test="tpamTxnExpireTm != null" >
+        TPAM_TXN_EXPIRE_TM,
+      </if>
+      <if test="payBathTotalQty != null" >
+        PAY_BATH_TOTAL_QTY,
+      </if>
+      <if test="payBathTotalAmt != null" >
+        PAY_BATH_TOTAL_AMT,
+      </if>
+      <if test="tpamTxnAmt != null" >
+        TPAM_TXN_AMT,
+      </if>
+      <if test="tpamBatchSuccessQty != null" >
+        TPAM_BATCH_SUCCESS_QTY,
+      </if>
+      <if test="tpamBatchSuccessAmt != null" >
+        TPAM_BATCH_SUCCESS_AMT,
+      </if>
+      <if test="tpamStlmDt != null" >
+        TPAM_STLM_DT,
+      </if>
+      <if test="tpamStlmTm != null" >
+        TPAM_STLM_TM,
+      </if>
+      <if test="tpamStlmAmt != null" >
+        TPAM_STLM_AMT,
+      </if>
+      <if test="tpamSettleFee != null" >
+        TPAM_SETTLE_FEE,
+      </if>
+      <if test="tpamStlmCecyCode != null" >
+        TPAM_STLM_CECY_CODE,
+      </if>
+      <if test="tpamIssueBankId != null" >
+        TPAM_ISSUE_BANK_ID,
+      </if>
+      <if test="tpamIssueCardType != null" >
+        TPAM_ISSUE_CARD_TYPE,
+      </if>
+      <if test="tpamIsslnsCode != null" >
+        TPAM_ISSLNS_CODE,
+      </if>
+      <if test="tpamRespCode != null" >
+        TPAM_RESP_CODE,
+      </if>
+      <if test="tpamRespMsg != null" >
+        TPAM_RESP_MSG,
+      </if>
+      <if test="pagyRespCode != null" >
+        PAGY_RESP_CODE,
+      </if>
+      <if test="pagyRespMsg != null" >
+        PAGY_RESP_MSG,
+      </if>
+      <if test="pagySteDate != null" >
+        PAGY_STE_DATE,
+      </if>
+      <if test="initLocalhostIp != null" >
+        INIT_LOCALHOST_IP,
+      </if>
+      <if test="updLocalhostIp != null" >
+        UPD_LOCALHOST_IP,
+      </if>
+      <if test="sysTraceId != null" >
+        SYS_TRACE_ID,
+      </if>
+      <if test="pagyCrtTm != null" >
+        PAGY_CRT_TM,
+      </if>
+      <if test="pagyUpTm != null" >
+        PAGY_UP_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pagyPayTxnSsn != null" >
+        #{pagyPayTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyPayTxnTm != null" >
+        #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyTxnSsn != null" >
+        #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null" >
+        #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origPagyPayTxnSsn != null" >
+        #{origPagyPayTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origPagyPayTxnTm != null" >
+        #{origPagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaNo != null" >
+        #{pagySysSoaNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaVersion != null" >
+        #{pagySysSoaVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySysSoaActionFlag != null" >
+        #{pagySysSoaActionFlag,jdbcType=CHAR},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="tpamSetlModel != null" >
+        #{tpamSetlModel,jdbcType=CHAR},
+      </if>
+      <if test="tpamPagyNo != null" >
+        #{tpamPagyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyMchtNo != null" >
+        #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyMchtNo != null" >
+        #{tpamPagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMchtName != null" >
+        #{tpamMchtName,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMchtAbbr != null" >
+        #{tpamMchtAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMchtMcc != null" >
+        #{tpamMchtMcc,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamChannelNo != null" >
+        #{tpamChannelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamChlType != null" >
+        #{tpamChlType,jdbcType=CHAR},
+      </if>
+      <if test="tpamBizType != null" >
+        #{tpamBizType,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTypeNo != null" >
+        #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnSubTypeNo != null" >
+        #{tpamTxnSubTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnSsn != null" >
+        #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null" >
+        #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrigTxnSsn != null" >
+        #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrigTxnTm != null" >
+        #{tpamOrigTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamBatchNo != null" >
+        #{tpamBatchNo,jdbcType=CHAR},
+      </if>
+      <if test="tpamParentBatchNo != null" >
+        #{tpamParentBatchNo,jdbcType=CHAR},
+      </if>
+      <if test="tpamBathTotalQty != null" >
+        #{tpamBathTotalQty,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamBathTotalAmt != null" >
+        #{tpamBathTotalAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tapmTraceNo != null" >
+        #{tapmTraceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamAcctTypeNo != null" >
+        #{tpamAcctTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamAcctSubTypeNo != null" >
+        #{tpamAcctSubTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamAcctNo != null" >
+        #{tpamAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamCustomerInfo != null" >
+        #{tpamCustomerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTokenPayId != null" >
+        #{tpamTokenPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTokenPayInfo != null" >
+        #{tpamTokenPayInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamInsBankId != null" >
+        #{tpamInsBankId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPayCardType != null" >
+        #{tpamPayCardType,jdbcType=CHAR},
+      </if>
+      <if test="tpamPayCardNo != null" >
+        #{tpamPayCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPayCardIssueName != null" >
+        #{tpamPayCardIssueName,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamEncryptCertId != null" >
+        #{tpamEncryptCertId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamCardTransData != null" >
+        #{tpamCardTransData,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamIssuerIdentifyMode != null" >
+        #{tpamIssuerIdentifyMode,jdbcType=CHAR},
+      </if>
+      <if test="tpamBankNo != null" >
+        #{tpamBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamBankTxnTm != null" >
+        #{tpamBankTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyBackendUrl != null" >
+        #{pagyBackendUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnStartTm != null" >
+        #{tpamTxnStartTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnExpireTm != null" >
+        #{tpamTxnExpireTm,jdbcType=VARCHAR},
+      </if>
+      <if test="payBathTotalQty != null" >
+        #{payBathTotalQty,jdbcType=VARCHAR},
+      </if>
+      <if test="payBathTotalAmt != null" >
+        #{payBathTotalAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null" >
+        #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamBatchSuccessQty != null" >
+        #{tpamBatchSuccessQty,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamBatchSuccessAmt != null" >
+        #{tpamBatchSuccessAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamStlmDt != null" >
+        #{tpamStlmDt,jdbcType=CHAR},
+      </if>
+      <if test="tpamStlmTm != null" >
+        #{tpamStlmTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamStlmAmt != null" >
+        #{tpamStlmAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamSettleFee != null" >
+        #{tpamSettleFee,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamStlmCecyCode != null" >
+        #{tpamStlmCecyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamIssueBankId != null" >
+        #{tpamIssueBankId,jdbcType=CHAR},
+      </if>
+      <if test="tpamIssueCardType != null" >
+        #{tpamIssueCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamIsslnsCode != null" >
+        #{tpamIsslnsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamRespCode != null" >
+        #{tpamRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamRespMsg != null" >
+        #{tpamRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyRespCode != null" >
+        #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null" >
+        #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySteDate != null" >
+        #{pagySteDate,jdbcType=CHAR},
+      </if>
+      <if test="initLocalhostIp != null" >
+        #{initLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="updLocalhostIp != null" >
+        #{updLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTraceId != null" >
+        #{sysTraceId,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyCrtTm != null" >
+        #{pagyCrtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyUpTm != null" >
+        #{pagyUpTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.TpamUpacpTxnInfo" >
+    update TPAM_UPACP_TXN_INFO
+    <set >
+      <if test="pagyPayTxnTm != null" >
+        PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyTxnSsn != null" >
+        PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null" >
+        PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origPagyPayTxnSsn != null" >
+        ORIG_PAGY_PAY_TXN_SSN = #{origPagyPayTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origPagyPayTxnTm != null" >
+        ORIG_PAGY_PAY_TXN_TM = #{origPagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaNo != null" >
+        PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaVersion != null" >
+        PAGY_SYS_SOA_VERSION = #{pagySysSoaVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySysSoaActionFlag != null" >
+        PAGY_SYS_SOA_ACTION_FLAG = #{pagySysSoaActionFlag,jdbcType=CHAR},
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="tpamSetlModel != null" >
+        TPAM_SETL_MODEL = #{tpamSetlModel,jdbcType=CHAR},
+      </if>
+      <if test="tpamPagyNo != null" >
+        TPAM_PAGY_NO = #{tpamPagyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyMchtNo != null" >
+        PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyMchtNo != null" >
+        TPAM_PAGY_MCHT_NO = #{tpamPagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMchtName != null" >
+        TPAM_MCHT_NAME = #{tpamMchtName,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMchtAbbr != null" >
+        TPAM_MCHT_ABBR = #{tpamMchtAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMchtMcc != null" >
+        TPAM_MCHT_MCC = #{tpamMchtMcc,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamChannelNo != null" >
+        TPAM_CHANNEL_NO = #{tpamChannelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamChlType != null" >
+        TPAM_CHL_TYPE = #{tpamChlType,jdbcType=CHAR},
+      </if>
+      <if test="tpamBizType != null" >
+        TPAM_BIZ_TYPE = #{tpamBizType,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTypeNo != null" >
+        TPAM_TXN_TYPE_NO = #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnSubTypeNo != null" >
+        TPAM_TXN_SUB_TYPE_NO = #{tpamTxnSubTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnSsn != null" >
+        TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null" >
+        TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrigTxnSsn != null" >
+        TPAM_ORIG_TXN_SSN = #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrigTxnTm != null" >
+        TPAM_ORIG_TXN_TM = #{tpamOrigTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamBatchNo != null" >
+        TPAM_BATCH_NO = #{tpamBatchNo,jdbcType=CHAR},
+      </if>
+      <if test="tpamParentBatchNo != null" >
+        TPAM_PARENT_BATCH_NO = #{tpamParentBatchNo,jdbcType=CHAR},
+      </if>
+      <if test="tpamBathTotalQty != null" >
+        TPAM_BATH_TOTAL_QTY = #{tpamBathTotalQty,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamBathTotalAmt != null" >
+        TPAM_BATH_TOTAL_AMT = #{tpamBathTotalAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tapmTraceNo != null" >
+        TAPM_TRACE_NO = #{tapmTraceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamAcctTypeNo != null" >
+        TPAM_ACCT_TYPE_NO = #{tpamAcctTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamAcctSubTypeNo != null" >
+        TPAM_ACCT_SUB_TYPE_NO = #{tpamAcctSubTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamAcctNo != null" >
+        TPAM_ACCT_NO = #{tpamAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamCustomerInfo != null" >
+        TPAM_CUSTOMER_INFO = #{tpamCustomerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTokenPayId != null" >
+        TPAM_TOKEN_PAY_ID = #{tpamTokenPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTokenPayInfo != null" >
+        TPAM_TOKEN_PAY_INFO = #{tpamTokenPayInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamInsBankId != null" >
+        TPAM_INS_BANK_ID = #{tpamInsBankId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPayCardType != null" >
+        TPAM_PAY_CARD_TYPE = #{tpamPayCardType,jdbcType=CHAR},
+      </if>
+      <if test="tpamPayCardNo != null" >
+        TPAM_PAY_CARD_NO = #{tpamPayCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPayCardIssueName != null" >
+        TPAM_PAY_CARD_ISSUE_NAME = #{tpamPayCardIssueName,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamEncryptCertId != null" >
+        TPAM_ENCRYPT_CERT_ID = #{tpamEncryptCertId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamCardTransData != null" >
+        TPAM_CARD_TRANS_DATA = #{tpamCardTransData,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamIssuerIdentifyMode != null" >
+        TPAM_ISSUER_IDENTIFY_MODE = #{tpamIssuerIdentifyMode,jdbcType=CHAR},
+      </if>
+      <if test="tpamBankNo != null" >
+        TPAM_BANK_NO = #{tpamBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamBankTxnTm != null" >
+        TPAM_BANK_TXN_TM = #{tpamBankTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyBackendUrl != null" >
+        PAGY_BACKEND_URL = #{pagyBackendUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnStartTm != null" >
+        TPAM_TXN_START_TM = #{tpamTxnStartTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnExpireTm != null" >
+        TPAM_TXN_EXPIRE_TM = #{tpamTxnExpireTm,jdbcType=VARCHAR},
+      </if>
+      <if test="payBathTotalQty != null" >
+        PAY_BATH_TOTAL_QTY = #{payBathTotalQty,jdbcType=VARCHAR},
+      </if>
+      <if test="payBathTotalAmt != null" >
+        PAY_BATH_TOTAL_AMT = #{payBathTotalAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null" >
+        TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamBatchSuccessQty != null" >
+        TPAM_BATCH_SUCCESS_QTY = #{tpamBatchSuccessQty,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamBatchSuccessAmt != null" >
+        TPAM_BATCH_SUCCESS_AMT = #{tpamBatchSuccessAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamStlmDt != null" >
+        TPAM_STLM_DT = #{tpamStlmDt,jdbcType=CHAR},
+      </if>
+      <if test="tpamStlmTm != null" >
+        TPAM_STLM_TM = #{tpamStlmTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamStlmAmt != null" >
+        TPAM_STLM_AMT = #{tpamStlmAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamSettleFee != null" >
+        TPAM_SETTLE_FEE = #{tpamSettleFee,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamStlmCecyCode != null" >
+        TPAM_STLM_CECY_CODE = #{tpamStlmCecyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamIssueBankId != null" >
+        TPAM_ISSUE_BANK_ID = #{tpamIssueBankId,jdbcType=CHAR},
+      </if>
+      <if test="tpamIssueCardType != null" >
+        TPAM_ISSUE_CARD_TYPE = #{tpamIssueCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamIsslnsCode != null" >
+        TPAM_ISSLNS_CODE = #{tpamIsslnsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamRespCode != null" >
+        TPAM_RESP_CODE = #{tpamRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamRespMsg != null" >
+        TPAM_RESP_MSG = #{tpamRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyRespCode != null" >
+        PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null" >
+        PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySteDate != null" >
+        PAGY_STE_DATE = #{pagySteDate,jdbcType=CHAR},
+      </if>
+      <if test="initLocalhostIp != null" >
+        INIT_LOCALHOST_IP = #{initLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="updLocalhostIp != null" >
+        UPD_LOCALHOST_IP = #{updLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTraceId != null" >
+        SYS_TRACE_ID = #{sysTraceId,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyCrtTm != null" >
+        PAGY_CRT_TM = #{pagyCrtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyUpTm != null" >
+        PAGY_UP_TM = #{pagyUpTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.TpamUpacpTxnInfo" >
+    update TPAM_UPACP_TXN_INFO
+    set PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      ORIG_PAGY_PAY_TXN_SSN = #{origPagyPayTxnSsn,jdbcType=VARCHAR},
+      ORIG_PAGY_PAY_TXN_TM = #{origPagyPayTxnTm,jdbcType=TIMESTAMP},
+      PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      PAGY_SYS_SOA_VERSION = #{pagySysSoaVersion,jdbcType=VARCHAR},
+      PAGY_SYS_SOA_ACTION_FLAG = #{pagySysSoaActionFlag,jdbcType=CHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      TPAM_SETL_MODEL = #{tpamSetlModel,jdbcType=CHAR},
+      TPAM_PAGY_NO = #{tpamPagyNo,jdbcType=VARCHAR},
+      PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR},
+      TPAM_PAGY_MCHT_NO = #{tpamPagyMchtNo,jdbcType=VARCHAR},
+      TPAM_MCHT_NAME = #{tpamMchtName,jdbcType=VARCHAR},
+      TPAM_MCHT_ABBR = #{tpamMchtAbbr,jdbcType=VARCHAR},
+      TPAM_MCHT_MCC = #{tpamMchtMcc,jdbcType=VARCHAR},
+      TPAM_CHANNEL_NO = #{tpamChannelNo,jdbcType=VARCHAR},
+      TPAM_CHL_TYPE = #{tpamChlType,jdbcType=CHAR},
+      TPAM_BIZ_TYPE = #{tpamBizType,jdbcType=VARCHAR},
+      TPAM_TXN_TYPE_NO = #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      TPAM_TXN_SUB_TYPE_NO = #{tpamTxnSubTypeNo,jdbcType=VARCHAR},
+      TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      TPAM_ORIG_TXN_SSN = #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      TPAM_ORIG_TXN_TM = #{tpamOrigTxnTm,jdbcType=VARCHAR},
+      TPAM_BATCH_NO = #{tpamBatchNo,jdbcType=CHAR},
+      TPAM_PARENT_BATCH_NO = #{tpamParentBatchNo,jdbcType=CHAR},
+      TPAM_BATH_TOTAL_QTY = #{tpamBathTotalQty,jdbcType=VARCHAR},
+      TPAM_BATH_TOTAL_AMT = #{tpamBathTotalAmt,jdbcType=VARCHAR},
+      TAPM_TRACE_NO = #{tapmTraceNo,jdbcType=VARCHAR},
+      TPAM_ACCT_TYPE_NO = #{tpamAcctTypeNo,jdbcType=VARCHAR},
+      TPAM_ACCT_SUB_TYPE_NO = #{tpamAcctSubTypeNo,jdbcType=VARCHAR},
+      TPAM_ACCT_NO = #{tpamAcctNo,jdbcType=VARCHAR},
+      TPAM_CUSTOMER_INFO = #{tpamCustomerInfo,jdbcType=VARCHAR},
+      TPAM_TOKEN_PAY_ID = #{tpamTokenPayId,jdbcType=VARCHAR},
+      TPAM_TOKEN_PAY_INFO = #{tpamTokenPayInfo,jdbcType=VARCHAR},
+      TPAM_INS_BANK_ID = #{tpamInsBankId,jdbcType=VARCHAR},
+      TPAM_PAY_CARD_TYPE = #{tpamPayCardType,jdbcType=CHAR},
+      TPAM_PAY_CARD_NO = #{tpamPayCardNo,jdbcType=VARCHAR},
+      TPAM_PAY_CARD_ISSUE_NAME = #{tpamPayCardIssueName,jdbcType=VARCHAR},
+      TPAM_ENCRYPT_CERT_ID = #{tpamEncryptCertId,jdbcType=VARCHAR},
+      TPAM_CARD_TRANS_DATA = #{tpamCardTransData,jdbcType=VARCHAR},
+      TPAM_ISSUER_IDENTIFY_MODE = #{tpamIssuerIdentifyMode,jdbcType=CHAR},
+      TPAM_BANK_NO = #{tpamBankNo,jdbcType=VARCHAR},
+      TPAM_BANK_TXN_TM = #{tpamBankTxnTm,jdbcType=VARCHAR},
+      PAGY_BACKEND_URL = #{pagyBackendUrl,jdbcType=VARCHAR},
+      TPAM_TXN_START_TM = #{tpamTxnStartTm,jdbcType=VARCHAR},
+      TPAM_TXN_EXPIRE_TM = #{tpamTxnExpireTm,jdbcType=VARCHAR},
+      PAY_BATH_TOTAL_QTY = #{payBathTotalQty,jdbcType=VARCHAR},
+      PAY_BATH_TOTAL_AMT = #{payBathTotalAmt,jdbcType=VARCHAR},
+      TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      TPAM_BATCH_SUCCESS_QTY = #{tpamBatchSuccessQty,jdbcType=VARCHAR},
+      TPAM_BATCH_SUCCESS_AMT = #{tpamBatchSuccessAmt,jdbcType=VARCHAR},
+      TPAM_STLM_DT = #{tpamStlmDt,jdbcType=CHAR},
+      TPAM_STLM_TM = #{tpamStlmTm,jdbcType=VARCHAR},
+      TPAM_STLM_AMT = #{tpamStlmAmt,jdbcType=VARCHAR},
+      TPAM_SETTLE_FEE = #{tpamSettleFee,jdbcType=VARCHAR},
+      TPAM_STLM_CECY_CODE = #{tpamStlmCecyCode,jdbcType=VARCHAR},
+      TPAM_ISSUE_BANK_ID = #{tpamIssueBankId,jdbcType=CHAR},
+      TPAM_ISSUE_CARD_TYPE = #{tpamIssueCardType,jdbcType=VARCHAR},
+      TPAM_ISSLNS_CODE = #{tpamIsslnsCode,jdbcType=VARCHAR},
+      TPAM_RESP_CODE = #{tpamRespCode,jdbcType=VARCHAR},
+      TPAM_RESP_MSG = #{tpamRespMsg,jdbcType=VARCHAR},
+      PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      PAGY_STE_DATE = #{pagySteDate,jdbcType=CHAR},
+      INIT_LOCALHOST_IP = #{initLocalhostIp,jdbcType=VARCHAR},
+      UPD_LOCALHOST_IP = #{updLocalhostIp,jdbcType=VARCHAR},
+      SYS_TRACE_ID = #{sysTraceId,jdbcType=VARCHAR},
+      PAGY_CRT_TM = #{pagyCrtTm,jdbcType=TIMESTAMP},
+      PAGY_UP_TM = #{pagyUpTm,jdbcType=TIMESTAMP}
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+
+    <resultMap id="tpamUpacpTxnInfoVo" type="com.scrcu.ebank.ebap.batch.bean.dto.TpamUpacpTxnInfoVo" extends="BaseResultMap" >
+        <result column="TXN_REQ_SSN" property="txnReqSsn" jdbcType="VARCHAR" />
+        <result column="TXN_REQ_TM" property="txnReqTm" jdbcType="TIMESTAMP" />
+        <result column="ORIG_TXN_REQ_SSN" property="origTxnReqSsn" jdbcType="VARCHAR" />
+        <result column="ORIG_TXN_REQ_TM" property="origTxnReqTm" jdbcType="TIMESTAMP" />
+        <result column="PROD_ID" property="prodId" jdbcType="CHAR" />
+        <result column="TXN_TYPE" property="txnType" jdbcType="CHAR" />
+    </resultMap>
+
+  <select id="scanTpamUpacpTxnInfo" parameterType="string" resultMap="tpamUpacpTxnInfoVo">
+        SELECT
+            a.*,
+            b.TXN_REQ_SSN,
+            b.TXN_REQ_TM,
+            b.ORIG_TXN_REQ_SSN,
+            b.ORIG_TXN_REQ_TM,
+            b.PROD_ID,
+            b.TXN_TYPE
+        FROM
+            TPAM_UPACP_TXN_INFO a
+        LEFT JOIN
+            PAGY_TXN_INFO b
+        ON
+            a.PAGY_PAY_TXN_SSN=b.pagy_txn_ssn
+        LEFT JOIN
+            PAY_ORDER_INFO c
+        ON
+            a.PAGY_PAY_TXN_SSN=c.PAGY_TXN_SSN
+        WHERE
+             TO_CHAR(a.PAGY_TXN_TM,'YYYYMMDD')=#{settleDate,jdbcType=VARCHAR}
+        AND a.PAGY_RESP_CODE IN ('0000','0002','0020')
+        AND c.order_type='0' and a.pagy_txn_ssn NOT LIKE 'R%'
+  </select>
+</mapper>

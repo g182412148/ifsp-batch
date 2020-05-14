@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.CoreRecoErrMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.CoreRecoErr" >
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="TXN_DATE" property="txnDate" jdbcType="TIMESTAMP" />
+    <result column="LOCAL_TXN_TYPE" property="localTxnType" jdbcType="VARCHAR" />
+    <result column="OUTER_TXN_TYPE" property="outerTxnType" jdbcType="VARCHAR" />
+    <result column="LOCAL_TXN_STATE" property="localTxnState" jdbcType="VARCHAR" />
+    <result column="OUTER_TXN_STATE" property="outerTxnState" jdbcType="VARCHAR" />
+    <result column="LOCAL_TXN_AMT" property="localTxnAmt" jdbcType="DECIMAL" />
+    <result column="OUTER_TXN_AMT" property="outerTxnAmt" jdbcType="DECIMAL" />
+    <result column="RECO_REST" property="recoRest" jdbcType="VARCHAR" />
+    <result column="CORE_SSN" property="coreSsn" jdbcType="VARCHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="ORDER_DATE" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="PROC_STATE" property="procState" jdbcType="VARCHAR" />
+    <result column="PROC_DESC" property="procDesc" jdbcType="VARCHAR" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.CoreRecoErr" >
+    insert into CORE_RECO_ERR (RECO_DATE, TXN_SSN, TXN_DATE, 
+      LOCAL_TXN_TYPE, OUTER_TXN_TYPE, LOCAL_TXN_STATE, 
+      OUTER_TXN_STATE, LOCAL_TXN_AMT, OUTER_TXN_AMT, 
+      RECO_REST, CORE_SSN, ORDER_ID, 
+      ORDER_DATE, PROC_STATE, PROC_DESC, 
+      UPD_DATE)
+    values (#{recoDate,jdbcType=TIMESTAMP}, #{txnSsn,jdbcType=VARCHAR}, #{txnDate,jdbcType=TIMESTAMP}, 
+      #{localTxnType,jdbcType=VARCHAR}, #{outerTxnType,jdbcType=VARCHAR}, #{localTxnState,jdbcType=VARCHAR}, 
+      #{outerTxnState,jdbcType=VARCHAR}, #{localTxnAmt,jdbcType=DECIMAL}, #{outerTxnAmt,jdbcType=DECIMAL}, 
+      #{recoRest,jdbcType=VARCHAR}, #{coreSsn,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{orderDate,jdbcType=TIMESTAMP}, #{procState,jdbcType=VARCHAR}, #{procDesc,jdbcType=VARCHAR}, 
+      #{updDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.CoreRecoErr" >
+    insert into CORE_RECO_ERR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="txnDate != null" >
+        TXN_DATE,
+      </if>
+      <if test="localTxnType != null" >
+        LOCAL_TXN_TYPE,
+      </if>
+      <if test="outerTxnType != null" >
+        OUTER_TXN_TYPE,
+      </if>
+      <if test="localTxnState != null" >
+        LOCAL_TXN_STATE,
+      </if>
+      <if test="outerTxnState != null" >
+        OUTER_TXN_STATE,
+      </if>
+      <if test="localTxnAmt != null" >
+        LOCAL_TXN_AMT,
+      </if>
+      <if test="outerTxnAmt != null" >
+        OUTER_TXN_AMT,
+      </if>
+      <if test="recoRest != null" >
+        RECO_REST,
+      </if>
+      <if test="coreSsn != null" >
+        CORE_SSN,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderDate != null" >
+        ORDER_DATE,
+      </if>
+      <if test="procState != null" >
+        PROC_STATE,
+      </if>
+      <if test="procDesc != null" >
+        PROC_DESC,
+      </if>
+      <if test="updDate != null" >
+        UPD_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDate != null" >
+        #{txnDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="localTxnType != null" >
+        #{localTxnType,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnType != null" >
+        #{outerTxnType,jdbcType=VARCHAR},
+      </if>
+      <if test="localTxnState != null" >
+        #{localTxnState,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnState != null" >
+        #{outerTxnState,jdbcType=VARCHAR},
+      </if>
+      <if test="localTxnAmt != null" >
+        #{localTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="outerTxnAmt != null" >
+        #{outerTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoRest != null" >
+        #{recoRest,jdbcType=VARCHAR},
+      </if>
+      <if test="coreSsn != null" >
+        #{coreSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procState != null" >
+        #{procState,jdbcType=VARCHAR},
+      </if>
+      <if test="procDesc != null" >
+        #{procDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="updDate != null" >
+        #{updDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <!-- 恢复指定对账日期的数据为未对账 -->
+  <delete id="clear" >
+    delete from CORE_RECO_ERR
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+  </delete>
+
+  <!-- 批量插入差错流水 -->
+
+
+  <!-- ======================================= 记账表与核心对账sql 开始 ======================================= -->
+
+  <!--核心可疑、单边（对账日前一天、对账日均未对上）-->
+  <update id="updateCoreDubiousOrError">
+    update core_bill_info a
+      set a.upd_tm       = sysdate,
+      a.reco_state   = '1',
+      a.dubious_flag = decode(a.reco_date,
+      to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd'),
+      '1',
+      a.dubious_flag), <!--1可疑-->
+      a.chk_rst      = decode(a.reco_date,
+      to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1,
+      '03',
+      '02') <!--03单边账-->
+      where (a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') or
+      a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1) <!-- 查询对账日期前一天核心数据 -->
+      and not exists
+      (select 1
+      from keep_reco_info b
+      where a.txn_ssn = b.txn_ssn <!-- 查询对账日期当日及前一日本地数据 -->
+      and (b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') or
+      b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1))
+  </update>
+
+  <!--本地可疑、单边（对账日前一天、对账日均未对上）-->
+  <update id="updateLocalDubiousOrError">
+    update keep_reco_info b
+      set b.upd_tm       = sysdate,
+      b.reco_state   = '1',
+      b.dubious_flag = decode(b.reco_date,
+      to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd'),
+      '1',
+      b.dubious_flag), <!--1可疑-->
+      b.chk_rst      = decode(b.reco_date,
+      to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1,
+      '03',
+      '02'), <!--03单边账-->
+      b.state        = (case when b.state='04' and b.reco_date=to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1 THEN
+        '03'
+        ELSE
+          b.state
+        END)<!--将04记账超时改为03记账失败-->
+      where (b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') or
+      b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1) <!--查询对账日期前一天核心数据-->
+      and not exists
+      (select 1
+      from core_bill_info a
+      where a.txn_ssn = b.txn_ssn <!--查询对账日期当日及前一日本地数据-->
+      and (a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') or
+      a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1))
+  </update>
+
+  <!--核心单边，记录差错表（连续两天都没有关联出本地记录）-->
+  <insert id="insertCoreError">
+    insert into core_reco_err
+      (reco_date,
+      txn_ssn,
+      outer_txn_state,
+      outer_txn_amt,
+      core_ssn,
+      reco_rest,
+      proc_state,
+      proc_desc,
+      upd_date)
+    select to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') reco_date, <!--对账日期为当天-->
+        a.txn_ssn,
+        a.txn_state outer_txn_state,
+        a.txn_amount outer_txn_amt,
+        a.channel_seq core_ssn,
+        '12' reco_rest,
+        '00' proc_state,
+        '未处理' proc_desc,
+        sysdate upd_date
+        from core_bill_info a
+        where a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1 <!--查询前一日核心流水-->
+        and not exists
+        (select 1
+        from keep_reco_info b
+        where a.txn_ssn = b.txn_ssn
+        and (b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') or
+        b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1))
+  </insert>
+
+  <!--本地单边，记录差错表（连续两天都没有关联出核心记录）-->
+  <insert id="insertLocalError">
+    insert into core_reco_err
+      (reco_date,
+      txn_ssn,
+      order_date,
+      local_txn_state,
+      local_txn_amt,
+      core_ssn,
+      reco_rest,
+      proc_state,
+      proc_desc,
+      order_id,
+      upd_date)
+    select to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') reco_date, <!--对账日期为当天-->
+        b.txn_ssn,
+        to_date(b.order_tm, 'yyyymmddhh24miss') order_date,
+        b.txn_state local_txn_state,
+        b.trans_amt local_txn_amt,
+        b.txn_ssn core_ssn,
+        '11' reco_rest,
+        '00' proc_state,
+        '未处理' proc_desc,
+        b.order_ssn order_id,
+        sysdate upd_date
+        from keep_reco_info b
+        where b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1 <!--查询前一日核心流水-->
+        and not exists
+        (select 1
+        from core_bill_info a
+        where a.txn_ssn = b.txn_ssn
+        and (a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') or
+        a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1))
+  </insert>
+
+  <!--将对账成功的核心流水更新为记账成功、对账一致-->
+  <update id="updateCoreSuccess">
+    update core_bill_info a
+      set a.upd_tm = sysdate, a.reco_state = '1', a.chk_rst = '00'
+      where exists (select 1
+        from keep_reco_info b
+        where a.txn_ssn = b.txn_ssn
+        and b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd'))
+        and a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd')
+  </update>
+  <!--将对账成功的本地流水更新为记账成功、对账一致-->
+  <update id="updateLocalSuccess">
+    update keep_reco_info b
+       set b.upd_tm = sysdate,b.state = '02', b.chk_rst = '00',b.reco_state = '1'
+      where exists (select 1
+        from core_bill_info a
+        where a.txn_ssn = b.txn_ssn
+        and a.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd'))
+        and b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd')
+  </update>
+
+  <!--根据本地流水更新记账表-->
+  <update id="updateAccInfo">
+    update keep_acc_info a
+      set (a.chk_st, a.chk_rst, a.state, a.dubious_flag, a.upd_tm) = (select '01',
+                                                                 b.chk_rst,
+                                                                 b.state,
+                                                                 decode(b.chk_rst, '02', '01', '00'),
+                                                                 sysdate
+                                                                 from keep_reco_info b
+                                                                 where a.core_ssn = b.txn_ssn
+                                                                 and (
+                                                                    b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd')
+                                                                    or b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1 and dubious_flag = '1'
+                                                                    )
+                                                             )
+      where exists (select 1
+        from keep_reco_info b
+        where a.core_ssn = b.txn_ssn
+        and (b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd')
+            or b.reco_date = to_date(#{recoDate,jdbcType=VARCHAR}, 'yyyymmdd') - 1 and dubious_flag = '1'))
+        and a.state != '02'
+        and a.order_tm > #{orderTmStart,jdbcType=VARCHAR}
+        and <![CDATA[a.order_tm <= #{orderTmEnd,jdbcType=VARCHAR}]]>
+  </update>
+  <!-- ======================================= 记账表与核心对账sql 结束 ======================================= -->
+
+
+</mapper>

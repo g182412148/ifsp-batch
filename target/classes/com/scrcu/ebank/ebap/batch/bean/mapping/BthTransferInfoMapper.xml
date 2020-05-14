@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthTransferInfoMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthTransferInfo">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="ACCOUNT_TIME" jdbcType="VARCHAR" property="accountTime" />
+    <result column="MER_ID" jdbcType="VARCHAR" property="merId" />
+    <result column="MER_NAME" jdbcType="VARCHAR" property="merName" />
+    <result column="SETTLE_TYPE" jdbcType="VARCHAR" property="settleType" />
+    <result column="FILE_NAME" jdbcType="VARCHAR" property="fileName" />
+    <result column="IN_ACCOUNT_NO" jdbcType="VARCHAR" property="inAccountNo" />
+    <result column="IN_ACCOUNT_NAME" jdbcType="VARCHAR" property="inAccountName" />
+    <result column="IN_ACCOUT_ORG" jdbcType="VARCHAR" property="inAccoutOrg" />
+    <result column="ACCOUNT_AMOUNT" jdbcType="DECIMAL" property="accountAmount" />
+    <result column="ACUTUAL_AMOUNT" jdbcType="DECIMAL" property="acutualAmount" />
+    <result column="REMAIN_AMONUT" jdbcType="DECIMAL" property="remainAmonut" />
+    <result column="OUT_ACCOUNT_NO" jdbcType="VARCHAR" property="outAccountNo" />
+    <result column="OUT_ACCOUNT_NAME" jdbcType="VARCHAR" property="outAccountName" />
+    <result column="OUT_ACCOUT_ORG" jdbcType="VARCHAR" property="outAccoutOrg" />
+    <result column="TRANS_CUR" jdbcType="VARCHAR" property="transCur" />
+    <result column="HANDLE_FLAG" jdbcType="VARCHAR" property="handleFlag" />
+    <result column="HANDLE_COUNT" jdbcType="DECIMAL" property="handleCount" />
+    <result column="HAND_DATE" jdbcType="VARCHAR" property="handDate" />
+    <result column="DEAL_STATUS" jdbcType="VARCHAR" property="dealStatus" />
+    <result column="DEAL_SUCCESS_TIME" jdbcType="VARCHAR" property="dealSuccessTime" />
+    <result column="DEAL_RESULT_REMARK" jdbcType="VARCHAR" property="dealResultRemark" />
+    <result column="CREATE_DATE" jdbcType="VARCHAR" property="createDate" />
+    <result column="UPDATE_DATE" jdbcType="VARCHAR" property="updateDate" />
+    <result column="RESERVED1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="RESERVED2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACCOUNT_TIME, MER_ID, MER_NAME,SETTLE_TYPE, FILE_NAME, IN_ACCOUNT_NO, IN_ACCOUNT_NAME, 
+    IN_ACCOUT_ORG, ACCOUNT_AMOUNT, ACUTUAL_AMOUNT, REMAIN_AMONUT, OUT_ACCOUNT_NO, OUT_ACCOUNT_NAME, 
+    OUT_ACCOUT_ORG, TRANS_CUR, HANDLE_FLAG, HANDLE_COUNT, HAND_DATE, DEAL_STATUS, DEAL_SUCCESS_TIME, 
+    DEAL_RESULT_REMARK, CREATE_DATE, UPDATE_DATE, RESERVED1, RESERVED2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_TRANSFER_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from BTH_TRANSFER_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthTransferInfo">
+    insert into BTH_TRANSFER_INFO (ID, ACCOUNT_TIME, MER_ID, 
+      SETTLE_TYPE, FILE_NAME, IN_ACCOUNT_NO, 
+      IN_ACCOUNT_NAME, IN_ACCOUT_ORG, ACCOUNT_AMOUNT, 
+      ACUTUAL_AMOUNT, REMAIN_AMONUT, OUT_ACCOUNT_NO, 
+      OUT_ACCOUNT_NAME, OUT_ACCOUT_ORG, TRANS_CUR, 
+      HANDLE_FLAG, HANDLE_COUNT, HAND_DATE, 
+      DEAL_STATUS, DEAL_SUCCESS_TIME, DEAL_RESULT_REMARK, 
+      CREATE_DATE, UPDATE_DATE, RESERVED1, 
+      RESERVED2)
+    values (#{id,jdbcType=VARCHAR}, #{accountTime,jdbcType=VARCHAR}, #{merId,jdbcType=VARCHAR}, 
+      #{settleType,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{inAccountNo,jdbcType=VARCHAR}, 
+      #{inAccountName,jdbcType=VARCHAR}, #{inAccoutOrg,jdbcType=VARCHAR}, #{accountAmount,jdbcType=DECIMAL}, 
+      #{acutualAmount,jdbcType=DECIMAL}, #{remainAmonut,jdbcType=DECIMAL}, #{outAccountNo,jdbcType=VARCHAR}, 
+      #{outAccountName,jdbcType=VARCHAR}, #{outAccoutOrg,jdbcType=VARCHAR}, #{transCur,jdbcType=VARCHAR}, 
+      #{handleFlag,jdbcType=VARCHAR}, #{handleCount,jdbcType=DECIMAL}, #{handDate,jdbcType=VARCHAR}, 
+      #{dealStatus,jdbcType=VARCHAR}, #{dealSuccessTime,jdbcType=VARCHAR}, #{dealResultRemark,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=VARCHAR}, #{updateDate,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthTransferInfo">
+    insert into BTH_TRANSFER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountTime != null">
+        ACCOUNT_TIME,
+      </if>
+      <if test="merId != null">
+        MER_ID,
+      </if>
+      <if test="merName != null">
+        MER_NAME,
+      </if>
+      <if test="settleType != null">
+        SETTLE_TYPE,
+      </if>
+      <if test="fileName != null">
+        FILE_NAME,
+      </if>
+      <if test="inAccountNo != null">
+        IN_ACCOUNT_NO,
+      </if>
+      <if test="inAccountName != null">
+        IN_ACCOUNT_NAME,
+      </if>
+      <if test="inAccoutOrg != null">
+        IN_ACCOUT_ORG,
+      </if>
+      <if test="accountAmount != null">
+        ACCOUNT_AMOUNT,
+      </if>
+      <if test="acutualAmount != null">
+        ACUTUAL_AMOUNT,
+      </if>
+      <if test="remainAmonut != null">
+        REMAIN_AMONUT,
+      </if>
+      <if test="outAccountNo != null">
+        OUT_ACCOUNT_NO,
+      </if>
+      <if test="outAccountName != null">
+        OUT_ACCOUNT_NAME,
+      </if>
+      <if test="outAccoutOrg != null">
+        OUT_ACCOUT_ORG,
+      </if>
+      <if test="transCur != null">
+        TRANS_CUR,
+      </if>
+      <if test="handleFlag != null">
+        HANDLE_FLAG,
+      </if>
+      <if test="handleCount != null">
+        HANDLE_COUNT,
+      </if>
+      <if test="handDate != null">
+        HAND_DATE,
+      </if>
+      <if test="dealStatus != null">
+        DEAL_STATUS,
+      </if>
+      <if test="dealSuccessTime != null">
+        DEAL_SUCCESS_TIME,
+      </if>
+      <if test="dealResultRemark != null">
+        DEAL_RESULT_REMARK,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="reserved1 != null">
+        RESERVED1,
+      </if>
+      <if test="reserved2 != null">
+        RESERVED2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="accountTime != null">
+        #{accountTime,jdbcType=VARCHAR},
+      </if>
+      <if test="merId != null">
+        #{merId,jdbcType=VARCHAR},
+      </if>
+       <if test="merName != null">
+        #{merName,jdbcType=VARCHAR},
+      </if>
+      <if test="settleType != null">
+        #{settleType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountNo != null">
+        #{inAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountName != null">
+        #{inAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccoutOrg != null">
+        #{inAccoutOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAmount != null">
+        #{accountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="acutualAmount != null">
+        #{acutualAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="remainAmonut != null">
+        #{remainAmonut,jdbcType=DECIMAL},
+      </if>
+      <if test="outAccountNo != null">
+        #{outAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccountName != null">
+        #{outAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccoutOrg != null">
+        #{outAccoutOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="transCur != null">
+        #{transCur,jdbcType=VARCHAR},
+      </if>
+      <if test="handleFlag != null">
+        #{handleFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="handleCount != null">
+        #{handleCount,jdbcType=DECIMAL},
+      </if>
+      <if test="handDate != null">
+        #{handDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dealStatus != null">
+        #{dealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="dealSuccessTime != null">
+        #{dealSuccessTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dealResultRemark != null">
+        #{dealResultRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthTransferInfo">
+    update BTH_TRANSFER_INFO
+    <set>
+      <if test="accountTime != null">
+        ACCOUNT_TIME = #{accountTime,jdbcType=VARCHAR},
+      </if>
+      <if test="merId != null">
+        MER_ID = #{merId,jdbcType=VARCHAR},
+      </if>
+      <if test="settleType != null">
+        SETTLE_TYPE = #{settleType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null">
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountNo != null">
+        IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountName != null">
+        IN_ACCOUNT_NAME = #{inAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccoutOrg != null">
+        IN_ACCOUT_ORG = #{inAccoutOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAmount != null">
+        ACCOUNT_AMOUNT = #{accountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="acutualAmount != null">
+        ACUTUAL_AMOUNT = #{acutualAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="remainAmonut != null">
+        REMAIN_AMONUT = #{remainAmonut,jdbcType=DECIMAL},
+      </if>
+      <if test="outAccountNo != null">
+        OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccountName != null">
+        OUT_ACCOUNT_NAME = #{outAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccoutOrg != null">
+        OUT_ACCOUT_ORG = #{outAccoutOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="transCur != null">
+        TRANS_CUR = #{transCur,jdbcType=VARCHAR},
+      </if>
+      <if test="handleFlag != null">
+        HANDLE_FLAG = #{handleFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="handleCount != null">
+        HANDLE_COUNT = #{handleCount,jdbcType=DECIMAL},
+      </if>
+      <if test="handDate != null">
+        HAND_DATE = #{handDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dealStatus != null">
+        DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="dealSuccessTime != null">
+        DEAL_SUCCESS_TIME = #{dealSuccessTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dealResultRemark != null">
+        DEAL_RESULT_REMARK = #{dealResultRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthTransferInfo">
+    update BTH_TRANSFER_INFO
+    set ACCOUNT_TIME = #{accountTime,jdbcType=VARCHAR},
+      MER_ID = #{merId,jdbcType=VARCHAR},
+      SETTLE_TYPE = #{settleType,jdbcType=VARCHAR},
+      FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      IN_ACCOUNT_NO = #{inAccountNo,jdbcType=VARCHAR},
+      IN_ACCOUNT_NAME = #{inAccountName,jdbcType=VARCHAR},
+      IN_ACCOUT_ORG = #{inAccoutOrg,jdbcType=VARCHAR},
+      ACCOUNT_AMOUNT = #{accountAmount,jdbcType=DECIMAL},
+      ACUTUAL_AMOUNT = #{acutualAmount,jdbcType=DECIMAL},
+      REMAIN_AMONUT = #{remainAmonut,jdbcType=DECIMAL},
+      OUT_ACCOUNT_NO = #{outAccountNo,jdbcType=VARCHAR},
+      OUT_ACCOUNT_NAME = #{outAccountName,jdbcType=VARCHAR},
+      OUT_ACCOUT_ORG = #{outAccoutOrg,jdbcType=VARCHAR},
+      TRANS_CUR = #{transCur,jdbcType=VARCHAR},
+      HANDLE_FLAG = #{handleFlag,jdbcType=VARCHAR},
+      HANDLE_COUNT = #{handleCount,jdbcType=DECIMAL},
+      HAND_DATE = #{handDate,jdbcType=VARCHAR},
+      DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR},
+      DEAL_SUCCESS_TIME = #{dealSuccessTime,jdbcType=VARCHAR},
+      DEAL_RESULT_REMARK = #{dealResultRemark,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      UPDATE_DATE = #{updateDate,jdbcType=VARCHAR},
+      RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      RESERVED2 = #{reserved2,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="countUnhandleTransferInfo" resultType="int" parameterType="java.util.Map">
+        select count(1)
+        from BTH_TRANSFER_INFO
+        where DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR}
+   </select>
+   
+   <select id="selectUnhandleTransferInfo" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select 
+        <include refid="Base_Column_List" /> 
+        from BTH_TRANSFER_INFO
+        where DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR}
+   </select>
+   
+   <update id="updateTransferStatusById" parameterType="java.util.Map">
+    update BTH_TRANSFER_INFO
+    set 
+    DEAL_STATUS = #{dealStatus,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+   </update>
+   
+   <select id="countTransferDataByHandleFlag" resultType="int" parameterType="java.util.Map">
+        select 
+        count(1) 
+        from BTH_TRANSFER_INFO
+        where 
+        HANDLE_FLAG = #{handleFlag,jdbcType=VARCHAR} and
+        (DEAL_STATUS = '02' or DEAL_STATUS = '03')
+   </select>
+   
+   <select id="selectTransferDataByHandleFlag" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select *
+        from BTH_TRANSFER_INFO
+        where 
+        HANDLE_FLAG = #{handleFlag,jdbcType=VARCHAR} and 
+        (DEAL_STATUS = '02' or DEAL_STATUS = '03')
+   </select>
+  
+   <update id="updateTransferHandleFlag" parameterType="java.util.Map">
+     update BTH_TRANSFER_INFO
+     set 
+     HANDLE_FLAG = #{handleFlagResult,jdbcType=VARCHAR}
+     where 
+     HANDLE_FLAG = #{handleFlag,jdbcType=VARCHAR} and
+     (DEAL_STATUS = '02' or DEAL_STATUS = '03')
+   </update>
+</mapper>

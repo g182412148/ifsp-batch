@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PagyMchtInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PagyMchtInfo" >
+    <id column="PAGY_MCHT_NO" property="pagyMchtNo" jdbcType="VARCHAR" />
+    <result column="PAGY_MCHT_NM" property="pagyMchtNm" jdbcType="VARCHAR" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <result column="CHL_NO" property="chlNo" jdbcType="CHAR" />
+    <result column="CHL_MCHT_NO" property="chlMchtNo" jdbcType="VARCHAR" />
+    <result column="TPAM_PAGY_MCHT_NO" property="tpamPagyMchtNo" jdbcType="VARCHAR" />
+    <result column="TPAM_MCC_ID" property="tpamMccId" jdbcType="VARCHAR" />
+    <result column="TPAM_MCC_SUB_ID" property="tpamMccSubId" jdbcType="VARCHAR" />
+    <result column="TPAM_MCHT_ADDS_CODE" property="tpamMchtAddsCode" jdbcType="VARCHAR" />
+    <result column="TPAM_PAGY_MCHT_APP_ID" property="tpamPagyMchtAppId" jdbcType="VARCHAR" />
+    <result column="TPAM_PAGY_MCHT_APP_VERSION" property="tpamPagyMchtAppVersion" jdbcType="VARCHAR" />
+    <result column="TPAM_COMMISSION_RATE" property="tpamCommissionRate" jdbcType="DECIMAL" />
+    <result column="PAGY_MCHT_APL_DATE" property="pagyMchtAplDate" jdbcType="CHAR" />
+    <result column="PAGY_MCHT_STATE" property="pagyMchtState" jdbcType="CHAR" />
+    <result column="PAGY_MCHT_FAILED_RES" property="pagyMchtFailedRes" jdbcType="VARCHAR" />
+    <result column="CRT_TLR" property="crtTlr" jdbcType="VARCHAR" />
+    <result column="CRT_TM" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPD_TLR" property="lastUpdTlr" jdbcType="VARCHAR" />
+    <result column="LAST_UPD_TM" property="lastUpdTm" jdbcType="TIMESTAMP" />
+    <result column="MCHT_CLASS" property="mchtClass" jdbcType="VARCHAR" />
+
+    <result column="UP_MCHT_SYN_STATE" property="upMchtSynState" jdbcType="CHAR" />
+    <result column="UP_MCHT_SYN_TYPE" property="upMchtSynType" jdbcType="CHAR" />
+    <result column="UP_MCHT_SYN_DATE" property="upMchtSynDate" jdbcType="CHAR" />
+      <result column="UP_MCHT_SYN_FAILED_RES" property="upMchtSynFileRes" jdbcType="VARCHAR" />
+      <result column="TABLE_TYPE" property="tableType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PAGY_MCHT_NO, PAGY_MCHT_NM, PAGY_NO, CHL_NO, CHL_MCHT_NO, TPAM_PAGY_MCHT_NO, TPAM_MCC_ID, 
+    TPAM_MCC_SUB_ID, TPAM_MCHT_ADDS_CODE, TPAM_PAGY_MCHT_APP_ID, TPAM_PAGY_MCHT_APP_VERSION, 
+    TPAM_COMMISSION_RATE, PAGY_MCHT_APL_DATE, PAGY_MCHT_STATE, PAGY_MCHT_FAILED_RES, 
+    CRT_TLR, CRT_TM, LAST_UPD_TLR, LAST_UPD_TM, MCHT_CLASS,UP_MCHT_SYN_STATE,UP_MCHT_SYN_TYPE,UP_MCHT_SYN_DATE,UP_MCHT_SYN_FAILED_RES
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAGY_MCHT_INFO
+    where PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PAGY_MCHT_INFO
+    where PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyMchtInfo" >
+    insert into PAGY_MCHT_INFO (PAGY_MCHT_NO, PAGY_MCHT_NM, PAGY_NO, 
+      CHL_NO, CHL_MCHT_NO, TPAM_PAGY_MCHT_NO, 
+      TPAM_MCC_ID, TPAM_MCC_SUB_ID, TPAM_MCHT_ADDS_CODE, 
+      TPAM_PAGY_MCHT_APP_ID, TPAM_PAGY_MCHT_APP_VERSION, 
+      TPAM_COMMISSION_RATE, PAGY_MCHT_APL_DATE, PAGY_MCHT_STATE, 
+      PAGY_MCHT_FAILED_RES, CRT_TLR, CRT_TM, 
+      LAST_UPD_TLR, LAST_UPD_TM, MCHT_CLASS,UP_MCHT_SYN_STATE,UP_MCHT_SYN_TYPE,UP_MCHT_SYN_DATE,UP_MCHT_SYN_FAILED_RES
+      )
+
+    values (#{pagyMchtNo,jdbcType=VARCHAR}, #{pagyMchtNm,jdbcType=VARCHAR}, #{pagyNo,jdbcType=CHAR}, 
+      #{chlNo,jdbcType=CHAR}, #{chlMchtNo,jdbcType=VARCHAR}, #{tpamPagyMchtNo,jdbcType=VARCHAR}, 
+      #{tpamMccId,jdbcType=VARCHAR}, #{tpamMccSubId,jdbcType=VARCHAR}, #{tpamMchtAddsCode,jdbcType=VARCHAR}, 
+      #{tpamPagyMchtAppId,jdbcType=VARCHAR}, #{tpamPagyMchtAppVersion,jdbcType=VARCHAR}, 
+      #{tpamCommissionRate,jdbcType=DECIMAL}, #{pagyMchtAplDate,jdbcType=CHAR}, #{pagyMchtState,jdbcType=CHAR}, 
+      #{pagyMchtFailedRes,jdbcType=VARCHAR}, #{crtTlr,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{lastUpdTlr,jdbcType=VARCHAR}, #{lastUpdTm,jdbcType=TIMESTAMP}, #{mchtClass,jdbcType=VARCHAR}, #{upMchtSynState,jdbcType=CHAR},
+    #{upMchtSynType,jdbcType=CHAR}, #{upMchtSynDate,jdbcType=CHAR}, #{upMchtSynFileRes,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyMchtInfo" >
+    insert into PAGY_MCHT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pagyMchtNo != null" >
+        PAGY_MCHT_NO,
+      </if>
+      <if test="pagyMchtNm != null" >
+        PAGY_MCHT_NM,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="chlNo != null" >
+        CHL_NO,
+      </if>
+      <if test="chlMchtNo != null" >
+        CHL_MCHT_NO,
+      </if>
+      <if test="tpamPagyMchtNo != null" >
+        TPAM_PAGY_MCHT_NO,
+      </if>
+      <if test="tpamMccId != null" >
+        TPAM_MCC_ID,
+      </if>
+      <if test="tpamMccSubId != null" >
+        TPAM_MCC_SUB_ID,
+      </if>
+      <if test="tpamMchtAddsCode != null" >
+        TPAM_MCHT_ADDS_CODE,
+      </if>
+      <if test="tpamPagyMchtAppId != null" >
+        TPAM_PAGY_MCHT_APP_ID,
+      </if>
+      <if test="tpamPagyMchtAppVersion != null" >
+        TPAM_PAGY_MCHT_APP_VERSION,
+      </if>
+      <if test="tpamCommissionRate != null" >
+        TPAM_COMMISSION_RATE,
+      </if>
+      <if test="pagyMchtAplDate != null" >
+        PAGY_MCHT_APL_DATE,
+      </if>
+      <if test="pagyMchtState != null" >
+        PAGY_MCHT_STATE,
+      </if>
+      <if test="pagyMchtFailedRes != null" >
+        PAGY_MCHT_FAILED_RES,
+      </if>
+      <if test="crtTlr != null" >
+        CRT_TLR,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+      <if test="lastUpdTlr != null" >
+        LAST_UPD_TLR,
+      </if>
+      <if test="lastUpdTm != null" >
+        LAST_UPD_TM,
+      </if>
+      <if test="mchtClass != null" >
+        MCHT_CLASS,
+      </if>
+
+      <if test="upMchtSynState != null" >
+        UP_MCHT_SYN_STATE,
+      </if>
+      <if test="upMchtSynType != null" >
+        UP_MCHT_SYN_TYPE,
+      </if>
+      <if test="upMchtSynDate != null" >
+        UP_MCHT_SYN_DATE,
+      </if>
+      <if test="upMchtSynFileRes != null" >
+        UP_MCHT_SYN_FAILED_RES,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pagyMchtNo != null" >
+        #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyMchtNm != null" >
+        #{pagyMchtNm,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="chlNo != null" >
+        #{chlNo,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtNo != null" >
+        #{chlMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyMchtNo != null" >
+        #{tpamPagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMccId != null" >
+        #{tpamMccId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMccSubId != null" >
+        #{tpamMccSubId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMchtAddsCode != null" >
+        #{tpamMchtAddsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyMchtAppId != null" >
+        #{tpamPagyMchtAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyMchtAppVersion != null" >
+        #{tpamPagyMchtAppVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamCommissionRate != null" >
+        #{tpamCommissionRate,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyMchtAplDate != null" >
+        #{pagyMchtAplDate,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtState != null" >
+        #{pagyMchtState,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtFailedRes != null" >
+        #{pagyMchtFailedRes,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTlr != null" >
+        #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTlr != null" >
+        #{lastUpdTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTm != null" >
+        #{lastUpdTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mchtClass != null" >
+        #{mchtClass,jdbcType=VARCHAR},
+      </if>
+      <if test="upMchtSynState != null" >
+        #{upMchtSynState,jdbcType=CHAR},
+      </if>
+      <if test="upMchtSynType != null" >
+        #{upMchtSynType,jdbcType=CHAR},
+      </if>
+      <if test="upMchtSynDate != null" >
+        #{upMchtSynDate,jdbcType=CHAR},
+      </if>
+      <if test="upMchtSynFileRes != null" >
+        #{upMchtSynFileRes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyMchtInfo" >
+    update PAGY_MCHT_INFO
+    <set >
+      <if test="pagyMchtNm != null" >
+        PAGY_MCHT_NM = #{pagyMchtNm,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="chlNo != null" >
+        CHL_NO = #{chlNo,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtNo != null" >
+        CHL_MCHT_NO = #{chlMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyMchtNo != null" >
+        TPAM_PAGY_MCHT_NO = #{tpamPagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMccId != null" >
+        TPAM_MCC_ID = #{tpamMccId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMccSubId != null" >
+        TPAM_MCC_SUB_ID = #{tpamMccSubId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamMchtAddsCode != null" >
+        TPAM_MCHT_ADDS_CODE = #{tpamMchtAddsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyMchtAppId != null" >
+        TPAM_PAGY_MCHT_APP_ID = #{tpamPagyMchtAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyMchtAppVersion != null" >
+        TPAM_PAGY_MCHT_APP_VERSION = #{tpamPagyMchtAppVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamCommissionRate != null" >
+        TPAM_COMMISSION_RATE = #{tpamCommissionRate,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyMchtAplDate != null" >
+        PAGY_MCHT_APL_DATE = #{pagyMchtAplDate,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtState != null" >
+        PAGY_MCHT_STATE = #{pagyMchtState,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtFailedRes != null" >
+        PAGY_MCHT_FAILED_RES = #{pagyMchtFailedRes,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTlr != null" >
+        CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTlr != null" >
+        LAST_UPD_TLR = #{lastUpdTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTm != null" >
+        LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mchtClass != null" >
+        MCHT_CLASS = #{mchtClass,jdbcType=VARCHAR},
+      </if>
+
+      <if test="upMchtSynState != null" >
+        UP_MCHT_SYN_STATE = #{upMchtSynState,jdbcType=CHAR},
+      </if>
+      <if test="upMchtSynType != null" >
+        UP_MCHT_SYN_TYPE = #{upMchtSynType,jdbcType=CHAR},
+      </if>
+      <if test="upMchtSynDate != null" >
+        UP_MCHT_SYN_DATE = #{upMchtSynDate,jdbcType=CHAR},
+      </if>
+      <if test="upMchtSynFileRes != null" >
+        UP_MCHT_SYN_FAILED_RES = #{upMchtSynFileRes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyMchtInfo" >
+    update PAGY_MCHT_INFO
+    set PAGY_MCHT_NM = #{pagyMchtNm,jdbcType=VARCHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      CHL_NO = #{chlNo,jdbcType=CHAR},
+      CHL_MCHT_NO = #{chlMchtNo,jdbcType=VARCHAR},
+      TPAM_PAGY_MCHT_NO = #{tpamPagyMchtNo,jdbcType=VARCHAR},
+      TPAM_MCC_ID = #{tpamMccId,jdbcType=VARCHAR},
+      TPAM_MCC_SUB_ID = #{tpamMccSubId,jdbcType=VARCHAR},
+      TPAM_MCHT_ADDS_CODE = #{tpamMchtAddsCode,jdbcType=VARCHAR},
+      TPAM_PAGY_MCHT_APP_ID = #{tpamPagyMchtAppId,jdbcType=VARCHAR},
+      TPAM_PAGY_MCHT_APP_VERSION = #{tpamPagyMchtAppVersion,jdbcType=VARCHAR},
+      TPAM_COMMISSION_RATE = #{tpamCommissionRate,jdbcType=DECIMAL},
+      PAGY_MCHT_APL_DATE = #{pagyMchtAplDate,jdbcType=CHAR},
+      PAGY_MCHT_STATE = #{pagyMchtState,jdbcType=CHAR},
+      PAGY_MCHT_FAILED_RES = #{pagyMchtFailedRes,jdbcType=VARCHAR},
+      CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      LAST_UPD_TLR = #{lastUpdTlr,jdbcType=VARCHAR},
+      LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP},
+      MCHT_CLASS = #{mchtClass,jdbcType=VARCHAR},
+    UP_MCHT_SYN_STATE = #{upMchtSynState,jdbcType=CHAR},
+    UP_MCHT_SYN_TYPE = #{upMchtSynType,jdbcType=CHAR},
+    UP_MCHT_SYN_DATE = #{upMchtSynDate,jdbcType=CHAR},
+    UP_MCHT_SYN_FAILED_RES = #{upMchtSynFileRes,jdbcType=VARCHAR}
+    where PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR}
+  </update>
+  <select id="selectPagyMchtInfoByMchtNoDate" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select distinct
+    <include refid="Base_Column_List" />
+     from pagy_mcht_info 
+     where CHL_MCHT_NO in (select CHL_MCHT_NO from pagy_txn_info where to_char(PAGY_TXN_TM,'YYYYMMDD')=#{settleDate} group by CHL_MCHT_NO)  
+     and TPAM_PAGY_MCHT_NO is not null
+  </select>
+
+
+
+   <select id="selectAllMchtNo" resultType="string" parameterType="map" >
+       SELECT DISTINCT a.TPAM_PAGY_MCHT_NO
+       FROM PAGY_MCHT_INFO a
+       LEFT JOIN PAGY_BASE_INFO b ON a.PAGY_NO = b.PAGY_NO
+       WHERE a.TPAM_PAGY_MCHT_NO IS NOT NULL AND b.PAGY_SYS_NO IN
+       <foreach collection="pagyNos" index="index" item="item" open="(" separator="," close=")">
+           #{item}
+       </foreach>
+       union
+       SELECT DISTINCT a.TPAM_PAGY_MCHT_NO
+       FROM PAGY_MCHT_INFO_OLD a
+       LEFT JOIN PAGY_BASE_INFO b ON a.PAGY_NO = b.PAGY_NO
+       WHERE a.TPAM_PAGY_MCHT_NO IS NOT NULL AND b.PAGY_SYS_NO IN
+       <foreach collection="pagyNos" index="index" item="item" open="(" separator="," close=")">
+         #{item}
+       </foreach>
+   </select>
+
+
+    <select id="selectByMchntCd" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM PAGY_MCHT_INFO  WHERE TPAM_PAGY_MCHT_NO = #{split,jdbcType=VARCHAR }
+    </select>
+
+    <update id="updateStat" parameterType="map">
+        UPDATE PAGY_MCHT_INFO SET PAGY_MCHT_STATE = '01' ,LAST_UPD_TLR = 'batch' ,  LAST_UPD_TM = #{date ,jdbcType=TIMESTAMP } WHERE TPAM_PAGY_MCHT_NO = #{mchtNo ,jdbcType=VARCHAR }
+    </update>
+
+  <update id="updatePagyMchtStat" >
+        UPDATE PAGY_MCHT_INFO SET PAGY_MCHT_STATE = #{state,jdbcType=VARCHAR },LAST_UPD_TLR = 'batch' ,  LAST_UPD_TM =sysdate WHERE PAGY_MCHT_NO = #{pagyMchtNo ,jdbcType=VARCHAR }
+    </update>
+
+  <update id="updateUpMchtSynState" >
+        UPDATE PAGY_MCHT_INFO SET UP_MCHT_SYN_STATE = #{state,jdbcType=CHAR },UP_MCHT_SYN_DATE=#{curDate,jdbcType=CHAR },UP_MCHT_SYN_FAILED_RES='',LAST_UPD_TLR = 'batch' ,  LAST_UPD_TM =sysdate WHERE PAGY_MCHT_NO = #{pagyMchtNo ,jdbcType=VARCHAR }
+    </update>
+  <update id="updateUpMchtSynStateOld" >
+        UPDATE PAGY_MCHT_INFO_OLD SET UP_MCHT_SYN_STATE = #{state,jdbcType=CHAR },UP_MCHT_SYN_DATE=#{curDate,jdbcType=CHAR },UP_MCHT_SYN_FAILED_RES='',LAST_UPD_TLR = 'batch' ,  LAST_UPD_TM =sysdate WHERE PAGY_MCHT_NO = #{pagyMchtNo ,jdbcType=VARCHAR }
+    </update>
+  <select id="selectByState" resultMap="BaseResultMap">
+    　 SELECT
+    <include refid="Base_Column_List" />,'0' TABLE_TYPE
+    from PAGY_MCHT_INFO
+     where  UP_MCHT_SYN_TYPE  in ('I','U','D','X') and  UP_MCHT_SYN_STATE in
+    　　<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+    　　　　#{item}
+    　　</foreach>
+    union
+    　 SELECT
+    <include refid="Base_Column_List" />,'1' TABLE_TYPE
+    from PAGY_MCHT_INFO_OLD
+    where  UP_MCHT_SYN_TYPE  in ('I','U','D','X') and  UP_MCHT_SYN_STATE in
+    　　<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+    　　　　#{item}
+    　　</foreach>
+    order by LAST_UPD_TM asc
+  </select>
+
+  <update id="updateUpMchtSynRes" >
+        UPDATE ${upTableName} SET
+
+    UP_MCHT_SYN_STATE=
+    case
+    when ((UP_MCHT_SYN_TYPE = 'X' or UP_MCHT_SYN_TYPE = 'D' ) and '4' =#{upMchtSynState ,jdbcType=VARCHAR } ) then '3'
+    when ((UP_MCHT_SYN_TYPE = 'M' ) and '4' =#{upMchtSynState ,jdbcType=VARCHAR } ) then '4'
+    ELSE
+    #{upMchtSynState ,jdbcType=VARCHAR }
+    end,
+    UP_MCHT_SYN_TYPE=
+    case
+    when ((UP_MCHT_SYN_TYPE = 'X' or UP_MCHT_SYN_TYPE = 'D' ) and '4' =#{upMchtSynState ,jdbcType=VARCHAR } ) then 'D'
+    when ((UP_MCHT_SYN_TYPE = 'M'  ) and '4' =#{upMchtSynState ,jdbcType=VARCHAR } ) then 'I'
+    ELSE
+    UP_MCHT_SYN_TYPE
+    end,
+    UP_MCHT_SYN_FAILED_RES=#{upMchtSynFailedRes ,jdbcType=VARCHAR },LAST_UPD_TLR = 'batch' ,  LAST_UPD_TM =sysdate
+        WHERE UP_MCHT_SYN_STATE='2' and UP_MCHT_SYN_DATE=#{date,jdbcType=CHAR }
+       <if test="tpamPagyMchtNo != null" >
+       and TPAM_PAGY_MCHT_NO = #{tpamPagyMchtNo,jdbcType=VARCHAR}
+       </if>
+
+</update>
+
+  <update id="successUpdateUpMchtSynRes" >
+    UPDATE ${upTableName} SET
+    UP_MCHT_SYN_STATE=
+    case
+    when UP_MCHT_SYN_TYPE = 'X' then '1'
+    when UP_MCHT_SYN_TYPE = 'M' then '1'
+    when (UP_MCHT_SYN_TYPE != 'X' and UP_MCHT_SYN_TYPE != 'M' ) then '3'
+    end,
+    UP_MCHT_SYN_TYPE=
+    case
+    when UP_MCHT_SYN_TYPE = 'X' then 'D'
+    when UP_MCHT_SYN_TYPE = 'M' then 'U'
+    when (UP_MCHT_SYN_TYPE != 'X' and UP_MCHT_SYN_TYPE != 'M') then UP_MCHT_SYN_TYPE
+    end,
+    UP_MCHT_SYN_FAILED_RES=#{upMchtSynFailedRes ,jdbcType=VARCHAR },
+    LAST_UPD_TLR = 'batch' ,
+    LAST_UPD_TM =sysdate
+    WHERE UP_MCHT_SYN_STATE='2' and UP_MCHT_SYN_DATE=#{date,jdbcType=CHAR }
+    <if test="tpamPagyMchtNo != null" >
+      and TPAM_PAGY_MCHT_NO = #{tpamPagyMchtNo,jdbcType=VARCHAR}
+    </if>
+
+  </update>
+
+  <update id="updateSynXwState" >
+  update tpam_cup_mcht_info a
+     set a.ebap_mcht_stat = '1',
+         a.last_upd_tm    = sysdate,
+         a.last_upd_tlr   = 'batch'
+   where a.net_mchnt_svc_tp = 'A'
+   and a.ebap_mcht_stat = '0'
+     and exists (select b.tpam_pagy_mcht_no
+            from pagy_mcht_info b
+           where b.up_mcht_syn_state = '3'
+             and b.up_mcht_syn_type = 'D'
+             and b.up_mcht_syn_date = #{date,jdbcType=CHAR }
+             and b.tpam_pagy_mcht_no = a.mchnt_cd
+          union
+          select c.tpam_pagy_mcht_no
+            from pagy_mcht_info_old c
+           where c.up_mcht_syn_state = '3'
+             and c.up_mcht_syn_type = 'D'
+             and c.up_mcht_syn_date = #{date,jdbcType=CHAR }
+             and c.tpam_pagy_mcht_no = a.mchnt_cd
+          )
+  </update>
+
+
+</mapper>

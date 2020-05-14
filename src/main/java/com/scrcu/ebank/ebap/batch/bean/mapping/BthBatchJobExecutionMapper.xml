@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthBatchJobExecutionMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchJobExecution">
+    <id column="JOB_EXE_ID" jdbcType="VARCHAR" property="jobExeId" />
+    <result column="JOB_NAME" jdbcType="VARCHAR" property="jobName" />
+    <result column="JOB_DESC" jdbcType="VARCHAR" property="jobDesc" />
+    <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+    <result column="IP_ADDR" jdbcType="VARCHAR" property="ipAddr" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="PARAMS" jdbcType="BLOB" property="params" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JOB_EXE_ID, JOB_NAME, JOB_DESC, BATCH_NO, IP_ADDR, START_TIME, END_TIME, STATUS, 
+    DESCRIPTION,PARAMS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_BATCH_JOB_EXECUTION
+    where JOB_EXE_ID = #{jobExeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from BTH_BATCH_JOB_EXECUTION
+    where JOB_EXE_ID = #{jobExeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchJobExecution">
+    insert into BTH_BATCH_JOB_EXECUTION (JOB_EXE_ID, JOB_NAME, JOB_DESC, 
+      BATCH_NO, IP_ADDR, START_TIME, 
+      END_TIME, STATUS, DESCRIPTION, 
+      PARAMS)
+    values (#{jobExeId,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, #{jobDesc,jdbcType=VARCHAR}, 
+      #{batchNo,jdbcType=VARCHAR}, #{ipAddr,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, 
+      #{params,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchJobExecution">
+    insert into BTH_BATCH_JOB_EXECUTION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jobExeId != null">
+        JOB_EXE_ID,
+      </if>
+      <if test="jobName != null">
+        JOB_NAME,
+      </if>
+      <if test="jobDesc != null">
+        JOB_DESC,
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO,
+      </if>
+      <if test="ipAddr != null">
+        IP_ADDR,
+      </if>
+      <if test="startTime != null">
+        START_TIME,
+      </if>
+      <if test="endTime != null">
+        END_TIME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="params != null">
+        PARAMS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jobExeId != null">
+        #{jobExeId,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null">
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDesc != null">
+        #{jobDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddr != null">
+        #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null">
+        #{params,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchJobExecution">
+    update BTH_BATCH_JOB_EXECUTION
+    <set>
+      <if test="jobName != null">
+        JOB_NAME = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDesc != null">
+        JOB_DESC = #{jobDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddr != null">
+        IP_ADDR = #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null">
+        PARAMS = #{params,jdbcType=BLOB},
+      </if>
+    </set>
+    where JOB_EXE_ID = #{jobExeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchJobExecution">
+    update BTH_BATCH_JOB_EXECUTION
+    set JOB_NAME = #{jobName,jdbcType=VARCHAR},
+      JOB_DESC = #{jobDesc,jdbcType=VARCHAR},
+      BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      IP_ADDR = #{ipAddr,jdbcType=VARCHAR},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=CHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      PARAMS = #{params,jdbcType=BLOB}
+    where JOB_EXE_ID = #{jobExeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthBatchJobExecution">
+    update BTH_BATCH_JOB_EXECUTION
+    set JOB_NAME = #{jobName,jdbcType=VARCHAR},
+      JOB_DESC = #{jobDesc,jdbcType=VARCHAR},
+      BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      IP_ADDR = #{ipAddr,jdbcType=VARCHAR},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=CHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR}
+    where JOB_EXE_ID = #{jobExeId,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateJobExeStatusByExecuId" parameterType="map">
+     update BTH_BATCH_JOB_EXECUTION
+     set
+       STATUS = #{status,jdbcType=CHAR}
+      <if test="description != null">
+        ,DESCRIPTION = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="endTime != null">
+       ,END_TIME = #{endTime,jdbcType=TIMESTAMP}
+      </if>
+    where JOB_EXE_ID = #{jobExeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtSettlRateCfgMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtSettlRateCfg">
+    <id column="ROW_ID" jdbcType="VARCHAR" property="rowId" />
+    <result column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+    <result column="PROD_ID" jdbcType="VARCHAR" property="prodId" />
+    <result column="ACC_CHNL_NO" jdbcType="VARCHAR" property="accChnlNo" />
+    <result column="ACCT_TYPE" jdbcType="VARCHAR" property="acctType" />
+    <result column="TXN_TYPE" jdbcType="VARCHAR" property="txnType" />
+    <result column="PAY_CHNL_NO" jdbcType="VARCHAR" property="payChnlNo" />
+    <result column="RATE_CAL_TYPE" jdbcType="CHAR" property="rateCalType" />
+    <result column="RATE_CAL_PARAM" jdbcType="DECIMAL" property="rateCalParam" />
+    <result column="MAX_PARAM" jdbcType="DECIMAL" property="maxParam" />
+    <result column="MIN_PARAM" jdbcType="DECIMAL" property="minParam" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ROW_ID, MCHT_ID, PROD_ID, ACC_CHNL_NO, ACCT_TYPE, TXN_TYPE, PAY_CHNL_NO, RATE_CAL_TYPE, 
+    RATE_CAL_PARAM, MAX_PARAM, MIN_PARAM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from MCHT_SETTL_RATE_CFG
+    where ROW_ID = #{rowId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from MCHT_SETTL_RATE_CFG
+    where ROW_ID = #{rowId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtSettlRateCfg">
+    insert into MCHT_SETTL_RATE_CFG (ROW_ID, MCHT_ID, PROD_ID, 
+      ACC_CHNL_NO, ACCT_TYPE, TXN_TYPE, 
+      PAY_CHNL_NO, RATE_CAL_TYPE, RATE_CAL_PARAM, 
+      MAX_PARAM, MIN_PARAM)
+    values (#{rowId,jdbcType=VARCHAR}, #{mchtId,jdbcType=VARCHAR}, #{prodId,jdbcType=VARCHAR}, 
+      #{accChnlNo,jdbcType=VARCHAR}, #{acctType,jdbcType=VARCHAR}, #{txnType,jdbcType=VARCHAR}, 
+      #{payChnlNo,jdbcType=VARCHAR}, #{rateCalType,jdbcType=CHAR}, #{rateCalParam,jdbcType=DECIMAL}, 
+      #{maxParam,jdbcType=DECIMAL}, #{minParam,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtSettlRateCfg">
+    insert into MCHT_SETTL_RATE_CFG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rowId != null">
+        ROW_ID,
+      </if>
+      <if test="mchtId != null">
+        MCHT_ID,
+      </if>
+      <if test="prodId != null">
+        PROD_ID,
+      </if>
+      <if test="accChnlNo != null">
+        ACC_CHNL_NO,
+      </if>
+      <if test="acctType != null">
+        ACCT_TYPE,
+      </if>
+      <if test="txnType != null">
+        TXN_TYPE,
+      </if>
+      <if test="payChnlNo != null">
+        PAY_CHNL_NO,
+      </if>
+      <if test="rateCalType != null">
+        RATE_CAL_TYPE,
+      </if>
+      <if test="rateCalParam != null">
+        RATE_CAL_PARAM,
+      </if>
+      <if test="maxParam != null">
+        MAX_PARAM,
+      </if>
+      <if test="minParam != null">
+        MIN_PARAM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rowId != null">
+        #{rowId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null">
+        #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodId != null">
+        #{prodId,jdbcType=VARCHAR},
+      </if>
+      <if test="accChnlNo != null">
+        #{accChnlNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctType != null">
+        #{acctType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null">
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="payChnlNo != null">
+        #{payChnlNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rateCalType != null">
+        #{rateCalType,jdbcType=CHAR},
+      </if>
+      <if test="rateCalParam != null">
+        #{rateCalParam,jdbcType=DECIMAL},
+      </if>
+      <if test="maxParam != null">
+        #{maxParam,jdbcType=DECIMAL},
+      </if>
+      <if test="minParam != null">
+        #{minParam,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtSettlRateCfg">
+    update MCHT_SETTL_RATE_CFG
+    <set>
+      <if test="mchtId != null">
+        MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodId != null">
+        PROD_ID = #{prodId,jdbcType=VARCHAR},
+      </if>
+      <if test="accChnlNo != null">
+        ACC_CHNL_NO = #{accChnlNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctType != null">
+        ACCT_TYPE = #{acctType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null">
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="payChnlNo != null">
+        PAY_CHNL_NO = #{payChnlNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rateCalType != null">
+        RATE_CAL_TYPE = #{rateCalType,jdbcType=CHAR},
+      </if>
+      <if test="rateCalParam != null">
+        RATE_CAL_PARAM = #{rateCalParam,jdbcType=DECIMAL},
+      </if>
+      <if test="maxParam != null">
+        MAX_PARAM = #{maxParam,jdbcType=DECIMAL},
+      </if>
+      <if test="minParam != null">
+        MIN_PARAM = #{minParam,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ROW_ID = #{rowId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtSettlRateCfg">
+    update MCHT_SETTL_RATE_CFG
+    set MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      PROD_ID = #{prodId,jdbcType=VARCHAR},
+      ACC_CHNL_NO = #{accChnlNo,jdbcType=VARCHAR},
+      ACCT_TYPE = #{acctType,jdbcType=VARCHAR},
+      TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      PAY_CHNL_NO = #{payChnlNo,jdbcType=VARCHAR},
+      RATE_CAL_TYPE = #{rateCalType,jdbcType=CHAR},
+      RATE_CAL_PARAM = #{rateCalParam,jdbcType=DECIMAL},
+      MAX_PARAM = #{maxParam,jdbcType=DECIMAL},
+      MIN_PARAM = #{minParam,jdbcType=DECIMAL}
+    where ROW_ID = #{rowId,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectAllInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MCHT_SETTL_RATE_CFG
+    </select>
+    
+     <select id="selectByMchtId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from MCHT_SETTL_RATE_CFG 
+        where MCHT_ID =#{mchtId,jdbcType=VARCHAR}
+        and (ACC_CHNL_NO =#{acctTypeId,jdbcType=VARCHAR} or ACC_CHNL_NO = '*')
+        and (ACCT_TYPE =#{acctSubTypeId,jdbcType=VARCHAR} or ACCT_TYPE = '*')
+    </select>
+    
+    <!-- 根据渠道查询费率信息 -->
+    <select id="selectMerStlRateInfoByChnlAndAccType" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from MCHT_SETTL_RATE_CFG 
+        where MCHT_ID =#{mchtId}
+        and (ACC_CHNL_NO =#{accChnlNo} or ACC_CHNL_NO = '50')
+        <if test="acctType != null">
+              and ACCT_TYPE =#{acctType}
+        </if>
+        <if test="prodId != null">
+              and PROD_ID =#{prodId}
+        </if>
+        ORDER BY ACC_CHNL_NO
+    </select>
+    <select id="selectMerStlRateInfoByMchtIdList" resultMap="BaseResultMap" parameterType="java.util.Map">
+      select
+      <include refid="Base_Column_List" />
+      from MCHT_SETTL_RATE_CFG
+      where MCHT_ID in
+      <foreach collection="mchtIdList" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </select>
+
+
+
+    <select id="selectMchtId4Pet" parameterType="map" resultMap="BaseResultMap">
+      select mcht_id from MCHT_SETTL_RATE_CFG where row_id like '82%' and prod_id='pro1' and
+      length(mcht_id) = '15' and rownum = 1 order by mcht_id desc
+    </select>
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtStaffRelTempMapper">
+    <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffRelTemp">
+        <id column="RECORD_ID" property="recordId" jdbcType="VARCHAR"/>
+        <result column="MCHT_ID" property="mchtId" jdbcType="VARCHAR"/>
+        <result column="STAFF_ID" property="staffId" jdbcType="VARCHAR"/>
+        <result column="STAFF_ROLE" property="staffRole" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    RECORD_ID, MCHT_ID, STAFF_ID, STAFF_ROLE
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from MCHT_STAFF_REL_TEMP
+        where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from MCHT_STAFF_REL_TEMP
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffRelTemp">
+    insert into MCHT_STAFF_REL_TEMP (RECORD_ID, MCHT_ID, STAFF_ID, 
+      STAFF_ROLE)
+    values (#{recordId,jdbcType=VARCHAR}, #{mchtId,jdbcType=VARCHAR}, #{staffId,jdbcType=VARCHAR}, 
+      #{staffRole,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffRelTemp">
+        insert into MCHT_STAFF_REL_TEMP
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="recordId != null">
+                RECORD_ID,
+            </if>
+            <if test="mchtId != null">
+                MCHT_ID,
+            </if>
+            <if test="staffId != null">
+                STAFF_ID,
+            </if>
+            <if test="staffRole != null">
+                STAFF_ROLE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="recordId != null">
+                #{recordId,jdbcType=VARCHAR},
+            </if>
+            <if test="mchtId != null">
+                #{mchtId,jdbcType=VARCHAR},
+            </if>
+            <if test="staffId != null">
+                #{staffId,jdbcType=VARCHAR},
+            </if>
+            <if test="staffRole != null">
+                #{staffRole,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffRelTemp">
+        update MCHT_STAFF_REL_TEMP
+        <set>
+            <if test="mchtId != null">
+                MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+            </if>
+            <if test="staffId != null">
+                STAFF_ID = #{staffId,jdbcType=VARCHAR},
+            </if>
+            <if test="staffRole != null">
+                STAFF_ROLE = #{staffRole,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffRelTemp">
+    update MCHT_STAFF_REL_TEMP
+    set MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      STAFF_ID = #{staffId,jdbcType=VARCHAR},
+      STAFF_ROLE = #{staffRole,jdbcType=VARCHAR}
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </update>
+
+    <!--根据人员编号查询记录编号 by.qzhang-->
+    <select id="selectRecordId" parameterType="map" resultType="java.lang.String">
+    SELECT RECORD_ID FROM MCHT_STAFF_REL_TEMP WHERE STAFF_ID=#{staffId,jdbcType=VARCHAR}
+    and MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+  </select>
+  <!--  -->
+  <select id="selectMchtStaffRelTempList" parameterType="string" resultMap="BaseResultMap">
+  		select * from MCHT_STAFF_REL_TEMP where MCHT_ID=#{mchtId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectMchtStaffRelTempList_twoRole" parameterType="string" resultMap="BaseResultMap">
+  		select * from MCHT_STAFF_REL_TEMP where MCHT_ID= #{mchtId,jdbcType=VARCHAR} and STAFF_ROLE  in ('01','02')
+
+  </select>
+
+</mapper>

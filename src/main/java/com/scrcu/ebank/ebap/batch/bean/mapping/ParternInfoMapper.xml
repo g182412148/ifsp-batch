@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.ParternInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.ParternInfo" >
+    <id column="PARTERN_ID" property="parternId" jdbcType="VARCHAR" />
+    <result column="PARTERN_TYPE" property="parternType" jdbcType="CHAR" />
+    <result column="PARTERN_CODE" property="parternCode" jdbcType="VARCHAR" />
+    <result column="PARTERN_NAME" property="parternName" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_TYPE" property="accountType" jdbcType="CHAR" />
+    <result column="ACCOUNT_NO" property="accountNo" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_NAME" property="accountName" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_ORG" property="accountOrg" jdbcType="VARCHAR" />
+    <result column="SETTLE_DAY" property="settleDay" jdbcType="DECIMAL" />
+    <result column="MONTH_DAY" property="monthDay" jdbcType="VARCHAR" />
+    <result column="QUALIFI_TYPE" property="qualifiType" jdbcType="CHAR" />
+    <result column="CERT_NO" property="certNo" jdbcType="VARCHAR" />
+    <result column="ARTIF_NAME" property="artifName" jdbcType="VARCHAR" />
+    <result column="ARTIF_PHONE" property="artifPhone" jdbcType="VARCHAR" />
+    <result column="ARTIF_CARD_TYPE" property="artifCardType" jdbcType="CHAR" />
+    <result column="ARTIF_CARD_NO" property="artifCardNo" jdbcType="VARCHAR" />
+    <result column="CARD_START_DATE" property="cardStartDate" jdbcType="VARCHAR" />
+    <result column="CARD_END_DATE" property="cardEndDate" jdbcType="VARCHAR" />
+    <result column="CREATE_TLR" property="createTlr" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="UPD_TLR" property="updTlr" jdbcType="VARCHAR" />
+    <result column="UPD_TIME" property="updTime" jdbcType="VARCHAR" />
+    <result column="COOPERATION_PATH" property="cooperationPath" jdbcType="VARCHAR" />
+    <result column="PARTERN_STATUS" property="parternStatus" jdbcType="VARCHAR" />
+    <result column="DEP_ACCT_NO" property="depAcctNo" jdbcType="VARCHAR" />
+    <result column="DEP_AMT" property="depAmt" jdbcType="DECIMAL" />
+    <result column="DEP_INT_FLAG" property="depIntFlag" jdbcType="CHAR" />
+    <result column="DEP_INT_RATE" property="depIntRate" jdbcType="DECIMAL" />
+    <result column="OPEN_CLIENT_ID" property="openClientId" jdbcType="VARCHAR" />
+    <result column="CM_NAME" property="cmName" jdbcType="VARCHAR" />
+    <result column="CM_PHONE" property="cmPhone" jdbcType="VARCHAR" />
+    <result column="GUARANTEE_DEPOSIT" property="guaranteeDeposit" jdbcType="VARCHAR" />
+    <result column="CARD_EXP_TYPE" property="cardExpType" jdbcType="CHAR" />
+    <result column="DEP_ORG" property="depOrg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PARTERN_ID, PARTERN_TYPE, PARTERN_CODE, PARTERN_NAME, NAME, PHONE, ACCOUNT_TYPE, 
+    PARTERN_ID, PARTERN_TYPE, PARTERN_CODE, PARTERN_NAME, NAME, PHONE, ACCOUNT_TYPE,
+    ACCOUNT_NO, ACCOUNT_NAME, ACCOUNT_ORG, SETTLE_DAY, MONTH_DAY, QUALIFI_TYPE, CERT_NO,
+    ARTIF_NAME, ARTIF_PHONE, ARTIF_CARD_TYPE, ARTIF_CARD_NO, CARD_START_DATE, CARD_END_DATE, 
+    CREATE_TLR, CREATE_TIME, UPD_TLR, UPD_TIME, COOPERATION_PATH, PARTERN_STATUS, DEP_ACCT_NO, 
+    DEP_AMT, DEP_INT_FLAG, DEP_INT_RATE, OPEN_CLIENT_ID, CM_NAME, CM_PHONE,
+    GUARANTEE_DEPOSIT,CARD_EXP_TYPE,DEP_ORG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PARTERN_INFO
+    where PARTERN_ID = #{parternId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PARTERN_INFO
+    where PARTERN_ID = #{parternId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.ParternInfo" >
+    insert into PARTERN_INFO (PARTERN_ID, PARTERN_TYPE, PARTERN_CODE, 
+      PARTERN_NAME, NAME, PHONE, 
+      ACCOUNT_TYPE, ACCOUNT_NO, ACCOUNT_NAME, 
+      ACCOUNT_ORG, SETTLE_DAY, MONTH_DAY, 
+      QUALIFI_TYPE, CERT_NO, ARTIF_NAME, 
+      ARTIF_PHONE, ARTIF_CARD_TYPE, ARTIF_CARD_NO, 
+      CARD_START_DATE, CARD_END_DATE, CREATE_TLR, 
+      CREATE_TIME, UPD_TLR, UPD_TIME, 
+      COOPERATION_PATH, PARTERN_STATUS, DEP_ACCT_NO, 
+      DEP_AMT, DEP_INT_FLAG, DEP_INT_RATE, 
+      OPEN_CLIENT_ID, CM_NAME, CM_PHONE, 
+      Guarantee_Deposit, GUARANTEE_DEPOSIT)
+    values (#{parternId,jdbcType=VARCHAR}, #{parternType,jdbcType=CHAR}, #{parternCode,jdbcType=VARCHAR}, 
+      #{parternName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{accountType,jdbcType=CHAR}, #{accountNo,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, 
+      #{accountOrg,jdbcType=VARCHAR}, #{settleDay,jdbcType=DECIMAL}, #{monthDay,jdbcType=VARCHAR}, 
+      #{qualifiType,jdbcType=CHAR}, #{certNo,jdbcType=VARCHAR}, #{artifName,jdbcType=VARCHAR}, 
+      #{artifPhone,jdbcType=VARCHAR}, #{artifCardType,jdbcType=CHAR}, #{artifCardNo,jdbcType=VARCHAR}, 
+      #{cardStartDate,jdbcType=VARCHAR}, #{cardEndDate,jdbcType=VARCHAR}, #{createTlr,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{updTlr,jdbcType=VARCHAR}, #{updTime,jdbcType=VARCHAR}, 
+      #{cooperationPath,jdbcType=VARCHAR}, #{parternStatus,jdbcType=VARCHAR}, #{depAcctNo,jdbcType=VARCHAR}, 
+      #{depAmt,jdbcType=DECIMAL}, #{depIntFlag,jdbcType=CHAR}, #{depIntRate,jdbcType=DECIMAL}, 
+      #{openClientId,jdbcType=VARCHAR}, #{cmName,jdbcType=VARCHAR}, #{cmPhone,jdbcType=VARCHAR}, 
+      #{guaranteeDeposit,jdbcType=VARCHAR}, #{guaranteeDeposit,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.ParternInfo" >
+    insert into PARTERN_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="parternId != null" >
+        PARTERN_ID,
+      </if>
+      <if test="parternType != null" >
+        PARTERN_TYPE,
+      </if>
+      <if test="parternCode != null" >
+        PARTERN_CODE,
+      </if>
+      <if test="parternName != null" >
+        PARTERN_NAME,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="accountType != null" >
+        ACCOUNT_TYPE,
+      </if>
+      <if test="accountNo != null" >
+        ACCOUNT_NO,
+      </if>
+      <if test="accountName != null" >
+        ACCOUNT_NAME,
+      </if>
+      <if test="accountOrg != null" >
+        ACCOUNT_ORG,
+      </if>
+      <if test="settleDay != null" >
+        SETTLE_DAY,
+      </if>
+      <if test="monthDay != null" >
+        MONTH_DAY,
+      </if>
+      <if test="qualifiType != null" >
+        QUALIFI_TYPE,
+      </if>
+      <if test="certNo != null" >
+        CERT_NO,
+      </if>
+      <if test="artifName != null" >
+        ARTIF_NAME,
+      </if>
+      <if test="artifPhone != null" >
+        ARTIF_PHONE,
+      </if>
+      <if test="artifCardType != null" >
+        ARTIF_CARD_TYPE,
+      </if>
+      <if test="artifCardNo != null" >
+        ARTIF_CARD_NO,
+      </if>
+      <if test="cardStartDate != null" >
+        CARD_START_DATE,
+      </if>
+      <if test="cardEndDate != null" >
+        CARD_END_DATE,
+      </if>
+      <if test="createTlr != null" >
+        CREATE_TLR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updTlr != null" >
+        UPD_TLR,
+      </if>
+      <if test="updTime != null" >
+        UPD_TIME,
+      </if>
+      <if test="cooperationPath != null" >
+        COOPERATION_PATH,
+      </if>
+      <if test="parternStatus != null" >
+        PARTERN_STATUS,
+      </if>
+      <if test="depAcctNo != null" >
+        DEP_ACCT_NO,
+      </if>
+      <if test="depAmt != null" >
+        DEP_AMT,
+      </if>
+      <if test="depIntFlag != null" >
+        DEP_INT_FLAG,
+      </if>
+      <if test="depIntRate != null" >
+        DEP_INT_RATE,
+      </if>
+      <if test="openClientId != null" >
+        OPEN_CLIENT_ID,
+      </if>
+      <if test="cmName != null" >
+        CM_NAME,
+      </if>
+      <if test="cmPhone != null" >
+        CM_PHONE,
+      </if>
+      <if test="guaranteeDeposit != null" >
+        Guarantee_Deposit,
+      </if>
+      <if test="guaranteeDeposit != null" >
+        GUARANTEE_DEPOSIT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="parternId != null" >
+        #{parternId,jdbcType=VARCHAR},
+      </if>
+      <if test="parternType != null" >
+        #{parternType,jdbcType=CHAR},
+      </if>
+      <if test="parternCode != null" >
+        #{parternCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parternName != null" >
+        #{parternName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=CHAR},
+      </if>
+      <if test="accountNo != null" >
+        #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountOrg != null" >
+        #{accountOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="settleDay != null" >
+        #{settleDay,jdbcType=DECIMAL},
+      </if>
+      <if test="monthDay != null" >
+        #{monthDay,jdbcType=VARCHAR},
+      </if>
+      <if test="qualifiType != null" >
+        #{qualifiType,jdbcType=CHAR},
+      </if>
+      <if test="certNo != null" >
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="artifName != null" >
+        #{artifName,jdbcType=VARCHAR},
+      </if>
+      <if test="artifPhone != null" >
+        #{artifPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="artifCardType != null" >
+        #{artifCardType,jdbcType=CHAR},
+      </if>
+      <if test="artifCardNo != null" >
+        #{artifCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardStartDate != null" >
+        #{cardStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="cardEndDate != null" >
+        #{cardEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTlr != null" >
+        #{createTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updTlr != null" >
+        #{updTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null" >
+        #{updTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperationPath != null" >
+        #{cooperationPath,jdbcType=VARCHAR},
+      </if>
+      <if test="parternStatus != null" >
+        #{parternStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="depAcctNo != null" >
+        #{depAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="depAmt != null" >
+        #{depAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="depIntFlag != null" >
+        #{depIntFlag,jdbcType=CHAR},
+      </if>
+      <if test="depIntRate != null" >
+        #{depIntRate,jdbcType=DECIMAL},
+      </if>
+      <if test="openClientId != null" >
+        #{openClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="cmName != null" >
+        #{cmName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmPhone != null" >
+        #{cmPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeDeposit != null" >
+        #{guaranteeDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeDeposit != null" >
+        #{guaranteeDeposit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.ParternInfo" >
+    update PARTERN_INFO
+    <set >
+      <if test="parternType != null" >
+        PARTERN_TYPE = #{parternType,jdbcType=CHAR},
+      </if>
+      <if test="parternCode != null" >
+        PARTERN_CODE = #{parternCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parternName != null" >
+        PARTERN_NAME = #{parternName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        ACCOUNT_TYPE = #{accountType,jdbcType=CHAR},
+      </if>
+      <if test="accountNo != null" >
+        ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountOrg != null" >
+        ACCOUNT_ORG = #{accountOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="settleDay != null" >
+        SETTLE_DAY = #{settleDay,jdbcType=DECIMAL},
+      </if>
+      <if test="monthDay != null" >
+        MONTH_DAY = #{monthDay,jdbcType=VARCHAR},
+      </if>
+      <if test="qualifiType != null" >
+        QUALIFI_TYPE = #{qualifiType,jdbcType=CHAR},
+      </if>
+      <if test="certNo != null" >
+        CERT_NO = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="artifName != null" >
+        ARTIF_NAME = #{artifName,jdbcType=VARCHAR},
+      </if>
+      <if test="artifPhone != null" >
+        ARTIF_PHONE = #{artifPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="artifCardType != null" >
+        ARTIF_CARD_TYPE = #{artifCardType,jdbcType=CHAR},
+      </if>
+      <if test="artifCardNo != null" >
+        ARTIF_CARD_NO = #{artifCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardStartDate != null" >
+        CARD_START_DATE = #{cardStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="cardEndDate != null" >
+        CARD_END_DATE = #{cardEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTlr != null" >
+        CREATE_TLR = #{createTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updTlr != null" >
+        UPD_TLR = #{updTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null" >
+        UPD_TIME = #{updTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperationPath != null" >
+        COOPERATION_PATH = #{cooperationPath,jdbcType=VARCHAR},
+      </if>
+      <if test="parternStatus != null" >
+        PARTERN_STATUS = #{parternStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="depAcctNo != null" >
+        DEP_ACCT_NO = #{depAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="depAmt != null" >
+        DEP_AMT = #{depAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="depIntFlag != null" >
+        DEP_INT_FLAG = #{depIntFlag,jdbcType=CHAR},
+      </if>
+      <if test="depIntRate != null" >
+        DEP_INT_RATE = #{depIntRate,jdbcType=DECIMAL},
+      </if>
+      <if test="openClientId != null" >
+        OPEN_CLIENT_ID = #{openClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="cmName != null" >
+        CM_NAME = #{cmName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmPhone != null" >
+        CM_PHONE = #{cmPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeDeposit != null" >
+        Guarantee_Deposit = #{guaranteeDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeDeposit != null" >
+        GUARANTEE_DEPOSIT = #{guaranteeDeposit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PARTERN_ID = #{parternId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.ParternInfo" >
+    update PARTERN_INFO
+    set PARTERN_TYPE = #{parternType,jdbcType=CHAR},
+      PARTERN_CODE = #{parternCode,jdbcType=VARCHAR},
+      PARTERN_NAME = #{parternName,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      ACCOUNT_TYPE = #{accountType,jdbcType=CHAR},
+      ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      ACCOUNT_ORG = #{accountOrg,jdbcType=VARCHAR},
+      SETTLE_DAY = #{settleDay,jdbcType=DECIMAL},
+      MONTH_DAY = #{monthDay,jdbcType=VARCHAR},
+      QUALIFI_TYPE = #{qualifiType,jdbcType=CHAR},
+      CERT_NO = #{certNo,jdbcType=VARCHAR},
+      ARTIF_NAME = #{artifName,jdbcType=VARCHAR},
+      ARTIF_PHONE = #{artifPhone,jdbcType=VARCHAR},
+      ARTIF_CARD_TYPE = #{artifCardType,jdbcType=CHAR},
+      ARTIF_CARD_NO = #{artifCardNo,jdbcType=VARCHAR},
+      CARD_START_DATE = #{cardStartDate,jdbcType=VARCHAR},
+      CARD_END_DATE = #{cardEndDate,jdbcType=VARCHAR},
+      CREATE_TLR = #{createTlr,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      UPD_TLR = #{updTlr,jdbcType=VARCHAR},
+      UPD_TIME = #{updTime,jdbcType=VARCHAR},
+      COOPERATION_PATH = #{cooperationPath,jdbcType=VARCHAR},
+      PARTERN_STATUS = #{parternStatus,jdbcType=VARCHAR},
+      DEP_ACCT_NO = #{depAcctNo,jdbcType=VARCHAR},
+      DEP_AMT = #{depAmt,jdbcType=DECIMAL},
+      DEP_INT_FLAG = #{depIntFlag,jdbcType=CHAR},
+      DEP_INT_RATE = #{depIntRate,jdbcType=DECIMAL},
+      OPEN_CLIENT_ID = #{openClientId,jdbcType=VARCHAR},
+      CM_NAME = #{cmName,jdbcType=VARCHAR},
+      CM_PHONE = #{cmPhone,jdbcType=VARCHAR},
+      Guarantee_Deposit = #{guaranteeDeposit,jdbcType=VARCHAR},
+      GUARANTEE_DEPOSIT = #{guaranteeDeposit,jdbcType=VARCHAR}
+    where PARTERN_ID = #{parternId,jdbcType=VARCHAR}
+  </update>
+
+  <!--根据服务商编号批量查询服务商信息-->
+  <select id="selectParternList" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from PARTERN_INFO
+    where PARTERN_CODE in
+    <foreach collection="parternCodeList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+</mapper>

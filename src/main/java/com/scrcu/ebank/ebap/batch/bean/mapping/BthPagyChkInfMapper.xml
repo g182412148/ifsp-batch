@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthPagyChkInfMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkInf" >
+    <id column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <id column="CHK_DATA_DT" property="chkDataDt" jdbcType="TIMESTAMP" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="REQ_CHK_TM" property="reqChkTm" jdbcType="TIMESTAMP" />
+    <result column="GET_CHK_ST" property="getChkSt" jdbcType="CHAR" />
+    <result column="GET_CHK_RSPCODE" property="getChkRspcode" jdbcType="VARCHAR" />
+    <result column="GET_CHK_RSPMSG" property="getChkRspmsg" jdbcType="VARCHAR" />
+    <result column="CHK_FILE_PATH" property="chkFilePath" jdbcType="VARCHAR" />
+    <result column="CHK_FILE_IMP_ST" property="chkFileImpSt" jdbcType="CHAR" />
+    <result column="CHK_FILE_WRTM" property="chkFileWrtm" jdbcType="TIMESTAMP" />
+    <result column="CHK_ACCT_STTM" property="chkAcctSttm" jdbcType="TIMESTAMP" />
+    <result column="CHK_ACCT_ST" property="chkAcctSt" jdbcType="CHAR" />
+    <result column="CHK_ACCT_MSG" property="chkAcctMsg" jdbcType="VARCHAR" />
+    <result column="CHK_ACCT_EDTM" property="chkAcctEdtm" jdbcType="TIMESTAMP" />
+    <result column="CHK_ACCT_RST" property="chkAcctRst" jdbcType="CHAR" />
+    <result column="CHK_RMK" property="chkRmk" jdbcType="VARCHAR" />
+    <result column="CRT_TM" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="LST_UPD_TM" property="lstUpdTm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PAGY_NO, CHK_DATA_DT, PAGY_SYS_NO, REQ_CHK_TM, GET_CHK_ST, GET_CHK_RSPCODE, GET_CHK_RSPMSG, 
+    CHK_FILE_PATH, CHK_FILE_IMP_ST, CHK_FILE_WRTM, CHK_ACCT_STTM, CHK_ACCT_ST, CHK_ACCT_MSG, 
+    CHK_ACCT_EDTM, CHK_ACCT_RST, CHK_RMK, CRT_TM, LST_UPD_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_PAGY_CHK_INF
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{chkDataDt,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from BTH_PAGY_CHK_INF
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{chkDataDt,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkInf" >
+    insert into BTH_PAGY_CHK_INF (PAGY_NO, CHK_DATA_DT, PAGY_SYS_NO, 
+      REQ_CHK_TM, GET_CHK_ST, GET_CHK_RSPCODE, 
+      GET_CHK_RSPMSG, CHK_FILE_PATH, CHK_FILE_IMP_ST, 
+      CHK_FILE_WRTM, CHK_ACCT_STTM, CHK_ACCT_ST, 
+      CHK_ACCT_MSG, CHK_ACCT_EDTM, CHK_ACCT_RST, 
+      CHK_RMK, CRT_TM, LST_UPD_TM
+      )
+    values (#{pagyNo,jdbcType=CHAR}, #{chkDataDt,jdbcType=TIMESTAMP}, #{pagySysNo,jdbcType=CHAR}, 
+      #{reqChkTm,jdbcType=TIMESTAMP}, #{getChkSt,jdbcType=CHAR}, #{getChkRspcode,jdbcType=VARCHAR}, 
+      #{getChkRspmsg,jdbcType=VARCHAR}, #{chkFilePath,jdbcType=VARCHAR}, #{chkFileImpSt,jdbcType=CHAR}, 
+      #{chkFileWrtm,jdbcType=TIMESTAMP}, #{chkAcctSttm,jdbcType=TIMESTAMP}, #{chkAcctSt,jdbcType=CHAR}, 
+      #{chkAcctMsg,jdbcType=VARCHAR}, #{chkAcctEdtm,jdbcType=TIMESTAMP}, #{chkAcctRst,jdbcType=CHAR}, 
+      #{chkRmk,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{lstUpdTm,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkInf" >
+    insert into BTH_PAGY_CHK_INF
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="reqChkTm != null" >
+        REQ_CHK_TM,
+      </if>
+      <if test="getChkSt != null" >
+        GET_CHK_ST,
+      </if>
+      <if test="getChkRspcode != null" >
+        GET_CHK_RSPCODE,
+      </if>
+      <if test="getChkRspmsg != null" >
+        GET_CHK_RSPMSG,
+      </if>
+      <if test="chkFilePath != null" >
+        CHK_FILE_PATH,
+      </if>
+      <if test="chkFileImpSt != null" >
+        CHK_FILE_IMP_ST,
+      </if>
+      <if test="chkFileWrtm != null" >
+        CHK_FILE_WRTM,
+      </if>
+      <if test="chkAcctSttm != null" >
+        CHK_ACCT_STTM,
+      </if>
+      <if test="chkAcctSt != null" >
+        CHK_ACCT_ST,
+      </if>
+      <if test="chkAcctMsg != null" >
+        CHK_ACCT_MSG,
+      </if>
+      <if test="chkAcctEdtm != null" >
+        CHK_ACCT_EDTM,
+      </if>
+      <if test="chkAcctRst != null" >
+        CHK_ACCT_RST,
+      </if>
+      <if test="chkRmk != null" >
+        CHK_RMK,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="chkDataDt != null" >
+        #{chkDataDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="reqChkTm != null" >
+        #{reqChkTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="getChkSt != null" >
+        #{getChkSt,jdbcType=CHAR},
+      </if>
+      <if test="getChkRspcode != null" >
+        #{getChkRspcode,jdbcType=VARCHAR},
+      </if>
+      <if test="getChkRspmsg != null" >
+        #{getChkRspmsg,jdbcType=VARCHAR},
+      </if>
+      <if test="chkFilePath != null" >
+        #{chkFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="chkFileImpSt != null" >
+        #{chkFileImpSt,jdbcType=CHAR},
+      </if>
+      <if test="chkFileWrtm != null" >
+        #{chkFileWrtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkAcctSttm != null" >
+        #{chkAcctSttm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkAcctSt != null" >
+        #{chkAcctSt,jdbcType=CHAR},
+      </if>
+      <if test="chkAcctMsg != null" >
+        #{chkAcctMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="chkAcctEdtm != null" >
+        #{chkAcctEdtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkAcctRst != null" >
+        #{chkAcctRst,jdbcType=CHAR},
+      </if>
+      <if test="chkRmk != null" >
+        #{chkRmk,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstUpdTm != null" >
+        #{lstUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkInf" >
+    update BTH_PAGY_CHK_INF
+    <set >
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="reqChkTm != null" >
+        REQ_CHK_TM = #{reqChkTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="getChkSt != null" >
+        GET_CHK_ST = #{getChkSt,jdbcType=CHAR},
+      </if>
+      <if test="getChkRspcode != null" >
+        GET_CHK_RSPCODE = #{getChkRspcode,jdbcType=VARCHAR},
+      </if>
+      <if test="getChkRspmsg != null" >
+        GET_CHK_RSPMSG = #{getChkRspmsg,jdbcType=VARCHAR},
+      </if>
+      <if test="chkFilePath != null" >
+        CHK_FILE_PATH = #{chkFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="chkFileImpSt != null" >
+        CHK_FILE_IMP_ST = #{chkFileImpSt,jdbcType=CHAR},
+      </if>
+      <if test="chkFileWrtm != null" >
+        CHK_FILE_WRTM = #{chkFileWrtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkAcctSttm != null" >
+        CHK_ACCT_STTM = #{chkAcctSttm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkAcctSt != null" >
+        CHK_ACCT_ST = #{chkAcctSt,jdbcType=CHAR},
+      </if>
+      <if test="chkAcctMsg != null" >
+        CHK_ACCT_MSG = #{chkAcctMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="chkAcctEdtm != null" >
+        CHK_ACCT_EDTM = #{chkAcctEdtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkAcctRst != null" >
+        CHK_ACCT_RST = #{chkAcctRst,jdbcType=CHAR},
+      </if>
+      <if test="chkRmk != null" >
+        CHK_RMK = #{chkRmk,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM = #{lstUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{chkDataDt,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthPagyChkInf" >
+    update BTH_PAGY_CHK_INF
+    set PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      REQ_CHK_TM = #{reqChkTm,jdbcType=TIMESTAMP},
+      GET_CHK_ST = #{getChkSt,jdbcType=CHAR},
+      GET_CHK_RSPCODE = #{getChkRspcode,jdbcType=VARCHAR},
+      GET_CHK_RSPMSG = #{getChkRspmsg,jdbcType=VARCHAR},
+      CHK_FILE_PATH = #{chkFilePath,jdbcType=VARCHAR},
+      CHK_FILE_IMP_ST = #{chkFileImpSt,jdbcType=CHAR},
+      CHK_FILE_WRTM = #{chkFileWrtm,jdbcType=TIMESTAMP},
+      CHK_ACCT_STTM = #{chkAcctSttm,jdbcType=TIMESTAMP},
+      CHK_ACCT_ST = #{chkAcctSt,jdbcType=CHAR},
+      CHK_ACCT_MSG = #{chkAcctMsg,jdbcType=VARCHAR},
+      CHK_ACCT_EDTM = #{chkAcctEdtm,jdbcType=TIMESTAMP},
+      CHK_ACCT_RST = #{chkAcctRst,jdbcType=CHAR},
+      CHK_RMK = #{chkRmk,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=TIMESTAMP}
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+      and CHK_DATA_DT = #{chkDataDt,jdbcType=TIMESTAMP}
+  </update>
+
+
+  <select id="selectByPagyNoAndDate" parameterType="map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from BTH_PAGY_CHK_INF
+      where PAGY_NO IN  (#{pagyNo1,jdbcType=CHAR} , #{pagyNo2,jdbcType=CHAR})
+      and to_char(CHK_DATA_DT,'yyyymmdd') = #{settleDate,jdbcType=VARCHAR}
+      and GET_CHK_ST = #{getChkSt,jdbcType=CHAR}
+  </select>
+
+</mapper>

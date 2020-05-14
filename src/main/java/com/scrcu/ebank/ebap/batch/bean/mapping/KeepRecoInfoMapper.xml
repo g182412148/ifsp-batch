@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.KeepRecoInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.KeepRecoInfo" >
+    <id column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="TXN_STATE" property="txnState" jdbcType="VARCHAR" />
+    <result column="RECO_STATE" property="recoState" jdbcType="VARCHAR" />
+    <result column="ORDER_SSN" property="orderSsn" jdbcType="VARCHAR" />
+    <result column="ORDER_TM" property="orderTm" jdbcType="VARCHAR" />
+    <result column="SUB_ORDER_SSN" property="subOrderSsn" jdbcType="VARCHAR" />
+    <result column="KEEP_ACC_TIME" property="keepAccTime" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="KEEP_ACC_TYPE" property="keepAccType" jdbcType="CHAR" />
+    <result column="TRANS_AMT" property="transAmt" jdbcType="DECIMAL" />
+    <result column="CHK_RST" property="chkRst" jdbcType="CHAR" />
+    <result column="DUBIOUS_FLAG" property="dubiousFlag" jdbcType="CHAR" />
+    <result column="UPD_TM" property="updTm" jdbcType="TIMESTAMP" />
+    <result column="RESERVED1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="RESERVED2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TXN_SSN, RECO_DATE, TXN_STATE, RECO_STATE, ORDER_SSN, ORDER_TM, SUB_ORDER_SSN, KEEP_ACC_TIME,
+    STATE, KEEP_ACC_TYPE, TRANS_AMT, CHK_RST, DUBIOUS_FLAG, UPD_TM, RESERVED1, RESERVED2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from KEEP_RECO_INFO
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from KEEP_RECO_INFO
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepRecoInfo" >
+    insert into KEEP_RECO_INFO (TXN_SSN, RECO_DATE, TXN_STATE,
+      RECO_STATE, ORDER_SSN, ORDER_TM,
+      SUB_ORDER_SSN, KEEP_ACC_TIME, STATE,
+      KEEP_ACC_TYPE, TRANS_AMT, CHK_RST,
+      UPD_TM, RESERVED1, RESERVED2
+      )
+    values (#{txnSsn,jdbcType=VARCHAR}, #{recoDate,jdbcType=TIMESTAMP}, #{txnState,jdbcType=VARCHAR},
+      #{recoState,jdbcType=VARCHAR}, #{orderSsn,jdbcType=VARCHAR}, #{orderTm,jdbcType=VARCHAR},
+      #{subOrderSsn,jdbcType=VARCHAR}, #{keepAccTime,jdbcType=VARCHAR}, #{state,jdbcType=CHAR},
+      #{keepAccType,jdbcType=CHAR}, #{transAmt,jdbcType=DECIMAL}, #{chkRst,jdbcType=CHAR},
+      sysdate, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepRecoInfo" >
+    insert into KEEP_RECO_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE,
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE,
+      </if>
+      <if test="orderSsn != null" >
+        ORDER_SSN,
+      </if>
+      <if test="orderTm != null" >
+        ORDER_TM,
+      </if>
+      <if test="subOrderSsn != null" >
+        SUB_ORDER_SSN,
+      </if>
+      <if test="keepAccTime != null" >
+        KEEP_ACC_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="keepAccType != null" >
+        KEEP_ACC_TYPE,
+      </if>
+      <if test="transAmt != null" >
+        TRANS_AMT,
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST,
+      </if>
+<!--       <if test="updTm != null" > -->
+        UPD_TM,
+<!--       </if> -->
+      <if test="reserved1 != null" >
+        RESERVED1,
+      </if>
+      <if test="reserved2 != null" >
+        RESERVED2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnState != null" >
+        #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="recoState != null" >
+        #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSsn != null" >
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTm != null" >
+        #{orderTm,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderSsn != null" >
+        #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccTime != null" >
+        #{keepAccTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="keepAccType != null" >
+        #{keepAccType,jdbcType=CHAR},
+      </if>
+      <if test="transAmt != null" >
+        #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="chkRst != null" >
+        #{chkRst,jdbcType=CHAR},
+      </if>
+<!--       <if test="updTm != null" > -->
+        sysdate,
+<!--       </if> -->
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepRecoInfo" >
+    update KEEP_RECO_INFO
+    <set >
+      <if test="recoDate != null" >
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSsn != null" >
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTm != null" >
+        ORDER_TM = #{orderTm,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderSsn != null" >
+        SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="keepAccTime != null" >
+        KEEP_ACC_TIME = #{keepAccTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="keepAccType != null" >
+        KEEP_ACC_TYPE = #{keepAccType,jdbcType=CHAR},
+      </if>
+      <if test="transAmt != null" >
+        TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST = #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+<!--       <if test="updTm != null" > -->
+        UPD_TM = sysdate,
+<!--       </if> -->
+      <if test="reserved1 != null" >
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepRecoInfo" >
+    update KEEP_RECO_INFO
+    set RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      ORDER_TM = #{orderTm,jdbcType=VARCHAR},
+      SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR},
+      KEEP_ACC_TIME = #{keepAccTime,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=CHAR},
+      KEEP_ACC_TYPE = #{keepAccType,jdbcType=CHAR},
+      TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      CHK_RST = #{chkRst,jdbcType=CHAR},
+      UPD_TM = sysdate,
+      RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      RESERVED2 = #{reserved2,jdbcType=VARCHAR}
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 恢复指定对账日期的数据为未对账 -->
+  <update id="recovery" >
+    update KEEP_RECO_INFO set RECO_STATE = '0', DUBIOUS_FLAG = '', UPD_TM = sysdate
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+  </update>
+
+  <!-- 恢复指定对账日期前一天可疑的数据为可疑 -->
+  <update id="recoveryDubious" >
+    update KEEP_RECO_INFO set RECO_STATE = '0', UPD_TM = sysdate
+    where RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND DUBIOUS_FLAG = '1'
+  </update>
+
+
+
+  <!-- 根据流水号和对账日期查询记账表 -->
+  <select id="queryByIdOfDate" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from KEEP_RECO_INFO
+    where (RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+      OR RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP})
+    AND TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 查询指定对账日期的未完成对账的数据 : 当前未对账 和 前一天可疑的交易 -->
+  <select id="queryNotReco" resultMap="BaseResultMap">
+    SELECT * FROM KEEP_RECO_INFO
+    WHERE
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND RECO_STATE = '0'
+    UNION ALL
+    SELECT * FROM KEEP_RECO_INFO
+    WHERE
+    RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND RECO_STATE = '0'
+    AND DUBIOUS_FLAG = '1'
+  </select>
+
+  <!-- 查询指定对账日期的数据  和 前一天参与对账的数据 -->
+  <select id="count" resultType="int">
+    SELECT COUNT(1) FROM (
+    select * from KEEP_RECO_INFO
+    where
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    UNION ALL
+    select * from KEEP_RECO_INFO
+    where
+    RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    and DUBIOUS_FLAG = '1'
+    )
+  </select>
+
+  <!-- 分页查询 -->
+  <select id="queryByRange" resultMap="BaseResultMap">
+    select * FROM
+    (
+    select a.*,rownum rn from
+    (
+    select
+    <include refid="Base_Column_List" />
+    from KEEP_RECO_INFO
+    where
+    (
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    or (RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP} and DUBIOUS_FLAG = '1')
+    )
+    order by TXN_SSN
+    ) a where <![CDATA[rownum <= #{maxIndex}]]>
+    ) WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+
+  <!-- 清空指定对账日期的数据为未对账 -->
+  <update id="clear" >
+    delete from KEEP_RECO_INFO
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+  </update>
+
+  <!--
+    按照指定日期 从记账流水表复制到本地账单
+  -->
+  <update id="copy" >
+    insert into KEEP_RECO_INFO
+    (
+      RECO_DATE,
+      TXN_SSN,
+      TXN_STATE,
+      RECO_STATE,
+      ORDER_SSN,
+      ORDER_TM,
+      SUB_ORDER_SSN,
+      KEEP_ACC_TIME,
+      STATE,
+      KEEP_ACC_TYPE,
+      TRANS_AMT,
+      CHK_RST,
+      UPD_TM,
+      RESERVED1,
+      RESERVED2
+    )
+    select
+    #{endDate,jdbcType=TIMESTAMP},
+    CORE_SSN,
+    '00',
+    '0',
+    ORDER_SSN,
+    ORDER_TM,
+    SUB_ORDER_SSN,
+    KEEP_ACC_TIME,
+    STATE,
+    KEEP_ACC_TYPE,
+    TRANS_AMT,
+    CHK_RST,
+    sysdate,
+    RESERVED1,
+    RESERVED2
+    from KEEP_ACC_INFO
+    where KEEP_ACC_TIME &gt;= to_char(#{startDate,jdbcType=TIMESTAMP}, 'yyyyMMddhh24Miss')
+    and KEEP_ACC_TIME &lt; to_char(#{endDate,jdbcType=TIMESTAMP}, 'yyyyMMddhh24Miss')
+    and KEEP_ACC_TYPE != '20'
+    and STATE != '05'
+  </update>
+
+
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 设置驱动jar路径 -->
+	<classPathEntry location="${classPath}" />
+	<!-- 此处指定生成针对MyBatis3的DAO -->
+	<context id="context" targetRuntime="MyBatis3" defaultModelType="flat">
+		<!-- 注释管理器 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /> <!-- 禁止注释 -->
+			<property name="suppressDate" value="true" />	<!-- 禁止时间戳 -->
+		</commentGenerator>
+		<!-- jdbc连接信息 -->
+		<jdbcConnection 
+			driverClass="${jdbcDriver}"
+			connectionURL="${jdbcUrl}" 
+			userId="${jdbcUser}" 
+			password="${jdbcPassword}" 
+		/> 
+	  
+            
+		<!-- 生成数据库DTO -->
+		<javaModelGenerator targetPackage="${basePackage}.${package}.bean.dto" targetProject="${targetProject}">
+			<property name="rootClass" value="com.scrcu.ebank.ebap.common.beans.CommonDTO" />	<!-- 设置基类 -->
+			<property name="enableSubPackages" value="true" />	<!-- 根据catalog和 schema来生成子包 -->
+			<property name="trimStrings" value="true" />	<!-- 对数据库查询结果进行trim -->
+		</javaModelGenerator>
+	
+	
+		<!-- 生成 映射的XML文件-->
+		<sqlMapGenerator targetPackage="${basePackage}.${package}.bean.mapping"	targetProject="${targetProject}">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+	
+	
+		<!-- 生成和MAPPER  -->
+		<javaClientGenerator targetPackage="${basePackage}.${package}.bean.mapper"	targetProject="${targetProject}" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+	
+	
+		<!-- 想要生成的数据库表 -->
+		<table schema="" tableName="${tableName}"
+				enableCountByExample="false" 			
+				enableUpdateByExample="false"	
+				enableDeleteByExample="false"
+				enableSelectByExample="false"
+				selectByExampleQueryId="false"
+		>
+		</table>
+		
+	</context>
+</generatorConfiguration>

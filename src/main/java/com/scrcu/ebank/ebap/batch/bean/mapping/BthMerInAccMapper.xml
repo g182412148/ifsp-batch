@@ -1,0 +1,2200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    <id column="DATE_STLM" jdbcType="CHAR" property="dateStlm" />
+    <id column="TXN_SSN" jdbcType="VARCHAR" property="txnSsn" />
+    <result column="CHL_MER_ID" jdbcType="VARCHAR" property="chlMerId" />
+    <result column="CHL_MER_NAME" jdbcType="VARCHAR" property="chlMerName" />
+    <result column="CHL_SUB_MER_ID" jdbcType="VARCHAR" property="chlSubMerId" />
+    <result column="CHL_SUB_MER_NAME" jdbcType="VARCHAR" property="chlSubMerName" />
+    <result column="TXN_COUNT" jdbcType="DECIMAL" property="txnCount" />
+    <result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+    <result column="FEE_AMT" jdbcType="VARCHAR" property="feeAmt" />
+    <result column="OUT_ACCT_NO" jdbcType="VARCHAR" property="outAcctNo" />
+    <result column="OUT_ACCT_NAME" jdbcType="VARCHAR" property="outAcctName" />
+    <result column="IN_ACCT_NAME" jdbcType="VARCHAR" property="inAcctName" />
+    <result column="IN_ACCT_NO" jdbcType="VARCHAR" property="inAcctNo" />
+    <result column="IN_ACCT_AMT" jdbcType="VARCHAR" property="inAcctAmt" />
+    <result column="IN_ACCT_TIME" jdbcType="CHAR" property="inAcctTime" />
+    <result column="IN_ACCT_STAT" jdbcType="CHAR" property="inAcctStat" />
+    <result column="STAT_MARK" jdbcType="VARCHAR" property="statMark" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+    <result column="VCHRNO" jdbcType="VARCHAR" property="vchrno" />
+    <result column="IN_ACCT_SSN" jdbcType="VARCHAR" property="inAcctSsn" />
+    <result column="BRNO" jdbcType="VARCHAR" property="brno" />
+    <result column="T0_STLM_AMT" jdbcType="VARCHAR" property="t0StlmAmt" />
+    <result column="WORK_DATE" jdbcType="VARCHAR" property="workDate" />
+    <result column="AGENT_SERIAL_NO" jdbcType="VARCHAR" property="agentSerialNo" />
+    <result column="BANK_DATE" jdbcType="VARCHAR" property="bankDate" />
+    <result column="BANK_ID" jdbcType="VARCHAR" property="bankId" />
+    <result column="AG_FEE" jdbcType="VARCHAR" property="agFee" />
+    <result column="HANDLE_MARK" jdbcType="VARCHAR" property="handleMark" />
+    <result column="HANDLE_STATE" jdbcType="CHAR" property="handleState" />
+    <result column="IN_ACCT_TYPE" jdbcType="CHAR" property="inAcctType" />
+    <result column="IN_ACCT_NO_ORG" jdbcType="CHAR" property="inAcctNoOrg" />
+    <result column="OUT_ACCT_NO_ORG" jdbcType="CHAR" property="outAcctNoOrg" />
+    <result column="BORROW_FLAG" jdbcType="CHAR" property="borrowFlag" />
+    <result column="LEND_FLAG" jdbcType="CHAR" property="lendFlag" />
+    <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+    <result column="CORE_RESP_CODE" jdbcType="VARCHAR" property="coreRespCode" />
+    <result column="CORE_RESP_MSG" jdbcType="VARCHAR" property="coreRespMsg" />
+    <result column="ANTI_FRAUD_DATA" jdbcType="VARCHAR" property="antiFraudData" />
+    <result column="ANTI_FRAUD_RESP_SSN" jdbcType="VARCHAR" property="antiFraudRespSsn" />
+    <result column="ANTI_FRAUD_FINAL_DECISION" jdbcType="VARCHAR" property="antiFraudFinalDecision" />
+    <result column="ANTI_FRAUD_FINAL_DEAL_TYPE" jdbcType="VARCHAR" property="antiFraudFinalDealType" />
+    <result column="ANTI_FRAUD_FINAL_CONTROL" jdbcType="CHAR" property="antiFraudFinalControl" />
+    <result column="ANTI_FRAUD_RES_DATA" jdbcType="VARCHAR" property="antiFraudResData" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="ANTI_FRAUD_SEND_TIME" jdbcType="TIMESTAMP" property="antiFraudSendTime" />
+    <result column="ENTRY_TYPE" jdbcType="VARCHAR" property="entryType"/>
+    <result column="PARTERN_CODE" jdbcType="VARCHAR" property="parternCode"/>
+    <result column="OTHER_SETL_FEE" jdbcType="VARCHAR" property="otherSetlFee"/>
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    DATE_STLM, TXN_SSN, CHL_MER_ID, CHL_MER_NAME, CHL_SUB_MER_ID, CHL_SUB_MER_NAME, TXN_COUNT,
+    TXN_AMT, FEE_AMT, OUT_ACCT_NO, OUT_ACCT_NAME, IN_ACCT_NAME, IN_ACCT_NO, IN_ACCT_AMT,
+    IN_ACCT_TIME, IN_ACCT_STAT, STAT_MARK, MISC1, MISC2, VCHRNO, IN_ACCT_SSN, BRNO, T0_STLM_AMT,
+    WORK_DATE, AGENT_SERIAL_NO, BANK_DATE, BANK_ID, AG_FEE, HANDLE_MARK, HANDLE_STATE,
+    IN_ACCT_TYPE, IN_ACCT_NO_ORG, OUT_ACCT_NO_ORG, BORROW_FLAG, LEND_FLAG, BATCH_NO,
+    CORE_RESP_CODE, CORE_RESP_MSG, ANTI_FRAUD_DATA, ANTI_FRAUD_RESP_SSN, ANTI_FRAUD_FINAL_DECISION,
+    ANTI_FRAUD_FINAL_DEAL_TYPE, ANTI_FRAUD_FINAL_CONTROL, ANTI_FRAUD_RES_DATA, UPDATE_TIME,
+    ANTI_FRAUD_SEND_TIME,ENTRY_TYPE,PARTERN_CODE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from BTH_MER_IN_ACC
+    where DATE_STLM = #{dateStlm,jdbcType=CHAR}
+      and TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from BTH_MER_IN_ACC
+    where DATE_STLM = #{dateStlm,jdbcType=CHAR}
+      and TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    insert into BTH_MER_IN_ACC (DATE_STLM, TXN_SSN, CHL_MER_ID,
+      CHL_MER_NAME, CHL_SUB_MER_ID, CHL_SUB_MER_NAME,
+      TXN_COUNT, TXN_AMT, FEE_AMT,
+      OUT_ACCT_NO, OUT_ACCT_NAME, IN_ACCT_NAME,
+      IN_ACCT_NO, IN_ACCT_AMT, IN_ACCT_TIME,
+      IN_ACCT_STAT, STAT_MARK, MISC1,
+      MISC2, VCHRNO, IN_ACCT_SSN,
+      BRNO, T0_STLM_AMT, WORK_DATE,
+      AGENT_SERIAL_NO, BANK_DATE, BANK_ID,
+      AG_FEE, HANDLE_MARK, HANDLE_STATE,
+      IN_ACCT_TYPE, IN_ACCT_NO_ORG, OUT_ACCT_NO_ORG,
+      BORROW_FLAG, LEND_FLAG, BATCH_NO,
+      CORE_RESP_CODE, CORE_RESP_MSG, ANTI_FRAUD_DATA,
+      ANTI_FRAUD_RESP_SSN, ANTI_FRAUD_FINAL_DECISION,
+      ANTI_FRAUD_FINAL_DEAL_TYPE, ANTI_FRAUD_FINAL_CONTROL,
+      ANTI_FRAUD_RES_DATA, UPDATE_TIME, ANTI_FRAUD_SEND_TIME
+      )
+    values (#{dateStlm,jdbcType=CHAR}, #{txnSsn,jdbcType=VARCHAR}, #{chlMerId,jdbcType=VARCHAR},
+      #{chlMerName,jdbcType=VARCHAR}, #{chlSubMerId,jdbcType=VARCHAR}, #{chlSubMerName,jdbcType=VARCHAR},
+      #{txnCount,jdbcType=DECIMAL}, #{txnAmt,jdbcType=VARCHAR}, #{feeAmt,jdbcType=VARCHAR},
+      #{outAcctNo,jdbcType=VARCHAR}, #{outAcctName,jdbcType=VARCHAR}, #{inAcctName,jdbcType=VARCHAR},
+      #{inAcctNo,jdbcType=VARCHAR}, #{inAcctAmt,jdbcType=VARCHAR}, #{inAcctTime,jdbcType=CHAR},
+      #{inAcctStat,jdbcType=CHAR}, #{statMark,jdbcType=VARCHAR}, #{misc1,jdbcType=VARCHAR},
+      #{misc2,jdbcType=VARCHAR}, #{vchrno,jdbcType=VARCHAR}, #{inAcctSsn,jdbcType=VARCHAR},
+      #{brno,jdbcType=VARCHAR}, #{t0StlmAmt,jdbcType=VARCHAR}, #{workDate,jdbcType=VARCHAR},
+      #{agentSerialNo,jdbcType=VARCHAR}, #{bankDate,jdbcType=VARCHAR}, #{bankId,jdbcType=VARCHAR},
+      #{agFee,jdbcType=VARCHAR}, #{handleMark,jdbcType=VARCHAR}, #{handleState,jdbcType=CHAR},
+      #{inAcctType,jdbcType=CHAR}, #{inAcctNoOrg,jdbcType=CHAR}, #{outAcctNoOrg,jdbcType=CHAR},
+      #{borrowFlag,jdbcType=CHAR}, #{lendFlag,jdbcType=CHAR}, #{batchNo,jdbcType=VARCHAR},
+      #{coreRespCode,jdbcType=VARCHAR}, #{coreRespMsg,jdbcType=VARCHAR}, #{antiFraudData,jdbcType=VARCHAR},
+      #{antiFraudRespSsn,jdbcType=VARCHAR}, #{antiFraudFinalDecision,jdbcType=VARCHAR},
+      #{antiFraudFinalDealType,jdbcType=VARCHAR}, #{antiFraudFinalControl,jdbcType=CHAR},
+      #{antiFraudResData,jdbcType=VARCHAR}, sysdate, #{antiFraudSendTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    insert into BTH_MER_IN_ACC
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dateStlm != null">
+        DATE_STLM,
+      </if>
+      <if test="txnSsn != null">
+        TXN_SSN,
+      </if>
+      <if test="chlMerId != null">
+        CHL_MER_ID,
+      </if>
+      <if test="chlMerName != null">
+        CHL_MER_NAME,
+      </if>
+      <if test="chlSubMerId != null">
+        CHL_SUB_MER_ID,
+      </if>
+      <if test="chlSubMerName != null">
+        CHL_SUB_MER_NAME,
+      </if>
+      <if test="txnCount != null">
+        TXN_COUNT,
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT,
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT,
+      </if>
+      <if test="outAcctNo != null">
+        OUT_ACCT_NO,
+      </if>
+      <if test="outAcctName != null">
+        OUT_ACCT_NAME,
+      </if>
+      <if test="inAcctName != null">
+        IN_ACCT_NAME,
+      </if>
+      <if test="inAcctNo != null">
+        IN_ACCT_NO,
+      </if>
+      <if test="inAcctAmt != null">
+        IN_ACCT_AMT,
+      </if>
+      <if test="inAcctTime != null">
+        IN_ACCT_TIME,
+      </if>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT,
+      </if>
+      <if test="statMark != null">
+        STAT_MARK,
+      </if>
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>
+      <if test="vchrno != null">
+        VCHRNO,
+      </if>
+      <if test="inAcctSsn != null">
+        IN_ACCT_SSN,
+      </if>
+      <if test="brno != null">
+        BRNO,
+      </if>
+      <if test="t0StlmAmt != null">
+        T0_STLM_AMT,
+      </if>
+      <if test="workDate != null">
+        WORK_DATE,
+      </if>
+      <if test="agentSerialNo != null">
+        AGENT_SERIAL_NO,
+      </if>
+      <if test="bankDate != null">
+        BANK_DATE,
+      </if>
+      <if test="bankId != null">
+        BANK_ID,
+      </if>
+      <if test="agFee != null">
+        AG_FEE,
+      </if>
+      <if test="handleMark != null">
+        HANDLE_MARK,
+      </if>
+      <if test="handleState != null">
+        HANDLE_STATE,
+      </if>
+      <if test="inAcctType != null">
+        IN_ACCT_TYPE,
+      </if>
+      <if test="inAcctNoOrg != null">
+        IN_ACCT_NO_ORG,
+      </if>
+      <if test="outAcctNoOrg != null">
+        OUT_ACCT_NO_ORG,
+      </if>
+      <if test="borrowFlag != null">
+        BORROW_FLAG,
+      </if>
+      <if test="lendFlag != null">
+        LEND_FLAG,
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO,
+      </if>
+      <if test="coreRespCode != null">
+        CORE_RESP_CODE,
+      </if>
+      <if test="coreRespMsg != null">
+        CORE_RESP_MSG,
+      </if>
+      <if test="antiFraudData != null">
+        ANTI_FRAUD_DATA,
+      </if>
+      <if test="antiFraudRespSsn != null">
+        ANTI_FRAUD_RESP_SSN,
+      </if>
+      <if test="antiFraudFinalDecision != null">
+        ANTI_FRAUD_FINAL_DECISION,
+      </if>
+      <if test="antiFraudFinalDealType != null">
+        ANTI_FRAUD_FINAL_DEAL_TYPE,
+      </if>
+      <if test="antiFraudFinalControl != null">
+        ANTI_FRAUD_FINAL_CONTROL,
+      </if>
+      <if test="antiFraudResData != null">
+        ANTI_FRAUD_RES_DATA,
+      </if>
+<!--       <if test="updateTime != null"> -->
+        UPDATE_TIME,
+<!--       </if> -->
+      <if test="antiFraudSendTime != null">
+        ANTI_FRAUD_SEND_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dateStlm != null">
+        #{dateStlm,jdbcType=CHAR},
+      </if>
+      <if test="txnSsn != null">
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerId != null">
+        #{chlMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerName != null">
+        #{chlMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerId != null">
+        #{chlSubMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerName != null">
+        #{chlSubMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCount != null">
+        #{txnCount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null">
+        #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmt != null">
+        #{feeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcctNo != null">
+        #{outAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcctName != null">
+        #{outAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctName != null">
+        #{inAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctNo != null">
+        #{inAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctAmt != null">
+        #{inAcctAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctTime != null">
+        #{inAcctTime,jdbcType=CHAR},
+      </if>
+      <if test="inAcctStat != null">
+        #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="statMark != null">
+        #{statMark,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="vchrno != null">
+        #{vchrno,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctSsn != null">
+        #{inAcctSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="brno != null">
+        #{brno,jdbcType=VARCHAR},
+      </if>
+      <if test="t0StlmAmt != null">
+        #{t0StlmAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="workDate != null">
+        #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSerialNo != null">
+        #{agentSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankDate != null">
+        #{bankDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        #{bankId,jdbcType=VARCHAR},
+      </if>
+      <if test="agFee != null">
+        #{agFee,jdbcType=VARCHAR},
+      </if>
+      <if test="handleMark != null">
+        #{handleMark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleState != null">
+        #{handleState,jdbcType=CHAR},
+      </if>
+      <if test="inAcctType != null">
+        #{inAcctType,jdbcType=CHAR},
+      </if>
+      <if test="inAcctNoOrg != null">
+        #{inAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="outAcctNoOrg != null">
+        #{outAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="borrowFlag != null">
+        #{borrowFlag,jdbcType=CHAR},
+      </if>
+      <if test="lendFlag != null">
+        #{lendFlag,jdbcType=CHAR},
+      </if>
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespCode != null">
+        #{coreRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespMsg != null">
+        #{coreRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudData != null">
+        #{antiFraudData,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudRespSsn != null">
+        #{antiFraudRespSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDecision != null">
+        #{antiFraudFinalDecision,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDealType != null">
+        #{antiFraudFinalDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalControl != null">
+        #{antiFraudFinalControl,jdbcType=CHAR},
+      </if>
+      <if test="antiFraudResData != null">
+        #{antiFraudResData,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updateTime != null"> -->
+        sysdate,
+<!--       </if> -->
+      <if test="antiFraudSendTime != null">
+        #{antiFraudSendTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    update BTH_MER_IN_ACC
+    <set>
+      <if test="chlMerId != null">
+        CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerName != null">
+        CHL_MER_NAME = #{chlMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerId != null">
+        CHL_SUB_MER_ID = #{chlSubMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerName != null">
+        CHL_SUB_MER_NAME = #{chlSubMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCount != null">
+        TXN_COUNT = #{txnCount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT = #{feeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcctNo != null">
+        OUT_ACCT_NO = #{outAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcctName != null">
+        OUT_ACCT_NAME = #{outAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctName != null">
+        IN_ACCT_NAME = #{inAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctNo != null">
+        IN_ACCT_NO = #{inAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctAmt != null">
+        IN_ACCT_AMT = #{inAcctAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctTime != null">
+        IN_ACCT_TIME = #{inAcctTime,jdbcType=CHAR},
+      </if>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="statMark != null">
+        STAT_MARK = #{statMark,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="vchrno != null">
+        VCHRNO = #{vchrno,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctSsn != null">
+        IN_ACCT_SSN = #{inAcctSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="brno != null">
+        BRNO = #{brno,jdbcType=VARCHAR},
+      </if>
+      <if test="t0StlmAmt != null">
+        T0_STLM_AMT = #{t0StlmAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="workDate != null">
+        WORK_DATE = #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSerialNo != null">
+        AGENT_SERIAL_NO = #{agentSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankDate != null">
+        BANK_DATE = #{bankDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        BANK_ID = #{bankId,jdbcType=VARCHAR},
+      </if>
+      <if test="agFee != null">
+        AG_FEE = #{agFee,jdbcType=VARCHAR},
+      </if>
+      <if test="handleMark != null">
+        HANDLE_MARK = #{handleMark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleState != null">
+        HANDLE_STATE = #{handleState,jdbcType=CHAR},
+      </if>
+      <if test="inAcctType != null">
+        IN_ACCT_TYPE = #{inAcctType,jdbcType=CHAR},
+      </if>
+      <if test="inAcctNoOrg != null">
+        IN_ACCT_NO_ORG = #{inAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="outAcctNoOrg != null">
+        OUT_ACCT_NO_ORG = #{outAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="borrowFlag != null">
+        BORROW_FLAG = #{borrowFlag,jdbcType=CHAR},
+      </if>
+      <if test="lendFlag != null">
+        LEND_FLAG = #{lendFlag,jdbcType=CHAR},
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespCode != null">
+        CORE_RESP_CODE = #{coreRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespMsg != null">
+        CORE_RESP_MSG = #{coreRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudData != null">
+        ANTI_FRAUD_DATA = #{antiFraudData,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudRespSsn != null">
+        ANTI_FRAUD_RESP_SSN = #{antiFraudRespSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDecision != null">
+        ANTI_FRAUD_FINAL_DECISION = #{antiFraudFinalDecision,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDealType != null">
+        ANTI_FRAUD_FINAL_DEAL_TYPE = #{antiFraudFinalDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalControl != null">
+        ANTI_FRAUD_FINAL_CONTROL = #{antiFraudFinalControl,jdbcType=CHAR},
+      </if>
+      <if test="antiFraudResData != null">
+        ANTI_FRAUD_RES_DATA = #{antiFraudResData,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updateTime != null"> -->
+        UPDATE_TIME = sysdate,
+<!--       </if> -->
+      <if test="antiFraudSendTime != null">
+        ANTI_FRAUD_SEND_TIME = #{antiFraudSendTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DATE_STLM = #{dateStlm,jdbcType=CHAR}
+      and TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    update BTH_MER_IN_ACC
+    set CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR},
+      CHL_MER_NAME = #{chlMerName,jdbcType=VARCHAR},
+      CHL_SUB_MER_ID = #{chlSubMerId,jdbcType=VARCHAR},
+      CHL_SUB_MER_NAME = #{chlSubMerName,jdbcType=VARCHAR},
+      TXN_COUNT = #{txnCount,jdbcType=DECIMAL},
+      TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      FEE_AMT = #{feeAmt,jdbcType=VARCHAR},
+      OUT_ACCT_NO = #{outAcctNo,jdbcType=VARCHAR},
+      OUT_ACCT_NAME = #{outAcctName,jdbcType=VARCHAR},
+      IN_ACCT_NAME = #{inAcctName,jdbcType=VARCHAR},
+      IN_ACCT_NO = #{inAcctNo,jdbcType=VARCHAR},
+      IN_ACCT_AMT = #{inAcctAmt,jdbcType=VARCHAR},
+      IN_ACCT_TIME = #{inAcctTime,jdbcType=CHAR},
+      IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+      STAT_MARK = #{statMark,jdbcType=VARCHAR},
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      MISC2 = #{misc2,jdbcType=VARCHAR},
+      VCHRNO = #{vchrno,jdbcType=VARCHAR},
+      IN_ACCT_SSN = #{inAcctSsn,jdbcType=VARCHAR},
+      BRNO = #{brno,jdbcType=VARCHAR},
+      T0_STLM_AMT = #{t0StlmAmt,jdbcType=VARCHAR},
+      WORK_DATE = #{workDate,jdbcType=VARCHAR},
+      AGENT_SERIAL_NO = #{agentSerialNo,jdbcType=VARCHAR},
+      BANK_DATE = #{bankDate,jdbcType=VARCHAR},
+      BANK_ID = #{bankId,jdbcType=VARCHAR},
+      AG_FEE = #{agFee,jdbcType=VARCHAR},
+      HANDLE_MARK = #{handleMark,jdbcType=VARCHAR},
+      HANDLE_STATE = #{handleState,jdbcType=CHAR},
+      IN_ACCT_TYPE = #{inAcctType,jdbcType=CHAR},
+      IN_ACCT_NO_ORG = #{inAcctNoOrg,jdbcType=CHAR},
+      OUT_ACCT_NO_ORG = #{outAcctNoOrg,jdbcType=CHAR},
+      BORROW_FLAG = #{borrowFlag,jdbcType=CHAR},
+      LEND_FLAG = #{lendFlag,jdbcType=CHAR},
+      BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      CORE_RESP_CODE = #{coreRespCode,jdbcType=VARCHAR},
+      CORE_RESP_MSG = #{coreRespMsg,jdbcType=VARCHAR},
+      ANTI_FRAUD_DATA = #{antiFraudData,jdbcType=VARCHAR},
+      ANTI_FRAUD_RESP_SSN = #{antiFraudRespSsn,jdbcType=VARCHAR},
+      ANTI_FRAUD_FINAL_DECISION = #{antiFraudFinalDecision,jdbcType=VARCHAR},
+      ANTI_FRAUD_FINAL_DEAL_TYPE = #{antiFraudFinalDealType,jdbcType=VARCHAR},
+      ANTI_FRAUD_FINAL_CONTROL = #{antiFraudFinalControl,jdbcType=CHAR},
+      ANTI_FRAUD_RES_DATA = #{antiFraudResData,jdbcType=VARCHAR},
+      UPDATE_TIME = sysdate,
+      ANTI_FRAUD_SEND_TIME = #{antiFraudSendTime,jdbcType=TIMESTAMP}
+    where DATE_STLM = #{dateStlm,jdbcType=CHAR}
+      and TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+
+
+	<resultMap id="BthMerInAccVo" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccVo">
+		<id column="DATE_STLM" jdbcType="CHAR" property="dateStlm" />
+		<id column="TXN_SSN" jdbcType="VARCHAR" property="txnSsn" />
+		<result column="CHL_MER_ID" jdbcType="VARCHAR" property="chlMerId" />
+		<result column="CHL_MER_NAME" jdbcType="VARCHAR" property="chlMerName" />
+		<result column="CHL_SUB_MER_ID" jdbcType="VARCHAR" property="chlSubMerId" />
+		<result column="CHL_SUB_MER_NAME" jdbcType="VARCHAR" property="chlSubMerName" />
+		<result column="TXN_COUNT" jdbcType="DECIMAL" property="txnCount" />
+		<result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+		<result column="FEE_AMT" jdbcType="VARCHAR" property="feeAmt" />
+		<result column="OUT_ACCT_NO" jdbcType="VARCHAR" property="outAcctNo" />
+		<result column="OUT_ACCT_NAME" jdbcType="VARCHAR" property="outAcctName" />
+		<result column="IN_ACCT_NAME" jdbcType="VARCHAR" property="inAcctName" />
+		<result column="IN_ACCT_NO" jdbcType="VARCHAR" property="inAcctNo" />
+		<result column="IN_ACCT_AMT" jdbcType="VARCHAR" property="inAcctAmt" />
+		<result column="IN_ACCT_TIME" jdbcType="CHAR" property="inAcctTime" />
+		<result column="IN_ACCT_STAT" jdbcType="CHAR" property="inAcctStat" />
+		<result column="STAT_MARK" jdbcType="VARCHAR" property="statMark" />
+		<result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+		<result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+		<result column="VCHRNO" jdbcType="VARCHAR" property="vchrno" />
+		<result column="IN_ACCT_SSN" jdbcType="VARCHAR" property="inAcctSsn" />
+		<result column="BRNO" jdbcType="VARCHAR" property="brno" />
+		<result column="T0_STLM_AMT" jdbcType="VARCHAR" property="t0StlmAmt" />
+		<result column="WORK_DATE" jdbcType="VARCHAR" property="workDate" />
+		<result column="AGENT_SERIAL_NO" jdbcType="VARCHAR" property="agentSerialNo" />
+		<result column="BANK_DATE" jdbcType="VARCHAR" property="bankDate" />
+		<result column="BANK_ID" jdbcType="VARCHAR" property="bankId" />
+		<result column="AG_FEE" jdbcType="VARCHAR" property="agFee" />
+		<result column="HANDLE_MARK" jdbcType="VARCHAR" property="handleMark" />
+		<result column="HANDLE_STATE" jdbcType="CHAR" property="handleState" />
+		<result column="IN_ACCT_TYPE" jdbcType="CHAR" property="inAcctType" />
+		<result column="IN_ACCT_NO_ORG" jdbcType="CHAR" property="inAcctNoOrg" />
+		<result column="OUT_ACCT_NO_ORG" jdbcType="CHAR" property="outAcctNoOrg" />
+		<result column="BORROW_FLAG" jdbcType="CHAR" property="borrowFlag" />
+		<result column="LEND_FLAG" jdbcType="CHAR" property="lendFlag" />
+		<result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+
+		<result column="ENTRY_TYPE" jdbcType="VARCHAR" property="entryType" />
+		<result column="TRAN_AMOUNT" jdbcType="VARCHAR" property="tranAmount" />
+		<result column="REFUNDAMT" jdbcType="VARCHAR" property="refundAmt" />
+		<result column="TOTALDISCOUNTAMT" jdbcType="VARCHAR" property="totalDiscountAmt" />
+
+	</resultMap>
+
+
+
+	<select id="queryMerInAccByMchtAndInAcctDate" resultMap="BaseResultMap">
+		select *
+		from BTH_MER_IN_ACC where CHL_MER_ID=#{mchtId} and
+		SUBSTR(IN_ACCT_TIME,1,8)=#{qryDate}
+	</select>
+
+	<delete id="deleteByStlmDate" parameterType="string">
+		DELETE FROM
+		bth_mer_in_acc WHERE DATE_STLM = #{stlmDate,jdbcType=VARCHAR}
+	</delete>
+
+	<select id="selectByInAcctType" parameterType="map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BTH_MER_IN_ACC
+		where IN_ACCT_TYPE = #{inAcctType,jdbcType=CHAR}
+		and HANDLE_STATE IN ('0','3') AND  <![CDATA[ nvl(ANTI_FRAUD_FINAL_CONTROL,'0') <> 1  ]]>
+	</select>
+
+	<select id="selectByInAcctType2" parameterType="map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BTH_MER_IN_ACC
+		where IN_ACCT_TYPE
+		in(#{inAcctType1,jdbcType=CHAR},#{inAcctType2,jdbcType=CHAR})
+		and
+		HANDLE_STATE IN ('0','3') AND  <![CDATA[ nvl(ANTI_FRAUD_FINAL_CONTROL,'0') <> 1  ]]>
+		ORDER BY IN_ACCT_TYPE
+	</select>
+
+
+    <select id="merInAcc_selectByInAcctTypes" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_MER_IN_ACC a
+        WHERE
+        a.IN_ACCT_TYPE in
+        (#{inAcctType1,jdbcType=CHAR},#{inAcctType2,jdbcType=CHAR},#{inAcctType3,jdbcType=CHAR})
+        and
+        a.HANDLE_STATE IN ('0','3') and a.BRNO = '0' AND  <![CDATA[ nvl(ANTI_FRAUD_FINAL_CONTROL,'0') <> 1  ]]>
+        ORDER BY IN_ACCT_TYPE DESC
+    </select>
+
+
+	<select id="selectByInAcctTypeFlag" parameterType="string" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BTH_MER_IN_ACC a
+		WHERE
+		a.IN_ACCT_TYPE = #{inAcctType,jdbcType=CHAR}
+		and
+		a.HANDLE_STATE IN ('0','3')  and a.BRNO = '1'  AND  <![CDATA[ nvl(ANTI_FRAUD_FINAL_CONTROL,'0') <> 1  ]]>
+		ORDER BY IN_ACCT_TYPE DESC
+	</select>
+
+
+	<select id="queryByTxnSSn" parameterType="string" resultMap="BaseResultMap">
+		select
+		  DATE_STLM, TXN_SSN, CHL_MER_ID, BATCH_NO, IN_ACCT_TYPE, OUT_ACCT_NO, IN_ACCT_NO, OUT_ACCT_NO_ORG, IN_ACCT_NO_ORG,
+          IN_ACCT_STAT
+		from BTH_MER_IN_ACC where txn_ssn=#{txn_ssn}
+	</select>
+    <select id="queryByTxnSSnList" parameterType="map" resultMap="BaseResultMap">
+      select
+      DATE_STLM, TXN_SSN, CHL_MER_ID, BATCH_NO, IN_ACCT_TYPE, OUT_ACCT_NO, IN_ACCT_NO, OUT_ACCT_NO_ORG, IN_ACCT_NO_ORG,
+      IN_ACCT_STAT
+      from BTH_MER_IN_ACC where txn_ssn in
+      <foreach collection="orderSsnList" index="index" item="item" open="(" separator="," close=")" >
+        #{item}
+      </foreach>
+    </select>
+
+	<update id="updateHandleState" parameterType="string">
+		UPDATE
+		BTH_MER_IN_ACC SET HANDLE_STATE = #{handleState,jdbcType=CHAR}
+		,HANDLE_MARK = #{handleMark,jdbcType=VARCHAR}, UPDATE_TIME = sysdate WHERE DATE_STLM =
+		#{dateStlm,jdbcType=VARCHAR} and TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+	</update>
+
+    <resultMap id="BthMerSumMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccSumInfo">
+        <result column="STLM_DATE" jdbcType="VARCHAR" property="stlmDate" />
+        <result column="MER_ID" jdbcType="VARCHAR" property="merId" />
+        <result column="MER_SIMPLE_NAME" jdbcType="VARCHAR" property="merSimpleName" />
+        <result column="SETL_ACCT_NO" jdbcType="VARCHAR" property="setlAcctNo" />
+        <result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+        <result column="TXN_COUNT" jdbcType="VARCHAR" property="txnCount" />
+        <result column="IN_ACCT_AMT" jdbcType="VARCHAR" property="inAcctAmt" />
+        <result column="IN_ACCT_STAT" jdbcType="VARCHAR" property="inAcctStat" />
+        <result column="STAT_MARK" jdbcType="VARCHAR" property="statMark" />
+        <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+        <result column="TXN_SSN" jdbcType="VARCHAR" property="txnSsn" />
+    </resultMap>
+  <select id="selectMerInAccSumInfo" parameterType="map" resultMap="BthMerSumMap">
+    SELECT STLM_DATE,
+    MER_ID,
+    MER_SIMPLE_NAME,
+    SETL_ACCT_NO,
+    SUM(TXN_COUNT) AS TXN_COUNT,
+    SUM(TXN_AMT) AS TXN_AMT,
+    SUM (IN_ACCT_AMT) AS IN_ACCT_AMT,
+    BATCH_NO,
+    TXN_SSN,
+    CASE
+    WHEN MIN(IN_ACCT_STAT) = '2' AND MAX(IN_ACCT_STAT) = '2' THEN
+    '2'
+    WHEN MIN(IN_ACCT_STAT) = '1' AND MAX(IN_ACCT_STAT) = '1' THEN
+    '1'
+    WHEN MIN(IN_ACCT_STAT) = '0' AND MAX(IN_ACCT_STAT) = '0' THEN
+    '0'
+    ELSE
+    '3'
+    END AS IN_ACCT_STAT,
+    MAX(STAT_MARK) AS STAT_MARK
+    FROM (SELECT a.DATE_STLM    AS STLM_DATE,
+    a.CHL_MER_ID   AS MER_ID,
+    a.CHL_MER_NAME AS MER_SIMPLE_NAME,
+    a.IN_ACCT_NO   AS SETL_ACCT_NO,
+    a.TXN_COUNT,
+    CASE
+    WHEN A.TXN_AMT = 'null' THEN
+    '0'
+    else
+    nvl(A.TXN_AMT, 0)
+    end as TXN_AMT,
+    nvl(a.IN_ACCT_AMT,0) as IN_ACCT_AMT,
+    a.IN_ACCT_STAT,
+    a.STAT_MARK,
+    a.BATCH_NO,
+    a.TXN_SSN
+    FROM BTH_MER_IN_ACC a
+    LEFT JOIN MCHT_ORG_REL b ON a.CHL_MER_ID = b.MCHT_NO
+    left join (SELECT br_id FROM ifs_org START WITH br_id = #{brId, jdbcType = CHAR} connect BY prior br_id = par_br_id) org on b.org_id=org.br_id
+    WHERE b.ORG_TYPE = '01'
+    and a.IN_ACCT_TYPE = '01'
+    <if test="startDate != null"> <![CDATA[AND a.DATE_STLM >= #{startDate,jdbcType=CHAR}]]> </if>
+    <if test="endDate != null"> <![CDATA[AND a.DATE_STLM <= #{endDate,jdbcType=CHAR}]]> </if>
+    <if test="merId != null">AND a.CHL_MER_ID = #{merId,jdbcType=VARCHAR} </if>
+    <if test="merSimpleName != null">AND a.CHL_MER_NAME like #{merSimpleName,jdbcType=VARCHAR}</if>
+    <if test="setlAcctNo != null">AND  a.IN_ACCT_NO = #{setlAcctNo,jdbcType=VARCHAR}</if>
+    <if test="inAcctStat != null">AND a.IN_ACCT_STAT =#{inAcctStat,jdbcType=CHAR}</if>
+    <if test="txnSsn != null">AND a.TXN_SSN = #{txnSsn,jdbcType=VARCHAR}</if>
+    union all
+    SELECT a.DATE_STLM    AS STLM_DATE,
+    a.CHL_MER_ID   AS MER_ID,
+    a.CHL_MER_NAME AS MER_SIMPLE_NAME,
+    a.IN_ACCT_NO   AS SETL_ACCT_NO,
+    a.TXN_COUNT,
+    CASE
+    WHEN A.TXN_AMT = 'null' THEN
+    '0'
+    else
+    nvl(A.TXN_AMT, 0)
+    end as TXN_AMT,
+    nvl(a.IN_ACCT_AMT,0) as IN_ACCT_AMT,
+    a.IN_ACCT_STAT,
+    a.STAT_MARK,
+    a.BATCH_NO,
+    a.TXN_SSN
+    FROM BTH_MER_IN_ACC_T0 a
+    LEFT JOIN MCHT_ORG_REL b ON a.CHL_MER_ID = b.MCHT_NO
+    left join (SELECT br_id FROM ifs_org START WITH br_id = #{brId, jdbcType = CHAR} connect BY prior br_id = par_br_id) org on b.org_id=org.br_id
+    WHERE b.ORG_TYPE = '01'
+    and a.IN_ACCT_TYPE = '01'
+    <if test="startDate != null"> <![CDATA[AND a.DATE_STLM >= #{startDate,jdbcType=CHAR}]]> </if>
+    <if test="endDate != null"> <![CDATA[AND a.DATE_STLM <= #{endDate,jdbcType=CHAR}]]> </if>
+    <if test="merId != null">AND a.CHL_MER_ID = #{merId,jdbcType=VARCHAR} </if>
+    <if test="merSimpleName != null">AND a.CHL_MER_NAME like #{merSimpleName,jdbcType=VARCHAR}</if>
+    <if test="setlAcctNo != null">AND  a.IN_ACCT_NO = #{setlAcctNo,jdbcType=VARCHAR}</if>
+    <if test="inAcctStat != null">AND a.IN_ACCT_STAT =#{inAcctStat,jdbcType=CHAR}</if>
+    <if test="txnSsn != null">AND a.TXN_SSN = #{txnSsn,jdbcType=VARCHAR}</if>
+    )
+    GROUP BY STLM_DATE,
+    MER_ID,
+    MER_SIMPLE_NAME,
+    SETL_ACCT_NO,
+    BATCH_NO,
+    TXN_SSN
+    ORDER BY STLM_DATE DESC
+  </select>
+
+
+    <resultMap id="BthMerSumExtMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccSumInfoExtend">
+        <result column="STLM_DATE" jdbcType="VARCHAR" property="stlmDate" />
+        <result column="MER_ID" jdbcType="VARCHAR" property="merId" />
+        <result column="MER_SIMPLE_NAME" jdbcType="VARCHAR" property="merSimpleName" />
+        <result column="SETL_ACCT_NO" jdbcType="VARCHAR" property="setlAcctNo" />
+        <result column="SETL_ACCT_NAME" jdbcType="VARCHAR" property="setlAcctName" />
+        <result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+        <result column="FEE_AMT" jdbcType="VARCHAR" property="feeAmt" />
+        <result column="TXN_COUNT" jdbcType="VARCHAR" property="txnCount" />
+        <result column="IN_ACCT_AMT" jdbcType="VARCHAR" property="inAcctAmt" />
+        <result column="IN_ACCT_STAT" jdbcType="VARCHAR" property="inAcctStat" />
+        <result column="STAT_MARK" jdbcType="VARCHAR" property="statMark" />
+        <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+        <result column="TXN_SSN" jdbcType="VARCHAR" property="txnSsn" />
+    </resultMap>
+    <select id="selectByBatchNo" parameterType="string" resultMap="BthMerSumExtMap">
+        SELECT
+            DATE_STLM    AS STLM_DATE,
+            CHL_MER_ID   AS MER_ID,
+            CHL_MER_NAME AS MER_SIMPLE_NAME,
+            IN_ACCT_NO   AS SETL_ACCT_NO,
+            IN_ACCT_NAME AS SETL_ACCT_NAME,
+            TXN_COUNT,
+            TXN_AMT,
+            FEE_AMT,
+            IN_ACCT_AMT,
+            IN_ACCT_STAT,
+            STAT_MARK,
+            BATCH_NO
+        FROM
+            BTH_MER_IN_ACC
+        WHERE
+            IN_ACCT_TYPE = '01'
+            AND BATCH_NO = #{batchNo,jdbcType=CHAR}
+    </select>
+
+    <select id="queryAccState" resultMap="BaseResultMap">
+    	select nvl(sum(IN_ACCT_AMT),0)*100 IN_ACCT_AMT from BTH_MER_IN_ACC where chl_mer_id=#{mchtId,jdbcType=VARCHAR} and batch_no in
+		<foreach close=")" collection="batchNo" index="index" item="item" open="(" separator=",">
+			#{item}
+		</foreach>
+    </select>
+
+<!--     	List<BthMerInAcc> queryCommissionAmt(String mchtId, String inAcctDate); -->
+    <select id="queryCommissionAmt" resultMap="BaseResultMap">
+    	     select in_acct_amt*100 in_acct_amt from BTH_MER_IN_ACC where chl_mer_id =#{mchtId} and date_stlm=#{inAcctDate} and in_acct_type='04'
+    </select>
+
+    <select id="selectAccInfoByAccType" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_MER_IN_ACC
+        where
+        IN_ACCT_TYPE = #{inAccType} and
+        HANDLE_STATE = #{handleState}
+    </select>
+
+   <!-- 送核心记账时将主键ID作为摘要上送，返回时此值存放在reserved2 -->
+   <update id="updateMerAccInfoByTxnSsn" parameterType="java.util.Map">
+    update BTH_MER_IN_ACC
+    <set>
+		<if test="inAcctTime != null">
+			IN_ACCT_TIME = #{inAcctTime,jdbcType=CHAR},
+		</if>
+		<if test="inAcctStat != null">
+			IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+		</if>
+		<if test="statMark != null">
+			STAT_MARK = #{statMark,jdbcType=VARCHAR},
+		</if>
+		<if test="handleState != null">
+			HANDLE_STATE = #{handleState,jdbcType=CHAR},
+		</if>
+		<if test="handleMark != null">
+			HANDLE_MARK = #{handleMark,jdbcType=VARCHAR},
+		</if>
+		UPDATE_TIME = sysdate
+	</set>
+    where TXN_SSN = #{txnSsn}
+  </update>
+
+  <update id="updateAccInfoByAccTypeOfTransfer" parameterType="java.util.Map">
+        update BTH_MER_IN_ACC
+        set HANDLE_STATE = '1'
+        <if test="handleMark != null">
+			,HANDLE_MARK = #{handleMark,jdbcType=VARCHAR}
+		</if>
+		, UPDATE_TIME = sysdate
+        where
+        IN_ACCT_TYPE = #{inAccType} and
+        HANDLE_STATE = #{handleState}
+  </update>
+
+  <update id="updateAccInfoByAccTypeOfSubMerStl" parameterType="java.util.Map">
+        update BTH_MER_IN_ACC
+        set HANDLE_STATE = '1'
+        <if test="handleMark != null">
+			,HANDLE_MARK = #{handleMark,jdbcType=VARCHAR}
+		</if>
+		, UPDATE_TIME = sysdate
+        where
+        IN_ACCT_TYPE = #{inAccType} and
+        (HANDLE_STATE = #{handleState1} or HANDLE_STATE = #{handleState2})
+  </update>
+
+  <update id="updateByTxnSsn" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+		update BTH_MER_IN_ACC
+		<set>
+			<if test="txnCount != null">
+				TXN_COUNT = #{txnCount,jdbcType=DECIMAL},
+			</if>
+			<if test="txnAmt != null">
+				TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+			</if>
+			<if test="feeAmt != null">
+				FEE_AMT = #{feeAmt,jdbcType=VARCHAR},
+			</if>
+			<if test="outAcctNo != null">
+				OUT_ACCT_NO = #{outAcctNo,jdbcType=VARCHAR},
+			</if>
+			<if test="outAcctName != null">
+				OUT_ACCT_NAME = #{outAcctName,jdbcType=VARCHAR},
+			</if>
+			<if test="inAcctName != null">
+				IN_ACCT_NAME = #{inAcctName,jdbcType=VARCHAR},
+			</if>
+			<if test="inAcctNo != null">
+				IN_ACCT_NO = #{inAcctNo,jdbcType=VARCHAR},
+			</if>
+			<if test="inAcctAmt != null">
+				IN_ACCT_AMT = #{inAcctAmt,jdbcType=VARCHAR},
+			</if>
+			<if test="inAcctTime != null">
+				IN_ACCT_TIME = #{inAcctTime,jdbcType=CHAR},
+			</if>
+			<if test="inAcctStat != null">
+				IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+			</if>
+			<if test="statMark != null">
+				STAT_MARK = #{statMark,jdbcType=VARCHAR},
+			</if>
+			<if test="misc1 != null">
+				MISC1 = #{misc1,jdbcType=VARCHAR},
+			</if>
+			<if test="misc2 != null">
+				MISC2 = #{misc2,jdbcType=VARCHAR},
+			</if>
+			<if test="vchrno != null">
+				VCHRNO = #{vchrno,jdbcType=VARCHAR},
+			</if>
+			<if test="inAcctSsn != null">
+				IN_ACCT_SSN = #{inAcctSsn,jdbcType=VARCHAR},
+			</if>
+			<if test="brno != null">
+				BRNO = #{brno,jdbcType=VARCHAR},
+			</if>
+			<if test="t0StlmAmt != null">
+				T0_STLM_AMT = #{t0StlmAmt,jdbcType=VARCHAR},
+			</if>
+			<if test="workDate != null">
+				WORK_DATE = #{workDate,jdbcType=VARCHAR},
+			</if>
+			<if test="agentSerialNo != null">
+				AGENT_SERIAL_NO = #{agentSerialNo,jdbcType=VARCHAR},
+			</if>
+			<if test="bankDate != null">
+				BANK_DATE = #{bankDate,jdbcType=VARCHAR},
+			</if>
+			<if test="bankId != null">
+				BANK_ID = #{bankId,jdbcType=VARCHAR},
+			</if>
+			<if test="agFee != null">
+				AG_FEE = #{agFee,jdbcType=VARCHAR},
+			</if>
+			<if test="handleMark != null">
+				HANDLE_MARK = #{handleMark,jdbcType=VARCHAR},
+			</if>
+			<if test="handleState != null">
+				HANDLE_STATE = #{handleState,jdbcType=CHAR},
+			</if>
+			<if test="inAcctType != null">
+				IN_ACCT_TYPE = #{inAcctType,jdbcType=CHAR},
+			</if>
+			<if test="inAcctNoOrg != null">
+				IN_ACCT_NO_ORG = #{inAcctNoOrg,jdbcType=CHAR},
+			</if>
+			<if test="outAcctNoOrg != null">
+				OUT_ACCT_NO_ORG = #{outAcctNoOrg,jdbcType=CHAR},
+			</if>
+			<if test="borrowFlag != null">
+				BORROW_FLAG = #{borrowFlag,jdbcType=CHAR},
+			</if>
+			<if test="lendFlag != null">
+				LEND_FLAG = #{lendFlag,jdbcType=CHAR},
+			</if>
+			<if test="batchNo != null">
+				BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+			</if>
+			UPDATE_TIME = sysdate
+		</set>
+		where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectMerInAccByTxnSsn" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+            *
+        FROM
+            BTH_MER_IN_ACC
+        where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 统计待调反欺诈的记录数  -->
+    <select id="merAntiFraudCount" parameterType="java.util.Map" resultType="int">
+      SELECT COUNT(0) FROM BTH_MER_IN_ACC WHERE IN_ACCT_TYPE = #{inAccType,jdbcType=CHAR}
+      and HANDLE_STATE IN ( #{handleState,jdbcType=CHAR} , #{handleState1,jdbcType=CHAR} )
+    </select>
+
+
+    <!-- 分页查询反欺诈记录数  -->
+    <select id="merAntiFraudRecord" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from (SELECT a.*,rownum rn FROM BTH_MER_IN_ACC a WHERE a.IN_ACCT_TYPE = #{inAccType,jdbcType=CHAR}
+        and a.HANDLE_STATE IN ( #{handleState,jdbcType=CHAR} , #{handleState1,jdbcType=CHAR} )  order  by a.TXN_SSN ) b
+        WHERE   <![CDATA[b.rn >= #{startIdx} AND b.rn < #{endIdx}]]>
+    </select>
+
+
+    <!-- 更新汇总表反欺诈信息 -->
+    <update id="updateByFantiInfo" parameterType="java.util.Map">
+       UPDATE BTH_MER_IN_ACC
+       SET ANTI_FRAUD_DATA = #{antiFraudData , jdbcType=VARCHAR} ,
+       ANTI_FRAUD_RESP_SSN = #{antiFraudRespSsn , jdbcType=VARCHAR} ,
+       ANTI_FRAUD_FINAL_DECISION = #{antiFraudFinalDecision , jdbcType=VARCHAR} ,
+       ANTI_FRAUD_FINAL_DEAL_TYPE = #{antiFraudFinalDealType , jdbcType=VARCHAR} ,
+       ANTI_FRAUD_FINAL_CONTROL = #{antiFraudFinalControl , jdbcType=CHAR} ,
+       ANTI_FRAUD_SEND_TIME = #{antiFraudSendTime,jdbcType=TIMESTAMP},
+       UPDATE_TIME = sysdate
+       WHERE TXN_SSN = #{txnSsn , jdbcType=VARCHAR}
+    </update>
+
+    <!-- 统计已调过反欺诈的入账汇总的数据  -->
+    <select id="merAntiFraudResCount" parameterType="java.util.Map" resultType="int">
+        SELECT COUNT(0) FROM BTH_MER_IN_ACC WHERE  <![CDATA[ ANTI_FRAUD_SEND_TIME >=  #{startDate,jdbcType=TIMESTAMP}  AND ANTI_FRAUD_SEND_TIME < #{endDate,jdbcType=TIMESTAMP} ]]> and ANTI_FRAUD_RESP_SSN IS NOT NULL
+    </select>
+
+
+    <!-- 分页查询已调过反欺诈的入账汇总的数据 -->
+    <select id="merAntiFraudResRecord" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from (SELECT a.*,rownum rn FROM BTH_MER_IN_ACC a WHERE <![CDATA[ a.ANTI_FRAUD_SEND_TIME >=  #{startDate,jdbcType=TIMESTAMP}  AND a.ANTI_FRAUD_SEND_TIME < #{endDate,jdbcType=TIMESTAMP} ]]>
+        and a.ANTI_FRAUD_RESP_SSN IS NOT NULL order  by  a.TXN_SSN) b
+        WHERE   <![CDATA[b.rn >= #{startIdx} AND b.rn < #{endIdx}]]>
+    </select>
+
+	<update id="updateMerInAccStlAcctbyMerid" parameterType="map">
+		update  BTH_MER_IN_ACC set
+		IN_ACCT_NO = #{newAcctNo,jdbcType=VARCHAR},IN_ACCT_NAME = #{newAcctName,jdbcType=VARCHAR},
+		IN_ACCT_NO_ORG = #{newAcctOrg,jdbcType=VARCHAR},BRNO = #{newAccType,jdbcType=VARCHAR}, UPDATE_TIME = sysdate
+		where
+		HANDLE_STATE in ('0','1','3') AND CHL_MER_ID = #{merId,jdbcType=VARCHAR} AND
+		IN_ACCT_NO = #{oldAcctNo,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectNoticeList4InvalidAcc" parameterType="map" resultMap="BaseResultMap">
+		select * from BTH_MER_IN_ACC
+		where
+		IN_ACCT_STAT = #{inAcctStat,jdbcType=VARCHAR} AND
+		DATE_STLM = #{dateStlm,jdbcType=VARCHAR} AND
+		CORE_RESP_CODE in ('2002','2005','4116','4118')
+	</select>
+
+  <select id="selectByTxnSsn" parameterType="string" resultMap="BthMerSumExtMap">
+        SELECT STLM_DATE,
+           MER_ID,
+           MER_SIMPLE_NAME,
+           SETL_ACCT_NO,
+           SETL_ACCT_NAME,
+           BATCH_NO,
+           SUM(IN_ACCT_AMT),
+           SUM(TXN_COUNT) AS TXN_COUNT,
+           SUM(TXN_AMT) AS TXN_AMT,
+           SUM(FEE_AMT) AS FEE_AMT,
+           CASE
+             WHEN MIN(IN_ACCT_STAT) = '2' AND MAX(IN_ACCT_STAT) = '2' THEN
+              '2'
+             WHEN MIN(IN_ACCT_STAT) = '1' AND MAX(IN_ACCT_STAT) = '1' THEN
+              '1'
+             WHEN MIN(IN_ACCT_STAT) = '0' AND MAX(IN_ACCT_STAT) = '0' THEN
+              '0'
+             ELSE
+              '3'
+           END AS IN_ACCT_STAT,
+           MAX(STAT_MARK) AS STAT_MARK
+      FROM (SELECT DATE_STLM    AS STLM_DATE,
+                   CHL_MER_ID   AS MER_ID,
+                   CHL_MER_NAME AS MER_SIMPLE_NAME,
+                   IN_ACCT_NO   AS SETL_ACCT_NO,
+                   IN_ACCT_NAME AS SETL_ACCT_NAME,
+                   TXN_COUNT,
+                   nvl(TXN_AMT,0) as TXN_AMT,
+                   nvl(FEE_AMT,0) as FEE_AMT,
+                   nvl(IN_ACCT_AMT,0) as IN_ACCT_AMT,
+                   IN_ACCT_STAT,
+                   STAT_MARK,
+                   BATCH_NO
+              FROM BTH_MER_IN_ACC
+             WHERE IN_ACCT_TYPE = '01'
+               AND TXN_SSN = #{txnSsn, jdbcType = CHAR}
+            UNION ALL
+            SELECT DATE_STLM    AS STLM_DATE,
+                   CHL_MER_ID   AS MER_ID,
+                   CHL_MER_NAME AS MER_SIMPLE_NAME,
+                   IN_ACCT_NO   AS SETL_ACCT_NO,
+                   IN_ACCT_NAME AS SETL_ACCT_NAME,
+                   TXN_COUNT,
+                   nvl(TXN_AMT,0) as TXN_AMT,
+                   nvl(FEE_AMT,0) as FEE_AMT,
+                   nvl(IN_ACCT_AMT,0) as IN_ACCT_AMT,
+                   IN_ACCT_STAT,
+                   STAT_MARK,
+                   BATCH_NO
+              FROM BTH_MER_IN_ACC_t0
+             WHERE IN_ACCT_TYPE = '01'
+               AND TXN_SSN = #{txnSsn, jdbcType = CHAR})
+     GROUP BY STLM_DATE,
+              MER_ID,
+              MER_SIMPLE_NAME,
+              SETL_ACCT_NO,
+              SETL_ACCT_NAME,
+              BATCH_NO
+    </select>
+
+
+    <!-- 统计失败的商户入账记录 -->
+    <select id="prdCountFails" parameterType="map" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        from BTH_MER_IN_ACC WHERE IN_ACCT_TYPE = #{inAcctType,jdbcType=CHAR} and IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR} ORDER BY CHL_MER_ID,DATE_STLM
+    </select>
+
+
+   <!-- 查询待入账记录  ANTI_FRAUD_FINAL_CONTROL 为 1 表示被反欺诈拒绝入账-->
+   <select id="selectPreInAccRec" parameterType="map" resultMap="BaseResultMap">
+     SELECT <include refid="Base_Column_List"/>
+     from BTH_MER_IN_ACC WHERE  HANDLE_STATE in (  #{handStPre,jdbcType=CHAR}  ,  #{handStFail,jdbcType=CHAR} ) and  BRNO = #{brno,jdbcType=VARCHAR}
+     AND  <![CDATA[ nvl(ANTI_FRAUD_FINAL_CONTROL,'0') <> '1'  ]]>
+   </select>
+
+  <update id="updateBySsn" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    update BTH_MER_IN_ACC
+    <set>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="statMark != null">
+        STAT_MARK = #{statMark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleMark != null">
+        HANDLE_MARK = #{handleMark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleState != null">
+        HANDLE_STATE = #{handleState,jdbcType=CHAR},
+      </if>
+      <if test="inAcctTime != null">
+        IN_ACCT_TIME = #{inAcctTime,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreRespCode != null">
+        CORE_RESP_CODE = #{coreRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespMsg != null">
+        CORE_RESP_MSG = #{coreRespMsg,jdbcType=VARCHAR},
+      </if>
+      UPDATE_TIME = sysdate
+    </set>
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 批量更新状态 -->
+  <update id="batchUpdateBak">
+    begin
+    <foreach collection="updList" separator=";" item="item" index="index" >
+      update BTH_MER_IN_ACC
+      <set>
+        <if test="item.inAcctStat != null">
+          IN_ACCT_STAT = #{item.inAcctStat,jdbcType=CHAR},
+        </if>
+        <if test="item.statMark != null">
+          STAT_MARK = #{item.statMark,jdbcType=VARCHAR},
+        </if>
+        <if test="item.handleMark != null">
+          HANDLE_MARK = #{item.handleMark,jdbcType=VARCHAR},
+        </if>
+        <if test="item.handleState != null">
+          HANDLE_STATE = #{item.handleState,jdbcType=CHAR},
+        </if>
+        <if test="item.inAcctTime != null">
+          IN_ACCT_TIME = #{item.inAcctTime,jdbcType=CHAR},
+        </if>
+<!--         <if test="item.updateTime != null"> -->
+          UPDATE_TIME = sysdate,
+<!--         </if> -->
+        <if test="item.coreRespCode != null">
+          CORE_RESP_CODE = #{item.coreRespCode,jdbcType=VARCHAR},
+        </if>
+        <if test="item.coreRespMsg != null">
+          CORE_RESP_MSG = #{item.coreRespMsg,jdbcType=VARCHAR}
+        </if>
+      </set>
+      where DATE_STLM = #{item.dateStlm,jdbcType=CHAR}
+      and TXN_SSN = #{item.txnSsn,jdbcType=VARCHAR}
+    </foreach>
+    ; end;
+  </update>
+    <update id="batchUpdate">
+        update bth_mer_in_acc a
+        set (a.in_acct_stat,
+             a.stat_mark,
+             a.handle_mark,
+             a.handle_state,
+             a.in_acct_time,
+             a.update_time,
+             a.core_resp_code,
+             a.core_resp_msg) =
+            (select in_acct_stat,stat_mark,handle_mark,handle_state,in_acct_time,update_time,core_resp_code,core_resp_msg
+             from (
+        <foreach collection="updList" index="index" item="item" separator="union all">
+            select #{item.txnSsn,jdbcType=VARCHAR} txn_ssn, #{item.inAcctStat,jdbcType=CHAR} in_acct_stat,
+                         #{item.statMark,jdbcType=VARCHAR} stat_mark,
+                         #{item.handleMark,jdbcType=VARCHAR} handle_mark,
+                         #{item.handleState,jdbcType=CHAR} handle_state,
+                         #{item.inAcctTime,jdbcType=CHAR} in_acct_time,
+                         sysdate update_time,
+                         #{item.coreRespCode,jdbcType=VARCHAR} core_resp_code,
+                         #{item.coreRespMsg,jdbcType=VARCHAR} core_resp_msg
+             from dual
+        </foreach>
+             ) b where a.txn_ssn=b.txn_ssn) where exists (select 1 from (
+        <foreach collection="updList" index="index" item="item" separator="union all">
+                  select #{item.txnSsn,jdbcType=VARCHAR} txn_ssn from dual
+        </foreach>
+            ) b where a.txn_ssn=b.txn_ssn)
+    </update>
+
+
+  <update id="batchUpdateForPartern">
+    update bth_mer_in_acc a
+    set (a.in_acct_stat,
+    a.stat_mark,
+    a.handle_mark,
+    a.handle_state,
+    a.in_acct_time,
+    a.update_time,
+    a.core_resp_code,
+    a.core_resp_msg,
+    a.out_acct_no,
+    a.out_acct_name,
+    a.out_acct_no_org) =
+    (select in_acct_stat,stat_mark,handle_mark,handle_state,in_acct_time,update_time,core_resp_code,core_resp_msg,out_acct_no,out_acct_name,out_acct_no_org
+    from (
+    <foreach collection="updList" index="index" item="item" separator="union all">
+      select #{item.txnSsn,jdbcType=VARCHAR} txn_ssn, #{item.inAcctStat,jdbcType=CHAR} in_acct_stat,
+      #{item.statMark,jdbcType=VARCHAR} stat_mark,
+      #{item.handleMark,jdbcType=VARCHAR} handle_mark,
+      #{item.handleState,jdbcType=CHAR} handle_state,
+      #{item.inAcctTime,jdbcType=CHAR} in_acct_time,
+      sysdate update_time,
+      #{item.coreRespCode,jdbcType=VARCHAR} core_resp_code,
+      #{item.coreRespMsg,jdbcType=VARCHAR} core_resp_msg,
+      #{item.outAcctNo,jdbcType=VARCHAR} out_acct_no,
+      #{item.outAcctName,jdbcType=VARCHAR} out_acct_name,
+      #{item.outAcctNoOrg,jdbcType=VARCHAR} out_acct_no_org
+      from dual
+    </foreach>
+    ) b where a.txn_ssn=b.txn_ssn) where exists (select 1 from (
+    <foreach collection="updList" index="index" item="item" separator="union all">
+      select #{item.txnSsn,jdbcType=VARCHAR} txn_ssn from dual
+    </foreach>
+    ) b where a.txn_ssn=b.txn_ssn)
+  </update>
+
+    <update id="batchUpdateHandleState">
+      update bth_mer_in_acc a
+        set (a.txn_count,
+        a.handle_mark,
+        a.handle_state,
+        a.update_time) =
+        (select txn_count,handle_mark,handle_state,update_time
+        from (
+        <foreach collection="updList" index="index" item="item" separator="union all">
+          select #{item.txnSsn,jdbcType=VARCHAR} txn_ssn,
+            #{item.txnCount,jdbcType=DECIMAL} txn_count,
+            #{item.handleMark,jdbcType=VARCHAR} handle_mark,
+            #{item.handleState,jdbcType=CHAR} handle_state,
+            sysdate update_time
+          from dual
+        </foreach>
+        ) b where a.txn_ssn=b.txn_ssn) where exists (select 1 from (
+        <foreach collection="updList" index="index" item="item" separator="union all">
+          select #{item.txnSsn,jdbcType=VARCHAR} txn_ssn from dual
+        </foreach>
+        ) b where a.txn_ssn=b.txn_ssn)
+    </update>
+
+  <!-- 获取批次号-->
+    <!--<select id="getBatchNo" parameterType="string" resultType="string">
+      SELECT distinct batch_no
+        from BTH_SET_CAPITAL_DETAIL
+       WHERE clea_time = #{dateStlm, jdbcType = VARCHAR}
+       and length(batch_no)=31
+       and rownum = 1
+    </select>-->
+    <select id="getBatchNo" parameterType="string" resultType="string">
+    SELECT batch_no
+      from BATCH_NO_T0
+     WHERE clea_time = #{dateStlm, jdbcType = VARCHAR}
+     and rownum = 1
+  </select>
+
+  <!-- 获取通道号-->
+  <select id="getPagyNo" parameterType="string" resultType="string">
+    select pagy_sys_no from PAGY_TXN_ROUTE_LOG_INFO
+     WHERE pagy_txn_ssn = #{pagyTxnSsn, jdbcType = VARCHAR}
+  </select>
+
+  <!--更新T+0汇总表-->
+  <update id="updateByPrimaryKeySelectiveT0" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    update BTH_MER_IN_ACC_T0
+    <set>
+      <if test="chlMerId != null">
+        CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerName != null">
+        CHL_MER_NAME = #{chlMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerId != null">
+        CHL_SUB_MER_ID = #{chlSubMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerName != null">
+        CHL_SUB_MER_NAME = #{chlSubMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCount != null">
+        TXN_COUNT = #{txnCount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT = #{feeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcctName != null">
+        OUT_ACCT_NAME = #{outAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctName != null">
+        IN_ACCT_NAME = #{inAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctAmt != null">
+        IN_ACCT_AMT = #{inAcctAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctTime != null">
+        IN_ACCT_TIME = #{inAcctTime,jdbcType=CHAR},
+      </if>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="statMark != null">
+        STAT_MARK = #{statMark,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="vchrno != null">
+        VCHRNO = #{vchrno,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctSsn != null">
+        IN_ACCT_SSN = #{inAcctSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="brno != null">
+        BRNO = #{brno,jdbcType=VARCHAR},
+      </if>
+      <if test="t0StlmAmt != null">
+        T0_STLM_AMT = #{t0StlmAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="workDate != null">
+        WORK_DATE = #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSerialNo != null">
+        AGENT_SERIAL_NO = #{agentSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankDate != null">
+        BANK_DATE = #{bankDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        BANK_ID = #{bankId,jdbcType=VARCHAR},
+      </if>
+      <if test="agFee != null">
+        AG_FEE = #{agFee,jdbcType=VARCHAR},
+      </if>
+      <if test="handleMark != null">
+        HANDLE_MARK = #{handleMark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleState != null">
+        HANDLE_STATE = #{handleState,jdbcType=CHAR},
+      </if>
+      <if test="inAcctType != null">
+        IN_ACCT_TYPE = #{inAcctType,jdbcType=CHAR},
+      </if>
+      <if test="inAcctNoOrg != null">
+        IN_ACCT_NO_ORG = #{inAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="outAcctNoOrg != null">
+        OUT_ACCT_NO_ORG = #{outAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="borrowFlag != null">
+        BORROW_FLAG = #{borrowFlag,jdbcType=CHAR},
+      </if>
+      <if test="lendFlag != null">
+        LEND_FLAG = #{lendFlag,jdbcType=CHAR},
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespCode != null">
+        CORE_RESP_CODE = #{coreRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespMsg != null">
+        CORE_RESP_MSG = #{coreRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudData != null">
+        ANTI_FRAUD_DATA = #{antiFraudData,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudRespSsn != null">
+        ANTI_FRAUD_RESP_SSN = #{antiFraudRespSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDecision != null">
+        ANTI_FRAUD_FINAL_DECISION = #{antiFraudFinalDecision,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDealType != null">
+        ANTI_FRAUD_FINAL_DEAL_TYPE = #{antiFraudFinalDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalControl != null">
+        ANTI_FRAUD_FINAL_CONTROL = #{antiFraudFinalControl,jdbcType=CHAR},
+      </if>
+      <if test="antiFraudResData != null">
+        ANTI_FRAUD_RES_DATA = #{antiFraudResData,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="antiFraudSendTime != null">
+        ANTI_FRAUD_SEND_TIME = #{antiFraudSendTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where  TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 获取流水号-->
+  <select id="getTxnSsn" parameterType="map" resultMap="BaseResultMap">
+    select DATE_STLM, TXN_SSN, CHL_MER_ID, CHL_MER_NAME, CHL_SUB_MER_ID, CHL_SUB_MER_NAME, TXN_COUNT,
+    TXN_AMT, FEE_AMT, OUT_ACCT_NO, OUT_ACCT_NAME, IN_ACCT_NAME, IN_ACCT_NO, IN_ACCT_AMT,
+    IN_ACCT_TIME, IN_ACCT_STAT, STAT_MARK, MISC1, MISC2, VCHRNO, IN_ACCT_SSN, BRNO, T0_STLM_AMT,
+    WORK_DATE, AGENT_SERIAL_NO, BANK_DATE, BANK_ID, AG_FEE, HANDLE_MARK, HANDLE_STATE,
+    IN_ACCT_TYPE, IN_ACCT_NO_ORG, OUT_ACCT_NO_ORG, BORROW_FLAG, LEND_FLAG, BATCH_NO,
+    CORE_RESP_CODE, CORE_RESP_MSG, ANTI_FRAUD_DATA, ANTI_FRAUD_RESP_SSN, ANTI_FRAUD_FINAL_DECISION,
+    ANTI_FRAUD_FINAL_DEAL_TYPE, ANTI_FRAUD_FINAL_CONTROL, ANTI_FRAUD_RES_DATA, UPDATE_TIME,
+    ANTI_FRAUD_SEND_TIME
+  FROM BTH_MER_IN_ACC_T0
+ WHERE DATE_STLM = #{dateStlm, jdbcType = VARCHAR}
+   AND OUT_ACCT_NO = #{outAcctNo, jdbcType = VARCHAR}
+   AND IN_ACCT_NO = #{inAcctNo, jdbcType = VARCHAR}
+   AND CHL_MER_ID =  #{merId,jdbcType=VARCHAR}
+   AND rownum = 1
+  </select>
+
+  <insert id="insertT0" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    insert into BTH_MER_IN_ACC_T0
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dateStlm != null">
+        DATE_STLM,
+      </if>
+      <if test="txnSsn != null">
+        TXN_SSN,
+      </if>
+      <if test="chlMerId != null">
+        CHL_MER_ID,
+      </if>
+      <if test="chlMerName != null">
+        CHL_MER_NAME,
+      </if>
+      <if test="chlSubMerId != null">
+        CHL_SUB_MER_ID,
+      </if>
+      <if test="chlSubMerName != null">
+        CHL_SUB_MER_NAME,
+      </if>
+      <if test="txnCount != null">
+        TXN_COUNT,
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT,
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT,
+      </if>
+      <if test="outAcctNo != null">
+        OUT_ACCT_NO,
+      </if>
+      <if test="outAcctName != null">
+        OUT_ACCT_NAME,
+      </if>
+      <if test="inAcctName != null">
+        IN_ACCT_NAME,
+      </if>
+      <if test="inAcctNo != null">
+        IN_ACCT_NO,
+      </if>
+      <if test="inAcctAmt != null">
+        IN_ACCT_AMT,
+      </if>
+      <if test="inAcctTime != null">
+        IN_ACCT_TIME,
+      </if>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT,
+      </if>
+      <if test="statMark != null">
+        STAT_MARK,
+      </if>
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>
+      <if test="vchrno != null">
+        VCHRNO,
+      </if>
+      <if test="inAcctSsn != null">
+        IN_ACCT_SSN,
+      </if>
+      <if test="brno != null">
+        BRNO,
+      </if>
+      <if test="t0StlmAmt != null">
+        T0_STLM_AMT,
+      </if>
+      <if test="workDate != null">
+        WORK_DATE,
+      </if>
+      <if test="agentSerialNo != null">
+        AGENT_SERIAL_NO,
+      </if>
+      <if test="bankDate != null">
+        BANK_DATE,
+      </if>
+      <if test="bankId != null">
+        BANK_ID,
+      </if>
+      <if test="agFee != null">
+        AG_FEE,
+      </if>
+      <if test="handleMark != null">
+        HANDLE_MARK,
+      </if>
+      <if test="handleState != null">
+        HANDLE_STATE,
+      </if>
+      <if test="inAcctType != null">
+        IN_ACCT_TYPE,
+      </if>
+      <if test="inAcctNoOrg != null">
+        IN_ACCT_NO_ORG,
+      </if>
+      <if test="outAcctNoOrg != null">
+        OUT_ACCT_NO_ORG,
+      </if>
+      <if test="borrowFlag != null">
+        BORROW_FLAG,
+      </if>
+      <if test="lendFlag != null">
+        LEND_FLAG,
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO,
+      </if>
+      <if test="coreRespCode != null">
+        CORE_RESP_CODE,
+      </if>
+      <if test="coreRespMsg != null">
+        CORE_RESP_MSG,
+      </if>
+      <if test="antiFraudData != null">
+        ANTI_FRAUD_DATA,
+      </if>
+      <if test="antiFraudRespSsn != null">
+        ANTI_FRAUD_RESP_SSN,
+      </if>
+      <if test="antiFraudFinalDecision != null">
+        ANTI_FRAUD_FINAL_DECISION,
+      </if>
+      <if test="antiFraudFinalDealType != null">
+        ANTI_FRAUD_FINAL_DEAL_TYPE,
+      </if>
+      <if test="antiFraudFinalControl != null">
+        ANTI_FRAUD_FINAL_CONTROL,
+      </if>
+      <if test="antiFraudResData != null">
+        ANTI_FRAUD_RES_DATA,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="antiFraudSendTime != null">
+        ANTI_FRAUD_SEND_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dateStlm != null">
+        #{dateStlm,jdbcType=CHAR},
+      </if>
+      <if test="txnSsn != null">
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerId != null">
+        #{chlMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerName != null">
+        #{chlMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerId != null">
+        #{chlSubMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerName != null">
+        #{chlSubMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCount != null">
+        #{txnCount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null">
+        #{txnAmt,jdbcType=VARCHAR}/100,
+      </if>
+      <if test="feeAmt != null">
+        #{feeAmt,jdbcType=VARCHAR}/100,
+      </if>
+      <if test="outAcctNo != null">
+        #{outAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcctName != null">
+        #{outAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctName != null">
+        #{inAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctNo != null">
+        #{inAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctAmt != null">
+        #{inAcctAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctTime != null">
+        #{inAcctTime,jdbcType=CHAR},
+      </if>
+      <if test="inAcctStat != null">
+        #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="statMark != null">
+        #{statMark,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="vchrno != null">
+        #{vchrno,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctSsn != null">
+        #{inAcctSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="brno != null">
+        #{brno,jdbcType=VARCHAR},
+      </if>
+      <if test="t0StlmAmt != null">
+        #{t0StlmAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="workDate != null">
+        #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSerialNo != null">
+        #{agentSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankDate != null">
+        #{bankDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        #{bankId,jdbcType=VARCHAR},
+      </if>
+      <if test="agFee != null">
+        #{agFee,jdbcType=VARCHAR},
+      </if>
+      <if test="handleMark != null">
+        #{handleMark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleState != null">
+        #{handleState,jdbcType=CHAR},
+      </if>
+      <if test="inAcctType != null">
+        #{inAcctType,jdbcType=CHAR},
+      </if>
+      <if test="inAcctNoOrg != null">
+        #{inAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="outAcctNoOrg != null">
+        #{outAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="borrowFlag != null">
+        #{borrowFlag,jdbcType=CHAR},
+      </if>
+      <if test="lendFlag != null">
+        #{lendFlag,jdbcType=CHAR},
+      </if>
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespCode != null">
+        #{coreRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespMsg != null">
+        #{coreRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudData != null">
+        #{antiFraudData,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudRespSsn != null">
+        #{antiFraudRespSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDecision != null">
+        #{antiFraudFinalDecision,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDealType != null">
+        #{antiFraudFinalDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalControl != null">
+        #{antiFraudFinalControl,jdbcType=CHAR},
+      </if>
+      <if test="antiFraudResData != null">
+        #{antiFraudResData,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="antiFraudSendTime != null">
+        #{antiFraudSendTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <!--更新T+0汇总表-->
+  <update id="updateBthMerInAccT0" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    update BTH_MER_IN_ACC_T0
+    <set>
+      <if test="chlMerId != null">
+        CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerName != null">
+        CHL_MER_NAME = #{chlMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerId != null">
+        CHL_SUB_MER_ID = #{chlSubMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerName != null">
+        CHL_SUB_MER_NAME = #{chlSubMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCount != null">
+        TXN_COUNT = #{txnCount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmt != null">
+        FEE_AMT = #{feeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcctNo != null">
+        OUT_ACCT_NO = #{outAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcctName != null">
+        OUT_ACCT_NAME = #{outAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctName != null">
+        IN_ACCT_NAME = #{inAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctNo != null">
+        IN_ACCT_NO = #{inAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctAmt != null">
+        IN_ACCT_AMT = #{inAcctAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctTime != null">
+        IN_ACCT_TIME = #{inAcctTime,jdbcType=CHAR},
+      </if>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="statMark != null">
+        STAT_MARK = #{statMark,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="vchrno != null">
+        VCHRNO = #{vchrno,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctSsn != null">
+        IN_ACCT_SSN = #{inAcctSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="brno != null">
+        BRNO = #{brno,jdbcType=VARCHAR},
+      </if>
+      <if test="t0StlmAmt != null">
+        T0_STLM_AMT = #{t0StlmAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="workDate != null">
+        WORK_DATE = #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSerialNo != null">
+        AGENT_SERIAL_NO = #{agentSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankDate != null">
+        BANK_DATE = #{bankDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        BANK_ID = #{bankId,jdbcType=VARCHAR},
+      </if>
+      <if test="agFee != null">
+        AG_FEE = #{agFee,jdbcType=VARCHAR},
+      </if>
+      <if test="handleMark != null">
+        HANDLE_MARK = #{handleMark,jdbcType=VARCHAR},
+      </if>
+      <if test="handleState != null">
+        HANDLE_STATE = #{handleState,jdbcType=CHAR},
+      </if>
+      <if test="inAcctType != null">
+        IN_ACCT_TYPE = #{inAcctType,jdbcType=CHAR},
+      </if>
+      <if test="inAcctNoOrg != null">
+        IN_ACCT_NO_ORG = #{inAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="outAcctNoOrg != null">
+        OUT_ACCT_NO_ORG = #{outAcctNoOrg,jdbcType=CHAR},
+      </if>
+      <if test="borrowFlag != null">
+        BORROW_FLAG = #{borrowFlag,jdbcType=CHAR},
+      </if>
+      <if test="lendFlag != null">
+        LEND_FLAG = #{lendFlag,jdbcType=CHAR},
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespCode != null">
+        CORE_RESP_CODE = #{coreRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coreRespMsg != null">
+        CORE_RESP_MSG = #{coreRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudData != null">
+        ANTI_FRAUD_DATA = #{antiFraudData,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudRespSsn != null">
+        ANTI_FRAUD_RESP_SSN = #{antiFraudRespSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDecision != null">
+        ANTI_FRAUD_FINAL_DECISION = #{antiFraudFinalDecision,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalDealType != null">
+        ANTI_FRAUD_FINAL_DEAL_TYPE = #{antiFraudFinalDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="antiFraudFinalControl != null">
+        ANTI_FRAUD_FINAL_CONTROL = #{antiFraudFinalControl,jdbcType=CHAR},
+      </if>
+      <if test="antiFraudResData != null">
+        ANTI_FRAUD_RES_DATA = #{antiFraudResData,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="antiFraudSendTime != null">
+        ANTI_FRAUD_SEND_TIME = #{antiFraudSendTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DATE_STLM = #{dateStlm,jdbcType=CHAR}
+    and CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR}
+    and IN_ACCT_NO = #{inAcctNo,jdbcType=VARCHAR}
+    and OUT_ACCT_NO = #{outAcctNo,jdbcType=VARCHAR}
+  </update>
+
+    <!-- 批量插入汇总表 -->
+    <insert id="insertBatch" >
+        INSERT INTO bth_mer_in_acc (
+            DATE_STLM,
+            TXN_SSN,
+            CHL_MER_ID,
+            CHL_MER_NAME,
+            CHL_SUB_MER_ID,
+            CHL_SUB_MER_NAME,
+            TXN_COUNT,
+            TXN_AMT,
+            FEE_AMT,
+            OUT_ACCT_NO,
+            OUT_ACCT_NAME,
+            IN_ACCT_NAME,
+            IN_ACCT_NO,
+            IN_ACCT_AMT,
+            IN_ACCT_TIME,
+            IN_ACCT_STAT,
+            STAT_MARK,
+            MISC1,
+            MISC2,
+            VCHRNO,
+            IN_ACCT_SSN,
+            BRNO,
+            T0_STLM_AMT,
+            WORK_DATE,
+            AGENT_SERIAL_NO,
+            BANK_DATE,
+            BANK_ID,
+            AG_FEE,
+            HANDLE_MARK,
+            HANDLE_STATE,
+            IN_ACCT_TYPE,
+            IN_ACCT_NO_ORG,
+            OUT_ACCT_NO_ORG,
+            BORROW_FLAG,
+            LEND_FLAG,
+            BATCH_NO,
+            CORE_RESP_CODE,
+            CORE_RESP_MSG,
+            ANTI_FRAUD_DATA,
+            ANTI_FRAUD_RESP_SSN,
+            ANTI_FRAUD_FINAL_DECISION,
+            ANTI_FRAUD_FINAL_DEAL_TYPE,
+            ANTI_FRAUD_FINAL_CONTROL,
+            ANTI_FRAUD_RES_DATA,
+            UPDATE_TIME,
+            ANTI_FRAUD_SEND_TIME,
+            ENTRY_TYPE,
+            PARTERN_CODE,
+            OTHER_SETL_FEE
+      )
+        select A.* from (
+        <foreach collection="recordList" index="index" item="item" separator="UNION ALL">
+            select
+                #{item.dateStlm,jdbcType=CHAR},
+                #{item.txnSsn,jdbcType=VARCHAR},
+                #{item.chlMerId,jdbcType=VARCHAR},
+                #{item.chlMerName,jdbcType=VARCHAR},
+                #{item.chlSubMerId,jdbcType=VARCHAR},
+                #{item.chlSubMerName,jdbcType=VARCHAR},
+                #{item.txnCount,jdbcType=DECIMAL},
+                #{item.txnAmt,jdbcType=VARCHAR},
+                #{item.feeAmt,jdbcType=VARCHAR},
+                #{item.outAcctNo,jdbcType=VARCHAR},
+                #{item.outAcctName,jdbcType=VARCHAR},
+                #{item.inAcctName,jdbcType=VARCHAR},
+                #{item.inAcctNo,jdbcType=VARCHAR},
+                #{item.inAcctAmt,jdbcType=VARCHAR},
+                #{item.inAcctTime,jdbcType=CHAR},
+                #{item.inAcctStat,jdbcType=CHAR},
+                #{item.statMark,jdbcType=VARCHAR},
+                #{item.misc1,jdbcType=VARCHAR},
+                #{item.misc2,jdbcType=VARCHAR},
+                #{item.vchrno,jdbcType=VARCHAR},
+                #{item.inAcctSsn,jdbcType=VARCHAR},
+                #{item.brno,jdbcType=VARCHAR},
+                #{item.t0StlmAmt,jdbcType=VARCHAR},
+                #{item.workDate,jdbcType=VARCHAR},
+                #{item.agentSerialNo,jdbcType=VARCHAR},
+                #{item.bankDate,jdbcType=VARCHAR},
+                #{item.bankId,jdbcType=VARCHAR},
+                #{item.agFee,jdbcType=VARCHAR},
+                #{item.handleMark,jdbcType=VARCHAR},
+                #{item.handleState,jdbcType=CHAR},
+                #{item.inAcctType,jdbcType=CHAR},
+                #{item.inAcctNoOrg,jdbcType=CHAR},
+                #{item.outAcctNoOrg,jdbcType=CHAR},
+                #{item.borrowFlag,jdbcType=CHAR},
+                #{item.lendFlag,jdbcType=CHAR},
+                #{item.batchNo,jdbcType=VARCHAR},
+                #{item.coreRespCode,jdbcType=VARCHAR},
+                #{item.coreRespMsg,jdbcType=VARCHAR},
+                #{item.antiFraudData,jdbcType=VARCHAR},
+                #{item.antiFraudRespSsn,jdbcType=VARCHAR},
+                #{item.antiFraudFinalDecision,jdbcType=VARCHAR},
+                #{item.antiFraudFinalDealType,jdbcType=VARCHAR},
+                #{item.antiFraudFinalControl,jdbcType=CHAR},
+                #{item.antiFraudResData,jdbcType=VARCHAR},
+                sysdate,
+                #{item.antiFraudSendTime,jdbcType=TIMESTAMP},
+                #{item.entryType,jdbcType=VARCHAR},
+                #{item.parternCode,jdbcType=VARCHAR},
+          #{item.otherSetlFee,jdbcType=VARCHAR}
+
+            from dual
+        </foreach>    ) A
+    </insert>
+
+  <insert id="insertBatchNo" parameterType="string">
+    insert into BATCH_NO_T0
+    (clea_time, BATCH_NO)
+    values
+    (#{cleaTime, jdbcType = VARCHAR}, #{batchNo, jdbcType = VARCHAR})
+  </insert>
+
+  <update id="updateBthMerInAccDaoT0ForTxnSsn" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+    update bth_mer_in_acc_t0
+    set txn_amt = txn_amt +  #{txnAmt,jdbcType=VARCHAR}/100,
+    TXN_COUNT= TXN_COUNT+1,
+    FEE_AMT = FEE_AMT +  #{feeAmt,jdbcType=VARCHAR}/100,
+    IN_ACCT_AMT = IN_ACCT_AMT + #{inAcctAmt,jdbcType=VARCHAR},
+    IN_ACCT_STAT =  #{inAcctStat,jdbcType=VARCHAR}
+    where txn_ssn =  #{txnSsn,jdbcType=VARCHAR}
+
+  </update>
+
+  <!-- 统计商户入账汇总表本金总金额 -->
+  <select id="checkInAccAmt" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc">
+          select sum(txn_count) as txnCount, sum(in_acct_amt) as inAcctAmt
+         from bth_mer_in_acc
+        where batch_no = #{batchNo,jdbcType = VARCHAR}
+          and entry_type = '01'
+          and brno = '0'
+          and in_acct_no in
+              (select SETL_ACCT_NO
+                 from bth_mer_in_acc_dtl a
+                where stlm_date = #{batchNo, jdbcType = VARCHAR}
+                  and SETL_ACCT_TYPE = '0'
+                  and not exists
+                (select 1
+                         from keep_acc_info b
+                        where is_sync = '01'
+                          and real_tm_flag = '00'
+                          and a.txn_seq_id = b.order_ssn))
+
+  </select>
+
+  <!-- 查询服务商入账信息 -->
+  <select id="queryServeMchtInAcct" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from BTH_MER_IN_ACC
+    where in_acct_type = #{inAcctType,jdbcType=CHAR}
+    and in_acct_stat = #{inAcctStat,jdbcType=VARCHAR}
+    and entry_type = #{entryType,jdbcType=VARCHAR}
+  </select>
+
+
+  <!--  更新清分汇总表 批量更新-->
+  <update id="updateBthMerInAccBatch" parameterType="map">
+    begin
+    <foreach collection="accUpList" separator=";" item="item" index="index" >
+      update BTH_MER_IN_ACC
+      <set>
+        <if test="item.inAcctAmt != null">
+          IN_ACCT_AMT = #{item.inAcctAmt,jdbcType=CHAR},
+        </if>
+        <if test="item.otherSetlFee != null">
+          OTHER_SETL_FEE = #{item.otherSetlFee,jdbcType=VARCHAR},
+        </if>
+        <if test="item.brno != null">
+          brno = #{item.brno,jdbcType=VARCHAR},
+        </if>
+      </set>
+      where DATE_STLM = #{item.dateStlm,jdbcType=CHAR}
+      and TXN_SSN = #{item.txnSsn,jdbcType=VARCHAR}
+      and  HANDLE_STATE in ('0','3')
+    </foreach>
+    ; end;
+  </update>
+
+  <update id="updateBthMerInAccbyOut" parameterType="map">
+    update bth_mer_in_acc set HANDLE_STATE = '9' , HANDLE_MARK = '他行转本' , UPDATE_TIME = sysdate
+    where out_acct_no in
+    <foreach collection="accUpList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and entry_type = '18' and  HANDLE_STATE in ('0','3')
+  </update>
+
+  <!-- 查询待入账记录  ANTI_FRAUD_FINAL_CONTROL 为 1 表示被反欺诈拒绝入账-->
+  <select id="selectOtherPreInAccRec" parameterType="map" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    from BTH_MER_IN_ACC WHERE  HANDLE_STATE in (  #{handStPre,jdbcType=CHAR}  ,  #{handStFail,jdbcType=CHAR} ) and  BRNO = #{brno,jdbcType=VARCHAR}
+    AND  <![CDATA[ nvl(ANTI_FRAUD_FINAL_CONTROL,'0') <> '1'  ]]>
+    AND OTHER_SEL_TYPE IN (#{otherSelType,jdbcType=CHAR}  ,  #{otherSelTypeFail,jdbcType=CHAR})
+  </select>
+
+  <update id="updateOtherMerInAcc" parameterType="map">
+    update BTH_MER_IN_ACC set handle_state = #{handState,jdbcType=CHAR} ,handle_mark = #{handlemark,jdbcType=CHAR},
+    <if test="inAcctStat != null">
+      IN_ACCT_STAT = #{inAcctStat,jdbcType=VARCHAR},
+    </if>
+    <if test="inAcctTime != null">
+      IN_ACCT_TIME = #{inAcctTime,jdbcType=VARCHAR},
+    </if>
+    <if test="coreRespMsg != null">
+      CORE_RESP_MSG = #{coreRespMsg,jdbcType=VARCHAR},
+    </if>
+    <if test="coreRespCode != null">
+      CORE_RESP_CODE = #{coreRespCode,jdbcType=VARCHAR},
+    </if>
+    <if test="statMark != null">
+      STAT_MARK = #{statMark,jdbcType=VARCHAR},
+    </if>
+    other_sel_type = #{otherSelType,jdbcType=CHAR}
+    where txn_ssn= #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <select id="otherSetlFeeSumInfo" resultMap="BaseResultMap">
+    	     select OTHER_SETL_FEE *100 as OTHER_SETL_FEE,BRNO from BTH_MER_IN_ACC where chl_mer_id =#{mchtId} and date_stlm=#{inAcctDate} and ENTRY_TYPE='01' and BRNO='1'
+    </select>
+
+  <!-- 查询待入账记录  ANTI_FRAUD_FINAL_CONTROL 为 1 表示被反欺诈拒绝入账-->
+  <select id="selectOtherPreInAccRecBatch" parameterType="map" resultMap="BaseResultMap">
+     select a.*, rownum rn from
+    (
+    select * from
+    (
+    SELECT  t.*, rownum rn
+    from BTH_MER_IN_ACC_OTHER t
+     )where <![CDATA[rownum <= #{maxIndex}]]>
+    ) a WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+
+  <update id="updateOtherMerInAccBatch" parameterType="map">
+    update BTH_MER_IN_ACC set handle_state = #{handState,jdbcType=CHAR} ,handle_mark = #{handlemark,jdbcType=CHAR},
+    <if test="inAcctStat != null">
+      IN_ACCT_STAT = #{inAcctStat,jdbcType=VARCHAR},
+    </if>
+    <if test="inAcctTime != null">
+      IN_ACCT_TIME = #{inAcctTime,jdbcType=VARCHAR},
+    </if>
+    <if test="coreRespMsg != null">
+      CORE_RESP_MSG = #{coreRespMsg,jdbcType=VARCHAR},
+    </if>
+    <if test="coreRespCode != null">
+      CORE_RESP_CODE = #{coreRespCode,jdbcType=VARCHAR},
+    </if>
+    <if test="statMark != null">
+      STAT_MARK = #{statMark,jdbcType=VARCHAR},
+    </if>
+    other_sel_type = #{otherSelType,jdbcType=CHAR}
+    where
+     txn_ssn in
+    <foreach collection="txnSsnList" index="index" item="item" open="(" separator="," close=")">
+      #{item,jdbcType=CHAR}
+    </foreach>
+  </update>
+
+  <delete id="cleaOther">
+      truncate table bth_mer_in_acc_Other
+    </delete>
+  <insert id="initOtherData">
+    insert /*+ append nologging */  into bth_mer_in_acc_other
+select *
+     from bth_mer_in_acc
+    where brno = '1'
+      and other_sel_type = '0'
+       AND  <![CDATA[ nvl(ANTI_FRAUD_FINAL_CONTROL,'0') <> '1'  ]]>
+      and handle_state in( '0','3')
+  </insert>
+    <!-- 查询待入账记录  ANTI_FRAUD_FINAL_CONTROL 为 1 表示被反欺诈拒绝入账-->
+    <select id="selectBthMerInAccByInAcctNO" parameterType="map" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        from BTH_MER_IN_ACC
+        WHERE IN_ACCT_NO = #{oldAcctNo,jdbcType=CHAR} and CHL_MER_ID = #{merId,jdbcType=CHAR}
+        and HANDLE_STATE in ('0','3')
+        ORDER BY CHL_MER_ID,DATE_STLM
+    </select>
+</mapper>

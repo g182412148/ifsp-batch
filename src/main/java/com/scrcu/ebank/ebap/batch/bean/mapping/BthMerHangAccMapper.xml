@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerHangAccMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerHangAcc">
+    <id column="PAGY_PAY_TXN_SSN" jdbcType="VARCHAR" property="pagyPayTxnSsn" />
+    <result column="PAGY_PAY_TXN_TM" jdbcType="TIMESTAMP" property="pagyPayTxnTm" />
+    <result column="PAGY_TXN_SSN" jdbcType="VARCHAR" property="pagyTxnSsn" />
+    <result column="PAGY_TXN_TM" jdbcType="TIMESTAMP" property="pagyTxnTm" />
+    <result column="ORIG_PAGY_TXN_SSN" jdbcType="VARCHAR" property="origPagyTxnSsn" />
+    <result column="ORIG_PAGY_TXN_TM" jdbcType="TIMESTAMP" property="origPagyTxnTm" />
+    <result column="PAGY_SYS_NO" jdbcType="CHAR" property="pagySysNo" />
+    <result column="PAGY_SYS_SOA_NO" jdbcType="CHAR" property="pagySysSoaNo" />
+    <result column="PAGY_SYS_SOA_VERSION" jdbcType="VARCHAR" property="pagySysSoaVersion" />
+    <result column="PAGY_NO" jdbcType="CHAR" property="pagyNo" />
+    <result column="PAGY_MCHT_NO" jdbcType="VARCHAR" property="pagyMchtNo" />
+    <result column="TPAM_TXN_SSN" jdbcType="VARCHAR" property="tpamTxnSsn" />
+    <result column="TPAM_TXN_TM" jdbcType="VARCHAR" property="tpamTxnTm" />
+    <result column="TPAM_ORIG_TXN_SSN" jdbcType="VARCHAR" property="tpamOrigTxnSsn" />
+    <result column="TPAM_TXN_TYPE_NO" jdbcType="VARCHAR" property="tpamTxnTypeNo" />
+    <result column="TPAM_TXN_AMT" jdbcType="DECIMAL" property="tpamTxnAmt" />
+    <result column="TPAM_TXN_FEE_AMT" jdbcType="DECIMAL" property="tpamTxnFeeAmt" />
+    <result column="TPAM_SET_AMT" jdbcType="DECIMAL" property="tpamSetAmt" />
+    <result column="PAGY_PROD_ID" jdbcType="CHAR" property="pagyProdId" />
+    <result column="PAGY_PROD_TXN_ID" jdbcType="CHAR" property="pagyProdTxnId" />
+    <result column="TXN_REQ_SSN" jdbcType="VARCHAR" property="txnReqSsn" />
+    <result column="TXN_REQ_TM" jdbcType="TIMESTAMP" property="txnReqTm" />
+    <result column="ORIG_TXN_REQ_SSN" jdbcType="VARCHAR" property="origTxnReqSsn" />
+    <result column="ORIG_TXN_REQ_TM" jdbcType="TIMESTAMP" property="origTxnReqTm" />
+    <result column="TXN_CHL_ACTION" jdbcType="CHAR" property="txnChlAction" />
+    <result column="TXN_CHL_NO" jdbcType="CHAR" property="txnChlNo" />
+    <result column="TXN_CHL_MCHT_NO" jdbcType="VARCHAR" property="txnChlMchtNo" />
+    <result column="CARD_TYPE" jdbcType="CHAR" property="cardType" />
+    <result column="ACCT_TYPE" jdbcType="CHAR" property="acctType" />
+    <result column="ACCT_SUB_TYPE" jdbcType="CHAR" property="acctSubType" />
+    <result column="ACCT_NO" jdbcType="VARCHAR" property="acctNo" />
+    <result column="TXN_AMT" jdbcType="DECIMAL" property="txnAmt" />
+    <result column="FEE_RATE" jdbcType="DECIMAL" property="feeRate" />
+    <result column="TXN_FEE_AMT" jdbcType="DECIMAL" property="txnFeeAmt" />
+    <result column="TXN_SET_AMT" jdbcType="DECIMAL" property="txnSetAmt" />
+    <result column="ORDER_SSN" jdbcType="VARCHAR" property="orderSsn" />
+    <result column="HANG_ST" jdbcType="CHAR" property="hangSt" />
+    <result column="CRT_TM" jdbcType="TIMESTAMP" property="crtTm" />
+    <result column="LST_UPD_TM" jdbcType="TIMESTAMP" property="lstUpdTm" />
+    <result column="RESERVED1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="RESERVED2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="SETTLE_DATE_IN" jdbcType="CHAR" property="settleDateIn" />
+    <result column="SETTLE_DATE_OUT" jdbcType="CHAR" property="settleDateOut" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_TXN_SSN, PAGY_TXN_TM, ORIG_PAGY_TXN_SSN, 
+    ORIG_PAGY_TXN_TM, PAGY_SYS_NO, PAGY_SYS_SOA_NO, PAGY_SYS_SOA_VERSION, PAGY_NO, PAGY_MCHT_NO, 
+    TPAM_TXN_SSN, TPAM_TXN_TM, TPAM_ORIG_TXN_SSN, TPAM_TXN_TYPE_NO, TPAM_TXN_AMT, TPAM_TXN_FEE_AMT, 
+    TPAM_SET_AMT, PAGY_PROD_ID, PAGY_PROD_TXN_ID, TXN_REQ_SSN, TXN_REQ_TM, ORIG_TXN_REQ_SSN, 
+    ORIG_TXN_REQ_TM, TXN_CHL_ACTION, TXN_CHL_NO, TXN_CHL_MCHT_NO, CARD_TYPE, ACCT_TYPE, 
+    ACCT_SUB_TYPE, ACCT_NO, TXN_AMT, FEE_RATE, TXN_FEE_AMT, TXN_SET_AMT, ORDER_SSN, HANG_ST, 
+    CRT_TM, LST_UPD_TM, RESERVED1, RESERVED2, SETTLE_DATE_IN, SETTLE_DATE_OUT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_MER_HANG_ACC
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from BTH_MER_HANG_ACC
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerHangAcc">
+    insert into BTH_MER_HANG_ACC (PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_TXN_SSN, 
+      PAGY_TXN_TM, ORIG_PAGY_TXN_SSN, ORIG_PAGY_TXN_TM, 
+      PAGY_SYS_NO, PAGY_SYS_SOA_NO, PAGY_SYS_SOA_VERSION, 
+      PAGY_NO, PAGY_MCHT_NO, TPAM_TXN_SSN, 
+      TPAM_TXN_TM, TPAM_ORIG_TXN_SSN, TPAM_TXN_TYPE_NO, 
+      TPAM_TXN_AMT, TPAM_TXN_FEE_AMT, TPAM_SET_AMT, 
+      PAGY_PROD_ID, PAGY_PROD_TXN_ID, TXN_REQ_SSN, 
+      TXN_REQ_TM, ORIG_TXN_REQ_SSN, ORIG_TXN_REQ_TM, 
+      TXN_CHL_ACTION, TXN_CHL_NO, TXN_CHL_MCHT_NO, 
+      CARD_TYPE, ACCT_TYPE, ACCT_SUB_TYPE, 
+      ACCT_NO, TXN_AMT, FEE_RATE, 
+      TXN_FEE_AMT, TXN_SET_AMT, ORDER_SSN, 
+      HANG_ST, CRT_TM, LST_UPD_TM, 
+      RESERVED1, RESERVED2, SETTLE_DATE_IN, 
+      SETTLE_DATE_OUT)
+    values (#{pagyPayTxnSsn,jdbcType=VARCHAR}, #{pagyPayTxnTm,jdbcType=TIMESTAMP}, #{pagyTxnSsn,jdbcType=VARCHAR}, 
+      #{pagyTxnTm,jdbcType=TIMESTAMP}, #{origPagyTxnSsn,jdbcType=VARCHAR}, #{origPagyTxnTm,jdbcType=TIMESTAMP}, 
+      #{pagySysNo,jdbcType=CHAR}, #{pagySysSoaNo,jdbcType=CHAR}, #{pagySysSoaVersion,jdbcType=VARCHAR}, 
+      #{pagyNo,jdbcType=CHAR}, #{pagyMchtNo,jdbcType=VARCHAR}, #{tpamTxnSsn,jdbcType=VARCHAR}, 
+      #{tpamTxnTm,jdbcType=VARCHAR}, #{tpamOrigTxnSsn,jdbcType=VARCHAR}, #{tpamTxnTypeNo,jdbcType=VARCHAR}, 
+      #{tpamTxnAmt,jdbcType=DECIMAL}, #{tpamTxnFeeAmt,jdbcType=DECIMAL}, #{tpamSetAmt,jdbcType=DECIMAL}, 
+      #{pagyProdId,jdbcType=CHAR}, #{pagyProdTxnId,jdbcType=CHAR}, #{txnReqSsn,jdbcType=VARCHAR}, 
+      #{txnReqTm,jdbcType=TIMESTAMP}, #{origTxnReqSsn,jdbcType=VARCHAR}, #{origTxnReqTm,jdbcType=TIMESTAMP}, 
+      #{txnChlAction,jdbcType=CHAR}, #{txnChlNo,jdbcType=CHAR}, #{txnChlMchtNo,jdbcType=VARCHAR}, 
+      #{cardType,jdbcType=CHAR}, #{acctType,jdbcType=CHAR}, #{acctSubType,jdbcType=CHAR}, 
+      #{acctNo,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, #{feeRate,jdbcType=DECIMAL}, 
+      #{txnFeeAmt,jdbcType=DECIMAL}, #{txnSetAmt,jdbcType=DECIMAL}, #{orderSsn,jdbcType=VARCHAR}, 
+      #{hangSt,jdbcType=CHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{lstUpdTm,jdbcType=TIMESTAMP}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, #{settleDateIn,jdbcType=CHAR}, 
+      #{settleDateOut,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerHangAcc">
+    insert into BTH_MER_HANG_ACC
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pagyPayTxnSsn != null">
+        PAGY_PAY_TXN_SSN,
+      </if>
+      <if test="pagyPayTxnTm != null">
+        PAGY_PAY_TXN_TM,
+      </if>
+      <if test="pagyTxnSsn != null">
+        PAGY_TXN_SSN,
+      </if>
+      <if test="pagyTxnTm != null">
+        PAGY_TXN_TM,
+      </if>
+      <if test="origPagyTxnSsn != null">
+        ORIG_PAGY_TXN_SSN,
+      </if>
+      <if test="origPagyTxnTm != null">
+        ORIG_PAGY_TXN_TM,
+      </if>
+      <if test="pagySysNo != null">
+        PAGY_SYS_NO,
+      </if>
+      <if test="pagySysSoaNo != null">
+        PAGY_SYS_SOA_NO,
+      </if>
+      <if test="pagySysSoaVersion != null">
+        PAGY_SYS_SOA_VERSION,
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO,
+      </if>
+      <if test="pagyMchtNo != null">
+        PAGY_MCHT_NO,
+      </if>
+      <if test="tpamTxnSsn != null">
+        TPAM_TXN_SSN,
+      </if>
+      <if test="tpamTxnTm != null">
+        TPAM_TXN_TM,
+      </if>
+      <if test="tpamOrigTxnSsn != null">
+        TPAM_ORIG_TXN_SSN,
+      </if>
+      <if test="tpamTxnTypeNo != null">
+        TPAM_TXN_TYPE_NO,
+      </if>
+      <if test="tpamTxnAmt != null">
+        TPAM_TXN_AMT,
+      </if>
+      <if test="tpamTxnFeeAmt != null">
+        TPAM_TXN_FEE_AMT,
+      </if>
+      <if test="tpamSetAmt != null">
+        TPAM_SET_AMT,
+      </if>
+      <if test="pagyProdId != null">
+        PAGY_PROD_ID,
+      </if>
+      <if test="pagyProdTxnId != null">
+        PAGY_PROD_TXN_ID,
+      </if>
+      <if test="txnReqSsn != null">
+        TXN_REQ_SSN,
+      </if>
+      <if test="txnReqTm != null">
+        TXN_REQ_TM,
+      </if>
+      <if test="origTxnReqSsn != null">
+        ORIG_TXN_REQ_SSN,
+      </if>
+      <if test="origTxnReqTm != null">
+        ORIG_TXN_REQ_TM,
+      </if>
+      <if test="txnChlAction != null">
+        TXN_CHL_ACTION,
+      </if>
+      <if test="txnChlNo != null">
+        TXN_CHL_NO,
+      </if>
+      <if test="txnChlMchtNo != null">
+        TXN_CHL_MCHT_NO,
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE,
+      </if>
+      <if test="acctType != null">
+        ACCT_TYPE,
+      </if>
+      <if test="acctSubType != null">
+        ACCT_SUB_TYPE,
+      </if>
+      <if test="acctNo != null">
+        ACCT_NO,
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT,
+      </if>
+      <if test="feeRate != null">
+        FEE_RATE,
+      </if>
+      <if test="txnFeeAmt != null">
+        TXN_FEE_AMT,
+      </if>
+      <if test="txnSetAmt != null">
+        TXN_SET_AMT,
+      </if>
+      <if test="orderSsn != null">
+        ORDER_SSN,
+      </if>
+      <if test="hangSt != null">
+        HANG_ST,
+      </if>
+      <if test="crtTm != null">
+        CRT_TM,
+      </if>
+      <if test="lstUpdTm != null">
+        LST_UPD_TM,
+      </if>
+      <if test="reserved1 != null">
+        RESERVED1,
+      </if>
+      <if test="reserved2 != null">
+        RESERVED2,
+      </if>
+      <if test="settleDateIn != null">
+        SETTLE_DATE_IN,
+      </if>
+      <if test="settleDateOut != null">
+        SETTLE_DATE_OUT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pagyPayTxnSsn != null">
+        #{pagyPayTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyPayTxnTm != null">
+        #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyTxnSsn != null">
+        #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null">
+        #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origPagyTxnSsn != null">
+        #{origPagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origPagyTxnTm != null">
+        #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null">
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaNo != null">
+        #{pagySysSoaNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaVersion != null">
+        #{pagySysSoaVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null">
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtNo != null">
+        #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnSsn != null">
+        #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null">
+        #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrigTxnSsn != null">
+        #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTypeNo != null">
+        #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null">
+        #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnFeeAmt != null">
+        #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamSetAmt != null">
+        #{tpamSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyProdId != null">
+        #{pagyProdId,jdbcType=CHAR},
+      </if>
+      <if test="pagyProdTxnId != null">
+        #{pagyProdTxnId,jdbcType=CHAR},
+      </if>
+      <if test="txnReqSsn != null">
+        #{txnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="txnReqTm != null">
+        #{txnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origTxnReqSsn != null">
+        #{origTxnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origTxnReqTm != null">
+        #{origTxnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnChlAction != null">
+        #{txnChlAction,jdbcType=CHAR},
+      </if>
+      <if test="txnChlNo != null">
+        #{txnChlNo,jdbcType=CHAR},
+      </if>
+      <if test="txnChlMchtNo != null">
+        #{txnChlMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="acctType != null">
+        #{acctType,jdbcType=CHAR},
+      </if>
+      <if test="acctSubType != null">
+        #{acctSubType,jdbcType=CHAR},
+      </if>
+      <if test="acctNo != null">
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeRate != null">
+        #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null">
+        #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnSetAmt != null">
+        #{txnSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="orderSsn != null">
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hangSt != null">
+        #{hangSt,jdbcType=CHAR},
+      </if>
+      <if test="crtTm != null">
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstUpdTm != null">
+        #{lstUpdTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="settleDateIn != null">
+        #{settleDateIn,jdbcType=CHAR},
+      </if>
+      <if test="settleDateOut != null">
+        #{settleDateOut,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerHangAcc">
+    update BTH_MER_HANG_ACC
+    <set>
+      <if test="pagyPayTxnTm != null">
+        PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyTxnSsn != null">
+        PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null">
+        PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origPagyTxnSsn != null">
+        ORIG_PAGY_TXN_SSN = #{origPagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origPagyTxnTm != null">
+        ORIG_PAGY_TXN_TM = #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null">
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaNo != null">
+        PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaVersion != null">
+        PAGY_SYS_SOA_VERSION = #{pagySysSoaVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtNo != null">
+        PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnSsn != null">
+        TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null">
+        TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrigTxnSsn != null">
+        TPAM_ORIG_TXN_SSN = #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTypeNo != null">
+        TPAM_TXN_TYPE_NO = #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null">
+        TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnFeeAmt != null">
+        TPAM_TXN_FEE_AMT = #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamSetAmt != null">
+        TPAM_SET_AMT = #{tpamSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyProdId != null">
+        PAGY_PROD_ID = #{pagyProdId,jdbcType=CHAR},
+      </if>
+      <if test="pagyProdTxnId != null">
+        PAGY_PROD_TXN_ID = #{pagyProdTxnId,jdbcType=CHAR},
+      </if>
+      <if test="txnReqSsn != null">
+        TXN_REQ_SSN = #{txnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="txnReqTm != null">
+        TXN_REQ_TM = #{txnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origTxnReqSsn != null">
+        ORIG_TXN_REQ_SSN = #{origTxnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origTxnReqTm != null">
+        ORIG_TXN_REQ_TM = #{origTxnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnChlAction != null">
+        TXN_CHL_ACTION = #{txnChlAction,jdbcType=CHAR},
+      </if>
+      <if test="txnChlNo != null">
+        TXN_CHL_NO = #{txnChlNo,jdbcType=CHAR},
+      </if>
+      <if test="txnChlMchtNo != null">
+        TXN_CHL_MCHT_NO = #{txnChlMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE = #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="acctType != null">
+        ACCT_TYPE = #{acctType,jdbcType=CHAR},
+      </if>
+      <if test="acctSubType != null">
+        ACCT_SUB_TYPE = #{acctSubType,jdbcType=CHAR},
+      </if>
+      <if test="acctNo != null">
+        ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeRate != null">
+        FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null">
+        TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnSetAmt != null">
+        TXN_SET_AMT = #{txnSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="orderSsn != null">
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hangSt != null">
+        HANG_ST = #{hangSt,jdbcType=CHAR},
+      </if>
+      <if test="crtTm != null">
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstUpdTm != null">
+        LST_UPD_TM = #{lstUpdTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserved1 != null">
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="settleDateIn != null">
+        SETTLE_DATE_IN = #{settleDateIn,jdbcType=CHAR},
+      </if>
+      <if test="settleDateOut != null">
+        SETTLE_DATE_OUT = #{settleDateOut,jdbcType=CHAR},
+      </if>
+    </set>
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerHangAcc">
+    update BTH_MER_HANG_ACC
+    set PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      ORIG_PAGY_TXN_SSN = #{origPagyTxnSsn,jdbcType=VARCHAR},
+      ORIG_PAGY_TXN_TM = #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      PAGY_SYS_SOA_VERSION = #{pagySysSoaVersion,jdbcType=VARCHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR},
+      TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      TPAM_ORIG_TXN_SSN = #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      TPAM_TXN_TYPE_NO = #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      TPAM_TXN_FEE_AMT = #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      TPAM_SET_AMT = #{tpamSetAmt,jdbcType=DECIMAL},
+      PAGY_PROD_ID = #{pagyProdId,jdbcType=CHAR},
+      PAGY_PROD_TXN_ID = #{pagyProdTxnId,jdbcType=CHAR},
+      TXN_REQ_SSN = #{txnReqSsn,jdbcType=VARCHAR},
+      TXN_REQ_TM = #{txnReqTm,jdbcType=TIMESTAMP},
+      ORIG_TXN_REQ_SSN = #{origTxnReqSsn,jdbcType=VARCHAR},
+      ORIG_TXN_REQ_TM = #{origTxnReqTm,jdbcType=TIMESTAMP},
+      TXN_CHL_ACTION = #{txnChlAction,jdbcType=CHAR},
+      TXN_CHL_NO = #{txnChlNo,jdbcType=CHAR},
+      TXN_CHL_MCHT_NO = #{txnChlMchtNo,jdbcType=VARCHAR},
+      CARD_TYPE = #{cardType,jdbcType=CHAR},
+      ACCT_TYPE = #{acctType,jdbcType=CHAR},
+      ACCT_SUB_TYPE = #{acctSubType,jdbcType=CHAR},
+      ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      TXN_SET_AMT = #{txnSetAmt,jdbcType=DECIMAL},
+      ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      HANG_ST = #{hangSt,jdbcType=CHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=TIMESTAMP},
+      RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      SETTLE_DATE_IN = #{settleDateIn,jdbcType=CHAR},
+      SETTLE_DATE_OUT = #{settleDateOut,jdbcType=CHAR}
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+
+
+    <select id="selectByHangSt" parameterType="string" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM BTH_MER_HANG_ACC WHERE HANG_ST =  #{hangSt,jdbcType=CHAR } and ORIG_PAGY_TXN_SSN IS NOT NULL
+    </select>
+
+    <update id="updateHangStByKey" parameterType="map">
+        UPDATE BTH_MER_HANG_ACC SET HANG_ST = '01', LST_UPD_TM = #{date,jdbcType=TIMESTAMP} , SETTLE_DATE_OUT = #{settleDate,jdbcType=CHAR}
+        WHERE PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteBySettleDateIn" parameterType="string">
+        DELETE FROM BTH_MER_HANG_ACC WHERE SETTLE_DATE_IN = #{settleDate,jdbcType=CHAR}
+    </delete>
+
+    <update id="updateHangStBySettleDateOut" parameterType="string">
+        UPDATE BTH_MER_HANG_ACC SET  HANG_ST = '00' WHERE SETTLE_DATE_OUT = #{settleDate,jdbcType=CHAR}
+    </update>
+
+</mapper>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.IfsStaffRoleRelMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffRoleRel" >
+    <id column="TLR_ID" property="tlrId" jdbcType="VARCHAR" />
+    <id column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <id column="BR_ID" property="brId" jdbcType="VARCHAR" />
+    <id column="FLAG" property="flag" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from IFS_STAFF_ROLE_REL
+    where TLR_ID = #{tlrId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+      and BR_ID = #{brId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffRoleRel" >
+    insert into IFS_STAFF_ROLE_REL (TLR_ID, ROLE_ID, BR_ID,FLAG
+      )
+    values (#{tlrId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{brId,jdbcType=VARCHAR},
+     #{flag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffRoleRel" >
+    insert into IFS_STAFF_ROLE_REL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tlrId != null" >
+        TLR_ID,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="brId != null" >
+        BR_ID,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tlrId != null" >
+        #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="brId != null" >
+        #{brId,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{FLAG,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffRoleRel" >
+    update IFS_STAFF_ROLE_REL
+    <set >
+      <if test="tlrId != null" >
+        TLR_ID = #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="brId != null" >
+        BR_ID = #{brId,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=CHAR},
+      </if>
+    </set>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffRoleRel" >
+    update IFS_STAFF_ROLE_REL
+    <set >
+      <if test="tlrId != null" >
+        TLR_ID = #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="brId != null" >
+        BR_ID = #{brId,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=CHAR},
+      </if>
+    </set>
+    where TLR_ID = #{tlrId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+      and BR_ID = #{brId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    TLR_ID,ROLE_ID,BR_ID
+    from IFS_STAFF_ROLE_REL
+    where TLR_ID = #{tlrId,jdbcType=VARCHAR}
+    and BR_ID = #{brId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByTlrId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    TLR_ID,ROLE_ID,BR_ID
+    from IFS_STAFF_ROLE_REL
+    where TLR_ID = #{tlrId,jdbcType=VARCHAR}
+  </select>
+</mapper>

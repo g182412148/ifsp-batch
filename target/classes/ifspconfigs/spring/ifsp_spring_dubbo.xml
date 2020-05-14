@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="
+	   	http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	    http://www.springframework.org/schema/context
+     	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     	http://code.alibabatech.com/schema/dubbo
+     	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 应用标识 -->
+	<dubbo:application name="com.scrcu.ebank.ebap.order.adapter"/>
+	<!-- 如果有后台服务挂了，或者中台启动前台调不到服务，中台不需要重启 -->
+	<dubbo:consumer check="false"/>
+	<!-- 服务端配置超时重置次数为0 -->
+	<dubbo:provider retries="0"/>
+	<!-- sit -->
+	<dubbo:registry id="ebapRegistry" protocol="scrcu" address="10.16.45.138:2181,10.16.45.139:2181,10.16.45.140:2181,10.16.45.207:2181,10.16.45.208:2181" group="ebap"/>
+	<dubbo:registry id="ebbcRegistry" protocol="scrcu" address="10.16.45.138:2181,10.16.45.139:2181,10.16.45.140:2181,10.16.45.207:2181,10.16.45.208:2181" group="ebbc"/>
+	<!-- dubbo协议和服务端口 -->
+	<dubbo:protocol name="dubbo" port="20202"/>
+	<!--开放平台服务发布-->
+	<dubbo:service id="qryFileName" interface="com.scrcu.ebank.common.service.IService" ref="reflectInvokeService" group="ebap_tms_pre_0001"  registry="ebapRegistry"/>
+
+	<!-- 服务转发到能力中心 -->
+	<dubbo:service id="orgRepeMerg" interface="com.scrcu.ebank.common.service.IService" ref="reflectInvokeService" group="ebap_org_repe_merg_0001"  registry="ebapRegistry"/>
+	<dubbo:service id="selectOrgRepeMerg" interface="com.scrcu.ebank.common.service.IService" ref="reflectInvokeService" group="ebap_org_repe_merg_0002" registry="ebapRegistry"/>
+	<!-- 服务商接口 -->
+	<dubbo:service id="qrySerMerApprFileName" interface="com.scrcu.ebank.common.service.IService" ref="reflectInvokeService" group="ebap_mer_app_file_0001"  registry="ebapRegistry"/>
+
+	<bean id="serviceFactory" class="com.scrcu.ebank.common.client.ServiceFactoryImpl" />
+	<bean id="serviceInvoker" class="com.scrcu.ebank.common.client.DubboServiceInvoker">
+		<property name="serviceFactory" ref="serviceFactory" />
+	</bean>
+</beans>

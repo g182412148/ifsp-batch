@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtStaffRelMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffRel" >
+    <result column="RECORD_ID" property="recordId" jdbcType="VARCHAR" />
+    <result column="MCHT_ID" property="mchtId" jdbcType="VARCHAR" />
+    <result column="STAFF_ID" property="staffId" jdbcType="VARCHAR" />
+    <result column="STAFF_ROLE" property="staffRole" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffRel" >
+    insert into MCHT_STAFF_REL (RECORD_ID, MCHT_ID, STAFF_ID, 
+      STAFF_ROLE)
+    values (#{recordId,jdbcType=VARCHAR}, #{mchtId,jdbcType=VARCHAR}, #{staffId,jdbcType=VARCHAR}, 
+      #{staffRole,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffRel" >
+    insert into MCHT_STAFF_REL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        RECORD_ID,
+      </if>
+      <if test="mchtId != null" >
+        MCHT_ID,
+      </if>
+      <if test="staffId != null" >
+        STAFF_ID,
+      </if>
+      <if test="staffRole != null" >
+        STAFF_ROLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null" >
+        #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffRole != null" >
+        #{staffRole,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <global>
+        <req>
+            <head>
+            </head>
+        </req>
+        <resp>
+            <head>
+                <field remoteName="respCode" localName="respCode" converter="respCode"/>
+                <field remoteName="respMsg" localName="respMsg"/>
+                <field remoteName="reqSeqNo" localName="reqSsn"/>
+            </head>
+        </resp>
+    </global>
+    <txn remoteSoaName="ebap_tms_pre_0001" localSoaName="qryFileName">
+        <req>
+            <head>
+            </head>
+            <body>
+            </body>
+        </req>
+    </txn>
+    <txn remoteSoaName="ebap_org_repe_merg_0001" localSoaName="009.orgRepeMerg" >
+        <req>
+            <head>
+                <field remoteName="opFlag" localName="opFlag"/>
+                <field remoteName="repeOrg" localName="repeOrg"/>
+                <field remoteName="mergOrg" localName="mergOrg"/>
+                <field remoteName="mergDt" localName="mergDt"/>
+            </head>
+            <body>
+            </body>
+        </req>
+    </txn>
+    <txn remoteSoaName="ebap_org_repe_merg_0002" localSoaName="009.selectOrgRepeMerg" >
+        <req>
+            <head>
+                <field remoteName="repeOrg" localName="repeOrg"/>
+                <field remoteName="mergOrg" localName="mergOrg"/>
+                <field remoteName="mergDt" localName="mergDt"/>
+            </head>
+            <body>
+            </body>
+        </req>
+        <resp>
+            <head>
+                <field remoteName="mergStus" localName="mergStus"/>
+                <field remoteName="respCode" localName="respCode" converter="originalRespCode"/>
+            </head>
+            <body>
+            </body>
+        </resp>
+    </txn>
+    <txn remoteSoaName="ebap_mer_app_file_0001" localSoaName="qrySerMerApprFileName" ></txn>
+</root>

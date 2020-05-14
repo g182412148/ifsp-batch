@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.IfsStaffOrgRelMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffOrgRel" >
+    <id column="TLR_ID" property="tlrId" jdbcType="VARCHAR" />
+    <id column="BR_ID" property="brId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from IFS_STAFF_ORG_REL
+    where TLR_ID = #{tlrId,jdbcType=VARCHAR}
+      and BR_ID = #{brId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffOrgRel" >
+    insert into IFS_STAFF_ORG_REL (TLR_ID, BR_ID)
+    values (#{tlrId,jdbcType=VARCHAR}, #{brId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffOrgRel" >
+    insert into IFS_STAFF_ORG_REL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tlrId != null" >
+        TLR_ID,
+      </if>
+      <if test="brId != null" >
+        BR_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tlrId != null" >
+        #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="brId != null" >
+        #{brId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffOrgRel" >
+    update IFS_STAFF_ORG_REL
+    <set >
+      <if test="tlrId != null" >
+        TLR_ID = #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="brId != null" >
+        BR_ID = #{brId,jdbcType=VARCHAR},
+      </if>
+    </set>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsStaffOrgRel" >
+    update IFS_STAFF_ORG_REL
+    <set >
+      <if test="tlrId != null" >
+        TLR_ID = #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="brId != null" >
+        BR_ID = #{brId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TLR_ID = #{tlrId,jdbcType=VARCHAR}
+      and BR_ID = #{brId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    TLR_ID,BR_ID
+    from IFS_STAFF_ORG_REL
+    where TLR_ID = #{tlrId,jdbcType=VARCHAR}
+    and BR_ID = #{brId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByTlrId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    TLR_ID,BR_ID
+    from IFS_STAFF_ORG_REL
+    where TLR_ID = #{tlrId,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

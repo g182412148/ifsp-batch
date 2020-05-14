@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PagyTxnInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PagyTxnInfo" >
+    <id column="PAGY_TXN_SSN" property="pagyTxnSsn" jdbcType="VARCHAR" />
+    <result column="PAGY_TXN_TM" property="pagyTxnTm" jdbcType="TIMESTAMP" />
+    <result column="ORIG_PAGY_TXN_SSN" property="origPagyTxnSsn" jdbcType="VARCHAR" />
+    <result column="ORIG_PAGY_TXN_TM" property="origPagyTxnTm" jdbcType="TIMESTAMP" />
+    <result column="VERSION" property="version" jdbcType="CHAR" />
+    <result column="ENCODING" property="encoding" jdbcType="VARCHAR" />
+    <result column="SIGN_METHOD_TYPE" property="signMethodType" jdbcType="CHAR" />
+    <result column="SER_TYPE" property="serType" jdbcType="CHAR" />
+    <result column="PROD_ID" property="prodId" jdbcType="CHAR" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="CHAR" />
+    <result column="TXN_ACTION_FLAG" property="txnActionFlag" jdbcType="CHAR" />
+    <result column="TXN_ASYN_FLAG" property="txnAsynFlag" jdbcType="CHAR" />
+    <result column="CHL_NO" property="chlNo" jdbcType="CHAR" />
+    <result column="CHL_MCHT_NO" property="chlMchtNo" jdbcType="CHAR" />
+    <result column="CHL_ACS_TYPE" property="chlAcsType" jdbcType="CHAR" />
+    <result column="TXN_REQ_SSN" property="txnReqSsn" jdbcType="VARCHAR" />
+    <result column="TXN_REQ_TM" property="txnReqTm" jdbcType="TIMESTAMP" />
+    <result column="ORIG_TXN_REQ_SSN" property="origTxnReqSsn" jdbcType="VARCHAR" />
+    <result column="ORIG_TXN_REQ_TM" property="origTxnReqTm" jdbcType="TIMESTAMP" />
+    <result column="ACCT_TYPE" property="acctType" jdbcType="CHAR" />
+    <result column="ACCT_SUB_TYPE" property="acctSubType" jdbcType="CHAR" />
+    <result column="CARD_TYPE" property="cardType" jdbcType="CHAR" />
+    <result column="ACCT_NO" property="acctNo" jdbcType="VARCHAR" />
+    <result column="ACCT_NO_EN" property="acctNoEn" jdbcType="VARCHAR" />
+    <result column="ACCT_CUSTOMER_INFO" property="acctCustomerInfo" jdbcType="VARCHAR" />
+    <result column="ACCT_TOKEN_BIND_ID" property="acctTokenBindId" jdbcType="VARCHAR" />
+    <result column="ACCT_IN_NO" property="acctInNo" jdbcType="VARCHAR" />
+    <result column="ACCT_IN_CUSTOMER_INFO" property="acctInCustomerInfo" jdbcType="VARCHAR" />
+    <result column="ACCT_IN_TOKEN_BIND_ID" property="acctInTokenBindId" jdbcType="VARCHAR" />
+    <result column="TXN_CUSTMER_IP" property="txnCustmerIp" jdbcType="VARCHAR" />
+    <result column="TXN_PRODUCT_INFO" property="txnProductInfo" jdbcType="VARCHAR" />
+    <result column="TXN_DESC" property="txnDesc" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="TXN_FEE_AMT" property="txnFeeAmt" jdbcType="DECIMAL" />
+    <result column="TXN_RFD_AMT_SUM" property="txnRfdAmtSum" jdbcType="DECIMAL" />
+    <result column="TXN_RFD_COUNT_SUM" property="txnRfdCountSum" jdbcType="DECIMAL" />
+    <result column="TXN_CCY_TYPE" property="txnCcyType" jdbcType="CHAR" />
+    <result column="FRONT_END_URL" property="frontEndUrl" jdbcType="VARCHAR" />
+    <result column="BACK_END_URL" property="backEndUrl" jdbcType="VARCHAR" />
+    <result column="TXN_ATTACH" property="txnAttach" jdbcType="VARCHAR" />
+    <result column="PAGY_STE_DATE" property="pagySteDate" jdbcType="CHAR" />
+    <result column="PAGY_TXN_STATE" property="pagyTxnState" jdbcType="CHAR" />
+    <result column="PAGY_RESP_CODE" property="pagyRespCode" jdbcType="CHAR" />
+    <result column="PAGY_RESP_MSG" property="pagyRespMsg" jdbcType="VARCHAR" />
+    <result column="SYS_TRACE_ID" property="sysTraceId" jdbcType="VARCHAR" />
+    <result column="INIT_LOCALHOST_IP" property="initLocalhostIp" jdbcType="VARCHAR" />
+    <result column="PAGY_CRT_TM" property="pagyCrtTm" jdbcType="TIMESTAMP" />
+    <result column="UPD_LOCALHOST_IP" property="updLocalhostIp" jdbcType="VARCHAR" />
+    <result column="PAGY_UP_TM" property="pagyUpTm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PAGY_TXN_SSN, PAGY_TXN_TM, ORIG_PAGY_TXN_SSN, ORIG_PAGY_TXN_TM, VERSION, ENCODING, 
+    SIGN_METHOD_TYPE, SER_TYPE, PROD_ID, TXN_TYPE, TXN_ACTION_FLAG, TXN_ASYN_FLAG, CHL_NO, 
+    CHL_MCHT_NO, CHL_ACS_TYPE, TXN_REQ_SSN, TXN_REQ_TM, ORIG_TXN_REQ_SSN, ORIG_TXN_REQ_TM, 
+    ACCT_TYPE, ACCT_SUB_TYPE, CARD_TYPE, ACCT_NO, ACCT_NO_EN, ACCT_CUSTOMER_INFO, ACCT_TOKEN_BIND_ID, 
+    ACCT_IN_NO, ACCT_IN_CUSTOMER_INFO, ACCT_IN_TOKEN_BIND_ID, TXN_CUSTMER_IP, TXN_PRODUCT_INFO, 
+    TXN_DESC, TXN_AMT, TXN_FEE_AMT, TXN_RFD_AMT_SUM, TXN_RFD_COUNT_SUM, TXN_CCY_TYPE, 
+    FRONT_END_URL, BACK_END_URL, TXN_ATTACH, PAGY_STE_DATE, PAGY_TXN_STATE, PAGY_RESP_CODE, 
+    PAGY_RESP_MSG, SYS_TRACE_ID, INIT_LOCALHOST_IP, PAGY_CRT_TM, UPD_LOCALHOST_IP, PAGY_UP_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAGY_TXN_INFO
+    where PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PAGY_TXN_INFO
+    where PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyTxnInfo" >
+    insert into PAGY_TXN_INFO (PAGY_TXN_SSN, PAGY_TXN_TM, ORIG_PAGY_TXN_SSN, 
+      ORIG_PAGY_TXN_TM, VERSION, ENCODING, 
+      SIGN_METHOD_TYPE, SER_TYPE, PROD_ID, 
+      TXN_TYPE, TXN_ACTION_FLAG, TXN_ASYN_FLAG, 
+      CHL_NO, CHL_MCHT_NO, CHL_ACS_TYPE, 
+      TXN_REQ_SSN, TXN_REQ_TM, ORIG_TXN_REQ_SSN, 
+      ORIG_TXN_REQ_TM, ACCT_TYPE, ACCT_SUB_TYPE, 
+      CARD_TYPE, ACCT_NO, ACCT_NO_EN, 
+      ACCT_CUSTOMER_INFO, ACCT_TOKEN_BIND_ID, ACCT_IN_NO, 
+      ACCT_IN_CUSTOMER_INFO, ACCT_IN_TOKEN_BIND_ID, 
+      TXN_CUSTMER_IP, TXN_PRODUCT_INFO, TXN_DESC, 
+      TXN_AMT, TXN_FEE_AMT, TXN_RFD_AMT_SUM, 
+      TXN_RFD_COUNT_SUM, TXN_CCY_TYPE, FRONT_END_URL, 
+      BACK_END_URL, TXN_ATTACH, PAGY_STE_DATE, 
+      PAGY_TXN_STATE, PAGY_RESP_CODE, PAGY_RESP_MSG, 
+      SYS_TRACE_ID, INIT_LOCALHOST_IP, PAGY_CRT_TM, 
+      UPD_LOCALHOST_IP, PAGY_UP_TM)
+    values (#{pagyTxnSsn,jdbcType=VARCHAR}, #{pagyTxnTm,jdbcType=TIMESTAMP}, #{origPagyTxnSsn,jdbcType=VARCHAR}, 
+      #{origPagyTxnTm,jdbcType=TIMESTAMP}, #{version,jdbcType=CHAR}, #{encoding,jdbcType=VARCHAR}, 
+      #{signMethodType,jdbcType=CHAR}, #{serType,jdbcType=CHAR}, #{prodId,jdbcType=CHAR}, 
+      #{txnType,jdbcType=CHAR}, #{txnActionFlag,jdbcType=CHAR}, #{txnAsynFlag,jdbcType=CHAR}, 
+      #{chlNo,jdbcType=CHAR}, #{chlMchtNo,jdbcType=CHAR}, #{chlAcsType,jdbcType=CHAR}, 
+      #{txnReqSsn,jdbcType=VARCHAR}, #{txnReqTm,jdbcType=TIMESTAMP}, #{origTxnReqSsn,jdbcType=VARCHAR}, 
+      #{origTxnReqTm,jdbcType=TIMESTAMP}, #{acctType,jdbcType=CHAR}, #{acctSubType,jdbcType=CHAR}, 
+      #{cardType,jdbcType=CHAR}, #{acctNo,jdbcType=VARCHAR}, #{acctNoEn,jdbcType=VARCHAR}, 
+      #{acctCustomerInfo,jdbcType=VARCHAR}, #{acctTokenBindId,jdbcType=VARCHAR}, #{acctInNo,jdbcType=VARCHAR}, 
+      #{acctInCustomerInfo,jdbcType=VARCHAR}, #{acctInTokenBindId,jdbcType=VARCHAR}, 
+      #{txnCustmerIp,jdbcType=VARCHAR}, #{txnProductInfo,jdbcType=VARCHAR}, #{txnDesc,jdbcType=VARCHAR}, 
+      #{txnAmt,jdbcType=DECIMAL}, #{txnFeeAmt,jdbcType=DECIMAL}, #{txnRfdAmtSum,jdbcType=DECIMAL}, 
+      #{txnRfdCountSum,jdbcType=DECIMAL}, #{txnCcyType,jdbcType=CHAR}, #{frontEndUrl,jdbcType=VARCHAR}, 
+      #{backEndUrl,jdbcType=VARCHAR}, #{txnAttach,jdbcType=VARCHAR}, #{pagySteDate,jdbcType=CHAR}, 
+      #{pagyTxnState,jdbcType=CHAR}, #{pagyRespCode,jdbcType=CHAR}, #{pagyRespMsg,jdbcType=VARCHAR}, 
+      #{sysTraceId,jdbcType=VARCHAR}, #{initLocalhostIp,jdbcType=VARCHAR}, #{pagyCrtTm,jdbcType=TIMESTAMP}, 
+      #{updLocalhostIp,jdbcType=VARCHAR}, sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyTxnInfo" >
+    insert into PAGY_TXN_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pagyTxnSsn != null" >
+        PAGY_TXN_SSN,
+      </if>
+      <if test="pagyTxnTm != null" >
+        PAGY_TXN_TM,
+      </if>
+      <if test="origPagyTxnSsn != null" >
+        ORIG_PAGY_TXN_SSN,
+      </if>
+      <if test="origPagyTxnTm != null" >
+        ORIG_PAGY_TXN_TM,
+      </if>
+      <if test="version != null" >
+        VERSION,
+      </if>
+      <if test="encoding != null" >
+        ENCODING,
+      </if>
+      <if test="signMethodType != null" >
+        SIGN_METHOD_TYPE,
+      </if>
+      <if test="serType != null" >
+        SER_TYPE,
+      </if>
+      <if test="prodId != null" >
+        PROD_ID,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnActionFlag != null" >
+        TXN_ACTION_FLAG,
+      </if>
+      <if test="txnAsynFlag != null" >
+        TXN_ASYN_FLAG,
+      </if>
+      <if test="chlNo != null" >
+        CHL_NO,
+      </if>
+      <if test="chlMchtNo != null" >
+        CHL_MCHT_NO,
+      </if>
+      <if test="chlAcsType != null" >
+        CHL_ACS_TYPE,
+      </if>
+      <if test="txnReqSsn != null" >
+        TXN_REQ_SSN,
+      </if>
+      <if test="txnReqTm != null" >
+        TXN_REQ_TM,
+      </if>
+      <if test="origTxnReqSsn != null" >
+        ORIG_TXN_REQ_SSN,
+      </if>
+      <if test="origTxnReqTm != null" >
+        ORIG_TXN_REQ_TM,
+      </if>
+      <if test="acctType != null" >
+        ACCT_TYPE,
+      </if>
+      <if test="acctSubType != null" >
+        ACCT_SUB_TYPE,
+      </if>
+      <if test="cardType != null" >
+        CARD_TYPE,
+      </if>
+      <if test="acctNo != null" >
+        ACCT_NO,
+      </if>
+      <if test="acctNoEn != null" >
+        ACCT_NO_EN,
+      </if>
+      <if test="acctCustomerInfo != null" >
+        ACCT_CUSTOMER_INFO,
+      </if>
+      <if test="acctTokenBindId != null" >
+        ACCT_TOKEN_BIND_ID,
+      </if>
+      <if test="acctInNo != null" >
+        ACCT_IN_NO,
+      </if>
+      <if test="acctInCustomerInfo != null" >
+        ACCT_IN_CUSTOMER_INFO,
+      </if>
+      <if test="acctInTokenBindId != null" >
+        ACCT_IN_TOKEN_BIND_ID,
+      </if>
+      <if test="txnCustmerIp != null" >
+        TXN_CUSTMER_IP,
+      </if>
+      <if test="txnProductInfo != null" >
+        TXN_PRODUCT_INFO,
+      </if>
+      <if test="txnDesc != null" >
+        TXN_DESC,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="txnFeeAmt != null" >
+        TXN_FEE_AMT,
+      </if>
+      <if test="txnRfdAmtSum != null" >
+        TXN_RFD_AMT_SUM,
+      </if>
+      <if test="txnRfdCountSum != null" >
+        TXN_RFD_COUNT_SUM,
+      </if>
+      <if test="txnCcyType != null" >
+        TXN_CCY_TYPE,
+      </if>
+      <if test="frontEndUrl != null" >
+        FRONT_END_URL,
+      </if>
+      <if test="backEndUrl != null" >
+        BACK_END_URL,
+      </if>
+      <if test="txnAttach != null" >
+        TXN_ATTACH,
+      </if>
+      <if test="pagySteDate != null" >
+        PAGY_STE_DATE,
+      </if>
+      <if test="pagyTxnState != null" >
+        PAGY_TXN_STATE,
+      </if>
+      <if test="pagyRespCode != null" >
+        PAGY_RESP_CODE,
+      </if>
+      <if test="pagyRespMsg != null" >
+        PAGY_RESP_MSG,
+      </if>
+      <if test="sysTraceId != null" >
+        SYS_TRACE_ID,
+      </if>
+      <if test="initLocalhostIp != null" >
+        INIT_LOCALHOST_IP,
+      </if>
+      <if test="pagyCrtTm != null" >
+        PAGY_CRT_TM,
+      </if>
+      <if test="updLocalhostIp != null" >
+        UPD_LOCALHOST_IP,
+      </if>
+<!--       <if test="pagyUpTm != null" > -->
+        PAGY_UP_TM,
+<!--       </if> -->
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pagyTxnSsn != null" >
+        #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null" >
+        #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origPagyTxnSsn != null" >
+        #{origPagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origPagyTxnTm != null" >
+        #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=CHAR},
+      </if>
+      <if test="encoding != null" >
+        #{encoding,jdbcType=VARCHAR},
+      </if>
+      <if test="signMethodType != null" >
+        #{signMethodType,jdbcType=CHAR},
+      </if>
+      <if test="serType != null" >
+        #{serType,jdbcType=CHAR},
+      </if>
+      <if test="prodId != null" >
+        #{prodId,jdbcType=CHAR},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=CHAR},
+      </if>
+      <if test="txnActionFlag != null" >
+        #{txnActionFlag,jdbcType=CHAR},
+      </if>
+      <if test="txnAsynFlag != null" >
+        #{txnAsynFlag,jdbcType=CHAR},
+      </if>
+      <if test="chlNo != null" >
+        #{chlNo,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtNo != null" >
+        #{chlMchtNo,jdbcType=CHAR},
+      </if>
+      <if test="chlAcsType != null" >
+        #{chlAcsType,jdbcType=CHAR},
+      </if>
+      <if test="txnReqSsn != null" >
+        #{txnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="txnReqTm != null" >
+        #{txnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origTxnReqSsn != null" >
+        #{origTxnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origTxnReqTm != null" >
+        #{origTxnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acctType != null" >
+        #{acctType,jdbcType=CHAR},
+      </if>
+      <if test="acctSubType != null" >
+        #{acctSubType,jdbcType=CHAR},
+      </if>
+      <if test="cardType != null" >
+        #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="acctNo != null" >
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNoEn != null" >
+        #{acctNoEn,jdbcType=VARCHAR},
+      </if>
+      <if test="acctCustomerInfo != null" >
+        #{acctCustomerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctTokenBindId != null" >
+        #{acctTokenBindId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctInNo != null" >
+        #{acctInNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctInCustomerInfo != null" >
+        #{acctInCustomerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctInTokenBindId != null" >
+        #{acctInTokenBindId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCustmerIp != null" >
+        #{txnCustmerIp,jdbcType=VARCHAR},
+      </if>
+      <if test="txnProductInfo != null" >
+        #{txnProductInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null" >
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null" >
+        #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnRfdAmtSum != null" >
+        #{txnRfdAmtSum,jdbcType=DECIMAL},
+      </if>
+      <if test="txnRfdCountSum != null" >
+        #{txnRfdCountSum,jdbcType=DECIMAL},
+      </if>
+      <if test="txnCcyType != null" >
+        #{txnCcyType,jdbcType=CHAR},
+      </if>
+      <if test="frontEndUrl != null" >
+        #{frontEndUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="backEndUrl != null" >
+        #{backEndUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAttach != null" >
+        #{txnAttach,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySteDate != null" >
+        #{pagySteDate,jdbcType=CHAR},
+      </if>
+      <if test="pagyTxnState != null" >
+        #{pagyTxnState,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespCode != null" >
+        #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null" >
+        #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTraceId != null" >
+        #{sysTraceId,jdbcType=VARCHAR},
+      </if>
+      <if test="initLocalhostIp != null" >
+        #{initLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyCrtTm != null" >
+        #{pagyCrtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updLocalhostIp != null" >
+        #{updLocalhostIp,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="pagyUpTm != null" > -->
+        sysdate
+<!--       </if> -->
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyTxnInfo" >
+    update PAGY_TXN_INFO
+    <set >
+      <if test="pagyTxnTm != null" >
+        PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origPagyTxnSsn != null" >
+        ORIG_PAGY_TXN_SSN = #{origPagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origPagyTxnTm != null" >
+        ORIG_PAGY_TXN_TM = #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        VERSION = #{version,jdbcType=CHAR},
+      </if>
+      <if test="encoding != null" >
+        ENCODING = #{encoding,jdbcType=VARCHAR},
+      </if>
+      <if test="signMethodType != null" >
+        SIGN_METHOD_TYPE = #{signMethodType,jdbcType=CHAR},
+      </if>
+      <if test="serType != null" >
+        SER_TYPE = #{serType,jdbcType=CHAR},
+      </if>
+      <if test="prodId != null" >
+        PROD_ID = #{prodId,jdbcType=CHAR},
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE = #{txnType,jdbcType=CHAR},
+      </if>
+      <if test="txnActionFlag != null" >
+        TXN_ACTION_FLAG = #{txnActionFlag,jdbcType=CHAR},
+      </if>
+      <if test="txnAsynFlag != null" >
+        TXN_ASYN_FLAG = #{txnAsynFlag,jdbcType=CHAR},
+      </if>
+      <if test="chlNo != null" >
+        CHL_NO = #{chlNo,jdbcType=CHAR},
+      </if>
+      <if test="chlMchtNo != null" >
+        CHL_MCHT_NO = #{chlMchtNo,jdbcType=CHAR},
+      </if>
+      <if test="chlAcsType != null" >
+        CHL_ACS_TYPE = #{chlAcsType,jdbcType=CHAR},
+      </if>
+      <if test="txnReqSsn != null" >
+        TXN_REQ_SSN = #{txnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="txnReqTm != null" >
+        TXN_REQ_TM = #{txnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origTxnReqSsn != null" >
+        ORIG_TXN_REQ_SSN = #{origTxnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origTxnReqTm != null" >
+        ORIG_TXN_REQ_TM = #{origTxnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acctType != null" >
+        ACCT_TYPE = #{acctType,jdbcType=CHAR},
+      </if>
+      <if test="acctSubType != null" >
+        ACCT_SUB_TYPE = #{acctSubType,jdbcType=CHAR},
+      </if>
+      <if test="cardType != null" >
+        CARD_TYPE = #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="acctNo != null" >
+        ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNoEn != null" >
+        ACCT_NO_EN = #{acctNoEn,jdbcType=VARCHAR},
+      </if>
+      <if test="acctCustomerInfo != null" >
+        ACCT_CUSTOMER_INFO = #{acctCustomerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctTokenBindId != null" >
+        ACCT_TOKEN_BIND_ID = #{acctTokenBindId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctInNo != null" >
+        ACCT_IN_NO = #{acctInNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctInCustomerInfo != null" >
+        ACCT_IN_CUSTOMER_INFO = #{acctInCustomerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctInTokenBindId != null" >
+        ACCT_IN_TOKEN_BIND_ID = #{acctInTokenBindId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCustmerIp != null" >
+        TXN_CUSTMER_IP = #{txnCustmerIp,jdbcType=VARCHAR},
+      </if>
+      <if test="txnProductInfo != null" >
+        TXN_PRODUCT_INFO = #{txnProductInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null" >
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null" >
+        TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnRfdAmtSum != null" >
+        TXN_RFD_AMT_SUM = #{txnRfdAmtSum,jdbcType=DECIMAL},
+      </if>
+      <if test="txnRfdCountSum != null" >
+        TXN_RFD_COUNT_SUM = #{txnRfdCountSum,jdbcType=DECIMAL},
+      </if>
+      <if test="txnCcyType != null" >
+        TXN_CCY_TYPE = #{txnCcyType,jdbcType=CHAR},
+      </if>
+      <if test="frontEndUrl != null" >
+        FRONT_END_URL = #{frontEndUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="backEndUrl != null" >
+        BACK_END_URL = #{backEndUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAttach != null" >
+        TXN_ATTACH = #{txnAttach,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySteDate != null" >
+        PAGY_STE_DATE = #{pagySteDate,jdbcType=CHAR},
+      </if>
+      <if test="pagyTxnState != null" >
+        PAGY_TXN_STATE = #{pagyTxnState,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespCode != null" >
+        PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null" >
+        PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTraceId != null" >
+        SYS_TRACE_ID = #{sysTraceId,jdbcType=VARCHAR},
+      </if>
+      <if test="initLocalhostIp != null" >
+        INIT_LOCALHOST_IP = #{initLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyCrtTm != null" >
+        PAGY_CRT_TM = #{pagyCrtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updLocalhostIp != null" >
+        UPD_LOCALHOST_IP = #{updLocalhostIp,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="pagyUpTm != null" > -->
+        PAGY_UP_TM = sysdate
+<!--       </if> -->
+    </set>
+    where PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyTxnInfo" >
+    update PAGY_TXN_INFO
+    set PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      ORIG_PAGY_TXN_SSN = #{origPagyTxnSsn,jdbcType=VARCHAR},
+      ORIG_PAGY_TXN_TM = #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      VERSION = #{version,jdbcType=CHAR},
+      ENCODING = #{encoding,jdbcType=VARCHAR},
+      SIGN_METHOD_TYPE = #{signMethodType,jdbcType=CHAR},
+      SER_TYPE = #{serType,jdbcType=CHAR},
+      PROD_ID = #{prodId,jdbcType=CHAR},
+      TXN_TYPE = #{txnType,jdbcType=CHAR},
+      TXN_ACTION_FLAG = #{txnActionFlag,jdbcType=CHAR},
+      TXN_ASYN_FLAG = #{txnAsynFlag,jdbcType=CHAR},
+      CHL_NO = #{chlNo,jdbcType=CHAR},
+      CHL_MCHT_NO = #{chlMchtNo,jdbcType=CHAR},
+      CHL_ACS_TYPE = #{chlAcsType,jdbcType=CHAR},
+      TXN_REQ_SSN = #{txnReqSsn,jdbcType=VARCHAR},
+      TXN_REQ_TM = #{txnReqTm,jdbcType=TIMESTAMP},
+      ORIG_TXN_REQ_SSN = #{origTxnReqSsn,jdbcType=VARCHAR},
+      ORIG_TXN_REQ_TM = #{origTxnReqTm,jdbcType=TIMESTAMP},
+      ACCT_TYPE = #{acctType,jdbcType=CHAR},
+      ACCT_SUB_TYPE = #{acctSubType,jdbcType=CHAR},
+      CARD_TYPE = #{cardType,jdbcType=CHAR},
+      ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      ACCT_NO_EN = #{acctNoEn,jdbcType=VARCHAR},
+      ACCT_CUSTOMER_INFO = #{acctCustomerInfo,jdbcType=VARCHAR},
+      ACCT_TOKEN_BIND_ID = #{acctTokenBindId,jdbcType=VARCHAR},
+      ACCT_IN_NO = #{acctInNo,jdbcType=VARCHAR},
+      ACCT_IN_CUSTOMER_INFO = #{acctInCustomerInfo,jdbcType=VARCHAR},
+      ACCT_IN_TOKEN_BIND_ID = #{acctInTokenBindId,jdbcType=VARCHAR},
+      TXN_CUSTMER_IP = #{txnCustmerIp,jdbcType=VARCHAR},
+      TXN_PRODUCT_INFO = #{txnProductInfo,jdbcType=VARCHAR},
+      TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      TXN_RFD_AMT_SUM = #{txnRfdAmtSum,jdbcType=DECIMAL},
+      TXN_RFD_COUNT_SUM = #{txnRfdCountSum,jdbcType=DECIMAL},
+      TXN_CCY_TYPE = #{txnCcyType,jdbcType=CHAR},
+      FRONT_END_URL = #{frontEndUrl,jdbcType=VARCHAR},
+      BACK_END_URL = #{backEndUrl,jdbcType=VARCHAR},
+      TXN_ATTACH = #{txnAttach,jdbcType=VARCHAR},
+      PAGY_STE_DATE = #{pagySteDate,jdbcType=CHAR},
+      PAGY_TXN_STATE = #{pagyTxnState,jdbcType=CHAR},
+      PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      SYS_TRACE_ID = #{sysTraceId,jdbcType=VARCHAR},
+      INIT_LOCALHOST_IP = #{initLocalhostIp,jdbcType=VARCHAR},
+      PAGY_CRT_TM = #{pagyCrtTm,jdbcType=TIMESTAMP},
+      UPD_LOCALHOST_IP = #{updLocalhostIp,jdbcType=VARCHAR},
+      PAGY_UP_TM = sysdate
+    where PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByDateAndState" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAGY_TXN_INFO
+    where PAGY_TXN_TM = #{settleDate,jdbcType=VARCHAR}
+<!--     AND PAGY_TXN_STATE IN ('0000') -->
+  </select>
+  <select id="selectPagyTxnInfoByPagyTxnSsn" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAGY_TXN_INFO
+    where PAGY_TXN_SSN = #{pagyTxnSsn}
+<!--     AND PAGY_TXN_STATE IN ('0000') -->
+  </select>
+</mapper>

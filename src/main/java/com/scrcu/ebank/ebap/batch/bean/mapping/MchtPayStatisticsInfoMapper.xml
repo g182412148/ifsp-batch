@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtPayStatisticsInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtPayStatisticsInfo" >
+    <result column="CHL_MCHT_NO" property="chlMchtNo" jdbcType="VARCHAR" />
+    <result column="TRANSACTION_COUNT" property="transactionCount" jdbcType="VARCHAR" />
+    <result column="AMT_COUNT" property="amtCount" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap2" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtPayStatisticsInfoResp" >
+    <result column="CHL_MCHT_NO" property="chlMchtNo" jdbcType="VARCHAR" />
+    <result column="TRANSACTION_COUNT" property="transactionCount" jdbcType="VARCHAR" />
+    <result column="AMT_COUNT" property="amtCount" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="VARCHAR" />
+    <result column="END_TIME" property="endTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    CHL_MCHT_NO, TRANSACTION_COUNT, AMT_COUNT, START_TIME, END_TIME
+  </sql>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtPayStatisticsInfo" >
+    insert into MCHT_PAY_STATISTICS_INFO (CHL_MCHT_NO, TRANSACTION_COUNT, AMT_COUNT, 
+      START_TIME, END_TIME, UPD_TM)
+    values (#{chlMchtNo,jdbcType=VARCHAR}, #{transactionCount,jdbcType=VARCHAR}, #{amtCount,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtPayStatisticsInfo" >
+    insert into MCHT_PAY_STATISTICS_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chlMchtNo != null" >
+        CHL_MCHT_NO,
+      </if>
+      <if test="transactionCount != null" >
+        TRANSACTION_COUNT,
+      </if>
+      <if test="amtCount != null" >
+        AMT_COUNT,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      UPD_TM
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chlMchtNo != null" >
+        #{chlMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionCount != null" >
+        #{transactionCount,jdbcType=VARCHAR},
+      </if>
+      <if test="amtCount != null" >
+        #{amtCount,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      sysdate
+    </trim>
+  </insert>
+
+    <insert id="insertBatch" parameterType="java.util.ArrayList">
+      insert into MCHT_PAY_STATISTICS_INFO (CHL_MCHT_NO, TRANSACTION_COUNT, AMT_COUNT,
+      START_TIME, END_TIME, UPD_TM)
+      select t1.* from (
+      <foreach collection="list" item="u" index="i" separator="union all ">
+        select #{u.chlMchtNo},#{u.transactionCount},#{u.amtCount}, #{u.startTime}, #{u.endTime}, sysdate
+        from dual
+      </foreach>
+      )t1
+    </insert>
+
+  <select id="selectMchtIdAndTime" parameterType="java.lang.String" resultMap="BaseResultMap2">
+    SELECT CHL_MCHT_NO, TRANSACTION_COUNT, AMT_COUNT, START_TIME, END_TIME FROM MCHT_PAY_STATISTICS_INFO
+    WHERE CHL_MCHT_NO = #{chlMchtNo} and to_char( START_TIME,  'yyyy-mm-dd hh24:mi:ss') LIKE #{time} || '%' ORDER BY START_TIME
+  </select>
+
+  <select id="queryTimeQuanTum" parameterType="java.lang.String" resultMap="BaseResultMap2">
+    SELECT CHL_MCHT_NO, SUM(TRANSACTION_COUNT) as TRANSACTION_COUNT, SUM(AMT_COUNT) as AMT_COUNT,
+           SUBSTR(TO_CHAR(START_TIME, 'yyyy-mm-dd hh24:mi:ss'), 12, 5) as START_TIME, SUBSTR(TO_CHAR(END_TIME, 'yyyy-mm-dd hh24:mi:ss'), 12, 5) as END_TIME
+    FROM MCHT_PAY_STATISTICS_INFO
+    WHERE CHL_MCHT_NO = #{chlMchtNo}
+    AND TO_CHAR(START_TIME, 'yyyy-mm-dd hh24:mi:ss') BETWEEN #{startDate}||' 00:00:00' AND #{endDate}||' 23:59:59'
+    <if test="timeQuanTum != null" >
+      AND TO_CHAR(START_TIME, 'yyyy-mm-dd hh24:mi:ss') LIKE #{timeQuanTum}
+    </if>
+    GROUP BY SUBSTR(TO_CHAR(START_TIME, 'yyyy-mm-dd hh24:mi:ss'), 12, 5), SUBSTR(TO_CHAR(END_TIME, 'yyyy-mm-dd hh24:mi:ss'), 12, 5), CHL_MCHT_NO
+    ORDER BY START_TIME
+  </select>
+  
+    <!-- 分页批量插入 -->
+  <insert id="insertToMchtPayInfo" parameterType="java.util.Map">
+  	INSERT INTO MCHT_PAY_STATISTICS_INFO(CHL_MCHT_NO,TRANSACTION_COUNT,AMT_COUNT,START_TIME,END_TIME,UPD_TM)(
+  		SELECT CHL_MCHT_NO,TRANSACTION_COUNT,AMT_COUNT,START_TIME,END_TIME, UPD_TM
+		FROM (
+		    SELECT
+			    PAY_ORDER_INFO.MCHT_ID CHL_MCHT_NO,COUNT(1) TRANSACTION_COUNT,sum(PAY_ORDER_INFO.TXN_AMT) AMT_COUNT, 
+			    to_date(#{startTime},'yyyy-mm-dd hh24:mi:ss') START_TIME, to_date(#{endTime},'yyyy-mm-dd hh24:mi:ss') END_TIME, sysdate UPD_TM
+			    FROM PAY_ORDER_INFO
+		    WHERE ORDER_TM BETWEEN to_date(#{startTime},'yyyy-mm-dd hh24:mi:ss') and to_date(#{endTime},'yyyy-mm-dd hh24:mi:ss') 
+			    and TXN_TYPE_NO in ('O1000001','O1000002','O1000003','O1000006')
+			    and order_state in ('00','02')
+			    and MCHT_ID is not null GROUP BY PAY_ORDER_INFO.MCHT_ID
+	    ) WHERE ROWNUM &gt; #{startPage} AND ROWNUM &lt;= #{endPage}
+  	)
+  </insert>
+</mapper>

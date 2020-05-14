@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.AliBillOuterMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.AliBillOuter" >
+    <id column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="TXN_TIME" property="txnTime" jdbcType="TIMESTAMP" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="TXN_STATE" property="txnState" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="TXN_FEE_AMT" property="txnFeeAmt" jdbcType="DECIMAL" />
+    <result column="RECO_STATE" property="recoState" jdbcType="VARCHAR" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+    <result column="ALI_ORDER_NO" property="aliOrderNo" jdbcType="VARCHAR" />
+    <result column="ORDER_NO" property="orderNo" jdbcType="VARCHAR" />
+    <result column="BUSI_TP" property="busiTp" jdbcType="VARCHAR" />
+    <result column="PROD_NM" property="prodNm" jdbcType="VARCHAR" />
+    <result column="CRT_TM" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="END_TM" property="endTm" jdbcType="TIMESTAMP" />
+    <result column="STORE_ID" property="storeId" jdbcType="VARCHAR" />
+    <result column="STORE_NM" property="storeNm" jdbcType="VARCHAR" />
+    <result column="OPERATOR_ID" property="operatorId" jdbcType="VARCHAR" />
+    <result column="TERMINAL_ID" property="terminalId" jdbcType="VARCHAR" />
+    <result column="BUYER_LOGIN_ID" property="buyerLoginId" jdbcType="VARCHAR" />
+    <result column="ORDER_AMT" property="orderAmt" jdbcType="DECIMAL" />
+    <result column="RECEPIT_AMT" property="recepitAmt" jdbcType="DECIMAL" />
+    <result column="ALI_RED_AMT" property="aliRedAmt" jdbcType="DECIMAL" />
+    <result column="POINT_AMT" property="pointAmt" jdbcType="DECIMAL" />
+    <result column="ALI_DCT_AMT" property="aliDctAmt" jdbcType="DECIMAL" />
+    <result column="MCH_DCT_AMT" property="mchDctAmt" jdbcType="DECIMAL" />
+    <result column="VOUCHER_AMT" property="voucherAmt" jdbcType="DECIMAL" />
+    <result column="VOUCHER_NM" property="voucherNm" jdbcType="VARCHAR" />
+    <result column="MCH_RED_AMT" property="mchRedAmt" jdbcType="DECIMAL" />
+    <result column="PCC_PAY_AMT" property="pccPayAmt" jdbcType="DECIMAL" />
+    <result column="REFUND_ORDER_NO" property="refundOrderNo" jdbcType="VARCHAR" />
+    <result column="FEE_AMT" property="feeAmt" jdbcType="DECIMAL" />
+    <result column="NET_AMT" property="netAmt" jdbcType="DECIMAL" />
+    <result column="SUB_MCH_ID" property="subMchId" jdbcType="VARCHAR" />
+    <result column="TXN_TP" property="txnTp" jdbcType="VARCHAR" />
+    <result column="RMK" property="rmk" jdbcType="VARCHAR" />
+    <result column="DUBIS_FLAG" property="dubisFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TXN_SSN, RECO_DATE, TXN_TIME, TXN_TYPE, TXN_STATE, TXN_AMT, TXN_FEE_AMT, RECO_STATE, 
+    UPD_DATE, ALI_ORDER_NO, ORDER_NO, BUSI_TP, PROD_NM, CRT_TM, END_TM, STORE_ID, STORE_NM, 
+    OPERATOR_ID, TERMINAL_ID, BUYER_LOGIN_ID, ORDER_AMT, RECEPIT_AMT, ALI_RED_AMT, POINT_AMT, 
+    ALI_DCT_AMT, MCH_DCT_AMT, VOUCHER_AMT, VOUCHER_NM, MCH_RED_AMT, PCC_PAY_AMT, REFUND_ORDER_NO, 
+    FEE_AMT, NET_AMT, SUB_MCH_ID, TXN_TP, RMK, DUBIS_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ALI_BILL_OUTER
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ALI_BILL_OUTER
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.AliBillOuter" >
+    insert into ALI_BILL_OUTER (TXN_SSN, RECO_DATE, TXN_TIME, 
+      TXN_TYPE, TXN_STATE, TXN_AMT, 
+      TXN_FEE_AMT, RECO_STATE, UPD_DATE, 
+      ALI_ORDER_NO, ORDER_NO, BUSI_TP, 
+      PROD_NM, CRT_TM, END_TM, 
+      STORE_ID, STORE_NM, OPERATOR_ID, 
+      TERMINAL_ID, BUYER_LOGIN_ID, ORDER_AMT, 
+      RECEPIT_AMT, ALI_RED_AMT, POINT_AMT, 
+      ALI_DCT_AMT, MCH_DCT_AMT, VOUCHER_AMT, 
+      VOUCHER_NM, MCH_RED_AMT, PCC_PAY_AMT, 
+      REFUND_ORDER_NO, FEE_AMT, NET_AMT, 
+      SUB_MCH_ID, TXN_TP, RMK, 
+      DUBIS_FLAG)
+    values (#{txnSsn,jdbcType=VARCHAR}, #{recoDate,jdbcType=TIMESTAMP}, #{txnTime,jdbcType=TIMESTAMP}, 
+      #{txnType,jdbcType=VARCHAR}, #{txnState,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, 
+      #{txnFeeAmt,jdbcType=DECIMAL}, #{recoState,jdbcType=VARCHAR}, sysdate, 
+      #{aliOrderNo,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, #{busiTp,jdbcType=VARCHAR}, 
+      #{prodNm,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{endTm,jdbcType=TIMESTAMP}, 
+      #{storeId,jdbcType=VARCHAR}, #{storeNm,jdbcType=VARCHAR}, #{operatorId,jdbcType=VARCHAR}, 
+      #{terminalId,jdbcType=VARCHAR}, #{buyerLoginId,jdbcType=VARCHAR}, #{orderAmt,jdbcType=DECIMAL}, 
+      #{recepitAmt,jdbcType=DECIMAL}, #{aliRedAmt,jdbcType=DECIMAL}, #{pointAmt,jdbcType=DECIMAL}, 
+      #{aliDctAmt,jdbcType=DECIMAL}, #{mchDctAmt,jdbcType=DECIMAL}, #{voucherAmt,jdbcType=DECIMAL}, 
+      #{voucherNm,jdbcType=VARCHAR}, #{mchRedAmt,jdbcType=DECIMAL}, #{pccPayAmt,jdbcType=DECIMAL}, 
+      #{refundOrderNo,jdbcType=VARCHAR}, #{feeAmt,jdbcType=DECIMAL}, #{netAmt,jdbcType=DECIMAL}, 
+      #{subMchId,jdbcType=VARCHAR}, #{txnTp,jdbcType=VARCHAR}, #{rmk,jdbcType=VARCHAR}, 
+      #{dubisFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.AliBillOuter" >
+    insert into ALI_BILL_OUTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="txnFeeAmt != null" >
+        TXN_FEE_AMT,
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE,
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE,
+<!--       </if> -->
+      <if test="aliOrderNo != null" >
+        ALI_ORDER_NO,
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO,
+      </if>
+      <if test="busiTp != null" >
+        BUSI_TP,
+      </if>
+      <if test="prodNm != null" >
+        PROD_NM,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+      <if test="endTm != null" >
+        END_TM,
+      </if>
+      <if test="storeId != null" >
+        STORE_ID,
+      </if>
+      <if test="storeNm != null" >
+        STORE_NM,
+      </if>
+      <if test="operatorId != null" >
+        OPERATOR_ID,
+      </if>
+      <if test="terminalId != null" >
+        TERMINAL_ID,
+      </if>
+      <if test="buyerLoginId != null" >
+        BUYER_LOGIN_ID,
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT,
+      </if>
+      <if test="recepitAmt != null" >
+        RECEPIT_AMT,
+      </if>
+      <if test="aliRedAmt != null" >
+        ALI_RED_AMT,
+      </if>
+      <if test="pointAmt != null" >
+        POINT_AMT,
+      </if>
+      <if test="aliDctAmt != null" >
+        ALI_DCT_AMT,
+      </if>
+      <if test="mchDctAmt != null" >
+        MCH_DCT_AMT,
+      </if>
+      <if test="voucherAmt != null" >
+        VOUCHER_AMT,
+      </if>
+      <if test="voucherNm != null" >
+        VOUCHER_NM,
+      </if>
+      <if test="mchRedAmt != null" >
+        MCH_RED_AMT,
+      </if>
+      <if test="pccPayAmt != null" >
+        PCC_PAY_AMT,
+      </if>
+      <if test="refundOrderNo != null" >
+        REFUND_ORDER_NO,
+      </if>
+      <if test="feeAmt != null" >
+        FEE_AMT,
+      </if>
+      <if test="netAmt != null" >
+        NET_AMT,
+      </if>
+      <if test="subMchId != null" >
+        SUB_MCH_ID,
+      </if>
+      <if test="txnTp != null" >
+        TXN_TP,
+      </if>
+      <if test="rmk != null" >
+        RMK,
+      </if>
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null" >
+        #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        #{recoState,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updDate != null" > -->
+        sysdate,
+<!--       </if> -->
+      <if test="aliOrderNo != null" >
+        #{aliOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="busiTp != null" >
+        #{busiTp,jdbcType=VARCHAR},
+      </if>
+      <if test="prodNm != null" >
+        #{prodNm,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTm != null" >
+        #{endTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNm != null" >
+        #{storeNm,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalId != null" >
+        #{terminalId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerLoginId != null" >
+        #{buyerLoginId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmt != null" >
+        #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recepitAmt != null" >
+        #{recepitAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="aliRedAmt != null" >
+        #{aliRedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pointAmt != null" >
+        #{pointAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="aliDctAmt != null" >
+        #{aliDctAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="mchDctAmt != null" >
+        #{mchDctAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="voucherAmt != null" >
+        #{voucherAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="voucherNm != null" >
+        #{voucherNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mchRedAmt != null" >
+        #{mchRedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pccPayAmt != null" >
+        #{pccPayAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refundOrderNo != null" >
+        #{refundOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmt != null" >
+        #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="netAmt != null" >
+        #{netAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="subMchId != null" >
+        #{subMchId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null" >
+        #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="dubisFlag != null" >
+        #{dubisFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.AliBillOuter" >
+    update ALI_BILL_OUTER
+    <set >
+      <if test="recoDate != null" >
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null" >
+        TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE = sysdate,
+<!--       </if> -->
+      <if test="aliOrderNo != null" >
+        ALI_ORDER_NO = #{aliOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="busiTp != null" >
+        BUSI_TP = #{busiTp,jdbcType=VARCHAR},
+      </if>
+      <if test="prodNm != null" >
+        PROD_NM = #{prodNm,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTm != null" >
+        END_TM = #{endTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeId != null" >
+        STORE_ID = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNm != null" >
+        STORE_NM = #{storeNm,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalId != null" >
+        TERMINAL_ID = #{terminalId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerLoginId != null" >
+        BUYER_LOGIN_ID = #{buyerLoginId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recepitAmt != null" >
+        RECEPIT_AMT = #{recepitAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="aliRedAmt != null" >
+        ALI_RED_AMT = #{aliRedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pointAmt != null" >
+        POINT_AMT = #{pointAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="aliDctAmt != null" >
+        ALI_DCT_AMT = #{aliDctAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="mchDctAmt != null" >
+        MCH_DCT_AMT = #{mchDctAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="voucherAmt != null" >
+        VOUCHER_AMT = #{voucherAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="voucherNm != null" >
+        VOUCHER_NM = #{voucherNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mchRedAmt != null" >
+        MCH_RED_AMT = #{mchRedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pccPayAmt != null" >
+        PCC_PAY_AMT = #{pccPayAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refundOrderNo != null" >
+        REFUND_ORDER_NO = #{refundOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmt != null" >
+        FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="netAmt != null" >
+        NET_AMT = #{netAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="subMchId != null" >
+        SUB_MCH_ID = #{subMchId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null" >
+        TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="rmk != null" >
+        RMK = #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.AliBillOuter" >
+    update ALI_BILL_OUTER
+    set RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      UPD_DATE = sysdate,
+      ALI_ORDER_NO = #{aliOrderNo,jdbcType=VARCHAR},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      BUSI_TP = #{busiTp,jdbcType=VARCHAR},
+      PROD_NM = #{prodNm,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      END_TM = #{endTm,jdbcType=TIMESTAMP},
+      STORE_ID = #{storeId,jdbcType=VARCHAR},
+      STORE_NM = #{storeNm,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      TERMINAL_ID = #{terminalId,jdbcType=VARCHAR},
+      BUYER_LOGIN_ID = #{buyerLoginId,jdbcType=VARCHAR},
+      ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      RECEPIT_AMT = #{recepitAmt,jdbcType=DECIMAL},
+      ALI_RED_AMT = #{aliRedAmt,jdbcType=DECIMAL},
+      POINT_AMT = #{pointAmt,jdbcType=DECIMAL},
+      ALI_DCT_AMT = #{aliDctAmt,jdbcType=DECIMAL},
+      MCH_DCT_AMT = #{mchDctAmt,jdbcType=DECIMAL},
+      VOUCHER_AMT = #{voucherAmt,jdbcType=DECIMAL},
+      VOUCHER_NM = #{voucherNm,jdbcType=VARCHAR},
+      MCH_RED_AMT = #{mchRedAmt,jdbcType=DECIMAL},
+      PCC_PAY_AMT = #{pccPayAmt,jdbcType=DECIMAL},
+      REFUND_ORDER_NO = #{refundOrderNo,jdbcType=VARCHAR},
+      FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      NET_AMT = #{netAmt,jdbcType=DECIMAL},
+      SUB_MCH_ID = #{subMchId,jdbcType=VARCHAR},
+      TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      RMK = #{rmk,jdbcType=VARCHAR},
+      DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR}
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 清除对账日下的明细数据 -->
+  <delete id="clear">
+        delete from ALI_BILL_OUTER
+        where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    </delete>
+
+  <!-- 批量插入文件表 -->
+  <insert id="insertBatch">
+    INSERT
+    INTO ALI_BILL_OUTER (
+    TXN_SSN,
+    RECO_DATE,
+    TXN_TIME,
+    TXN_TYPE,
+    TXN_STATE,
+    TXN_AMT,
+    TXN_FEE_AMT,
+    RECO_STATE,
+    UPD_DATE,
+    ORDER_NO,
+    ALI_ORDER_NO,
+    BUSI_TP,
+    PROD_NM,
+    CRT_TM,
+    END_TM,
+    STORE_ID,
+    STORE_NM,
+    OPERATOR_ID,
+    TERMINAL_ID,
+    BUYER_LOGIN_ID,
+    ORDER_AMT,
+    RECEPIT_AMT,
+    ALI_RED_AMT,
+    POINT_AMT,
+    ALI_DCT_AMT,
+    MCH_DCT_AMT,
+    VOUCHER_AMT,
+    VOUCHER_NM,
+    MCH_RED_AMT,
+    PCC_PAY_AMT,
+    REFUND_ORDER_NO,
+    FEE_AMT,
+    NET_AMT,
+    SUB_MCH_ID,
+    TXN_TP,
+    RMK
+    )
+    select A.* from (
+    <foreach collection="recordList" index="index" item="item" separator="UNION ALL">
+      select
+      #{item.txnSsn,jdbcType=VARCHAR},
+      #{item.recoDate,jdbcType=TIMESTAMP},
+      #{item.txnTime,jdbcType=TIMESTAMP},
+      #{item.txnType,jdbcType=VARCHAR},
+      #{item.txnState,jdbcType=VARCHAR},
+      #{item.txnAmt,jdbcType=DECIMAL},
+      #{item.txnFeeAmt,jdbcType=DECIMAL},
+      #{item.recoState,jdbcType=VARCHAR},
+      sysdate,
+      #{item.orderNo,jdbcType=VARCHAR},
+      #{item.aliOrderNo,jdbcType=VARCHAR},
+      #{item.busiTp,jdbcType=VARCHAR},
+      #{item.prodNm,jdbcType=VARCHAR},
+      #{item.crtTm,jdbcType=TIMESTAMP},
+      #{item.endTm,jdbcType=TIMESTAMP},
+      #{item.storeId,jdbcType=VARCHAR},
+      #{item.storeNm,jdbcType=VARCHAR},
+      #{item.operatorId,jdbcType=VARCHAR},
+      #{item.terminalId,jdbcType=VARCHAR},
+      #{item.buyerLoginId,jdbcType=VARCHAR},
+      #{item.orderAmt,jdbcType=DECIMAL},
+      #{item.recepitAmt,jdbcType=DECIMAL},
+      #{item.aliRedAmt,jdbcType=DECIMAL},
+      #{item.pointAmt,jdbcType=DECIMAL},
+      #{item.aliDctAmt,jdbcType=DECIMAL},
+      #{item.mchDctAmt,jdbcType=DECIMAL},
+      #{item.voucherAmt,jdbcType=DECIMAL},
+      #{item.voucherNm,jdbcType=VARCHAR},
+      #{item.mchRedAmt,jdbcType=DECIMAL},
+      #{item.pccPayAmt,jdbcType=DECIMAL},
+      #{item.refundOrderNo,jdbcType=VARCHAR},
+      #{item.feeAmt,jdbcType=DECIMAL},
+      #{item.netAmt,jdbcType=DECIMAL},
+      #{item.subMchId,jdbcType=VARCHAR},
+      #{item.txnTp,jdbcType=VARCHAR},
+      #{item.rmk,jdbcType=VARCHAR}
+      from dual
+    </foreach>    ) A
+  </insert>
+
+
+  <!-- 恢复待对账数据 -->
+  <update id="recovery">
+        UPDATE
+            ALI_BILL_OUTER
+        SET
+            RECO_STATE = '0', UPD_DATE = sysdate
+        WHERE
+            RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+
+    </update>
+
+  <!-- 恢复待对账可疑数据 -->
+  <update id="recoveryDubious">
+        UPDATE
+            ALI_BILL_OUTER
+        SET
+            RECO_STATE = '2', UPD_DATE = sysdate
+        WHERE
+            RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+            and DUBIS_FLAG = '1'
+    </update>
+
+  <!-- 查询未对账数据 -->
+  <select id="queryNotReco" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" /> FROM ALI_BILL_OUTER
+    WHERE
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND RECO_STATE = '0'
+    UNION ALL
+    SELECT <include refid="Base_Column_List" /> FROM ALI_BILL_OUTER
+    WHERE
+    RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND RECO_STATE = '2'
+
+  </select>
+
+  <!-- 根据对账日期与交易流水查询三方文件表记录 -->
+  <select id="queryByIdAndDate" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM ALI_BILL_OUTER
+    WHERE
+    RECO_DATE BETWEEN #{dubiousDate,jdbcType=TIMESTAMP} AND #{recoDate,jdbcType=TIMESTAMP}
+    AND TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+
+  <!--根据支付宝对账结果更新三方对账状态-->
+  <update id="updateByResult">
+    update ALI_BILL_OUTER a
+    set (a.reco_state, a.dubis_flag, a.UPD_DATE) = (select decode(t.is_dubious_outer,
+    '2',
+    '2',
+    '1'),
+    decode(t.is_dubious_outer,
+    '2',
+    '1',
+    t.dubis_outer_original), sysdate
+    from ali_bill_result t
+    where a.txn_ssn = t.txn_ssn_outer)
+    where exists
+    (select 1 from ali_bill_result t where a.txn_ssn = t.txn_ssn_outer)
+    and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+    a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+  </update>
+</mapper>

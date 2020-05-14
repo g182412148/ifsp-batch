@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthScheduleClusterMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthScheduleCluster" >
+    <id column="TASK_ID" property="taskId" jdbcType="CHAR" />
+    <result column="TASK_NAME" property="taskName" jdbcType="VARCHAR" />
+    <result column="TASK_DESC" property="taskDesc" jdbcType="VARCHAR" />
+    <result column="TASK_CLASS" property="taskClass" jdbcType="VARCHAR" />
+    <result column="SERVER_IP" property="serverIp" jdbcType="VARCHAR" />
+    <result column="EXECUTE_STAT" property="executeStat" jdbcType="CHAR" />
+    <result column="UPDATE_TM" property="updateTm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TASK_ID, TASK_NAME, TASK_DESC, TASK_CLASS, SERVER_IP, EXECUTE_STAT, UPDATE_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_SCHEDULE_CLUSTER
+    where TASK_ID = #{taskId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_SCHEDULE_CLUSTER
+    where TASK_ID = #{taskId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthScheduleCluster" >
+    insert into BTH_SCHEDULE_CLUSTER (TASK_ID, TASK_NAME, TASK_DESC, 
+      TASK_CLASS, SERVER_IP, EXECUTE_STAT, 
+      UPDATE_TM)
+    values (#{taskId,jdbcType=CHAR}, #{taskName,jdbcType=VARCHAR}, #{taskDesc,jdbcType=VARCHAR}, 
+      #{taskClass,jdbcType=VARCHAR}, #{serverIp,jdbcType=VARCHAR}, #{executeStat,jdbcType=CHAR}, 
+      #{updateTm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthScheduleCluster" >
+    insert into BTH_SCHEDULE_CLUSTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        TASK_ID,
+      </if>
+      <if test="taskName != null" >
+        TASK_NAME,
+      </if>
+      <if test="taskDesc != null" >
+        TASK_DESC,
+      </if>
+      <if test="taskClass != null" >
+        TASK_CLASS,
+      </if>
+      <if test="serverIp != null" >
+        SERVER_IP,
+      </if>
+      <if test="executeStat != null" >
+        EXECUTE_STAT,
+      </if>
+      <if test="updateTm != null" >
+        UPDATE_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=CHAR},
+      </if>
+      <if test="taskName != null" >
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDesc != null" >
+        #{taskDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="taskClass != null" >
+        #{taskClass,jdbcType=VARCHAR},
+      </if>
+      <if test="serverIp != null" >
+        #{serverIp,jdbcType=VARCHAR},
+      </if>
+      <if test="executeStat != null" >
+        #{executeStat,jdbcType=CHAR},
+      </if>
+      <if test="updateTm != null" >
+        #{updateTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthScheduleCluster" >
+    update BTH_SCHEDULE_CLUSTER
+    <set >
+      <if test="taskName != null" >
+        TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDesc != null" >
+        TASK_DESC = #{taskDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="taskClass != null" >
+        TASK_CLASS = #{taskClass,jdbcType=VARCHAR},
+      </if>
+      <if test="serverIp != null" >
+        SERVER_IP = #{serverIp,jdbcType=VARCHAR},
+      </if>
+      <if test="executeStat != null" >
+        EXECUTE_STAT = #{executeStat,jdbcType=CHAR},
+      </if>
+      <if test="updateTm != null" >
+        UPDATE_TM = #{updateTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where TASK_ID = #{taskId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthScheduleCluster" >
+    update BTH_SCHEDULE_CLUSTER
+    set TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      TASK_DESC = #{taskDesc,jdbcType=VARCHAR},
+      TASK_CLASS = #{taskClass,jdbcType=VARCHAR},
+      SERVER_IP = #{serverIp,jdbcType=VARCHAR},
+      EXECUTE_STAT = #{executeStat,jdbcType=CHAR},
+      UPDATE_TM = #{updateTm,jdbcType=TIMESTAMP}
+    where TASK_ID = #{taskId,jdbcType=CHAR}
+  </update>
+
+
+    <select id="getTask" parameterType="map" resultType="int">
+        SELECT COUNT(0) FROM BTH_SCHEDULE_CLUSTER WHERE TASK_ID = #{taskId,jdbcType=CHAR} AND EXECUTE_STAT = '00'
+        AND UPDATE_TM &lt; #{date,jdbcType=TIMESTAMP}
+    </select>
+
+    <update id="updateExecuteStat" parameterType="map">
+        UPDATE BTH_SCHEDULE_CLUSTER SET UPDATE_TM = #{date,jdbcType=TIMESTAMP},
+        EXECUTE_STAT = #{executeStat,jdbcType=CHAR} ,SERVER_IP = #{serverIp , jdbcType=VARCHAR}
+        WHERE TASK_ID = #{taskId,jdbcType=CHAR}
+    </update>
+</mapper>

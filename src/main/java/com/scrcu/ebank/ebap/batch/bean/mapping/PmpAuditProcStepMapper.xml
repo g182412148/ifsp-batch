@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PmpAuditProcStepMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditProcStep" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="AUDIT_PROC_ID" property="auditProcId" jdbcType="VARCHAR" />
+    <result column="STEP_NO" property="stepNo" jdbcType="DECIMAL" />
+    <result column="STEP_NAME" property="stepName" jdbcType="VARCHAR" />
+    <result column="STEP_DESC" property="stepDesc" jdbcType="VARCHAR" />
+    <result column="AUDIT_ROLE_ID" property="auditRoleId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, AUDIT_PROC_ID, STEP_NO, STEP_NAME, STEP_DESC, AUDIT_ROLE_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PMP_AUDIT_PROC_STEP
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PMP_AUDIT_PROC_STEP
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditProcStep" >
+    insert into PMP_AUDIT_PROC_STEP (ID, AUDIT_PROC_ID, STEP_NO, 
+      STEP_NAME, STEP_DESC, AUDIT_ROLE_ID
+      )
+    values (#{id,jdbcType=VARCHAR}, #{auditProcId,jdbcType=VARCHAR}, #{stepNo,jdbcType=DECIMAL}, 
+      #{stepName,jdbcType=VARCHAR}, #{stepDesc,jdbcType=VARCHAR}, #{auditRoleId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditProcStep" >
+    insert into PMP_AUDIT_PROC_STEP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="auditProcId != null" >
+        AUDIT_PROC_ID,
+      </if>
+      <if test="stepNo != null" >
+        STEP_NO,
+      </if>
+      <if test="stepName != null" >
+        STEP_NAME,
+      </if>
+      <if test="stepDesc != null" >
+        STEP_DESC,
+      </if>
+      <if test="auditRoleId != null" >
+        AUDIT_ROLE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="auditProcId != null" >
+        #{auditProcId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepNo != null" >
+        #{stepNo,jdbcType=DECIMAL},
+      </if>
+      <if test="stepName != null" >
+        #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="stepDesc != null" >
+        #{stepDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="auditRoleId != null" >
+        #{auditRoleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditProcStep" >
+    update PMP_AUDIT_PROC_STEP
+    <set >
+      <if test="auditProcId != null" >
+        AUDIT_PROC_ID = #{auditProcId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepNo != null" >
+        STEP_NO = #{stepNo,jdbcType=DECIMAL},
+      </if>
+      <if test="stepName != null" >
+        STEP_NAME = #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="stepDesc != null" >
+        STEP_DESC = #{stepDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="auditRoleId != null" >
+        AUDIT_ROLE_ID = #{auditRoleId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditProcStep" >
+    update PMP_AUDIT_PROC_STEP
+    set AUDIT_PROC_ID = #{auditProcId,jdbcType=VARCHAR},
+      STEP_NO = #{stepNo,jdbcType=DECIMAL},
+      STEP_NAME = #{stepName,jdbcType=VARCHAR},
+      STEP_DESC = #{stepDesc,jdbcType=VARCHAR},
+      AUDIT_ROLE_ID = #{auditRoleId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询符合条件的审核步骤 -->
+  <select id="selectTepList" parameterType="map" resultMap="BaseResultMap">
+    select *
+    from PMP_AUDIT_PROC_STEP a
+    left join PMP_AUDIT_PROC_INFO b on a.audit_proc_id = b.audit_proc_id
+    left join IFS_ORG c on b.br_class = c.br_lvl
+    left join IFS_STAFF_ORG_REL d on c.br_id = d.br_id
+    left join IFS_STAFF e on d.tlr_id = e.tlr_id
+    where e.tlr_id = #{tlrno}
+    and b.audit_proc_type = #{auditType}
+  </select>
+</mapper>

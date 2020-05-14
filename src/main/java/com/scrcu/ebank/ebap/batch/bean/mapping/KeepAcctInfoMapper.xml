@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.KeepAcctInfoMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.KeepAcctInfo">
+    <id column="ORDER_SSN" jdbcType="VARCHAR" property="orderSsn" />
+    <id column="SUB_ORDER_SSN" jdbcType="VARCHAR" property="subOrderSsn" />
+    <id column="ORDER_SEQ" jdbcType="CHAR" property="orderSeq" />
+    <id column="KEEP_TYPE" jdbcType="CHAR" property="keepType" />
+    <result column="COMPLEX_ID" jdbcType="VARCHAR" property="complexId" />
+    <result column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+    <result column="ORDER_TM" jdbcType="TIMESTAMP" property="orderTm" />
+    <result column="TXN_TYPE_NO" jdbcType="CHAR" property="txnTypeNo" />
+    <result column="SYNC_FLAG" jdbcType="CHAR" property="syncFlag" />
+    <result column="DEBT_ACCT_NO" jdbcType="VARCHAR" property="debtAcctNo" />
+    <result column="DEBT_ACCT_NAME" jdbcType="VARCHAR" property="debtAcctName" />
+    <result column="DEBT_ACCT_TYPE" jdbcType="CHAR" property="debtAcctType" />
+    <result column="DEBT_ACCT_TYPE_NAME" jdbcType="VARCHAR" property="debtAcctTypeName" />
+    <result column="CRED_ACCT_NO" jdbcType="VARCHAR" property="credAcctNo" />
+    <result column="CRED_ACCT_NAME" jdbcType="VARCHAR" property="credAcctName" />
+    <result column="CRED_ACCT_TYPE_NAME" jdbcType="VARCHAR" property="credAcctTypeName" />
+    <result column="CRED_ACCT_TYPE" jdbcType="CHAR" property="credAcctType" />
+    <result column="RESP_CODE" jdbcType="CHAR" property="respCode" />
+    <result column="RESP_MSG" jdbcType="VARCHAR" property="respMsg" />
+    <result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+    <result column="TXN_DESC" jdbcType="VARCHAR" property="txnDesc" />
+    <result column="TXN_STATE" jdbcType="CHAR" property="txnState" />
+    <result column="TXN_CCY" jdbcType="CHAR" property="txnCcy" />
+    <result column="CRT_TM" jdbcType="TIMESTAMP" property="crtTm" />
+    <result column="UP_TM" jdbcType="TIMESTAMP" property="upTm" />
+    <result column="PAGY_NO" jdbcType="CHAR" property="pagyNo" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+    <result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+    <result column="UNIQUE_SSN" jdbcType="VARCHAR" property="uniqueSsn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORDER_SSN, SUB_ORDER_SSN, ORDER_SEQ, KEEP_TYPE, COMPLEX_ID, MCHT_ID, ORDER_TM, TXN_TYPE_NO, 
+    SYNC_FLAG, DEBT_ACCT_NO, DEBT_ACCT_NAME, DEBT_ACCT_TYPE, DEBT_ACCT_TYPE_NAME, CRED_ACCT_NO, 
+    CRED_ACCT_NAME, CRED_ACCT_TYPE_NAME, CRED_ACCT_TYPE, RESP_CODE, RESP_MSG, TXN_AMT, 
+    TXN_DESC, TXN_STATE, TXN_CCY, CRT_TM, UP_TM, PAGY_NO, MISC1, MISC2, MISC3, UNIQUE_SSN
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KEEP_ACCT_INFO
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+      and SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+      and ORDER_SEQ = #{orderSeq,jdbcType=CHAR}
+      and KEEP_TYPE = #{keepType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from KEEP_ACCT_INFO
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+      and SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+      and ORDER_SEQ = #{orderSeq,jdbcType=CHAR}
+      and KEEP_TYPE = #{keepType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAcctInfo">
+    insert into KEEP_ACCT_INFO (ORDER_SSN, SUB_ORDER_SSN, ORDER_SEQ, 
+      KEEP_TYPE, COMPLEX_ID, MCHT_ID, 
+      ORDER_TM, TXN_TYPE_NO, SYNC_FLAG, 
+      DEBT_ACCT_NO, DEBT_ACCT_NAME, DEBT_ACCT_TYPE, 
+      DEBT_ACCT_TYPE_NAME, CRED_ACCT_NO, CRED_ACCT_NAME, 
+      CRED_ACCT_TYPE_NAME, CRED_ACCT_TYPE, RESP_CODE, 
+      RESP_MSG, TXN_AMT, TXN_DESC, 
+      TXN_STATE, TXN_CCY, CRT_TM, 
+      UP_TM, PAGY_NO, MISC1, 
+      MISC2, MISC3, UNIQUE_SSN
+      )
+    values (#{orderSsn,jdbcType=VARCHAR}, #{subOrderSsn,jdbcType=VARCHAR}, #{orderSeq,jdbcType=CHAR}, 
+      #{keepType,jdbcType=CHAR}, #{complexId,jdbcType=VARCHAR}, #{mchtId,jdbcType=VARCHAR}, 
+      #{orderTm,jdbcType=TIMESTAMP}, #{txnTypeNo,jdbcType=CHAR}, #{syncFlag,jdbcType=CHAR}, 
+      #{debtAcctNo,jdbcType=VARCHAR}, #{debtAcctName,jdbcType=VARCHAR}, #{debtAcctType,jdbcType=CHAR}, 
+      #{debtAcctTypeName,jdbcType=VARCHAR}, #{credAcctNo,jdbcType=VARCHAR}, #{credAcctName,jdbcType=VARCHAR}, 
+      #{credAcctTypeName,jdbcType=VARCHAR}, #{credAcctType,jdbcType=CHAR}, #{respCode,jdbcType=CHAR}, 
+      #{respMsg,jdbcType=VARCHAR}, #{txnAmt,jdbcType=VARCHAR}, #{txnDesc,jdbcType=VARCHAR}, 
+      #{txnState,jdbcType=CHAR}, #{txnCcy,jdbcType=CHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{upTm,jdbcType=TIMESTAMP}, #{pagyNo,jdbcType=CHAR}, #{misc1,jdbcType=VARCHAR}, 
+      #{misc2,jdbcType=VARCHAR}, #{misc3,jdbcType=VARCHAR}, #{uniqueSsn,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAcctInfo">
+    insert into KEEP_ACCT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderSsn != null">
+        ORDER_SSN,
+      </if>
+      <if test="subOrderSsn != null">
+        SUB_ORDER_SSN,
+      </if>
+      <if test="orderSeq != null">
+        ORDER_SEQ,
+      </if>
+      <if test="keepType != null">
+        KEEP_TYPE,
+      </if>
+      <if test="complexId != null">
+        COMPLEX_ID,
+      </if>
+      <if test="mchtId != null">
+        MCHT_ID,
+      </if>
+      <if test="orderTm != null">
+        ORDER_TM,
+      </if>
+      <if test="txnTypeNo != null">
+        TXN_TYPE_NO,
+      </if>
+      <if test="syncFlag != null">
+        SYNC_FLAG,
+      </if>
+      <if test="debtAcctNo != null">
+        DEBT_ACCT_NO,
+      </if>
+      <if test="debtAcctName != null">
+        DEBT_ACCT_NAME,
+      </if>
+      <if test="debtAcctType != null">
+        DEBT_ACCT_TYPE,
+      </if>
+      <if test="debtAcctTypeName != null">
+        DEBT_ACCT_TYPE_NAME,
+      </if>
+      <if test="credAcctNo != null">
+        CRED_ACCT_NO,
+      </if>
+      <if test="credAcctName != null">
+        CRED_ACCT_NAME,
+      </if>
+      <if test="credAcctTypeName != null">
+        CRED_ACCT_TYPE_NAME,
+      </if>
+      <if test="credAcctType != null">
+        CRED_ACCT_TYPE,
+      </if>
+      <if test="respCode != null">
+        RESP_CODE,
+      </if>
+      <if test="respMsg != null">
+        RESP_MSG,
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT,
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC,
+      </if>
+      <if test="txnState != null">
+        TXN_STATE,
+      </if>
+      <if test="txnCcy != null">
+        TXN_CCY,
+      </if>
+      <if test="crtTm != null">
+        CRT_TM,
+      </if>
+      <if test="upTm != null">
+        UP_TM,
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO,
+      </if>
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>
+      <if test="misc3 != null">
+        MISC3,
+      </if>
+      <if test="uniqueSsn != null">
+        UNIQUE_SSN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderSsn != null">
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderSsn != null">
+        #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSeq != null">
+        #{orderSeq,jdbcType=CHAR},
+      </if>
+      <if test="keepType != null">
+        #{keepType,jdbcType=CHAR},
+      </if>
+      <if test="complexId != null">
+        #{complexId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null">
+        #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTm != null">
+        #{orderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTypeNo != null">
+        #{txnTypeNo,jdbcType=CHAR},
+      </if>
+      <if test="syncFlag != null">
+        #{syncFlag,jdbcType=CHAR},
+      </if>
+      <if test="debtAcctNo != null">
+        #{debtAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="debtAcctName != null">
+        #{debtAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="debtAcctType != null">
+        #{debtAcctType,jdbcType=CHAR},
+      </if>
+      <if test="debtAcctTypeName != null">
+        #{debtAcctTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="credAcctNo != null">
+        #{credAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="credAcctName != null">
+        #{credAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="credAcctTypeName != null">
+        #{credAcctTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="credAcctType != null">
+        #{credAcctType,jdbcType=CHAR},
+      </if>
+      <if test="respCode != null">
+        #{respCode,jdbcType=CHAR},
+      </if>
+      <if test="respMsg != null">
+        #{respMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null">
+        #{txnState,jdbcType=CHAR},
+      </if>
+      <if test="txnCcy != null">
+        #{txnCcy,jdbcType=CHAR},
+      </if>
+      <if test="crtTm != null">
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upTm != null">
+        #{upTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyNo != null">
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueSsn != null">
+        #{uniqueSsn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAcctInfo">
+    update KEEP_ACCT_INFO
+    <set>
+      <if test="complexId != null">
+        COMPLEX_ID = #{complexId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null">
+        MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTm != null">
+        ORDER_TM = #{orderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTypeNo != null">
+        TXN_TYPE_NO = #{txnTypeNo,jdbcType=CHAR},
+      </if>
+      <if test="syncFlag != null">
+        SYNC_FLAG = #{syncFlag,jdbcType=CHAR},
+      </if>
+      <if test="debtAcctNo != null">
+        DEBT_ACCT_NO = #{debtAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="debtAcctName != null">
+        DEBT_ACCT_NAME = #{debtAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="debtAcctType != null">
+        DEBT_ACCT_TYPE = #{debtAcctType,jdbcType=CHAR},
+      </if>
+      <if test="debtAcctTypeName != null">
+        DEBT_ACCT_TYPE_NAME = #{debtAcctTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="credAcctNo != null">
+        CRED_ACCT_NO = #{credAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="credAcctName != null">
+        CRED_ACCT_NAME = #{credAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="credAcctTypeName != null">
+        CRED_ACCT_TYPE_NAME = #{credAcctTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="credAcctType != null">
+        CRED_ACCT_TYPE = #{credAcctType,jdbcType=CHAR},
+      </if>
+      <if test="respCode != null">
+        RESP_CODE = #{respCode,jdbcType=CHAR},
+      </if>
+      <if test="respMsg != null">
+        RESP_MSG = #{respMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null">
+        TXN_STATE = #{txnState,jdbcType=CHAR},
+      </if>
+      <if test="txnCcy != null">
+        TXN_CCY = #{txnCcy,jdbcType=CHAR},
+      </if>
+      <if test="crtTm != null">
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upTm != null">
+        UP_TM = #{upTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        MISC3 = #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueSsn != null">
+        UNIQUE_SSN = #{uniqueSsn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+      and SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+      and ORDER_SEQ = #{orderSeq,jdbcType=CHAR}
+      and KEEP_TYPE = #{keepType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.KeepAcctInfo">
+    update KEEP_ACCT_INFO
+    set COMPLEX_ID = #{complexId,jdbcType=VARCHAR},
+      MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      ORDER_TM = #{orderTm,jdbcType=TIMESTAMP},
+      TXN_TYPE_NO = #{txnTypeNo,jdbcType=CHAR},
+      SYNC_FLAG = #{syncFlag,jdbcType=CHAR},
+      DEBT_ACCT_NO = #{debtAcctNo,jdbcType=VARCHAR},
+      DEBT_ACCT_NAME = #{debtAcctName,jdbcType=VARCHAR},
+      DEBT_ACCT_TYPE = #{debtAcctType,jdbcType=CHAR},
+      DEBT_ACCT_TYPE_NAME = #{debtAcctTypeName,jdbcType=VARCHAR},
+      CRED_ACCT_NO = #{credAcctNo,jdbcType=VARCHAR},
+      CRED_ACCT_NAME = #{credAcctName,jdbcType=VARCHAR},
+      CRED_ACCT_TYPE_NAME = #{credAcctTypeName,jdbcType=VARCHAR},
+      CRED_ACCT_TYPE = #{credAcctType,jdbcType=CHAR},
+      RESP_CODE = #{respCode,jdbcType=CHAR},
+      RESP_MSG = #{respMsg,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      TXN_STATE = #{txnState,jdbcType=CHAR},
+      TXN_CCY = #{txnCcy,jdbcType=CHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      UP_TM = #{upTm,jdbcType=TIMESTAMP},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      MISC2 = #{misc2,jdbcType=VARCHAR},
+      MISC3 = #{misc3,jdbcType=VARCHAR},
+      UNIQUE_SSN = #{uniqueSsn,jdbcType=VARCHAR}
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+      and SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR}
+      and ORDER_SEQ = #{orderSeq,jdbcType=CHAR}
+      and KEEP_TYPE = #{keepType,jdbcType=CHAR}
+  </update>
+
+  <select id="selectByOrderSsn" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KEEP_ACCT_INFO
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+  </select>
+
+
+    <select id="querryAll" resultMap="BaseResultMap" >
+        select <include refid="Base_Column_List" /> from keep_acct_info where order_ssn in (
+        '19050518310012825136',
+        '19050616460012956997',
+        '19050811130013225139',
+        '19042608240010922172',
+        '19042607350010911435',
+        '19042607440010912975',
+        '19042807400011295232',
+        '19042807430011295744',
+        '19042907420011469676',
+        '19042907410011469452',
+        '19042912050011525019',
+        '19043007380011657158',
+        '19043007390011657349',
+        '19043008060011662747',
+        '19050208490012105585'
+        )
+    </select>
+
+  <!-- 更新机构号 -->
+  <update id="updateKeepAcctInfo" parameterType="map">
+    update KEEP_ACCT_INFO
+    set MISC1 = #{merg,jdbcType=VARCHAR}
+    where mcht_id = #{mchtId,jdbcType=VARCHAR}
+  </update>
+</mapper>

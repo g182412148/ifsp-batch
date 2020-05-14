@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerTxnFeeMapper">
+    <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerTxnFee">
+        <result column="CHL_MER_ID" property="chlMerId" jdbcType="VARCHAR"/>
+        <result column="BATCH_NO" property="batchNo" jdbcType="VARCHAR"/>
+        <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL"/>
+        <result column="FEE_AMT" property="feeAmt" jdbcType="DECIMAL"/>
+        <result column="TXN_COUNT" property="txnCount" jdbcType="DECIMAL"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerTxnFee">
+        insert into BTH_MER_TXN_FEE (CHL_MER_ID, BATCH_NO, TXN_AMT,
+                                     FEE_AMT, TXN_COUNT)
+        values (#{chlMerId,jdbcType=VARCHAR}, #{batchNo,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL},
+                #{feeAmt,jdbcType=DECIMAL}, #{txnCount,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerTxnFee">
+        insert into BTH_MER_TXN_FEE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="chlMerId != null">
+                CHL_MER_ID,
+            </if>
+            <if test="batchNo != null">
+                BATCH_NO,
+            </if>
+            <if test="txnAmt != null">
+                TXN_AMT,
+            </if>
+            <if test="feeAmt != null">
+                FEE_AMT,
+            </if>
+            <if test="txnCount != null">
+                TXN_COUNT,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="chlMerId != null">
+                #{chlMerId,jdbcType=VARCHAR},
+            </if>
+            <if test="batchNo != null">
+                #{batchNo,jdbcType=VARCHAR},
+            </if>
+            <if test="txnAmt != null">
+                #{txnAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="feeAmt != null">
+                #{feeAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="txnCount != null">
+                #{txnCount,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <delete id="clear">
+      truncate table bth_mer_txn_fee
+    </delete>
+
+    <insert id="initData" parameterType="string">
+        insert into bth_mer_txn_fee
+        select t.chl_mer_id,
+               #{batchNo,jdbcType=VARCHAR} batch_no,
+               sum(decode(order_type, '01', txn_amt, '02', -txn_amt)) / 100 as txn_amt,
+               sum(decode(order_type, '01', setl_fee_amt, '02', -setl_fee_amt)) / 100 as fee_amt,
+               count(0) as txn_count
+        from bth_mer_in_acc_dtl t
+        where txn_seq_id in (select distinct order_id
+                             from bth_set_capital_detail
+                             where batch_no = #{batchNo,jdbcType=VARCHAR}
+                               and entry_type in ('01', '99'))
+        group by t.chl_mer_id
+    </insert>
+
+    <select id="queryBthMerTxnFeeByMerIdList" parameterType="map" resultMap="BaseResultMap">
+        SELECT *
+        FROM bth_mer_txn_fee
+        WHERE chl_mer_id IN
+        <foreach collection="merIdList" item="item" index="index" open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+        AND batch_no = #{batchNo,jdbcType=VARCHAR}
+    </select>
+</mapper>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.WxBillLocalMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.WxBillLocal" >
+    <id column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="WX_MCHT_ID" property="wxMchtId" jdbcType="VARCHAR" />
+    <result column="TXN_TIME" property="txnTime" jdbcType="TIMESTAMP" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="TXN_STATE" property="txnState" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="RECO_STATE" property="recoState" jdbcType="VARCHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="ORDER_DATE" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="DUBIS_FLAG" property="dubisFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TXN_SSN, RECO_DATE, WX_MCHT_ID, TXN_TIME, TXN_TYPE, TXN_STATE, TXN_AMT, RECO_STATE, 
+    ORDER_ID, ORDER_DATE, DUBIS_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from WX_BILL_LOCAL
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WX_BILL_LOCAL
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillLocal" >
+    insert into WX_BILL_LOCAL (TXN_SSN, RECO_DATE, WX_MCHT_ID, 
+      TXN_TIME, TXN_TYPE, TXN_STATE, 
+      TXN_AMT, RECO_STATE, ORDER_ID, 
+      ORDER_DATE, DUBIS_FLAG, UPD_TM)
+    values (#{txnSsn,jdbcType=VARCHAR}, #{recoDate,jdbcType=TIMESTAMP}, #{wxMchtId,jdbcType=VARCHAR}, 
+      #{txnTime,jdbcType=TIMESTAMP}, #{txnType,jdbcType=VARCHAR}, #{txnState,jdbcType=VARCHAR}, 
+      #{txnAmt,jdbcType=DECIMAL}, #{recoState,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{orderDate,jdbcType=TIMESTAMP}, #{dubisFlag,jdbcType=CHAR}, sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillLocal" >
+    insert into WX_BILL_LOCAL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="wxMchtId != null" >
+        WX_MCHT_ID,
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderDate != null" >
+        ORDER_DATE,
+      </if>
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG,
+      </if>
+      UPD_TM
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wxMchtId != null" >
+        #{wxMchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dubisFlag != null" >
+        #{dubisFlag,jdbcType=CHAR},
+      </if>
+      sysdate
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillLocal" >
+    update WX_BILL_LOCAL
+    <set >
+      <if test="recoDate != null" >
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wxMchtId != null" >
+        WX_MCHT_ID = #{wxMchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR},
+      </if>
+      UPD_TM = sysdate
+    </set>
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillLocal" >
+    update WX_BILL_LOCAL
+    set RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      WX_MCHT_ID = #{wxMchtId,jdbcType=VARCHAR},
+      TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR},
+      UPD_TM = sysdate
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <!-- 查询指定日期中需要处理 和 前一天可疑的交易 -->
+  <select id="count" resultType="int">
+    SELECT COUNT(1) FROM (
+      select * from WX_BILL_LOCAL
+      where
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+      UNION ALL
+      select * from WX_BILL_LOCAL
+      where
+        RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+        and RECO_STATE = '2'
+    )
+  </select>
+
+  <!-- 批量插入 -->
+  <insert id="insertBatch">
+    INSERT ALL
+    <foreach item="item" index="index" collection="recordList">
+      INTO WX_BILL_LOCAL
+      (
+      RECO_DATE,
+      WX_MCHT_ID,
+      TXN_SSN,
+      TXN_TIME,
+      TXN_TYPE,
+      TXN_STATE,
+      TXN_AMT,
+      RECO_STATE,
+      ORDER_ID,
+      ORDER_DATE,
+      UPD_TM
+      ) VALUES
+      (
+      #{item.recoDate, jdbcType=TIMESTAMP},
+      #{item.wxMchtId, jdbcType=VARCHAR},
+      #{item.txnSsn, jdbcType=VARCHAR},
+      #{item.txnTime, jdbcType=TIMESTAMP},
+      #{item.txnType, jdbcType=VARCHAR},
+      #{item.txnState, jdbcType=VARCHAR},
+      #{item.txnAmt, jdbcType=VARCHAR},
+      #{item.recoState, jdbcType=VARCHAR},
+      #{item.orderId, jdbcType=VARCHAR},
+      #{item.orderDate, jdbcType=TIMESTAMP},
+      sysdate
+      )
+    </foreach>
+    SELECT 1 FROM DUAL
+  </insert>
+
+  <!-- 分页查询 -->
+  <select id="queryByRange" resultMap="BaseResultMap">
+    select * FROM
+    (
+    select a.*,rownum rn from
+    (
+    select
+    <include refid="Base_Column_List" />
+    from WX_BILL_LOCAL
+    where
+    (
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    or (RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP} and DUBIS_FLAG = '1')
+    )
+    order by TXN_SSN
+    ) a where <![CDATA[rownum <= #{maxIndex}]]>
+    ) WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+
+  <!-- 恢复指定对账日期的数据为未对账 -->
+  <update id="recovery" >
+    update WX_BILL_LOCAL set RECO_STATE = '0', UPD_TM = sysdate
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+  </update>
+
+  <!-- 恢复前一日可疑数据 -->
+  <update id="recoveryDubious" >
+    update WX_BILL_LOCAL set RECO_STATE = '2', UPD_TM = sysdate
+    where
+    RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    and DUBIS_FLAG = '1'
+  </update>
+
+  <!-- 清空指定对账日期的数据为未对账 -->
+  <update id="clear" >
+    delete from WX_BILL_LOCAL
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+  </update>
+
+  <!--
+    按照指定日期 从流水表复制到本地账单, 同时:
+      交易类型转换
+      交易状态转换
+  -->
+  <update id="copy" >
+    insert into WX_BILL_LOCAL
+    (
+      reco_date,
+      wx_mcht_id,
+      txn_ssn,
+      TXN_TIME,
+      txn_type,
+      txn_state,
+      txn_amt,
+      reco_state,
+      order_id,
+      order_date,
+      UPD_TM
+    )
+    select
+      #{endDate,jdbcType=TIMESTAMP},
+      a.PAGY_NO,
+      a.PAGY_PAY_TXN_SSN,
+      a.PAGY_PAY_TXN_TM,
+      decode(a.PAGY_SYS_SOA_ACTION_FLAG, '10', '00', '12', '10', ''),
+      decode(a.PAGY_RESP_CODE, '0000', '00', '0002', '01', '0011', '01', '0045', '01', '0020', '01', '0021', '01','0022', '01',  '99'),
+      a.TPAM_TXN_AMT,
+      '0',
+      b.TXN_REQ_SSN,
+      b.TXN_REQ_TM,
+      sysdate
+    from TPAM_WECHAT_TXN_INFO a
+    left join PAGY_TXN_INFO b
+    on a.pagy_txn_ssn=b.pagy_txn_ssn
+    where
+    a.pagy_pay_txn_tm &gt;= #{startDate,jdbcType=TIMESTAMP}
+    and a.pagy_pay_txn_tm &lt; #{endDate,jdbcType=TIMESTAMP}
+    and a.PAGY_SYS_SOA_ACTION_FLAG != '11'
+    and (a.PAGY_RESP_CODE = '0000' or a.PAGY_RESP_CODE = '0002' or a.PAGY_RESP_CODE = '0011' or a.PAGY_RESP_CODE = '0045' or a.PAGY_RESP_CODE = '0020' or a.PAGY_RESP_CODE = '0021' or a.PAGY_RESP_CODE = '0022')
+  </update>
+
+
+    <!-- 根据对账日期获取微信本地流水 -->
+    <select id="getWxInfo" resultMap="BaseResultMap">
+        SELECT * FROM WX_BILL_LOCAL WHERE RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    </select>
+
+  <!--根据微信对账结果更新本地对账状态-->
+  <update id="updateByResult">
+    update wx_bill_local a
+   set (a.reco_state, a.dubis_flag, a.UPD_TM) = (select decode(t.is_dubious_local,
+    '2',
+    '2',
+    '1'),
+    decode(t.is_dubious_local,
+    '2',
+    '1',
+    t.dubis_local_original),sysdate
+     from wx_bill_result t
+     where a.txn_ssn = t.txn_ssn_local)
+ where exists
+ (select 1 from wx_bill_result t where a.txn_ssn = t.txn_ssn_local)
+   and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+       a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+  </update>
+
+
+</mapper>

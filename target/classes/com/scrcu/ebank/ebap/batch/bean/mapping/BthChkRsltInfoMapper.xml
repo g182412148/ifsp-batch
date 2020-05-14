@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthChkRsltInfoMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthChkRsltInfo">
+    <id column="PAGY_PAY_TXN_SSN" jdbcType="VARCHAR" property="pagyPayTxnSsn" />
+    <result column="PAGY_PAY_TXN_TM" jdbcType="TIMESTAMP" property="pagyPayTxnTm" />
+    <result column="PAGY_TXN_SSN" jdbcType="VARCHAR" property="pagyTxnSsn" />
+    <result column="PAGY_TXN_TM" jdbcType="TIMESTAMP" property="pagyTxnTm" />
+    <result column="ORIG_PAGY_TXN_SSN" jdbcType="VARCHAR" property="origPagyTxnSsn" />
+    <result column="ORIG_PAGY_TXN_TM" jdbcType="TIMESTAMP" property="origPagyTxnTm" />
+    <result column="PAGY_SYS_NO" jdbcType="CHAR" property="pagySysNo" />
+    <result column="PAGY_SYS_SOA_NO" jdbcType="CHAR" property="pagySysSoaNo" />
+    <result column="PAGY_SYS_SOA_VERSION" jdbcType="VARCHAR" property="pagySysSoaVersion" />
+    <result column="PAGY_NO" jdbcType="CHAR" property="pagyNo" />
+    <result column="PAGY_MCHT_NO" jdbcType="VARCHAR" property="pagyMchtNo" />
+    <result column="TPAM_TXN_SSN" jdbcType="VARCHAR" property="tpamTxnSsn" />
+    <result column="TPAM_TXN_TM" jdbcType="VARCHAR" property="tpamTxnTm" />
+    <result column="TPAM_ORIG_TXN_SSN" jdbcType="VARCHAR" property="tpamOrigTxnSsn" />
+    <result column="TPAM_TXN_TYPE_NO" jdbcType="VARCHAR" property="tpamTxnTypeNo" />
+    <result column="TPAM_TXN_AMT" jdbcType="DECIMAL" property="tpamTxnAmt" />
+    <result column="TPAM_TXN_FEE_AMT" jdbcType="DECIMAL" property="tpamTxnFeeAmt" />
+    <result column="TPAM_SET_AMT" jdbcType="DECIMAL" property="tpamSetAmt" />
+    <result column="PAGY_PROD_ID" jdbcType="CHAR" property="pagyProdId" />
+    <result column="PAGY_PROD_TXN_ID" jdbcType="CHAR" property="pagyProdTxnId" />
+    <result column="TXN_REQ_SSN" jdbcType="VARCHAR" property="txnReqSsn" />
+    <result column="TXN_REQ_TM" jdbcType="TIMESTAMP" property="txnReqTm" />
+    <result column="ORIG_TXN_REQ_SSN" jdbcType="VARCHAR" property="origTxnReqSsn" />
+    <result column="ORIG_TXN_REQ_TM" jdbcType="TIMESTAMP" property="origTxnReqTm" />
+    <result column="TXN_CHL_ACTION" jdbcType="CHAR" property="txnChlAction" />
+    <result column="TXN_CHL_NO" jdbcType="CHAR" property="txnChlNo" />
+    <result column="TXN_CHL_MCHT_NO" jdbcType="VARCHAR" property="txnChlMchtNo" />
+    <result column="CARD_TYPE" jdbcType="CHAR" property="cardType" />
+    <result column="ACCT_TYPE" jdbcType="CHAR" property="acctType" />
+    <result column="ACCT_SUB_TYPE" jdbcType="CHAR" property="acctSubType" />
+    <result column="ACCT_NO" jdbcType="VARCHAR" property="acctNo" />
+    <result column="TXN_AMT" jdbcType="DECIMAL" property="txnAmt" />
+    <result column="FEE_RATE" jdbcType="DECIMAL" property="feeRate" />
+    <result column="TXN_FEE_AMT" jdbcType="DECIMAL" property="txnFeeAmt" />
+    <result column="TXN_SET_AMT" jdbcType="DECIMAL" property="txnSetAmt" />
+    <result column="SETT_DT" jdbcType="TIMESTAMP" property="settDt" />
+    <result column="STLM_ST" jdbcType="CHAR" property="stlmSt" />
+    <result column="CHK_DATA_DT" jdbcType="TIMESTAMP" property="chkDataDt" />
+    <result column="CHK_SUCC_DT" jdbcType="TIMESTAMP" property="chkSuccDt" />
+    <result column="CRT_TM" jdbcType="TIMESTAMP" property="crtTm" />
+    <result column="LST_UPD_TM" jdbcType="TIMESTAMP" property="lstUpdTm" />
+    <result column="CHK_ST" jdbcType="CHAR" property="chkSt" />
+    <result column="CHK_RST" jdbcType="CHAR" property="chkRst" />
+    <result column="ORDER_SSN" jdbcType="VARCHAR" property="orderSsn" />
+    <result column="DUBIOUS_FLAG" jdbcType="CHAR" property="dubiousFlag" />
+    <result column="UNION_BRAND_FEE" jdbcType="DECIMAL" property="unionBrandFee" />
+    <result column="REMAIN_FLAG" jdbcType="VARCHAR" property="remainFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_TXN_SSN, PAGY_TXN_TM, ORIG_PAGY_TXN_SSN, 
+    ORIG_PAGY_TXN_TM, PAGY_SYS_NO, PAGY_SYS_SOA_NO, PAGY_SYS_SOA_VERSION, PAGY_NO, PAGY_MCHT_NO, 
+    TPAM_TXN_SSN, TPAM_TXN_TM, TPAM_ORIG_TXN_SSN, TPAM_TXN_TYPE_NO, TPAM_TXN_AMT, TPAM_TXN_FEE_AMT, 
+    TPAM_SET_AMT, PAGY_PROD_ID, PAGY_PROD_TXN_ID, TXN_REQ_SSN, TXN_REQ_TM, ORIG_TXN_REQ_SSN, 
+    ORIG_TXN_REQ_TM, TXN_CHL_ACTION, TXN_CHL_NO, TXN_CHL_MCHT_NO, CARD_TYPE, ACCT_TYPE, 
+    ACCT_SUB_TYPE, ACCT_NO, TXN_AMT, FEE_RATE, TXN_FEE_AMT, TXN_SET_AMT, SETT_DT, STLM_ST, 
+    CHK_DATA_DT, CHK_SUCC_DT, CRT_TM, LST_UPD_TM, CHK_ST, CHK_RST, ORDER_SSN, DUBIOUS_FLAG, 
+    UNION_BRAND_FEE, REMAIN_FLAG
+  </sql>
+  <sql id="Table_Name">
+		BTH_CHK_RSLT_INFO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_CHK_RSLT_INFO
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from BTH_CHK_RSLT_INFO
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkRsltInfo">
+    insert into BTH_CHK_RSLT_INFO (PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_TXN_SSN, 
+      PAGY_TXN_TM, ORIG_PAGY_TXN_SSN, ORIG_PAGY_TXN_TM, 
+      PAGY_SYS_NO, PAGY_SYS_SOA_NO, PAGY_SYS_SOA_VERSION, 
+      PAGY_NO, PAGY_MCHT_NO, TPAM_TXN_SSN, 
+      TPAM_TXN_TM, TPAM_ORIG_TXN_SSN, TPAM_TXN_TYPE_NO, 
+      TPAM_TXN_AMT, TPAM_TXN_FEE_AMT, TPAM_SET_AMT, 
+      PAGY_PROD_ID, PAGY_PROD_TXN_ID, TXN_REQ_SSN, 
+      TXN_REQ_TM, ORIG_TXN_REQ_SSN, ORIG_TXN_REQ_TM, 
+      TXN_CHL_ACTION, TXN_CHL_NO, TXN_CHL_MCHT_NO, 
+      CARD_TYPE, ACCT_TYPE, ACCT_SUB_TYPE, 
+      ACCT_NO, TXN_AMT, FEE_RATE, 
+      TXN_FEE_AMT, TXN_SET_AMT, SETT_DT, 
+      STLM_ST, CHK_DATA_DT, CHK_SUCC_DT, 
+      CRT_TM, LST_UPD_TM, CHK_ST, 
+      CHK_RST, ORDER_SSN, DUBIOUS_FLAG, 
+      UNION_BRAND_FEE, REMAIN_FLAG)
+    values (#{pagyPayTxnSsn,jdbcType=VARCHAR}, #{pagyPayTxnTm,jdbcType=TIMESTAMP}, #{pagyTxnSsn,jdbcType=VARCHAR}, 
+      #{pagyTxnTm,jdbcType=TIMESTAMP}, #{origPagyTxnSsn,jdbcType=VARCHAR}, #{origPagyTxnTm,jdbcType=TIMESTAMP}, 
+      #{pagySysNo,jdbcType=CHAR}, #{pagySysSoaNo,jdbcType=CHAR}, #{pagySysSoaVersion,jdbcType=VARCHAR}, 
+      #{pagyNo,jdbcType=CHAR}, #{pagyMchtNo,jdbcType=VARCHAR}, #{tpamTxnSsn,jdbcType=VARCHAR}, 
+      #{tpamTxnTm,jdbcType=VARCHAR}, #{tpamOrigTxnSsn,jdbcType=VARCHAR}, #{tpamTxnTypeNo,jdbcType=VARCHAR}, 
+      #{tpamTxnAmt,jdbcType=DECIMAL}, #{tpamTxnFeeAmt,jdbcType=DECIMAL}, #{tpamSetAmt,jdbcType=DECIMAL}, 
+      #{pagyProdId,jdbcType=CHAR}, #{pagyProdTxnId,jdbcType=CHAR}, #{txnReqSsn,jdbcType=VARCHAR}, 
+      #{txnReqTm,jdbcType=TIMESTAMP}, #{origTxnReqSsn,jdbcType=VARCHAR}, #{origTxnReqTm,jdbcType=TIMESTAMP}, 
+      #{txnChlAction,jdbcType=CHAR}, #{txnChlNo,jdbcType=CHAR}, #{txnChlMchtNo,jdbcType=VARCHAR}, 
+      #{cardType,jdbcType=CHAR}, #{acctType,jdbcType=CHAR}, #{acctSubType,jdbcType=CHAR}, 
+      #{acctNo,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, #{feeRate,jdbcType=DECIMAL}, 
+      #{txnFeeAmt,jdbcType=DECIMAL}, #{txnSetAmt,jdbcType=DECIMAL}, #{settDt,jdbcType=TIMESTAMP}, 
+      #{stlmSt,jdbcType=CHAR}, #{chkDataDt,jdbcType=TIMESTAMP}, #{chkSuccDt,jdbcType=TIMESTAMP}, 
+      #{crtTm,jdbcType=TIMESTAMP}, sysdate, #{chkSt,jdbcType=CHAR}, 
+      #{chkRst,jdbcType=CHAR}, #{orderSsn,jdbcType=VARCHAR}, #{dubiousFlag,jdbcType=CHAR}, 
+      #{unionBrandFee,jdbcType=DECIMAL}, #{remainFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkRsltInfo">
+    insert into BTH_CHK_RSLT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pagyPayTxnSsn != null">
+        PAGY_PAY_TXN_SSN,
+      </if>
+      <if test="pagyPayTxnTm != null">
+        PAGY_PAY_TXN_TM,
+      </if>
+      <if test="pagyTxnSsn != null">
+        PAGY_TXN_SSN,
+      </if>
+      <if test="pagyTxnTm != null">
+        PAGY_TXN_TM,
+      </if>
+      <if test="origPagyTxnSsn != null">
+        ORIG_PAGY_TXN_SSN,
+      </if>
+      <if test="origPagyTxnTm != null">
+        ORIG_PAGY_TXN_TM,
+      </if>
+      <if test="pagySysNo != null">
+        PAGY_SYS_NO,
+      </if>
+      <if test="pagySysSoaNo != null">
+        PAGY_SYS_SOA_NO,
+      </if>
+      <if test="pagySysSoaVersion != null">
+        PAGY_SYS_SOA_VERSION,
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO,
+      </if>
+      <if test="pagyMchtNo != null">
+        PAGY_MCHT_NO,
+      </if>
+      <if test="tpamTxnSsn != null">
+        TPAM_TXN_SSN,
+      </if>
+      <if test="tpamTxnTm != null">
+        TPAM_TXN_TM,
+      </if>
+      <if test="tpamOrigTxnSsn != null">
+        TPAM_ORIG_TXN_SSN,
+      </if>
+      <if test="tpamTxnTypeNo != null">
+        TPAM_TXN_TYPE_NO,
+      </if>
+      <if test="tpamTxnAmt != null">
+        TPAM_TXN_AMT,
+      </if>
+      <if test="tpamTxnFeeAmt != null">
+        TPAM_TXN_FEE_AMT,
+      </if>
+      <if test="tpamSetAmt != null">
+        TPAM_SET_AMT,
+      </if>
+      <if test="pagyProdId != null">
+        PAGY_PROD_ID,
+      </if>
+      <if test="pagyProdTxnId != null">
+        PAGY_PROD_TXN_ID,
+      </if>
+      <if test="txnReqSsn != null">
+        TXN_REQ_SSN,
+      </if>
+      <if test="txnReqTm != null">
+        TXN_REQ_TM,
+      </if>
+      <if test="origTxnReqSsn != null">
+        ORIG_TXN_REQ_SSN,
+      </if>
+      <if test="origTxnReqTm != null">
+        ORIG_TXN_REQ_TM,
+      </if>
+      <if test="txnChlAction != null">
+        TXN_CHL_ACTION,
+      </if>
+      <if test="txnChlNo != null">
+        TXN_CHL_NO,
+      </if>
+      <if test="txnChlMchtNo != null">
+        TXN_CHL_MCHT_NO,
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE,
+      </if>
+      <if test="acctType != null">
+        ACCT_TYPE,
+      </if>
+      <if test="acctSubType != null">
+        ACCT_SUB_TYPE,
+      </if>
+      <if test="acctNo != null">
+        ACCT_NO,
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT,
+      </if>
+      <if test="feeRate != null">
+        FEE_RATE,
+      </if>
+      <if test="txnFeeAmt != null">
+        TXN_FEE_AMT,
+      </if>
+      <if test="txnSetAmt != null">
+        TXN_SET_AMT,
+      </if>
+      <if test="settDt != null">
+        SETT_DT,
+      </if>
+      <if test="stlmSt != null">
+        STLM_ST,
+      </if>
+      <if test="chkDataDt != null">
+        CHK_DATA_DT,
+      </if>
+      <if test="chkSuccDt != null">
+        CHK_SUCC_DT,
+      </if>
+      <if test="crtTm != null">
+        CRT_TM,
+      </if>
+<!--       <if test="lstUpdTm != null"> -->
+        LST_UPD_TM,
+<!--       </if> -->
+      <if test="chkSt != null">
+        CHK_ST,
+      </if>
+      <if test="chkRst != null">
+        CHK_RST,
+      </if>
+      <if test="orderSsn != null">
+        ORDER_SSN,
+      </if>
+      <if test="dubiousFlag != null">
+        DUBIOUS_FLAG,
+      </if>
+      <if test="unionBrandFee != null">
+        UNION_BRAND_FEE,
+      </if>
+      <if test="remainFlag != null">
+        REMAIN_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pagyPayTxnSsn != null">
+        #{pagyPayTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyPayTxnTm != null">
+        #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyTxnSsn != null">
+        #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null">
+        #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origPagyTxnSsn != null">
+        #{origPagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origPagyTxnTm != null">
+        #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null">
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaNo != null">
+        #{pagySysSoaNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaVersion != null">
+        #{pagySysSoaVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null">
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtNo != null">
+        #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnSsn != null">
+        #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null">
+        #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrigTxnSsn != null">
+        #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTypeNo != null">
+        #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null">
+        #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnFeeAmt != null">
+        #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamSetAmt != null">
+        #{tpamSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyProdId != null">
+        #{pagyProdId,jdbcType=CHAR},
+      </if>
+      <if test="pagyProdTxnId != null">
+        #{pagyProdTxnId,jdbcType=CHAR},
+      </if>
+      <if test="txnReqSsn != null">
+        #{txnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="txnReqTm != null">
+        #{txnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origTxnReqSsn != null">
+        #{origTxnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origTxnReqTm != null">
+        #{origTxnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnChlAction != null">
+        #{txnChlAction,jdbcType=CHAR},
+      </if>
+      <if test="txnChlNo != null">
+        #{txnChlNo,jdbcType=CHAR},
+      </if>
+      <if test="txnChlMchtNo != null">
+        #{txnChlMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="acctType != null">
+        #{acctType,jdbcType=CHAR},
+      </if>
+      <if test="acctSubType != null">
+        #{acctSubType,jdbcType=CHAR},
+      </if>
+      <if test="acctNo != null">
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeRate != null">
+        #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null">
+        #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnSetAmt != null">
+        #{txnSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="settDt != null">
+        #{settDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stlmSt != null">
+        #{stlmSt,jdbcType=CHAR},
+      </if>
+      <if test="chkDataDt != null">
+        #{chkDataDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkSuccDt != null">
+        #{chkSuccDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTm != null">
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="lstUpdTm != null"> -->
+        sysdate,
+<!--       </if> -->
+      <if test="chkSt != null">
+        #{chkSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null">
+        #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="orderSsn != null">
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="dubiousFlag != null">
+        #{dubiousFlag,jdbcType=CHAR},
+      </if>
+      <if test="unionBrandFee != null">
+        #{unionBrandFee,jdbcType=DECIMAL},
+      </if>
+      <if test="remainFlag != null">
+        #{remainFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkRsltInfo">
+    update BTH_CHK_RSLT_INFO
+    <set>
+      <if test="pagyPayTxnTm != null">
+        PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyTxnSsn != null">
+        PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null">
+        PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origPagyTxnSsn != null">
+        ORIG_PAGY_TXN_SSN = #{origPagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origPagyTxnTm != null">
+        ORIG_PAGY_TXN_TM = #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null">
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaNo != null">
+        PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysSoaVersion != null">
+        PAGY_SYS_SOA_VERSION = #{pagySysSoaVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyMchtNo != null">
+        PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnSsn != null">
+        TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null">
+        TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrigTxnSsn != null">
+        TPAM_ORIG_TXN_SSN = #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTypeNo != null">
+        TPAM_TXN_TYPE_NO = #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null">
+        TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnFeeAmt != null">
+        TPAM_TXN_FEE_AMT = #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamSetAmt != null">
+        TPAM_SET_AMT = #{tpamSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyProdId != null">
+        PAGY_PROD_ID = #{pagyProdId,jdbcType=CHAR},
+      </if>
+      <if test="pagyProdTxnId != null">
+        PAGY_PROD_TXN_ID = #{pagyProdTxnId,jdbcType=CHAR},
+      </if>
+      <if test="txnReqSsn != null">
+        TXN_REQ_SSN = #{txnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="txnReqTm != null">
+        TXN_REQ_TM = #{txnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origTxnReqSsn != null">
+        ORIG_TXN_REQ_SSN = #{origTxnReqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origTxnReqTm != null">
+        ORIG_TXN_REQ_TM = #{origTxnReqTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnChlAction != null">
+        TXN_CHL_ACTION = #{txnChlAction,jdbcType=CHAR},
+      </if>
+      <if test="txnChlNo != null">
+        TXN_CHL_NO = #{txnChlNo,jdbcType=CHAR},
+      </if>
+      <if test="txnChlMchtNo != null">
+        TXN_CHL_MCHT_NO = #{txnChlMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE = #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="acctType != null">
+        ACCT_TYPE = #{acctType,jdbcType=CHAR},
+      </if>
+      <if test="acctSubType != null">
+        ACCT_SUB_TYPE = #{acctSubType,jdbcType=CHAR},
+      </if>
+      <if test="acctNo != null">
+        ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeRate != null">
+        FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null">
+        TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnSetAmt != null">
+        TXN_SET_AMT = #{txnSetAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="settDt != null">
+        SETT_DT = #{settDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stlmSt != null">
+        STLM_ST = #{stlmSt,jdbcType=CHAR},
+      </if>
+      <if test="chkDataDt != null">
+        CHK_DATA_DT = #{chkDataDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chkSuccDt != null">
+        CHK_SUCC_DT = #{chkSuccDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTm != null">
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="lstUpdTm != null"> -->
+        LST_UPD_TM = sysdate,
+<!--       </if> -->
+      <if test="chkSt != null">
+        CHK_ST = #{chkSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null">
+        CHK_RST = #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="orderSsn != null">
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="dubiousFlag != null">
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+      <if test="unionBrandFee != null">
+        UNION_BRAND_FEE = #{unionBrandFee,jdbcType=DECIMAL},
+      </if>
+      <if test="remainFlag != null">
+        REMAIN_FLAG = #{remainFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkRsltInfo">
+    update BTH_CHK_RSLT_INFO
+    set PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      ORIG_PAGY_TXN_SSN = #{origPagyTxnSsn,jdbcType=VARCHAR},
+      ORIG_PAGY_TXN_TM = #{origPagyTxnTm,jdbcType=TIMESTAMP},
+      PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      PAGY_SYS_SOA_NO = #{pagySysSoaNo,jdbcType=CHAR},
+      PAGY_SYS_SOA_VERSION = #{pagySysSoaVersion,jdbcType=VARCHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      PAGY_MCHT_NO = #{pagyMchtNo,jdbcType=VARCHAR},
+      TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      TPAM_ORIG_TXN_SSN = #{tpamOrigTxnSsn,jdbcType=VARCHAR},
+      TPAM_TXN_TYPE_NO = #{tpamTxnTypeNo,jdbcType=VARCHAR},
+      TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      TPAM_TXN_FEE_AMT = #{tpamTxnFeeAmt,jdbcType=DECIMAL},
+      TPAM_SET_AMT = #{tpamSetAmt,jdbcType=DECIMAL},
+      PAGY_PROD_ID = #{pagyProdId,jdbcType=CHAR},
+      PAGY_PROD_TXN_ID = #{pagyProdTxnId,jdbcType=CHAR},
+      TXN_REQ_SSN = #{txnReqSsn,jdbcType=VARCHAR},
+      TXN_REQ_TM = #{txnReqTm,jdbcType=TIMESTAMP},
+      ORIG_TXN_REQ_SSN = #{origTxnReqSsn,jdbcType=VARCHAR},
+      ORIG_TXN_REQ_TM = #{origTxnReqTm,jdbcType=TIMESTAMP},
+      TXN_CHL_ACTION = #{txnChlAction,jdbcType=CHAR},
+      TXN_CHL_NO = #{txnChlNo,jdbcType=CHAR},
+      TXN_CHL_MCHT_NO = #{txnChlMchtNo,jdbcType=VARCHAR},
+      CARD_TYPE = #{cardType,jdbcType=CHAR},
+      ACCT_TYPE = #{acctType,jdbcType=CHAR},
+      ACCT_SUB_TYPE = #{acctSubType,jdbcType=CHAR},
+      ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      TXN_SET_AMT = #{txnSetAmt,jdbcType=DECIMAL},
+      SETT_DT = #{settDt,jdbcType=TIMESTAMP},
+      STLM_ST = #{stlmSt,jdbcType=CHAR},
+      CHK_DATA_DT = #{chkDataDt,jdbcType=TIMESTAMP},
+      CHK_SUCC_DT = #{chkSuccDt,jdbcType=TIMESTAMP},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      LST_UPD_TM = sysdate,
+      CHK_ST = #{chkSt,jdbcType=CHAR},
+      CHK_RST = #{chkRst,jdbcType=CHAR},
+      ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      UNION_BRAND_FEE = #{unionBrandFee,jdbcType=DECIMAL},
+      REMAIN_FLAG = #{remainFlag,jdbcType=VARCHAR}
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+  <select id="queryByPagySysNoAndDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_CHK_RSLT_INFO
+    where PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+    and TPAM_TXN_TM=#{settleDate,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 	 根据清算日期和通道系统编号查询对账结果表数据（对平流水） -->
+<!-- 	List<BthChkRsltInfo> selectBthChkRsltInfoByPagySysNoAndSettleDate(String pagySysNo, String settleDate); -->
+    <select id="selectBthChkRsltInfoByPagySysNoAndSettleDate" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from BTH_CHK_RSLT_INFO
+    where PAGY_SYS_NO = #{pagySysNo}
+	and to_char(PAGY_TXN_TM,'YYYYMMDD')=#{settleDate}
+  </select>
+
+
+    <select id="queryByStlmDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_CHK_RSLT_INFO
+        and CHK_SUCC_DT=#{settleDate,jdbcType=VARCHAR}
+    </select>
+    
+    <delete id="deleteByStlmDateAndPagySysNo" parameterType="java.lang.String">
+    delete from BTH_CHK_RSLT_INFO
+    where PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+    and substr(TPAM_TXN_TM,0,8)=#{settleDate,jdbcType=VARCHAR}
+  </delete>
+  
+  <!-- 根据对账日期查询对账成功订单信息 -->
+  <select id="selectChkSuccOrderByDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from
+    (
+        select a.* ,rownum rn from
+        ( select
+            <include refid="Base_Column_List" />
+            from BTH_CHK_RSLT_INFO
+            where
+            CHK_SUCC_DT=to_date(#{chkSuccDt},'yyyyMMdd')
+            order by order_ssn
+        ) a where <![CDATA[rownum <= #{endIdx}]]>
+    ) WHERE <![CDATA[ rn >= #{startIdx}]]>
+  </select>
+    
+    <select id="countChkSuccOrderByDate" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		where CHK_SUCC_DT= to_date(#{chkSuccDt},'yyyyMMdd')
+	</select>
+	
+	<delete id="deleteAliByStlmDateAndPagySysNo" parameterType="java.lang.String">
+       delete from BTH_CHK_RSLT_INFO
+       where PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+         and CHK_SUCC_DT = to_date(#{settleDate,jdbcType=VARCHAR} ,'yyyymmdd')
+         and REMAIN_FLAG is null
+    </delete>
+    
+    <delete id="deleteByChkSuccDtAndPagySysNo" parameterType="java.lang.String">
+       delete from BTH_CHK_RSLT_INFO
+       where PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+         and CHK_SUCC_DT = to_date(#{chkSuccDt,jdbcType=VARCHAR} ,'yyyymmdd')
+       <if test="stlmSt != null">
+         and STLM_ST = #{stlmSt,jdbcType=CHAR}
+       </if>
+    </delete>
+  
+  <select id="selectByDateAndChkSt" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_CHK_RSLT_INFO
+        where to_char(PAGY_TXN_TM,'YYYYMMDD')= #{settleDate}
+        and CHK_ST=#{chkSt}
+    </select>
+  <select id="selectByDateAndChkRst" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_CHK_RSLT_INFO
+        where to_char(PAGY_TXN_TM,'YYYYMMDD')= #{settleDate}
+        and CHK_RST=#{chkRst}
+    </select>
+
+    <!-- 设置对账成功表订单清分状态 -->
+    <update id="updateChkOrderStlStatusByOrderId" parameterType="java.util.Map">
+     	update
+        BTH_CHK_RSLT_INFO
+      	set STLM_ST = #{stlmSt}, LST_UPD_TM = sysdate
+      	where ORDER_SSN = #{orderSsn}
+    </update>
+    <!-- 批量设置对账成功表订单清分状态 -->
+    <update id="updateChkOrderStlStatusByOrderIdList" parameterType="java.util.Map">
+      update
+      BTH_CHK_RSLT_INFO
+      set STLM_ST = #{stlmSt}, LST_UPD_TM = sysdate
+      where ORDER_SSN in
+      <foreach collection="orderSsnList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </update>
+  <!-- 还原对账成功临时表订单清分状态 -->
+  <update id="updateChkOrderTempStlStatusByChkDate" parameterType="java.util.Map">
+    update
+    BTH_CHK_RSLT_INFO_TEMP
+    set STLM_ST = #{stlmSt}
+    where CHK_SUCC_DT = TO_DATE(#{chkSuccDt,jdbcType = VARCHAR} , 'YYYYMMDD')
+  </update>
+    <!-- 根据日期批量设置对账成功表订单清分状态 -->
+    <update id="updateChkOrderStlStatusByDate" parameterType="java.util.Map">
+      update
+      BTH_CHK_RSLT_INFO a
+      set a.STLM_ST = #{stlmStNew}, LST_UPD_TM = sysdate
+      where a.CHK_SUCC_DT = TO_DATE(#{chkSuccDt,jdbcType = VARCHAR} , 'YYYYMMDD')
+        and a.STLM_ST = #{stlmStOld}
+    </update>
+    <select id="queryRsltByDateAndFlag" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_CHK_RSLT_INFO
+        where to_char(PAGY_TXN_TM,'YYYYMMDD')= #{settleDate}
+        and DUBIOUS_FLAG=#{dubiousFlag}
+    </select>
+    <select id="selectChkRsltByDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_CHK_RSLT_INFO
+        where to_char(PAGY_TXN_TM,'YYYYMMDD')= #{settleDate}
+    </select>
+
+    <select id="selectByOrderSsnDate" parameterType="map" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" /> FROM BTH_CHK_RSLT_INFO WHERE ORDER_SSN = #{orderSsn} and to_char(CHK_SUCC_DT,'yyyymmdd') = #{chkSuccDate}
+    </select>
+
+
+  <!-- 拿出对账成功日期下没有记账的订单 -->
+  <select id="queryByChkSuccDt" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select distinct a.ORDER_SSN
+    from BTH_CHK_RSLT_INFO a left join KEEP_ACC_INFO b
+    on a.ORDER_SSN = b.ORDER_SSN where a.CHK_SUCC_DT = TO_DATE(#{chkSuccDt,jdbcType = VARCHAR} , 'YYYYMMDD')
+    and b.ORDER_SSN is null
+  </select>
+
+
+  <!-- 根据对账成功日期 , 对账 -->
+  <update id="restoreByChkSuccDt" parameterType="java.util.Map">
+      update BTH_CHK_RSLT_INFO set STLM_ST = '00', LST_UPD_TM = sysdate  where CHK_SUCC_DT = TO_DATE(#{chkSuccDt,jdbcType = VARCHAR} , 'YYYYMMDD') and STLM_ST = #{stlmSt,jdbcType=CHAR}
+  </update>
+
+  <!-- 根据订单号修改对账结果表状态为清算挂起 -->
+  <update id="updChkRsltStlmSt" parameterType="java.util.Map">
+    update BTH_CHK_RSLT_INFO set STLM_ST = #{stlmSt,jdbcType=CHAR}, LST_UPD_TM = sysdate  where  ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 批量插入 -->
+  <insert id="insertBatch">
+    INSERT ALL
+    <foreach item="item" index="index" collection="recordList">
+      INTO BTH_CHK_RSLT_INFO
+      (
+      PAGY_PAY_TXN_SSN,
+      PAGY_PAY_TXN_TM,
+      CHK_ST,
+      CHK_RST,
+      ORDER_SSN,
+      pagy_txn_tm,
+      pagy_sys_soa_no,
+      pagy_sys_soa_version,
+      chk_succ_dt,
+      pagy_sys_no,
+      tpam_txn_fee_amt,
+      stlm_st,
+      TXN_AMT,
+      LST_UPD_TM
+      )
+      VALUES
+      (
+      #{item.pagyPayTxnSsn, jdbcType=VARCHAR},
+      #{item.pagyPayTxnTm, jdbcType=TIMESTAMP},
+      #{item.chkSt, jdbcType=VARCHAR},
+      #{item.chkRst, jdbcType=VARCHAR},
+      #{item.orderSsn, jdbcType=VARCHAR},
+      #{item.pagyTxnTm, jdbcType=TIMESTAMP},
+      #{item.pagySysSoaNo, jdbcType=VARCHAR},
+      #{item.pagySysSoaVersion, jdbcType=VARCHAR},
+      #{item.chkSuccDt, jdbcType=VARCHAR},
+      #{item.pagySysNo, jdbcType=VARCHAR},
+      #{item.tpamTxnFeeAmt, jdbcType=VARCHAR},
+      #{item.stlmSt, jdbcType=VARCHAR},
+      #{item.txnAmt, jdbcType=VARCHAR},
+      sysdate
+      )
+    </foreach>
+    SELECT 1 FROM DUAL
+  </insert>
+
+    <!-- 根据对账日期与通道号查询对账结果表取通道流水号 -->
+    <select id="queryByPagySysNoAndSuccDate" resultType="java.lang.String">
+        select PAGY_PAY_TXN_SSN from BTH_CHK_RSLT_INFO where PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR} AND CHK_SUCC_DT =  #{recoDate,jdbcType=TIMESTAMP}
+    </select>
+
+  <update id="updateByOrderSsnSt" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkRsltInfo">
+    update
+    BTH_CHK_RSLT_INFO
+    set STLM_ST = #{stlmSt,jdbcType=CHAR}, LST_UPD_TM = sysdate
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+  </update>
+
+  <!--根据日期和清算状态查询数据-->
+  <select id="selectListByStlSt" resultMap="BaseResultMap">
+    select * from
+    BTH_CHK_RSLT_INFO
+    where CHK_SUCC_DT=to_date(#{chkSuccDt},'yyyyMMdd') AND STLM_ST =  #{stlmSt}
+  </select>
+
+  <!-- 根据对账日期查询对账成功订单信息 -->
+  <select id="selectChkSuccOrderByDateByRange" resultMap="BaseResultMap">
+    select * from
+    (
+    select a.* ,rownum rn from
+    ( select
+    <include refid="Base_Column_List" />
+    from BTH_CHK_RSLT_INFO
+    where
+    CHK_SUCC_DT=to_date(#{chkSuccDt},'yyyyMMdd') AND STLM_ST ='00'
+    ) a where <![CDATA[rownum <= #{maxIndex}]]>
+    ) WHERE <![CDATA[ rn >= #{minIndex}]]>
+  </select>
+    <!-- 根据对账日期查询对账成功订单信息 -->
+    <select id="selectChkSuccOrderByDateByRangeTemp" resultMap="BaseResultMap">
+      select * from
+      (
+      select a.* ,rownum rn from
+      ( select
+      <include refid="Base_Column_List" />
+      from BTH_CHK_RSLT_INFO_temp
+      where
+      CHK_SUCC_DT=to_date(#{chkSuccDt},'yyyyMMdd') AND STLM_ST ='00'
+      order by PAGY_PAY_TXN_SSN
+      ) a where <![CDATA[rownum <= #{maxIndex}]]>
+      ) WHERE <![CDATA[ rn >= #{minIndex}]]>
+    </select>
+
+  <!--根据微信对账结果插入对账对平结果表-->
+  <update id="insertWxChkResult">
+    INSERT
+      INTO BTH_CHK_RSLT_INFO
+      (
+        PAGY_PAY_TXN_SSN,
+        PAGY_PAY_TXN_TM,
+        CHK_ST,
+        CHK_RST,
+        ORDER_SSN,
+        pagy_txn_tm,
+        pagy_sys_soa_no,
+        pagy_sys_soa_version,
+        chk_succ_dt,
+        pagy_sys_no,
+        tpam_txn_fee_amt,
+        stlm_st,
+        TXN_AMT,
+        LST_UPD_TM
+      ) select *
+        from (select t.txn_ssn_local PAGY_PAY_TXN_SSN,
+               a.txn_time PAGY_PAY_TXN_TM,
+               '1' CHK_ST,
+               null CHK_RST,
+               a.ORDER_ID ORDER_SSN,
+               a.ORDER_DATE pagy_txn_tm,
+               '0' pagy_sys_soa_no,
+               '0' pagy_sys_soa_version,
+               #{recoDate,jdbcType=TIMESTAMP} chk_succ_dt,
+               '605' pagy_sys_no,
+               b.FEE_AMT tpam_txn_fee_amt,
+               '00' stlm_st,
+               a.TXN_AMT TXN_AMT,
+               sysdate LST_UPD_TM
+        from wx_bill_result t, wx_bill_local a, wx_bill_outer b
+        where t.txn_ssn_local = a.txn_ssn(+)
+              and t.txn_ssn_outer = b.txn_ssn(+)
+      and t.is_dubious_outer is null and t.IS_DUBIOUS_LOCAL is null and t.COMPARE_RESULT='00'
+             ) tt
+  </update>
+
+  <!--根据支付宝对账结果插入对账对平结果表-->
+  <update id="insertAliChkResult">
+    INSERT
+    INTO BTH_CHK_RSLT_INFO
+    (
+    PAGY_PAY_TXN_SSN,
+    PAGY_PAY_TXN_TM,
+    CHK_ST,
+    CHK_RST,
+    ORDER_SSN,
+    pagy_txn_tm,
+    pagy_sys_soa_no,
+    pagy_sys_soa_version,
+    chk_succ_dt,
+    pagy_sys_no,
+    tpam_txn_fee_amt,
+    stlm_st,
+    TXN_AMT, 
+    LST_UPD_TM
+    ) select *
+    from (select t.txn_ssn_local PAGY_PAY_TXN_SSN,
+    a.txn_time PAGY_PAY_TXN_TM,
+    '1' CHK_ST,
+    null CHK_RST,
+    a.ORDER_ID ORDER_SSN,
+    a.txn_time pagy_txn_tm,
+    '0' pagy_sys_soa_no,
+    '0' pagy_sys_soa_version,
+    #{recoDate,jdbcType=TIMESTAMP} chk_succ_dt,
+    '606' pagy_sys_no,
+    b.FEE_AMT tpam_txn_fee_amt,
+    '00' stlm_st,
+    a.TXN_AMT TXN_AMT,
+    sysdate LST_UPD_TM
+    from ali_bill_result t, ali_bill_local a, ali_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and t.is_dubious_outer is null and t.IS_DUBIOUS_LOCAL is null and t.COMPARE_RESULT='00'
+    ) tt
+  </update>
+
+  <!--根据本行对账结果插入对账对平结果表-->
+  <update id="insertIBankChkResult">
+    INSERT
+    INTO BTH_CHK_RSLT_INFO
+    (
+    PAGY_PAY_TXN_SSN,
+    PAGY_PAY_TXN_TM,
+    CHK_ST,
+    CHK_RST,
+    ORDER_SSN,
+    pagy_txn_tm,
+    pagy_sys_soa_no,
+    pagy_sys_soa_version,
+    chk_succ_dt,
+    pagy_sys_no,
+    tpam_txn_fee_amt,
+    stlm_st,
+    TXN_AMT, 
+    LST_UPD_TM
+    ) select *
+    from (select t.txn_ssn_local PAGY_PAY_TXN_SSN,
+    a.txn_time PAGY_PAY_TXN_TM,
+    '1' CHK_ST,
+    null CHK_RST,
+    a.ORDER_ID ORDER_SSN,
+    a.txn_time pagy_txn_tm,
+    '0' pagy_sys_soa_no,
+    '0' pagy_sys_soa_version,
+    #{recoDate,jdbcType=TIMESTAMP} chk_succ_dt,
+    '604' pagy_sys_no,
+    null tpam_txn_fee_amt,
+    '00' stlm_st,
+    a.TXN_AMT TXN_AMT,
+    sysdate LST_UPD_TM
+    from ibank_bill_result t, ibank_bill_local a, ibank_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and t.is_dubious_outer is null and t.IS_DUBIOUS_LOCAL is null and t.COMPARE_RESULT='00'
+    ) tt
+  </update>
+
+  <!--根据银联二维码对账结果插入对账对平结果表-->
+  <update id="insertUnionQrcChkResult">
+    INSERT
+    INTO BTH_CHK_RSLT_INFO
+    (
+    PAGY_PAY_TXN_SSN,
+    PAGY_PAY_TXN_TM,
+    CHK_ST,
+    CHK_RST,
+    ORDER_SSN,
+    pagy_txn_tm,
+    pagy_sys_soa_no,
+    pagy_sys_soa_version,
+    chk_succ_dt,
+    pagy_sys_no,
+    tpam_txn_fee_amt,
+    stlm_st,
+    TXN_AMT, 
+    LST_UPD_TM
+    ) select *
+    from (select t.txn_ssn_local PAGY_PAY_TXN_SSN,
+    a.txn_time PAGY_PAY_TXN_TM,
+    '1' CHK_ST,
+    null CHK_RST,
+    a.ORDER_ID ORDER_SSN,
+    a.ORDER_DATE pagy_txn_tm,
+    '0' pagy_sys_soa_no,
+    '0' pagy_sys_soa_version,
+    #{recoDate,jdbcType=TIMESTAMP} chk_succ_dt,
+    '607' pagy_sys_no,
+    b.CUSTOMER_FEE tpam_txn_fee_amt,
+    '00' stlm_st,
+    a.TXN_AMT TXN_AMT,
+    sysdate LST_UPD_TM
+    from UNION_QRC_BILL_RESULT t, union_bill_local a, union_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and t.is_dubious_outer is null and t.IS_DUBIOUS_LOCAL is null and t.COMPARE_RESULT='00'
+    ) tt
+  </update>
+
+  <!--根据银联全渠道对账结果插入对账对平结果表-->
+  <update id="insertUnionAllChkResult">
+    INSERT
+    INTO BTH_CHK_RSLT_INFO
+    (
+    PAGY_PAY_TXN_SSN,
+    PAGY_PAY_TXN_TM,
+    CHK_ST,
+    CHK_RST,
+    ORDER_SSN,
+    pagy_txn_tm,
+    pagy_sys_soa_no,
+    pagy_sys_soa_version,
+    chk_succ_dt,
+    pagy_sys_no,
+    tpam_txn_fee_amt,
+    stlm_st,
+    TXN_AMT, 
+    LST_UPD_TM
+    ) select *
+    from (select t.txn_ssn_local PAGY_PAY_TXN_SSN,
+    a.txn_time PAGY_PAY_TXN_TM,
+    '1' CHK_ST,
+    null CHK_RST,
+    a.ORDER_ID ORDER_SSN,
+    a.ORDER_DATE pagy_txn_tm,
+    '0' pagy_sys_soa_no,
+    '0' pagy_sys_soa_version,
+    #{recoDate,jdbcType=TIMESTAMP} chk_succ_dt,
+    '608' pagy_sys_no,
+    b.CUSTOMER_FEE tpam_txn_fee_amt,
+    '00' stlm_st,
+    a.TXN_AMT TXN_AMT,
+    sysdate LST_UPD_TM
+    from UNION_ALL_BILL_RESULT t, union_bill_local a, union_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and t.is_dubious_outer is null and t.IS_DUBIOUS_LOCAL is null and t.COMPARE_RESULT='00'
+    ) tt
+  </update>
+
+  <!-- and stlm_st=#{stlmSt} -->
+  <insert id="initChkSuccTemp" parameterType="map">
+    insert /*+ append nologging */ into bth_chk_rslt_info_temp
+    select *
+    from bth_chk_rslt_info t
+    where t.chk_succ_dt = to_date(${chkSuccDt}, 'yyyyMMdd')
+    and stlm_st=${stlmSt}
+
+  </insert>
+
+  <delete id="clearChkSuccTemp" parameterType="map">
+    truncate table bth_chk_rslt_info_temp
+  </delete>
+</mapper>

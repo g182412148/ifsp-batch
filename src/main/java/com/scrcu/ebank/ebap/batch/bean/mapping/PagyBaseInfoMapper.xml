@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PagyBaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PagyBaseInfo" >
+    <id column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="PAGY_NAME" property="pagyName" jdbcType="VARCHAR" />
+    <result column="TPAM_PAGY_NO" property="tpamPagyNo" jdbcType="VARCHAR" />
+    <result column="TPAM_PAGY_APP_ID" property="tpamPagyAppId" jdbcType="VARCHAR" />
+    <result column="TPAM_PAGY_APP_VERSION" property="tpamPagyAppVersion" jdbcType="VARCHAR" />
+    <result column="TPAM_PAGY_ACS_MODEL" property="tpamPagyAcsModel" jdbcType="CHAR" />
+    <result column="TPAM_PAGY_SETL_MODEL" property="tpamPagySetlModel" jdbcType="CHAR" />
+    <result column="TPAM_PAGY_REFUND_FLAG" property="tpamPagyRefundFlag" jdbcType="CHAR" />
+    <result column="TPAM_PAGY_REFUND_LIMIT_DATE" property="tpamPagyRefundLimitDate" jdbcType="DECIMAL" />
+    <result column="EXTENDS_PAGY_MCHT_FLAG" property="extendsPagyMchtFlag" jdbcType="CHAR" />
+    <result column="EXTENDS_PAGY_NO" property="extendsPagyNo" jdbcType="CHAR" />
+    <result column="PAGY_SETL_TYPE" property="pagySetlType" jdbcType="CHAR" />
+    <result column="PAGY_SETLTYPE_VALUE" property="pagySetltypeValue" jdbcType="VARCHAR" />
+    <result column="PAGY_SETL_TM" property="pagySetlTm" jdbcType="CHAR" />
+    <result column="PAGY_SETL_ACCT_TYPE" property="pagySetlAcctType" jdbcType="CHAR" />
+    <result column="PAGY_SETL_BANK_NO" property="pagySetlBankNo" jdbcType="VARCHAR" />
+    <result column="PAGY_SETL_BANK_NM" property="pagySetlBankNm" jdbcType="VARCHAR" />
+    <result column="PAGY_SETL_BANK_ADDR" property="pagySetlBankAddr" jdbcType="VARCHAR" />
+    <result column="PAGY_SETL_ACCT_NO" property="pagySetlAcctNo" jdbcType="VARCHAR" />
+    <result column="PAGY_SETL_ACCT_NM" property="pagySetlAcctNm" jdbcType="VARCHAR" />
+    <result column="PAGY_RATE_CODE" property="pagyRateCode" jdbcType="VARCHAR" />
+    <result column="PAGY_STATE" property="pagyState" jdbcType="CHAR" />
+    <result column="CRT_TLR" property="crtTlr" jdbcType="VARCHAR" />
+    <result column="CRT_TM" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPD_TLR" property="lastUpdTlr" jdbcType="VARCHAR" />
+    <result column="LAST_UPD_TM" property="lastUpdTm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PAGY_NO, PAGY_SYS_NO, PAGY_NAME, TPAM_PAGY_NO, TPAM_PAGY_APP_ID, TPAM_PAGY_APP_VERSION, 
+    TPAM_PAGY_ACS_MODEL, TPAM_PAGY_SETL_MODEL, TPAM_PAGY_REFUND_FLAG, TPAM_PAGY_REFUND_LIMIT_DATE, 
+    EXTENDS_PAGY_MCHT_FLAG, EXTENDS_PAGY_NO, PAGY_SETL_TYPE, PAGY_SETLTYPE_VALUE, PAGY_SETL_TM, 
+    PAGY_SETL_ACCT_TYPE, PAGY_SETL_BANK_NO, PAGY_SETL_BANK_NM, PAGY_SETL_BANK_ADDR, PAGY_SETL_ACCT_NO, 
+    PAGY_SETL_ACCT_NM, PAGY_RATE_CODE, PAGY_STATE, CRT_TLR, CRT_TM, LAST_UPD_TLR, LAST_UPD_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAGY_BASE_INFO
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PAGY_BASE_INFO
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyBaseInfo" >
+    insert into PAGY_BASE_INFO (PAGY_NO, PAGY_SYS_NO, PAGY_NAME, 
+      TPAM_PAGY_NO, TPAM_PAGY_APP_ID, TPAM_PAGY_APP_VERSION, 
+      TPAM_PAGY_ACS_MODEL, TPAM_PAGY_SETL_MODEL, TPAM_PAGY_REFUND_FLAG, 
+      TPAM_PAGY_REFUND_LIMIT_DATE, EXTENDS_PAGY_MCHT_FLAG, 
+      EXTENDS_PAGY_NO, PAGY_SETL_TYPE, PAGY_SETLTYPE_VALUE, 
+      PAGY_SETL_TM, PAGY_SETL_ACCT_TYPE, PAGY_SETL_BANK_NO, 
+      PAGY_SETL_BANK_NM, PAGY_SETL_BANK_ADDR, PAGY_SETL_ACCT_NO, 
+      PAGY_SETL_ACCT_NM, PAGY_RATE_CODE, PAGY_STATE, 
+      CRT_TLR, CRT_TM, LAST_UPD_TLR, 
+      LAST_UPD_TM)
+    values (#{pagyNo,jdbcType=CHAR}, #{pagySysNo,jdbcType=CHAR}, #{pagyName,jdbcType=VARCHAR}, 
+      #{tpamPagyNo,jdbcType=VARCHAR}, #{tpamPagyAppId,jdbcType=VARCHAR}, #{tpamPagyAppVersion,jdbcType=VARCHAR}, 
+      #{tpamPagyAcsModel,jdbcType=CHAR}, #{tpamPagySetlModel,jdbcType=CHAR}, #{tpamPagyRefundFlag,jdbcType=CHAR}, 
+      #{tpamPagyRefundLimitDate,jdbcType=DECIMAL}, #{extendsPagyMchtFlag,jdbcType=CHAR}, 
+      #{extendsPagyNo,jdbcType=CHAR}, #{pagySetlType,jdbcType=CHAR}, #{pagySetltypeValue,jdbcType=VARCHAR}, 
+      #{pagySetlTm,jdbcType=CHAR}, #{pagySetlAcctType,jdbcType=CHAR}, #{pagySetlBankNo,jdbcType=VARCHAR}, 
+      #{pagySetlBankNm,jdbcType=VARCHAR}, #{pagySetlBankAddr,jdbcType=VARCHAR}, #{pagySetlAcctNo,jdbcType=VARCHAR}, 
+      #{pagySetlAcctNm,jdbcType=VARCHAR}, #{pagyRateCode,jdbcType=VARCHAR}, #{pagyState,jdbcType=CHAR}, 
+      #{crtTlr,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{lastUpdTlr,jdbcType=VARCHAR}, 
+      #{lastUpdTm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyBaseInfo" >
+    insert into PAGY_BASE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="pagyName != null" >
+        PAGY_NAME,
+      </if>
+      <if test="tpamPagyNo != null" >
+        TPAM_PAGY_NO,
+      </if>
+      <if test="tpamPagyAppId != null" >
+        TPAM_PAGY_APP_ID,
+      </if>
+      <if test="tpamPagyAppVersion != null" >
+        TPAM_PAGY_APP_VERSION,
+      </if>
+      <if test="tpamPagyAcsModel != null" >
+        TPAM_PAGY_ACS_MODEL,
+      </if>
+      <if test="tpamPagySetlModel != null" >
+        TPAM_PAGY_SETL_MODEL,
+      </if>
+      <if test="tpamPagyRefundFlag != null" >
+        TPAM_PAGY_REFUND_FLAG,
+      </if>
+      <if test="tpamPagyRefundLimitDate != null" >
+        TPAM_PAGY_REFUND_LIMIT_DATE,
+      </if>
+      <if test="extendsPagyMchtFlag != null" >
+        EXTENDS_PAGY_MCHT_FLAG,
+      </if>
+      <if test="extendsPagyNo != null" >
+        EXTENDS_PAGY_NO,
+      </if>
+      <if test="pagySetlType != null" >
+        PAGY_SETL_TYPE,
+      </if>
+      <if test="pagySetltypeValue != null" >
+        PAGY_SETLTYPE_VALUE,
+      </if>
+      <if test="pagySetlTm != null" >
+        PAGY_SETL_TM,
+      </if>
+      <if test="pagySetlAcctType != null" >
+        PAGY_SETL_ACCT_TYPE,
+      </if>
+      <if test="pagySetlBankNo != null" >
+        PAGY_SETL_BANK_NO,
+      </if>
+      <if test="pagySetlBankNm != null" >
+        PAGY_SETL_BANK_NM,
+      </if>
+      <if test="pagySetlBankAddr != null" >
+        PAGY_SETL_BANK_ADDR,
+      </if>
+      <if test="pagySetlAcctNo != null" >
+        PAGY_SETL_ACCT_NO,
+      </if>
+      <if test="pagySetlAcctNm != null" >
+        PAGY_SETL_ACCT_NM,
+      </if>
+      <if test="pagyRateCode != null" >
+        PAGY_RATE_CODE,
+      </if>
+      <if test="pagyState != null" >
+        PAGY_STATE,
+      </if>
+      <if test="crtTlr != null" >
+        CRT_TLR,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+      <if test="lastUpdTlr != null" >
+        LAST_UPD_TLR,
+      </if>
+      <if test="lastUpdTm != null" >
+        LAST_UPD_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyName != null" >
+        #{pagyName,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyNo != null" >
+        #{tpamPagyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyAppId != null" >
+        #{tpamPagyAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyAppVersion != null" >
+        #{tpamPagyAppVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyAcsModel != null" >
+        #{tpamPagyAcsModel,jdbcType=CHAR},
+      </if>
+      <if test="tpamPagySetlModel != null" >
+        #{tpamPagySetlModel,jdbcType=CHAR},
+      </if>
+      <if test="tpamPagyRefundFlag != null" >
+        #{tpamPagyRefundFlag,jdbcType=CHAR},
+      </if>
+      <if test="tpamPagyRefundLimitDate != null" >
+        #{tpamPagyRefundLimitDate,jdbcType=DECIMAL},
+      </if>
+      <if test="extendsPagyMchtFlag != null" >
+        #{extendsPagyMchtFlag,jdbcType=CHAR},
+      </if>
+      <if test="extendsPagyNo != null" >
+        #{extendsPagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySetlType != null" >
+        #{pagySetlType,jdbcType=CHAR},
+      </if>
+      <if test="pagySetltypeValue != null" >
+        #{pagySetltypeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlTm != null" >
+        #{pagySetlTm,jdbcType=CHAR},
+      </if>
+      <if test="pagySetlAcctType != null" >
+        #{pagySetlAcctType,jdbcType=CHAR},
+      </if>
+      <if test="pagySetlBankNo != null" >
+        #{pagySetlBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlBankNm != null" >
+        #{pagySetlBankNm,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlBankAddr != null" >
+        #{pagySetlBankAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlAcctNo != null" >
+        #{pagySetlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlAcctNm != null" >
+        #{pagySetlAcctNm,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyRateCode != null" >
+        #{pagyRateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyState != null" >
+        #{pagyState,jdbcType=CHAR},
+      </if>
+      <if test="crtTlr != null" >
+        #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTlr != null" >
+        #{lastUpdTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTm != null" >
+        #{lastUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyBaseInfo" >
+    update PAGY_BASE_INFO
+    <set >
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyName != null" >
+        PAGY_NAME = #{pagyName,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyNo != null" >
+        TPAM_PAGY_NO = #{tpamPagyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyAppId != null" >
+        TPAM_PAGY_APP_ID = #{tpamPagyAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyAppVersion != null" >
+        TPAM_PAGY_APP_VERSION = #{tpamPagyAppVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamPagyAcsModel != null" >
+        TPAM_PAGY_ACS_MODEL = #{tpamPagyAcsModel,jdbcType=CHAR},
+      </if>
+      <if test="tpamPagySetlModel != null" >
+        TPAM_PAGY_SETL_MODEL = #{tpamPagySetlModel,jdbcType=CHAR},
+      </if>
+      <if test="tpamPagyRefundFlag != null" >
+        TPAM_PAGY_REFUND_FLAG = #{tpamPagyRefundFlag,jdbcType=CHAR},
+      </if>
+      <if test="tpamPagyRefundLimitDate != null" >
+        TPAM_PAGY_REFUND_LIMIT_DATE = #{tpamPagyRefundLimitDate,jdbcType=DECIMAL},
+      </if>
+      <if test="extendsPagyMchtFlag != null" >
+        EXTENDS_PAGY_MCHT_FLAG = #{extendsPagyMchtFlag,jdbcType=CHAR},
+      </if>
+      <if test="extendsPagyNo != null" >
+        EXTENDS_PAGY_NO = #{extendsPagyNo,jdbcType=CHAR},
+      </if>
+      <if test="pagySetlType != null" >
+        PAGY_SETL_TYPE = #{pagySetlType,jdbcType=CHAR},
+      </if>
+      <if test="pagySetltypeValue != null" >
+        PAGY_SETLTYPE_VALUE = #{pagySetltypeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlTm != null" >
+        PAGY_SETL_TM = #{pagySetlTm,jdbcType=CHAR},
+      </if>
+      <if test="pagySetlAcctType != null" >
+        PAGY_SETL_ACCT_TYPE = #{pagySetlAcctType,jdbcType=CHAR},
+      </if>
+      <if test="pagySetlBankNo != null" >
+        PAGY_SETL_BANK_NO = #{pagySetlBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlBankNm != null" >
+        PAGY_SETL_BANK_NM = #{pagySetlBankNm,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlBankAddr != null" >
+        PAGY_SETL_BANK_ADDR = #{pagySetlBankAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlAcctNo != null" >
+        PAGY_SETL_ACCT_NO = #{pagySetlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySetlAcctNm != null" >
+        PAGY_SETL_ACCT_NM = #{pagySetlAcctNm,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyRateCode != null" >
+        PAGY_RATE_CODE = #{pagyRateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyState != null" >
+        PAGY_STATE = #{pagyState,jdbcType=CHAR},
+      </if>
+      <if test="crtTlr != null" >
+        CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTlr != null" >
+        LAST_UPD_TLR = #{lastUpdTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTm != null" >
+        LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyBaseInfo" >
+    update PAGY_BASE_INFO
+    set PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      PAGY_NAME = #{pagyName,jdbcType=VARCHAR},
+      TPAM_PAGY_NO = #{tpamPagyNo,jdbcType=VARCHAR},
+      TPAM_PAGY_APP_ID = #{tpamPagyAppId,jdbcType=VARCHAR},
+      TPAM_PAGY_APP_VERSION = #{tpamPagyAppVersion,jdbcType=VARCHAR},
+      TPAM_PAGY_ACS_MODEL = #{tpamPagyAcsModel,jdbcType=CHAR},
+      TPAM_PAGY_SETL_MODEL = #{tpamPagySetlModel,jdbcType=CHAR},
+      TPAM_PAGY_REFUND_FLAG = #{tpamPagyRefundFlag,jdbcType=CHAR},
+      TPAM_PAGY_REFUND_LIMIT_DATE = #{tpamPagyRefundLimitDate,jdbcType=DECIMAL},
+      EXTENDS_PAGY_MCHT_FLAG = #{extendsPagyMchtFlag,jdbcType=CHAR},
+      EXTENDS_PAGY_NO = #{extendsPagyNo,jdbcType=CHAR},
+      PAGY_SETL_TYPE = #{pagySetlType,jdbcType=CHAR},
+      PAGY_SETLTYPE_VALUE = #{pagySetltypeValue,jdbcType=VARCHAR},
+      PAGY_SETL_TM = #{pagySetlTm,jdbcType=CHAR},
+      PAGY_SETL_ACCT_TYPE = #{pagySetlAcctType,jdbcType=CHAR},
+      PAGY_SETL_BANK_NO = #{pagySetlBankNo,jdbcType=VARCHAR},
+      PAGY_SETL_BANK_NM = #{pagySetlBankNm,jdbcType=VARCHAR},
+      PAGY_SETL_BANK_ADDR = #{pagySetlBankAddr,jdbcType=VARCHAR},
+      PAGY_SETL_ACCT_NO = #{pagySetlAcctNo,jdbcType=VARCHAR},
+      PAGY_SETL_ACCT_NM = #{pagySetlAcctNm,jdbcType=VARCHAR},
+      PAGY_RATE_CODE = #{pagyRateCode,jdbcType=VARCHAR},
+      PAGY_STATE = #{pagyState,jdbcType=CHAR},
+      CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      LAST_UPD_TLR = #{lastUpdTlr,jdbcType=VARCHAR},
+      LAST_UPD_TM = #{lastUpdTm,jdbcType=TIMESTAMP}
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR}
+  </update>
+
+    <!-- 根据微信系统编号查询微信三方信息 -->
+    <select id="selectByPagyNo" resultMap="BaseResultMap" parameterType="map">
+        select <include refid="Base_Column_List" /> from pagy_base_info where pagy_sys_no = #{wxSysNo,jdbcType=CHAR} and PAGY_STATE = '00'
+    </select>
+</mapper>

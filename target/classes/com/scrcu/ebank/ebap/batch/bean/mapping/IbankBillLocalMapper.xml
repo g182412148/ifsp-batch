@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.IbankBillLocalMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillLocal" >
+    <id column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="TXN_TIME" property="txnTime" jdbcType="TIMESTAMP" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="TXN_STATE" property="txnState" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="RECO_STATE" property="recoState" jdbcType="VARCHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="ORDER_DATE" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+    <result column="DUBIS_FLAG" property="dubisFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TXN_SSN, RECO_DATE, TXN_TIME, TXN_TYPE, TXN_STATE, TXN_AMT, RECO_STATE, ORDER_ID, 
+    ORDER_DATE, UPD_DATE, DUBIS_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IBANK_BILL_LOCAL
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IBANK_BILL_LOCAL
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillLocal" >
+    insert into IBANK_BILL_LOCAL (TXN_SSN, RECO_DATE, TXN_TIME, 
+      TXN_TYPE, TXN_STATE, TXN_AMT, 
+      RECO_STATE, ORDER_ID, ORDER_DATE, 
+      UPD_DATE, DUBIS_FLAG)
+    values (#{txnSsn,jdbcType=VARCHAR}, #{recoDate,jdbcType=TIMESTAMP}, #{txnTime,jdbcType=TIMESTAMP}, 
+      #{txnType,jdbcType=VARCHAR}, #{txnState,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, 
+      #{recoState,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{orderDate,jdbcType=TIMESTAMP}, 
+      sysdate, #{dubisFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillLocal" >
+    insert into IBANK_BILL_LOCAL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderDate != null" >
+        ORDER_DATE,
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE,
+<!--       </if> -->
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="updDate != null" > -->
+        sysdate,
+<!--       </if> -->
+      <if test="dubisFlag != null" >
+        #{dubisFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillLocal" >
+    update IBANK_BILL_LOCAL
+    <set >
+      <if test="recoDate != null" >
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE = sysdate,
+<!--       </if> -->
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillLocal" >
+    update IBANK_BILL_LOCAL
+    set RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      UPD_DATE = sysdate,
+      DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR}
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+    <!--  根据本行通道表复制到本行本地流水表 -->
+  <insert id="copy">
+      insert into IBANK_BILL_LOCAL
+      (
+          reco_date,
+          txn_ssn,
+          TXN_TIME,
+          txn_type,
+          txn_state,
+          txn_amt,
+          reco_state,
+          order_id,
+          order_date,
+          UPD_DATE
+      )
+      select
+          #{recoDate,jdbcType=TIMESTAMP},
+          a.PAGY_PAY_TXN_SSN,
+          a.PAGY_PAY_TXN_TM,
+          '00',
+          decode(a.PAGY_RESP_CODE, '0000', '00', '0002', '01','0020', '01', '0021', '01', '0022', '01','99' ),
+          a.TPAM_TXN_AMT,
+          '0',
+          b.TXN_REQ_SSN,
+          b.TXN_REQ_TM, sysdate
+      from TPAM_IBANK_TXN_INFO a
+      left join PAGY_TXN_INFO b
+          on a.pagy_txn_ssn=b.pagy_txn_ssn
+      where
+          a.pagy_pay_txn_tm &gt;= #{txnDate,jdbcType=TIMESTAMP}
+          and a.pagy_pay_txn_tm &lt; #{recoDate,jdbcType=TIMESTAMP}
+          and (a.PAGY_RESP_CODE = '0000' or a.PAGY_RESP_CODE = '0002' or a.PAGY_RESP_CODE = '0020' or a.PAGY_RESP_CODE = '0021' or a.PAGY_RESP_CODE = '0022')
+          and a.PAGY_SYS_SOA_ACTION_FLAG = '10'
+          and a.MOVE_FLAG IS NULL and a.TPAM_ACCT_OUT_SUB_TYPE_NO != '004002' and  a.TPAM_CARD_OUT_TYPE_NO = '01'
+  </insert>
+
+    <!--  根据本行通道表退款流水复制到本行本地流水表 -->
+    <insert id="copyReturn">
+      insert into IBANK_BILL_LOCAL
+      (
+          reco_date,
+          txn_ssn,
+          TXN_TIME,
+          txn_type,
+          txn_state,
+          txn_amt,
+          reco_state,
+          order_id,
+          order_date,
+          UPD_DATE
+      )
+      select
+          #{recoDate,jdbcType=TIMESTAMP},
+          a.PAGY_PAY_TXN_SSN,
+          a.PAGY_PAY_TXN_TM,
+          '10',
+          decode(a.PAGY_RESP_CODE, '0000', '00', '0002', '01','0020', '01', '0021', '01', '0022', '01','99' ),
+          a.TPAM_TXN_AMT,
+          '0',
+          b.TXN_REQ_SSN,
+          b.TXN_REQ_TM, sysdate
+      from TPAM_IBANK_TXN_INFO a
+      left join PAGY_TXN_INFO b
+          on a.pagy_txn_ssn=b.pagy_txn_ssn
+      LEFT join TPAM_IBANK_TXN_INFO c
+          on a.ORIG_PAGY_PAY_TXN_SSN = c.PAGY_PAY_TXN_SSN
+      where
+          a.pagy_pay_txn_tm &gt;= #{txnDate,jdbcType=TIMESTAMP}
+          and a.pagy_pay_txn_tm &lt; #{recoDate,jdbcType=TIMESTAMP}
+          and (a.PAGY_RESP_CODE = '0000' or a.PAGY_RESP_CODE = '0002' or a.PAGY_RESP_CODE = '0020' or a.PAGY_RESP_CODE = '0021' or a.PAGY_RESP_CODE = '0022')
+          and a.PAGY_SYS_SOA_ACTION_FLAG = '12'
+          and a.MOVE_FLAG IS NULL and c.TPAM_ACCT_OUT_SUB_TYPE_NO != '004002' and  c.TPAM_CARD_OUT_TYPE_NO = '01'
+  </insert>
+
+
+
+
+
+
+
+    <!-- 根据对账日期清除本地流水表数据 -->
+    <delete id="clear">
+        delete from IBANK_BILL_LOCAL
+        where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    </delete>
+
+
+    <!-- 根据对账日期恢复本地对账表 -->
+    <update id="recovery">
+        update IBANK_BILL_LOCAL set RECO_STATE = '0', UPD_DATE = sysdate
+        where
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    </update>
+
+    <!-- 恢复可疑本地对账表 -->
+    <update id="recoveryDubious">
+        update IBANK_BILL_LOCAL set RECO_STATE = '2', UPD_DATE = sysdate
+        where
+        RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+        AND DUBIS_FLAG = '1'
+    </update>
+
+    <!-- 统计本行本地待处理条数 -->
+    <select id="count" resultType="int">
+        select count (1) from
+        (
+          select *
+            from IBANK_BILL_LOCAL
+          where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+           union all
+          select *
+            from IBANK_BILL_LOCAL
+          where RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP} and RECO_STATE = '2'
+        )
+    </select>
+
+    <!-- 根据对账日期查询本地流水表 -->
+    <select id="queryByRange" resultMap="BaseResultMap">
+        select * FROM
+        (
+        select a.*,rownum rn from
+        (
+        select
+        <include refid="Base_Column_List" />
+        from IBANK_BILL_LOCAL
+        where
+        (
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+        or (RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP} and DUBIS_FLAG = '1')
+        )
+        order by TXN_SSN
+        ) a where <![CDATA[rownum <= #{maxIndex}]]>
+        ) WHERE <![CDATA[rn >= #{minIndex}]]>
+    </select>
+
+    <!--根据本行对账结果更新本地对账状态-->
+    <update id="updateByResult">
+        update IBANK_BILL_LOCAL a
+        set (a.reco_state, a.dubis_flag, a.UPD_DATE) = (select decode(t.is_dubious_local,
+        '2',
+        '2',
+        '1'),
+        decode(t.is_dubious_local,
+        '2',
+        '1',
+        t.dubis_local_original), sysdate
+        from ibank_bill_result t
+        where a.txn_ssn = t.txn_ssn_local)
+        where exists
+        (select 1 from ibank_bill_result t where a.txn_ssn = t.txn_ssn_local)
+        and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+        a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+    </update>
+
+</mapper>

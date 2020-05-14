@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--核心记账反馈文件格式 -->
+<!-- 
+templateType=READ|WRITE 表示解析文件还是生成文件 
+split分隔符 "\|" , 读文件时竖线分隔需要带转换符，写文件时不需要
+headLength文件头的长度，带换行符的表示文件头占了多少行，不带换行符的应该是字节长度
+endingLength文件尾
+lineSeparator换行符，若无，则表示不换行，换行一般是\r\n 字节文件一般是固定长度不带分隔符不换行
+-->
+
+<data templateType="READ"
+    split="\|#\|" 
+    clazz="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAcc" 
+    charSet="GBK"
+    headLength=""
+    endingLength=""
+    lineSeparator="rn">
+
+     <column name="tranOrg" length="" regex="" dateFormat="" numMultiple="" desc="机构" tranSrc="" tranDest="" /> 
+     <column name="feeCatalog" length="" regex="" dateFormat="" numMultiple="" desc="费用编号" tranSrc="" tranDest="" /> 
+     <column name="borrowFlag" length="" regex="" dateFormat="" numMultiple="" desc="借方标志" tranSrc="" tranDest="" /> 
+     <column name="outAcctNoOrg" length="" regex="" dateFormat="" numMultiple="" desc="借方机构" tranSrc="" tranDest="" /> 
+     <column name="outAcctNo" length="" regex="" dateFormat="" numMultiple="" desc="借方账号" tranSrc="" tranDest="" /> 
+     
+     <column name="lendFlag" length="" regex="" dateFormat="" numMultiple="" desc="贷方标志" tranSrc="" tranDest="" /> 
+     <column name="inAcctNoOrg" length="" regex="" dateFormat="" numMultiple="" desc="贷方机构" tranSrc="" tranDest="" /> 
+     <column name="inAcctNo" length="" regex="" dateFormat="" numMultiple="" desc="贷方账号" tranSrc="" tranDest="" /> 
+     
+     <column name="inAcctAmt" length="" regex="" dateFormat="" numMultiple="" desc="发生金额" tranSrc="" tranDest="" />
+     <column name="transCur" length="" regex="" dateFormat="" numMultiple="" desc="币种" tranSrc="" tranDest="" />
+     <column name="billFlag" length="" regex="" dateFormat="" numMultiple="" desc="钞汇标志" tranSrc="" tranDest="" />
+     <!-- 摘要码，暂送200 -->
+     <column name="summaryCode" length="" regex="" dateFormat="" numMultiple="" desc="摘要码" tranSrc="" tranDest="" />
+     <column name="summary" length="" regex="" dateFormat="" numMultiple="" desc="摘要" tranSrc="" tranDest="" />
+     
+     <column name="txnSsn" length="" regex="" dateFormat="" numMultiple="" desc="唯一索引" tranSrc="" tranDest="" />
+     <column name="dealResultCode" length="" regex="" dateFormat="" numMultiple="" desc="错误码" tranSrc="" tranDest="" />
+     <column name="dealResultRemark" length="" regex="" dateFormat="" numMultiple="" desc="错误信息" tranSrc="" tranDest="" />
+     
+</data>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="
+	   	http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	    http://www.springframework.org/schema/context
+     	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     	http://code.alibabatech.com/schema/dubbo
+     	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!--&lt;!&ndash;渠道商户缓存限缓存信息 &ndash;&gt;-->
+    <!--<bean id="pagyChlMchtCacheInfoRedis"  class="com.scrcu.ebank.ebap.cache.redis.operator.factory.IfspRedisCacheOperation">-->
+        <!--<constructor-arg index="0" value="6000-pagyChlMchtCacheInfoRedis"></constructor-arg>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;通道商户缓存限缓存信息 &ndash;&gt;-->
+    <!--<bean id="pagyMchtCacheInfoRedis"  class="com.scrcu.ebank.ebap.cache.redis.operator.factory.IfspRedisCacheOperation">-->
+        <!--<constructor-arg index="0" value="6000-pagyMchtCacheInfoRedis"></constructor-arg>-->
+    <!--</bean>-->
+
+	<!--结算账户销户发送短信缓存信息 -->
+	<bean id="invalidAccCacheRedis"  class="com.scrcu.ebank.ebap.cache.redis.operator.factory.IfspRedisCacheOperation">
+		<constructor-arg index="0" value="BATCH-invalidAccCacheRedis"></constructor-arg>
+	</bean>
+
+</beans>

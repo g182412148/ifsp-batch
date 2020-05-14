@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthSetCapitalSumMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalSum" >
+    <result column="MER_ID" property="merId" jdbcType="VARCHAR" />
+    <result column="BATCH_NO" property="batchNo" jdbcType="VARCHAR" />
+    <result column="OUT_ACCOUT_ORG" property="outAccoutOrg" jdbcType="VARCHAR" />
+    <result column="OUT_ACCOUNT_NO" property="outAccountNo" jdbcType="VARCHAR" />
+    <result column="IN_ACCOUT_ORG" property="inAccoutOrg" jdbcType="VARCHAR" />
+    <result column="IN_ACCOUNT_NO" property="inAccountNo" jdbcType="VARCHAR" />
+    <result column="ENTRY_TYPE" property="entryType" jdbcType="VARCHAR" />
+    <result column="TRAN_AMOUNT" property="tranAmount" jdbcType="DECIMAL" />
+    <result column="MER_NAME" property="merName" jdbcType="VARCHAR" />
+    <result column="SUB_MER_ID" property="subMerId" jdbcType="VARCHAR" />
+    <result column="SUB_MER_NAME" property="subMerName" jdbcType="VARCHAR" />
+    <result column="IN_ACCOUNT_NAME" property="inAccountName" jdbcType="VARCHAR" />
+    <result column="OUT_ACCOUNT_NAME" property="outAccountName" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_TYPE" property="accountType" jdbcType="VARCHAR" />
+    <result column="PARTERN_CODE" property="parternCode" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="queryBthSetCapitalSum" parameterType="map" resultMap="BaseResultMap">
+
+    select a.*, rownum rn from
+    (
+    select * from
+    (
+      select t.*, rownum rn
+      from bth_set_capital_sum t
+      where BATCH_NO=#{batchNo,jdbcType=VARCHAR})
+    where <![CDATA[rownum <= #{maxIndex}]]>
+    ) a WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalSum" >
+    insert into BTH_SET_CAPITAL_SUM (MER_ID, BATCH_NO, OUT_ACCOUT_ORG, 
+      OUT_ACCOUNT_NO, IN_ACCOUT_ORG, IN_ACCOUNT_NO, 
+      ENTRY_TYPE, TRAN_AMOUNT, MER_NAME, 
+      SUB_MER_ID, SUB_MER_NAME, IN_ACCOUNT_NAME, 
+      OUT_ACCOUNT_NAME)
+    values (#{merId,jdbcType=VARCHAR}, #{batchNo,jdbcType=VARCHAR}, #{outAccoutOrg,jdbcType=VARCHAR}, 
+      #{outAccountNo,jdbcType=VARCHAR}, #{inAccoutOrg,jdbcType=VARCHAR}, #{inAccountNo,jdbcType=VARCHAR}, 
+      #{entryType,jdbcType=VARCHAR}, #{tranAmount,jdbcType=DECIMAL}, #{merName,jdbcType=VARCHAR}, 
+      #{subMerId,jdbcType=VARCHAR}, #{subMerName,jdbcType=VARCHAR}, #{inAccountName,jdbcType=VARCHAR}, 
+      #{outAccountName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthSetCapitalSum" >
+    insert into BTH_SET_CAPITAL_SUM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="merId != null" >
+        MER_ID,
+      </if>
+      <if test="batchNo != null" >
+        BATCH_NO,
+      </if>
+      <if test="outAccoutOrg != null" >
+        OUT_ACCOUT_ORG,
+      </if>
+      <if test="outAccountNo != null" >
+        OUT_ACCOUNT_NO,
+      </if>
+      <if test="inAccoutOrg != null" >
+        IN_ACCOUT_ORG,
+      </if>
+      <if test="inAccountNo != null" >
+        IN_ACCOUNT_NO,
+      </if>
+      <if test="entryType != null" >
+        ENTRY_TYPE,
+      </if>
+      <if test="tranAmount != null" >
+        TRAN_AMOUNT,
+      </if>
+      <if test="merName != null" >
+        MER_NAME,
+      </if>
+      <if test="subMerId != null" >
+        SUB_MER_ID,
+      </if>
+      <if test="subMerName != null" >
+        SUB_MER_NAME,
+      </if>
+      <if test="inAccountName != null" >
+        IN_ACCOUNT_NAME,
+      </if>
+      <if test="outAccountName != null" >
+        OUT_ACCOUNT_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="merId != null" >
+        #{merId,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null" >
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccoutOrg != null" >
+        #{outAccoutOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccountNo != null" >
+        #{outAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccoutOrg != null" >
+        #{inAccoutOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountNo != null" >
+        #{inAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="entryType != null" >
+        #{entryType,jdbcType=VARCHAR},
+      </if>
+      <if test="tranAmount != null" >
+        #{tranAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="merName != null" >
+        #{merName,jdbcType=VARCHAR},
+      </if>
+      <if test="subMerId != null" >
+        #{subMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="subMerName != null" >
+        #{subMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountName != null" >
+        #{inAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccountName != null" >
+        #{outAccountName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="clear">
+    truncate table bth_set_capital_sum
+  </delete>
+
+  <insert id="initData" parameterType="string">
+    insert into bth_set_capital_sum
+    select mer_id as mer_id,
+           #{batchNo,jdbcType=VARCHAR} as batch_no,
+           out_accout_org as out_accout_org,
+           out_account_no as out_account_no,
+           in_accout_org as in_accout_org,
+           in_account_no as in_account_no,
+           entry_type as entry_type,
+           sum(tran_amount) as tran_amount,
+           max(mer_name) as mer_name,
+           max(sub_mer_id) as sub_mer_id,
+           max(sub_mer_name) as sub_mer_name,
+           max(in_account_name) as in_account_name,
+           max(out_account_name) as out_account_name,
+            partern_code as partern_code,
+           account_type as account_type
+
+    from (select t.out_accout_org,
+                 t.out_account_no,
+                 t.in_accout_org,
+                 t.in_account_no,
+                 case
+                   when t.entry_type in ('01', '99') then
+                     '01'
+                   else
+                     t.entry_type
+                   end entry_type,
+                 t.mer_id,
+                 t.tran_amount,
+                 t.mer_name,
+                 t.sub_mer_id,
+                 t.sub_mer_name,
+                 t.in_account_name,
+                 t.out_account_name,
+                 t.account_type,
+                 t.partern_code
+          from bth_set_capital_detail t
+          where batch_no = #{batchNo,jdbcType=VARCHAR}
+            <!--and account_type = '0'-->
+            )
+    group by out_accout_org,
+             out_account_no,
+             in_accout_org,
+             in_account_no,
+             mer_id,
+             entry_type,
+             account_type,
+             partern_code
+  </insert>
+</mapper>

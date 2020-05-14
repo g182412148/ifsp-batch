@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.OrgRepeMergInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergInfo" >
+    <id column="REPE_MERG_ID" property="repeMergId" jdbcType="VARCHAR" />
+    <result column="REPE_ORG" property="repeOrg" jdbcType="CHAR" />
+    <result column="MERG_ORG" property="mergOrg" jdbcType="CHAR" />
+    <result column="MERG_STUS" property="mergStus" jdbcType="CHAR" />
+    <result column="MERG_DT" property="mergDt" jdbcType="TIMESTAMP" />
+    <result column="CRA_DT" property="craDt" jdbcType="TIMESTAMP" />
+    <result column="UPD_DT" property="updDt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    REPE_MERG_ID, REPE_ORG, MERG_ORG, MERG_STUS, MERG_DT, CRA_DT, UPD_DT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ORG_REPE_MERG_INFO
+    where REPE_MERG_ID = #{repeMergId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ORG_REPE_MERG_INFO
+    where REPE_MERG_ID = #{repeMergId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergInfo" >
+    insert into ORG_REPE_MERG_INFO (REPE_MERG_ID, REPE_ORG, MERG_ORG, 
+      MERG_STUS, MERG_DT, CRA_DT, 
+      UPD_DT)
+    values (#{repeMergId,jdbcType=VARCHAR}, #{repeOrg,jdbcType=CHAR}, #{mergOrg,jdbcType=CHAR}, 
+      #{mergStus,jdbcType=CHAR}, #{mergDt,jdbcType=TIMESTAMP}, #{craDt,jdbcType=TIMESTAMP}, 
+      #{updDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergInfo" >
+    insert into ORG_REPE_MERG_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="repeMergId != null" >
+        REPE_MERG_ID,
+      </if>
+      <if test="repeOrg != null" >
+        REPE_ORG,
+      </if>
+      <if test="mergOrg != null" >
+        MERG_ORG,
+      </if>
+      <if test="mergStus != null" >
+        MERG_STUS,
+      </if>
+      <if test="mergDt != null" >
+        MERG_DT,
+      </if>
+      <if test="craDt != null" >
+        CRA_DT,
+      </if>
+      <if test="updDt != null" >
+        UPD_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="repeMergId != null" >
+        #{repeMergId,jdbcType=VARCHAR},
+      </if>
+      <if test="repeOrg != null" >
+        #{repeOrg,jdbcType=CHAR},
+      </if>
+      <if test="mergOrg != null" >
+        #{mergOrg,jdbcType=CHAR},
+      </if>
+      <if test="mergStus != null" >
+        #{mergStus,jdbcType=CHAR},
+      </if>
+      <if test="mergDt != null" >
+        #{mergDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="craDt != null" >
+        #{craDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updDt != null" >
+        #{updDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergInfo" >
+    update ORG_REPE_MERG_INFO
+    <set >
+      <if test="repeOrg != null" >
+        REPE_ORG = #{repeOrg,jdbcType=CHAR},
+      </if>
+      <if test="mergOrg != null" >
+        MERG_ORG = #{mergOrg,jdbcType=CHAR},
+      </if>
+      <if test="mergStus != null" >
+        MERG_STUS = #{mergStus,jdbcType=CHAR},
+      </if>
+      <if test="mergDt != null" >
+        MERG_DT = #{mergDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="craDt != null" >
+        CRA_DT = #{craDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updDt != null" >
+        UPD_DT = #{updDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where REPE_MERG_ID = #{repeMergId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergInfo" >
+    update ORG_REPE_MERG_INFO
+    set REPE_ORG = #{repeOrg,jdbcType=CHAR},
+      MERG_ORG = #{mergOrg,jdbcType=CHAR},
+      MERG_STUS = #{mergStus,jdbcType=CHAR},
+      MERG_DT = #{mergDt,jdbcType=TIMESTAMP},
+      CRA_DT = #{craDt,jdbcType=TIMESTAMP},
+      UPD_DT = #{updDt,jdbcType=TIMESTAMP}
+    where REPE_MERG_ID = #{repeMergId,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询机构撤并状态 -->
+  <select id="selectOrgRepeMerg" resultType="java.lang.String">
+    SELECT MERG_STUS from ORG_REPE_MERG_INFO
+    where REPE_ORG = #{repeOrg}
+    and MERG_ORG = #{mergOrg}
+    and MERG_DT = #{mergDt}
+  </select>
+  <!-- 更新机构撤并转态 -->
+  <select id="selectOrgMergInfo" resultMap="BaseResultMap">
+    SELECT * from ORG_REPE_MERG_INFO
+    where REPE_ORG = #{repeOrg}
+    and MERG_ORG = #{mergOrg}
+    and MERG_DT = #{mergDt}
+  </select>
+</mapper>

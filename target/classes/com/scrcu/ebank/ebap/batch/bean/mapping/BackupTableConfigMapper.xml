@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BackupTableConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BackupTableConfig" >
+    <id column="TABLE_NAME" property="tableName" jdbcType="VARCHAR" />
+    <id column="ORIG_TABLE_OWNER" property="origTableOwner" jdbcType="VARCHAR" />
+    <result column="DEST_TABLE" property="destTable" jdbcType="VARCHAR" />
+    <result column="DEST_TABLE_OWNER" property="destTableOwner" jdbcType="VARCHAR" />
+    <result column="ARCH_CON" property="archCon" jdbcType="VARCHAR" />
+    <result column="PAGE_SIZE" property="pageSize" jdbcType="DECIMAL" />
+    <result column="BACKUP_TYPE" property="backupType" jdbcType="VARCHAR" />
+    <result column="CLEAN_FLAG" property="cleanFlag" jdbcType="VARCHAR" />
+    <result column="PART_TYPE" property="partType" jdbcType="VARCHAR" />
+    <result column="PARTS" property="parts" jdbcType="VARCHAR" />
+    <result column="AUTO_CLEAR_FLAG" property="autoClearFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TABLE_NAME, ORIG_TABLE_OWNER, DEST_TABLE, DEST_TABLE_OWNER, ARCH_CON, PAGE_SIZE, 
+    BACKUP_TYPE, CLEAN_FLAG, PART_TYPE, PARTS, AUTO_CLEAR_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from BACKUP_TABLE_CONFIG
+    where AUTO_CLEAR_FLAG = '1'
+    <if test="origTableOwner != null" >
+      and ORIG_TABLE_OWNER = #{origTableOwner,jdbcType=VARCHAR}
+    </if>
+
+    <if test="tableName != null" >
+      and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from BACKUP_TABLE_CONFIG
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+      and ORIG_TABLE_OWNER = #{origTableOwner,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BackupTableConfig" >
+    insert into BACKUP_TABLE_CONFIG (TABLE_NAME, ORIG_TABLE_OWNER, DEST_TABLE, 
+      DEST_TABLE_OWNER, ARCH_CON, PAGE_SIZE, 
+      BACKUP_TYPE, CLEAN_FLAG, PART_TYPE, 
+      PARTS)
+    values (#{tableName,jdbcType=VARCHAR}, #{origTableOwner,jdbcType=VARCHAR}, #{destTable,jdbcType=VARCHAR}, 
+      #{destTableOwner,jdbcType=VARCHAR}, #{archCon,jdbcType=VARCHAR}, #{pageSize,jdbcType=DECIMAL}, 
+      #{backupType,jdbcType=VARCHAR}, #{cleanFlag,jdbcType=VARCHAR}, #{partType,jdbcType=VARCHAR}, 
+      #{parts,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BackupTableConfig" >
+    insert into BACKUP_TABLE_CONFIG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tableName != null" >
+        TABLE_NAME,
+      </if>
+      <if test="origTableOwner != null" >
+        ORIG_TABLE_OWNER,
+      </if>
+      <if test="destTable != null" >
+        DEST_TABLE,
+      </if>
+      <if test="destTableOwner != null" >
+        DEST_TABLE_OWNER,
+      </if>
+      <if test="archCon != null" >
+        ARCH_CON,
+      </if>
+      <if test="pageSize != null" >
+        PAGE_SIZE,
+      </if>
+      <if test="backupType != null" >
+        BACKUP_TYPE,
+      </if>
+      <if test="cleanFlag != null" >
+        CLEAN_FLAG,
+      </if>
+      <if test="partType != null" >
+        PART_TYPE,
+      </if>
+      <if test="parts != null" >
+        PARTS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="origTableOwner != null" >
+        #{origTableOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="destTable != null" >
+        #{destTable,jdbcType=VARCHAR},
+      </if>
+      <if test="destTableOwner != null" >
+        #{destTableOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="archCon != null" >
+        #{archCon,jdbcType=VARCHAR},
+      </if>
+      <if test="pageSize != null" >
+        #{pageSize,jdbcType=DECIMAL},
+      </if>
+      <if test="backupType != null" >
+        #{backupType,jdbcType=VARCHAR},
+      </if>
+      <if test="cleanFlag != null" >
+        #{cleanFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="partType != null" >
+        #{partType,jdbcType=VARCHAR},
+      </if>
+      <if test="parts != null" >
+        #{parts,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BackupTableConfig" >
+    update BACKUP_TABLE_CONFIG
+    <set >
+      <if test="destTable != null" >
+        DEST_TABLE = #{destTable,jdbcType=VARCHAR},
+      </if>
+      <if test="destTableOwner != null" >
+        DEST_TABLE_OWNER = #{destTableOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="archCon != null" >
+        ARCH_CON = #{archCon,jdbcType=VARCHAR},
+      </if>
+      <if test="pageSize != null" >
+        PAGE_SIZE = #{pageSize,jdbcType=DECIMAL},
+      </if>
+      <if test="backupType != null" >
+        BACKUP_TYPE = #{backupType,jdbcType=VARCHAR},
+      </if>
+      <if test="cleanFlag != null" >
+        CLEAN_FLAG = #{cleanFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="partType != null" >
+        PART_TYPE = #{partType,jdbcType=VARCHAR},
+      </if>
+      <if test="parts != null" >
+        PARTS = #{parts,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+      and ORIG_TABLE_OWNER = #{origTableOwner,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BackupTableConfig" >
+    update BACKUP_TABLE_CONFIG
+    set DEST_TABLE = #{destTable,jdbcType=VARCHAR},
+      DEST_TABLE_OWNER = #{destTableOwner,jdbcType=VARCHAR},
+      ARCH_CON = #{archCon,jdbcType=VARCHAR},
+      PAGE_SIZE = #{pageSize,jdbcType=DECIMAL},
+      BACKUP_TYPE = #{backupType,jdbcType=VARCHAR},
+      CLEAN_FLAG = #{cleanFlag,jdbcType=VARCHAR},
+      PART_TYPE = #{partType,jdbcType=VARCHAR},
+      PARTS = #{parts,jdbcType=VARCHAR}
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+      and ORIG_TABLE_OWNER = #{origTableOwner,jdbcType=VARCHAR}
+  </update>
+
+  <update id="procMain" parameterType="Map" statementType="CALLABLE">
+		{call PROC_MAIN(
+		    #{tableName,jdbcType=VARCHAR,mode=IN}
+		)}
+    </update>
+</mapper>

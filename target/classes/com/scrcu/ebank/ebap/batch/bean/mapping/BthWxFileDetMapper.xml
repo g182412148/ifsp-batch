@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthWxFileDetMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthWxFileDet" >
+    <id column="ORDER_NO" property="orderNo" jdbcType="VARCHAR" />
+    <result column="WX_ORDER_NO" property="wxOrderNo" jdbcType="VARCHAR" />
+    <result column="ORDER_TP" property="orderTp" jdbcType="CHAR" />
+    <result column="SRC_ORDER_NO" property="srcOrderNo" jdbcType="VARCHAR" />
+    <result column="SRC_WX_ORDER_NO" property="srcWxOrderNo" jdbcType="VARCHAR" />
+    <result column="TXN_TM" property="txnTm" jdbcType="CHAR" />
+    <result column="APP_ID" property="appId" jdbcType="VARCHAR" />
+    <result column="MCH_ID" property="mchId" jdbcType="VARCHAR" />
+    <result column="SUB_MCH_ID" property="subMchId" jdbcType="VARCHAR" />
+    <result column="DEVICE_INF" property="deviceInf" jdbcType="VARCHAR" />
+    <result column="OPEN_ID" property="openId" jdbcType="VARCHAR" />
+    <result column="TRADE_TP" property="tradeTp" jdbcType="VARCHAR" />
+    <result column="TRADE_ST" property="tradeSt" jdbcType="VARCHAR" />
+    <result column="BANK_TP" property="bankTp" jdbcType="VARCHAR" />
+    <result column="CURRENCY" property="currency" jdbcType="CHAR" />
+    <result column="SETT_ORDER_AMT" property="settOrderAmt" jdbcType="DECIMAL" />
+    <result column="COUPON_AMT" property="couponAmt" jdbcType="DECIMAL" />
+    <result column="REFUND_AMT" property="refundAmt" jdbcType="DECIMAL" />
+    <result column="COUPON_REF_AMT" property="couponRefAmt" jdbcType="DECIMAL" />
+    <result column="REFUND_TP" property="refundTp" jdbcType="VARCHAR" />
+    <result column="REFUND_ST" property="refundSt" jdbcType="VARCHAR" />
+    <result column="PROD_NM" property="prodNm" jdbcType="VARCHAR" />
+    <result column="PROD_ATTACH" property="prodAttach" jdbcType="VARCHAR" />
+    <result column="FEE_AMT" property="feeAmt" jdbcType="DECIMAL" />
+    <result column="FEE_RATE" property="feeRate" jdbcType="DECIMAL" />
+    <result column="ORDER_AMT" property="orderAmt" jdbcType="DECIMAL" />
+    <result column="APPR_REFUND_AMT" property="apprRefundAmt" jdbcType="DECIMAL" />
+    <result column="FEE_RMK" property="feeRmk" jdbcType="VARCHAR" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <result column="CHK_DATA_DT" property="chkDataDt" jdbcType="CHAR" />
+    <result column="CHK_ACCT_ST" property="chkAcctSt" jdbcType="CHAR" />
+    <result column="CHK_RST" property="chkRst" jdbcType="CHAR" />
+    <result column="LST_UPD_TM" property="lstUpdTm" jdbcType="CHAR" />
+    <result column="DUBIOUS_FLAG" property="dubiousFlag" jdbcType="CHAR" />
+    <result column="SRC_TYPE" property="srcType" jdbcType="VARCHAR" />
+    <result column="ORDER_NO_WX" property="orderNoWx" jdbcType="VARCHAR" />
+    <result column="ORDER_NO_MER" property="orderNoMer" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ORDER_NO, WX_ORDER_NO, ORDER_TP, SRC_ORDER_NO, SRC_WX_ORDER_NO, TXN_TM, APP_ID, MCH_ID, 
+    SUB_MCH_ID, DEVICE_INF, OPEN_ID, TRADE_TP, TRADE_ST, BANK_TP, CURRENCY, SETT_ORDER_AMT, 
+    COUPON_AMT, REFUND_AMT, COUPON_REF_AMT, REFUND_TP, REFUND_ST, PROD_NM, PROD_ATTACH, 
+    FEE_AMT, FEE_RATE, ORDER_AMT, APPR_REFUND_AMT, FEE_RMK, PAGY_SYS_NO, PAGY_NO, CHK_DATA_DT, 
+    CHK_ACCT_ST, CHK_RST, LST_UPD_TM,DUBIOUS_FLAG,SRC_TYPE,ORDER_NO_WX,ORDER_NO_MER
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_WX_FILE_DET
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+    and ORDER_TP = #{orderTp,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_WX_FILE_DET
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+    and ORDER_TP = #{orderTp,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthWxFileDet" >
+    insert into BTH_WX_FILE_DET (ORDER_NO, WX_ORDER_NO, ORDER_TP, 
+      SRC_ORDER_NO, SRC_WX_ORDER_NO, TXN_TM, 
+      APP_ID, MCH_ID, SUB_MCH_ID, 
+      DEVICE_INF, OPEN_ID, TRADE_TP, 
+      TRADE_ST, BANK_TP, CURRENCY, 
+      SETT_ORDER_AMT, COUPON_AMT, REFUND_AMT, 
+      COUPON_REF_AMT, REFUND_TP, REFUND_ST, 
+      PROD_NM, PROD_ATTACH, FEE_AMT, 
+      FEE_RATE, ORDER_AMT, APPR_REFUND_AMT, 
+      FEE_RMK, PAGY_SYS_NO, PAGY_NO, 
+      CHK_DATA_DT, CHK_ACCT_ST, CHK_RST, 
+      LST_UPD_TM,DUBIOUS_FLAG,SRC_TYPE,ORDER_NO_WX,ORDER_NO_MER)
+    values (#{orderNo,jdbcType=VARCHAR}, #{wxOrderNo,jdbcType=VARCHAR}, #{orderTp,jdbcType=CHAR}, 
+      #{srcOrderNo,jdbcType=VARCHAR}, #{srcWxOrderNo,jdbcType=VARCHAR}, #{txnTm,jdbcType=CHAR}, 
+      #{appId,jdbcType=VARCHAR}, #{mchId,jdbcType=VARCHAR}, #{subMchId,jdbcType=VARCHAR}, 
+      #{deviceInf,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{tradeTp,jdbcType=VARCHAR}, 
+      #{tradeSt,jdbcType=VARCHAR}, #{bankTp,jdbcType=VARCHAR}, #{currency,jdbcType=CHAR}, 
+      #{settOrderAmt,jdbcType=DECIMAL}, #{couponAmt,jdbcType=DECIMAL}, #{refundAmt,jdbcType=DECIMAL}, 
+      #{couponRefAmt,jdbcType=DECIMAL}, #{refundTp,jdbcType=VARCHAR}, #{refundSt,jdbcType=VARCHAR}, 
+      #{prodNm,jdbcType=VARCHAR}, #{prodAttach,jdbcType=VARCHAR}, #{feeAmt,jdbcType=DECIMAL}, 
+      #{feeRate,jdbcType=DECIMAL}, #{orderAmt,jdbcType=DECIMAL}, #{apprRefundAmt,jdbcType=DECIMAL}, 
+      #{feeRmk,jdbcType=VARCHAR}, #{pagySysNo,jdbcType=CHAR}, #{pagyNo,jdbcType=CHAR}, 
+      #{chkDataDt,jdbcType=CHAR}, #{chkAcctSt,jdbcType=CHAR}, #{chkRst,jdbcType=CHAR}, 
+      #{lstUpdTm,jdbcType=CHAR},#{dubiousFlag,jdbcType=CHAR},#{srcType,jdbcType=VARCHAR},
+      #{orderNoWx,jdbcType=VARCHAR},#{orderNoMer,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthWxFileDet" >
+    insert into BTH_WX_FILE_DET
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderNo != null" >
+        ORDER_NO,
+      </if>
+      <if test="wxOrderNo != null" >
+        WX_ORDER_NO,
+      </if>
+      <if test="orderTp != null" >
+        ORDER_TP,
+      </if>
+      <if test="srcOrderNo != null" >
+        SRC_ORDER_NO,
+      </if>
+      <if test="srcWxOrderNo != null" >
+        SRC_WX_ORDER_NO,
+      </if>
+      <if test="txnTm != null" >
+        TXN_TM,
+      </if>
+      <if test="appId != null" >
+        APP_ID,
+      </if>
+      <if test="mchId != null" >
+        MCH_ID,
+      </if>
+      <if test="subMchId != null" >
+        SUB_MCH_ID,
+      </if>
+      <if test="deviceInf != null" >
+        DEVICE_INF,
+      </if>
+      <if test="openId != null" >
+        OPEN_ID,
+      </if>
+      <if test="tradeTp != null" >
+        TRADE_TP,
+      </if>
+      <if test="tradeSt != null" >
+        TRADE_ST,
+      </if>
+      <if test="bankTp != null" >
+        BANK_TP,
+      </if>
+      <if test="currency != null" >
+        CURRENCY,
+      </if>
+      <if test="settOrderAmt != null" >
+        SETT_ORDER_AMT,
+      </if>
+      <if test="couponAmt != null" >
+        COUPON_AMT,
+      </if>
+      <if test="refundAmt != null" >
+        REFUND_AMT,
+      </if>
+      <if test="couponRefAmt != null" >
+        COUPON_REF_AMT,
+      </if>
+      <if test="refundTp != null" >
+        REFUND_TP,
+      </if>
+      <if test="refundSt != null" >
+        REFUND_ST,
+      </if>
+      <if test="prodNm != null" >
+        PROD_NM,
+      </if>
+      <if test="prodAttach != null" >
+        PROD_ATTACH,
+      </if>
+      <if test="feeAmt != null" >
+        FEE_AMT,
+      </if>
+      <if test="feeRate != null" >
+        FEE_RATE,
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT,
+      </if>
+      <if test="apprRefundAmt != null" >
+        APPR_REFUND_AMT,
+      </if>
+      <if test="feeRmk != null" >
+        FEE_RMK,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT,
+      </if>
+      <if test="chkAcctSt != null" >
+        CHK_ACCT_ST,
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST,
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM,
+      </if>
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG,
+      </if>
+       <if test="srcType != null" >
+        SRC_TYPE,
+      </if>
+       <if test="orderNoWx != null" >
+        ORDER_NO_WX,
+      </if>
+       <if test="orderNoMer != null" >
+        ORDER_NO_MER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOrderNo != null" >
+        #{wxOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTp != null" >
+        #{orderTp,jdbcType=CHAR},
+      </if>
+      <if test="srcOrderNo != null" >
+        #{srcOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="srcWxOrderNo != null" >
+        #{srcWxOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTm != null" >
+        #{txnTm,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null" >
+        #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="subMchId != null" >
+        #{subMchId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceInf != null" >
+        #{deviceInf,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTp != null" >
+        #{tradeTp,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeSt != null" >
+        #{tradeSt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankTp != null" >
+        #{bankTp,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=CHAR},
+      </if>
+      <if test="settOrderAmt != null" >
+        #{settOrderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmt != null" >
+        #{couponAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refundAmt != null" >
+        #{refundAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="couponRefAmt != null" >
+        #{couponRefAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refundTp != null" >
+        #{refundTp,jdbcType=VARCHAR},
+      </if>
+      <if test="refundSt != null" >
+        #{refundSt,jdbcType=VARCHAR},
+      </if>
+      <if test="prodNm != null" >
+        #{prodNm,jdbcType=VARCHAR},
+      </if>
+      <if test="prodAttach != null" >
+        #{prodAttach,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmt != null" >
+        #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeRate != null" >
+        #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmt != null" >
+        #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="apprRefundAmt != null" >
+        #{apprRefundAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeRmk != null" >
+        #{feeRmk,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="chkDataDt != null" >
+        #{chkDataDt,jdbcType=CHAR},
+      </if>
+      <if test="chkAcctSt != null" >
+        #{chkAcctSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null" >
+        #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        #{lstUpdTm,jdbcType=CHAR},
+      </if>
+      <if test="dubiousFlag != null" >
+        #{dubiousFlag,jdbcType=CHAR},
+      </if>
+      <if test="srcType != null" >
+        #{srcType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNoWx != null" >
+        #{orderNoWx,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNoMer != null" >
+        #{orderNoMer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthWxFileDet" >
+    update BTH_WX_FILE_DET
+    <set >
+      <if test="wxOrderNo != null" >
+        WX_ORDER_NO = #{wxOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTp != null" >
+        ORDER_TP = #{orderTp,jdbcType=CHAR},
+      </if>
+      <if test="srcOrderNo != null" >
+        SRC_ORDER_NO = #{srcOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="srcWxOrderNo != null" >
+        SRC_WX_ORDER_NO = #{srcWxOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTm != null" >
+        TXN_TM = #{txnTm,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        APP_ID = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null" >
+        MCH_ID = #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="subMchId != null" >
+        SUB_MCH_ID = #{subMchId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceInf != null" >
+        DEVICE_INF = #{deviceInf,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        OPEN_ID = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTp != null" >
+        TRADE_TP = #{tradeTp,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeSt != null" >
+        TRADE_ST = #{tradeSt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankTp != null" >
+        BANK_TP = #{bankTp,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        CURRENCY = #{currency,jdbcType=CHAR},
+      </if>
+      <if test="settOrderAmt != null" >
+        SETT_ORDER_AMT = #{settOrderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmt != null" >
+        COUPON_AMT = #{couponAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refundAmt != null" >
+        REFUND_AMT = #{refundAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="couponRefAmt != null" >
+        COUPON_REF_AMT = #{couponRefAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refundTp != null" >
+        REFUND_TP = #{refundTp,jdbcType=VARCHAR},
+      </if>
+      <if test="refundSt != null" >
+        REFUND_ST = #{refundSt,jdbcType=VARCHAR},
+      </if>
+      <if test="prodNm != null" >
+        PROD_NM = #{prodNm,jdbcType=VARCHAR},
+      </if>
+      <if test="prodAttach != null" >
+        PROD_ATTACH = #{prodAttach,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmt != null" >
+        FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeRate != null" >
+        FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="apprRefundAmt != null" >
+        APPR_REFUND_AMT = #{apprRefundAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeRmk != null" >
+        FEE_RMK = #{feeRmk,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR},
+      </if>
+      <if test="chkAcctSt != null" >
+        CHK_ACCT_ST = #{chkAcctSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST = #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM = #{lstUpdTm,jdbcType=CHAR},
+      </if>
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+    and ORDER_TP = #{orderTp,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthWxFileDet" >
+    update BTH_WX_FILE_DET
+    set WX_ORDER_NO = #{wxOrderNo,jdbcType=VARCHAR},
+      ORDER_TP = #{orderTp,jdbcType=CHAR},
+      SRC_ORDER_NO = #{srcOrderNo,jdbcType=VARCHAR},
+      SRC_WX_ORDER_NO = #{srcWxOrderNo,jdbcType=VARCHAR},
+      TXN_TM = #{txnTm,jdbcType=CHAR},
+      APP_ID = #{appId,jdbcType=VARCHAR},
+      MCH_ID = #{mchId,jdbcType=VARCHAR},
+      SUB_MCH_ID = #{subMchId,jdbcType=VARCHAR},
+      DEVICE_INF = #{deviceInf,jdbcType=VARCHAR},
+      OPEN_ID = #{openId,jdbcType=VARCHAR},
+      TRADE_TP = #{tradeTp,jdbcType=VARCHAR},
+      TRADE_ST = #{tradeSt,jdbcType=VARCHAR},
+      BANK_TP = #{bankTp,jdbcType=VARCHAR},
+      CURRENCY = #{currency,jdbcType=CHAR},
+      SETT_ORDER_AMT = #{settOrderAmt,jdbcType=DECIMAL},
+      COUPON_AMT = #{couponAmt,jdbcType=DECIMAL},
+      REFUND_AMT = #{refundAmt,jdbcType=DECIMAL},
+      COUPON_REF_AMT = #{couponRefAmt,jdbcType=DECIMAL},
+      REFUND_TP = #{refundTp,jdbcType=VARCHAR},
+      REFUND_ST = #{refundSt,jdbcType=VARCHAR},
+      PROD_NM = #{prodNm,jdbcType=VARCHAR},
+      PROD_ATTACH = #{prodAttach,jdbcType=VARCHAR},
+      FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      APPR_REFUND_AMT = #{apprRefundAmt,jdbcType=DECIMAL},
+      FEE_RMK = #{feeRmk,jdbcType=VARCHAR},
+      PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR},
+      CHK_ACCT_ST = #{chkAcctSt,jdbcType=CHAR},
+      CHK_RST = #{chkRst,jdbcType=CHAR},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=CHAR},
+      DUBIOUS_FLAG = #{DUBIOUS_FLAG,jdbcType=CHAR}
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR} and ORDER_TP = #{orderTp,jdbcType=CHAR}
+  </update>
+  
+  <delete id="deleteBypagyNoAndDate" parameterType="map" >
+    delete from BTH_WX_FILE_DET
+    where PAGY_NO = #{pagyNo,jdbcType=CHAR} and CHK_DATA_DT = #{settleDate,jdbcType=CHAR}
+  </delete>
+  
+<!--   	BthWxFileDet queryWxFileDetByOrderNo(@Param("pagyPayTxnSsn")String pagyPayTxnSsn); -->
+    <select id="queryWxFileDetByOrderNo" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_WX_FILE_DET
+    where ORDER_NO=#{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByDate" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_WX_FILE_DET
+    where CHK_DATA_DT = #{settleDate,jdbcType=CHAR}
+  </select>
+  
+  <select id="selectByDateAndStat" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_WX_FILE_DET
+    where CHK_DATA_DT = #{settleDate,jdbcType=CHAR} and CHK_ACCT_ST= #{state,jdbcType=CHAR}
+  </select>
+  
+  <select id="selectByDateAndChkstat" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_WX_FILE_DET
+    where CHK_DATA_DT = #{doubtDate,jdbcType=CHAR} and CHK_RST= #{chkSt,jdbcType=CHAR}
+  </select>
+  <select id="queryWxFileByFlagAndDate" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_WX_FILE_DET
+    where CHK_DATA_DT = #{settleDate} and DUBIOUS_FLAG =#{dubiousFlag}
+  </select>
+  
+   <delete id="deleteBySrcTypeAndDate" parameterType="map" >
+      delete from BTH_WX_FILE_DET
+      where 
+      PAGY_NO = #{pagyNo,jdbcType=CHAR} and 
+      CHK_DATA_DT = #{settleDate,jdbcType=CHAR} and
+      SRC_TYPE = #{srcType,jdbcType=CHAR}
+    </delete>
+
+    <select id="queryRevokedDets" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_WX_FILE_DET
+        where CHK_DATA_DT = #{settleDate ,jdbcType=VARCHAR } and TRADE_ST = #{tradeSt,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateChkStRstByOrderNo" parameterType="string">
+        update BTH_WX_FILE_DET set  CHK_ACCT_ST = '01', CHK_RST = '04' where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+    </update>
+</mapper>

@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.WxBillOuterMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.WxBillOuter" >
+    <id column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="TXN_TIME" property="txnTime" jdbcType="TIMESTAMP" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="TXN_STATE" property="txnState" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="RECO_STATE" property="recoState" jdbcType="VARCHAR" />
+    <result column="DUBIS_FLAG" property="dubisFlag" jdbcType="CHAR" />
+    <result column="APP_ID" property="appId" jdbcType="VARCHAR" />
+    <result column="MCHT_ID" property="mchtId" jdbcType="VARCHAR" />
+    <result column="BANK_MCHT_ID" property="bankMchtId" jdbcType="VARCHAR" />
+    <result column="DEV_IP" property="devIp" jdbcType="VARCHAR" />
+    <result column="OUTER_ORDER_ID" property="outerOrderId" jdbcType="VARCHAR" />
+    <result column="MCHT_ORDER_ID" property="mchtOrderId" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="OUTER_TXN_TYPE" property="outerTxnType" jdbcType="VARCHAR" />
+    <result column="OUTER_TXN_STATE" property="outerTxnState" jdbcType="VARCHAR" />
+    <result column="PAY_BANK" property="payBank" jdbcType="VARCHAR" />
+    <result column="CURR_TYPE" property="currType" jdbcType="VARCHAR" />
+    <result column="SETTL_AMT" property="settlAmt" jdbcType="DECIMAL" />
+    <result column="COUP_AMT" property="coupAmt" jdbcType="DECIMAL" />
+    <result column="OUTER_REFUD_ID" property="outerRefudId" jdbcType="VARCHAR" />
+    <result column="MCHT_REFUD_ID" property="mchtRefudId" jdbcType="VARCHAR" />
+    <result column="REFUD_AMT" property="refudAmt" jdbcType="DECIMAL" />
+    <result column="RECH_REFUD_AMT" property="rechRefudAmt" jdbcType="DECIMAL" />
+    <result column="REFUD_TYPE" property="refudType" jdbcType="VARCHAR" />
+    <result column="REFUD_STATE" property="refudState" jdbcType="VARCHAR" />
+    <result column="GOODS_NAME" property="goodsName" jdbcType="VARCHAR" />
+    <result column="MCHT_DATA" property="mchtData" jdbcType="VARCHAR" />
+    <result column="FEE_RATE" property="feeRate" jdbcType="DECIMAL" />
+    <result column="FEE_AMT" property="feeAmt" jdbcType="DECIMAL" />
+    <result column="ORDER_AMT" property="orderAmt" jdbcType="DECIMAL" />
+    <result column="APPLY_REFUD_AMT" property="applyRefudAmt" jdbcType="DECIMAL" />
+    <result column="FEE_REATE_DESC" property="feeReateDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TXN_SSN, RECO_DATE, TXN_TIME, TXN_TYPE, TXN_STATE, TXN_AMT, RECO_STATE, DUBIS_FLAG, 
+    APP_ID, MCHT_ID, BANK_MCHT_ID, DEV_IP, OUTER_ORDER_ID, MCHT_ORDER_ID, USER_ID, OUTER_TXN_TYPE, 
+    OUTER_TXN_STATE, PAY_BANK, CURR_TYPE, SETTL_AMT, COUP_AMT, OUTER_REFUD_ID, MCHT_REFUD_ID, 
+    REFUD_AMT, RECH_REFUD_AMT, REFUD_TYPE, REFUD_STATE, GOODS_NAME, MCHT_DATA, FEE_RATE, 
+    FEE_AMT, ORDER_AMT, APPLY_REFUD_AMT, FEE_REATE_DESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from WX_BILL_OUTER
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WX_BILL_OUTER
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillOuter" >
+    insert into WX_BILL_OUTER (TXN_SSN, RECO_DATE, TXN_TIME, 
+      TXN_TYPE, TXN_STATE, TXN_AMT, 
+      RECO_STATE, DUBIS_FLAG, APP_ID, 
+      MCHT_ID, BANK_MCHT_ID, DEV_IP, 
+      OUTER_ORDER_ID, MCHT_ORDER_ID, USER_ID, 
+      OUTER_TXN_TYPE, OUTER_TXN_STATE, PAY_BANK, 
+      CURR_TYPE, SETTL_AMT, COUP_AMT, 
+      OUTER_REFUD_ID, MCHT_REFUD_ID, REFUD_AMT, 
+      RECH_REFUD_AMT, REFUD_TYPE, REFUD_STATE, 
+      GOODS_NAME, MCHT_DATA, FEE_RATE, 
+      FEE_AMT, ORDER_AMT, APPLY_REFUD_AMT, 
+      FEE_REATE_DESC,UPD_TM)
+    values (#{txnSsn,jdbcType=VARCHAR}, #{recoDate,jdbcType=TIMESTAMP}, #{txnTime,jdbcType=TIMESTAMP}, 
+      #{txnType,jdbcType=VARCHAR}, #{txnState,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, 
+      #{recoState,jdbcType=VARCHAR}, #{dubisFlag,jdbcType=CHAR}, #{appId,jdbcType=VARCHAR}, 
+      #{mchtId,jdbcType=VARCHAR}, #{bankMchtId,jdbcType=VARCHAR}, #{devIp,jdbcType=VARCHAR}, 
+      #{outerOrderId,jdbcType=VARCHAR}, #{mchtOrderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{outerTxnType,jdbcType=VARCHAR}, #{outerTxnState,jdbcType=VARCHAR}, #{payBank,jdbcType=VARCHAR}, 
+      #{currType,jdbcType=VARCHAR}, #{settlAmt,jdbcType=DECIMAL}, #{coupAmt,jdbcType=DECIMAL}, 
+      #{outerRefudId,jdbcType=VARCHAR}, #{mchtRefudId,jdbcType=VARCHAR}, #{refudAmt,jdbcType=DECIMAL}, 
+      #{rechRefudAmt,jdbcType=DECIMAL}, #{refudType,jdbcType=VARCHAR}, #{refudState,jdbcType=VARCHAR}, 
+      #{goodsName,jdbcType=VARCHAR}, #{mchtData,jdbcType=VARCHAR}, #{feeRate,jdbcType=DECIMAL}, 
+      #{feeAmt,jdbcType=DECIMAL}, #{orderAmt,jdbcType=DECIMAL}, #{applyRefudAmt,jdbcType=DECIMAL}, 
+      #{feeReateDesc,jdbcType=VARCHAR}, sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillOuter" >
+    insert into WX_BILL_OUTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE,
+      </if>
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG,
+      </if>
+      <if test="appId != null" >
+        APP_ID,
+      </if>
+      <if test="mchtId != null" >
+        MCHT_ID,
+      </if>
+      <if test="bankMchtId != null" >
+        BANK_MCHT_ID,
+      </if>
+      <if test="devIp != null" >
+        DEV_IP,
+      </if>
+      <if test="outerOrderId != null" >
+        OUTER_ORDER_ID,
+      </if>
+      <if test="mchtOrderId != null" >
+        MCHT_ORDER_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="outerTxnType != null" >
+        OUTER_TXN_TYPE,
+      </if>
+      <if test="outerTxnState != null" >
+        OUTER_TXN_STATE,
+      </if>
+      <if test="payBank != null" >
+        PAY_BANK,
+      </if>
+      <if test="currType != null" >
+        CURR_TYPE,
+      </if>
+      <if test="settlAmt != null" >
+        SETTL_AMT,
+      </if>
+      <if test="coupAmt != null" >
+        COUP_AMT,
+      </if>
+      <if test="outerRefudId != null" >
+        OUTER_REFUD_ID,
+      </if>
+      <if test="mchtRefudId != null" >
+        MCHT_REFUD_ID,
+      </if>
+      <if test="refudAmt != null" >
+        REFUD_AMT,
+      </if>
+      <if test="rechRefudAmt != null" >
+        RECH_REFUD_AMT,
+      </if>
+      <if test="refudType != null" >
+        REFUD_TYPE,
+      </if>
+      <if test="refudState != null" >
+        REFUD_STATE,
+      </if>
+      <if test="goodsName != null" >
+        GOODS_NAME,
+      </if>
+      <if test="mchtData != null" >
+        MCHT_DATA,
+      </if>
+      <if test="feeRate != null" >
+        FEE_RATE,
+      </if>
+      <if test="feeAmt != null" >
+        FEE_AMT,
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT,
+      </if>
+      <if test="applyRefudAmt != null" >
+        APPLY_REFUD_AMT,
+      </if>
+      <if test="feeReateDesc != null" >
+        FEE_REATE_DESC,
+      </if>
+      UPD_TM
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="dubisFlag != null" >
+        #{dubisFlag,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null" >
+        #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankMchtId != null" >
+        #{bankMchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="devIp != null" >
+        #{devIp,jdbcType=VARCHAR},
+      </if>
+      <if test="outerOrderId != null" >
+        #{outerOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtOrderId != null" >
+        #{mchtOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnType != null" >
+        #{outerTxnType,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnState != null" >
+        #{outerTxnState,jdbcType=VARCHAR},
+      </if>
+      <if test="payBank != null" >
+        #{payBank,jdbcType=VARCHAR},
+      </if>
+      <if test="currType != null" >
+        #{currType,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAmt != null" >
+        #{settlAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="coupAmt != null" >
+        #{coupAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="outerRefudId != null" >
+        #{outerRefudId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtRefudId != null" >
+        #{mchtRefudId,jdbcType=VARCHAR},
+      </if>
+      <if test="refudAmt != null" >
+        #{refudAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="rechRefudAmt != null" >
+        #{rechRefudAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refudType != null" >
+        #{refudType,jdbcType=VARCHAR},
+      </if>
+      <if test="refudState != null" >
+        #{refudState,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtData != null" >
+        #{mchtData,jdbcType=VARCHAR},
+      </if>
+      <if test="feeRate != null" >
+        #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="feeAmt != null" >
+        #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmt != null" >
+        #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="applyRefudAmt != null" >
+        #{applyRefudAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeReateDesc != null" >
+        #{feeReateDesc,jdbcType=VARCHAR},
+      </if>
+      sysdate
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillOuter" >
+    update WX_BILL_OUTER
+    <set >
+      <if test="recoDate != null" >
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        APP_ID = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null" >
+        MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankMchtId != null" >
+        BANK_MCHT_ID = #{bankMchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="devIp != null" >
+        DEV_IP = #{devIp,jdbcType=VARCHAR},
+      </if>
+      <if test="outerOrderId != null" >
+        OUTER_ORDER_ID = #{outerOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtOrderId != null" >
+        MCHT_ORDER_ID = #{mchtOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnType != null" >
+        OUTER_TXN_TYPE = #{outerTxnType,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnState != null" >
+        OUTER_TXN_STATE = #{outerTxnState,jdbcType=VARCHAR},
+      </if>
+      <if test="payBank != null" >
+        PAY_BANK = #{payBank,jdbcType=VARCHAR},
+      </if>
+      <if test="currType != null" >
+        CURR_TYPE = #{currType,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAmt != null" >
+        SETTL_AMT = #{settlAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="coupAmt != null" >
+        COUP_AMT = #{coupAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="outerRefudId != null" >
+        OUTER_REFUD_ID = #{outerRefudId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtRefudId != null" >
+        MCHT_REFUD_ID = #{mchtRefudId,jdbcType=VARCHAR},
+      </if>
+      <if test="refudAmt != null" >
+        REFUD_AMT = #{refudAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="rechRefudAmt != null" >
+        RECH_REFUD_AMT = #{rechRefudAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="refudType != null" >
+        REFUD_TYPE = #{refudType,jdbcType=VARCHAR},
+      </if>
+      <if test="refudState != null" >
+        REFUD_STATE = #{refudState,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtData != null" >
+        MCHT_DATA = #{mchtData,jdbcType=VARCHAR},
+      </if>
+      <if test="feeRate != null" >
+        FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="feeAmt != null" >
+        FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="applyRefudAmt != null" >
+        APPLY_REFUD_AMT = #{applyRefudAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeReateDesc != null" >
+        FEE_REATE_DESC = #{feeReateDesc,jdbcType=VARCHAR},
+      </if>
+      UPD_TM = sysdate
+    </set>
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillOuter" >
+    update WX_BILL_OUTER
+    set RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR},
+      APP_ID = #{appId,jdbcType=VARCHAR},
+      MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      BANK_MCHT_ID = #{bankMchtId,jdbcType=VARCHAR},
+      DEV_IP = #{devIp,jdbcType=VARCHAR},
+      OUTER_ORDER_ID = #{outerOrderId,jdbcType=VARCHAR},
+      MCHT_ORDER_ID = #{mchtOrderId,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      OUTER_TXN_TYPE = #{outerTxnType,jdbcType=VARCHAR},
+      OUTER_TXN_STATE = #{outerTxnState,jdbcType=VARCHAR},
+      PAY_BANK = #{payBank,jdbcType=VARCHAR},
+      CURR_TYPE = #{currType,jdbcType=VARCHAR},
+      SETTL_AMT = #{settlAmt,jdbcType=DECIMAL},
+      COUP_AMT = #{coupAmt,jdbcType=DECIMAL},
+      OUTER_REFUD_ID = #{outerRefudId,jdbcType=VARCHAR},
+      MCHT_REFUD_ID = #{mchtRefudId,jdbcType=VARCHAR},
+      REFUD_AMT = #{refudAmt,jdbcType=DECIMAL},
+      RECH_REFUD_AMT = #{rechRefudAmt,jdbcType=DECIMAL},
+      REFUD_TYPE = #{refudType,jdbcType=VARCHAR},
+      REFUD_STATE = #{refudState,jdbcType=VARCHAR},
+      GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      MCHT_DATA = #{mchtData,jdbcType=VARCHAR},
+      FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      APPLY_REFUD_AMT = #{applyRefudAmt,jdbcType=DECIMAL},
+      FEE_REATE_DESC = #{feeReateDesc,jdbcType=VARCHAR},
+      UPD_TM = sysdate
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+
+  <!-- 查询指定对账日期的未完成对账的数据 : 当前未对账 和 前一天可疑的交易 -->
+  <select id="queryNotReco" resultMap="BaseResultMap">
+    SELECT * FROM WX_BILL_OUTER
+    WHERE
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND RECO_STATE = '0'
+    UNION ALL
+    SELECT * FROM WX_BILL_OUTER
+    WHERE
+    RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND RECO_STATE = '2'
+  </select>
+
+  <!-- 恢复指定对账日期的数据为未对账 -->
+  <update id="recovery">
+    update WX_BILL_OUTER set RECO_STATE = '0', UPD_TM = sysdate
+    where
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND RECO_STATE != '3'
+  </update>
+
+  <!-- 恢复前一日可疑的数据为可疑 -->
+  <update id="recoveryDubious">
+    update WX_BILL_OUTER set RECO_STATE = '2', UPD_TM = sysdate
+    where
+    RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND RECO_STATE != '3'
+    AND DUBIS_FLAG = '1'
+  </update>
+
+  <!-- 恢复指定对账日期的数据为未对账 -->
+  <update id="clear">
+    delete from WX_BILL_OUTER
+    where
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+  </update>
+
+  <!-- 批量插入 -->
+  <insert id="insertBatch">
+    INSERT
+      INTO WX_BILL_OUTER
+      (
+      TXN_SSN,
+      RECO_DATE,
+      TXN_TIME,
+      TXN_TYPE,
+      TXN_STATE,
+      TXN_AMT,
+      RECO_STATE,
+      APP_ID,
+      MCHT_ID,
+      BANK_MCHT_ID,
+      DEV_IP,
+      OUTER_ORDER_ID,
+      MCHT_ORDER_ID,
+      USER_ID,
+      OUTER_TXN_TYPE,
+      OUTER_TXN_STATE,
+      PAY_BANK,
+      CURR_TYPE,
+      SETTL_AMT,
+      COUP_AMT,
+      OUTER_REFUD_ID,
+      MCHT_REFUD_ID,
+      REFUD_AMT,
+      RECH_REFUD_AMT,
+      REFUD_TYPE,
+      REFUD_STATE,
+      GOODS_NAME,
+      MCHT_DATA,
+      FEE_RATE,
+      FEE_AMT,
+      ORDER_AMT,
+      APPLY_REFUD_AMT,
+      FEE_REATE_DESC,
+      UPD_TM
+      )
+      select A.* from (
+      <foreach collection="recordList" index="index" item="item" separator="UNION ALL">
+        select
+        #{item.txnSsn,jdbcType=VARCHAR},
+        #{item.recoDate,jdbcType=TIMESTAMP},
+        #{item.txnTime,jdbcType=TIMESTAMP},
+        #{item.txnType,jdbcType=VARCHAR},
+        #{item.txnState,jdbcType=VARCHAR},
+        #{item.txnAmt,jdbcType=DECIMAL},
+        #{item.recoState,jdbcType=VARCHAR},
+        #{item.appId,jdbcType=VARCHAR},
+        #{item.mchtId,jdbcType=VARCHAR},
+        #{item.bankMchtId,jdbcType=VARCHAR},
+        #{item.devIp,jdbcType=VARCHAR},
+        #{item.outerOrderId,jdbcType=VARCHAR},
+        #{item.mchtOrderId,jdbcType=VARCHAR},
+        #{item.userId,jdbcType=VARCHAR},
+        #{item.outerTxnType,jdbcType=VARCHAR},
+        #{item.outerTxnState,jdbcType=VARCHAR},
+        #{item.payBank,jdbcType=VARCHAR},
+        #{item.currType,jdbcType=VARCHAR},
+        #{item.settlAmt,jdbcType=DECIMAL},
+        #{item.coupAmt,jdbcType=DECIMAL},
+        #{item.outerRefudId,jdbcType=VARCHAR},
+        #{item.mchtRefudId,jdbcType=VARCHAR},
+        #{item.refudAmt,jdbcType=DECIMAL},
+        #{item.rechRefudAmt,jdbcType=DECIMAL},
+        #{item.refudType,jdbcType=VARCHAR},
+        #{item.refudState,jdbcType=VARCHAR},
+        #{item.goodsName,jdbcType=VARCHAR},
+        #{item.mchtData,jdbcType=VARCHAR},
+        #{item.feeRate,jdbcType=DECIMAL},
+        #{item.feeAmt,jdbcType=DECIMAL},
+        #{item.orderAmt,jdbcType=DECIMAL},
+        #{item.applyRefudAmt,jdbcType=DECIMAL},
+        #{item.feeReateDesc,jdbcType=VARCHAR},
+        sysdate
+        from dual
+      </foreach>
+      ) A
+  </insert>
+
+  <!-- 查询流水: 按照日期分区和主键 -->
+  <select id="queryByIdAndDate" resultMap="BaseResultMap">
+    SELECT * FROM WX_BILL_OUTER
+    WHERE
+    (
+      RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+      or
+      RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    )
+    AND TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+    AND RECO_STATE != '3'
+  </select>
+
+    <!-- 根据撤销交易,更新原交易状态为撤销 -->
+    <update id="updateSrcByRevoked" >
+        UPDATE WX_BILL_OUTER SET RECO_STATE = '3', UPD_TM = sysdate WHERE RECO_DATE = #{recoDate,jdbcType=TIMESTAMP} AND TXN_SSN IN (
+          SELECT MCHT_ORDER_ID FROM WX_BILL_OUTER WHERE RECO_DATE = #{recoDate,jdbcType=TIMESTAMP} AND OUTER_TXN_STATE = 'REVOKED'
+        )
+    </update>
+
+  <!--根据微信对账结果更新三方对账状态-->
+  <update id="updateByResult">
+    update wx_bill_outer a
+   set (a.reco_state, a.dubis_flag, a.UPD_TM) = (select decode(t.is_dubious_outer,
+    '2',
+    '2',
+    '1'),
+    decode(t.is_dubious_outer,
+    '2',
+    '1',
+    t.dubis_outer_original),sysdate
+    from wx_bill_result t
+     where a.txn_ssn = t.txn_ssn_outer)
+ where exists
+ (select 1 from wx_bill_result t where a.txn_ssn = t.txn_ssn_outer)
+   and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+       a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+  </update>
+  <select id="getUpacpOrderId" parameterType="java.lang.String" resultType="java.util.Map">
+    select t.TPAM_TXN_SSN as tpamTxnSsn from tpam_upacp_txn_info t where t.pagy_pay_txn_ssn= #{pagyTxnSsn,jdbcType=VARCHAR}
+  </select>
+  <select id="getCupQrcOrderId" parameterType="java.lang.String" resultType="java.util.Map">
+    select t.tpam_txn_ssn as tpamTxnSsn from tpam_cup_qrc_txn_info t where t.pagy_pay_txn_ssn= #{pagyTxnSsn,jdbcType=VARCHAR}
+  </select>
+  <select id="getAlipayOrderId" parameterType="java.lang.String" resultType="java.util.Map">
+    select t.tpam_txn_ssn as tpamTxnSsn from tpam_alipay_txn_info t where t.pagy_pay_txn_ssn= #{pagyTxnSsn,jdbcType=VARCHAR}
+  </select>
+  <select id="getWechatOrderId" parameterType="java.lang.String" resultType="java.util.Map">
+    select t.tpam_txn_ssn as tpamTxnSsn from tpam_wechat_txn_info t where t.pagy_pay_txn_ssn= #{pagyTxnSsn,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

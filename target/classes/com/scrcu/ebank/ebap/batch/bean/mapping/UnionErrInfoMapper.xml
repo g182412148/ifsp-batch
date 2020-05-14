@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.UnionErrInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthUnionFileErrVO" >
+    <result column="ERR_TRANS_FLAG" property="errTransFlag" jdbcType="VARCHAR" />
+    <result column="PROXY_INS_CODE" property="proxyInsCode" jdbcType="VARCHAR" />
+    <result column="SEND_INS_CODE" property="sendInsCode" jdbcType="VARCHAR" />
+    <result column="TRACE_NUM" property="traceNum" jdbcType="VARCHAR" />
+    <result column="TRANS_DATE" property="transDate" jdbcType="VARCHAR" />
+    <result column="ACCT_NO" property="acctNo" jdbcType="VARCHAR" />
+    <result column="TRANS_AMT" property="transAmt" jdbcType="VARCHAR" />
+    <result column="MSG_TYPE" property="msgType" jdbcType="VARCHAR" />
+    <result column="TRANS_CODE" property="transCode" jdbcType="VARCHAR" />
+    <result column="MER_TYPE" property="merType" jdbcType="VARCHAR" />
+    <result column="REC_CARD_TERMINAL_CODE" property="recCardTerminalCode" jdbcType="VARCHAR" />
+    <result column="RETRIVAL_NO" property="retrivalNo" jdbcType="VARCHAR" />
+    <result column="SEV_CDT_CODE" property="sevCdtCode" jdbcType="VARCHAR" />
+    <result column="AUTH_RESP_CODE" property="authRespCode" jdbcType="VARCHAR" />
+    <result column="REC_INS_CODE" property="recInsCode" jdbcType="VARCHAR" />
+    <result column="SEND_CARD_CODE" property="sendCardCode" jdbcType="VARCHAR" />
+    <result column="ORG_TRACE_NUM" property="orgTraceNum" jdbcType="VARCHAR" />
+    <result column="TRANS_RESP_CODE" property="transRespCode" jdbcType="VARCHAR" />
+    <result column="SEV_INPUT_WAY" property="sevInputWay" jdbcType="VARCHAR" />
+    <result column="HEAR_GET_FEE" property="hearGetFee" jdbcType="VARCHAR" />
+    <result column="HEAR_PAY_FEE" property="hearPayFee" jdbcType="VARCHAR" />
+    <result column="SCD_PLUS_FEE" property="scdPlusFee" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_FEE" property="customerFee" jdbcType="VARCHAR" />
+    <result column="GET_FEE" property="getFee" jdbcType="VARCHAR" />
+    <result column="SET_FEE" property="setFee" jdbcType="VARCHAR" />
+    <result column="ERR_REASON" property="errReason" jdbcType="VARCHAR" />
+    <result column="REC_INSOROUT_CODE" property="recInsOrOutCode" jdbcType="VARCHAR" />
+    <result column="TRANSFER_OUT_CARD" property="transferOutCard" jdbcType="VARCHAR" />
+    <result column="TURN_INS_CODE" property="turnInsCode" jdbcType="VARCHAR" />
+    <result column="TRANSFER_IN_CARD" property="transferInCard" jdbcType="VARCHAR" />
+    <result column="ORG_TRANS_DATE" property="orgTransDate" jdbcType="VARCHAR" />
+    <result column="CARD_SEQ" property="cardSeq" jdbcType="VARCHAR" />
+    <result column="TER_LOAD_ABITY" property="terLoadAbity" jdbcType="VARCHAR" />
+    <result column="IC_CDT_CODE" property="icCdtCode" jdbcType="VARCHAR" />
+    <result column="LAST_TRANS_DATE" property="lastTransDate" jdbcType="VARCHAR" />
+    <result column="LAST_TRANS_AMT" property="lastTransAmt" jdbcType="VARCHAR" />
+    <result column="TRANS_REGION" property="transRegion" jdbcType="VARCHAR" />
+    <result column="ECI_FLAG" property="eciFlag" jdbcType="VARCHAR" />
+    <result column="MER_CODE" property="merCode" jdbcType="VARCHAR" />
+    <result column="SEND_TRANS_ORG" property="sendTransOrg" jdbcType="VARCHAR" />
+    <result column="RE_TRANS_ORG" property="reTransOrg" jdbcType="VARCHAR" />
+    <result column="TURN_TRANS_ORG" property="turnTransOrg" jdbcType="VARCHAR" />
+    <result column="TERMINAL_TYPE" property="terminalType" jdbcType="VARCHAR" />
+    <result column="MER_NAME" property="merName" jdbcType="VARCHAR" />
+    <result column="SPEC_CHARGING_TYPE" property="specChargingType" jdbcType="VARCHAR" />
+    <result column="SPEC_CHARGING_GRADE" property="specChargingGrade" jdbcType="VARCHAR" />
+    <result column="RESERVED1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="CARD_INFO" property="cardInfo" jdbcType="VARCHAR" />
+    <result column="LAST_ERR_TRANS_CODE" property="lastErrTransCode" jdbcType="VARCHAR" />
+    <result column="TRANS_LAUNCH_MODE" property="transLaunchMode" jdbcType="VARCHAR" />
+    <result column="SETTLE_ACCT_TYPE" property="settleAcctType" jdbcType="VARCHAR" />
+    <result column="ORDER_SSN" property="OrderSsn" jdbcType="VARCHAR" />
+    <result column="RESERVED" property="reserved" jdbcType="VARCHAR" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+  </sql>
+
+  <!-- 批量插入 -->
+  <insert id="insertBatch">
+    INSERT INTO UNION_ERR_INFO
+    (
+    err_trans_flag,
+    proxy_ins_code,
+    send_ins_code,
+    trace_num,
+    trans_date,
+    acct_no,
+    trans_amt,
+    msg_type,
+    trans_code,
+    mer_type,
+    rec_card_terminal_code,
+    retrival_no,
+    sev_cdt_code,
+    auth_resp_code,
+    rec_ins_code,
+    send_card_code,
+    org_trace_num,
+    trans_resp_code,
+    sev_input_way,
+    hear_get_fee,
+    hear_pay_fee,
+    scd_plus_fee,
+    customer_fee,
+    get_fee,
+    set_fee,
+    err_reason,
+    rec_insorout_code,
+    transfer_out_card,
+    turn_ins_code,
+    transfer_in_card,
+    org_trans_date,
+    card_seq,
+    ter_load_abity,
+    ic_cdt_code,
+    last_trans_date,
+    last_trans_amt,
+    trans_region,
+    eci_flag,
+    mer_code,
+    send_trans_org,
+    re_trans_org,
+    turn_trans_org,
+    terminal_type,
+    mer_name,
+    spec_charging_type,
+    spec_charging_grade,
+    reserved1,
+    card_info,
+    last_err_trans_code,
+    trans_launch_mode,
+    settle_acct_type,
+    order_ssn,
+    reserved
+    )
+    <foreach collection="recordList" index="index" item="item" separator="union all">
+      (SELECT #{item.errTransFlag,jdbcType=VARCHAR}, #{item.proxyInsCode,jdbcType=VARCHAR}, #{item.sendInsCode,jdbcType=VARCHAR},
+      #{item.traceNum,jdbcType=VARCHAR}, #{item.transDate,jdbcType=VARCHAR}, #{item.acctNo,jdbcType=VARCHAR}, #{item.transAmt,jdbcType=VARCHAR}
+      , #{item.msgType,jdbcType=VARCHAR}, #{item.transCode,jdbcType=VARCHAR}, #{item.merType,jdbcType=VARCHAR}, #{item.recCardTerminalCode,jdbcType=VARCHAR}
+      , #{item.retrivalNo,jdbcType=VARCHAR}, #{item.sevCdtCode,jdbcType=VARCHAR}, #{item.authRespCode,jdbcType=VARCHAR}, #{item.recInsCode,jdbcType=VARCHAR}
+      , #{item.sendCardCode,jdbcType=VARCHAR}, #{item.orgTraceNum,jdbcType=VARCHAR}, #{item.transRespCode,jdbcType=VARCHAR}, #{item.sevInputWay,jdbcType=VARCHAR}
+      , #{item.hearGetFee,jdbcType=VARCHAR}, #{item.hearPayFee,jdbcType=VARCHAR}, #{item.scdPlusFee,jdbcType=VARCHAR}, #{item.customerFee,jdbcType=VARCHAR}
+      , #{item.getFee,jdbcType=VARCHAR}, #{item.setFee,jdbcType=VARCHAR}, #{item.errReason,jdbcType=VARCHAR}, #{item.recInsOrOutCode,jdbcType=VARCHAR}
+      , #{item.transferOutCard,jdbcType=VARCHAR}, #{item.turnInsCode,jdbcType=VARCHAR}, #{item.transferInCard,jdbcType=VARCHAR}, #{item.orgTransDate,jdbcType=VARCHAR}
+      , #{item.cardSeq,jdbcType=VARCHAR}, #{item.terLoadAbity,jdbcType=VARCHAR}, #{item.icCdtCode,jdbcType=VARCHAR}, #{item.lastTransDate,jdbcType=VARCHAR}
+      , #{item.lastTransAmt,jdbcType=VARCHAR}, #{item.transRegion,jdbcType=VARCHAR}, #{item.eciFlag,jdbcType=VARCHAR}, #{item.merCode,jdbcType=VARCHAR}
+      , #{item.sendTransOrg,jdbcType=VARCHAR}, #{item.reTransOrg,jdbcType=VARCHAR}, #{item.turnTransOrg,jdbcType=VARCHAR}, #{item.terminalType,jdbcType=VARCHAR}
+      , #{item.merName,jdbcType=VARCHAR}, #{item.specChargingType,jdbcType=VARCHAR}, #{item.specChargingGrade,jdbcType=VARCHAR}, #{item.reserved1,jdbcType=VARCHAR}
+      , #{item.cardInfo,jdbcType=VARCHAR}, #{item.lastErrTransCode,jdbcType=VARCHAR}, #{item.transLaunchMode,jdbcType=VARCHAR}, #{item.settleAcctType,jdbcType=VARCHAR}
+      , #{item.OrderSsn,jdbcType=VARCHAR}, #{item.reserved,jdbcType=VARCHAR}
+      FROM DUAL)
+    </foreach>
+  </insert>
+
+</mapper>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthChkUnequalInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthChkUnequalInfo" >
+    <id column="PAGY_PAY_TXN_SSN" property="pagyPayTxnSsn" jdbcType="VARCHAR" />
+    <result column="PAGY_PAY_TXN_TM" property="pagyPayTxnTm" jdbcType="TIMESTAMP" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="CHAR" />
+    <result column="TXN_STAT" property="txnStat" jdbcType="CHAR" />
+    <result column="TPAM_TXN_SSN" property="tpamTxnSsn" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_TM" property="tpamTxnTm" jdbcType="VARCHAR" />
+    <result column="TPAM_TXN_AMT" property="tpamTxnAmt" jdbcType="DECIMAL" />
+    <result column="TPAM_TXN_TYPE" property="tpamTxnType" jdbcType="CHAR" />
+    <result column="TPAM_TXN_STAT" property="tpamTxnStat" jdbcType="CHAR" />
+    <result column="ORDER_SSN" property="orderSsn" jdbcType="VARCHAR" />
+    <result column="PROC_ST" property="procSt" jdbcType="CHAR" />
+    <result column="PROC_DESC" property="procDesc" jdbcType="VARCHAR" />
+    <result column="CHK_UEQ_DATE" property="chkUeqDate" jdbcType="TIMESTAMP" />
+    <result column="CRT_TM" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="LST_UPD_TM" property="lstUpdTm" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_SYS_NO, TXN_AMT, TXN_TYPE, TXN_STAT, TPAM_TXN_SSN, 
+    TPAM_TXN_TM, TPAM_TXN_AMT, TPAM_TXN_TYPE, TPAM_TXN_STAT, ORDER_SSN, PROC_ST, PROC_DESC, 
+    CHK_UEQ_DATE, CRT_TM, LST_UPD_TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_CHK_UNEQUAL_INFO
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_CHK_UNEQUAL_INFO
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkUnequalInfo" >
+    insert into BTH_CHK_UNEQUAL_INFO (PAGY_PAY_TXN_SSN, PAGY_PAY_TXN_TM, PAGY_SYS_NO, 
+      TXN_AMT, TXN_TYPE, TXN_STAT, 
+      TPAM_TXN_SSN, TPAM_TXN_TM, TPAM_TXN_AMT, 
+      TPAM_TXN_TYPE, TPAM_TXN_STAT, ORDER_SSN, 
+      PROC_ST, PROC_DESC, CHK_UEQ_DATE, 
+      CRT_TM, LST_UPD_TM)
+    values (#{pagyPayTxnSsn,jdbcType=VARCHAR}, #{pagyPayTxnTm,jdbcType=TIMESTAMP}, #{pagySysNo,jdbcType=CHAR}, 
+      #{txnAmt,jdbcType=DECIMAL}, #{txnType,jdbcType=CHAR}, #{txnStat,jdbcType=CHAR}, 
+      #{tpamTxnSsn,jdbcType=VARCHAR}, #{tpamTxnTm,jdbcType=VARCHAR}, #{tpamTxnAmt,jdbcType=DECIMAL}, 
+      #{tpamTxnType,jdbcType=CHAR}, #{tpamTxnStat,jdbcType=CHAR}, #{orderSsn,jdbcType=VARCHAR}, 
+      #{procSt,jdbcType=CHAR}, #{procDesc,jdbcType=VARCHAR}, #{chkUeqDate,jdbcType=TIMESTAMP}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{lstUpdTm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkUnequalInfo" >
+    insert into BTH_CHK_UNEQUAL_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pagyPayTxnSsn != null" >
+        PAGY_PAY_TXN_SSN,
+      </if>
+      <if test="pagyPayTxnTm != null" >
+        PAGY_PAY_TXN_TM,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnStat != null" >
+        TXN_STAT,
+      </if>
+      <if test="tpamTxnSsn != null" >
+        TPAM_TXN_SSN,
+      </if>
+      <if test="tpamTxnTm != null" >
+        TPAM_TXN_TM,
+      </if>
+      <if test="tpamTxnAmt != null" >
+        TPAM_TXN_AMT,
+      </if>
+      <if test="tpamTxnType != null" >
+        TPAM_TXN_TYPE,
+      </if>
+      <if test="tpamTxnStat != null" >
+        TPAM_TXN_STAT,
+      </if>
+      <if test="orderSsn != null" >
+        ORDER_SSN,
+      </if>
+      <if test="procSt != null" >
+        PROC_ST,
+      </if>
+      <if test="procDesc != null" >
+        PROC_DESC,
+      </if>
+      <if test="chkUeqDate != null" >
+        CHK_UEQ_DATE,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pagyPayTxnSsn != null" >
+        #{pagyPayTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyPayTxnTm != null" >
+        #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=CHAR},
+      </if>
+      <if test="txnStat != null" >
+        #{txnStat,jdbcType=CHAR},
+      </if>
+      <if test="tpamTxnSsn != null" >
+        #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null" >
+        #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null" >
+        #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnType != null" >
+        #{tpamTxnType,jdbcType=CHAR},
+      </if>
+      <if test="tpamTxnStat != null" >
+        #{tpamTxnStat,jdbcType=CHAR},
+      </if>
+      <if test="orderSsn != null" >
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="procSt != null" >
+        #{procSt,jdbcType=CHAR},
+      </if>
+      <if test="procDesc != null" >
+        #{procDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="chkUeqDate != null" >
+        #{chkUeqDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstUpdTm != null" >
+        #{lstUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkUnequalInfo" >
+    update BTH_CHK_UNEQUAL_INFO
+    <set >
+      <if test="pagyPayTxnTm != null" >
+        PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE = #{txnType,jdbcType=CHAR},
+      </if>
+      <if test="txnStat != null" >
+        TXN_STAT = #{txnStat,jdbcType=CHAR},
+      </if>
+      <if test="tpamTxnSsn != null" >
+        TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnTm != null" >
+        TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamTxnAmt != null" >
+        TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tpamTxnType != null" >
+        TPAM_TXN_TYPE = #{tpamTxnType,jdbcType=CHAR},
+      </if>
+      <if test="tpamTxnStat != null" >
+        TPAM_TXN_STAT = #{tpamTxnStat,jdbcType=CHAR},
+      </if>
+      <if test="orderSsn != null" >
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="procSt != null" >
+        PROC_ST = #{procSt,jdbcType=CHAR},
+      </if>
+      <if test="procDesc != null" >
+        PROC_DESC = #{procDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="chkUeqDate != null" >
+        CHK_UEQ_DATE = #{chkUeqDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM = #{lstUpdTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthChkUnequalInfo" >
+    update BTH_CHK_UNEQUAL_INFO
+    set PAGY_PAY_TXN_TM = #{pagyPayTxnTm,jdbcType=TIMESTAMP},
+      PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      TXN_TYPE = #{txnType,jdbcType=CHAR},
+      TXN_STAT = #{txnStat,jdbcType=CHAR},
+      TPAM_TXN_SSN = #{tpamTxnSsn,jdbcType=VARCHAR},
+      TPAM_TXN_TM = #{tpamTxnTm,jdbcType=VARCHAR},
+      TPAM_TXN_AMT = #{tpamTxnAmt,jdbcType=DECIMAL},
+      TPAM_TXN_TYPE = #{tpamTxnType,jdbcType=CHAR},
+      TPAM_TXN_STAT = #{tpamTxnStat,jdbcType=CHAR},
+      ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      PROC_ST = #{procSt,jdbcType=CHAR},
+      PROC_DESC = #{procDesc,jdbcType=VARCHAR},
+      CHK_UEQ_DATE = #{chkUeqDate,jdbcType=TIMESTAMP},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=TIMESTAMP}
+    where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <!--  根据对账不平日期与通道号删除对账不平表数据  -->
+  <delete id="deleteByChkUeqDtAndPagySysNo" parameterType="map" >
+      delete from BTH_CHK_UNEQUAL_INFO where to_char(CHK_UEQ_DATE,'yyyyMMdd') = #{chkUeqDate,jdbcType=VARCHAR} and  PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR}
+  </delete>
+
+
+  <!-- 根据对账不平日期,通道号与处理状态来查询 -->
+  <select id="selectByPagySysNoAndChkUeqDt" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List" /> from BTH_CHK_UNEQUAL_INFO where to_char(CHK_UEQ_DATE,'yyyyMMdd') = #{chkUeqDate,jdbcType=VARCHAR}
+      and PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR} and PROC_ST = '01'
+  </select>
+
+  <!-- 根据通道流水更新对账不平表   -->
+  <update id="updChkUnequalInfoProcStByPagyPayTxnSsn" parameterType="java.lang.String">
+    update BTH_CHK_UNEQUAL_INFO set PROC_ST = '02' , PROC_DESC = '对账不平已通过程序修复' ,LST_UPD_TM = sysdate where PAGY_PAY_TXN_SSN = #{pagyPayTxnSsn,jdbcType=VARCHAR}
+  </update>
+
+
+
+
+</mapper>

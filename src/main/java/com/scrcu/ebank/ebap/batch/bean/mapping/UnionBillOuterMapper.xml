@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.UnionBillOuterMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.UnionBillOuter" >
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="TXN_TIME" property="txnTime" jdbcType="TIMESTAMP" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="TXN_STATE" property="txnState" jdbcType="VARCHAR" />
+    <result column="RECO_STATE" property="recoState" jdbcType="VARCHAR" />
+    <result column="PROXY_INS_CODE" property="proxyInsCode" jdbcType="VARCHAR" />
+    <result column="SEND_INS_CODE" property="sendInsCode" jdbcType="VARCHAR" />
+    <result column="TRACE_NUM" property="traceNum" jdbcType="VARCHAR" />
+    <result column="TRANS_DATE" property="transDate" jdbcType="VARCHAR" />
+    <result column="ACCT_NO" property="acctNo" jdbcType="VARCHAR" />
+    <result column="TRANS_AMT" property="transAmt" jdbcType="DECIMAL" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="VARCHAR" />
+    <result column="PART_PMS_AMT" property="partPmsAmt" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_FEE" property="customerFee" jdbcType="VARCHAR" />
+    <result column="MSG_TYPE" property="msgType" jdbcType="VARCHAR" />
+    <result column="TRANS_CODE" property="transCode" jdbcType="VARCHAR" />
+    <result column="MER_TYPE" property="merType" jdbcType="VARCHAR" />
+    <result column="REC_CARD_TERMINAL_CODE" property="recCardTerminalCode" jdbcType="VARCHAR" />
+    <result column="REC_CARD_CODE" property="recCardCode" jdbcType="VARCHAR" />
+    <result column="RETRIVAL_NO" property="retrivalNo" jdbcType="VARCHAR" />
+    <result column="SEV_CDT_CODE" property="sevCdtCode" jdbcType="CHAR" />
+    <result column="AUTH_RESP_CODE" property="authRespCode" jdbcType="VARCHAR" />
+    <result column="REC_INS_CODE" property="recInsCode" jdbcType="VARCHAR" />
+    <result column="ORG_TRACE_NUM" property="orgTraceNum" jdbcType="VARCHAR" />
+    <result column="TRANS_RESP_CODE" property="transRespCode" jdbcType="CHAR" />
+    <result column="SEV_INPUT_WAY" property="sevInputWay" jdbcType="CHAR" />
+    <result column="HEAR_GET_FEE" property="hearGetFee" jdbcType="DECIMAL" />
+    <result column="HEAR_PAY_FEE" property="hearPayFee" jdbcType="DECIMAL" />
+    <result column="ROUTE_SEV_FEE" property="routeSevFee" jdbcType="DECIMAL" />
+    <result column="SE_REVERSE_FLG" property="seReverseFlg" jdbcType="CHAR" />
+    <result column="CARD_SEQ" property="cardSeq" jdbcType="CHAR" />
+    <result column="TER_LOAD_ABITY" property="terLoadAbity" jdbcType="CHAR" />
+    <result column="OTH_MSG" property="othMsg" jdbcType="VARCHAR" />
+    <result column="TRANS_CARD" property="transCard" jdbcType="VARCHAR" />
+    <result column="PERIOD_SUM" property="periodSum" jdbcType="CHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="BUS_PAY_MODE" property="busPayMode" jdbcType="CHAR" />
+    <result column="RESERVED" property="reserved" jdbcType="VARCHAR" />
+    <result column="IC_CDT_CODE" property="icCdtCode" jdbcType="VARCHAR" />
+    <result column="ORG_TRANS_DATE" property="orgTransDate" jdbcType="VARCHAR" />
+    <result column="SND_CARD_INS_CODE" property="sndCardInsCode" jdbcType="VARCHAR" />
+    <result column="TRANS_REGION" property="transRegion" jdbcType="CHAR" />
+    <result column="TERMINAL_TYPE" property="terminalType" jdbcType="CHAR" />
+    <result column="ECI_FLAG" property="eciFlag" jdbcType="CHAR" />
+    <result column="SCD_PLUS_FEE" property="scdPlusFee" jdbcType="DECIMAL" />
+    <result column="CHK_RST" property="chkRst" jdbcType="CHAR" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+    <result column="DUBIOUS_FLAG" property="dubiousFlag" jdbcType="CHAR" />
+    <result column="BRAND_FEE" property="brandFee" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    RECO_DATE, TXN_SSN, TXN_TIME, TXN_TYPE, TXN_STATE, RECO_STATE, PROXY_INS_CODE, SEND_INS_CODE, TRACE_NUM,
+    TRANS_DATE, ACCT_NO, TRANS_AMT, PAGY_NO, PART_PMS_AMT, CUSTOMER_FEE, MSG_TYPE, TRANS_CODE, MER_TYPE,
+    REC_CARD_TERMINAL_CODE, REC_CARD_CODE, RETRIVAL_NO, SEV_CDT_CODE, AUTH_RESP_CODE, REC_INS_CODE,
+    ORG_TRACE_NUM, TRANS_RESP_CODE, SEV_INPUT_WAY, HEAR_GET_FEE, HEAR_PAY_FEE, ROUTE_SEV_FEE,
+    SE_REVERSE_FLG, CARD_SEQ, TER_LOAD_ABITY, OTH_MSG, TRANS_CARD, PERIOD_SUM, ORDER_ID, BUS_PAY_MODE, RESERVED,
+    IC_CDT_CODE, ORG_TRANS_DATE, SND_CARD_INS_CODE, TRANS_REGION, TERMINAL_TYPE, ECI_FLAG,
+    SCD_PLUS_FEE, CHK_RST, UPD_DATE, DUBIOUS_FLAG, BRAND_FEE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_OUTER
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.UnionBillOuter" >
+    UPDATE UNION_BILL_OUTER
+    <set >
+      <if test="recoState != null" >
+        RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE = sysdate,
+<!--       </if> -->
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据对账日期和订单号查询数据 -->
+  <select id="selectByPrimaryKeyDate" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_OUTER
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+    AND (RECO_DATE = #{recoDate,jdbcType=VARCHAR}
+      OR RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP})
+  </select>
+
+  <!-- 通过订单号查询和订单号查询数据 -->
+  <select id="selectByOrderId" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_OUTER
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+    AND (RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+      OR RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP})
+  </select>
+
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.UnionBillOuter" >
+    insert into UNION_BILL_OUTER (RECO_DATE, TXN_SSN, TXN_TIME, 
+      TXN_TYPE, TXN_STATE, RECO_STATE, 
+      PROXY_INS_CODE, SEND_INS_CODE, TRACE_NUM, 
+      TRANS_DATE, ACCT_NO, TRANS_AMT, 
+      PAGY_NO, PART_PMS_AMT, CUSTOMER_FEE, 
+      MSG_TYPE, TRANS_CODE, MER_TYPE, 
+      REC_CARD_TERMINAL_CODE, REC_CARD_CODE, RETRIVAL_NO, 
+      SEV_CDT_CODE, AUTH_RESP_CODE, REC_INS_CODE, 
+      ORG_TRACE_NUM, TRANS_RESP_CODE, SEV_INPUT_WAY, 
+      HEAR_GET_FEE, HEAR_PAY_FEE, ROUTE_SEV_FEE, 
+      SE_REVERSE_FLG, CARD_SEQ, TER_LOAD_ABITY, 
+      OTH_MSG, TRANS_CARD, PERIOD_SUM, 
+      ORDER_ID, BUS_PAY_MODE, RESERVED, 
+      IC_CDT_CODE, ORG_TRANS_DATE, SND_CARD_INS_CODE, 
+      TRANS_REGION, TERMINAL_TYPE, ECI_FLAG, 
+      SCD_PLUS_FEE, CHK_RST, UPD_DATE, 
+      DUBIOUS_FLAG, BRAND_FEE)
+    values (#{recoDate,jdbcType=TIMESTAMP}, #{txnSsn,jdbcType=VARCHAR}, #{txnTime,jdbcType=TIMESTAMP}, 
+      #{txnType,jdbcType=VARCHAR}, #{txnState,jdbcType=VARCHAR}, #{recoState,jdbcType=VARCHAR}, 
+      #{proxyInsCode,jdbcType=VARCHAR}, #{sendInsCode,jdbcType=VARCHAR}, #{traceNum,jdbcType=VARCHAR}, 
+      #{transDate,jdbcType=VARCHAR}, #{acctNo,jdbcType=VARCHAR}, #{transAmt,jdbcType=DECIMAL}, 
+      #{pagyNo,jdbcType=VARCHAR}, #{partPmsAmt,jdbcType=VARCHAR}, #{customerFee,jdbcType=VARCHAR}, 
+      #{msgType,jdbcType=VARCHAR}, #{transCode,jdbcType=VARCHAR}, #{merType,jdbcType=VARCHAR}, 
+      #{recCardTerminalCode,jdbcType=VARCHAR}, #{recCardCode,jdbcType=VARCHAR}, #{retrivalNo,jdbcType=VARCHAR}, 
+      #{sevCdtCode,jdbcType=CHAR}, #{authRespCode,jdbcType=VARCHAR}, #{recInsCode,jdbcType=VARCHAR}, 
+      #{orgTraceNum,jdbcType=VARCHAR}, #{transRespCode,jdbcType=CHAR}, #{sevInputWay,jdbcType=CHAR}, 
+      #{hearGetFee,jdbcType=DECIMAL}, #{hearPayFee,jdbcType=DECIMAL}, #{routeSevFee,jdbcType=DECIMAL}, 
+      #{seReverseFlg,jdbcType=CHAR}, #{cardSeq,jdbcType=CHAR}, #{terLoadAbity,jdbcType=CHAR}, 
+      #{othMsg,jdbcType=VARCHAR}, #{transCard,jdbcType=VARCHAR}, #{periodSum,jdbcType=CHAR}, 
+      #{orderId,jdbcType=VARCHAR}, #{busPayMode,jdbcType=CHAR}, #{reserved,jdbcType=VARCHAR}, 
+      #{icCdtCode,jdbcType=VARCHAR}, #{orgTransDate,jdbcType=VARCHAR}, #{sndCardInsCode,jdbcType=VARCHAR}, 
+      #{transRegion,jdbcType=CHAR}, #{terminalType,jdbcType=CHAR}, #{eciFlag,jdbcType=CHAR}, 
+      #{scdPlusFee,jdbcType=DECIMAL}, #{chkRst,jdbcType=CHAR}, sysdate,
+      #{dubiousFlag,jdbcType=CHAR}, #{brandFee,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.UnionBillOuter" >
+    insert into UNION_BILL_OUTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE,
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE,
+      </if>
+      <if test="proxyInsCode != null" >
+        PROXY_INS_CODE,
+      </if>
+      <if test="sendInsCode != null" >
+        SEND_INS_CODE,
+      </if>
+      <if test="traceNum != null" >
+        TRACE_NUM,
+      </if>
+      <if test="transDate != null" >
+        TRANS_DATE,
+      </if>
+      <if test="acctNo != null" >
+        ACCT_NO,
+      </if>
+      <if test="transAmt != null" >
+        TRANS_AMT,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="partPmsAmt != null" >
+        PART_PMS_AMT,
+      </if>
+      <if test="customerFee != null" >
+        CUSTOMER_FEE,
+      </if>
+      <if test="msgType != null" >
+        MSG_TYPE,
+      </if>
+      <if test="transCode != null" >
+        TRANS_CODE,
+      </if>
+      <if test="merType != null" >
+        MER_TYPE,
+      </if>
+      <if test="recCardTerminalCode != null" >
+        REC_CARD_TERMINAL_CODE,
+      </if>
+      <if test="recCardCode != null" >
+        REC_CARD_CODE,
+      </if>
+      <if test="retrivalNo != null" >
+        RETRIVAL_NO,
+      </if>
+      <if test="sevCdtCode != null" >
+        SEV_CDT_CODE,
+      </if>
+      <if test="authRespCode != null" >
+        AUTH_RESP_CODE,
+      </if>
+      <if test="recInsCode != null" >
+        REC_INS_CODE,
+      </if>
+      <if test="orgTraceNum != null" >
+        ORG_TRACE_NUM,
+      </if>
+      <if test="transRespCode != null" >
+        TRANS_RESP_CODE,
+      </if>
+      <if test="sevInputWay != null" >
+        SEV_INPUT_WAY,
+      </if>
+      <if test="hearGetFee != null" >
+        HEAR_GET_FEE,
+      </if>
+      <if test="hearPayFee != null" >
+        HEAR_PAY_FEE,
+      </if>
+      <if test="routeSevFee != null" >
+        ROUTE_SEV_FEE,
+      </if>
+      <if test="seReverseFlg != null" >
+        SE_REVERSE_FLG,
+      </if>
+      <if test="cardSeq != null" >
+        CARD_SEQ,
+      </if>
+      <if test="terLoadAbity != null" >
+        TER_LOAD_ABITY,
+      </if>
+      <if test="othMsg != null" >
+        OTH_MSG,
+      </if>
+      <if test="transCard != null" >
+        TRANS_CARD,
+      </if>
+      <if test="periodSum != null" >
+        PERIOD_SUM,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="busPayMode != null" >
+        BUS_PAY_MODE,
+      </if>
+      <if test="reserved != null" >
+        RESERVED,
+      </if>
+      <if test="icCdtCode != null" >
+        IC_CDT_CODE,
+      </if>
+      <if test="orgTransDate != null" >
+        ORG_TRANS_DATE,
+      </if>
+      <if test="sndCardInsCode != null" >
+        SND_CARD_INS_CODE,
+      </if>
+      <if test="transRegion != null" >
+        TRANS_REGION,
+      </if>
+      <if test="terminalType != null" >
+        TERMINAL_TYPE,
+      </if>
+      <if test="eciFlag != null" >
+        ECI_FLAG,
+      </if>
+      <if test="scdPlusFee != null" >
+        SCD_PLUS_FEE,
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST,
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE,
+<!--       </if> -->
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG,
+      </if>
+      <if test="brandFee != null" >
+        BRAND_FEE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="recoState != null" >
+        #{recoState,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyInsCode != null" >
+        #{proxyInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sendInsCode != null" >
+        #{sendInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="traceNum != null" >
+        #{traceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null" >
+        #{transDate,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null" >
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null" >
+        #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partPmsAmt != null" >
+        #{partPmsAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="customerFee != null" >
+        #{customerFee,jdbcType=VARCHAR},
+      </if>
+      <if test="msgType != null" >
+        #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null" >
+        #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merType != null" >
+        #{merType,jdbcType=VARCHAR},
+      </if>
+      <if test="recCardTerminalCode != null" >
+        #{recCardTerminalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recCardCode != null" >
+        #{recCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="retrivalNo != null" >
+        #{retrivalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sevCdtCode != null" >
+        #{sevCdtCode,jdbcType=CHAR},
+      </if>
+      <if test="authRespCode != null" >
+        #{authRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recInsCode != null" >
+        #{recInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgTraceNum != null" >
+        #{orgTraceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="transRespCode != null" >
+        #{transRespCode,jdbcType=CHAR},
+      </if>
+      <if test="sevInputWay != null" >
+        #{sevInputWay,jdbcType=CHAR},
+      </if>
+      <if test="hearGetFee != null" >
+        #{hearGetFee,jdbcType=DECIMAL},
+      </if>
+      <if test="hearPayFee != null" >
+        #{hearPayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="routeSevFee != null" >
+        #{routeSevFee,jdbcType=DECIMAL},
+      </if>
+      <if test="seReverseFlg != null" >
+        #{seReverseFlg,jdbcType=CHAR},
+      </if>
+      <if test="cardSeq != null" >
+        #{cardSeq,jdbcType=CHAR},
+      </if>
+      <if test="terLoadAbity != null" >
+        #{terLoadAbity,jdbcType=CHAR},
+      </if>
+      <if test="othMsg != null" >
+        #{othMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="transCard != null" >
+        #{transCard,jdbcType=VARCHAR},
+      </if>
+      <if test="periodSum != null" >
+        #{periodSum,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="busPayMode != null" >
+        #{busPayMode,jdbcType=CHAR},
+      </if>
+      <if test="reserved != null" >
+        #{reserved,jdbcType=VARCHAR},
+      </if>
+      <if test="icCdtCode != null" >
+        #{icCdtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgTransDate != null" >
+        #{orgTransDate,jdbcType=VARCHAR},
+      </if>
+      <if test="sndCardInsCode != null" >
+        #{sndCardInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transRegion != null" >
+        #{transRegion,jdbcType=CHAR},
+      </if>
+      <if test="terminalType != null" >
+        #{terminalType,jdbcType=CHAR},
+      </if>
+      <if test="eciFlag != null" >
+        #{eciFlag,jdbcType=CHAR},
+      </if>
+      <if test="scdPlusFee != null" >
+        #{scdPlusFee,jdbcType=DECIMAL},
+      </if>
+      <if test="chkRst != null" >
+        #{chkRst,jdbcType=CHAR},
+      </if>
+<!--       <if test="updDate != null" > -->
+        sysdate,
+<!--       </if> -->
+      <if test="dubiousFlag != null" >
+        #{dubiousFlag,jdbcType=CHAR},
+      </if>
+      <if test="brandFee != null" >
+        #{brandFee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 批量插入 -->
+  <insert id="insertBatch">
+    INSERT INTO UNION_BILL_OUTER
+    (
+    RECO_DATE, TXN_SSN, TXN_TIME,
+    TXN_TYPE, TXN_STATE, RECO_STATE,
+    PROXY_INS_CODE, SEND_INS_CODE, TRACE_NUM,
+    TRANS_DATE, ACCT_NO, TRANS_AMT,
+    PAGY_NO, PART_PMS_AMT, CUSTOMER_FEE,
+    MSG_TYPE, TRANS_CODE, MER_TYPE,
+    REC_CARD_TERMINAL_CODE, REC_CARD_CODE, RETRIVAL_NO,
+    SEV_CDT_CODE, AUTH_RESP_CODE, REC_INS_CODE,
+    ORG_TRACE_NUM, TRANS_RESP_CODE, SEV_INPUT_WAY,
+    HEAR_GET_FEE, HEAR_PAY_FEE, ROUTE_SEV_FEE,
+    SE_REVERSE_FLG, CARD_SEQ, TER_LOAD_ABITY,
+    OTH_MSG, TRANS_CARD, PERIOD_SUM,
+    ORDER_ID, BUS_PAY_MODE, RESERVED,
+    IC_CDT_CODE, ORG_TRANS_DATE, SND_CARD_INS_CODE,
+    TRANS_REGION, TERMINAL_TYPE, ECI_FLAG,
+    SCD_PLUS_FEE, CHK_RST, UPD_DATE,
+    DUBIOUS_FLAG, BRAND_FEE
+    )
+    <foreach collection="recordList" index="index" item="item" separator="union all">
+      (SELECT #{item.recoDate,jdbcType=TIMESTAMP}, #{item.txnSsn,jdbcType=VARCHAR}, #{item.txnTime,jdbcType=TIMESTAMP},
+      #{item.txnType,jdbcType=VARCHAR}, #{item.txnState,jdbcType=VARCHAR}, #{item.recoState,jdbcType=VARCHAR},
+      #{item.proxyInsCode,jdbcType=VARCHAR}, #{item.sendInsCode,jdbcType=VARCHAR}, #{item.traceNum,jdbcType=VARCHAR},
+      #{item.transDate,jdbcType=VARCHAR}, #{item.acctNo,jdbcType=VARCHAR}, #{item.transAmt,jdbcType=DECIMAL},
+      #{item.pagyNo,jdbcType=VARCHAR}, #{item.partPmsAmt,jdbcType=VARCHAR}, #{item.customerFee,jdbcType=VARCHAR},
+      #{item.msgType,jdbcType=VARCHAR}, #{item.transCode,jdbcType=VARCHAR}, #{item.merType,jdbcType=VARCHAR},
+      #{item.recCardTerminalCode,jdbcType=VARCHAR}, #{item.recCardCode,jdbcType=VARCHAR}, #{item.retrivalNo,jdbcType=VARCHAR},
+      #{item.sevCdtCode,jdbcType=CHAR}, #{item.authRespCode,jdbcType=VARCHAR}, #{item.recInsCode,jdbcType=VARCHAR},
+      #{item.orgTraceNum,jdbcType=VARCHAR}, #{item.transRespCode,jdbcType=CHAR}, #{item.sevInputWay,jdbcType=CHAR},
+      #{item.hearGetFee,jdbcType=DECIMAL}, #{item.hearPayFee,jdbcType=DECIMAL}, #{item.routeSevFee,jdbcType=DECIMAL},
+      #{item.seReverseFlg,jdbcType=CHAR}, #{item.cardSeq,jdbcType=CHAR}, #{item.terLoadAbity,jdbcType=CHAR},
+      #{item.othMsg,jdbcType=VARCHAR}, #{item.transCard,jdbcType=VARCHAR}, #{item.periodSum,jdbcType=CHAR},
+      #{item.orderId,jdbcType=VARCHAR}, #{item.busPayMode,jdbcType=CHAR}, #{item.reserved,jdbcType=VARCHAR},
+      #{item.icCdtCode,jdbcType=VARCHAR}, #{item.orgTransDate,jdbcType=VARCHAR}, #{item.sndCardInsCode,jdbcType=VARCHAR},
+      #{item.transRegion,jdbcType=CHAR}, #{item.terminalType,jdbcType=CHAR}, #{item.eciFlag,jdbcType=CHAR},
+      #{item.scdPlusFee,jdbcType=DECIMAL}, #{item.chkRst,jdbcType=CHAR}, sysdate,
+      #{item.dubiousFlag,jdbcType=CHAR}, #{item.brandFee,jdbcType=DECIMAL}
+      FROM DUAL)
+    </foreach>
+  </insert>
+  <!-- 恢复指定对账日期的数据为未对账 -->
+  <update id="recovery">
+    update UNION_BILL_OUTER set RECO_STATE = '0', DUBIOUS_FLAG = '', UPD_DATE = sysdate
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 恢复指定对账日期前一天可疑的数据为可疑 -->
+  <update id="recoveryDubious">
+    update UNION_BILL_OUTER set RECO_STATE = '2', UPD_DATE = sysdate
+    where RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+    AND DUBIOUS_FLAG = '1'
+  </update>
+
+  <!-- 查询指定对账日期的未完成对账的数据 : 当前未对账 和 前一天可疑的交易 -->
+  <select id="queryNotReco" resultMap="BaseResultMap">
+    SELECT * FROM UNION_BILL_OUTER
+    WHERE
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+    AND RECO_STATE = '0'
+    UNION ALL
+    SELECT * FROM UNION_BILL_OUTER
+    WHERE
+    RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+    AND PAGY_NO = #{pagyNo,jdbcType=VARCHAR}
+    AND DUBIOUS_FLAG = '1'
+    AND RECO_STATE = '0'
+  </select>
+
+  <!-- 删除指定对账日期的数据 -->
+  <update id="clear">
+    delete from UNION_BILL_OUTER
+    where
+    RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+  </update>
+
+  <!--根据银联二维码对账结果更新三方对账状态-->
+  <update id="updateByUnionQrcResult">
+    update union_bill_outer a
+    set (a.reco_state, a.dubious_flag, a.UPD_DATE) = (select decode(t.is_dubious_outer,
+    '2',
+    '2',
+    '1'),
+    decode(t.is_dubious_outer,
+    '2',
+    '1',
+    t.dubis_outer_original), sysdate
+    from (select distinct txn_ssn_outer,is_dubious_outer,dubis_outer_original
+             from union_qrc_bill_result) t
+    where a.txn_ssn = t.txn_ssn_outer)
+    where exists
+    (select 1 from UNION_QRC_BILL_RESULT t where a.txn_ssn = t.txn_ssn_outer)
+    and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+    a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+  </update>
+
+  <!--根据银联全渠道对账结果更新三方对账状态-->
+  <update id="updateByUnionAllResult">
+    update union_bill_outer a
+    set (a.reco_state, a.dubious_flag,a.UPD_DATE) = (select decode(t.is_dubious_outer,
+    '2',
+    '2',
+    '1'),
+    decode(t.is_dubious_outer,
+    '2',
+    '1',
+    t.dubis_outer_original), sysdate
+    from UNION_ALL_BILL_RESULT t
+    where a.txn_ssn = t.txn_ssn_outer)
+    where exists
+    (select 1 from UNION_ALL_BILL_RESULT t where a.txn_ssn = t.txn_ssn_outer)
+    and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+    a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+  </update>
+
+  <!--查询银联账单中某种类型(冲正)无需对账的交易-->
+  <select id="queryBill" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_OUTER
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    and TXN_TYPE = #{txnType,jdbcType=VARCHAR}
+    <!--and RECO_STATE='3'-->
+  </select>
+
+  <!--根据系统跟踪号与交易日期查询原交易-->
+  <select id="queryOrigBill" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_OUTER
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    and trace_num = #{orgTranceNum,jdbcType=VARCHAR}
+    and trans_date = #{orgTransDate,jdbcType=VARCHAR}
+  </select>
+
+  <!--根据系统跟踪号与交易日期查询某类型(冲正撤销)交易-->
+  <select id="queryCancelBill" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from UNION_BILL_OUTER
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    and TXN_TYPE = #{cancelTxnType,jdbcType=VARCHAR}
+    and org_trace_num = #{tranceNum,jdbcType=VARCHAR}
+    and org_trans_date = #{transDate,jdbcType=VARCHAR}
+  </select>
+</mapper>

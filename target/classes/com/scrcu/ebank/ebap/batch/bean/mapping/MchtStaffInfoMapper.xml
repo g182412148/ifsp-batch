@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtStaffInfoMapper">
+    <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtStaffInfo">
+        <id column="STAFF_ID" property="staffId" jdbcType="VARCHAR"/>
+        <result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR"/>
+        <result column="STAFF_PHONE" property="staffPhone" jdbcType="VARCHAR"/>
+        <result column="STAFF_EMAIL" property="staffEmail" jdbcType="VARCHAR"/>
+        <result column="CERT_TYPE" property="certType" jdbcType="CHAR"/>
+        <result column="CERT_NO" property="certNo" jdbcType="VARCHAR"/>
+        <result column="CERT_EFF_DATE" property="certEffDate" jdbcType="TIMESTAMP"/>
+        <result column="CERT_EXP_DATE" property="certExpDate" jdbcType="TIMESTAMP"/>
+        <result column="FRONT_CERT_PIC" property="frontCertPic" jdbcType="VARCHAR"/>
+        <result column="BACK_CERT_PIC" property="backCertPic" jdbcType="VARCHAR"/>
+        <result column="ALLOW_LOGIN" property="allowLogin" jdbcType="CHAR"/>
+        <result column="LOGIN_PW" property="loginPw" jdbcType="VARCHAR"/>
+        <result column="GEST_PW" property="gestPw" jdbcType="VARCHAR"/>
+        <result column="LAST_LOGIN_IP" property="lastLoginIp" jdbcType="VARCHAR"/>
+        <result column="LAST_LOGIN_TM" property="lastLoginTm" jdbcType="TIMESTAMP"/>
+        <result column="LOGIN_PW_ERROR_CNT" property="loginPwErrorCnt" jdbcType="DECIMAL"/>
+        <result column="GEST_PW_ERROR_CNT" property="gestPwErrorCnt" jdbcType="DECIMAL"/>
+        <result column="FORCE_UPD_FLAG" property="forceUpdFlag" jdbcType="CHAR"/>
+        <result column="GESTURE_FLAG" property="gestureFlag" jdbcType="CHAR"/>
+        <result column="TRACK_FLAG" property="trackFlag" jdbcType="CHAR"/>
+        <result column="PUSH_FLAG" property="pushFlag" jdbcType="CHAR"/>
+        <result column="VOICE_FLAG" property="voiceFlag" jdbcType="CHAR"/>
+        <result column="PRINT_FLAG" property="printFlag" jdbcType="CHAR"/>
+        <result column="PRINT_NUM" property="printNum" jdbcType="DECIMAL"/>
+        <result column="STAFF_STATE" property="staffState" jdbcType="CHAR"/>
+        <result column="ENCRYPT_CODE" property="encryptCode" jdbcType="VARCHAR"/>
+        <result column="ENCRYPT_ID" property="encryptId" jdbcType="VARCHAR"/>
+        <result column="MOD_PW_STATE" property="modPwState" jdbcType="CHAR"/>
+        <result column="LOGIN_PW_ERROR_TM" property="loginPwErrorTm" jdbcType="TIMESTAMP"/>
+        <result column="GEST_PW_ERROR_TM" property="gestPwErrorTm" jdbcType="TIMESTAMP"/>
+        <result column="TERM_CODE" property="termCode" jdbcType="VARCHAR"/>
+        <result column="DEVICE_INFO" jdbcType="VARCHAR" property="deviceInfo" />
+        <result column="DEVICE_STATE" jdbcType="CHAR" property="deviceState" />
+        <result column="DEVICE_ID" jdbcType="VARCHAR" property="deviceId" />
+
+        <result column="STAFF_ROLE" jdbcType="VARCHAR" property="staffRole" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        a.STAFF_ID,a.STAFF_NAME,a.STAFF_PHONE,a.STAFF_EMAIL,a.CERT_TYPE,
+        a.CERT_NO,a.CERT_EFF_DATE,a.CERT_EXP_DATE,a.FRONT_CERT_PIC,a.BACK_CERT_PIC,
+        a.ALLOW_LOGIN,a.LOGIN_PW,a.GEST_PW,a.LAST_LOGIN_IP,a.LAST_LOGIN_TM,a.LOGIN_PW_ERROR_CNT,
+        a.GEST_PW_ERROR_CNT,a.FORCE_UPD_FLAG,a.GESTURE_FLAG,a.TRACK_FLAG,a.PUSH_FLAG,a.VOICE_FLAG,
+        a.PRINT_FLAG,a.PRINT_NUM,a.STAFF_STATE,a.ENCRYPT_CODE,a.ENCRYPT_ID,a.MOD_PW_STATE,a.LOGIN_PW_ERROR_TM,
+        a.GEST_PW_ERROR_TM,a.TERM_CODE,a.DEVICE_INFO,a.DEVICE_STATE,a.DEVICE_ID
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from MCHT_STAFF_INFO a
+        where a.STAFF_ID = #{staffId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByMchtId" resultMap="BaseResultMap" parameterType="java.lang.String">
+         select <include refid="Base_Column_List"/>,b.STAFF_ROLE
+           from mcht_staff_rel b, mcht_staff_info a
+          where b.mcht_id = #{mchtId,jdbcType=VARCHAR}
+            and b.staff_role='03'
+            and a.staff_id = b.staff_id
+    </select>
+
+    <select id="selectStaffInfoByMerAndRole" parameterType="map" resultMap="BaseResultMap" >
+        select * from mcht_staff_info where staff_state = #{staffState,jdbcType=VARCHAR} AND  staff_id in
+        (
+        select staff_id from mcht_staff_rel where mcht_id = #{mchtId,jdbcType=VARCHAR} AND staff_role = #{staffRole,jdbcType=VARCHAR}
+        )
+    </select>
+
+    <resultMap id="updateMchtAndStaff" type="com.scrcu.ebank.ebap.batch.bean.vo.ecif.ECIFMchtResultVo">
+        <result column="MCHT_ID" jdbcType="VARCHAR" property="mchtId"/>
+        <result column="ECIF_CUSTOMER_NO" jdbcType="VARCHAR" property="ecifCustomerNo"/>
+        <result column="MCHT_NAME" jdbcType="VARCHAR" property="mchtName"/>
+        <result column="MCHT_SIM_NAME" jdbcType="VARCHAR" property="mchtSimName"/>
+        <result column="AREA_NO" jdbcType="VARCHAR" property="areaNo"/>
+        <result column="MCHT_ADDR" jdbcType="VARCHAR" property="mchtAddr"/>
+        <result column="MCHT_TYPE" jdbcType="CHAR" property="mchtType"/>
+        <result column="MCHT_NAT" jdbcType="CHAR" property="mchtNat"/>
+
+        <result column="BL_NO" jdbcType="VARCHAR" property="blNo"/>
+        <result column="BL_EXP_TYPE" jdbcType="CHAR" property="blExpType"/>
+        <result column="BL_EXP_DATE" jdbcType="TIMESTAMP" property="blExpDate"/>
+        <result column="OWNER_NAME" property="legalName" jdbcType="VARCHAR"/>
+        <result column="OWNER_CERT_EXP_DATE" property="legalCertExpDate" jdbcType="TIMESTAMP"/>
+        <result column="OWNER_CERT_TYPE" property="legalCertType" jdbcType="CHAR"/>
+        <result column="OWNER_CERT_NO" property="legalCertNo" jdbcType="VARCHAR"/>
+        <result column="OWNER_PHONE" property="legalPhone" jdbcType="VARCHAR"/>
+        <!--普通商户才有联系人即店长-->
+        <result column="NOR_NAME" property="norName" jdbcType="VARCHAR"/>
+        <result column="NOR_PHONE" property="norPhone" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="createNormalUpdateInfo" resultMap="updateMchtAndStaff" parameterType="java.lang.String">
+        SELECT mbi.MCHT_ID,ECIF_CUSTOMER_NO,MCHT_NAME,MCHT_SIM_NAME,AREA_NO,MCHT_ADDR,MCHT_TYPE,MCHT_NAT,
+        BL_NO,BL_EXP_TYPE,BL_EXP_DATE,OWNER_NAME,OWNER_CERT_EXP_DATE,OWNER_CERT_TYPE,OWNER_CERT_NO,OWNER_PHONE,
+        msi.STAFF_NAME NOR_NAME, msi.STAFF_PHONE NOR_PHONE
+        FROM MCHTDATA.MCHT_BASE_INFO mbi,MCHTDATA.MCHT_STAFF_REL msl,MCHTDATA.MCHT_STAFF_INFO msi
+        WHERE mbi.MCHT_ID = msl.MCHT_ID
+        AND msl.STAFF_ID = msi.STAFF_ID
+        AND msl.STAFF_ROLE = '03' AND MCHT_NAT = '01' AND TO_CHAR(mbi.CRT_TM,'yyyymmdd') = #{settleDate,jdbcType=VARCHAR}
+        AND ECIF_CUSTOMER_NO IS NOT NULL
+        UNION ALL
+        SELECT mbi.MCHT_ID,ECIF_CUSTOMER_NO,MCHT_NAME,MCHT_SIM_NAME,AREA_NO,MCHT_ADDR,MCHT_TYPE,MCHT_NAT,
+        BL_NO,BL_EXP_TYPE,BL_EXP_DATE,OWNER_NAME,OWNER_CERT_EXP_DATE,OWNER_CERT_TYPE,OWNER_CERT_NO,OWNER_PHONE,
+        msi.STAFF_NAME NOR_NAME, msi.STAFF_PHONE NOR_PHONE
+        FROM MCHTDATA.MCHT_BASE_INFO mbi,MCHTDATA.MCHT_STAFF_REL msl,MCHTDATA.MCHT_STAFF_INFO msi
+        WHERE mbi.MCHT_ID = msl.MCHT_ID
+        AND msl.STAFF_ID = msi.STAFF_ID
+        AND msl.STAFF_ROLE = '03' AND MCHT_NAT = '01' AND TO_CHAR(mbi.UPD_TM,'yyyymmdd') = #{settleDate,jdbcType=VARCHAR}
+        AND ECIF_CUSTOMER_NO IS NOT NULL
+        UNION ALL
+        SELECT mbi.MCHT_ID,ECIF_CUSTOMER_NO,MCHT_NAME,MCHT_SIM_NAME,AREA_NO,MCHT_ADDR,MCHT_TYPE,MCHT_NAT,
+        BL_NO,BL_EXP_TYPE,BL_EXP_DATE,OWNER_NAME,OWNER_CERT_EXP_DATE,OWNER_CERT_TYPE,OWNER_CERT_NO,OWNER_PHONE,
+        msi.STAFF_NAME NOR_NAME, msi.STAFF_PHONE NOR_PHONE
+        FROM MCHTDATA.MCHT_BASE_INFO mbi,MCHTDATA.MCHT_STAFF_REL msl,MCHTDATA.MCHT_STAFF_INFO msi
+        WHERE mbi.MCHT_ID = msl.MCHT_ID
+        AND msl.STAFF_ID = msi.STAFF_ID
+        AND msl.STAFF_ROLE = '03' AND MCHT_NAT = '01' AND TO_CHAR(msi.UPD_TM,'yyyymmdd') = #{settleDate,jdbcType=VARCHAR}
+        AND ECIF_CUSTOMER_NO IS NOT NULL
+
+    </select>
+
+    <select id="createMiniUpdateInfo" resultMap="updateMchtAndStaff" parameterType="java.lang.String">
+        SELECT MCHT_ID,ECIF_CUSTOMER_NO,MCHT_NAME,MCHT_SIM_NAME,AREA_NO,MCHT_ADDR,MCHT_TYPE,MCHT_NAT,
+        BL_NO,BL_EXP_TYPE,BL_EXP_DATE,OWNER_NAME,OWNER_CERT_EXP_DATE,OWNER_CERT_TYPE,OWNER_CERT_NO,OWNER_PHONE
+        FROM MCHT_BASE_INFO WHERE MCHT_NAT = '00' AND TO_CHAR(CRT_TM,'yyyymmdd') = #{settleDate,jdbcType=VARCHAR}
+        AND ECIF_CUSTOMER_NO IS NOT NULL
+        UNION ALL
+        SELECT MCHT_ID,ECIF_CUSTOMER_NO,MCHT_NAME,MCHT_SIM_NAME,AREA_NO,MCHT_ADDR,MCHT_TYPE,MCHT_NAT,
+        BL_NO,BL_EXP_TYPE,BL_EXP_DATE,OWNER_NAME,OWNER_CERT_EXP_DATE,OWNER_CERT_TYPE,OWNER_CERT_NO,OWNER_PHONE
+        FROM MCHT_BASE_INFO WHERE MCHT_NAT = '00' AND TO_CHAR(UPD_TM,'yyyymmdd') = #{settleDate,jdbcType=VARCHAR}
+        AND ECIF_CUSTOMER_NO IS NOT NULL
+    </select>
+
+
+</mapper>

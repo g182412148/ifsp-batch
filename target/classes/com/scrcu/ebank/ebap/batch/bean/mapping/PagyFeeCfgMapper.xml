@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PagyFeeCfgMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfg" >
+    <id column="CFG_ID" property="cfgId" jdbcType="VARCHAR" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <result column="START_TM" property="startTm" jdbcType="CHAR" />
+    <result column="END_TM" property="endTm" jdbcType="CHAR" />
+    <result column="CFG_DESC" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="CFG_TM" property="cfgTm" jdbcType="CHAR" />
+    <result column="CFG_TLR_NO" property="cfgTlrNo" jdbcType="VARCHAR" />
+    <result column="LST_UPD_TM" property="lstUpdTm" jdbcType="CHAR" />
+    <result column="LST_UPD_TLR" property="lstUpdTlr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CFG_ID, PAGY_NO, START_TM, END_TM, CFG_DESC, CFG_TM, CFG_TLR_NO, LST_UPD_TM, LST_UPD_TLR
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAGY_FEE_CFG
+    where CFG_ID = #{cfgId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PAGY_FEE_CFG
+    where CFG_ID = #{cfgId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfg" >
+    insert into PAGY_FEE_CFG (CFG_ID, PAGY_NO, START_TM, 
+      END_TM, CFG_DESC, CFG_TM, CFG_TLR_NO, 
+      LST_UPD_TM, LST_UPD_TLR)
+    values (#{cfgId,jdbcType=VARCHAR}, #{pagyNo,jdbcType=CHAR}, #{startTm,jdbcType=CHAR}, 
+      #{endTm,jdbcType=CHAR}, #{cfgDesc,jdbcType=VARCHAR}, #{cfgTm,jdbcType=CHAR}, #{cfgTlrNo,jdbcType=VARCHAR}, 
+      #{lstUpdTm,jdbcType=CHAR}, #{lstUpdTlr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfg" >
+    insert into PAGY_FEE_CFG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cfgId != null" >
+        CFG_ID,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="startTm != null" >
+        START_TM,
+      </if>
+      <if test="endTm != null" >
+        END_TM,
+      </if>
+      <if test="cfgDesc != null" >
+        CFG_DESC,
+      </if>
+      <if test="cfgTm != null" >
+        CFG_TM,
+      </if>
+      <if test="cfgTlrNo != null" >
+        CFG_TLR_NO,
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM,
+      </if>
+      <if test="lstUpdTlr != null" >
+        LST_UPD_TLR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cfgId != null" >
+        #{cfgId,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="startTm != null" >
+        #{startTm,jdbcType=CHAR},
+      </if>
+      <if test="endTm != null" >
+        #{endTm,jdbcType=CHAR},
+      </if>
+      <if test="cfgDesc != null" >
+        #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgTm != null" >
+        #{cfgTm,jdbcType=CHAR},
+      </if>
+      <if test="cfgTlrNo != null" >
+        #{cfgTlrNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        #{lstUpdTm,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTlr != null" >
+        #{lstUpdTlr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfg" >
+    update PAGY_FEE_CFG
+    <set >
+      <if test="pagyNo != null" >
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="startTm != null" >
+        START_TM = #{startTm,jdbcType=CHAR},
+      </if>
+      <if test="endTm != null" >
+        END_TM = #{endTm,jdbcType=CHAR},
+      </if>
+      <if test="cfgDesc != null" >
+        CFG_DESC = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgTm != null" >
+        CFG_TM = #{cfgTm,jdbcType=CHAR},
+      </if>
+      <if test="cfgTlrNo != null" >
+        CFG_TLR_NO = #{cfgTlrNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM = #{lstUpdTm,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTlr != null" >
+        LST_UPD_TLR = #{lstUpdTlr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CFG_ID = #{cfgId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PagyFeeCfg" >
+    update PAGY_FEE_CFG
+    set PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      START_TM = #{startTm,jdbcType=CHAR},
+      END_TM = #{endTm,jdbcType=CHAR},
+      CFG_DESC = #{cfgDesc,jdbcType=VARCHAR},
+      CFG_TM = #{cfgTm,jdbcType=CHAR},
+      CFG_TLR_NO = #{cfgTlrNo,jdbcType=VARCHAR},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=CHAR},
+      LST_UPD_TLR = #{lstUpdTlr,jdbcType=VARCHAR}
+    where CFG_ID = #{cfgId,jdbcType=VARCHAR}
+  </update>
+  
+
+</mapper>

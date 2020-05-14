@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PmpAuditStepInfoMapper">
+    <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditStepInfo">
+        <id column="SEQ_ID" property="seqId" jdbcType="VARCHAR"/>
+        <result column="AUDIT_ID" property="auditId" jdbcType="VARCHAR"/>
+        <result column="STEP_NO" property="stepNo" jdbcType="DECIMAL"/>
+        <result column="AUDIT_STATE" property="auditState" jdbcType="CHAR"/>
+        <result column="ROLE_ID" property="roleId" jdbcType="DECIMAL"/>
+        <result column="AUDIT_OPR_NO" property="auditOprNo" jdbcType="VARCHAR"/>
+        <result column="AUDIT_DATET_IME" property="auditDatetIme" jdbcType="CHAR"/>
+        <result column="AUDIT_VIEW" property="auditView" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    SEQ_ID, AUDIT_ID, STEP_NO, AUDIT_STATE, ROLE_ID, AUDIT_OPR_NO, AUDIT_DATET_IME, AUDIT_VIEW
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from PMP_AUDIT_STEP_INFO
+        where SEQ_ID = #{seqId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PMP_AUDIT_STEP_INFO
+    where SEQ_ID = #{seqId,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditStepInfo">
+    insert into PMP_AUDIT_STEP_INFO (SEQ_ID, AUDIT_ID, STEP_NO, 
+      AUDIT_STATE, ROLE_ID, AUDIT_OPR_NO, 
+      AUDIT_DATET_IME, AUDIT_VIEW)
+    values (#{seqId,jdbcType=VARCHAR}, #{auditId,jdbcType=VARCHAR}, #{stepNo,jdbcType=DECIMAL}, 
+      #{auditState,jdbcType=CHAR}, #{roleId,jdbcType=DECIMAL}, #{auditOprNo,jdbcType=VARCHAR}, 
+      #{auditDatetIme,jdbcType=CHAR}, #{auditView,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditStepInfo">
+        insert into PMP_AUDIT_STEP_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="seqId != null">
+                SEQ_ID,
+            </if>
+            <if test="auditId != null">
+                AUDIT_ID,
+            </if>
+            <if test="stepNo != null">
+                STEP_NO,
+            </if>
+            <if test="auditState != null">
+                AUDIT_STATE,
+            </if>
+            <if test="roleId != null">
+                ROLE_ID,
+            </if>
+            <if test="auditOprNo != null">
+                AUDIT_OPR_NO,
+            </if>
+            <if test="auditDatetIme != null">
+                AUDIT_DATET_IME,
+            </if>
+            <if test="auditView != null">
+                AUDIT_VIEW,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="seqId != null">
+                #{seqId,jdbcType=VARCHAR},
+            </if>
+            <if test="auditId != null">
+                #{auditId,jdbcType=VARCHAR},
+            </if>
+            <if test="stepNo != null">
+                #{stepNo,jdbcType=DECIMAL},
+            </if>
+            <if test="auditState != null">
+                #{auditState,jdbcType=CHAR},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=DECIMAL},
+            </if>
+            <if test="auditOprNo != null">
+                #{auditOprNo,jdbcType=VARCHAR},
+            </if>
+            <if test="auditDatetIme != null">
+                #{auditDatetIme,jdbcType=CHAR},
+            </if>
+            <if test="auditView != null">
+                #{auditView,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditStepInfo">
+        update PMP_AUDIT_STEP_INFO
+        <set>
+            <if test="auditId != null">
+                AUDIT_ID = #{auditId,jdbcType=VARCHAR},
+            </if>
+            <if test="stepNo != null">
+                STEP_NO = #{stepNo,jdbcType=DECIMAL},
+            </if>
+            <if test="auditState != null">
+                AUDIT_STATE = #{auditState,jdbcType=CHAR},
+            </if>
+            <if test="roleId != null">
+                ROLE_ID = #{roleId,jdbcType=DECIMAL},
+            </if>
+            <if test="auditOprNo != null">
+                AUDIT_OPR_NO = #{auditOprNo,jdbcType=VARCHAR},
+            </if>
+            <if test="auditDatetIme != null">
+                AUDIT_DATET_IME = #{auditDatetIme,jdbcType=CHAR},
+            </if>
+            <if test="auditView != null">
+                AUDIT_VIEW = #{auditView,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SEQ_ID = #{seqId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PmpAuditStepInfo">
+    update PMP_AUDIT_STEP_INFO
+    set AUDIT_ID = #{auditId,jdbcType=VARCHAR},
+      STEP_NO = #{stepNo,jdbcType=DECIMAL},
+      AUDIT_STATE = #{auditState,jdbcType=CHAR},
+      ROLE_ID = #{roleId,jdbcType=DECIMAL},
+      AUDIT_OPR_NO = #{auditOprNo,jdbcType=VARCHAR},
+      AUDIT_DATET_IME = #{auditDatetIme,jdbcType=CHAR},
+      AUDIT_VIEW = #{auditView,jdbcType=VARCHAR}
+    where SEQ_ID = #{seqId,jdbcType=VARCHAR}
+  </update>
+
+
+   
+   <select id="selectAuditStepList" parameterType="map" resultMap="BaseResultMap">
+         select * from PMP_AUDIT_STEP_INFO where AUDIT_ID=#{auditId,jdbcType=VARCHAR} and ROLE_ID=#{roleId,jdbcType=VARCHAR}
+   </select>
+
+</mapper>

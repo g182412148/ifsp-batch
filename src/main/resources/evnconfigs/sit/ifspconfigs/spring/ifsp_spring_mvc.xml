@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+	   	http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/mvc
+	    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	    http://www.springframework.org/schema/context   
+     	http://www.springframework.org/schema/context/spring-context.xsd
+	    http://www.springframework.org/schema/util 
+     	http://www.springframework.org/schema/util/spring-util.xsd
+	    http://www.springframework.org/schema/aop
+     	http://www.springframework.org/schema/aop/spring-aop.xsd
+     	http://www.springframework.org/schema/task
+ 		http://www.springframework.org/schema/task/spring-task.xsd
+	    ">
+
+    <!-- 增加一个线程池 -->
+    <!-- 线程执行器配置 , 用于任务注册 -->
+    <!--<bean id="executorThr" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">-->
+        <!--<property name="corePoolSize" value="10"/>-->
+        <!--<property name="maxPoolSize" value="100"/>-->
+        <!--<property name="queueCapacity" value="500"/>-->
+    <!--</bean>-->
+   <!-- <aop:aspectj-autoproxy proxy-target-class="true">
+    </aop:aspectj-autoproxy>-->
+
+    <!-- 业务对象 -->
+    <bean id="TimedKeepAccountTask" class="com.scrcu.ebank.ebap.batch.task.TimedKeepAccountTask"/>
+    <bean id="TimedKeepAccountTaskT0" class="com.scrcu.ebank.ebap.batch.task.TimedKeepAccountTaskT0"/>
+
+    <bean id="UntradedMerchants" class="com.scrcu.ebank.ebap.batch.task.UntradedMerchants"/>
+
+
+    <!-- 调度业务 -->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!--<property name="concurrent" value="false"/>   &lt;!&ndash;  不并发执行,防止前一任务未执行完直接执行下一个,导致数据错误  &ndash;&gt;-->
+        <property name="targetObject" ref="TimedKeepAccountTask"/>
+        <property name="targetMethod" value="coreKeepAccount"/>
+    </bean>
+    <bean id="jobDetailT0" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!--<property name="concurrent" value="false"/>   &lt;!&ndash;  不并发执行,防止前一任务未执行完直接执行下一个,导致数据错误  &ndash;&gt;-->
+        <property name="targetObject" ref="TimedKeepAccountTaskT0"/>
+        <property name="targetMethod" value="coreKeepAccount"/>
+    </bean>
+
+    <!-- 调度业务 -->
+    <bean id="jobDetailUntraded" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!--<property name="concurrent" value="false"/>   &lt;!&ndash;  不并发执行,防止前一任务未执行完直接执行下一个,导致数据错误  &ndash;&gt;-->
+        <property name="targetObject" ref="UntradedMerchants"/>
+        <property name="targetMethod" value="untradedMchtInfoAccount"/>
+    </bean>
+
+    <!--&lt;!&ndash; 调度触发器 &ndash;&gt;-->
+    <!--<bean id="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
+        <!--<property name="jobDetail" ref="jobDetail"/>-->
+        <!--&lt;!&ndash; 最重点的，时间的表达式 	格式是固定的：秒 分 时 日 月 星期 年-->
+            <!--<property name="cronExpression" value="表达式"/>-->
+            <!--value="0/10 * * * * ? *"	每隔10秒执行一次-->
+        <!--&ndash;&gt;-->
+        <!--<property name="cronExpression" value="0/5 * * * * ? *"/>-->
+    <!--</bean>-->
+
+
+    <!-- 或者触发器设置成这样 -->
+    <bean id="taskTigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="startDelay" value="60000"/>        <!-- 延迟1分钟启动 -->
+        <property name="repeatInterval" value="120000"/>     <!-- 每隔2分钟执行一次 -->
+    </bean>
+    <bean id="taskTiggerT0" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetailT0"/>
+        <property name="startDelay" value="60000"/>        <!-- 延迟1分钟启动 -->
+        <property name="repeatInterval" value="120000"/>     <!-- 每隔2分钟执行一次 -->
+    </bean>
+    <!-- 调度触发器每天晚上0点执行 -->
+    <bean id="taskTiggerUntraded" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetailUntraded"/>
+        <!-- 最重点的，时间的表达式 	格式是固定的：秒 分 时 日 月 星期 年
+        <property name="cronExpression" value="表达式"/>
+        value="0/10 * * * * ? *"	每隔10秒执行一次
+        -->
+        <property name="cronExpression" value="0 0 0 * * ?"/>
+    </bean>
+
+    <!-- 配置Scheduler -->
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <array>
+                <!--<ref bean="trigger"/>-->
+                <ref bean="taskTigger"/>
+                <ref bean="taskTiggerT0"/>
+                <ref bean="taskTiggerUntraded"/>
+            </array>
+        </property>
+        <!--<property name="taskExecutor" ref="executorThr"/>-->
+    </bean>
+    <task:annotation-driven/>
+
+    <!-- 调用器 -->
+    <bean id="serviceFactory" class="com.scrcu.ebank.common.client.ServiceFactoryImpl" />
+    <bean id="serviceInvoker" class="com.scrcu.ebank.common.client.DubboServiceInvoker">
+        <property name="serviceFactory" ref="serviceFactory" />
+    </bean>
+   <bean id="batchListener" class="com.scrcu.ebank.ebap.batch.listener.BatchListener" init-method="init" destroy-method="destroy"/>
+</beans>

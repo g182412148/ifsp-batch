@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 商户对账文件格式 -->
+<!-- 
+templateType=READ|WRITE 表示解析文件还是生成文件 
+split分隔符 "\|" , 读文件时竖线分隔需要带转换符，写文件时不需要
+headLength文件头的长度，带换行符的表示文件头占了多少行，不带换行符的应该是字节长度
+endingLength文件尾
+lineSeparator换行符，若无，则表示不换行，换行一般是\r\n 字节文件一般是固定长度不带分隔符不换行
+-->
+<data templateType="WRITE"
+    split="|" 
+    clazz="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl" 
+    charSet="utf-8"
+    headLength=""
+    endingLength=""
+    lineSeparator="rn"
+    >
+<!-- 
+regex正则表达式 
+dateFormat日期格式
+type数据类型：Number、Date
+numMultiple数字类型需要转换到倍数
+tranSrc要转换到源值，逗号分隔
+tranDest要转换到目标值，逗号分隔
+-->	
+	 <!-- 1-5 --> 
+     <column name="subOrderTime" length="8" type="" regex="" dateFormat="" numMultiple="" desc="交易日期" tranSrc="" tranDest="" /> 
+     <column name="orderType" length="" type="" regex="" dateFormat="" numMultiple="" desc="交易类型码" tranSrc="" tranDest="" />
+     <column name="orderSsn" length="" type="" regex="" dateFormat="" numMultiple="" desc="流水号" tranSrc="" tranDest="" /> 
+     <column name="reqSubOrderSsn" length="" type="" regex="" dateFormat="" numMultiple="" desc="商户订单号" tranSrc="" tranDest="" /> 
+     <column name="chlMerId" length="" regex="" type="" dateFormat="" numMultiple="" desc="一级商户号" tranSrc="" tranDest="" /> 
+     
+     <!-- 6-10 -->   
+     <column name="chlMerName" length="" type="" regex="" dateFormat="" numMultiple="" desc="一级商户名称" tranSrc="" tranDest="" /> 
+     <column name="chlSubMerId" length="" type="" regex="" dateFormat="" numMultiple="" desc="二级商户号" tranSrc="" tranDest="" /> 
+     <column name="chlSubMerName" length="" type="" regex="" dateFormat="" numMultiple="" desc="二级商户名称" tranSrc="" tranDest="" />
+     <column name="cur" length="" type="" regex="" dateFormat="" numMultiple="" desc="币种" tranSrc="" tranDest="" /> 
+     <column name="txnAmt" length="12" type="Number" regex="" dateFormat="" numMultiple="1" desc="交易金额" tranSrc="" tranDest="" /> 
+
+      <!-- 11-12 -->
+     <column name="setlFeeAmt" length="12" type="Number" regex="" dateFormat="" numMultiple="1" desc="应收手续费" tranSrc="" tranDest="" />
+     <column name="fundChannel" length="" type="" regex="" dateFormat="" numMultiple="" desc="支付渠道" tranSrc="" tranDest="" /> 
+     <column name="payChannel" length="" type="" regex="" dateFormat="" numMultiple="" desc="交易场景" tranSrc="" tranDest="" />
+     <column name="payStatusUpdateTime" length="" type="" regex="" dateFormat="" numMultiple="" desc="支付成功时间" tranSrc="" tranDest="" />
+    
+</data>

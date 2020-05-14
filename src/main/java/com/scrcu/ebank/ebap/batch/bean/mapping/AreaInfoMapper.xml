@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.AreaInfoMapper">
+    <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.AreaInfo">
+        <id column="AREA_CODE" property="areaCode" jdbcType="VARCHAR"/>
+        <result column="AREA_NAME" property="areaName" jdbcType="VARCHAR"/>
+        <result column="PAR_AREA_CODE" property="parAreaCode" jdbcType="VARCHAR"/>
+        <result column="AREA_TYPE" property="areaType" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    AREA_CODE, AREA_NAME, PAR_AREA_CODE, AREA_TYPE
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from AREA_INFO
+        where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from AREA_INFO
+    where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.AreaInfo">
+    insert into AREA_INFO (AREA_CODE, AREA_NAME, PAR_AREA_CODE, 
+      AREA_TYPE)
+    values (#{areaCode,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, #{parAreaCode,jdbcType=VARCHAR}, 
+      #{areaType,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.AreaInfo">
+        insert into AREA_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="areaCode != null">
+                AREA_CODE,
+            </if>
+            <if test="areaName != null">
+                AREA_NAME,
+            </if>
+            <if test="parAreaCode != null">
+                PAR_AREA_CODE,
+            </if>
+            <if test="areaType != null">
+                AREA_TYPE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="areaCode != null">
+                #{areaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="areaName != null">
+                #{areaName,jdbcType=VARCHAR},
+            </if>
+            <if test="parAreaCode != null">
+                #{parAreaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="areaType != null">
+                #{areaType,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.AreaInfo">
+        update AREA_INFO
+        <set>
+            <if test="areaName != null">
+                AREA_NAME = #{areaName,jdbcType=VARCHAR},
+            </if>
+            <if test="parAreaCode != null">
+                PAR_AREA_CODE = #{parAreaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="areaType != null">
+                AREA_TYPE = #{areaType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.AreaInfo">
+    update AREA_INFO
+    set AREA_NAME = #{areaName,jdbcType=VARCHAR},
+      PAR_AREA_CODE = #{parAreaCode,jdbcType=VARCHAR},
+      AREA_TYPE = #{areaType,jdbcType=VARCHAR}
+    where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

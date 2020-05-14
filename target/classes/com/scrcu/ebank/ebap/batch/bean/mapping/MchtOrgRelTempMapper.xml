@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtOrgRelTempMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRelTemp" >
+    <id column="MCHT_NO" property="mchtNo" jdbcType="VARCHAR" />
+    <id column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <id column="ORG_TYPE" property="orgType" jdbcType="CHAR" />
+    <result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MCHT_NO, ORG_ID, ORG_TYPE, ORG_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from MCHT_ORG_REL_TEMP
+    where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+      and ORG_ID = #{orgId,jdbcType=VARCHAR}
+      and ORG_TYPE = #{orgType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from MCHT_ORG_REL_TEMP
+    where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+      and ORG_ID = #{orgId,jdbcType=VARCHAR}
+      and ORG_TYPE = #{orgType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRelTemp" >
+    insert into MCHT_ORG_REL_TEMP (MCHT_NO, ORG_ID, ORG_TYPE, 
+      ORG_NAME)
+    values (#{mchtNo,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{orgType,jdbcType=CHAR}, 
+      #{orgName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRelTemp" >
+    insert into MCHT_ORG_REL_TEMP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mchtNo != null" >
+        MCHT_NO,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="orgType != null" >
+        ORG_TYPE,
+      </if>
+      <if test="orgName != null" >
+        ORG_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mchtNo != null" >
+        #{mchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgType != null" >
+        #{orgType,jdbcType=CHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRelTemp" >
+    update MCHT_ORG_REL_TEMP
+    <set >
+      <if test="orgName != null" >
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+      and ORG_ID = #{orgId,jdbcType=VARCHAR}
+      and ORG_TYPE = #{orgType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRelTemp" >
+    update MCHT_ORG_REL_TEMP
+    set ORG_NAME = #{orgName,jdbcType=VARCHAR}
+    where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+      and ORG_ID = #{orgId,jdbcType=VARCHAR}
+      and ORG_TYPE = #{orgType,jdbcType=CHAR}
+  </update>
+
+  <!-- 更新机构号 -->
+  <update id="updateMchtOrgRelTemp" parameterType="map">
+    update MCHT_ORG_REL_TEMP
+    set ORG_ID = #{merg,jdbcType=VARCHAR},
+        ORG_NAME = #{orgName,jdbcType=VARCHAR}
+    where ORG_ID = #{reqe,jdbcType=VARCHAR}
+  </update>
+</mapper>

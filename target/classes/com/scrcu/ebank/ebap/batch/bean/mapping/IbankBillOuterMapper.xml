@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.IbankBillOuterMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillOuter" >
+    <id column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="TXN_TIME" property="txnTime" jdbcType="TIMESTAMP" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="TXN_STATE" property="txnState" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="RECO_STATE" property="recoState" jdbcType="VARCHAR" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+    <result column="CHANNEL_NO" property="channelNo" jdbcType="VARCHAR" />
+    <result column="CHANNEL_DATE" property="channelDate" jdbcType="CHAR" />
+    <result column="CHANNEL_SEQ" property="channelSeq" jdbcType="VARCHAR" />
+    <result column="TXN_DATE" property="txnDate" jdbcType="CHAR" />
+    <result column="TELLER_SEQ" property="tellerSeq" jdbcType="VARCHAR" />
+    <result column="TXN_STATUS" property="txnStatus" jdbcType="CHAR" />
+    <result column="PLATFORM_DATE" property="platformDate" jdbcType="CHAR" />
+    <result column="PLATFORM_SEQ" property="platformSeq" jdbcType="VARCHAR" />
+    <result column="TXN_CODE" property="txnCode" jdbcType="VARCHAR" />
+    <result column="TXN_ORG" property="txnOrg" jdbcType="VARCHAR" />
+    <result column="TXN_TELLER" property="txnTeller" jdbcType="VARCHAR" />
+    <result column="TXN_CUR" property="txnCur" jdbcType="VARCHAR" />
+    <result column="PAY_ACCOUNT" property="payAccount" jdbcType="VARCHAR" />
+    <result column="RECEIVE_ACCOUNT" property="receiveAccount" jdbcType="VARCHAR" />
+    <result column="TXN_AMOUNT" property="txnAmount" jdbcType="DECIMAL" />
+    <result column="DUBIS_FLAG" property="dubisFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TXN_SSN, RECO_DATE, TXN_TIME, TXN_TYPE, TXN_STATE, TXN_AMT, RECO_STATE, UPD_DATE, 
+    CHANNEL_NO, CHANNEL_DATE, CHANNEL_SEQ, TXN_DATE, TELLER_SEQ, TXN_STATUS, PLATFORM_DATE, 
+    PLATFORM_SEQ, TXN_CODE, TXN_ORG, TXN_TELLER, TXN_CUR, PAY_ACCOUNT, RECEIVE_ACCOUNT, 
+    TXN_AMOUNT, DUBIS_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IBANK_BILL_OUTER
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IBANK_BILL_OUTER
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillOuter" >
+    insert into IBANK_BILL_OUTER (TXN_SSN, RECO_DATE, TXN_TIME, 
+      TXN_TYPE, TXN_STATE, TXN_AMT, 
+      RECO_STATE, UPD_DATE, CHANNEL_NO, 
+      CHANNEL_DATE, CHANNEL_SEQ, TXN_DATE, 
+      TELLER_SEQ, TXN_STATUS, PLATFORM_DATE, 
+      PLATFORM_SEQ, TXN_CODE, TXN_ORG, 
+      TXN_TELLER, TXN_CUR, PAY_ACCOUNT, 
+      RECEIVE_ACCOUNT, TXN_AMOUNT, DUBIS_FLAG
+      )
+    values (#{txnSsn,jdbcType=VARCHAR}, #{recoDate,jdbcType=TIMESTAMP}, #{txnTime,jdbcType=TIMESTAMP}, 
+      #{txnType,jdbcType=VARCHAR}, #{txnState,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, 
+      #{recoState,jdbcType=VARCHAR}, sysdate, #{channelNo,jdbcType=VARCHAR}, 
+      #{channelDate,jdbcType=CHAR}, #{channelSeq,jdbcType=VARCHAR}, #{txnDate,jdbcType=CHAR}, 
+      #{tellerSeq,jdbcType=VARCHAR}, #{txnStatus,jdbcType=CHAR}, #{platformDate,jdbcType=CHAR}, 
+      #{platformSeq,jdbcType=VARCHAR}, #{txnCode,jdbcType=VARCHAR}, #{txnOrg,jdbcType=VARCHAR}, 
+      #{txnTeller,jdbcType=VARCHAR}, #{txnCur,jdbcType=VARCHAR}, #{payAccount,jdbcType=VARCHAR}, 
+      #{receiveAccount,jdbcType=VARCHAR}, #{txnAmount,jdbcType=DECIMAL}, #{dubisFlag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillOuter" >
+    insert into IBANK_BILL_OUTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE,
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE,
+<!--       </if> -->
+      <if test="channelNo != null" >
+        CHANNEL_NO,
+      </if>
+      <if test="channelDate != null" >
+        CHANNEL_DATE,
+      </if>
+      <if test="channelSeq != null" >
+        CHANNEL_SEQ,
+      </if>
+      <if test="txnDate != null" >
+        TXN_DATE,
+      </if>
+      <if test="tellerSeq != null" >
+        TELLER_SEQ,
+      </if>
+      <if test="txnStatus != null" >
+        TXN_STATUS,
+      </if>
+      <if test="platformDate != null" >
+        PLATFORM_DATE,
+      </if>
+      <if test="platformSeq != null" >
+        PLATFORM_SEQ,
+      </if>
+      <if test="txnCode != null" >
+        TXN_CODE,
+      </if>
+      <if test="txnOrg != null" >
+        TXN_ORG,
+      </if>
+      <if test="txnTeller != null" >
+        TXN_TELLER,
+      </if>
+      <if test="txnCur != null" >
+        TXN_CUR,
+      </if>
+      <if test="payAccount != null" >
+        PAY_ACCOUNT,
+      </if>
+      <if test="receiveAccount != null" >
+        RECEIVE_ACCOUNT,
+      </if>
+      <if test="txnAmount != null" >
+        TXN_AMOUNT,
+      </if>
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        #{recoState,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updDate != null" > -->
+        sysdate,
+<!--       </if> -->
+      <if test="channelNo != null" >
+        #{channelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelDate != null" >
+        #{channelDate,jdbcType=CHAR},
+      </if>
+      <if test="channelSeq != null" >
+        #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDate != null" >
+        #{txnDate,jdbcType=CHAR},
+      </if>
+      <if test="tellerSeq != null" >
+        #{tellerSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnStatus != null" >
+        #{txnStatus,jdbcType=CHAR},
+      </if>
+      <if test="platformDate != null" >
+        #{platformDate,jdbcType=CHAR},
+      </if>
+      <if test="platformSeq != null" >
+        #{platformSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCode != null" >
+        #{txnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="txnOrg != null" >
+        #{txnOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTeller != null" >
+        #{txnTeller,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCur != null" >
+        #{txnCur,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null" >
+        #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAccount != null" >
+        #{receiveAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmount != null" >
+        #{txnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dubisFlag != null" >
+        #{dubisFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillOuter" >
+    update IBANK_BILL_OUTER
+    <set >
+      <if test="recoDate != null" >
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnState != null" >
+        TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoState != null" >
+        RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updDate != null" > -->
+        UPD_DATE = sysdate,
+<!--       </if> -->
+      <if test="channelNo != null" >
+        CHANNEL_NO = #{channelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelDate != null" >
+        CHANNEL_DATE = #{channelDate,jdbcType=CHAR},
+      </if>
+      <if test="channelSeq != null" >
+        CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDate != null" >
+        TXN_DATE = #{txnDate,jdbcType=CHAR},
+      </if>
+      <if test="tellerSeq != null" >
+        TELLER_SEQ = #{tellerSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnStatus != null" >
+        TXN_STATUS = #{txnStatus,jdbcType=CHAR},
+      </if>
+      <if test="platformDate != null" >
+        PLATFORM_DATE = #{platformDate,jdbcType=CHAR},
+      </if>
+      <if test="platformSeq != null" >
+        PLATFORM_SEQ = #{platformSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCode != null" >
+        TXN_CODE = #{txnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="txnOrg != null" >
+        TXN_ORG = #{txnOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTeller != null" >
+        TXN_TELLER = #{txnTeller,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCur != null" >
+        TXN_CUR = #{txnCur,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccount != null" >
+        PAY_ACCOUNT = #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAccount != null" >
+        RECEIVE_ACCOUNT = #{receiveAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmount != null" >
+        TXN_AMOUNT = #{txnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dubisFlag != null" >
+        DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IbankBillOuter" >
+    update IBANK_BILL_OUTER
+    set RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      TXN_STATE = #{txnState,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      RECO_STATE = #{recoState,jdbcType=VARCHAR},
+      UPD_DATE = sysdate,
+      CHANNEL_NO = #{channelNo,jdbcType=VARCHAR},
+      CHANNEL_DATE = #{channelDate,jdbcType=CHAR},
+      CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR},
+      TXN_DATE = #{txnDate,jdbcType=CHAR},
+      TELLER_SEQ = #{tellerSeq,jdbcType=VARCHAR},
+      TXN_STATUS = #{txnStatus,jdbcType=CHAR},
+      PLATFORM_DATE = #{platformDate,jdbcType=CHAR},
+      PLATFORM_SEQ = #{platformSeq,jdbcType=VARCHAR},
+      TXN_CODE = #{txnCode,jdbcType=VARCHAR},
+      TXN_ORG = #{txnOrg,jdbcType=VARCHAR},
+      TXN_TELLER = #{txnTeller,jdbcType=VARCHAR},
+      TXN_CUR = #{txnCur,jdbcType=VARCHAR},
+      PAY_ACCOUNT = #{payAccount,jdbcType=VARCHAR},
+      RECEIVE_ACCOUNT = #{receiveAccount,jdbcType=VARCHAR},
+      TXN_AMOUNT = #{txnAmount,jdbcType=DECIMAL},
+      DUBIS_FLAG = #{dubisFlag,jdbcType=CHAR}
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+    <!-- 批量插入文件内容 -->
+   <insert id="insertBatch">
+       INSERT ALL
+       <foreach collection="recordList" index="index" item="item">
+           into IBANK_BILL_OUTER
+           (
+           txn_ssn,
+           reco_date,
+           txn_time,
+           txn_type,
+           txn_state,
+           txn_amt,
+           reco_state,
+           channel_no,
+           channel_date,
+           channel_seq,
+           txn_date,
+           teller_seq,
+           txn_status,
+           platform_date,
+           platform_seq,
+           txn_code,
+           txn_org,
+           txn_teller,
+           txn_cur,
+           pay_account,
+           receive_account,
+           txn_amount,
+           UPD_DATE
+           )
+           values
+           (
+           #{item.txnSsn,jdbcType=VARCHAR},
+           #{item.recoDate,jdbcType=TIMESTAMP},
+           #{item.txnTime,jdbcType=TIMESTAMP},
+           #{item.txnType,jdbcType=VARCHAR},
+           #{item.txnState,jdbcType=VARCHAR},
+           #{item.txnAmt,jdbcType=DECIMAL},
+           #{item.recoState,jdbcType=VARCHAR},
+           #{item.channelNo,jdbcType=VARCHAR},
+           #{item.channelDate,jdbcType=CHAR},
+           #{item.channelSeq,jdbcType=VARCHAR},
+           #{item.txnDate,jdbcType=CHAR},
+           #{item.tellerSeq,jdbcType=VARCHAR},
+           #{item.txnStatus,jdbcType=CHAR},
+           #{item.platformDate,jdbcType=CHAR},
+           #{item.platformSeq,jdbcType=VARCHAR},
+           #{item.txnCode,jdbcType=VARCHAR},
+           #{item.txnOrg,jdbcType=VARCHAR},
+           #{item.txnTeller,jdbcType=VARCHAR},
+           #{item.txnCur,jdbcType=VARCHAR},
+           #{item.payAccount,jdbcType=VARCHAR},
+           #{item.receiveAccount,jdbcType=VARCHAR},
+           #{item.txnAmount,jdbcType=DECIMAL},
+           sysdate
+           )
+       </foreach>
+       SELECT 1 FROM DUAL
+   </insert>
+
+
+    <!-- 恢复对账文件表状态 -->
+    <update id="recovery">
+        UPDATE
+            IBANK_BILL_OUTER
+        SET
+            RECO_STATE = '0', UPD_DATE = sysdate
+        WHERE
+            RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    </update>
+
+    <!-- 恢复对账文件可疑状态 -->
+    <update id="recoveryDubious">
+        UPDATE
+            IBANK_BILL_OUTER
+        SET
+            RECO_STATE = '2', UPD_DATE = sysdate
+        WHERE
+            RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+            AND DUBIS_FLAG = '1'
+    </update>
+
+    <!-- 查询本行对账文件未对账与可疑的数据 -->
+    <select id="queryNotReco" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" /> FROM IBANK_BILL_OUTER
+        WHERE
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+        AND RECO_STATE = '0'
+        UNION ALL
+        SELECT <include refid="Base_Column_List" /> FROM IBANK_BILL_OUTER
+        WHERE
+        RECO_DATE = #{dubiousDate,jdbcType=TIMESTAMP}
+        AND RECO_STATE = '2'
+    </select>
+
+    <!-- 清除本行对账文件数据 -->
+    <delete id="clear">
+        delete from IBANK_BILL_OUTER
+        where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    </delete>
+
+    <!-- 根据日期查询本行核心流水记录 -->
+    <select id="queryByIdAndDate" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM IBANK_BILL_OUTER
+        WHERE
+        RECO_DATE BETWEEN #{dubiousDate,jdbcType=TIMESTAMP} AND #{recoDate,jdbcType=TIMESTAMP}
+        AND TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据本行对账结果更新三方对账状态-->
+    <update id="updateByResult">
+        update IBANK_BILL_OUTER a
+        set (a.reco_state, a.dubis_flag, a.UPD_DATE) = (select decode(t.is_dubious_outer,
+        '2',
+        '2',
+        '1'),
+        decode(t.is_dubious_outer,
+        '2',
+        '1',
+        t.dubis_outer_original), sysdate
+        from ibank_bill_result t
+        where a.txn_ssn = t.txn_ssn_outer)
+        where exists
+        (select 1 from ibank_bill_result t where a.txn_ssn = t.txn_ssn_outer)
+        and (a.reco_date = #{dubiousDate,jdbcType=TIMESTAMP} or
+        a.reco_date = #{recoDate,jdbcType=TIMESTAMP})
+    </update>
+
+</mapper>

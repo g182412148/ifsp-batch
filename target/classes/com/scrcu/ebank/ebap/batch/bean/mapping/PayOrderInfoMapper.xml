@@ -1,0 +1,1325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.PayOrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.PayOrderInfo">
+    <id column="ORDER_SSN" jdbcType="VARCHAR" property="orderSsn" />
+    <result column="ORDER_TM" jdbcType="TIMESTAMP" property="orderTm" />
+    <result column="ORIG_ORDER_SSN" jdbcType="VARCHAR" property="origOrderSsn" />
+    <result column="ORIG_ORDER_TM" jdbcType="TIMESTAMP" property="origOrderTm" />
+    <result column="REQ_ORDER_SSN" jdbcType="VARCHAR" property="reqOrderSsn" />
+    <result column="REQ_ORDER_TM" jdbcType="TIMESTAMP" property="reqOrderTm" />
+    <result column="TXN_APP_ID" jdbcType="VARCHAR" property="txnAppId" />
+    <result column="TXN_OPEN_ID" jdbcType="VARCHAR" property="txnOpenId" />
+    <result column="MCHT_USER_ID" jdbcType="VARCHAR" property="mchtUserId" />
+    <result column="PROD_ID" jdbcType="CHAR" property="prodId" />
+    <result column="TXN_TYPE_NO" jdbcType="CHAR" property="txnTypeNo" />
+    <result column="CHL_NO" jdbcType="CHAR" property="chlNo" />
+    <result column="ORDER_TYPE" jdbcType="CHAR" property="orderType" />
+    <result column="USER_REQ_ORDER_SSN" jdbcType="VARCHAR" property="userReqOrderSsn" />
+    <result column="USER_REQ_ORDER_TM" jdbcType="TIMESTAMP" property="userReqOrderTm" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="CONID" jdbcType="VARCHAR" property="conid" />
+    <result column="LMT_FLAG" jdbcType="CHAR" property="lmtFlag" />
+    <result column="USER_SECRTY_LEVEL" jdbcType="CHAR" property="userSecrtyLevel" />
+    <result column="USER_CERT_LEVEL" jdbcType="CHAR" property="userCertLevel" />
+    <result column="BEHAVIOR_CODE" jdbcType="VARCHAR" property="behaviorCode" />
+    <result column="OPEN_BRC" jdbcType="VARCHAR" property="openBrc" />
+    <result column="USER_CERT_RESULT_CODE" jdbcType="CHAR" property="userCertResultCode" />
+    <result column="USER_CERT_RESULT_MSG" jdbcType="VARCHAR" property="userCertResultMsg" />
+    <result column="CHNL_ID_PARA" jdbcType="VARCHAR" property="chnlIdPara" />
+    <result column="SAMLL_AMT_FLAG" jdbcType="CHAR" property="samllAmtFlag" />
+    <result column="ACCT_TYPE_ID" jdbcType="CHAR" property="acctTypeId" />
+    <result column="ACCT_SUB_TYPE_ID" jdbcType="CHAR" property="acctSubTypeId" />
+    <result column="ACCT_CLASS" jdbcType="CHAR" property="acctClass" />
+    <result column="TOKEN_PAY_INFO" jdbcType="VARCHAR" property="tokenPayInfo" />
+    <result column="ACCT_NO" jdbcType="VARCHAR" property="acctNo" />
+    <result column="ACCT_CUSTOMER_INFO" jdbcType="VARCHAR" property="acctCustomerInfo" />
+    <result column="QRC_PAYER_INFO" jdbcType="VARCHAR" property="qrcPayerInfo" />
+    <result column="CT_ACCT_NO" jdbcType="VARCHAR" property="ctAcctNo" />
+    <result column="CT_ACCT_NAME" jdbcType="VARCHAR" property="ctAcctName" />
+    <result column="PLAT_MCHT_ID" jdbcType="VARCHAR" property="platMchtId" />
+    <result column="PLAT_MCHT_NM" jdbcType="VARCHAR" property="platMchtNm" />
+    <result column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+    <result column="MCHT_NM" jdbcType="VARCHAR" property="mchtNm" />
+    <result column="ORDER_BODY" jdbcType="VARCHAR" property="orderBody" />
+    <result column="SUB_ORDER_FLAG" jdbcType="CHAR" property="subOrderFlag" />
+    <result column="TPL_FLAG" jdbcType="CHAR" property="tplFlag" />
+    <result column="ORDER_PRODUCT_FLAG" jdbcType="CHAR" property="orderProductFlag" />
+    <result column="ORDER_EXP_TM" jdbcType="CHAR" property="orderExpTm" />
+    <result column="FRONT_END_URL" jdbcType="VARCHAR" property="frontEndUrl" />
+    <result column="BACK_END_URL" jdbcType="VARCHAR" property="backEndUrl" />
+    <result column="TXN_ATTACH" jdbcType="VARCHAR" property="txnAttach" />
+    <result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+    <result column="MCHT_COUPON_AMT" jdbcType="VARCHAR" property="mchtCouponAmt" />
+    <result column="BANK_COUPON_AMT" jdbcType="VARCHAR" property="bankCouponAmt" />
+    <result column="COUOPN_DESC" jdbcType="VARCHAR" property="couopnDesc" />
+    <result column="PAY_AMT" jdbcType="VARCHAR" property="payAmt" />
+    <result column="TXN_RFD_FLAG" jdbcType="CHAR" property="txnRfdFlag" />
+    <result column="TXN_RFD_AMT_SUM" jdbcType="VARCHAR" property="txnRfdAmtSum" />
+    <result column="TXN_RFD_COUNT_SUM" jdbcType="VARCHAR" property="txnRfdCountSum" />
+    <result column="ORDER_CCY_TYPE" jdbcType="CHAR" property="orderCcyType" />
+    <result column="PAGY_TXN_SSN" jdbcType="VARCHAR" property="pagyTxnSsn" />
+    <result column="PAGY_TXN_TM" jdbcType="TIMESTAMP" property="pagyTxnTm" />
+    <result column="UN_TXN_NO" jdbcType="VARCHAR" property="unTxnNo" />
+    <result column="TPAM_ORDER_SSN" jdbcType="VARCHAR" property="tpamOrderSsn" />
+    <result column="TPAM_ORDER_TM" jdbcType="TIMESTAMP" property="tpamOrderTm" />
+    <result column="PAGY_RESP_CODE" jdbcType="CHAR" property="pagyRespCode" />
+    <result column="PAGY_RESP_MSG" jdbcType="VARCHAR" property="pagyRespMsg" />
+    <result column="PAGY_TXN_TYPE" jdbcType="CHAR" property="pagyTxnType" />
+    <result column="PAGY_PROD_CODE" jdbcType="CHAR" property="pagyProdCode" />
+    <result column="ORDER_STATE" jdbcType="CHAR" property="orderState" />
+    <result column="INIT_LOCALHOST_IP" jdbcType="VARCHAR" property="initLocalhostIp" />
+    <result column="UPD_LOCALHOST_IP" jdbcType="VARCHAR" property="updLocalhostIp" />
+    <result column="SYS_TRACE_ID" jdbcType="VARCHAR" property="sysTraceId" />
+    <result column="FUND_CHANNEL" jdbcType="VARCHAR" property="fundChannel" />
+    <result column="OL_ORDER_TYPE" jdbcType="VARCHAR" property="olOrderType" />
+    <result column="FINISH_BACK_NOTIFY" jdbcType="VARCHAR" property="finishBackNotify" />
+    <result column="BACK_NOTIFY_TIMES" jdbcType="VARCHAR" property="backNotifyTimes" />
+    <result column="LAST_NOTIFY_TIME" jdbcType="TIMESTAMP" property="lastNotifyTime" />
+    <result column="CRT_TM" jdbcType="TIMESTAMP" property="crtTm" />
+    <result column="UP_TM" jdbcType="TIMESTAMP" property="upTm" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+    <result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+    <result column="MISC4" jdbcType="VARCHAR" property="misc4" />
+    <result column="MCHT_SETTLE_TYPE" jdbcType="VARCHAR" property="mchtSettleType" />
+    <result column="REFUND_ACCT_TYPE" jdbcType="VARCHAR" property="refundAcctType" />
+    <result column="ACPT_CHL_NO" jdbcType="VARCHAR" property="acptChlNo" />
+    <result column="MCHT_INCENTIVE_AMT" property="mchtIncentiveAmt" jdbcType="VARCHAR"/>
+    <result column="KEEP_ACCT_FLAG" jdbcType="CHAR" property="keepAcctFlag" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap2" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtPayStatisticsInfo" >
+    <result column="CHL_MCHT_NO" property="chlMchtNo" jdbcType="VARCHAR" />
+    <result column="TRANSACTION_COUNT" property="transactionCount" jdbcType="VARCHAR" />
+    <result column="AMT_COUNT" property="amtCount" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ORDER_SSN, ORDER_TM, ORIG_ORDER_SSN, ORIG_ORDER_TM, REQ_ORDER_SSN, REQ_ORDER_TM, 
+    TXN_APP_ID, TXN_OPEN_ID, MCHT_USER_ID, PROD_ID, TXN_TYPE_NO, CHL_NO, ORDER_TYPE, 
+    USER_REQ_ORDER_SSN, USER_REQ_ORDER_TM, USER_ID, CONID, LMT_FLAG, USER_SECRTY_LEVEL, 
+    USER_CERT_LEVEL, BEHAVIOR_CODE, OPEN_BRC, USER_CERT_RESULT_CODE, USER_CERT_RESULT_MSG, 
+    CHNL_ID_PARA, SAMLL_AMT_FLAG, ACCT_TYPE_ID, ACCT_SUB_TYPE_ID, ACCT_CLASS, TOKEN_PAY_INFO, 
+    ACCT_NO, ACCT_CUSTOMER_INFO, QRC_PAYER_INFO, CT_ACCT_NO, CT_ACCT_NAME, PLAT_MCHT_ID, 
+    PLAT_MCHT_NM, MCHT_ID, MCHT_NM, ORDER_BODY, SUB_ORDER_FLAG, TPL_FLAG, ORDER_PRODUCT_FLAG, 
+    ORDER_EXP_TM, FRONT_END_URL, BACK_END_URL, TXN_ATTACH, TXN_AMT, MCHT_COUPON_AMT, 
+    BANK_COUPON_AMT, COUOPN_DESC, PAY_AMT, TXN_RFD_FLAG, TXN_RFD_AMT_SUM, TXN_RFD_COUNT_SUM, 
+    ORDER_CCY_TYPE, PAGY_TXN_SSN, PAGY_TXN_TM, UN_TXN_NO, TPAM_ORDER_SSN, TPAM_ORDER_TM, 
+    PAGY_RESP_CODE, PAGY_RESP_MSG, PAGY_TXN_TYPE, PAGY_PROD_CODE, ORDER_STATE, INIT_LOCALHOST_IP, 
+    UPD_LOCALHOST_IP, SYS_TRACE_ID, FUND_CHANNEL, OL_ORDER_TYPE, FINISH_BACK_NOTIFY, 
+    BACK_NOTIFY_TIMES, LAST_NOTIFY_TIME, CRT_TM, UP_TM, MISC1, MISC2, MISC3, MISC4,MCHT_SETTLE_TYPE,REFUND_ACCT_TYPE
+    ,ACPT_CHL_NO,MCHT_INCENTIVE_AMT,KEEP_ACCT_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PAY_ORDER_INFO
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PAY_ORDER_INFO
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PayOrderInfo">
+    insert into PAY_ORDER_INFO (ORDER_SSN, ORDER_TM, ORIG_ORDER_SSN, 
+      ORIG_ORDER_TM, REQ_ORDER_SSN, REQ_ORDER_TM, 
+      TXN_APP_ID, TXN_OPEN_ID, MCHT_USER_ID, 
+      PROD_ID, TXN_TYPE_NO, CHL_NO, ORDER_TYPE, 
+      USER_REQ_ORDER_SSN, USER_REQ_ORDER_TM, USER_ID, 
+      CONID, LMT_FLAG, USER_SECRTY_LEVEL, 
+      USER_CERT_LEVEL, BEHAVIOR_CODE, OPEN_BRC, 
+      USER_CERT_RESULT_CODE, USER_CERT_RESULT_MSG, CHNL_ID_PARA, 
+      SAMLL_AMT_FLAG, ACCT_TYPE_ID, ACCT_SUB_TYPE_ID, 
+      ACCT_CLASS, TOKEN_PAY_INFO, ACCT_NO, 
+      ACCT_CUSTOMER_INFO, QRC_PAYER_INFO, CT_ACCT_NO, 
+      CT_ACCT_NAME, PLAT_MCHT_ID, PLAT_MCHT_NM, 
+      MCHT_ID, MCHT_NM, ORDER_BODY, 
+      SUB_ORDER_FLAG, TPL_FLAG, ORDER_PRODUCT_FLAG, 
+      ORDER_EXP_TM, FRONT_END_URL, BACK_END_URL, 
+      TXN_ATTACH, TXN_AMT, MCHT_COUPON_AMT, 
+      BANK_COUPON_AMT, COUOPN_DESC, PAY_AMT, 
+      TXN_RFD_FLAG, TXN_RFD_AMT_SUM, TXN_RFD_COUNT_SUM, 
+      ORDER_CCY_TYPE, PAGY_TXN_SSN, PAGY_TXN_TM, 
+      UN_TXN_NO, TPAM_ORDER_SSN, TPAM_ORDER_TM, 
+      PAGY_RESP_CODE, PAGY_RESP_MSG, PAGY_TXN_TYPE, 
+      PAGY_PROD_CODE, ORDER_STATE, INIT_LOCALHOST_IP, 
+      UPD_LOCALHOST_IP, SYS_TRACE_ID, FUND_CHANNEL, 
+      OL_ORDER_TYPE, FINISH_BACK_NOTIFY, BACK_NOTIFY_TIMES, 
+      LAST_NOTIFY_TIME, CRT_TM, UP_TM, 
+      MISC1, MISC2, MISC3, 
+      MISC4)
+    values (#{orderSsn,jdbcType=VARCHAR}, #{orderTm,jdbcType=TIMESTAMP}, #{origOrderSsn,jdbcType=VARCHAR}, 
+      #{origOrderTm,jdbcType=TIMESTAMP}, #{reqOrderSsn,jdbcType=VARCHAR}, #{reqOrderTm,jdbcType=TIMESTAMP}, 
+      #{txnAppId,jdbcType=VARCHAR}, #{txnOpenId,jdbcType=VARCHAR}, #{mchtUserId,jdbcType=VARCHAR}, 
+      #{prodId,jdbcType=CHAR}, #{txnTypeNo,jdbcType=CHAR}, #{chlNo,jdbcType=CHAR}, #{orderType,jdbcType=CHAR}, 
+      #{userReqOrderSsn,jdbcType=VARCHAR}, #{userReqOrderTm,jdbcType=TIMESTAMP}, #{userId,jdbcType=VARCHAR}, 
+      #{conid,jdbcType=VARCHAR}, #{lmtFlag,jdbcType=CHAR}, #{userSecrtyLevel,jdbcType=CHAR}, 
+      #{userCertLevel,jdbcType=CHAR}, #{behaviorCode,jdbcType=VARCHAR}, #{openBrc,jdbcType=VARCHAR}, 
+      #{userCertResultCode,jdbcType=CHAR}, #{userCertResultMsg,jdbcType=VARCHAR}, #{chnlIdPara,jdbcType=VARCHAR}, 
+      #{samllAmtFlag,jdbcType=CHAR}, #{acctTypeId,jdbcType=CHAR}, #{acctSubTypeId,jdbcType=CHAR}, 
+      #{acctClass,jdbcType=CHAR}, #{tokenPayInfo,jdbcType=VARCHAR}, #{acctNo,jdbcType=VARCHAR}, 
+      #{acctCustomerInfo,jdbcType=VARCHAR}, #{qrcPayerInfo,jdbcType=VARCHAR}, #{ctAcctNo,jdbcType=VARCHAR}, 
+      #{ctAcctName,jdbcType=VARCHAR}, #{platMchtId,jdbcType=VARCHAR}, #{platMchtNm,jdbcType=VARCHAR}, 
+      #{mchtId,jdbcType=VARCHAR}, #{mchtNm,jdbcType=VARCHAR}, #{orderBody,jdbcType=VARCHAR}, 
+      #{subOrderFlag,jdbcType=CHAR}, #{tplFlag,jdbcType=CHAR}, #{orderProductFlag,jdbcType=CHAR}, 
+      #{orderExpTm,jdbcType=CHAR}, #{frontEndUrl,jdbcType=VARCHAR}, #{backEndUrl,jdbcType=VARCHAR}, 
+      #{txnAttach,jdbcType=VARCHAR}, #{txnAmt,jdbcType=VARCHAR}, #{mchtCouponAmt,jdbcType=VARCHAR}, 
+      #{bankCouponAmt,jdbcType=VARCHAR}, #{couopnDesc,jdbcType=VARCHAR}, #{payAmt,jdbcType=VARCHAR}, 
+      #{txnRfdFlag,jdbcType=CHAR}, #{txnRfdAmtSum,jdbcType=VARCHAR}, #{txnRfdCountSum,jdbcType=VARCHAR}, 
+      #{orderCcyType,jdbcType=CHAR}, #{pagyTxnSsn,jdbcType=VARCHAR}, #{pagyTxnTm,jdbcType=TIMESTAMP}, 
+      #{unTxnNo,jdbcType=VARCHAR}, #{tpamOrderSsn,jdbcType=VARCHAR}, #{tpamOrderTm,jdbcType=TIMESTAMP}, 
+      #{pagyRespCode,jdbcType=CHAR}, #{pagyRespMsg,jdbcType=VARCHAR}, #{pagyTxnType,jdbcType=CHAR}, 
+      #{pagyProdCode,jdbcType=CHAR}, #{orderState,jdbcType=CHAR}, #{initLocalhostIp,jdbcType=VARCHAR}, 
+      #{updLocalhostIp,jdbcType=VARCHAR}, #{sysTraceId,jdbcType=VARCHAR}, #{fundChannel,jdbcType=VARCHAR}, 
+      #{olOrderType,jdbcType=VARCHAR}, #{finishBackNotify,jdbcType=VARCHAR}, #{backNotifyTimes,jdbcType=VARCHAR}, 
+      #{lastNotifyTime,jdbcType=TIMESTAMP}, #{crtTm,jdbcType=TIMESTAMP}, sysdate,
+      #{misc1,jdbcType=VARCHAR}, #{misc2,jdbcType=VARCHAR}, #{misc3,jdbcType=VARCHAR}, 
+      #{misc4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PayOrderInfo">
+    insert into PAY_ORDER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderSsn != null">
+        ORDER_SSN,
+      </if>
+      <if test="orderTm != null">
+        ORDER_TM,
+      </if>
+      <if test="origOrderSsn != null">
+        ORIG_ORDER_SSN,
+      </if>
+      <if test="origOrderTm != null">
+        ORIG_ORDER_TM,
+      </if>
+      <if test="reqOrderSsn != null">
+        REQ_ORDER_SSN,
+      </if>
+      <if test="reqOrderTm != null">
+        REQ_ORDER_TM,
+      </if>
+      <if test="txnAppId != null">
+        TXN_APP_ID,
+      </if>
+      <if test="txnOpenId != null">
+        TXN_OPEN_ID,
+      </if>
+      <if test="mchtUserId != null">
+        MCHT_USER_ID,
+      </if>
+      <if test="prodId != null">
+        PROD_ID,
+      </if>
+      <if test="txnTypeNo != null">
+        TXN_TYPE_NO,
+      </if>
+      <if test="chlNo != null">
+        CHL_NO,
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE,
+      </if>
+      <if test="userReqOrderSsn != null">
+        USER_REQ_ORDER_SSN,
+      </if>
+      <if test="userReqOrderTm != null">
+        USER_REQ_ORDER_TM,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="conid != null">
+        CONID,
+      </if>
+      <if test="lmtFlag != null">
+        LMT_FLAG,
+      </if>
+      <if test="userSecrtyLevel != null">
+        USER_SECRTY_LEVEL,
+      </if>
+      <if test="userCertLevel != null">
+        USER_CERT_LEVEL,
+      </if>
+      <if test="behaviorCode != null">
+        BEHAVIOR_CODE,
+      </if>
+      <if test="openBrc != null">
+        OPEN_BRC,
+      </if>
+      <if test="userCertResultCode != null">
+        USER_CERT_RESULT_CODE,
+      </if>
+      <if test="userCertResultMsg != null">
+        USER_CERT_RESULT_MSG,
+      </if>
+      <if test="chnlIdPara != null">
+        CHNL_ID_PARA,
+      </if>
+      <if test="samllAmtFlag != null">
+        SAMLL_AMT_FLAG,
+      </if>
+      <if test="acctTypeId != null">
+        ACCT_TYPE_ID,
+      </if>
+      <if test="acctSubTypeId != null">
+        ACCT_SUB_TYPE_ID,
+      </if>
+      <if test="acctClass != null">
+        ACCT_CLASS,
+      </if>
+      <if test="tokenPayInfo != null">
+        TOKEN_PAY_INFO,
+      </if>
+      <if test="acctNo != null">
+        ACCT_NO,
+      </if>
+      <if test="acctCustomerInfo != null">
+        ACCT_CUSTOMER_INFO,
+      </if>
+      <if test="qrcPayerInfo != null">
+        QRC_PAYER_INFO,
+      </if>
+      <if test="ctAcctNo != null">
+        CT_ACCT_NO,
+      </if>
+      <if test="ctAcctName != null">
+        CT_ACCT_NAME,
+      </if>
+      <if test="platMchtId != null">
+        PLAT_MCHT_ID,
+      </if>
+      <if test="platMchtNm != null">
+        PLAT_MCHT_NM,
+      </if>
+      <if test="mchtId != null">
+        MCHT_ID,
+      </if>
+      <if test="mchtNm != null">
+        MCHT_NM,
+      </if>
+      <if test="orderBody != null">
+        ORDER_BODY,
+      </if>
+      <if test="subOrderFlag != null">
+        SUB_ORDER_FLAG,
+      </if>
+      <if test="tplFlag != null">
+        TPL_FLAG,
+      </if>
+      <if test="orderProductFlag != null">
+        ORDER_PRODUCT_FLAG,
+      </if>
+      <if test="orderExpTm != null">
+        ORDER_EXP_TM,
+      </if>
+      <if test="frontEndUrl != null">
+        FRONT_END_URL,
+      </if>
+      <if test="backEndUrl != null">
+        BACK_END_URL,
+      </if>
+      <if test="txnAttach != null">
+        TXN_ATTACH,
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT,
+      </if>
+      <if test="mchtCouponAmt != null">
+        MCHT_COUPON_AMT,
+      </if>
+      <if test="bankCouponAmt != null">
+        BANK_COUPON_AMT,
+      </if>
+      <if test="couopnDesc != null">
+        COUOPN_DESC,
+      </if>
+      <if test="payAmt != null">
+        PAY_AMT,
+      </if>
+      <if test="txnRfdFlag != null">
+        TXN_RFD_FLAG,
+      </if>
+      <if test="txnRfdAmtSum != null">
+        TXN_RFD_AMT_SUM,
+      </if>
+      <if test="txnRfdCountSum != null">
+        TXN_RFD_COUNT_SUM,
+      </if>
+      <if test="orderCcyType != null">
+        ORDER_CCY_TYPE,
+      </if>
+      <if test="pagyTxnSsn != null">
+        PAGY_TXN_SSN,
+      </if>
+      <if test="pagyTxnTm != null">
+        PAGY_TXN_TM,
+      </if>
+      <if test="unTxnNo != null">
+        UN_TXN_NO,
+      </if>
+      <if test="tpamOrderSsn != null">
+        TPAM_ORDER_SSN,
+      </if>
+      <if test="tpamOrderTm != null">
+        TPAM_ORDER_TM,
+      </if>
+      <if test="pagyRespCode != null">
+        PAGY_RESP_CODE,
+      </if>
+      <if test="pagyRespMsg != null">
+        PAGY_RESP_MSG,
+      </if>
+      <if test="pagyTxnType != null">
+        PAGY_TXN_TYPE,
+      </if>
+      <if test="pagyProdCode != null">
+        PAGY_PROD_CODE,
+      </if>
+      <if test="orderState != null">
+        ORDER_STATE,
+      </if>
+      <if test="initLocalhostIp != null">
+        INIT_LOCALHOST_IP,
+      </if>
+      <if test="updLocalhostIp != null">
+        UPD_LOCALHOST_IP,
+      </if>
+      <if test="sysTraceId != null">
+        SYS_TRACE_ID,
+      </if>
+      <if test="fundChannel != null">
+        FUND_CHANNEL,
+      </if>
+      <if test="olOrderType != null">
+        OL_ORDER_TYPE,
+      </if>
+      <if test="finishBackNotify != null">
+        FINISH_BACK_NOTIFY,
+      </if>
+      <if test="backNotifyTimes != null">
+        BACK_NOTIFY_TIMES,
+      </if>
+      <if test="lastNotifyTime != null">
+        LAST_NOTIFY_TIME,
+      </if>
+      <if test="crtTm != null">
+        CRT_TM,
+      </if>
+<!--       <if test="upTm != null"> -->
+        UP_TM,
+<!--       </if> -->
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>
+      <if test="misc3 != null">
+        MISC3,
+      </if>
+      <if test="misc4 != null">
+        MISC4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderSsn != null">
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTm != null">
+        #{orderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origOrderSsn != null">
+        #{origOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origOrderTm != null">
+        #{origOrderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reqOrderSsn != null">
+        #{reqOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="reqOrderTm != null">
+        #{reqOrderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnAppId != null">
+        #{txnAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnOpenId != null">
+        #{txnOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtUserId != null">
+        #{mchtUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodId != null">
+        #{prodId,jdbcType=CHAR},
+      </if>
+      <if test="txnTypeNo != null">
+        #{txnTypeNo,jdbcType=CHAR},
+      </if>
+      <if test="chlNo != null">
+        #{chlNo,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="userReqOrderSsn != null">
+        #{userReqOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="userReqOrderTm != null">
+        #{userReqOrderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="conid != null">
+        #{conid,jdbcType=VARCHAR},
+      </if>
+      <if test="lmtFlag != null">
+        #{lmtFlag,jdbcType=CHAR},
+      </if>
+      <if test="userSecrtyLevel != null">
+        #{userSecrtyLevel,jdbcType=CHAR},
+      </if>
+      <if test="userCertLevel != null">
+        #{userCertLevel,jdbcType=CHAR},
+      </if>
+      <if test="behaviorCode != null">
+        #{behaviorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="openBrc != null">
+        #{openBrc,jdbcType=VARCHAR},
+      </if>
+      <if test="userCertResultCode != null">
+        #{userCertResultCode,jdbcType=CHAR},
+      </if>
+      <if test="userCertResultMsg != null">
+        #{userCertResultMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="chnlIdPara != null">
+        #{chnlIdPara,jdbcType=VARCHAR},
+      </if>
+      <if test="samllAmtFlag != null">
+        #{samllAmtFlag,jdbcType=CHAR},
+      </if>
+      <if test="acctTypeId != null">
+        #{acctTypeId,jdbcType=CHAR},
+      </if>
+      <if test="acctSubTypeId != null">
+        #{acctSubTypeId,jdbcType=CHAR},
+      </if>
+      <if test="acctClass != null">
+        #{acctClass,jdbcType=CHAR},
+      </if>
+      <if test="tokenPayInfo != null">
+        #{tokenPayInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null">
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctCustomerInfo != null">
+        #{acctCustomerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcPayerInfo != null">
+        #{qrcPayerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="ctAcctNo != null">
+        #{ctAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ctAcctName != null">
+        #{ctAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="platMchtId != null">
+        #{platMchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="platMchtNm != null">
+        #{platMchtNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null">
+        #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtNm != null">
+        #{mchtNm,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBody != null">
+        #{orderBody,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderFlag != null">
+        #{subOrderFlag,jdbcType=CHAR},
+      </if>
+      <if test="tplFlag != null">
+        #{tplFlag,jdbcType=CHAR},
+      </if>
+      <if test="orderProductFlag != null">
+        #{orderProductFlag,jdbcType=CHAR},
+      </if>
+      <if test="orderExpTm != null">
+        #{orderExpTm,jdbcType=CHAR},
+      </if>
+      <if test="frontEndUrl != null">
+        #{frontEndUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="backEndUrl != null">
+        #{backEndUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAttach != null">
+        #{txnAttach,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtCouponAmt != null">
+        #{mchtCouponAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCouponAmt != null">
+        #{bankCouponAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="couopnDesc != null">
+        #{couopnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmt != null">
+        #{payAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="txnRfdFlag != null">
+        #{txnRfdFlag,jdbcType=CHAR},
+      </if>
+      <if test="txnRfdAmtSum != null">
+        #{txnRfdAmtSum,jdbcType=VARCHAR},
+      </if>
+      <if test="txnRfdCountSum != null">
+        #{txnRfdCountSum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCcyType != null">
+        #{orderCcyType,jdbcType=CHAR},
+      </if>
+      <if test="pagyTxnSsn != null">
+        #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null">
+        #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unTxnNo != null">
+        #{unTxnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrderSsn != null">
+        #{tpamOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrderTm != null">
+        #{tpamOrderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyRespCode != null">
+        #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null">
+        #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnType != null">
+        #{pagyTxnType,jdbcType=CHAR},
+      </if>
+      <if test="pagyProdCode != null">
+        #{pagyProdCode,jdbcType=CHAR},
+      </if>
+      <if test="orderState != null">
+        #{orderState,jdbcType=CHAR},
+      </if>
+      <if test="initLocalhostIp != null">
+        #{initLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="updLocalhostIp != null">
+        #{updLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTraceId != null">
+        #{sysTraceId,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null">
+        #{fundChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="olOrderType != null">
+        #{olOrderType,jdbcType=VARCHAR},
+      </if>
+      <if test="finishBackNotify != null">
+        #{finishBackNotify,jdbcType=VARCHAR},
+      </if>
+      <if test="backNotifyTimes != null">
+        #{backNotifyTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="lastNotifyTime != null">
+        #{lastNotifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTm != null">
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="upTm != null"> -->
+        sysdate,
+<!--       </if> -->
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        #{misc4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PayOrderInfo">
+    update PAY_ORDER_INFO
+    <set>
+      <if test="orderTm != null">
+        ORDER_TM = #{orderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origOrderSsn != null">
+        ORIG_ORDER_SSN = #{origOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="origOrderTm != null">
+        ORIG_ORDER_TM = #{origOrderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reqOrderSsn != null">
+        REQ_ORDER_SSN = #{reqOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="reqOrderTm != null">
+        REQ_ORDER_TM = #{reqOrderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txnAppId != null">
+        TXN_APP_ID = #{txnAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnOpenId != null">
+        TXN_OPEN_ID = #{txnOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtUserId != null">
+        MCHT_USER_ID = #{mchtUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodId != null">
+        PROD_ID = #{prodId,jdbcType=CHAR},
+      </if>
+      <if test="txnTypeNo != null">
+        TXN_TYPE_NO = #{txnTypeNo,jdbcType=CHAR},
+      </if>
+      <if test="chlNo != null">
+        CHL_NO = #{chlNo,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE = #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="userReqOrderSsn != null">
+        USER_REQ_ORDER_SSN = #{userReqOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="userReqOrderTm != null">
+        USER_REQ_ORDER_TM = #{userReqOrderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="conid != null">
+        CONID = #{conid,jdbcType=VARCHAR},
+      </if>
+      <if test="lmtFlag != null">
+        LMT_FLAG = #{lmtFlag,jdbcType=CHAR},
+      </if>
+      <if test="userSecrtyLevel != null">
+        USER_SECRTY_LEVEL = #{userSecrtyLevel,jdbcType=CHAR},
+      </if>
+      <if test="userCertLevel != null">
+        USER_CERT_LEVEL = #{userCertLevel,jdbcType=CHAR},
+      </if>
+      <if test="behaviorCode != null">
+        BEHAVIOR_CODE = #{behaviorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="openBrc != null">
+        OPEN_BRC = #{openBrc,jdbcType=VARCHAR},
+      </if>
+      <if test="userCertResultCode != null">
+        USER_CERT_RESULT_CODE = #{userCertResultCode,jdbcType=CHAR},
+      </if>
+      <if test="userCertResultMsg != null">
+        USER_CERT_RESULT_MSG = #{userCertResultMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="chnlIdPara != null">
+        CHNL_ID_PARA = #{chnlIdPara,jdbcType=VARCHAR},
+      </if>
+      <if test="samllAmtFlag != null">
+        SAMLL_AMT_FLAG = #{samllAmtFlag,jdbcType=CHAR},
+      </if>
+      <if test="acctTypeId != null">
+        ACCT_TYPE_ID = #{acctTypeId,jdbcType=CHAR},
+      </if>
+      <if test="acctSubTypeId != null">
+        ACCT_SUB_TYPE_ID = #{acctSubTypeId,jdbcType=CHAR},
+      </if>
+      <if test="acctClass != null">
+        ACCT_CLASS = #{acctClass,jdbcType=CHAR},
+      </if>
+      <if test="tokenPayInfo != null">
+        TOKEN_PAY_INFO = #{tokenPayInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null">
+        ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acctCustomerInfo != null">
+        ACCT_CUSTOMER_INFO = #{acctCustomerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcPayerInfo != null">
+        QRC_PAYER_INFO = #{qrcPayerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="ctAcctNo != null">
+        CT_ACCT_NO = #{ctAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ctAcctName != null">
+        CT_ACCT_NAME = #{ctAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="platMchtId != null">
+        PLAT_MCHT_ID = #{platMchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="platMchtNm != null">
+        PLAT_MCHT_NM = #{platMchtNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null">
+        MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtNm != null">
+        MCHT_NM = #{mchtNm,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBody != null">
+        ORDER_BODY = #{orderBody,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderFlag != null">
+        SUB_ORDER_FLAG = #{subOrderFlag,jdbcType=CHAR},
+      </if>
+      <if test="tplFlag != null">
+        TPL_FLAG = #{tplFlag,jdbcType=CHAR},
+      </if>
+      <if test="orderProductFlag != null">
+        ORDER_PRODUCT_FLAG = #{orderProductFlag,jdbcType=CHAR},
+      </if>
+      <if test="orderExpTm != null">
+        ORDER_EXP_TM = #{orderExpTm,jdbcType=CHAR},
+      </if>
+      <if test="frontEndUrl != null">
+        FRONT_END_URL = #{frontEndUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="backEndUrl != null">
+        BACK_END_URL = #{backEndUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAttach != null">
+        TXN_ATTACH = #{txnAttach,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtCouponAmt != null">
+        MCHT_COUPON_AMT = #{mchtCouponAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCouponAmt != null">
+        BANK_COUPON_AMT = #{bankCouponAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="couopnDesc != null">
+        COUOPN_DESC = #{couopnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmt != null">
+        PAY_AMT = #{payAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="txnRfdFlag != null">
+        TXN_RFD_FLAG = #{txnRfdFlag,jdbcType=CHAR},
+      </if>
+      <if test="txnRfdAmtSum != null">
+        TXN_RFD_AMT_SUM = #{txnRfdAmtSum,jdbcType=VARCHAR},
+      </if>
+      <if test="txnRfdCountSum != null">
+        TXN_RFD_COUNT_SUM = #{txnRfdCountSum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCcyType != null">
+        ORDER_CCY_TYPE = #{orderCcyType,jdbcType=CHAR},
+      </if>
+      <if test="pagyTxnSsn != null">
+        PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnTm != null">
+        PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unTxnNo != null">
+        UN_TXN_NO = #{unTxnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrderSsn != null">
+        TPAM_ORDER_SSN = #{tpamOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tpamOrderTm != null">
+        TPAM_ORDER_TM = #{tpamOrderTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pagyRespCode != null">
+        PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      </if>
+      <if test="pagyRespMsg != null">
+        PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyTxnType != null">
+        PAGY_TXN_TYPE = #{pagyTxnType,jdbcType=CHAR},
+      </if>
+      <if test="pagyProdCode != null">
+        PAGY_PROD_CODE = #{pagyProdCode,jdbcType=CHAR},
+      </if>
+      <if test="orderState != null">
+        ORDER_STATE = #{orderState,jdbcType=CHAR},
+      </if>
+      <if test="initLocalhostIp != null">
+        INIT_LOCALHOST_IP = #{initLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="updLocalhostIp != null">
+        UPD_LOCALHOST_IP = #{updLocalhostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTraceId != null">
+        SYS_TRACE_ID = #{sysTraceId,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null">
+        FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="olOrderType != null">
+        OL_ORDER_TYPE = #{olOrderType,jdbcType=VARCHAR},
+      </if>
+      <if test="finishBackNotify != null">
+        FINISH_BACK_NOTIFY = #{finishBackNotify,jdbcType=VARCHAR},
+      </if>
+      <if test="backNotifyTimes != null">
+        BACK_NOTIFY_TIMES = #{backNotifyTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="lastNotifyTime != null">
+        LAST_NOTIFY_TIME = #{lastNotifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTm != null">
+        CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="upTm != null"> -->
+        UP_TM = sysdate,
+<!--       </if> -->
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        MISC3 = #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        MISC4 = #{misc4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.PayOrderInfo">
+    update PAY_ORDER_INFO
+    set ORDER_TM = #{orderTm,jdbcType=TIMESTAMP},
+      ORIG_ORDER_SSN = #{origOrderSsn,jdbcType=VARCHAR},
+      ORIG_ORDER_TM = #{origOrderTm,jdbcType=TIMESTAMP},
+      REQ_ORDER_SSN = #{reqOrderSsn,jdbcType=VARCHAR},
+      REQ_ORDER_TM = #{reqOrderTm,jdbcType=TIMESTAMP},
+      TXN_APP_ID = #{txnAppId,jdbcType=VARCHAR},
+      TXN_OPEN_ID = #{txnOpenId,jdbcType=VARCHAR},
+      MCHT_USER_ID = #{mchtUserId,jdbcType=VARCHAR},
+      PROD_ID = #{prodId,jdbcType=CHAR},
+      TXN_TYPE_NO = #{txnTypeNo,jdbcType=CHAR},
+      CHL_NO = #{chlNo,jdbcType=CHAR},
+      ORDER_TYPE = #{orderType,jdbcType=CHAR},
+      USER_REQ_ORDER_SSN = #{userReqOrderSsn,jdbcType=VARCHAR},
+      USER_REQ_ORDER_TM = #{userReqOrderTm,jdbcType=TIMESTAMP},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      CONID = #{conid,jdbcType=VARCHAR},
+      LMT_FLAG = #{lmtFlag,jdbcType=CHAR},
+      USER_SECRTY_LEVEL = #{userSecrtyLevel,jdbcType=CHAR},
+      USER_CERT_LEVEL = #{userCertLevel,jdbcType=CHAR},
+      BEHAVIOR_CODE = #{behaviorCode,jdbcType=VARCHAR},
+      OPEN_BRC = #{openBrc,jdbcType=VARCHAR},
+      USER_CERT_RESULT_CODE = #{userCertResultCode,jdbcType=CHAR},
+      USER_CERT_RESULT_MSG = #{userCertResultMsg,jdbcType=VARCHAR},
+      CHNL_ID_PARA = #{chnlIdPara,jdbcType=VARCHAR},
+      SAMLL_AMT_FLAG = #{samllAmtFlag,jdbcType=CHAR},
+      ACCT_TYPE_ID = #{acctTypeId,jdbcType=CHAR},
+      ACCT_SUB_TYPE_ID = #{acctSubTypeId,jdbcType=CHAR},
+      ACCT_CLASS = #{acctClass,jdbcType=CHAR},
+      TOKEN_PAY_INFO = #{tokenPayInfo,jdbcType=VARCHAR},
+      ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      ACCT_CUSTOMER_INFO = #{acctCustomerInfo,jdbcType=VARCHAR},
+      QRC_PAYER_INFO = #{qrcPayerInfo,jdbcType=VARCHAR},
+      CT_ACCT_NO = #{ctAcctNo,jdbcType=VARCHAR},
+      CT_ACCT_NAME = #{ctAcctName,jdbcType=VARCHAR},
+      PLAT_MCHT_ID = #{platMchtId,jdbcType=VARCHAR},
+      PLAT_MCHT_NM = #{platMchtNm,jdbcType=VARCHAR},
+      MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      MCHT_NM = #{mchtNm,jdbcType=VARCHAR},
+      ORDER_BODY = #{orderBody,jdbcType=VARCHAR},
+      SUB_ORDER_FLAG = #{subOrderFlag,jdbcType=CHAR},
+      TPL_FLAG = #{tplFlag,jdbcType=CHAR},
+      ORDER_PRODUCT_FLAG = #{orderProductFlag,jdbcType=CHAR},
+      ORDER_EXP_TM = #{orderExpTm,jdbcType=CHAR},
+      FRONT_END_URL = #{frontEndUrl,jdbcType=VARCHAR},
+      BACK_END_URL = #{backEndUrl,jdbcType=VARCHAR},
+      TXN_ATTACH = #{txnAttach,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      MCHT_COUPON_AMT = #{mchtCouponAmt,jdbcType=VARCHAR},
+      BANK_COUPON_AMT = #{bankCouponAmt,jdbcType=VARCHAR},
+      COUOPN_DESC = #{couopnDesc,jdbcType=VARCHAR},
+      PAY_AMT = #{payAmt,jdbcType=VARCHAR},
+      TXN_RFD_FLAG = #{txnRfdFlag,jdbcType=CHAR},
+      TXN_RFD_AMT_SUM = #{txnRfdAmtSum,jdbcType=VARCHAR},
+      TXN_RFD_COUNT_SUM = #{txnRfdCountSum,jdbcType=VARCHAR},
+      ORDER_CCY_TYPE = #{orderCcyType,jdbcType=CHAR},
+      PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR},
+      PAGY_TXN_TM = #{pagyTxnTm,jdbcType=TIMESTAMP},
+      UN_TXN_NO = #{unTxnNo,jdbcType=VARCHAR},
+      TPAM_ORDER_SSN = #{tpamOrderSsn,jdbcType=VARCHAR},
+      TPAM_ORDER_TM = #{tpamOrderTm,jdbcType=TIMESTAMP},
+      PAGY_RESP_CODE = #{pagyRespCode,jdbcType=CHAR},
+      PAGY_RESP_MSG = #{pagyRespMsg,jdbcType=VARCHAR},
+      PAGY_TXN_TYPE = #{pagyTxnType,jdbcType=CHAR},
+      PAGY_PROD_CODE = #{pagyProdCode,jdbcType=CHAR},
+      ORDER_STATE = #{orderState,jdbcType=CHAR},
+      INIT_LOCALHOST_IP = #{initLocalhostIp,jdbcType=VARCHAR},
+      UPD_LOCALHOST_IP = #{updLocalhostIp,jdbcType=VARCHAR},
+      SYS_TRACE_ID = #{sysTraceId,jdbcType=VARCHAR},
+      FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      OL_ORDER_TYPE = #{olOrderType,jdbcType=VARCHAR},
+      FINISH_BACK_NOTIFY = #{finishBackNotify,jdbcType=VARCHAR},
+      BACK_NOTIFY_TIMES = #{backNotifyTimes,jdbcType=VARCHAR},
+      LAST_NOTIFY_TIME = #{lastNotifyTime,jdbcType=TIMESTAMP},
+      CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+      UP_TM = sysdate,
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      MISC2 = #{misc2,jdbcType=VARCHAR},
+      MISC3 = #{misc3,jdbcType=VARCHAR},
+      MISC4 = #{misc4,jdbcType=VARCHAR}
+    where ORDER_SSN = #{orderSsn,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByDateAndState" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAY_ORDER_INFO
+    where ORDER_TM = to_date(#{settleDate,jdbcType=VARCHAR},'YYYY/MM/DD')
+<!--     where ORDER_TM = to_date(#{settleDate,jdbcType=VARCHAR},'YYYY/MM/DD HH24:MI:SS') -->
+    AND ORDER_STATE IN ('00')
+  </select>
+
+    <select id="selectByPagyTxnSsn" resultMap="BaseResultMap" parameterType="string">
+        select
+        <include refid="Base_Column_List" />
+        from PAY_ORDER_INFO
+        where PAGY_TXN_SSN = #{pagyTxnSsn,jdbcType=VARCHAR}
+    </select>
+    
+    <select id="selectOrderInfoByReqOrderSsn" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from PAY_ORDER_INFO
+        where ORDER_SSN = #{orderSsn}
+    </select>
+    <select id="selectOrderInfoByReqOrderSsnList" resultMap="BaseResultMap" parameterType="java.util.Map">
+      select
+      <include refid="Base_Column_List" />
+      from PAY_ORDER_INFO
+      where ORDER_SSN in
+      <foreach collection="orderSsnList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </select>
+    <select id="selectOrderInfoBySubOrderSsn" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from PAY_ORDER_INFO
+        where ORDER_SSN = 
+		(select order_ssn from PAY_SUB_ORDER_INFO where SUB_ORDER_SSN = #{subOrderSsn})
+    </select>
+
+<!--     	PayOrderInfo queryByTxnSeqId(String txnSeqId); -->
+    <select id="queryByTxnSeqId" parameterType="string" resultMap="BaseResultMap">
+    	select * from PAY_ORDER_INFO where order_ssn=#{txnSeqId}
+    </select>
+
+<!--查询商户统计-->
+  <select id="queryMchtPayStatistics" parameterType="string" resultMap="BaseResultMap2">
+    SELECT
+	    PAY_ORDER_INFO.MCHT_ID CHL_MCHT_NO,sum(PAY_ORDER_INFO.TXN_AMT) AMT_COUNT,COUNT(1) TRANSACTION_COUNT, 
+	    to_date(#{startTime},'yyyy-mm-dd hh24:mi:ss') START_TIME, to_date(#{endTime},'yyyy-mm-dd hh24:mi:ss') END_TIME
+	    FROM PAY_ORDER_INFO
+    WHERE ORDER_TM BETWEEN to_date(#{startTime},'yyyy-mm-dd hh24:mi:ss') and to_date(#{endTime},'yyyy-mm-dd hh24:mi:ss') 
+	    and TXN_TYPE_NO in ('O1000001','O1000002','O1000003','O1000006')
+	    and order_state in ('00','02')
+	    and MCHT_ID is not null GROUP BY PAY_ORDER_INFO.MCHT_ID
+  </select>
+  
+    <resultMap id="BaseResultMap3" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerDailyTxnCount" >
+        <result column="MCHT_ID" property="mchtId" jdbcType="VARCHAR" />
+        <result column="FUND_CHANNEL" property="fundChannel" jdbcType="VARCHAR" />
+        <result column="TXN_COUNT" property="txnCount" jdbcType="DECIMAL" />
+        <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    </resultMap>
+
+    <select id="selectDayTxnGroupByMcht" parameterType="string" resultMap="BaseResultMap3">
+        SELECT
+            MCHT_ID ,
+            SUM(PAY_AMT)/100 AS TXN_AMT,
+            COUNT(0) AS TXN_COUNT,
+            CHL_NO AS FUND_CHANNEL
+        FROM
+            PAY_ORDER_INFO
+        WHERE
+            ORDER_TM &gt;= to_date(#{startTm,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss') AND ORDER_TM &lt; to_date(#{endTm,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss')
+        AND ORDER_STATE IN ('00','01','02') AND TXN_TYPE_NO IN ('O1000002','O1000003')
+        GROUP BY
+            MCHT_ID,CHL_NO
+    </select>
+    <select id="selectDayTxnGroupByMcht2" parameterType="string" resultMap="BaseResultMap3">
+        SELECT
+            MCHT_ID ,
+            SUM(PAY_AMT)/100 AS TXN_AMT,
+            COUNT(0) AS TXN_COUNT,
+            ACPT_CHL_NO AS FUND_CHANNEL
+        FROM
+            PAY_ORDER_INFO
+        WHERE
+            ORDER_TM &gt;= to_date(#{startTm,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss') AND ORDER_TM &lt; to_date(#{endTm,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss')
+        AND ORDER_STATE IN ('00','01','02') AND TXN_TYPE_NO = 'O1000001'
+        GROUP BY
+            MCHT_ID,ACPT_CHL_NO
+    </select>
+    <select id="selectDayTxnGroupByMcht3" parameterType="string" resultMap="BaseResultMap3">
+          SELECT
+            MCHT_ID ,
+            SUM(-PAY_AMT)/100 AS TXN_AMT,
+            COUNT(0) AS TXN_COUNT,
+            ACPT_CHL_NO AS FUND_CHANNEL
+        FROM
+            PAY_ORDER_INFO
+        WHERE
+            ORDER_TM &gt;= to_date(#{startTm,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss') AND ORDER_TM &lt; to_date(#{endTm,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss')
+        AND ORDER_STATE IN ('00','01','02') AND TXN_TYPE_NO IN ('O1100001','O1200001')
+        GROUP BY
+            MCHT_ID,ACPT_CHL_NO
+    </select>
+
+
+    <select id="selectByTime" resultMap="BaseResultMap" parameterType="string">
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM
+            PAY_ORDER_INFO
+        WHERE
+            ORDER_TM &gt;= to_date(#{startTm,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss')
+            AND ORDER_TM &lt; to_date(#{endTm,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss')
+            AND ORDER_STATE IN ('00','01','02')
+    </select>
+    
+    <select id="countLoanpayDataByDate" parameterType="java.util.Map" resultType="int">
+      	select count(1)
+      	from PAY_ORDER_INFO where 
+      	FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} and 
+      	ORDER_STATE IN ('00','01','02') and 
+      	ORDER_SSN IN 
+      	(
+      		 select  distinct(order_ssn) from PAY_SUB_ORDER_INFO 
+      		 WHERE 
+      		 FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} AND 
+      		 TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR}
+   	    )
+    </select>
+    
+    <select id="selectLoanpayDataByDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+      	select *
+      	from PAY_ORDER_INFO where 
+      	FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} and 
+      	ORDER_STATE IN ('00','01','02') and 
+      	ORDER_SSN IN 
+      	(
+      		 select  distinct(order_ssn) from PAY_SUB_ORDER_INFO 
+      		 WHERE 
+      		 FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} AND 
+      		 TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR}
+   	    )
+    </select>
+    
+    <select id="countPointpayDataByDate" parameterType="java.util.Map" resultType="int">
+      	select count(1)
+      	from PAY_ORDER_INFO where 
+      	FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} and 
+      	ol_order_type = '23' and
+      	ORDER_STATE IN ('00','01','02') and 
+      	ORDER_SSN IN 
+      	(
+      		 select  distinct(order_ssn) from PAY_SUB_ORDER_INFO 
+      		 WHERE 
+      		 FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} AND 
+      		 TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR}
+   	    )
+    </select>
+    
+    <select id="selectPointpayDataByDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+      	select *
+      	from PAY_ORDER_INFO where 
+      	FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} and 
+      	ORDER_STATE IN ('00','01','02') and 
+      	ol_order_type = '23' and
+      	ORDER_SSN IN 
+      	(
+      		 select  distinct(order_ssn) from PAY_SUB_ORDER_INFO 
+      		 WHERE 
+      		 FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR} AND 
+      		 TRANS_FACT_TIME = #{transFactTime,jdbcType=VARCHAR}
+   	    )
+    </select>
+
+
+  <!-- 按照商户号更新线下订单的机构号、更新时间 -->
+  <update id="updatePayOrderInfo" parameterType="map">
+    update PAY_ORDER_INFO
+    set
+    ORG_ID = #{merg, jdbcType=VARCHAR},
+    UP_TM = sysdate
+    where
+    mcht_id = #{mchtId, jdbcType=VARCHAR}
+    and ORG_ID = #{repe, jdbcType=VARCHAR}
+    and TXN_TYPE_NO != 'O1000006'
+    and TXN_TYPE_NO != 'O2000006'
+  </update>
+
+  <select id="selectOrderByDayCount" resultType="int">
+    select
+    count(1)
+    from PAY_ORDER_INFO
+    where
+    ORDER_TM &gt;= #{startDate,jdbcType=TIMESTAMP} and ORDER_TM &lt; #{endDate,jdbcType=TIMESTAMP}
+    AND ORDER_STATE NOT IN ('03', '09', '14')
+  </select>
+
+  <!-- 分页查询 -->
+  <select id="selectOrderListByDay" resultMap="BaseResultMap">
+    select * from
+    (
+    SELECT a.*, rownum rn FROM
+    (
+    SELECT * FROM
+    (
+    select
+    <include refid="Base_Column_List" />
+    from PAY_ORDER_INFO
+    where
+    ORDER_TM &gt;= #{startDate,jdbcType=TIMESTAMP} and ORDER_TM &lt; #{endDate,jdbcType=TIMESTAMP}
+    AND TXN_TYPE_NO NOT IN ('O1000006', 'O2000006') and ORDER_STATE NOT IN ('03', '09', '14')
+    union all
+    select
+    <include refid="Base_Column_List" />
+    from PAY_ORDER_INFO
+    where
+    ORDER_TM &gt;= #{startDate,jdbcType=TIMESTAMP} and ORDER_TM &lt; #{endDate,jdbcType=TIMESTAMP}
+    AND TXN_TYPE_NO IN ('O1000006', 'O2000006') and ORDER_STATE IN ('00', '01', '02')
+    ) order by ORDER_SSN
+    ) a where <![CDATA[rownum <= #{maxIndex}]]>
+    ) WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+    <!-- 根据订单号和日期查询 -->
+    <select id="selectOrderInfoByReqOrderSsnAndDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+      select
+      <include refid="Base_Column_List" />
+      from PAY_ORDER_INFO
+      where ORDER_TM &gt;= #{startDate} and ORDER_TM &lt; #{endDate}
+      and ORDER_SSN = #{orderSsn}
+    </select>
+    <select id="selectOrderInfoByReqOrderSsnListAndDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+      select
+      <include refid="Base_Column_List" />
+      from PAY_ORDER_INFO
+      where ORDER_TM >= #{startDate} and <![CDATA[ ORDER_TM < #{endDate}]]>
+      and ORDER_SSN in
+      <foreach collection="orderSsnList" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </select>
+
+    <!-- 根据交易日期获取状态为成功但未在清算中心有记账记录的支付订单  -->
+    <select id="qryNoAccOrders" resultMap="BaseResultMap">
+        SELECT a.ORDER_SSN,a.ORDER_TM
+        FROM PAY_ORDER_INFO a
+        LEFT JOIN  KEEP_ACC_INFO b
+        ON a.ORDER_SSN = b.ORDER_SSN
+        WHERE a.ORDER_TM  &gt;= TO_DATE(#{beginDate,jdbcType = VARCHAR},'yyyymmdd') AND a.ORDER_TM &lt; TO_DATE(#{endDate,jdbcType = VARCHAR},'yyyymmdd')
+        AND a.ORDER_STATE IN ('00','02') AND a.TXN_TYPE_NO IN ('O1000001','O1000002','O1000003','O1000006')
+        AND b.ORDER_SSN IS NULL
+    </select>
+
+    <!-- 根据交易日期获取状态为失败但在清算中心有记账记录的退款订单 -->
+    <select id="qrySuccAccWithFailOrders" resultMap="BaseResultMap">
+        SELECT DISTINCT a.ORDER_SSN,a.ORDER_TM
+        FROM PAY_ORDER_INFO a
+        LEFT JOIN  KEEP_ACC_INFO b
+        ON a.ORDER_SSN = b.ORDER_SSN
+        WHERE a.ORDER_TM  &gt;= TO_DATE(#{beginDate,jdbcType = VARCHAR},'yyyymmdd') AND a.ORDER_TM &lt; TO_DATE(#{endDate,jdbcType = VARCHAR},'yyyymmdd')
+        AND a.ORDER_STATE NOT IN ('00','01','02') AND a.TXN_TYPE_NO IN ('O1100001','O1200001','O2000006')
+        AND b.ORDER_SSN IS NOT NULL
+    </select>
+ <select id="countOrders" resultType="int" parameterType="java.util.Map">
+  select
+  (select  count(1)   from pay_order_info  where mcht_id = #{mchtId,jdbcType=VARCHAR}
+  and  ORDER_TM &gt;= #{startDate} and ORDER_TM &lt; #{endDate}
+   )
+  +
+  (select  count(1) from pay_order_info pay , pay_sub_order_info paySub  where pay.order_ssn = paySub.Order_Ssn and paySub.Sub_Mcht_Id = #{mchtId,jdbcType=VARCHAR}
+    and   pay.ORDER_TM &gt;= #{startDate} and pay.ORDER_TM &lt; #{endDate}
+  )
+   from dual
+
+  </select>
+
+    <delete id="clearUntradedMerchants">
+    delete from untraded_merchants
+  </delete>
+
+    <select id="countUntradedMerchants" resultType="int" parameterType="string">
+       SELECT COUNT( MCHT_ID)
+          FROM MCHT_BASE_INFO A
+         WHERE A.MCHT_STATE = '01'
+          <![CDATA[AND A.CRT_TM <= ADD_MONTHS(TO_DATE(#{orderTM},'YYYYMMDD'), -3)]]>
+          <![CDATA[AND NVL(A.ORDER_TM_MAX,'0') <= TO_CHAR(ADD_MONTHS(TO_DATE(#{orderTM ,jdbcType=VARCHAR},'YYYYMMDD'), -3),'YYYYMMDD')]]>
+    </select>
+
+    <select id="untradedMerchants" resultMap="BaseResultMap" >
+        SELECT * FROM
+    (
+    SELECT F.*, ROWNUM RN FROM
+    (
+      SELECT DISTINCT A.MCHT_ID,TO_DATE(A.ORDER_TM_MAX,'YYYYMMDD') AS ORDER_TM
+
+      FROM MCHT_BASE_INFO A
+      WHERE A.MCHT_STATE = '01'
+      <![CDATA[ AND A.CRT_TM <= ADD_MONTHS(TO_DATE(#{orderTM}, 'YYYYMMDD'), -3)]]>
+      <![CDATA[AND NVL(A.ORDER_TM_MAX,'0') <= TO_CHAR(ADD_MONTHS(TO_DATE(#{orderTM},'YYYYMMDD'), -3),'YYYYMMDD')]]>
+    ) F WHERE <![CDATA[ROWNUM <= #{maxIndex}]]>
+    ) WHERE <![CDATA[RN >= #{minIndex}]]>
+    </select>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch">
+        INSERT INTO untraded_merchants
+        (
+        ORDER_TM_MAX,
+        MCHT_ID
+        )
+        <foreach collection="recordList" index="index" item="item" separator="union all">
+            (SELECT #{item.orderTm, jdbcType=TIMESTAMP},
+            #{item.mchtId, jdbcType=VARCHAR}
+            FROM DUAL)
+        </foreach>
+    </insert>
+
+  <!--查询超时交易-->
+  <select id="queryTimeOutOrder" resultMap="BaseResultMap">
+    select * from(
+    select a.*,rownum rn from(
+    select
+    <include refid="Base_Column_List"/>
+    from PAY_ORDER_INFO
+    where order_tm &gt;= #{startDate, jdbcType=TIMESTAMP} and order_tm &lt;= #{endDate, jdbcType=TIMESTAMP}
+    and order_state in ('11', '13') order by order_tm
+    ) a where <![CDATA[rownum <= #{maxIndex}]]>
+    ) WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+</mapper>

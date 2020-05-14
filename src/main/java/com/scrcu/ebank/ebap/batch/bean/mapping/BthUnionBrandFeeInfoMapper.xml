@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthUnionBrandFeeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthUnionBrandFeeInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="STLM_DATE" property="stlmDate" jdbcType="VARCHAR" />
+    <result column="ACQUIRER_FIR_CODE" property="acquirerFirCode" jdbcType="VARCHAR" />
+    <result column="IS_UNION_CARD" property="isUnionCard" jdbcType="CHAR" />
+    <result column="CARD_FLAG" property="cardFlag" jdbcType="CHAR" />
+    <result column="TERMINAL_TYPE" property="terminalType" jdbcType="VARCHAR" />
+    <result column="CARD_MEDIA" property="cardMedia" jdbcType="CHAR" />
+    <result column="TRANS_REGION" property="transRegion" jdbcType="VARCHAR" />
+    <result column="MER_TYPE" property="merType" jdbcType="VARCHAR" />
+    <result column="ACQUIRER_SEC_CODE" property="acquirerSecCode" jdbcType="VARCHAR" />
+    <result column="ACCEPT_INS_CODE" property="acceptInsCode" jdbcType="VARCHAR" />
+    <result column="SEND_INS_CODE" property="sendInsCode" jdbcType="VARCHAR" />
+    <result column="SND_CARD_INS_CODE" property="sndCardInsCode" jdbcType="VARCHAR" />
+    <result column="REC_INS_CODE" property="recInsCode" jdbcType="VARCHAR" />
+    <result column="ACQUIRER_INS_CODE" property="acquirerInsCode" jdbcType="VARCHAR" />
+    <result column="MSG_TYPE" property="msgType" jdbcType="VARCHAR" />
+    <result column="TRANS_DEAL_CODE" property="transDealCode" jdbcType="VARCHAR" />
+    <result column="SEV_CDT_CODE" property="sevCdtCode" jdbcType="VARCHAR" />
+    <result column="SYS_TRACK_NUM" property="sysTrackNum" jdbcType="VARCHAR" />
+    <result column="TRANS_DATE" property="transDate" jdbcType="VARCHAR" />
+    <result column="ACCT_NO" property="acctNo" jdbcType="VARCHAR" />
+    <result column="TRANSFER_OUT_CARD" property="transferOutCard" jdbcType="VARCHAR" />
+    <result column="TRANSFER_IN_CARD" property="transferInCard" jdbcType="VARCHAR" />
+    <result column="ORG_TRANS_INFO" property="orgTransInfo" jdbcType="VARCHAR" />
+    <result column="REC_CARD_TERMINAL_CODE" property="recCardTerminalCode" jdbcType="VARCHAR" />
+    <result column="REC_CARD_CODE" property="recCardCode" jdbcType="VARCHAR" />
+    <result column="RETRIVAL_NO" property="retrivalNo" jdbcType="VARCHAR" />
+    <result column="TRANS_AMT" property="transAmt" jdbcType="VARCHAR" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="BRAND_FEE" property="brandFee" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="TRANS_LAUNCH_MODE" property="transLaunchMode" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, STLM_DATE, ACQUIRER_FIR_CODE, IS_UNION_CARD, CARD_FLAG, TERMINAL_TYPE, CARD_MEDIA, 
+    TRANS_REGION, MER_TYPE, ACQUIRER_SEC_CODE, ACCEPT_INS_CODE, SEND_INS_CODE, SND_CARD_INS_CODE, 
+    REC_INS_CODE, ACQUIRER_INS_CODE, MSG_TYPE, TRANS_DEAL_CODE, SEV_CDT_CODE, SYS_TRACK_NUM, 
+    TRANS_DATE, ACCT_NO, TRANSFER_OUT_CARD, TRANSFER_IN_CARD, ORG_TRANS_INFO, REC_CARD_TERMINAL_CODE, 
+    REC_CARD_CODE, RETRIVAL_NO, TRANS_AMT, RESERVE1, BRAND_FEE, RESERVE2, RESERVE3, TRANS_LAUNCH_MODE, 
+    RESERVE4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_UNION_BRAND_FEE_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_UNION_BRAND_FEE_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthUnionBrandFeeInfo" >
+    insert into BTH_UNION_BRAND_FEE_INFO (ID, STLM_DATE, ACQUIRER_FIR_CODE, 
+      IS_UNION_CARD, CARD_FLAG, TERMINAL_TYPE, 
+      CARD_MEDIA, TRANS_REGION, MER_TYPE, 
+      ACQUIRER_SEC_CODE, ACCEPT_INS_CODE, SEND_INS_CODE, 
+      SND_CARD_INS_CODE, REC_INS_CODE, ACQUIRER_INS_CODE, 
+      MSG_TYPE, TRANS_DEAL_CODE, SEV_CDT_CODE, 
+      SYS_TRACK_NUM, TRANS_DATE, ACCT_NO, 
+      TRANSFER_OUT_CARD, TRANSFER_IN_CARD, ORG_TRANS_INFO, 
+      REC_CARD_TERMINAL_CODE, REC_CARD_CODE, RETRIVAL_NO, 
+      TRANS_AMT, RESERVE1, BRAND_FEE, 
+      RESERVE2, RESERVE3, TRANS_LAUNCH_MODE, 
+      RESERVE4)
+    values (#{id,jdbcType=VARCHAR}, #{stlmDate,jdbcType=VARCHAR}, #{acquirerFirCode,jdbcType=VARCHAR}, 
+      #{isUnionCard,jdbcType=CHAR}, #{cardFlag,jdbcType=CHAR}, #{terminalType,jdbcType=VARCHAR}, 
+      #{cardMedia,jdbcType=CHAR}, #{transRegion,jdbcType=VARCHAR}, #{merType,jdbcType=VARCHAR}, 
+      #{acquirerSecCode,jdbcType=VARCHAR}, #{acceptInsCode,jdbcType=VARCHAR}, #{sendInsCode,jdbcType=VARCHAR}, 
+      #{sndCardInsCode,jdbcType=VARCHAR}, #{recInsCode,jdbcType=VARCHAR}, #{acquirerInsCode,jdbcType=VARCHAR}, 
+      #{msgType,jdbcType=VARCHAR}, #{transDealCode,jdbcType=VARCHAR}, #{sevCdtCode,jdbcType=VARCHAR}, 
+      #{sysTrackNum,jdbcType=VARCHAR}, #{transDate,jdbcType=VARCHAR}, #{acctNo,jdbcType=VARCHAR}, 
+      #{transferOutCard,jdbcType=VARCHAR}, #{transferInCard,jdbcType=VARCHAR}, #{orgTransInfo,jdbcType=VARCHAR}, 
+      #{recCardTerminalCode,jdbcType=VARCHAR}, #{recCardCode,jdbcType=VARCHAR}, #{retrivalNo,jdbcType=VARCHAR}, 
+      #{transAmt,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, #{brandFee,jdbcType=VARCHAR}, 
+      #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR}, #{transLaunchMode,jdbcType=VARCHAR}, 
+      #{reserve4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthUnionBrandFeeInfo" >
+    insert into BTH_UNION_BRAND_FEE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="stlmDate != null" >
+        STLM_DATE,
+      </if>
+      <if test="acquirerFirCode != null" >
+        ACQUIRER_FIR_CODE,
+      </if>
+      <if test="isUnionCard != null" >
+        IS_UNION_CARD,
+      </if>
+      <if test="cardFlag != null" >
+        CARD_FLAG,
+      </if>
+      <if test="terminalType != null" >
+        TERMINAL_TYPE,
+      </if>
+      <if test="cardMedia != null" >
+        CARD_MEDIA,
+      </if>
+      <if test="transRegion != null" >
+        TRANS_REGION,
+      </if>
+      <if test="merType != null" >
+        MER_TYPE,
+      </if>
+      <if test="acquirerSecCode != null" >
+        ACQUIRER_SEC_CODE,
+      </if>
+      <if test="acceptInsCode != null" >
+        ACCEPT_INS_CODE,
+      </if>
+      <if test="sendInsCode != null" >
+        SEND_INS_CODE,
+      </if>
+      <if test="sndCardInsCode != null" >
+        SND_CARD_INS_CODE,
+      </if>
+      <if test="recInsCode != null" >
+        REC_INS_CODE,
+      </if>
+      <if test="acquirerInsCode != null" >
+        ACQUIRER_INS_CODE,
+      </if>
+      <if test="msgType != null" >
+        MSG_TYPE,
+      </if>
+      <if test="transDealCode != null" >
+        TRANS_DEAL_CODE,
+      </if>
+      <if test="sevCdtCode != null" >
+        SEV_CDT_CODE,
+      </if>
+      <if test="sysTrackNum != null" >
+        SYS_TRACK_NUM,
+      </if>
+      <if test="transDate != null" >
+        TRANS_DATE,
+      </if>
+      <if test="acctNo != null" >
+        ACCT_NO,
+      </if>
+      <if test="transferOutCard != null" >
+        TRANSFER_OUT_CARD,
+      </if>
+      <if test="transferInCard != null" >
+        TRANSFER_IN_CARD,
+      </if>
+      <if test="orgTransInfo != null" >
+        ORG_TRANS_INFO,
+      </if>
+      <if test="recCardTerminalCode != null" >
+        REC_CARD_TERMINAL_CODE,
+      </if>
+      <if test="recCardCode != null" >
+        REC_CARD_CODE,
+      </if>
+      <if test="retrivalNo != null" >
+        RETRIVAL_NO,
+      </if>
+      <if test="transAmt != null" >
+        TRANS_AMT,
+      </if>
+      <if test="reserve1 != null" >
+        RESERVE1,
+      </if>
+      <if test="brandFee != null" >
+        BRAND_FEE,
+      </if>
+      <if test="reserve2 != null" >
+        RESERVE2,
+      </if>
+      <if test="reserve3 != null" >
+        RESERVE3,
+      </if>
+      <if test="transLaunchMode != null" >
+        TRANS_LAUNCH_MODE,
+      </if>
+      <if test="reserve4 != null" >
+        RESERVE4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDate != null" >
+        #{stlmDate,jdbcType=VARCHAR},
+      </if>
+      <if test="acquirerFirCode != null" >
+        #{acquirerFirCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isUnionCard != null" >
+        #{isUnionCard,jdbcType=CHAR},
+      </if>
+      <if test="cardFlag != null" >
+        #{cardFlag,jdbcType=CHAR},
+      </if>
+      <if test="terminalType != null" >
+        #{terminalType,jdbcType=VARCHAR},
+      </if>
+      <if test="cardMedia != null" >
+        #{cardMedia,jdbcType=CHAR},
+      </if>
+      <if test="transRegion != null" >
+        #{transRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="merType != null" >
+        #{merType,jdbcType=VARCHAR},
+      </if>
+      <if test="acquirerSecCode != null" >
+        #{acquirerSecCode,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptInsCode != null" >
+        #{acceptInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sendInsCode != null" >
+        #{sendInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sndCardInsCode != null" >
+        #{sndCardInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recInsCode != null" >
+        #{recInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="acquirerInsCode != null" >
+        #{acquirerInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="msgType != null" >
+        #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="transDealCode != null" >
+        #{transDealCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sevCdtCode != null" >
+        #{sevCdtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTrackNum != null" >
+        #{sysTrackNum,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null" >
+        #{transDate,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null" >
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transferOutCard != null" >
+        #{transferOutCard,jdbcType=VARCHAR},
+      </if>
+      <if test="transferInCard != null" >
+        #{transferInCard,jdbcType=VARCHAR},
+      </if>
+      <if test="orgTransInfo != null" >
+        #{orgTransInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="recCardTerminalCode != null" >
+        #{recCardTerminalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recCardCode != null" >
+        #{recCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="retrivalNo != null" >
+        #{retrivalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null" >
+        #{transAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="brandFee != null" >
+        #{brandFee,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+        #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="transLaunchMode != null" >
+        #{transLaunchMode,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+        #{reserve4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthUnionBrandFeeInfo" >
+    update BTH_UNION_BRAND_FEE_INFO
+    <set >
+      <if test="stlmDate != null" >
+        STLM_DATE = #{stlmDate,jdbcType=VARCHAR},
+      </if>
+      <if test="acquirerFirCode != null" >
+        ACQUIRER_FIR_CODE = #{acquirerFirCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isUnionCard != null" >
+        IS_UNION_CARD = #{isUnionCard,jdbcType=CHAR},
+      </if>
+      <if test="cardFlag != null" >
+        CARD_FLAG = #{cardFlag,jdbcType=CHAR},
+      </if>
+      <if test="terminalType != null" >
+        TERMINAL_TYPE = #{terminalType,jdbcType=VARCHAR},
+      </if>
+      <if test="cardMedia != null" >
+        CARD_MEDIA = #{cardMedia,jdbcType=CHAR},
+      </if>
+      <if test="transRegion != null" >
+        TRANS_REGION = #{transRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="merType != null" >
+        MER_TYPE = #{merType,jdbcType=VARCHAR},
+      </if>
+      <if test="acquirerSecCode != null" >
+        ACQUIRER_SEC_CODE = #{acquirerSecCode,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptInsCode != null" >
+        ACCEPT_INS_CODE = #{acceptInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sendInsCode != null" >
+        SEND_INS_CODE = #{sendInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sndCardInsCode != null" >
+        SND_CARD_INS_CODE = #{sndCardInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recInsCode != null" >
+        REC_INS_CODE = #{recInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="acquirerInsCode != null" >
+        ACQUIRER_INS_CODE = #{acquirerInsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="msgType != null" >
+        MSG_TYPE = #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="transDealCode != null" >
+        TRANS_DEAL_CODE = #{transDealCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sevCdtCode != null" >
+        SEV_CDT_CODE = #{sevCdtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sysTrackNum != null" >
+        SYS_TRACK_NUM = #{sysTrackNum,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null" >
+        TRANS_DATE = #{transDate,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null" >
+        ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transferOutCard != null" >
+        TRANSFER_OUT_CARD = #{transferOutCard,jdbcType=VARCHAR},
+      </if>
+      <if test="transferInCard != null" >
+        TRANSFER_IN_CARD = #{transferInCard,jdbcType=VARCHAR},
+      </if>
+      <if test="orgTransInfo != null" >
+        ORG_TRANS_INFO = #{orgTransInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="recCardTerminalCode != null" >
+        REC_CARD_TERMINAL_CODE = #{recCardTerminalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recCardCode != null" >
+        REC_CARD_CODE = #{recCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="retrivalNo != null" >
+        RETRIVAL_NO = #{retrivalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null" >
+        TRANS_AMT = #{transAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+        RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="brandFee != null" >
+        BRAND_FEE = #{brandFee,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+        RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="transLaunchMode != null" >
+        TRANS_LAUNCH_MODE = #{transLaunchMode,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+        RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthUnionBrandFeeInfo" >
+    update BTH_UNION_BRAND_FEE_INFO
+    set STLM_DATE = #{stlmDate,jdbcType=VARCHAR},
+      ACQUIRER_FIR_CODE = #{acquirerFirCode,jdbcType=VARCHAR},
+      IS_UNION_CARD = #{isUnionCard,jdbcType=CHAR},
+      CARD_FLAG = #{cardFlag,jdbcType=CHAR},
+      TERMINAL_TYPE = #{terminalType,jdbcType=VARCHAR},
+      CARD_MEDIA = #{cardMedia,jdbcType=CHAR},
+      TRANS_REGION = #{transRegion,jdbcType=VARCHAR},
+      MER_TYPE = #{merType,jdbcType=VARCHAR},
+      ACQUIRER_SEC_CODE = #{acquirerSecCode,jdbcType=VARCHAR},
+      ACCEPT_INS_CODE = #{acceptInsCode,jdbcType=VARCHAR},
+      SEND_INS_CODE = #{sendInsCode,jdbcType=VARCHAR},
+      SND_CARD_INS_CODE = #{sndCardInsCode,jdbcType=VARCHAR},
+      REC_INS_CODE = #{recInsCode,jdbcType=VARCHAR},
+      ACQUIRER_INS_CODE = #{acquirerInsCode,jdbcType=VARCHAR},
+      MSG_TYPE = #{msgType,jdbcType=VARCHAR},
+      TRANS_DEAL_CODE = #{transDealCode,jdbcType=VARCHAR},
+      SEV_CDT_CODE = #{sevCdtCode,jdbcType=VARCHAR},
+      SYS_TRACK_NUM = #{sysTrackNum,jdbcType=VARCHAR},
+      TRANS_DATE = #{transDate,jdbcType=VARCHAR},
+      ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      TRANSFER_OUT_CARD = #{transferOutCard,jdbcType=VARCHAR},
+      TRANSFER_IN_CARD = #{transferInCard,jdbcType=VARCHAR},
+      ORG_TRANS_INFO = #{orgTransInfo,jdbcType=VARCHAR},
+      REC_CARD_TERMINAL_CODE = #{recCardTerminalCode,jdbcType=VARCHAR},
+      REC_CARD_CODE = #{recCardCode,jdbcType=VARCHAR},
+      RETRIVAL_NO = #{retrivalNo,jdbcType=VARCHAR},
+      TRANS_AMT = #{transAmt,jdbcType=VARCHAR},
+      RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      BRAND_FEE = #{brandFee,jdbcType=VARCHAR},
+      RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      TRANS_LAUNCH_MODE = #{transLaunchMode,jdbcType=VARCHAR},
+      RESERVE4 = #{reserve4,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+   <delete id="deleteByStlmDate" parameterType="string">
+        DELETE FROM BTH_UNION_BRAND_FEE_INFO WHERE STLM_DATE = #{stlmDate,jdbcType=VARCHAR}
+   </delete>
+
+    <select id="selectByStlmDate" parameterType="string" resultMap="BaseResultMap">
+        select  <include refid="Base_Column_List"/> from BTH_UNION_BRAND_FEE_INFO where STLM_DATE = #{stlmDate,jdbcType=VARCHAR}
+    </select>
+</mapper>

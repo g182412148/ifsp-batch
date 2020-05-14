@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthVatInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthVatInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="TRAN_DATE" property="tranDate" jdbcType="VARCHAR" />
+    <result column="TXN_CHNL_FLAG" property="txnChnlFlag" jdbcType="VARCHAR" />
+    <result column="SUBJECT_CODE" property="subjectCode" jdbcType="VARCHAR" />
+    <result column="SUBJECT_NAME" property="subjectName" jdbcType="VARCHAR" />
+    <result column="MER_ACCOUNT" property="merAccount" jdbcType="DECIMAL" />
+    <result column="MER_ORG_ID" property="merOrgId" jdbcType="VARCHAR" />
+    <result column="MER_ORG_NM" property="merOrgNM" jdbcType="VARCHAR" />
+    <result column="MER_FEE" property="merFee" jdbcType="DECIMAL" />
+    <result column="OPEN_ORG_ID" property="openOrgId" jdbcType="VARCHAR" />
+    <result column="OPEN_ORG_NM" property="openOrgNM" jdbcType="VARCHAR" />
+    <result column="OPEN_ORG_FEE" property="openOrgFee" jdbcType="DECIMAL" />
+    <result column="OP_ORG_ID" property="opOrgId" jdbcType="VARCHAR" />
+    <result column="OP_ORG_NM" property="opOrgNm" jdbcType="VARCHAR" />
+    <result column="OP_ORG_FEE" property="opOrgFee" jdbcType="DECIMAL" />
+    <result column="OVERSEAS_FLG" property="overseasFlg" jdbcType="VARCHAR" />
+    <result column="CUR" property="cur" jdbcType="VARCHAR" />
+    <result column="DR_CR_FLAG" property="drCrFlag" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="RESERVED1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="RESERVED2" property="reserved2" jdbcType="VARCHAR" />
+    <result column="RESERVED3" property="reserved3" jdbcType="VARCHAR" />
+    <result column="RESERVED4" property="reserved4" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ORDER_ID,TRAN_DATE, TXN_CHNL_FLAG, SUBJECT_CODE, SUBJECT_NAME, MER_ACCOUNT, MER_ORG_ID, MER_ORG_NM, MER_FEE,
+    OPEN_ORG_ID, OPEN_ORG_NM, OPEN_ORG_FEE, OP_ORG_ID, OP_ORG_NM, OP_ORG_FEE,OVERSEAS_FLG,CUR,DR_CR_FLAG,CREATE_DATE, UPDATE_DATE,
+    RESERVED1, RESERVED2, RESERVED3, RESERVED4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_VAT_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_VAT_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthVatInfo" >
+    insert into BTH_VAT_INFO (ID, ORDER_ID,TRAN_DATE, TXN_CHNL_FLAG, SUBJECT_CODE, SUBJECT_NAME, MER_ACCOUNT, MER_ORG_ID, MER_ORG_NM, MER_FEE,
+    OPEN_ORG_ID, OPEN_ORG_NM, OPEN_ORG_FEE, OP_ORG_ID, OP_ORG_NM, OP_ORG_FEE,OVERSEAS_FLG,CUR,DR_CR_FLAG,CREATE_DATE, UPDATE_DATE,
+    RESERVED1, RESERVED2, RESERVED3, RESERVED4)
+    values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR},#{tranDate,jdbcType=VARCHAR}, #{txnChnlFlag,jdbcType=VARCHAR}, 
+      #{subjectCode,jdbcType=VARCHAR}, #{subjectName,jdbcType=VARCHAR}, #{merAccount,jdbcType=DECIMAL},
+      #{merOrgId,jdbcType=VARCHAR}, #{merOrgNm,jdbcType=VARCHAR},#{merFee,jdbcType=DECIMAL}, 
+      #{openOrgId,jdbcType=VARCHAR},  #{openOrgNm,jdbcType=VARCHAR},  #{openOrgFee,jdbcType=DECIMAL}, 
+      #{opOrgId,jdbcType=VARCHAR},  #{opOrgNm,jdbcType=VARCHAR},  #{opOrgFee,jdbcType=DECIMAL}, 
+      #{overseasFlag,jdbcType=VARCHAR}, #{cur,jdbcType=VARCHAR}, #{drCrFlag,jdbcType=VARCHAR},
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=DECIMAL})
+  </insert>
+
+  <insert id="insertBatch">
+    INSERT INTO BTH_VAT_INFO
+    (
+      ID, ORDER_ID,TRAN_DATE, TXN_CHNL_FLAG, SUBJECT_CODE, SUBJECT_NAME, MER_ACCOUNT, MER_ORG_ID, MER_ORG_NM, MER_FEE,
+      OPEN_ORG_ID, OPEN_ORG_NM, OPEN_ORG_FEE, OP_ORG_ID, OP_ORG_NM, OP_ORG_FEE,OVERSEAS_FLG,CUR,DR_CR_FLAG,CREATE_DATE, UPDATE_DATE,
+      RESERVED1, RESERVED2, RESERVED3, RESERVED4
+    )
+    <foreach collection="recordList" index="index" item="item" separator="union all">
+      (SELECT #{item.id,jdbcType=VARCHAR}, #{item.orderId,jdbcType=VARCHAR},#{item.tranDate,jdbcType=VARCHAR}, #{item.txnChnlFlag,jdbcType=VARCHAR},
+      #{item.subjectCode,jdbcType=VARCHAR}, #{item.subjectName,jdbcType=VARCHAR}, #{item.merAccount,jdbcType=DECIMAL},
+      #{item.merOrgId,jdbcType=VARCHAR}, #{item.merOrgNm,jdbcType=VARCHAR},#{item.merFee,jdbcType=DECIMAL},
+      #{item.openOrgId,jdbcType=VARCHAR},  #{item.openOrgNm,jdbcType=VARCHAR},  #{item.openOrgFee,jdbcType=DECIMAL},
+      #{item.opOrgId,jdbcType=VARCHAR},  #{item.opOrgNm,jdbcType=VARCHAR},  #{item.opOrgFee,jdbcType=DECIMAL},
+      #{item.overseasFlag,jdbcType=VARCHAR}, #{item.cur,jdbcType=VARCHAR}, #{item.drCrFlag,jdbcType=VARCHAR},
+      #{item.createDate,jdbcType=TIMESTAMP}, #{item.updateDate,jdbcType=TIMESTAMP}, #{item.reserved1,jdbcType=VARCHAR},
+      #{item.reserved2,jdbcType=VARCHAR}, #{item.reserved3,jdbcType=VARCHAR}, #{item.reserved4,jdbcType=DECIMAL}
+      FROM DUAL)
+    </foreach>
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthVatInfo" >
+    insert into BTH_VAT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="tranDate != null" >
+        TRAN_DATE,
+      </if>
+      <if test="txnChnlFlag != null" >
+        TXN_CHNL_FLAG,
+      </if>
+      <if test="subjectCode != null" >
+        SUBJECT_CODE,
+      </if>
+      <if test="subjectName != null" >
+        SUBJECT_NAME,
+      </if>
+      <if test="merAccount != null" >
+        MER_ACCOUNT,
+      </if>
+      <if test="merOrgId != null" >
+        MER_ORG_ID,
+      </if>
+      <if test="merOrgNm != null" >
+        MER_ORG_NM,
+      </if>
+      <if test="merFee != null" >
+        MER_FEE,
+      </if>
+      <if test="openOrgId != null" >
+        OPEN_ORG_ID,
+      </if>
+      <if test="openOrgNm != null" >
+        OPEN_ORG_NM,
+      </if>
+      <if test="openOrgFee != null" >
+        OPEN_ORG_FEE,
+      </if>
+      <if test="opOrgId != null" >
+        OP_ORG_ID,
+      </if>
+      <if test="opOrgNm != null" >
+        OP_ORG_NM,
+      </if>
+      <if test="opOrgFee != null" >
+        OP_ORG_FEE,
+      </if>
+      <if test="overseasFlag != null" >
+        OVERSEAS_FLG,
+      </if>
+      <if test="cur != null" >
+        CUR,
+      </if>
+      <if test="drCrFlag != null" >
+        DR_CR_FLAG,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE,
+      </if>
+      <if test="reserved1 != null" >
+        RESERVED1,
+      </if>
+      <if test="reserved2 != null" >
+        RESERVED2,
+      </if>
+      <if test="reserved3 != null" >
+        RESERVED3,
+      </if>
+      <if test="reserved4 != null" >
+        RESERVED4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="tranDate != null" >
+        #{tranDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnChnlFlag != null" >
+       #{txnChnlFlag,jdbcType=VARCHAR}, 
+      </if>
+      <if test="merOrgId != null" >
+        #{merOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="merOrgNm != null" >
+        #{merOrgNm,jdbcType=VARCHAR},
+      </if>
+      <if test="merFee != null" >
+        #{merFee,jdbcType=DECIMAL},
+      </if>
+      <if test="openOrgId != null" >
+        #{openOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="openOrgNm != null" >
+        #{openOrgNm,jdbcType=VARCHAR},
+      </if>
+      <if test="openOrgFee != null" >
+        #{openOrgFee,jdbcType=DECIMAL},
+      </if>
+       <if test="opOrgId != null" >
+        #{opOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="opOrgNm != null" >
+        #{opOrgNm,jdbcType=VARCHAR},
+      </if>
+      <if test="openOrgFee != null" >
+        #{opOrgFee,jdbcType=DECIMAL},
+      </if>
+      <if test="overseasFlag != null" >
+        #{overseasFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="cur != null" >
+        #{cur,jdbcType=VARCHAR},
+      </if>
+      <if test="drCrFlag != null" >
+        #{drCrFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null" >
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null" >
+        #{reserved4,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthVatInfo" >
+    update BTH_VAT_INFO
+    <set >
+      <if test="tranDate != null" >
+        TRAN_DATE = #{tranDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnChnlFlag != null" >
+        TXN_CHNL_FLAG = #{txnChnlFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="merOrgId != null" >
+        MER_ORG_ID = #{merOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="merOrgNm != null" >
+        MER_ORG_NM = #{merOrgNm,jdbcType=VARCHAR},
+      </if>
+      <if test="merFee != null" >
+        MER_FEE = #{merFee,jdbcType=Decimal},
+      </if>
+      <if test="openOrgId != null" >
+        OPEN_ORG_ID = #{openOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="openOrgNm != null" >
+        OPEN_ORG_NM = #{openOrgNm,jdbcType=VARCHAR},
+      </if>
+      <if test="openOrgFee != null" >
+        OPEN_ORG_FEE = #{openOrgFee,jdbcType=Decimal},
+      </if>
+      <if test="opOrgId != null" >
+        OP_ORG_ID = #{opOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="opOrgNm != null" >
+        OP_ORG_NM = #{opOrgNm,jdbcType=VARCHAR},
+      </if>
+      <if test="opOrgFee != null" >
+        OP_ORG_FEE = #{opOrgFee,jdbcType=Decimal},
+      </if>
+      <if test="overseasFlag != null" >
+        OVERSEAS_FLAG = #{overseasFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="cur != null" >
+        CUR = #{cur,jdbcType=VARCHAR},
+      </if>
+      <if test="drCrFlag != null" >
+        DR_CR_FLAG = #{drCrFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        RESERVED1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        RESERVED2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null" >
+        RESERVED3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null" >
+        RESERVED4 = #{reserved4,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <delete id="deleteVatInfoByDate" parameterType="map">
+  		delete from BTH_VAT_INFO where tran_date =  #{tranDate}
+  </delete>
+  
+</mapper>

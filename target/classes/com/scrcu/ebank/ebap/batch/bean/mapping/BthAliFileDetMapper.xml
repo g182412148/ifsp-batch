@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthAliFileDetMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthAliFileDet" >
+    <id column="ORDER_NO" property="orderNo" jdbcType="VARCHAR" />
+    <result column="ALI_ORDER_NO" property="aliOrderNo" jdbcType="VARCHAR" />
+    <result column="ORDER_TP" property="orderTp" jdbcType="CHAR" />
+    <result column="SRC_ORDER_NO" property="srcOrderNo" jdbcType="VARCHAR" />
+    <result column="SRC_ALI_ORDER_NO" property="srcAliOrderNo" jdbcType="VARCHAR" />
+    <result column="BUSI_TP" property="busiTp" jdbcType="VARCHAR" />
+    <result column="PROD_NM" property="prodNm" jdbcType="VARCHAR" />
+    <result column="CRT_TM" property="crtTm" jdbcType="CHAR" />
+    <result column="END_TM" property="endTm" jdbcType="CHAR" />
+    <result column="STORE_ID" property="storeId" jdbcType="VARCHAR" />
+    <result column="STORE_NM" property="storeNm" jdbcType="VARCHAR" />
+    <result column="OPERATOR_ID" property="operatorId" jdbcType="VARCHAR" />
+    <result column="TERMINAL_ID" property="terminalId" jdbcType="VARCHAR" />
+    <result column="BUYER_LOGIN_ID" property="buyerLoginId" jdbcType="VARCHAR" />
+    <result column="ORDER_AMT" property="orderAmt" jdbcType="DECIMAL" />
+    <result column="RECEPIT_AMT" property="recepitAmt" jdbcType="DECIMAL" />
+    <result column="ALI_RED_AMT" property="aliRedAmt" jdbcType="DECIMAL" />
+    <result column="POINT_AMT" property="pointAmt" jdbcType="DECIMAL" />
+    <result column="ALI_DCT_AMT" property="aliDctAmt" jdbcType="DECIMAL" />
+    <result column="MCH_DCT_AMT" property="mchDctAmt" jdbcType="DECIMAL" />
+    <result column="VOUCHER_AMT" property="voucherAmt" jdbcType="DECIMAL" />
+    <result column="VOUCHER_NM" property="voucherNm" jdbcType="VARCHAR" />
+    <result column="MCH_RED_AMT" property="mchRedAmt" jdbcType="DECIMAL" />
+    <result column="PCC_PAY_AMT" property="pccPayAmt" jdbcType="DECIMAL" />
+    <result column="FEE_AMT" property="feeAmt" jdbcType="DECIMAL" />
+    <result column="NET_AMT" property="netAmt" jdbcType="DECIMAL" />
+    <result column="SUB_MCH_ID" property="subMchId" jdbcType="VARCHAR" />
+    <result column="TXN_TP" property="txnTp" jdbcType="VARCHAR" />
+    <result column="RMK" property="rmk" jdbcType="VARCHAR" />
+    <result column="PAGY_SYS_NO" property="pagySysNo" jdbcType="CHAR" />
+    <result column="PAGY_NO" property="pagyNo" jdbcType="CHAR" />
+    <result column="ORDER_AMT_TMP" property="orderAmtTmp" jdbcType="DECIMAL" />
+    <result column="FEE_AMT_TMP" property="feeAmtTmp" jdbcType="DECIMAL" />
+    <result column="CHK_DATA_DT" property="chkDataDt" jdbcType="CHAR" />
+    <result column="CHK_ACCT_ST" property="chkAcctSt" jdbcType="CHAR" />
+    <result column="CHK_RST" property="chkRst" jdbcType="CHAR" />
+    <result column="LST_UPD_TM" property="lstUpdTm" jdbcType="CHAR" />
+    <result column="DUBIOUS_FLAG" property="dubiousFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ORDER_NO, ALI_ORDER_NO, ORDER_TP, SRC_ORDER_NO, SRC_ALI_ORDER_NO, BUSI_TP, PROD_NM, 
+    CRT_TM, END_TM, STORE_ID, STORE_NM, OPERATOR_ID, TERMINAL_ID, BUYER_LOGIN_ID, ORDER_AMT, 
+    RECEPIT_AMT, ALI_RED_AMT, POINT_AMT, ALI_DCT_AMT, MCH_DCT_AMT, VOUCHER_AMT, VOUCHER_NM, 
+    MCH_RED_AMT, PCC_PAY_AMT, FEE_AMT, NET_AMT, SUB_MCH_ID, TXN_TP, RMK, PAGY_SYS_NO, 
+    PAGY_NO, ORDER_AMT_TMP, FEE_AMT_TMP, CHK_DATA_DT, CHK_ACCT_ST, CHK_RST, LST_UPD_TM,DUBIOUS_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_ALI_FILE_DET
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+    and ORDER_TP = #{orderTp,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_ALI_FILE_DET
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+    and ORDER_TP = #{orderTp,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthAliFileDet" >
+    insert into BTH_ALI_FILE_DET (ORDER_NO, ALI_ORDER_NO, ORDER_TP, 
+      SRC_ORDER_NO, SRC_ALI_ORDER_NO, BUSI_TP, 
+      PROD_NM, CRT_TM, END_TM, STORE_ID, 
+      STORE_NM, OPERATOR_ID, TERMINAL_ID, 
+      BUYER_LOGIN_ID, ORDER_AMT, RECEPIT_AMT, 
+      ALI_RED_AMT, POINT_AMT, ALI_DCT_AMT, 
+      MCH_DCT_AMT, VOUCHER_AMT, VOUCHER_NM, 
+      MCH_RED_AMT, PCC_PAY_AMT, FEE_AMT, 
+      NET_AMT, SUB_MCH_ID, TXN_TP, 
+      RMK, PAGY_SYS_NO, PAGY_NO, ORDER_AMT_TMP, 
+      FEE_AMT_TMP, CHK_DATA_DT, CHK_ACCT_ST, 
+      CHK_RST, LST_UPD_TM,DUBIOUS_FLAG)
+    values (#{orderNo,jdbcType=VARCHAR}, #{aliOrderNo,jdbcType=VARCHAR}, #{orderTp,jdbcType=CHAR}, 
+      #{srcOrderNo,jdbcType=VARCHAR}, #{srcAliOrderNo,jdbcType=VARCHAR}, #{busiTp,jdbcType=VARCHAR}, 
+      #{prodNm,jdbcType=VARCHAR}, #{crtTm,jdbcType=CHAR}, #{endTm,jdbcType=CHAR}, #{storeId,jdbcType=VARCHAR}, 
+      #{storeNm,jdbcType=VARCHAR}, #{operatorId,jdbcType=VARCHAR}, #{terminalId,jdbcType=VARCHAR}, 
+      #{buyerLoginId,jdbcType=VARCHAR}, #{orderAmt,jdbcType=DECIMAL}, #{recepitAmt,jdbcType=DECIMAL}, 
+      #{aliRedAmt,jdbcType=DECIMAL}, #{pointAmt,jdbcType=DECIMAL}, #{aliDctAmt,jdbcType=DECIMAL}, 
+      #{mchDctAmt,jdbcType=DECIMAL}, #{voucherAmt,jdbcType=DECIMAL}, #{voucherNm,jdbcType=VARCHAR}, 
+      #{mchRedAmt,jdbcType=DECIMAL}, #{pccPayAmt,jdbcType=DECIMAL}, #{feeAmt,jdbcType=DECIMAL}, 
+      #{netAmt,jdbcType=DECIMAL}, #{subMchId,jdbcType=VARCHAR}, #{txnTp,jdbcType=VARCHAR}, 
+      #{rmk,jdbcType=VARCHAR}, #{pagySysNo,jdbcType=CHAR}, #{pagyNo,jdbcType=CHAR}, #{orderAmtTmp,jdbcType=DECIMAL}, 
+      #{feeAmtTmp,jdbcType=DECIMAL}, #{chkDataDt,jdbcType=CHAR}, #{chkAcctSt,jdbcType=CHAR}, 
+      #{chkRst,jdbcType=CHAR}, #{lstUpdTm,jdbcType=CHAR}, #{dubiousFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthAliFileDet" >
+    insert into BTH_ALI_FILE_DET
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderNo != null" >
+        ORDER_NO,
+      </if>
+      <if test="aliOrderNo != null" >
+        ALI_ORDER_NO,
+      </if>
+      <if test="orderTp != null" >
+        ORDER_TP,
+      </if>
+      <if test="srcOrderNo != null" >
+        SRC_ORDER_NO,
+      </if>
+      <if test="srcAliOrderNo != null" >
+        SRC_ALI_ORDER_NO,
+      </if>
+      <if test="busiTp != null" >
+        BUSI_TP,
+      </if>
+      <if test="prodNm != null" >
+        PROD_NM,
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM,
+      </if>
+      <if test="endTm != null" >
+        END_TM,
+      </if>
+      <if test="storeId != null" >
+        STORE_ID,
+      </if>
+      <if test="storeNm != null" >
+        STORE_NM,
+      </if>
+      <if test="operatorId != null" >
+        OPERATOR_ID,
+      </if>
+      <if test="terminalId != null" >
+        TERMINAL_ID,
+      </if>
+      <if test="buyerLoginId != null" >
+        BUYER_LOGIN_ID,
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT,
+      </if>
+      <if test="recepitAmt != null" >
+        RECEPIT_AMT,
+      </if>
+      <if test="aliRedAmt != null" >
+        ALI_RED_AMT,
+      </if>
+      <if test="pointAmt != null" >
+        POINT_AMT,
+      </if>
+      <if test="aliDctAmt != null" >
+        ALI_DCT_AMT,
+      </if>
+      <if test="mchDctAmt != null" >
+        MCH_DCT_AMT,
+      </if>
+      <if test="voucherAmt != null" >
+        VOUCHER_AMT,
+      </if>
+      <if test="voucherNm != null" >
+        VOUCHER_NM,
+      </if>
+      <if test="mchRedAmt != null" >
+        MCH_RED_AMT,
+      </if>
+      <if test="pccPayAmt != null" >
+        PCC_PAY_AMT,
+      </if>
+      <if test="feeAmt != null" >
+        FEE_AMT,
+      </if>
+      <if test="netAmt != null" >
+        NET_AMT,
+      </if>
+      <if test="subMchId != null" >
+        SUB_MCH_ID,
+      </if>
+      <if test="txnTp != null" >
+        TXN_TP,
+      </if>
+      <if test="rmk != null" >
+        RMK,
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO,
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO,
+      </if>
+      <if test="orderAmtTmp != null" >
+        ORDER_AMT_TMP,
+      </if>
+      <if test="feeAmtTmp != null" >
+        FEE_AMT_TMP,
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT,
+      </if>
+      <if test="chkAcctSt != null" >
+        CHK_ACCT_ST,
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST,
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM,
+      </if>
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="aliOrderNo != null" >
+        #{aliOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTp != null" >
+        #{orderTp,jdbcType=CHAR},
+      </if>
+      <if test="srcOrderNo != null" >
+        #{srcOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="srcAliOrderNo != null" >
+        #{srcAliOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="busiTp != null" >
+        #{busiTp,jdbcType=VARCHAR},
+      </if>
+      <if test="prodNm != null" >
+        #{prodNm,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=CHAR},
+      </if>
+      <if test="endTm != null" >
+        #{endTm,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNm != null" >
+        #{storeNm,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalId != null" >
+        #{terminalId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerLoginId != null" >
+        #{buyerLoginId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmt != null" >
+        #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recepitAmt != null" >
+        #{recepitAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="aliRedAmt != null" >
+        #{aliRedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pointAmt != null" >
+        #{pointAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="aliDctAmt != null" >
+        #{aliDctAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="mchDctAmt != null" >
+        #{mchDctAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="voucherAmt != null" >
+        #{voucherAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="voucherNm != null" >
+        #{voucherNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mchRedAmt != null" >
+        #{mchRedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pccPayAmt != null" >
+        #{pccPayAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeAmt != null" >
+        #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="netAmt != null" >
+        #{netAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="subMchId != null" >
+        #{subMchId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null" >
+        #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="rmk != null" >
+        #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySysNo != null" >
+        #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyNo != null" >
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="orderAmtTmp != null" >
+        #{orderAmtTmp,jdbcType=DECIMAL},
+      </if>
+      <if test="feeAmtTmp != null" >
+        #{feeAmtTmp,jdbcType=DECIMAL},
+      </if>
+      <if test="chkDataDt != null" >
+        #{chkDataDt,jdbcType=CHAR},
+      </if>
+      <if test="chkAcctSt != null" >
+        #{chkAcctSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null" >
+        #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        #{lstUpdTm,jdbcType=CHAR},
+      </if>
+      <if test="dubiousFlag != null" >
+        #{dubiousFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthAliFileDet" >
+    update BTH_ALI_FILE_DET
+    <set >
+      <if test="aliOrderNo != null" >
+        ALI_ORDER_NO = #{aliOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTp != null" >
+        ORDER_TP = #{orderTp,jdbcType=CHAR},
+      </if>
+      <if test="srcOrderNo != null" >
+        SRC_ORDER_NO = #{srcOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="srcAliOrderNo != null" >
+        SRC_ALI_ORDER_NO = #{srcAliOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="busiTp != null" >
+        BUSI_TP = #{busiTp,jdbcType=VARCHAR},
+      </if>
+      <if test="prodNm != null" >
+        PROD_NM = #{prodNm,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        CRT_TM = #{crtTm,jdbcType=CHAR},
+      </if>
+      <if test="endTm != null" >
+        END_TM = #{endTm,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        STORE_ID = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNm != null" >
+        STORE_NM = #{storeNm,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalId != null" >
+        TERMINAL_ID = #{terminalId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerLoginId != null" >
+        BUYER_LOGIN_ID = #{buyerLoginId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmt != null" >
+        ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recepitAmt != null" >
+        RECEPIT_AMT = #{recepitAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="aliRedAmt != null" >
+        ALI_RED_AMT = #{aliRedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pointAmt != null" >
+        POINT_AMT = #{pointAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="aliDctAmt != null" >
+        ALI_DCT_AMT = #{aliDctAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="mchDctAmt != null" >
+        MCH_DCT_AMT = #{mchDctAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="voucherAmt != null" >
+        VOUCHER_AMT = #{voucherAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="voucherNm != null" >
+        VOUCHER_NM = #{voucherNm,jdbcType=VARCHAR},
+      </if>
+      <if test="mchRedAmt != null" >
+        MCH_RED_AMT = #{mchRedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="pccPayAmt != null" >
+        PCC_PAY_AMT = #{pccPayAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="feeAmt != null" >
+        FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="netAmt != null" >
+        NET_AMT = #{netAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="subMchId != null" >
+        SUB_MCH_ID = #{subMchId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null" >
+        TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="rmk != null" >
+        RMK = #{rmk,jdbcType=VARCHAR},
+      </if>
+      <if test="pagySysNo != null" >
+        PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      </if>
+      <if test="pagyNo != null" >
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="orderAmtTmp != null" >
+        ORDER_AMT_TMP = #{orderAmtTmp,jdbcType=DECIMAL},
+      </if>
+      <if test="feeAmtTmp != null" >
+        FEE_AMT_TMP = #{feeAmtTmp,jdbcType=DECIMAL},
+      </if>
+      <if test="chkDataDt != null" >
+        CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR},
+      </if>
+      <if test="chkAcctSt != null" >
+        CHK_ACCT_ST = #{chkAcctSt,jdbcType=CHAR},
+      </if>
+      <if test="chkRst != null" >
+        CHK_RST = #{chkRst,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTm != null" >
+        LST_UPD_TM = #{lstUpdTm,jdbcType=CHAR},
+      </if>
+      <if test="dubiousFlag != null" >
+        DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+    and ORDER_TP = #{orderTp,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthAliFileDet" >
+    update BTH_ALI_FILE_DET
+    set ALI_ORDER_NO = #{aliOrderNo,jdbcType=VARCHAR},
+      ORDER_TP = #{orderTp,jdbcType=CHAR},
+      SRC_ORDER_NO = #{srcOrderNo,jdbcType=VARCHAR},
+      SRC_ALI_ORDER_NO = #{srcAliOrderNo,jdbcType=VARCHAR},
+      BUSI_TP = #{busiTp,jdbcType=VARCHAR},
+      PROD_NM = #{prodNm,jdbcType=VARCHAR},
+      CRT_TM = #{crtTm,jdbcType=CHAR},
+      END_TM = #{endTm,jdbcType=CHAR},
+      STORE_ID = #{storeId,jdbcType=VARCHAR},
+      STORE_NM = #{storeNm,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      TERMINAL_ID = #{terminalId,jdbcType=VARCHAR},
+      BUYER_LOGIN_ID = #{buyerLoginId,jdbcType=VARCHAR},
+      ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      RECEPIT_AMT = #{recepitAmt,jdbcType=DECIMAL},
+      ALI_RED_AMT = #{aliRedAmt,jdbcType=DECIMAL},
+      POINT_AMT = #{pointAmt,jdbcType=DECIMAL},
+      ALI_DCT_AMT = #{aliDctAmt,jdbcType=DECIMAL},
+      MCH_DCT_AMT = #{mchDctAmt,jdbcType=DECIMAL},
+      VOUCHER_AMT = #{voucherAmt,jdbcType=DECIMAL},
+      VOUCHER_NM = #{voucherNm,jdbcType=VARCHAR},
+      MCH_RED_AMT = #{mchRedAmt,jdbcType=DECIMAL},
+      PCC_PAY_AMT = #{pccPayAmt,jdbcType=DECIMAL},
+      FEE_AMT = #{feeAmt,jdbcType=DECIMAL},
+      NET_AMT = #{netAmt,jdbcType=DECIMAL},
+      SUB_MCH_ID = #{subMchId,jdbcType=VARCHAR},
+      TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      RMK = #{rmk,jdbcType=VARCHAR},
+      PAGY_SYS_NO = #{pagySysNo,jdbcType=CHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      ORDER_AMT_TMP = #{orderAmtTmp,jdbcType=DECIMAL},
+      FEE_AMT_TMP = #{feeAmtTmp,jdbcType=DECIMAL},
+      CHK_DATA_DT = #{chkDataDt,jdbcType=CHAR},
+      CHK_ACCT_ST = #{chkAcctSt,jdbcType=CHAR},
+      CHK_RST = #{chkRst,jdbcType=CHAR},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=CHAR},
+      DUBIOUS_FLAG = #{dubiousFlag,jdbcType=CHAR}
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+    and ORDER_TP = #{orderTp,jdbcType=CHAR}
+  </update>
+  <delete id="deleteBypagyNoAndDate" parameterType="java.lang.String" >
+    delete from BTH_ALI_FILE_DET
+    where PAGY_NO = #{pagyNo,jdbcType=VARCHAR} and CHK_DATA_DT = #{settleDate,jdbcType=VARCHAR}
+  </delete>
+  
+  <select id="selectAliFileByDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_ALI_FILE_DET
+    where CHK_DATA_DT = #{settleDate}
+  </select>
+  
+  <select id="selectAliFileByDateAndChkstat" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_ALI_FILE_DET
+    where CHK_DATA_DT = #{doubtDate} and CHK_RST= #{chkSt}
+  </select>
+  
+  <select id="selectAliFileByDateAndStat" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_ALI_FILE_DET
+    where CHK_DATA_DT = #{settleDate} and CHK_ACCT_ST= #{state}
+  </select>
+  <select id="queryAliFileByFlagAndDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_ALI_FILE_DET
+    where CHK_DATA_DT = #{settleDate} and DUBIOUS_FLAG =#{dubiousFlag}
+  </select>
+  <select id="queryAliFileDetByOrderNo" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from BTH_ALI_FILE_DET
+    where ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

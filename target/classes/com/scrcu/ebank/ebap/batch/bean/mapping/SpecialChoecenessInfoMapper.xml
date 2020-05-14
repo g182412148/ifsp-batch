@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.SpecialChoecenessInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.SpecialChoecenessInfo" >
+    <id column="SPECIAL_ID" property="specialId" jdbcType="VARCHAR" />
+    <result column="SPECIAL_NAME" property="specialName" jdbcType="VARCHAR" />
+    <result column="SPECIAL_CLASSIFY" property="specialClassify" jdbcType="VARCHAR" />
+    <result column="SPECIAL_DATE" property="specialDate" jdbcType="VARCHAR" />
+    <result column="SPECIAL_PAR_CPT" property="specialParCpt" jdbcType="VARCHAR" />
+    <result column="SPECIAL_EXH_SEQ" property="specialExhSeq" jdbcType="VARCHAR" />
+    <result column="SPECIAL_PIC_ID" property="specialPicId" jdbcType="VARCHAR" />
+    <result column="SPECIAL_STATE" property="specialState" jdbcType="VARCHAR" />
+    <result column="LAST_UPT_DATE" property="lastUptDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SPECIAL_ID, SPECIAL_NAME, SPECIAL_CLASSIFY, SPECIAL_DATE, SPECIAL_PAR_CPT, SPECIAL_EXH_SEQ, 
+    SPECIAL_PIC_ID, SPECIAL_STATE, LAST_UPT_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SPECIAL_CHOECENESS_INFO
+    where SPECIAL_ID = #{specialId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SPECIAL_CHOECENESS_INFO
+    where SPECIAL_ID = #{specialId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SpecialChoecenessInfo" >
+    insert into SPECIAL_CHOECENESS_INFO (SPECIAL_ID, SPECIAL_NAME, SPECIAL_CLASSIFY, 
+      SPECIAL_DATE, SPECIAL_PAR_CPT, SPECIAL_EXH_SEQ, 
+      SPECIAL_PIC_ID, SPECIAL_STATE, LAST_UPT_DATE
+      )
+    values (#{specialId,jdbcType=VARCHAR}, #{specialName,jdbcType=VARCHAR}, #{specialClassify,jdbcType=VARCHAR}, 
+      #{specialDate,jdbcType=VARCHAR}, #{specialParCpt,jdbcType=VARCHAR}, #{specialExhSeq,jdbcType=VARCHAR}, 
+      #{specialPicId,jdbcType=VARCHAR}, #{specialState,jdbcType=VARCHAR}, #{lastUptDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SpecialChoecenessInfo" >
+    insert into SPECIAL_CHOECENESS_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="specialId != null" >
+        SPECIAL_ID,
+      </if>
+      <if test="specialName != null" >
+        SPECIAL_NAME,
+      </if>
+      <if test="specialClassify != null" >
+        SPECIAL_CLASSIFY,
+      </if>
+      <if test="specialDate != null" >
+        SPECIAL_DATE,
+      </if>
+      <if test="specialParCpt != null" >
+        SPECIAL_PAR_CPT,
+      </if>
+      <if test="specialExhSeq != null" >
+        SPECIAL_EXH_SEQ,
+      </if>
+      <if test="specialPicId != null" >
+        SPECIAL_PIC_ID,
+      </if>
+      <if test="specialState != null" >
+        SPECIAL_STATE,
+      </if>
+      <if test="lastUptDate != null" >
+        LAST_UPT_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="specialId != null" >
+        #{specialId,jdbcType=VARCHAR},
+      </if>
+      <if test="specialName != null" >
+        #{specialName,jdbcType=VARCHAR},
+      </if>
+      <if test="specialClassify != null" >
+        #{specialClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="specialDate != null" >
+        #{specialDate,jdbcType=VARCHAR},
+      </if>
+      <if test="specialParCpt != null" >
+        #{specialParCpt,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExhSeq != null" >
+        #{specialExhSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="specialPicId != null" >
+        #{specialPicId,jdbcType=VARCHAR},
+      </if>
+      <if test="specialState != null" >
+        #{specialState,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUptDate != null" >
+        #{lastUptDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SpecialChoecenessInfo" >
+    update SPECIAL_CHOECENESS_INFO
+    <set >
+      <if test="specialName != null" >
+        SPECIAL_NAME = #{specialName,jdbcType=VARCHAR},
+      </if>
+      <if test="specialClassify != null" >
+        SPECIAL_CLASSIFY = #{specialClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="specialDate != null" >
+        SPECIAL_DATE = #{specialDate,jdbcType=VARCHAR},
+      </if>
+      <if test="specialParCpt != null" >
+        SPECIAL_PAR_CPT = #{specialParCpt,jdbcType=VARCHAR},
+      </if>
+      <if test="specialExhSeq != null" >
+        SPECIAL_EXH_SEQ = #{specialExhSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="specialPicId != null" >
+        SPECIAL_PIC_ID = #{specialPicId,jdbcType=VARCHAR},
+      </if>
+      <if test="specialState != null" >
+        SPECIAL_STATE = #{specialState,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUptDate != null" >
+        LAST_UPT_DATE = #{lastUptDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SPECIAL_ID = #{specialId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SpecialChoecenessInfo" >
+    update SPECIAL_CHOECENESS_INFO
+    set SPECIAL_NAME = #{specialName,jdbcType=VARCHAR},
+      SPECIAL_CLASSIFY = #{specialClassify,jdbcType=VARCHAR},
+      SPECIAL_DATE = #{specialDate,jdbcType=VARCHAR},
+      SPECIAL_PAR_CPT = #{specialParCpt,jdbcType=VARCHAR},
+      SPECIAL_EXH_SEQ = #{specialExhSeq,jdbcType=VARCHAR},
+      SPECIAL_PIC_ID = #{specialPicId,jdbcType=VARCHAR},
+      SPECIAL_STATE = #{specialState,jdbcType=VARCHAR},
+      LAST_UPT_DATE = #{lastUptDate,jdbcType=TIMESTAMP}
+    where SPECIAL_ID = #{specialId,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询撤消机构的数据 -->
+  <select id="selectSpecialChoecenessInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from SPECIAL_CHOECENESS_INFO where SPECIAL_PAR_CPT LIKE #{specialParCpt,jdbcType=VARCHAR}
+  </select>
+</mapper>

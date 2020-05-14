@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.ChoCptMapMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.ChoCptMap" >
+    <id column="CPT_ID" property="cptId" jdbcType="VARCHAR" />
+    <id column="CHO_ID" property="choId" jdbcType="VARCHAR" />
+    <result column="IS_JOIN" property="isJoin" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATA_TIME" property="updataTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CPT_ID, CHO_ID, IS_JOIN, CREATE_TIME, UPDATA_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from CHO_CPT_MAP
+    where CPT_ID = #{cptId,jdbcType=VARCHAR}
+      and CHO_ID = #{choId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from CHO_CPT_MAP
+    where CPT_ID = #{cptId,jdbcType=VARCHAR}
+      and CHO_ID = #{choId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.ChoCptMap" >
+    insert into CHO_CPT_MAP (CPT_ID, CHO_ID, IS_JOIN, 
+      CREATE_TIME, UPDATA_TIME)
+    values (#{cptId,jdbcType=VARCHAR}, #{choId,jdbcType=VARCHAR}, #{isJoin,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updataTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.ChoCptMap" >
+    insert into CHO_CPT_MAP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cptId != null" >
+        CPT_ID,
+      </if>
+      <if test="choId != null" >
+        CHO_ID,
+      </if>
+      <if test="isJoin != null" >
+        IS_JOIN,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updataTime != null" >
+        UPDATA_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cptId != null" >
+        #{cptId,jdbcType=VARCHAR},
+      </if>
+      <if test="choId != null" >
+        #{choId,jdbcType=VARCHAR},
+      </if>
+      <if test="isJoin != null" >
+        #{isJoin,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updataTime != null" >
+        #{updataTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.ChoCptMap" >
+    update CHO_CPT_MAP
+    <set >
+      <if test="isJoin != null" >
+        IS_JOIN = #{isJoin,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updataTime != null" >
+        UPDATA_TIME = #{updataTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CPT_ID = #{cptId,jdbcType=VARCHAR}
+      and CHO_ID = #{choId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.ChoCptMap" >
+    update CHO_CPT_MAP
+    set IS_JOIN = #{isJoin,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATA_TIME = #{updataTime,jdbcType=TIMESTAMP}
+    where CPT_ID = #{cptId,jdbcType=VARCHAR}
+      and CHO_ID = #{choId,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询撤消机构的数据 -->
+  <select id="selectChoCptMap" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from CHO_CPT_MAP where CPT_ID = #{cptId,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 更新机构号 -->
+  <update id="updateChoCptMap" parameterType="map">
+    update CHO_CPT_MAP
+    set CPT_ID = #{merg,jdbcType=VARCHAR}
+    where CPT_ID = #{reqe,jdbcType=VARCHAR}
+  </update>
+</mapper>

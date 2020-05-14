@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.OrgRepeMergCfgMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergCfg" >
+    <id column="TABLE_NAME" property="tableName" jdbcType="VARCHAR" />
+    <id column="PARAM" property="param" jdbcType="VARCHAR" />
+    <result column="UPD_TYPE" property="updType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TABLE_NAME, PARAM, UPD_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from ORG_REPE_MERG_CFG
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+      and PARAM = #{param,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from ORG_REPE_MERG_CFG
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+      and PARAM = #{param,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergCfg" >
+    insert into ORG_REPE_MERG_CFG (TABLE_NAME, PARAM, UPD_TYPE
+      )
+    values (#{tableName,jdbcType=VARCHAR}, #{param,jdbcType=VARCHAR}, #{updType,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergCfg" >
+    insert into ORG_REPE_MERG_CFG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tableName != null" >
+        TABLE_NAME,
+      </if>
+      <if test="param != null" >
+        PARAM,
+      </if>
+      <if test="updType != null" >
+        UPD_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null" >
+        #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="updType != null" >
+        #{updType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergCfg" >
+    update ORG_REPE_MERG_CFG
+    <set >
+      <if test="updType != null" >
+        UPD_TYPE = #{updType,jdbcType=CHAR},
+      </if>
+    </set>
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+      and PARAM = #{param,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrgRepeMergCfg" >
+    update ORG_REPE_MERG_CFG
+    set UPD_TYPE = #{updType,jdbcType=CHAR}
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+      and PARAM = #{param,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询所有需要更新的表 -->
+  <select id="selectAllOrg" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ORG_REPE_MERG_CFG  ORDER BY UPD_TYPE
+  </select>
+</mapper>

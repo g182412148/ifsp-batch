@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.IfsOrgMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.IfsOrg" >
+    <id column="BR_ID" property="brId" jdbcType="VARCHAR" />
+    <result column="BR_NAME" property="brName" jdbcType="VARCHAR" />
+    <result column="BR_SIM_NAME" property="brSimName" jdbcType="VARCHAR" />
+    <result column="BR_LVL" property="brLvl" jdbcType="VARCHAR" />
+    <result column="BR_TYPE" property="brType" jdbcType="VARCHAR" />
+    <result column="PAR_BR_ID" property="parBrId" jdbcType="VARCHAR" />
+    <result column="BR_CU_ID" property="brCuId" jdbcType="VARCHAR" />
+    <result column="BR_FIC" property="brFic" jdbcType="VARCHAR" />
+    <result column="BR_PBOC_ID" property="brPbocId" jdbcType="VARCHAR" />
+    <result column="BR_LM_NAME" property="brLmName" jdbcType="VARCHAR" />
+    <result column="BR_LM_PHONE" property="brLmPhone" jdbcType="VARCHAR" />
+    <result column="BR_TEL" property="brTel" jdbcType="VARCHAR" />
+    <result column="BR_ZIP_CODE" property="brZipCode" jdbcType="VARCHAR" />
+    <result column="AREA_CODE" property="areaCode" jdbcType="VARCHAR" />
+    <result column="BR_LM_ADDR" property="brLmAddr" jdbcType="VARCHAR" />
+    <result column="BR_STATE" property="brState" jdbcType="VARCHAR" />
+    <result column="CORP_FLAG" property="corpFlag" jdbcType="CHAR" />
+    <result column="UPD_FLAG" property="updFlag" jdbcType="CHAR" />
+    <result column="CRT_DT" property="crtDt" jdbcType="TIMESTAMP" />
+    <result column="CRT_TLR" property="crtTlr" jdbcType="VARCHAR" />
+    <result column="UPD_DT" property="updDt" jdbcType="TIMESTAMP" />
+    <result column="UPD_TLR" property="updTlr" jdbcType="VARCHAR" />
+    <result column="CORP_ID" property="corpId" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BR_ID, BR_NAME, BR_SIM_NAME, BR_LVL, BR_TYPE, PAR_BR_ID, BR_CU_ID, BR_FIC, BR_PBOC_ID, 
+    BR_LM_NAME, BR_LM_PHONE, BR_TEL, BR_ZIP_CODE, AREA_CODE, BR_LM_ADDR, BR_STATE, CORP_FLAG, 
+    UPD_FLAG, CRT_DT, CRT_TLR, UPD_DT, UPD_TLR, CORP_ID, FAX
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IFS_ORG
+    where BR_ID = #{brId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IFS_ORG
+    where BR_ID = #{brId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsOrg" >
+    insert into IFS_ORG (BR_ID, BR_NAME, BR_SIM_NAME, 
+      BR_LVL, BR_TYPE, PAR_BR_ID, 
+      BR_CU_ID, BR_FIC, BR_PBOC_ID, 
+      BR_LM_NAME, BR_LM_PHONE, BR_TEL, 
+      BR_ZIP_CODE, AREA_CODE, BR_LM_ADDR, 
+      BR_STATE, CORP_FLAG, UPD_FLAG, 
+      CRT_DT, CRT_TLR, UPD_DT, 
+      UPD_TLR, CORP_ID, FAX
+      )
+    values (#{brId,jdbcType=VARCHAR}, #{brName,jdbcType=VARCHAR}, #{brSimName,jdbcType=VARCHAR}, 
+      #{brLvl,jdbcType=VARCHAR}, #{brType,jdbcType=VARCHAR}, #{parBrId,jdbcType=VARCHAR}, 
+      #{brCuId,jdbcType=VARCHAR}, #{brFic,jdbcType=VARCHAR}, #{brPbocId,jdbcType=VARCHAR}, 
+      #{brLmName,jdbcType=VARCHAR}, #{brLmPhone,jdbcType=VARCHAR}, #{brTel,jdbcType=VARCHAR}, 
+      #{brZipCode,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, #{brLmAddr,jdbcType=VARCHAR}, 
+      #{brState,jdbcType=VARCHAR}, #{corpFlag,jdbcType=CHAR}, #{updFlag,jdbcType=CHAR}, 
+      #{crtDt,jdbcType=TIMESTAMP}, #{crtTlr,jdbcType=VARCHAR}, #{updDt,jdbcType=TIMESTAMP}, 
+      #{updTlr,jdbcType=VARCHAR}, #{corpId,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsOrg" >
+    insert into IFS_ORG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brId != null" >
+        BR_ID,
+      </if>
+      <if test="brName != null" >
+        BR_NAME,
+      </if>
+      <if test="brSimName != null" >
+        BR_SIM_NAME,
+      </if>
+      <if test="brLvl != null" >
+        BR_LVL,
+      </if>
+      <if test="brType != null" >
+        BR_TYPE,
+      </if>
+      <if test="parBrId != null" >
+        PAR_BR_ID,
+      </if>
+      <if test="brCuId != null" >
+        BR_CU_ID,
+      </if>
+      <if test="brFic != null" >
+        BR_FIC,
+      </if>
+      <if test="brPbocId != null" >
+        BR_PBOC_ID,
+      </if>
+      <if test="brLmName != null" >
+        BR_LM_NAME,
+      </if>
+      <if test="brLmPhone != null" >
+        BR_LM_PHONE,
+      </if>
+      <if test="brTel != null" >
+        BR_TEL,
+      </if>
+      <if test="brZipCode != null" >
+        BR_ZIP_CODE,
+      </if>
+      <if test="areaCode != null" >
+        AREA_CODE,
+      </if>
+      <if test="brLmAddr != null" >
+        BR_LM_ADDR,
+      </if>
+      <if test="brState != null" >
+        BR_STATE,
+      </if>
+      <if test="corpFlag != null" >
+        CORP_FLAG,
+      </if>
+      <if test="updFlag != null" >
+        UPD_FLAG,
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT,
+      </if>
+      <if test="crtTlr != null" >
+        CRT_TLR,
+      </if>
+      <if test="updDt != null" >
+        UPD_DT,
+      </if>
+      <if test="updTlr != null" >
+        UPD_TLR,
+      </if>
+      <if test="corpId != null" >
+        CORP_ID,
+      </if>
+      <if test="fax != null" >
+        FAX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brId != null" >
+        #{brId,jdbcType=VARCHAR},
+      </if>
+      <if test="brName != null" >
+        #{brName,jdbcType=VARCHAR},
+      </if>
+      <if test="brSimName != null" >
+        #{brSimName,jdbcType=VARCHAR},
+      </if>
+      <if test="brLvl != null" >
+        #{brLvl,jdbcType=VARCHAR},
+      </if>
+      <if test="brType != null" >
+        #{brType,jdbcType=VARCHAR},
+      </if>
+      <if test="parBrId != null" >
+        #{parBrId,jdbcType=VARCHAR},
+      </if>
+      <if test="brCuId != null" >
+        #{brCuId,jdbcType=VARCHAR},
+      </if>
+      <if test="brFic != null" >
+        #{brFic,jdbcType=VARCHAR},
+      </if>
+      <if test="brPbocId != null" >
+        #{brPbocId,jdbcType=VARCHAR},
+      </if>
+      <if test="brLmName != null" >
+        #{brLmName,jdbcType=VARCHAR},
+      </if>
+      <if test="brLmPhone != null" >
+        #{brLmPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="brTel != null" >
+        #{brTel,jdbcType=VARCHAR},
+      </if>
+      <if test="brZipCode != null" >
+        #{brZipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brLmAddr != null" >
+        #{brLmAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="brState != null" >
+        #{brState,jdbcType=VARCHAR},
+      </if>
+      <if test="corpFlag != null" >
+        #{corpFlag,jdbcType=CHAR},
+      </if>
+      <if test="updFlag != null" >
+        #{updFlag,jdbcType=CHAR},
+      </if>
+      <if test="crtDt != null" >
+        #{crtDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTlr != null" >
+        #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        #{updDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTlr != null" >
+        #{updTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="corpId != null" >
+        #{corpId,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsOrg" >
+    update IFS_ORG
+    <set >
+      <if test="brName != null" >
+        BR_NAME = #{brName,jdbcType=VARCHAR},
+      </if>
+      <if test="brSimName != null" >
+        BR_SIM_NAME = #{brSimName,jdbcType=VARCHAR},
+      </if>
+      <if test="brLvl != null" >
+        BR_LVL = #{brLvl,jdbcType=VARCHAR},
+      </if>
+      <if test="brType != null" >
+        BR_TYPE = #{brType,jdbcType=VARCHAR},
+      </if>
+      <if test="parBrId != null" >
+        PAR_BR_ID = #{parBrId,jdbcType=VARCHAR},
+      </if>
+      <if test="brCuId != null" >
+        BR_CU_ID = #{brCuId,jdbcType=VARCHAR},
+      </if>
+      <if test="brFic != null" >
+        BR_FIC = #{brFic,jdbcType=VARCHAR},
+      </if>
+      <if test="brPbocId != null" >
+        BR_PBOC_ID = #{brPbocId,jdbcType=VARCHAR},
+      </if>
+      <if test="brLmName != null" >
+        BR_LM_NAME = #{brLmName,jdbcType=VARCHAR},
+      </if>
+      <if test="brLmPhone != null" >
+        BR_LM_PHONE = #{brLmPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="brTel != null" >
+        BR_TEL = #{brTel,jdbcType=VARCHAR},
+      </if>
+      <if test="brZipCode != null" >
+        BR_ZIP_CODE = #{brZipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        AREA_CODE = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brLmAddr != null" >
+        BR_LM_ADDR = #{brLmAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="brState != null" >
+        BR_STATE = #{brState,jdbcType=VARCHAR},
+      </if>
+      <if test="corpFlag != null" >
+        CORP_FLAG = #{corpFlag,jdbcType=CHAR},
+      </if>
+      <if test="updFlag != null" >
+        UPD_FLAG = #{updFlag,jdbcType=CHAR},
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT = #{crtDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtTlr != null" >
+        CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        UPD_DT = #{updDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTlr != null" >
+        UPD_TLR = #{updTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="corpId != null" >
+        CORP_ID = #{corpId,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BR_ID = #{brId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.IfsOrg" >
+    update IFS_ORG
+    set BR_NAME = #{brName,jdbcType=VARCHAR},
+      BR_SIM_NAME = #{brSimName,jdbcType=VARCHAR},
+      BR_LVL = #{brLvl,jdbcType=VARCHAR},
+      BR_TYPE = #{brType,jdbcType=VARCHAR},
+      PAR_BR_ID = #{parBrId,jdbcType=VARCHAR},
+      BR_CU_ID = #{brCuId,jdbcType=VARCHAR},
+      BR_FIC = #{brFic,jdbcType=VARCHAR},
+      BR_PBOC_ID = #{brPbocId,jdbcType=VARCHAR},
+      BR_LM_NAME = #{brLmName,jdbcType=VARCHAR},
+      BR_LM_PHONE = #{brLmPhone,jdbcType=VARCHAR},
+      BR_TEL = #{brTel,jdbcType=VARCHAR},
+      BR_ZIP_CODE = #{brZipCode,jdbcType=VARCHAR},
+      AREA_CODE = #{areaCode,jdbcType=VARCHAR},
+      BR_LM_ADDR = #{brLmAddr,jdbcType=VARCHAR},
+      BR_STATE = #{brState,jdbcType=VARCHAR},
+      CORP_FLAG = #{corpFlag,jdbcType=CHAR},
+      UPD_FLAG = #{updFlag,jdbcType=CHAR},
+      CRT_DT = #{crtDt,jdbcType=TIMESTAMP},
+      CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=TIMESTAMP},
+      UPD_TLR = #{updTlr,jdbcType=VARCHAR},
+      CORP_ID = #{corpId,jdbcType=VARCHAR},
+      FAX = #{fax,jdbcType=VARCHAR}
+    where BR_ID = #{brId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from IFS_ORG 
+  </select>
+  <select id="selectCorpById" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select * from ifs_org where CORP_FLAG ='1' and br_id in (
+    	select br_id
+		from ifs_org
+		start with br_id = #{brId,jdbcType=VARCHAR}
+		connect by prior PAR_BR_ID =br_id) order by BR_LVL desc
+  </select>
+
+  <!--根据地区号查找法人机构号 by M.chen-->
+  <select id="selectBrAreaCode" parameterType="java.lang.String" resultType="java.lang.String">
+        select
+        DISTINCT CORP_ID
+        from IFS_ORG
+        where AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+        and CORP_ID is not null
+    </select>
+</mapper>

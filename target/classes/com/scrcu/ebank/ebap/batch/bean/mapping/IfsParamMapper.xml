@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.IfsParamMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.IfsParam" >
+    <id column="PARAM_KEY" property="paramKey" jdbcType="VARCHAR" />
+    <id column="PARAM_TYPE_ID" property="paramTypeId" jdbcType="VARCHAR" />
+    <result column="PARAM_VALUE" property="paramValue" jdbcType="VARCHAR" />
+    <result column="PARAM_DESC" property="paramDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PARAM_KEY, PARAM_TYPE_ID, PARAM_VALUE, PARAM_DESC
+  </sql>
+  <select id="selectByParamKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IFS_PARAM
+    where PARAM_KEY = #{paramKey,jdbcType=VARCHAR} and PARAM_STATE = '0'
+  </select>
+</mapper>

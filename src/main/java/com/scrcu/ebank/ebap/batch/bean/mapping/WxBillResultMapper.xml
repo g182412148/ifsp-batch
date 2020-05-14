@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.WxBillResultMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.WxBillResult" >
+    <result column="TXN_SSN_LOCAL" property="txnSsnLocal" jdbcType="VARCHAR" />
+    <result column="TXN_SSN_OUTER" property="txnSsnOuter" jdbcType="VARCHAR" />
+    <result column="IS_DUBIOUS_LOCAL" property="isDubiousLocal" jdbcType="VARCHAR" />
+    <result column="IS_DUBIOUS_OUTER" property="isDubiousOuter" jdbcType="VARCHAR" />
+    <result column="DUBIS_LOCAL_ORIGINAL" property="dubisLocalOriginal" jdbcType="VARCHAR" />
+    <result column="DUBIS_OUTER_ORIGINAL" property="dubisOuterOriginal" jdbcType="VARCHAR" />
+    <result column="COMPARE_RESULT" property="compareResult" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillResult" >
+    insert into WX_BILL_RESULT (TXN_SSN_LOCAL, TXN_SSN_OUTER, IS_DUBIOUS_LOCAL, 
+      IS_DUBIOUS_OUTER, DUBIS_LOCAL_ORIGINAL, DUBIS_OUTER_ORIGINAL, 
+      COMPARE_RESULT)
+    values (#{txnSsnLocal,jdbcType=VARCHAR}, #{txnSsnOuter,jdbcType=VARCHAR}, #{isDubiousLocal,jdbcType=VARCHAR}, 
+      #{isDubiousOuter,jdbcType=VARCHAR}, #{dubisLocalOriginal,jdbcType=VARCHAR}, #{dubisOuterOriginal,jdbcType=VARCHAR}, 
+      #{compareResult,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.WxBillResult" >
+    insert into WX_BILL_RESULT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnSsnLocal != null" >
+        TXN_SSN_LOCAL,
+      </if>
+      <if test="txnSsnOuter != null" >
+        TXN_SSN_OUTER,
+      </if>
+      <if test="isDubiousLocal != null" >
+        IS_DUBIOUS_LOCAL,
+      </if>
+      <if test="isDubiousOuter != null" >
+        IS_DUBIOUS_OUTER,
+      </if>
+      <if test="dubisLocalOriginal != null" >
+        DUBIS_LOCAL_ORIGINAL,
+      </if>
+      <if test="dubisOuterOriginal != null" >
+        DUBIS_OUTER_ORIGINAL,
+      </if>
+      <if test="compareResult != null" >
+        COMPARE_RESULT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnSsnLocal != null" >
+        #{txnSsnLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSsnOuter != null" >
+        #{txnSsnOuter,jdbcType=VARCHAR},
+      </if>
+      <if test="isDubiousLocal != null" >
+        #{isDubiousLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="isDubiousOuter != null" >
+        #{isDubiousOuter,jdbcType=VARCHAR},
+      </if>
+      <if test="dubisLocalOriginal != null" >
+        #{dubisLocalOriginal,jdbcType=VARCHAR},
+      </if>
+      <if test="dubisOuterOriginal != null" >
+        #{dubisOuterOriginal,jdbcType=VARCHAR},
+      </if>
+      <if test="compareResult != null" >
+        #{compareResult,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--微信对账结果入库-->
+  <update id="insertWxResult">
+    insert into WX_BILL_RESULT (TXN_SSN_LOCAL, TXN_SSN_OUTER, IS_DUBIOUS_LOCAL,
+      IS_DUBIOUS_OUTER, DUBIS_LOCAL_ORIGINAL, DUBIS_OUTER_ORIGINAL,
+      COMPARE_RESULT)
+    select a.txn_ssn txn_ssn_local,
+    b.txn_ssn txn_ssn_outer,
+    case
+    when b.txn_ssn is null and
+    a.reco_date = #{recoDate,jdbcType=TIMESTAMP} then
+    '2'
+    when b.txn_ssn is null and
+    a.reco_date != #{recoDate,jdbcType=TIMESTAMP} then
+    '11'
+    end is_dubious_local,
+    case
+    when a.txn_ssn is null and
+    b.reco_date = #{recoDate,jdbcType=TIMESTAMP} then
+    '2'
+    when a.txn_ssn is null and
+    b.reco_date != #{recoDate,jdbcType=TIMESTAMP} then
+    '12'
+    end is_dubious_outer,
+    a.dubis_flag dubis_local_original,
+    b.dubis_flag dubis_outer_original,
+    case
+    when a.txn_ssn is not null and b.txn_ssn is not null and
+    a.txn_state != b.txn_state then
+    '01'
+    when a.txn_ssn is not null and b.txn_ssn is not null and
+    a.txn_amt != b.txn_amt then
+    '02'
+    when a.txn_ssn is not null and b.txn_ssn is not null and
+    a.txn_type != b.txn_type then
+    '03'
+    else
+    '00'
+    end compare_result
+    from (select *
+    from wx_bill_local
+    where reco_date = #{recoDate,jdbcType=TIMESTAMP}
+    or reco_date = #{dubiousDate,jdbcType=TIMESTAMP}
+    and reco_state = '2') a
+    full join (select *
+    from wx_bill_outer
+    where (reco_date = #{recoDate,jdbcType=TIMESTAMP} and  reco_state != '3')
+    or (reco_date = #{dubiousDate,jdbcType=TIMESTAMP} and reco_state = '2')
+    ) b on a.txn_ssn = b.txn_ssn
+  </update>
+
+  <!--清空微信对账结果表数据-->
+  <update id="clear">
+    truncate table WX_BILL_RESULT
+  </update>
+
+  <!--计数：本地可疑或本地单边-->
+  <select id="countLocal" resultType="int">
+    select count(1) from WX_BILL_RESULT
+    where IS_DUBIOUS_LOCAL='2' or IS_DUBIOUS_LOCAL='11'
+  </select>
+
+  <!--计数：三方可疑或三方单边-->
+  <select id="countOuter" resultType="int">
+    select count(1) from WX_BILL_RESULT
+    where IS_DUBIOUS_OUTER='2' or IS_DUBIOUS_OUTER='12'
+  </select>
+</mapper>

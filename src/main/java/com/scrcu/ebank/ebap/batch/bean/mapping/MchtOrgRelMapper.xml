@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtOrgRelMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRel">
+    <id column="MCHT_NO" jdbcType="VARCHAR" property="mchtNo" />
+    <id column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
+    <result column="ORG_NAME" jdbcType="VARCHAR" property="orgName" />
+    <result column="ORG_TYPE" jdbcType="CHAR" property="orgType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MCHT_NO, ORG_ID, ORG_NAME, ORG_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRelKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from MCHT_ORG_REL
+    where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+      and ORG_ID = #{orgId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRelKey">
+    delete from MCHT_ORG_REL
+    where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+      and ORG_ID = #{orgId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRel">
+    insert into MCHT_ORG_REL (MCHT_NO, ORG_ID, ORG_NAME, 
+      ORG_TYPE)
+    values (#{mchtNo,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, 
+      #{orgType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRel">
+    insert into MCHT_ORG_REL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mchtNo != null">
+        MCHT_NO,
+      </if>
+      <if test="orgId != null">
+        ORG_ID,
+      </if>
+      <if test="orgName != null">
+        ORG_NAME,
+      </if>
+      <if test="orgType != null">
+        ORG_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mchtNo != null">
+        #{mchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgType != null">
+        #{orgType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRel">
+    update MCHT_ORG_REL
+    <set>
+      <if test="orgName != null">
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgType != null">
+        ORG_TYPE = #{orgType,jdbcType=CHAR},
+      </if>
+    </set>
+    where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+      and ORG_ID = #{orgId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtOrgRel">
+    update MCHT_ORG_REL
+    set ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      ORG_TYPE = #{orgType,jdbcType=CHAR}
+    where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+      and ORG_ID = #{orgId,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectByMchtIdType" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MCHT_ORG_REL
+        where MCHT_NO = #{mchtNo,jdbcType=VARCHAR}
+        and ORG_TYPE = #{orgType,jdbcType=CHAR}
+    </select>
+    
+    <select id="selectMchtOrgRelByMerId" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from MCHT_ORG_REL
+        where MCHT_NO = #{mchtId,jdbcType=VARCHAR}
+        order by ORG_TYPE asc
+    </select>
+    <select id="selectMchtOrgRelByMerIdList" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from MCHT_ORG_REL
+        where MCHT_NO in
+        <foreach collection="mchtIdList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        <if test="orgType != null">
+            and ORG_TYPE = #{orgType,jdbcType=CHAR}
+        </if>
+    </select>
+    <!-- 查询平台商户号 : 平台商户默认生成对账文件、结算文件-->
+    <select id="selectPlatMerNoList" resultType="string" parameterType="java.util.Map">
+        select
+        distinct(ORG_ID)
+        from MCHT_ORG_REL
+        where ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+    </select>
+    <!-- 查询平台商户号 : 根据商户号查询平台商户生成对账文件、结算文件-->
+    <select id="selectPlatMerNoList1" resultType="string" parameterType="java.util.Map">
+        select
+        distinct(MOR.ORG_ID)
+        from MCHT_ORG_REL MOR, MCHT_BASE_INFO MBI
+        where ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+        AND MBI.CHK_FLAG='1'
+        AND MOR.ORG_ID=MBI.MCHT_ID
+        <if test="merNo != null" >
+            AND MOR.ORG_ID = #{merNo,jdbcType=VARCHAR}
+        </if>
+    </select>
+    
+     <!-- 根据平台商户号查询其所有下属商户号 -->
+    <select id="selectMerNoListByPlatMerNo" resultType="string" parameterType="java.util.Map">
+        select
+        MCHT_NO
+        from MCHT_ORG_REL
+        where ORG_ID = #{orgId,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 查询非平台一级商户号 -->
+    <select id="selectNonPlatMerNoList" resultType="string" parameterType="java.util.Map">
+        select
+        distinct(MCHT_NO)
+        from MCHT_ORG_REL rel inner join MCHT_BASE_INFO mer
+        ON rel.MCHT_NO = mer.MCHT_ID
+        where 
+        mer.CHK_FLAG = '1'
+        AND
+        MCHT_NO not in
+        ( 
+          select MCHT_NO from MCHT_ORG_REL
+          where ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+        ) 
+        and mcht_no not in
+         ( 
+          select distinct(ORG_ID) from MCHT_ORG_REL
+          where ORG_TYPE = '04'
+        ) 
+        and
+        length(MCHT_NO) = 15
+    </select>
+        <!-- 查询非平台一级商户号 forstlfile-->
+    <select id="selectNonPlatMerNoListForStlFile" resultType="string" parameterType="java.util.Map">
+        select
+        distinct(MCHT_NO)
+        from MCHT_ORG_REL rel inner join MCHT_BASE_INFO mer
+        ON rel.MCHT_NO = mer.MCHT_ID
+        where 
+        mer.CHK_FLAG = '1'
+        AND
+        MCHT_NO not in
+        ( 
+          select MCHT_NO from MCHT_ORG_REL
+          where ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+        ) 
+        and mcht_no not in
+         ( 
+          select distinct(ORG_ID) from MCHT_ORG_REL
+          where ORG_TYPE = '04'
+        ) 
+        and
+        length(MCHT_NO) = 15
+        and MCHT_NO in 
+        ( 
+        	select distinct(substr(CHL_MER_ID,0,15)) FROM BTH_MER_IN_ACC_DTL 
+        	where UPDATE_DATE like #{updateDate,jdbcType=VARCHAR} and TXN_TYPE IN ('O1000006','O2000006') AND STL_STATUS = #{stlResult,jdbcType=VARCHAR} 
+        )
+    </select>
+    <!-- 根据商户号查询非平台一级商户号 -->
+    <select id="selectNonPlatMerNoListMerNo" resultType="string" parameterType="java.util.Map">
+        select
+        distinct(MCHT_NO)
+        from MCHT_ORG_REL rel inner join MCHT_BASE_INFO mer
+        ON rel.MCHT_NO = mer.MCHT_ID
+        where
+        mer.CHK_FLAG = '1'
+        AND
+        MCHT_NO not in
+        (
+        select MCHT_NO from MCHT_ORG_REL
+        where ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+        )
+        and mcht_no not in
+        (
+        select distinct(ORG_ID) from MCHT_ORG_REL
+        where ORG_TYPE = '04'
+        )
+        and
+        length(MCHT_NO) = 15
+        <if test="merNo != null" >
+            AND MCHT_NO = #{merNo,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <!-- 查询平台商户号 : 平台商户默认生成审核文件 -->
+    <select id="selectPlatMerNoList2" resultType="string" parameterType="java.util.Map">
+        select
+        distinct(ORG_ID)
+        from MCHT_ORG_REL
+        where ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+        union
+        select
+        distinct(ORG_ID)
+        from MCHT_ORG_REL_TEMP 
+        where
+        ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+    </select>
+    <!-- 查询非平台商户 -->
+    <select id="selectNonPlatMerNoList2" resultType="string" parameterType="java.util.Map">
+        select
+        distinct(MCHT_NO)
+        from MCHT_ORG_REL rel inner join MCHT_BASE_INFO mer
+        ON rel.MCHT_NO = mer.MCHT_ID
+        where 
+        mer.CHK_FLAG = '1'
+        AND
+        MCHT_NO not in
+        ( 
+          select MCHT_NO from MCHT_ORG_REL
+          where ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+        ) 
+        and mcht_no not in
+         ( 
+          select distinct(ORG_ID) from MCHT_ORG_REL
+          where ORG_TYPE = '04'
+        ) 
+        and
+        length(MCHT_NO) = 15
+        
+        union
+        
+        select
+        distinct(MCHT_NO)
+        from MCHT_ORG_REL_TEMP rel inner join MCHT_BASE_INFO mer
+        ON rel.MCHT_NO = mer.MCHT_ID
+        where 
+        mer.CHK_FLAG = '1'
+        AND
+        MCHT_NO not in
+        ( 
+          select MCHT_NO from MCHT_ORG_REL_TEMP
+          where ORG_TYPE = #{orgType,jdbcType=VARCHAR}
+        ) 
+        and mcht_no not in
+         ( 
+          select distinct(ORG_ID) from MCHT_ORG_REL_TEMP
+          where ORG_TYPE = '04'
+        ) 
+        and
+        length(MCHT_NO) = 15
+    </select>
+
+    <select id="selectOrgRelByMchtNoList" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List" />
+        from MCHT_ORG_REL
+        where MCHT_NO in
+        <foreach collection="mchtNoList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        <if test="orgType != null">
+            and ORG_TYPE = #{orgType,jdbcType=CHAR}
+        </if>
+    </select>
+
+    <!-- 查询撤消机构下的商户 -->
+    <select id="selectMchtId" parameterType="string" resultType = "string">
+        select DISTINCT mcht_no from MCHT_ORG_REL
+        where ORG_ID = #{reqe,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 更新机构号 -->
+    <update id="updateMchtOrgRel" parameterType="map">
+        update MCHT_ORG_REL
+        set ORG_ID = #{merg,jdbcType=VARCHAR},
+        ORG_NAME = #{orgName,jdbcType=VARCHAR}
+        where ORG_ID = #{reqe,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectOrgByMchtId" parameterType="map" resultMap="BaseResultMap">
+         select <include refid="Base_Column_List" />
+        from mcht_base_info a ,mcht_org_rel b where a.mcht_id = b.mcht_no and b.org_type='01'
+        and MCHT_NO = #{merId,jdbcType=VARCHAR}
+    </select>
+</mapper>

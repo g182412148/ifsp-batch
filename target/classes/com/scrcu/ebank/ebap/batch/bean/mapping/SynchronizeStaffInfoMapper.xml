@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.SynchronizeStaffInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.SynchronizeStaffInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="TLR_ID" property="tlrId" jdbcType="VARCHAR" />
+    <result column="SYNCHR_STATE" property="synchrState" jdbcType="CHAR" />
+    <result column="SYNCHR_TIME" property="synchrTime" jdbcType="TIMESTAMP" />
+    <result column="BAK_INFO" property="bakInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TLR_ID, SYNCHR_STATE, SYNCHR_TIME, BAK_INFO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYNCHRONIZE_STAFF_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SYNCHRONIZE_STAFF_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SynchronizeStaffInfo" >
+    insert into SYNCHRONIZE_STAFF_INFO (ID, TLR_ID, SYNCHR_STATE, 
+      SYNCHR_TIME, BAK_INFO)
+    values (#{id,jdbcType=VARCHAR}, #{tlrId,jdbcType=VARCHAR}, #{synchrState,jdbcType=CHAR}, 
+      #{synchrTime,jdbcType=TIMESTAMP}, #{bakInfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SynchronizeStaffInfo" >
+    insert into SYNCHRONIZE_STAFF_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="tlrId != null" >
+        TLR_ID,
+      </if>
+      <if test="synchrState != null" >
+        SYNCHR_STATE,
+      </if>
+      <if test="synchrTime != null" >
+        SYNCHR_TIME,
+      </if>
+      <if test="bakInfo != null" >
+        BAK_INFO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tlrId != null" >
+        #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="synchrState != null" >
+        #{synchrState,jdbcType=CHAR},
+      </if>
+      <if test="synchrTime != null" >
+        #{synchrTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bakInfo != null" >
+        #{bakInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SynchronizeStaffInfo" >
+    update SYNCHRONIZE_STAFF_INFO
+    <set >
+      <if test="tlrId != null" >
+        TLR_ID = #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="synchrState != null" >
+        SYNCHR_STATE = #{synchrState,jdbcType=CHAR},
+      </if>
+      <if test="synchrTime != null" >
+        SYNCHR_TIME = #{synchrTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bakInfo != null" >
+        BAK_INFO = #{bakInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SynchronizeStaffInfo" >
+    update SYNCHRONIZE_STAFF_INFO
+    set TLR_ID = #{tlrId,jdbcType=VARCHAR},
+      SYNCHR_STATE = #{synchrState,jdbcType=CHAR},
+      SYNCHR_TIME = #{synchrTime,jdbcType=TIMESTAMP},
+      BAK_INFO = #{bakInfo,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

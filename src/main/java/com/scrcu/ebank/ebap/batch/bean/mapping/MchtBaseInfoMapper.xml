@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtBaseInfoMapper">
+	<resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtBaseInfo">
+		<id column="MCHT_ID" jdbcType="VARCHAR" property="mchtId"/>
+		<result column="MCHT_NAME" jdbcType="VARCHAR" property="mchtName"/>
+		<result column="MCHT_SIM_NAME" jdbcType="VARCHAR" property="mchtSimName"/>
+		<result column="AREA_NO" jdbcType="VARCHAR" property="areaNo"/>
+		<result column="MCHT_ADDR" jdbcType="VARCHAR" property="mchtAddr"/>
+		<result column="MCHT_TYPE" jdbcType="CHAR" property="mchtType"/>
+		<result column="MCHT_NAT" jdbcType="CHAR" property="mchtNat"/>
+		<result column="PLAT_FLAG" jdbcType="CHAR" property="platFlag"/>
+		<result column="MCHT_SRC" jdbcType="CHAR" property="mchtSrc"/>
+		<result column="MCHT_STATE" jdbcType="CHAR" property="mchtState"/>
+		<result column="PAR_MCH_ID" jdbcType="VARCHAR" property="parMchId"/>
+		<result column="CM_NO" jdbcType="VARCHAR" property="cmNo"/>
+		<result column="CM_NAME" jdbcType="VARCHAR" property="cmName"/>
+		<result column="BL_NO" jdbcType="VARCHAR" property="blNo"/>
+		<result column="BL_TYPE" jdbcType="CHAR" property="blType"/>
+		<result column="BL_EXP_TYPE" jdbcType="CHAR" property="blExpType"/>
+		<result column="BL_EXP_DATE" jdbcType="TIMESTAMP" property="blExpDate"/>
+		<result column="MCC_GROUP_NO" jdbcType="CHAR" property="mccGroupNo"/>
+		<result column="MCC_NO" jdbcType="CHAR" property="mccNo"/>
+		<result column="ICP_NO" jdbcType="VARCHAR" property="icpNo"/>
+		<result column="WEB_SITE_ADDR" jdbcType="VARCHAR" property="webSiteAddr"/>
+		<result column="REG_DATE" jdbcType="TIMESTAMP" property="regDate"/>
+		<result column="CRT_TLR" jdbcType="VARCHAR" property="crtTlr"/>
+		<result column="CRT_TM" jdbcType="TIMESTAMP" property="crtTm" />
+		<result column="OPEN_CLIENT_ID" jdbcType="VARCHAR" property="openClientId"/>
+		<result column="UPD_TLR" jdbcType="VARCHAR" property="updTlr"/>
+		<result column="UPD_TM" jdbcType="TIMESTAMP" property="updTm"/>
+		<result column="MCHT_DESC" jdbcType="VARCHAR" property="mchtDesc" />
+		<result column="MCHT_LIMIT_FOR_CUST" jdbcType="DECIMAL" property="mchtLimitForCust" />
+		<result column="MCHT_CLASS" jdbcType="VARCHAR" property="mchtClass"/>
+		<result column="MCHT_EN_NAME" jdbcType="VARCHAR" property="mchtEnName" />
+		<result column="APP_NAME" jdbcType="VARCHAR" property="appName" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="ADDR_LNG" jdbcType="VARCHAR" property="addrLng" />
+		<result column="ADDR_LAT" jdbcType="VARCHAR" property="addrLat" />
+		<result column="ADDR_CODE" jdbcType="VARCHAR" property="addrCode" />
+		<result column="ADDR_DATA" jdbcType="VARCHAR" property="addrData" />
+		<result column="ADDR_PRECISE" jdbcType="VARCHAR" property="addrPrecise" />
+		<result column="ADDR_CONFIDENCE" jdbcType="VARCHAR" property="addrConfidence" />
+		<result column="ADDR_COMPREHENSION" jdbcType="VARCHAR" property="addrComprehension" />
+		<result column="ADDR_CODE_MSG" jdbcType="VARCHAR" property="addrCodeMsg" />
+		<result column="MCHT_ONE_CLASS" jdbcType="VARCHAR" property="mchtOneClass" />
+		<result column="MCHT_TWO_CLASS" jdbcType="VARCHAR" property="mchtTwoClass" />
+		<result column="OWNER_NAME" jdbcType="VARCHAR" property="ownerName" />
+		<result column="OWNER_PHONE" jdbcType="VARCHAR" property="ownerPhone" />
+		<result column="OWNER_CERT_TYPE" jdbcType="CHAR" property="ownerCertType" />
+		<result column="OWNER_CERT_NO" jdbcType="VARCHAR" property="ownerCertNo" />
+		<result column="OWNER_CERT_EFF_DATE" jdbcType="TIMESTAMP" property="ownerCertEffDate" />
+		<result column="OWNER_CERT_EXP_DATE" jdbcType="TIMESTAMP" property="ownerCertExpDate" />
+		<result column="OWNER_FRONT_CERT_PIC" jdbcType="VARCHAR" property="ownerFrontCertPic" />
+		<result column="OWNER_BACK_CERT_PIC" jdbcType="VARCHAR" property="ownerBackCertPic" />
+		<result column="IS_CHOICENESS" jdbcType="CHAR" property="isChoiceness" />
+		<result column="RECOMMEND_REASON" jdbcType="VARCHAR" property="recommendReason" />
+		<result column="STORE_PLACE" jdbcType="VARCHAR" property="storePlace" />
+		<result column="CHK_FLAG" jdbcType="VARCHAR" property="chkFlag" />
+		<result column="ECIF_CUSTOMER_NO" jdbcType="VARCHAR" property="ecifCustomerNo" />
+		<result column="ORDER_TM_MAX" jdbcType="VARCHAR" property="orderTmMax" />
+	</resultMap>
+	<sql id="Base_Column_List">
+    MCHT_ID, MCHT_NAME, MCHT_SIM_NAME, AREA_NO, MCHT_ADDR, MCHT_TYPE, MCHT_NAT, PLAT_FLAG,
+    MCHT_SRC, MCHT_STATE, PAR_MCH_ID, CM_NO, CM_NAME, BL_NO, BL_TYPE, BL_EXP_TYPE, BL_EXP_DATE,
+    MCC_GROUP_NO, MCC_NO, ICP_NO, WEB_SITE_ADDR, REG_DATE, CRT_TLR, CRT_TM, OPEN_CLIENT_ID,
+    UPD_TLR, UPD_TM, MCHT_DESC, MCHT_LIMIT_FOR_CUST, MCHT_CLASS, MCHT_EN_NAME, APP_NAME,
+    EMAIL,MCHT_ONE_CLASS,MCHT_TWO_CLASS,ADDR_LNG,ADDR_LAT,ADDR_CODE,ADDR_DATA,ADDR_PRECISE,
+    ADDR_CONFIDENCE,ADDR_COMPREHENSION,ADDR_CODE_MSG,OWNER_NAME,OWNER_PHONE,OWNER_CERT_TYPE,
+    OWNER_CERT_NO,OWNER_CERT_EFF_DATE,OWNER_CERT_EXP_DATE,OWNER_FRONT_CERT_PIC,
+    OWNER_BACK_CERT_PIC,IS_CHOICENESS,RECOMMEND_REASON,STORE_PLACE,CHK_FLAG,ECIF_CUSTOMER_NO
+  </sql>
+	<resultMap id="MchtExtInfoMap"
+			   type="com.scrcu.ebank.ebap.batch.bean.dto.MchtExtInfo">
+		<id column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+		<result column="MCHT_NAME" jdbcType="VARCHAR" property="mchtName" />
+		<result column="MCHT_SIM_NAME" jdbcType="VARCHAR" property="mchtSimName" />
+		<result column="AREA_NO" jdbcType="VARCHAR" property="areaNo" />
+		<result column="MCHT_ADDR" jdbcType="VARCHAR" property="mchtAddr" />
+		<result column="MCHT_TYPE" jdbcType="CHAR" property="mchtType" />
+		<result column="MCHT_NAT" jdbcType="CHAR" property="mchtNat" />
+		<result column="PLAT_FLAG" jdbcType="CHAR" property="platFlag" />
+		<result column="MCHT_SRC" jdbcType="CHAR" property="mchtSrc" />
+		<result column="MCHT_STATE" jdbcType="CHAR" property="mchtState" />
+		<result column="PAR_MCH_ID" jdbcType="VARCHAR" property="parMchId" />
+		<result column="CM_NO" jdbcType="VARCHAR" property="cmNo" />
+		<result column="CM_NAME" jdbcType="VARCHAR" property="cmName" />
+		<result column="BL_NO" jdbcType="VARCHAR" property="blNo" />
+		<result column="BL_TYPE" jdbcType="CHAR" property="blType" />
+		<result column="BL_EXP_TYPE" jdbcType="CHAR" property="blExpType" />
+		<result column="BL_EXP_DATE" jdbcType="TIMESTAMP" property="blExpDate" />
+		<result column="MCC_GROUP_NO" jdbcType="CHAR" property="mccGroupNo" />
+		<result column="MCC_NO" jdbcType="CHAR" property="mccNo" />
+		<result column="ICP_NO" jdbcType="VARCHAR" property="icpNo" />
+		<result column="WEB_SITE_ADDR" jdbcType="VARCHAR" property="webSiteAddr" />
+		<result column="REG_DATE" jdbcType="TIMESTAMP" property="regDate" />
+		<result column="CRT_TLR" jdbcType="VARCHAR" property="crtTlr" />
+		<result column="OPEN_CLIENT_ID" jdbcType="VARCHAR" property="openClientId" />
+		<result column="UPD_TLR" jdbcType="VARCHAR" property="updTlr" />
+		<result column="UPD_TM" jdbcType="TIMESTAMP" property="updTm" />
+		<result column="CRT_TM" jdbcType="TIMESTAMP" property="crtTm" />
+		<result column="MCHT_CLASS" jdbcType="VARCHAR" property="mchtClass" />
+		<result column="MCHT_LIMIT_FOR_CUST" jdbcType="DECIMAL" property="mchtLimitForCust" />
+		<result column="MCHT_DESC" jdbcType="VARCHAR" property="mchtDesc" />
+		<result column="MCHT_EN_NAME" jdbcType="VARCHAR" property="mchtEnName" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="APP_NAME" jdbcType="VARCHAR" property="appName" />
+
+		<result column="PAGY_CT_CODE" jdbcType="VARCHAR" property="pagyCtCode" />
+        <result column="OWNER_NAME" jdbcType="VARCHAR" property="ownerName" />
+        <result column="OWNER_PHONE" jdbcType="VARCHAR" property="ownerPhone" />
+        <result column="OWNER_CERT_TYPE" jdbcType="CHAR" property="ownerCertType" />
+        <result column="OWNER_CERT_NO" jdbcType="VARCHAR" property="ownerCertNo" />
+        <result column="OWNER_CERT_EFF_DATE" jdbcType="TIMESTAMP" property="ownerCertEffDate" />
+        <result column="OWNER_CERT_EXP_DATE" jdbcType="TIMESTAMP" property="ownerCertExpDate" />
+        <result column="OWNER_FRONT_CERT_PIC" jdbcType="VARCHAR" property="ownerFrontCertPic" />
+        <result column="OWNER_BACK_CERT_PIC" jdbcType="VARCHAR" property="ownerBackCertPic" />
+	</resultMap>
+
+	
+	<resultMap id="MchtBaseInfoVo"
+		type="com.scrcu.ebank.ebap.batch.bean.dto.MchtBaseInfoVo">
+		<id column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+		<result column="MCHT_NAME" jdbcType="VARCHAR" property="mchtName" />
+		<result column="MCHT_SIM_NAME" jdbcType="VARCHAR" property="mchtSimName" />
+		<result column="AREA_NO" jdbcType="VARCHAR" property="areaNo" />
+		<result column="MCHT_ADDR" jdbcType="VARCHAR" property="mchtAddr" />
+		<result column="MCHT_TYPE" jdbcType="CHAR" property="mchtType" />
+		<result column="MCHT_NAT" jdbcType="CHAR" property="mchtNat" />
+		<result column="PLAT_FLAG" jdbcType="CHAR" property="platFlag" />
+		<result column="MCHT_SRC" jdbcType="CHAR" property="mchtSrc" />
+		<result column="MCHT_STATE" jdbcType="CHAR" property="mchtState" />
+		<result column="PAR_MCH_ID" jdbcType="VARCHAR" property="parMchId" />
+		<result column="CM_NO" jdbcType="VARCHAR" property="cmNo" />
+		<result column="CM_NAME" jdbcType="VARCHAR" property="cmName" />
+		<result column="BL_NO" jdbcType="VARCHAR" property="blNo" />
+		<result column="BL_TYPE" jdbcType="CHAR" property="blType" />
+		<result column="BL_EXP_TYPE" jdbcType="CHAR" property="blExpType" />
+		<result column="BL_EXP_DATE" jdbcType="TIMESTAMP" property="blExpDate" />
+		<result column="MCC_GROUP_NO" jdbcType="CHAR" property="mccGroupNo" />
+		<result column="MCC_NO" jdbcType="CHAR" property="mccNo" />
+		<result column="ICP_NO" jdbcType="VARCHAR" property="icpNo" />
+		<result column="WEB_SITE_ADDR" jdbcType="VARCHAR" property="webSiteAddr" />
+		<result column="REG_DATE" jdbcType="TIMESTAMP" property="regDate" />
+		<result column="CRT_TLR" jdbcType="VARCHAR" property="crtTlr" />
+		<result column="OPEN_CLIENT_ID" jdbcType="VARCHAR" property="openClientId" />
+		<result column="UPD_TLR" jdbcType="VARCHAR" property="updTlr" />
+		<result column="UPD_TM" jdbcType="TIMESTAMP" property="updTm" />
+		<result column="CRT_TM" jdbcType="TIMESTAMP" property="crtTm" />
+		<result column="MCHT_CLASS" jdbcType="VARCHAR" property="mchtClass" />
+		<result column="MCHT_LIMIT_FOR_CUST" jdbcType="DECIMAL"
+			property="mchtLimitForCust" />
+		<result column="MCHT_DESC" jdbcType="VARCHAR" property="mchtDesc" />
+		<result column="MCHT_EN_NAME" jdbcType="VARCHAR" property="mchtEnName" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="APP_NAME" jdbcType="VARCHAR" property="appName" />
+
+		<result column="RULE_NO" jdbcType="CHAR" property="ruleNo" />
+		<result column="TYPE_NO" jdbcType="CHAR" property="typeNo" />
+		<result column="RULE_NAME" jdbcType="VARCHAR" property="ruleName" />
+		<result column="RULE_VALUE" jdbcType="VARCHAR" property="ruleValue" />
+	</resultMap>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from MCHT_BASE_INFO
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from MCHT_BASE_INFO
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtBaseInfo">
+		insert into MCHT_BASE_INFO (MCHT_ID, MCHT_NAME, MCHT_SIM_NAME,
+		AREA_NO, MCHT_ADDR, MCHT_TYPE,
+		MCHT_NAT, PLAT_FLAG, MCHT_SRC,
+		MCHT_STATE, PAR_MCH_ID, CM_NO,
+		CM_NAME, BL_NO, BL_TYPE,
+		BL_EXP_TYPE, BL_EXP_DATE, MCC_GROUP_NO,
+		MCC_NO, ICP_NO, WEB_SITE_ADDR,
+		REG_DATE, CRT_TLR, OPEN_CLIENT_ID,
+		UPD_TLR, UPD_TM, CRT_TM,
+		MCHT_CLASS, MCHT_LIMIT_FOR_CUST, MCHT_DESC
+		)
+		values (#{mchtId,jdbcType=VARCHAR}, #{mchtName,jdbcType=VARCHAR},
+		#{mchtSimName,jdbcType=VARCHAR},
+		#{areaNo,jdbcType=VARCHAR}, #{mchtAddr,jdbcType=VARCHAR}, #{mchtType,jdbcType=CHAR},
+		#{mchtNat,jdbcType=CHAR}, #{platFlag,jdbcType=CHAR},
+		#{mchtSrc,jdbcType=CHAR},
+		#{mchtState,jdbcType=CHAR}, #{parMchId,jdbcType=VARCHAR}, #{cmNo,jdbcType=VARCHAR},
+		#{cmName,jdbcType=VARCHAR}, #{blNo,jdbcType=VARCHAR},
+		#{blType,jdbcType=CHAR},
+		#{blExpType,jdbcType=CHAR}, #{blExpDate,jdbcType=TIMESTAMP}, #{mccGroupNo,jdbcType=CHAR},
+		#{mccNo,jdbcType=CHAR}, #{icpNo,jdbcType=VARCHAR},
+		#{webSiteAddr,jdbcType=VARCHAR},
+		#{regDate,jdbcType=TIMESTAMP}, #{crtTlr,jdbcType=VARCHAR}, #{openClientId,jdbcType=VARCHAR},
+		#{updTlr,jdbcType=VARCHAR}, #{updTm,jdbcType=TIMESTAMP},
+		#{crtTm,jdbcType=TIMESTAMP},
+		#{mchtClass,jdbcType=VARCHAR}, #{mchtLimitForCust,jdbcType=DECIMAL}, #{mchtDesc,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtBaseInfo">
+		insert into MCHT_BASE_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null">
+				MCHT_ID,
+			</if>
+			<if test="mchtName != null">
+				MCHT_NAME,
+			</if>
+			<if test="mchtSimName != null">
+				MCHT_SIM_NAME,
+			</if>
+			<if test="areaNo != null">
+				AREA_NO,
+			</if>
+			<if test="mchtAddr != null">
+				MCHT_ADDR,
+			</if>
+			<if test="mchtType != null">
+				MCHT_TYPE,
+			</if>
+			<if test="mchtNat != null">
+				MCHT_NAT,
+			</if>
+			<if test="platFlag != null">
+				PLAT_FLAG,
+			</if>
+			<if test="mchtSrc != null">
+				MCHT_SRC,
+			</if>
+			<if test="mchtState != null">
+				MCHT_STATE,
+			</if>
+			<if test="parMchId != null">
+				PAR_MCH_ID,
+			</if>
+			<if test="cmNo != null">
+				CM_NO,
+			</if>
+			<if test="cmName != null">
+				CM_NAME,
+			</if>
+			<if test="blNo != null">
+				BL_NO,
+			</if>
+			<if test="blType != null">
+				BL_TYPE,
+			</if>
+			<if test="blExpType != null">
+				BL_EXP_TYPE,
+			</if>
+			<if test="blExpDate != null">
+				BL_EXP_DATE,
+			</if>
+			<if test="mccGroupNo != null">
+				MCC_GROUP_NO,
+			</if>
+			<if test="mccNo != null">
+				MCC_NO,
+			</if>
+			<if test="icpNo != null">
+				ICP_NO,
+			</if>
+			<if test="webSiteAddr != null">
+				WEB_SITE_ADDR,
+			</if>
+			<if test="regDate != null">
+				REG_DATE,
+			</if>
+			<if test="crtTlr != null">
+				CRT_TLR,
+			</if>
+			<if test="openClientId != null">
+				OPEN_CLIENT_ID,
+			</if>
+			<if test="updTlr != null">
+				UPD_TLR,
+			</if>
+			<if test="updTm != null">
+				UPD_TM,
+			</if>
+			<if test="crtTm != null">
+				CRT_TM,
+			</if>
+			<if test="mchtClass != null">
+				MCHT_CLASS,
+			</if>
+			<if test="mchtLimitForCust != null">
+				MCHT_LIMIT_FOR_CUST,
+			</if>
+			<if test="mchtDesc != null">
+				MCHT_DESC,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null">
+				#{mchtId,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtName != null">
+				#{mchtName,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtSimName != null">
+				#{mchtSimName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaNo != null">
+				#{areaNo,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtAddr != null">
+				#{mchtAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtType != null">
+				#{mchtType,jdbcType=CHAR},
+			</if>
+			<if test="mchtNat != null">
+				#{mchtNat,jdbcType=CHAR},
+			</if>
+			<if test="platFlag != null">
+				#{platFlag,jdbcType=CHAR},
+			</if>
+			<if test="mchtSrc != null">
+				#{mchtSrc,jdbcType=CHAR},
+			</if>
+			<if test="mchtState != null">
+				#{mchtState,jdbcType=CHAR},
+			</if>
+			<if test="parMchId != null">
+				#{parMchId,jdbcType=VARCHAR},
+			</if>
+			<if test="cmNo != null">
+				#{cmNo,jdbcType=VARCHAR},
+			</if>
+			<if test="cmName != null">
+				#{cmName,jdbcType=VARCHAR},
+			</if>
+			<if test="blNo != null">
+				#{blNo,jdbcType=VARCHAR},
+			</if>
+			<if test="blType != null">
+				#{blType,jdbcType=CHAR},
+			</if>
+			<if test="blExpType != null">
+				#{blExpType,jdbcType=CHAR},
+			</if>
+			<if test="blExpDate != null">
+				#{blExpDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mccGroupNo != null">
+				#{mccGroupNo,jdbcType=CHAR},
+			</if>
+			<if test="mccNo != null">
+				#{mccNo,jdbcType=CHAR},
+			</if>
+			<if test="icpNo != null">
+				#{icpNo,jdbcType=VARCHAR},
+			</if>
+			<if test="webSiteAddr != null">
+				#{webSiteAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="regDate != null">
+				#{regDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="crtTlr != null">
+				#{crtTlr,jdbcType=VARCHAR},
+			</if>
+			<if test="openClientId != null">
+				#{openClientId,jdbcType=VARCHAR},
+			</if>
+			<if test="updTlr != null">
+				#{updTlr,jdbcType=VARCHAR},
+			</if>
+			<if test="updTm != null">
+				#{updTm,jdbcType=TIMESTAMP},
+			</if>
+			<if test="crtTm != null">
+				#{crtTm,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mchtClass != null">
+				#{mchtClass,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtLimitForCust != null">
+				#{mchtLimitForCust,jdbcType=DECIMAL},
+			</if>
+			<if test="mchtDesc != null">
+				#{mchtDesc,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtBaseInfo">
+		update MCHT_BASE_INFO
+		<set>
+			<if test="mchtName != null">
+				MCHT_NAME = #{mchtName,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtSimName != null">
+				MCHT_SIM_NAME = #{mchtSimName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaNo != null">
+				AREA_NO = #{areaNo,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtAddr != null">
+				MCHT_ADDR = #{mchtAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtType != null">
+				MCHT_TYPE = #{mchtType,jdbcType=CHAR},
+			</if>
+			<if test="mchtNat != null">
+				MCHT_NAT = #{mchtNat,jdbcType=CHAR},
+			</if>
+			<if test="platFlag != null">
+				PLAT_FLAG = #{platFlag,jdbcType=CHAR},
+			</if>
+			<if test="mchtSrc != null">
+				MCHT_SRC = #{mchtSrc,jdbcType=CHAR},
+			</if>
+			<if test="mchtState != null">
+				MCHT_STATE = #{mchtState,jdbcType=CHAR},
+			</if>
+			<if test="parMchId != null">
+				PAR_MCH_ID = #{parMchId,jdbcType=VARCHAR},
+			</if>
+			<if test="cmNo != null">
+				CM_NO = #{cmNo,jdbcType=VARCHAR},
+			</if>
+			<if test="cmName != null">
+				CM_NAME = #{cmName,jdbcType=VARCHAR},
+			</if>
+			<if test="blNo != null">
+				BL_NO = #{blNo,jdbcType=VARCHAR},
+			</if>
+			<if test="blType != null">
+				BL_TYPE = #{blType,jdbcType=CHAR},
+			</if>
+			<if test="blExpType != null">
+				BL_EXP_TYPE = #{blExpType,jdbcType=CHAR},
+			</if>
+			<if test="blExpDate != null">
+				BL_EXP_DATE = #{blExpDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mccGroupNo != null">
+				MCC_GROUP_NO = #{mccGroupNo,jdbcType=CHAR},
+			</if>
+			<if test="mccNo != null">
+				MCC_NO = #{mccNo,jdbcType=CHAR},
+			</if>
+			<if test="icpNo != null">
+				ICP_NO = #{icpNo,jdbcType=VARCHAR},
+			</if>
+			<if test="webSiteAddr != null">
+				WEB_SITE_ADDR = #{webSiteAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="regDate != null">
+				REG_DATE = #{regDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="crtTlr != null">
+				CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+			</if>
+			<if test="openClientId != null">
+				OPEN_CLIENT_ID = #{openClientId,jdbcType=VARCHAR},
+			</if>
+			<if test="updTlr != null">
+				UPD_TLR = #{updTlr,jdbcType=VARCHAR},
+			</if>
+			<if test="updTm != null">
+				UPD_TM = #{updTm,jdbcType=TIMESTAMP},
+			</if>
+			<if test="crtTm != null">
+				CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mchtClass != null">
+				MCHT_CLASS = #{mchtClass,jdbcType=VARCHAR},
+			</if>
+			<if test="mchtLimitForCust != null">
+				MCHT_LIMIT_FOR_CUST = #{mchtLimitForCust,jdbcType=DECIMAL},
+			</if>
+			<if test="mchtDesc != null">
+				MCHT_DESC = #{mchtDesc,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtBaseInfo">
+		update MCHT_BASE_INFO
+		set MCHT_NAME = #{mchtName,jdbcType=VARCHAR},
+		MCHT_SIM_NAME = #{mchtSimName,jdbcType=VARCHAR},
+		AREA_NO = #{areaNo,jdbcType=VARCHAR},
+		MCHT_ADDR = #{mchtAddr,jdbcType=VARCHAR},
+		MCHT_TYPE = #{mchtType,jdbcType=CHAR},
+		MCHT_NAT = #{mchtNat,jdbcType=CHAR},
+		PLAT_FLAG = #{platFlag,jdbcType=CHAR},
+		MCHT_SRC = #{mchtSrc,jdbcType=CHAR},
+		MCHT_STATE = #{mchtState,jdbcType=CHAR},
+		PAR_MCH_ID = #{parMchId,jdbcType=VARCHAR},
+		CM_NO = #{cmNo,jdbcType=VARCHAR},
+		CM_NAME = #{cmName,jdbcType=VARCHAR},
+		BL_NO = #{blNo,jdbcType=VARCHAR},
+		BL_TYPE = #{blType,jdbcType=CHAR},
+		BL_EXP_TYPE = #{blExpType,jdbcType=CHAR},
+		BL_EXP_DATE = #{blExpDate,jdbcType=TIMESTAMP},
+		MCC_GROUP_NO = #{mccGroupNo,jdbcType=CHAR},
+		MCC_NO = #{mccNo,jdbcType=CHAR},
+		ICP_NO = #{icpNo,jdbcType=VARCHAR},
+		WEB_SITE_ADDR = #{webSiteAddr,jdbcType=VARCHAR},
+		REG_DATE = #{regDate,jdbcType=TIMESTAMP},
+		CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+		OPEN_CLIENT_ID = #{openClientId,jdbcType=VARCHAR},
+		UPD_TLR = #{updTlr,jdbcType=VARCHAR},
+		UPD_TM = #{updTm,jdbcType=TIMESTAMP},
+		CRT_TM = #{crtTm,jdbcType=TIMESTAMP},
+		MCHT_CLASS = #{mchtClass,jdbcType=VARCHAR},
+		MCHT_LIMIT_FOR_CUST = #{mchtLimitForCust,jdbcType=DECIMAL},
+		MCHT_DESC = #{mchtDesc,jdbcType=VARCHAR}
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectAllInfo" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from MCHT_BASE_INFO
+		where mcht_state not in ('10','12','99') and to_char(REG_DATE,'yyyymmdd') = #{regDate,jdbcType=VARCHAR}
+		union
+		select
+		<include refid="Base_Column_List" />
+		from MCHT_BASE_INFO
+		where mcht_state not in ('10','12','99') and mcht_id in (select mcht_id from pmp_audit_info where audit_type='01' and audit_state='01'
+		and substr(last_upd_date_time,1,8) = #{regDate,jdbcType=VARCHAR}
+		)
+	</select>
+
+	<!-- List<MchtBaseInfo> querySubbranchByMchtId(String mchtId); -->
+	<select id="querySubbranchByMchtId" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" />
+		from MCHT_BASE_INFO WHERE PAR_MCH_ID =  #{mchtId ,jdbcType=VARCHAR} ORDER BY MCHT_ID
+	</select>
+	
+	<select id="queryById" resultMap="BaseResultMap">
+		select * from MCHT_BASE_INFO where mcht_id=#{mchtId}
+	</select>
+
+	<!-- 根据商户号查商户信息 -->
+    <select id="selectMerInfoByMchtId" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from MCHT_BASE_INFO
+        where MCHT_ID = #{mchtId}
+    </select>
+
+	<!-- 根据商户号集合批量查商户信息 -->
+	<select id="selectMerInfoByMchtIdList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from MCHT_BASE_INFO
+		where MCHT_ID in
+		<foreach collection="mchtIdList" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+<!--     	List<MchtBaseInfoVo> queryMchtTypeByMchtId(String mchtId); -->
+	<select id="queryMchtTypeByMchtId" parameterType="string" resultMap="MchtBaseInfoVo">
+		    select *
+      from MCHT_BASE_INFO mbi
+     inner join MCHT_TYPE_RULE_INFO mtri on mbi.mcht_type = mtri.type_no
+     where mbi.mcht_id = #{mchtId}
+       and mtri.rule_no in('0003','0005')
+	</select>
+
+	<select id="queryMchtExtInfoByMchtId" parameterType="string" resultMap="MchtExtInfoMap">
+	select a.*,c.PAGY_CT_CODE
+	  from mcht_base_info a
+	  left outer join pagy_ct_info c on (a.area_no = c.pagy_canton_code)
+	 where a.mcht_id = #{mchtId}
+	</select>
+
+	<select id="selectUntradedMerchants" parameterType="string" resultMap="BaseResultMap">
+		SELECT *
+		FROM MCHT_BASE_INFO A
+		WHERE A.MCHT_STATE = '01'
+		<![CDATA[AND A.CRT_TM <= ADD_MONTHS(TO_DATE(#{orderTM ,jdbcType=VARCHAR},'YYYYMMDD'), #{months ,jdbcType=VARCHAR})]]>
+		<![CDATA[ AND NVL(A.ORDER_TM_MAX,'0') <= TO_CHAR(ADD_MONTHS(TO_DATE(#{orderTM ,jdbcType=VARCHAR},'YYYYMMDD'), #{months ,jdbcType=VARCHAR}),'YYYYMMDD')]]>
+	</select>
+
+
+
+
+
+</mapper>

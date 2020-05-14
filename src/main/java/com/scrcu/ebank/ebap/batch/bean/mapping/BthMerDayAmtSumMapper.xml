@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerDayAmtSumMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerDayAmtSum" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="MCHT_ID" property="mchtId" jdbcType="VARCHAR" />
+    <result column="TXN_DATE" property="txnDate" jdbcType="VARCHAR" />
+    <result column="FUND_CHANNEL" property="fundChannel" jdbcType="VARCHAR" />
+    <result column="FUND_CHANNEL_NM" property="fundChannelNm" jdbcType="VARCHAR" />
+    <result column="LEFT_AMT" property="leftAmt" jdbcType="DECIMAL" />
+    <result column="RIGHT_AMT" property="rightAmt" jdbcType="DECIMAL" />
+    <result column="TXN_COUNT" property="txnCount" jdbcType="DECIMAL" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MCHT_ID, TXN_DATE, FUND_CHANNEL, FUND_CHANNEL_NM, LEFT_AMT, RIGHT_AMT, TXN_COUNT, 
+    TXN_AMT, RESERVE1, RESERVE2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from BTH_MER_DAY_AMT_SUM
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BTH_MER_DAY_AMT_SUM
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerDayAmtSum" >
+    insert into BTH_MER_DAY_AMT_SUM (ID, MCHT_ID, TXN_DATE, 
+      FUND_CHANNEL, FUND_CHANNEL_NM, LEFT_AMT, 
+      RIGHT_AMT, TXN_COUNT, TXN_AMT, 
+      RESERVE1, RESERVE2, UPD_TM)
+    values (#{id,jdbcType=VARCHAR}, #{mchtId,jdbcType=VARCHAR}, #{txnDate,jdbcType=VARCHAR}, 
+      #{fundChannel,jdbcType=VARCHAR}, #{fundChannelNm,jdbcType=VARCHAR}, #{leftAmt,jdbcType=DECIMAL}, 
+      #{rightAmt,jdbcType=DECIMAL}, #{txnCount,jdbcType=DECIMAL}, #{txnAmt,jdbcType=DECIMAL}, 
+      #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, sysdate)
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerDayAmtSum" >
+    insert into BTH_MER_DAY_AMT_SUM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="mchtId != null" >
+        MCHT_ID,
+      </if>
+      <if test="txnDate != null" >
+        TXN_DATE,
+      </if>
+      <if test="fundChannel != null" >
+        FUND_CHANNEL,
+      </if>
+      <if test="fundChannelNm != null" >
+        FUND_CHANNEL_NM,
+      </if>
+      <if test="leftAmt != null" >
+        LEFT_AMT,
+      </if>
+      <if test="rightAmt != null" >
+        RIGHT_AMT,
+      </if>
+      <if test="txnCount != null" >
+        TXN_COUNT,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="reserve1 != null" >
+        RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+        RESERVE2,
+      </if>
+      UPD_TM
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtId != null" >
+        #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDate != null" >
+        #{txnDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null" >
+        #{fundChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannelNm != null" >
+        #{fundChannelNm,jdbcType=VARCHAR},
+      </if>
+      <if test="leftAmt != null" >
+        #{leftAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="rightAmt != null" >
+        #{rightAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnCount != null" >
+        #{txnCount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="reserve1 != null" >
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+      sysdate
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerDayAmtSum" >
+    update BTH_MER_DAY_AMT_SUM
+    <set >
+      <if test="mchtId != null" >
+        MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDate != null" >
+        TXN_DATE = #{txnDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null" >
+        FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannelNm != null" >
+        FUND_CHANNEL_NM = #{fundChannelNm,jdbcType=VARCHAR},
+      </if>
+      <if test="leftAmt != null" >
+        LEFT_AMT = #{leftAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="rightAmt != null" >
+        RIGHT_AMT = #{rightAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnCount != null" >
+        TXN_COUNT = #{txnCount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="reserve1 != null" >
+        RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      UPD_TM = sysdate
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerDayAmtSum" >
+    update BTH_MER_DAY_AMT_SUM
+    set MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      TXN_DATE = #{txnDate,jdbcType=VARCHAR},
+      FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      FUND_CHANNEL_NM = #{fundChannelNm,jdbcType=VARCHAR},
+      LEFT_AMT = #{leftAmt,jdbcType=DECIMAL},
+      RIGHT_AMT = #{rightAmt,jdbcType=DECIMAL},
+      TXN_COUNT = #{txnCount,jdbcType=DECIMAL},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      UPD_TM = sysdate
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+    <select id="selectByTmAmt" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+            MAX(MCHT_ID) AS MCHT_ID,
+            FUND_CHANNEL,
+            MAX(FUND_CHANNEL_NM) AS FUND_CHANNEL_NM,
+            SUM(TXN_COUNT) AS TXN_COUNT,
+            SUM(TXN_AMT) AS TXN_AMT,
+            MIN(LEFT_AMT) AS LEFT_AMT,
+            MAX(RIGHT_AMT) AS RIGHT_AMT
+        FROM
+          BTH_MER_DAY_AMT_SUM
+        WHERE
+            MCHT_ID= #{chlMerId,jdbcType=VARCHAR}
+            AND TXN_DATE BETWEEN #{startTime,jdbcType=VARCHAR} AND #{endTime,jdbcType=VARCHAR}
+            AND LEFT_AMT &gt;= #{startAmt,jdbcType=DECIMAL} AND  RIGHT_AMT &lt;= #{endAmt,jdbcType=DECIMAL}
+        GROUP BY
+        FUND_CHANNEL ORDER BY FUND_CHANNEL
+    </select>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--微信对账文件格式 -->
+<!-- 
+templateType=READ|WRITE 表示解析文件还是生成文件 
+split分隔符 "\|" , 读文件时竖线分隔需要带转换符，写文件时不需要
+headLength文件头的长度，带换行符的表示文件头占了多少行，不带换行符的应该是字节长度
+endingLength文件尾
+lineSeparator换行符，若无，则表示不换行，换行一般是\r\n 字节文件一般是固定长度不带分隔符不换行
+-->
+
+<data templateType="READ"
+    split="," 
+    clazz="com.scrcu.ebank.ebap.batch.bean.dto.BthWxFileDet" 
+    charSet="UTF-8"
+    headLength="1"
+    endingLength="2"
+    lineSeparator="rn">
+
+     <column name="txnTm" length="" regex="" dateFormat="" numMultiple="" desc="交易时间" tranSrc="" tranDest="" /> 
+     <column name="appId" length="" regex="" dateFormat="" numMultiple="" desc="公众账号ID" tranSrc="" tranDest="" /> 
+     <column name="mchId" length="" regex="" dateFormat="" numMultiple="" desc="商户号" tranSrc="" tranDest="" /> 
+     <column name="subMchId" length="" regex="" dateFormat="" numMultiple="" desc="子商户号" tranSrc="" tranDest="" /> 
+     <column name="deviceInfo" length="" regex="" dateFormat="" numMultiple="" desc="设备号" tranSrc="" tranDest="" /> 
+     
+     
+     <column name="orderNoWx" length="" regex="" dateFormat="" numMultiple="" desc="微信订单号" tranSrc="" tranDest="" />
+     <column name="orderNo" length="" regex="" dateFormat="" numMultiple="" desc="商户订单号" tranSrc="" tranDest="" />
+     <column name="userFlag" length="" regex="" dateFormat="" numMultiple="" desc="用户标识" tranSrc="" tranDest="" /> 
+     <column name="tradeTp" length="" regex="" dateFormat="" numMultiple="" desc="交易类型" tranSrc="" tranDest="" />
+     <column name="tradeSt" length="" regex="" dateFormat="" numMultiple="" desc="交易状态" tranSrc="" tranDest="" />
+     
+     <column name="bankTp" length="" regex="" dateFormat="" numMultiple="" desc="付款银行" tranSrc="" tranDest="" />
+     <column name="currency" length="" regex="" dateFormat="" numMultiple="" desc="币种" tranSrc="" tranDest="" />
+     <column name="orderAmt" length="" regex="" dateFormat="" numMultiple="" desc="订单总金额" tranSrc="" tranDest="" />
+     <column name="couponAmt" length="" regex="" dateFormat="" numMultiple="" desc="代金券或立减优惠金额" tranSrc="" tranDest="" />
+     <column name="refundBillWx" length="" regex="" dateFormat="" numMultiple="" desc="微信退款单号" tranSrc="" tranDest="" />
+     
+     <column name="refundBillMer" length="" regex="" dateFormat="" numMultiple="" desc="商户退款单号" tranSrc="" tranDest="" />
+     <column name="refundAmt" length="" regex="" dateFormat="" numMultiple="" desc="退款金额" tranSrc="" tranDest="" />
+     <column name="couponRefAmt" length="" regex="" dateFormat="" numMultiple="" desc="代金券或立减优惠退款金额" tranSrc="" tranDest="" />
+     <column name="refundTp" length="" regex="" dateFormat="" numMultiple="" desc="退款类型" tranSrc="" tranDest="" />
+     <column name="refundSt" length="" regex="" dateFormat="" numMultiple="" desc="退款状态" tranSrc="" tranDest="" />
+     
+     <column name="prodNm" length="" regex="" dateFormat="" numMultiple="" desc="商品名称" tranSrc="" tranDest="" />
+     <column name="prodAttach" length="" regex="" dateFormat="" numMultiple="" desc="商户数据包" tranSrc="" tranDest="" />
+     <column name="feeAmt" length="" regex="" dateFormat="" numMultiple="" desc="手续费" tranSrc="" tranDest="" />
+     <column name="feeRateStr" length="" regex="" dateFormat="" numMultiple="" desc="费率" tranSrc="" tranDest="" />
+</data>

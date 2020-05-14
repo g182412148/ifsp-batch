@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.OrderTplInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.OrderTplInfo" >
+    <id column="TPL_SSN" property="tplSsn" jdbcType="VARCHAR" />
+    <result column="ORDER_SSN" property="orderSsn" jdbcType="VARCHAR" />
+    <result column="SUB_ORDER_SSN" property="subOrderSsn" jdbcType="VARCHAR" />
+    <result column="SUB_MER_NO" property="subMerNo" jdbcType="VARCHAR" />
+    <result column="TPL_TYPE" property="tplType" jdbcType="VARCHAR" />
+    <result column="TPL_ID" property="tplId" jdbcType="VARCHAR" />
+    <result column="TPL_ORDER_SSN" property="tplOrderSsn" jdbcType="VARCHAR" />
+    <result column="TPL_ORDER_AMT" property="tplOrderAmt" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="REFOUND_AMOUNT" property="refoundAmount" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TPL_SSN, ORDER_SSN, SUB_ORDER_SSN, SUB_MER_NO, TPL_TYPE, TPL_ID, TPL_ORDER_SSN, TPL_ORDER_AMT, 
+    CREATE_TIME, REFOUND_AMOUNT, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ORDER_TPL_INFO
+    where TPL_SSN = #{tplSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ORDER_TPL_INFO
+    where TPL_SSN = #{tplSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrderTplInfo" >
+    insert into ORDER_TPL_INFO (TPL_SSN, ORDER_SSN, SUB_ORDER_SSN, 
+      SUB_MER_NO, TPL_TYPE, TPL_ID, 
+      TPL_ORDER_SSN, TPL_ORDER_AMT, CREATE_TIME, 
+      REFOUND_AMOUNT, UPDATE_TIME)
+    values (#{tplSsn,jdbcType=VARCHAR}, #{orderSsn,jdbcType=VARCHAR}, #{subOrderSsn,jdbcType=VARCHAR}, 
+      #{subMerNo,jdbcType=VARCHAR}, #{tplType,jdbcType=VARCHAR}, #{tplId,jdbcType=VARCHAR}, 
+      #{tplOrderSsn,jdbcType=VARCHAR}, #{tplOrderAmt,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{refoundAmount,jdbcType=DECIMAL}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrderTplInfo" >
+    insert into ORDER_TPL_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tplSsn != null" >
+        TPL_SSN,
+      </if>
+      <if test="orderSsn != null" >
+        ORDER_SSN,
+      </if>
+      <if test="subOrderSsn != null" >
+        SUB_ORDER_SSN,
+      </if>
+      <if test="subMerNo != null" >
+        SUB_MER_NO,
+      </if>
+      <if test="tplType != null" >
+        TPL_TYPE,
+      </if>
+      <if test="tplId != null" >
+        TPL_ID,
+      </if>
+      <if test="tplOrderSsn != null" >
+        TPL_ORDER_SSN,
+      </if>
+      <if test="tplOrderAmt != null" >
+        TPL_ORDER_AMT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="refoundAmount != null" >
+        REFOUND_AMOUNT,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tplSsn != null" >
+        #{tplSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSsn != null" >
+        #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderSsn != null" >
+        #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="subMerNo != null" >
+        #{subMerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tplType != null" >
+        #{tplType,jdbcType=VARCHAR},
+      </if>
+      <if test="tplId != null" >
+        #{tplId,jdbcType=VARCHAR},
+      </if>
+      <if test="tplOrderSsn != null" >
+        #{tplOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tplOrderAmt != null" >
+        #{tplOrderAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refoundAmount != null" >
+        #{refoundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrderTplInfo" >
+    update ORDER_TPL_INFO
+    <set >
+      <if test="orderSsn != null" >
+        ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderSsn != null" >
+        SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="subMerNo != null" >
+        SUB_MER_NO = #{subMerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tplType != null" >
+        TPL_TYPE = #{tplType,jdbcType=VARCHAR},
+      </if>
+      <if test="tplId != null" >
+        TPL_ID = #{tplId,jdbcType=VARCHAR},
+      </if>
+      <if test="tplOrderSsn != null" >
+        TPL_ORDER_SSN = #{tplOrderSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tplOrderAmt != null" >
+        TPL_ORDER_AMT = #{tplOrderAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refoundAmount != null" >
+        REFOUND_AMOUNT = #{refoundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where TPL_SSN = #{tplSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.OrderTplInfo" >
+    update ORDER_TPL_INFO
+    set ORDER_SSN = #{orderSsn,jdbcType=VARCHAR},
+      SUB_ORDER_SSN = #{subOrderSsn,jdbcType=VARCHAR},
+      SUB_MER_NO = #{subMerNo,jdbcType=VARCHAR},
+      TPL_TYPE = #{tplType,jdbcType=VARCHAR},
+      TPL_ID = #{tplId,jdbcType=VARCHAR},
+      TPL_ORDER_SSN = #{tplOrderSsn,jdbcType=VARCHAR},
+      TPL_ORDER_AMT = #{tplOrderAmt,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      REFOUND_AMOUNT = #{refoundAmount,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where TPL_SSN = #{tplSsn,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据子订单查询物流信息 -->
+  <select id="selectOrderTplInfoBySubOrderId" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+       <include refid="Base_Column_List" />
+      from ORDER_TPL_INFO
+      where SUB_ORDER_SSN = #{subOrderSsn}
+  </select>
+</mapper>

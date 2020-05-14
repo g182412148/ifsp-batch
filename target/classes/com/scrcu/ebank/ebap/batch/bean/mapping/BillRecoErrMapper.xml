@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BillRecoErrMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BillRecoErr" >
+    <id column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+    <result column="RECO_DATE" property="recoDate" jdbcType="TIMESTAMP" />
+    <result column="CHNL_NO" property="chnlNo" jdbcType="VARCHAR" />
+    <result column="TXN_TIME" property="txnTime" jdbcType="TIMESTAMP" />
+    <result column="LOCAL_TXN_TYPE" property="localTxnType" jdbcType="VARCHAR" />
+    <result column="OUTER_TXN_TYPE" property="outerTxnType" jdbcType="VARCHAR" />
+    <result column="LOCAL_TXN_STATE" property="localTxnState" jdbcType="VARCHAR" />
+    <result column="OUTER_TXN_STATE" property="outerTxnState" jdbcType="VARCHAR" />
+    <result column="LOCAL_TXN_AMT" property="localTxnAmt" jdbcType="DECIMAL" />
+    <result column="OUTER_TXN_AMT" property="outerTxnAmt" jdbcType="DECIMAL" />
+    <result column="RECO_REST" property="recoRest" jdbcType="VARCHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="ORDER_DATE" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="PROC_STATE" property="procState" jdbcType="VARCHAR" />
+    <result column="PROC_DESC" property="procDesc" jdbcType="VARCHAR" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TXN_SSN, RECO_DATE, CHNL_NO, TXN_TIME, LOCAL_TXN_TYPE, OUTER_TXN_TYPE, LOCAL_TXN_STATE, 
+    OUTER_TXN_STATE, LOCAL_TXN_AMT, OUTER_TXN_AMT, RECO_REST, ORDER_ID, ORDER_DATE, PROC_STATE, 
+    PROC_DESC, UPD_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BILL_RECO_ERR
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BILL_RECO_ERR
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BillRecoErr" >
+    insert into BILL_RECO_ERR (TXN_SSN, RECO_DATE, CHNL_NO, 
+      TXN_TIME, LOCAL_TXN_TYPE, OUTER_TXN_TYPE, 
+      LOCAL_TXN_STATE, OUTER_TXN_STATE, LOCAL_TXN_AMT, 
+      OUTER_TXN_AMT, RECO_REST, ORDER_ID, 
+      ORDER_DATE, PROC_STATE, PROC_DESC, 
+      UPD_DATE)
+    values (#{txnSsn,jdbcType=VARCHAR}, #{recoDate,jdbcType=TIMESTAMP}, #{chnlNo,jdbcType=VARCHAR}, 
+      #{txnTime,jdbcType=TIMESTAMP}, #{localTxnType,jdbcType=VARCHAR}, #{outerTxnType,jdbcType=VARCHAR}, 
+      #{localTxnState,jdbcType=VARCHAR}, #{outerTxnState,jdbcType=VARCHAR}, #{localTxnAmt,jdbcType=DECIMAL}, 
+      #{outerTxnAmt,jdbcType=DECIMAL}, #{recoRest,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{orderDate,jdbcType=TIMESTAMP}, #{procState,jdbcType=VARCHAR}, #{procDesc,jdbcType=VARCHAR}, 
+      #{updDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BillRecoErr" >
+    insert into BILL_RECO_ERR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        TXN_SSN,
+      </if>
+      <if test="recoDate != null" >
+        RECO_DATE,
+      </if>
+      <if test="chnlNo != null" >
+        CHNL_NO,
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME,
+      </if>
+      <if test="localTxnType != null" >
+        LOCAL_TXN_TYPE,
+      </if>
+      <if test="outerTxnType != null" >
+        OUTER_TXN_TYPE,
+      </if>
+      <if test="localTxnState != null" >
+        LOCAL_TXN_STATE,
+      </if>
+      <if test="outerTxnState != null" >
+        OUTER_TXN_STATE,
+      </if>
+      <if test="localTxnAmt != null" >
+        LOCAL_TXN_AMT,
+      </if>
+      <if test="outerTxnAmt != null" >
+        OUTER_TXN_AMT,
+      </if>
+      <if test="recoRest != null" >
+        RECO_REST,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderDate != null" >
+        ORDER_DATE,
+      </if>
+      <if test="procState != null" >
+        PROC_STATE,
+      </if>
+      <if test="procDesc != null" >
+        PROC_DESC,
+      </if>
+      <if test="updDate != null" >
+        UPD_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnSsn != null" >
+        #{txnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="recoDate != null" >
+        #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chnlNo != null" >
+        #{chnlNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="localTxnType != null" >
+        #{localTxnType,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnType != null" >
+        #{outerTxnType,jdbcType=VARCHAR},
+      </if>
+      <if test="localTxnState != null" >
+        #{localTxnState,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnState != null" >
+        #{outerTxnState,jdbcType=VARCHAR},
+      </if>
+      <if test="localTxnAmt != null" >
+        #{localTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="outerTxnAmt != null" >
+        #{outerTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoRest != null" >
+        #{recoRest,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procState != null" >
+        #{procState,jdbcType=VARCHAR},
+      </if>
+      <if test="procDesc != null" >
+        #{procDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="updDate != null" >
+        #{updDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BillRecoErr" >
+    update BILL_RECO_ERR
+    <set >
+      <if test="recoDate != null" >
+        RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chnlNo != null" >
+        CHNL_NO = #{chnlNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="localTxnType != null" >
+        LOCAL_TXN_TYPE = #{localTxnType,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnType != null" >
+        OUTER_TXN_TYPE = #{outerTxnType,jdbcType=VARCHAR},
+      </if>
+      <if test="localTxnState != null" >
+        LOCAL_TXN_STATE = #{localTxnState,jdbcType=VARCHAR},
+      </if>
+      <if test="outerTxnState != null" >
+        OUTER_TXN_STATE = #{outerTxnState,jdbcType=VARCHAR},
+      </if>
+      <if test="localTxnAmt != null" >
+        LOCAL_TXN_AMT = #{localTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="outerTxnAmt != null" >
+        OUTER_TXN_AMT = #{outerTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recoRest != null" >
+        RECO_REST = #{recoRest,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procState != null" >
+        PROC_STATE = #{procState,jdbcType=VARCHAR},
+      </if>
+      <if test="procDesc != null" >
+        PROC_DESC = #{procDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="updDate != null" >
+        UPD_DATE = #{updDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BillRecoErr" >
+    update BILL_RECO_ERR
+    set RECO_DATE = #{recoDate,jdbcType=TIMESTAMP},
+      CHNL_NO = #{chnlNo,jdbcType=VARCHAR},
+      TXN_TIME = #{txnTime,jdbcType=TIMESTAMP},
+      LOCAL_TXN_TYPE = #{localTxnType,jdbcType=VARCHAR},
+      OUTER_TXN_TYPE = #{outerTxnType,jdbcType=VARCHAR},
+      LOCAL_TXN_STATE = #{localTxnState,jdbcType=VARCHAR},
+      OUTER_TXN_STATE = #{outerTxnState,jdbcType=VARCHAR},
+      LOCAL_TXN_AMT = #{localTxnAmt,jdbcType=DECIMAL},
+      OUTER_TXN_AMT = #{outerTxnAmt,jdbcType=DECIMAL},
+      RECO_REST = #{recoRest,jdbcType=VARCHAR},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      PROC_STATE = #{procState,jdbcType=VARCHAR},
+      PROC_DESC = #{procDesc,jdbcType=VARCHAR},
+      UPD_DATE = #{updDate,jdbcType=TIMESTAMP}
+    where TXN_SSN = #{txnSsn,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 恢复指定对账日期的数据为未对账 -->
+  <update id="clear" >
+    delete from BILL_RECO_ERR
+    where RECO_DATE = #{recoDate,jdbcType=TIMESTAMP}
+    and CHNL_NO = #{chnlNo,jdbcType=VARCHAR}
+  </update>
+
+  <!--根据微信对账结果插入差错结果表-->
+  <update id="insertWxErrResult">
+    insert into bill_reco_err
+    (txn_ssn,
+    chnl_no,
+    reco_date,
+    txn_time,
+    local_txn_type,
+    local_txn_state,
+    local_txn_amt,
+    outer_txn_type,
+    outer_txn_state,
+    outer_txn_amt,
+    order_id,
+    order_date,
+    reco_rest,
+    proc_state,
+    proc_desc,
+    upd_date)
+    select *
+    from (select decode(t.txn_ssn_local,
+    null,
+    t.txn_ssn_outer,
+    t.txn_ssn_local) txn_ssn,
+    '605' chnl_no,
+    #{recoDate,jdbcType=TIMESTAMP} reco_date,
+    decode(a.txn_time, null, b.txn_time, a.txn_time),
+    a.txn_type local_txn_type,
+    a.txn_state local_txn_state,
+    a.txn_amt local_txn_amt,
+    b.txn_type outer_txn_type,
+    b.txn_state outer_txn_state,
+    b.txn_amt outer_txn_amt,
+    a.order_id,
+    a.order_date,
+    case
+    when t.is_dubious_local is not null then
+    t.is_dubious_local
+    when is_dubious_outer is not null then
+    t.is_dubious_outer
+    when t.compare_result is not null then
+    t.compare_result
+    end reco_rest,
+    '00' proc_state,
+    '未处理' proc_desc,
+    sysdate upd_date
+    from wx_bill_result t, wx_bill_local a, wx_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and (t.is_dubious_local is null or t.is_dubious_local = '11')
+    and (t.is_dubious_outer is null or t.is_dubious_outer = '12')) tt
+    where reco_rest != '00'
+  </update>
+
+  <!--根据支付宝对账结果插入差错结果表-->
+  <update id="insertAliErrResult">
+    insert into bill_reco_err
+    (txn_ssn,
+    chnl_no,
+    reco_date,
+    txn_time,
+    local_txn_type,
+    local_txn_state,
+    local_txn_amt,
+    outer_txn_type,
+    outer_txn_state,
+    outer_txn_amt,
+    order_id,
+    order_date,
+    reco_rest,
+    proc_state,
+    proc_desc,
+    upd_date)
+    select *
+    from (select decode(t.txn_ssn_local,
+    null,
+    t.txn_ssn_outer,
+    t.txn_ssn_local) txn_ssn,
+    '606' chnl_no,
+    #{recoDate,jdbcType=TIMESTAMP} reco_date,
+    decode(a.txn_time, null, b.txn_time, a.txn_time),
+    a.txn_type local_txn_type,
+    a.txn_state local_txn_state,
+    a.txn_amt local_txn_amt,
+    b.txn_type outer_txn_type,
+    b.txn_state outer_txn_state,
+    b.txn_amt outer_txn_amt,
+    a.order_id,
+    a.order_date,
+    case
+    when t.is_dubious_local is not null then
+    t.is_dubious_local
+    when is_dubious_outer is not null then
+    t.is_dubious_outer
+    when t.compare_result is not null then
+    t.compare_result
+    end reco_rest,
+    '00' proc_state,
+    '未处理' proc_desc,
+    sysdate upd_date
+    from ali_bill_result t, ali_bill_local a, ali_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and (t.is_dubious_local is null or t.is_dubious_local = '11')
+    and (t.is_dubious_outer is null or t.is_dubious_outer = '12')) tt
+    where reco_rest != '00'
+  </update>
+
+  <!--根据本行对账结果插入差错结果表-->
+  <update id="insertIBankErrResult">
+    insert into bill_reco_err
+    (txn_ssn,
+    chnl_no,
+    reco_date,
+    txn_time,
+    local_txn_type,
+    local_txn_state,
+    local_txn_amt,
+    outer_txn_type,
+    outer_txn_state,
+    outer_txn_amt,
+    order_id,
+    order_date,
+    reco_rest,
+    proc_state,
+    proc_desc,
+    upd_date)
+    select *
+    from (select decode(t.txn_ssn_local,
+    null,
+    t.txn_ssn_outer,
+    t.txn_ssn_local) txn_ssn,
+    '604' chnl_no,
+    #{recoDate,jdbcType=TIMESTAMP} reco_date,
+    decode(a.txn_time, null, b.txn_time, a.txn_time),
+    a.txn_type local_txn_type,
+    a.txn_state local_txn_state,
+    a.txn_amt local_txn_amt,
+    b.txn_type outer_txn_type,
+    b.txn_state outer_txn_state,
+    b.txn_amt outer_txn_amt,
+    a.order_id,
+    a.order_date,
+    case
+    when t.is_dubious_local is not null then
+    t.is_dubious_local
+    when is_dubious_outer is not null then
+    t.is_dubious_outer
+    when t.compare_result is not null then
+    t.compare_result
+    end reco_rest,
+    '00' proc_state,
+    '未处理' proc_desc,
+    sysdate upd_date
+    from ibank_bill_result t, ibank_bill_local a, ibank_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and (t.is_dubious_local is null or t.is_dubious_local = '11')
+    and (t.is_dubious_outer is null or t.is_dubious_outer = '12')) tt
+    where reco_rest != '00'
+  </update>
+
+  <!--根据银联二维码对账结果插入差错结果表-->
+  <update id="insertUnionQrcErrResult">
+    insert into bill_reco_err
+    (txn_ssn,
+    chnl_no,
+    reco_date,
+    txn_time,
+    local_txn_type,
+    local_txn_state,
+    local_txn_amt,
+    outer_txn_type,
+    outer_txn_state,
+    outer_txn_amt,
+    order_id,
+    order_date,
+    reco_rest,
+    proc_state,
+    proc_desc,
+    upd_date)
+    select *
+    from (select decode(t.txn_ssn_local,
+    null,
+    t.txn_ssn_outer,
+    t.txn_ssn_local) txn_ssn,
+    '607' chnl_no,
+    #{recoDate,jdbcType=TIMESTAMP} reco_date,
+    decode(a.txn_time, null, b.txn_time, a.txn_time),
+    a.txn_type local_txn_type,
+    a.txn_state local_txn_state,
+    a.txn_amt local_txn_amt,
+    b.txn_type outer_txn_type,
+    b.txn_state outer_txn_state,
+    b.trans_amt outer_txn_amt,
+    a.order_id,
+    a.order_date,
+    case
+    when t.is_dubious_local is not null then
+    t.is_dubious_local
+    when is_dubious_outer is not null then
+    t.is_dubious_outer
+    when t.compare_result is not null then
+    t.compare_result
+    end reco_rest,
+    '00' proc_state,
+    '未处理' proc_desc,
+    sysdate upd_date
+    from union_qrc_bill_result t, union_bill_local a, union_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and (t.is_dubious_local is null or t.is_dubious_local = '11')
+    and (t.is_dubious_outer is null or t.is_dubious_outer = '12')) tt
+    where reco_rest != '00'
+  </update>
+
+  <!--根据银联全渠道对账结果插入差错结果表-->
+  <update id="insertUnionAllErrResult">
+    insert into bill_reco_err
+    (txn_ssn,
+    chnl_no,
+    reco_date,
+    txn_time,
+    local_txn_type,
+    local_txn_state,
+    local_txn_amt,
+    outer_txn_type,
+    outer_txn_state,
+    outer_txn_amt,
+    order_id,
+    order_date,
+    reco_rest,
+    proc_state,
+    proc_desc,
+    upd_date)
+    select *
+    from (select decode(t.txn_ssn_local,
+    null,
+    t.txn_ssn_outer,
+    t.txn_ssn_local) txn_ssn,
+    '608' chnl_no,
+    #{recoDate,jdbcType=TIMESTAMP} reco_date,
+    decode(a.txn_time, null, b.txn_time, a.txn_time),
+    a.txn_type local_txn_type,
+    a.txn_state local_txn_state,
+    a.txn_amt local_txn_amt,
+    b.txn_type outer_txn_type,
+    b.txn_state outer_txn_state,
+    b.trans_amt outer_txn_amt,
+    a.order_id,
+    a.order_date,
+    case
+    when t.is_dubious_local is not null then
+    t.is_dubious_local
+    when is_dubious_outer is not null then
+    t.is_dubious_outer
+    when t.compare_result is not null then
+    t.compare_result
+    end reco_rest,
+    '00' proc_state,
+    '未处理' proc_desc,
+    sysdate upd_date
+    from union_all_bill_result t, union_bill_local a, union_bill_outer b
+    where t.txn_ssn_local = a.txn_ssn(+)
+    and t.txn_ssn_outer = b.txn_ssn(+)
+    and (t.is_dubious_local is null or t.is_dubious_local = '11')
+    and (t.is_dubious_outer is null or t.is_dubious_outer = '12')) tt
+    where reco_rest != '00'
+  </update>
+</mapper>

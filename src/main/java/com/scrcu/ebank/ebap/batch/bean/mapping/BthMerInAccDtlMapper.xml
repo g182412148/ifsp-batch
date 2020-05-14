@@ -1,0 +1,2511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.BthMerInAccDtlMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl">
+    <id column="STLM_DATE" jdbcType="CHAR" property="stlmDate" />
+    <id column="IN_ACCT_DATE" jdbcType="CHAR" property="inAcctDate" />
+    <id column="CHL_MER_ID" jdbcType="VARCHAR" property="chlMerId" />
+    <id column="TXN_SEQ_ID" jdbcType="VARCHAR" property="txnSeqId" />
+    <result column="CHL_MER_NAME" jdbcType="VARCHAR" property="chlMerName" />
+    <result column="CHL_SUB_MER_ID" jdbcType="VARCHAR" property="chlSubMerId" />
+    <result column="CHL_SUB_MER_NAME" jdbcType="VARCHAR" property="chlSubMerName" />
+    <result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+    <result column="SETL_AMT" jdbcType="VARCHAR" property="setlAmt" />
+    <result column="SETL_FEE_AMT" jdbcType="VARCHAR" property="setlFeeAmt" />
+    <result column="SETL_FEE_AMT_DIS" jdbcType="VARCHAR" property="setlFeeAmtDis" />
+    <result column="SETL_ACCT_NO" jdbcType="VARCHAR" property="setlAcctNo" />
+    <result column="SETL_ACCT_NAME" jdbcType="VARCHAR" property="setlAcctName" />
+    <result column="SETL_ACCT_TYPE" jdbcType="VARCHAR" property="setlAcctType" />
+    <result column="SETL_ACCT_INSTITUTE2" jdbcType="VARCHAR" property="setlAcctInstitute2" />
+    <result column="SETL_ACCT_INSTITUTE_NAME2" jdbcType="VARCHAR" property="setlAcctInstituteName2" />
+    <result column="AGENT_ID" jdbcType="CHAR" property="agentId" />
+    <result column="AGENT_NAME" jdbcType="VARCHAR" property="agentName" />
+    <result column="AGENT_SETL_ACCT_NO" jdbcType="VARCHAR" property="agentSetlAcctNo" />
+    <result column="AGENT_SETL_ACCT_NAME" jdbcType="VARCHAR" property="agentSetlAcctName" />
+    <result column="AGENT_SETL_FEE_AMT" jdbcType="VARCHAR" property="agentSetlFeeAmt" />
+    <result column="TRAM_FEE_AMT" jdbcType="VARCHAR" property="tramFeeAmt" />
+    <result column="LOCAL_FEE_AMT" jdbcType="VARCHAR" property="localFeeAmt" />
+    <result column="PAGY_NO" jdbcType="CHAR" property="pagyNo" />
+    <result column="OUT_ACCT_NO" jdbcType="VARCHAR" property="outAcctNo" />
+    <result column="LOCAL_FEE_ACCT" jdbcType="VARCHAR" property="localFeeAcct" />
+    <result column="AG_FEE" jdbcType="VARCHAR" property="agFee" />
+    <result column="IN_ACCT_STAT" jdbcType="CHAR" property="inAcctStat" />
+    <result column="ORDER_TYPE" jdbcType="VARCHAR" property="orderType" />
+    <result column="STL_STATUS" jdbcType="VARCHAR" property="stlStatus" />
+    <result column="REFUND_ACC_TYPE" jdbcType="VARCHAR" property="refundAccType" />
+    <result column="STL_TYPE" jdbcType="VARCHAR" property="stlType" />
+    <result column="SUB_STL_DATE" jdbcType="VARCHAR" property="subStlDate" />
+    <result column="COMMISSION_AMT" jdbcType="VARCHAR" property="commissionAmt" />
+    <result column="BANK_COUPON_AMT" jdbcType="VARCHAR" property="bankCouponAmt" />
+    <result column="BANK_HB_AMT" jdbcType="VARCHAR" property="bankHbAmt" />
+    <result column="LOGIS_FEE" jdbcType="VARCHAR" property="logisFee" />
+    <result column="LOGIS_TYPE" jdbcType="VARCHAR" property="logisType" />
+    <result column="LOGIS_PARTNER_CODE" jdbcType="VARCHAR" property="logisPartnerCode" />
+    <result column="POINT_DEDCUT_AMT" jdbcType="VARCHAR" property="pointDedcutAmt" />
+    <result column="OPEN_BRC" jdbcType="VARCHAR" property="openBrc" />
+    <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+    <result column="BRAND_FEE" jdbcType="VARCHAR" property="brandFee" />
+    <result column="TXN_TYPE" jdbcType="VARCHAR" property="txnType" />
+    <result column="FUND_CHANNEL" jdbcType="VARCHAR" property="fundChannel" />
+    <result column="UPDATE_DATE" jdbcType="VARCHAR" property="updateDate" />
+    <result column="CHNL_FEE_FLAG" jdbcType="VARCHAR" property="chnlFeeFlag" />
+    <result column="LOGIS_FEE_AMT" jdbcType="VARCHAR" property="logisFeeAmt" />
+    <result column="TXN_TM" jdbcType="TIMESTAMP" property="txnTm" />
+     <!-- 营销新增 -->
+    <result column="MCHT_PAY_AMT" jdbcType="VARCHAR" property="mchtPayAmt" />
+    <result column="BANK_PAY_AMT" jdbcType="VARCHAR" property="bankPayAmt" />
+    <result column="USERORG_PAY_AMT" jdbcType="VARCHAR" property="userorgPayAmt" />
+  </resultMap>
+
+  <!-- 针对间接结算添加新字段 -->
+  <resultMap id="BaseResultMap2" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl">
+    <id column="STLM_DATE" jdbcType="CHAR" property="stlmDate" />
+    <id column="IN_ACCT_DATE" jdbcType="CHAR" property="inAcctDate" />
+    <id column="CHL_MER_ID" jdbcType="VARCHAR" property="chlMerId" />
+    <id column="TXN_SEQ_ID" jdbcType="VARCHAR" property="txnSeqId" />
+    <result column="CHL_MER_NAME" jdbcType="VARCHAR" property="chlMerName" />
+    <result column="CHL_SUB_MER_ID" jdbcType="VARCHAR" property="chlSubMerId" />
+    <result column="CHL_SUB_MER_NAME" jdbcType="VARCHAR" property="chlSubMerName" />
+    <result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+    <result column="SETL_AMT" jdbcType="VARCHAR" property="setlAmt" />
+    <result column="SETL_FEE_AMT" jdbcType="VARCHAR" property="setlFeeAmt" />
+    <result column="SETL_FEE_AMT_DIS" jdbcType="VARCHAR" property="setlFeeAmtDis" />
+    <result column="SETL_ACCT_NO" jdbcType="VARCHAR" property="setlAcctNo" />
+    <result column="SETL_ACCT_NAME" jdbcType="VARCHAR" property="setlAcctName" />
+    <result column="SETL_ACCT_TYPE" jdbcType="VARCHAR" property="setlAcctType" />
+    <result column="SETL_ACCT_INSTITUTE2" jdbcType="VARCHAR" property="setlAcctInstitute2" />
+    <result column="SETL_ACCT_INSTITUTE_NAME2" jdbcType="VARCHAR" property="setlAcctInstituteName2" />
+    <result column="AGENT_ID" jdbcType="CHAR" property="agentId" />
+    <result column="AGENT_NAME" jdbcType="VARCHAR" property="agentName" />
+    <result column="AGENT_SETL_ACCT_NO" jdbcType="VARCHAR" property="agentSetlAcctNo" />
+    <result column="AGENT_SETL_ACCT_NAME" jdbcType="VARCHAR" property="agentSetlAcctName" />
+    <result column="AGENT_SETL_FEE_AMT" jdbcType="VARCHAR" property="agentSetlFeeAmt" />
+    <result column="TRAM_FEE_AMT" jdbcType="VARCHAR" property="tramFeeAmt" />
+    <result column="LOCAL_FEE_AMT" jdbcType="VARCHAR" property="localFeeAmt" />
+    <result column="PAGY_NO" jdbcType="CHAR" property="pagyNo" />
+    <result column="OUT_ACCT_NO" jdbcType="VARCHAR" property="outAcctNo" />
+    <result column="LOCAL_FEE_ACCT" jdbcType="VARCHAR" property="localFeeAcct" />
+    <result column="AG_FEE" jdbcType="VARCHAR" property="agFee" />
+    <result column="IN_ACCT_STAT" jdbcType="CHAR" property="inAcctStat" />
+    <result column="ORDER_TYPE" jdbcType="VARCHAR" property="orderType" />
+    <result column="STL_STATUS" jdbcType="VARCHAR" property="stlStatus" />
+    <result column="REFUND_ACC_TYPE" jdbcType="VARCHAR" property="refundAccType" />
+    <result column="STL_TYPE" jdbcType="VARCHAR" property="stlType" />
+    <result column="SUB_STL_DATE" jdbcType="VARCHAR" property="subStlDate" />
+    <result column="COMMISSION_AMT" jdbcType="VARCHAR" property="commissionAmt" />
+    <result column="BANK_COUPON_AMT" jdbcType="VARCHAR" property="bankCouponAmt" />
+    <result column="BANK_HB_AMT" jdbcType="VARCHAR" property="bankHbAmt" />
+    <result column="LOGIS_FEE" jdbcType="VARCHAR" property="logisFee" />
+    <result column="LOGIS_TYPE" jdbcType="VARCHAR" property="logisType" />
+    <result column="LOGIS_PARTNER_CODE" jdbcType="VARCHAR" property="logisPartnerCode" />
+    <result column="POINT_DEDCUT_AMT" jdbcType="VARCHAR" property="pointDedcutAmt" />
+    <result column="OPEN_BRC" jdbcType="VARCHAR" property="openBrc" />
+    <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+    <result column="BRAND_FEE" jdbcType="VARCHAR" property="brandFee" />
+    <result column="TXN_TYPE" jdbcType="VARCHAR" property="txnType" />
+    <result column="FUND_CHANNEL" jdbcType="VARCHAR" property="fundChannel" />
+    <result column="UPDATE_DATE" jdbcType="VARCHAR" property="updateDate" />
+    <result column="SUB_STL_STATUS" jdbcType="VARCHAR" property="subStlStatus" />
+    <result column="CREATE_DATE" jdbcType="VARCHAR" property="createDate" />
+    <result column="CHNL_FEE_FLAG" jdbcType="VARCHAR" property="chnlFeeFlag" />
+    <result column="LOGIS_FEE_AMT" jdbcType="VARCHAR" property="logisFeeAmt" />
+    <result column="TXN_TM" jdbcType="TIMESTAMP" property="txnTm" />
+     <!-- 营销新增 -->
+    <result column="MCHT_PAY_AMT" jdbcType="VARCHAR" property="mchtPayAmt" />
+    <result column="BANK_PAY_AMT" jdbcType="VARCHAR" property="bankPayAmt" />
+    <result column="USERORG_PAY_AMT" jdbcType="VARCHAR" property="userorgPayAmt" />
+
+    <!-- 对账文件添加 -->
+    <result column="SUB_ORDER_TIME" jdbcType="VARCHAR" property="subOrderTime" />
+    <result column="SUB_ORDER_SSN" jdbcType="VARCHAR" property="subOrderSsn" />
+    <result column="ORDER_SSN" jdbcType="VARCHAR" property="orderSsn" />
+    <result column="REQ_SUB_ORDER_SSN" jdbcType="VARCHAR" property="reqSubOrderSsn" />
+    <result column="PAY_STATUS_UPDATE_TIME" jdbcType="VARCHAR" property="payStatusUpdateTime" />
+    <result column="CUR" jdbcType="VARCHAR" property="cur" />
+    <result column="ROW_COUNT" jdbcType="VARCHAR" property="rowCount" />
+    <result column="PAY_CHANNEL" jdbcType="VARCHAR" property="payChannel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    STLM_DATE, IN_ACCT_DATE, CHL_MER_ID, TXN_SEQ_ID, CHL_MER_NAME, CHL_SUB_MER_ID, CHL_SUB_MER_NAME,
+    TXN_AMT, SETL_AMT, SETL_FEE_AMT, SETL_FEE_AMT_DIS, SETL_ACCT_NO, SETL_ACCT_NAME,
+    SETL_ACCT_TYPE, SETL_ACCT_INSTITUTE2, SETL_ACCT_INSTITUTE_NAME2, AGENT_ID, AGENT_NAME,
+    AGENT_SETL_ACCT_NO, AGENT_SETL_ACCT_NAME, AGENT_SETL_FEE_AMT, TRAM_FEE_AMT, LOCAL_FEE_AMT,
+    PAGY_NO, OUT_ACCT_NO, LOCAL_FEE_ACCT, AG_FEE, IN_ACCT_STAT, ORDER_TYPE, STL_STATUS,
+    REFUND_ACC_TYPE, STL_TYPE, SUB_STL_DATE, COMMISSION_AMT, BANK_COUPON_AMT, BANK_HB_AMT,
+    LOGIS_FEE, LOGIS_TYPE, LOGIS_PARTNER_CODE, POINT_DEDCUT_AMT, OPEN_BRC, BATCH_NO,
+    BRAND_FEE, TXN_TYPE, FUND_CHANNEL, UPDATE_DATE,SUB_STL_STATUS,CREATE_DATE,CHNL_FEE_FLAG,
+    LOGIS_FEE_AMT, TXN_TM, MCHT_PAY_AMT, BANK_PAY_AMT, USERORG_PAY_AMT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from BTH_MER_IN_ACC_DTL
+    where STLM_DATE = #{stlmDate,jdbcType=CHAR}
+      and IN_ACCT_DATE = #{inAcctDate,jdbcType=CHAR}
+      and CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR}
+      and TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from BTH_MER_IN_ACC_DTL
+    where STLM_DATE = #{stlmDate,jdbcType=CHAR}
+      and IN_ACCT_DATE = #{inAcctDate,jdbcType=CHAR}
+      and CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR}
+      and TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl">
+    insert into BTH_MER_IN_ACC_DTL (STLM_DATE, IN_ACCT_DATE, CHL_MER_ID,
+      TXN_SEQ_ID, CHL_MER_NAME, CHL_SUB_MER_ID,
+      CHL_SUB_MER_NAME, TXN_AMT, SETL_AMT,
+      SETL_FEE_AMT, SETL_FEE_AMT_DIS, SETL_ACCT_NO,
+      SETL_ACCT_NAME, SETL_ACCT_TYPE, SETL_ACCT_INSTITUTE2,
+      SETL_ACCT_INSTITUTE_NAME2, AGENT_ID, AGENT_NAME,
+      AGENT_SETL_ACCT_NO, AGENT_SETL_ACCT_NAME, AGENT_SETL_FEE_AMT,
+      TRAM_FEE_AMT, LOCAL_FEE_AMT, PAGY_NO,
+      OUT_ACCT_NO, LOCAL_FEE_ACCT, AG_FEE,
+      IN_ACCT_STAT, ORDER_TYPE, STL_STATUS,
+      REFUND_ACC_TYPE, STL_TYPE, SUB_STL_DATE,
+      COMMISSION_AMT, BANK_COUPON_AMT, BANK_HB_AMT,
+      LOGIS_FEE, LOGIS_TYPE, LOGIS_PARTNER_CODE,
+      POINT_DEDCUT_AMT, OPEN_BRC, BATCH_NO,
+      BRAND_FEE, TXN_TYPE, FUND_CHANNEL,
+      UPDATE_DATE,LOGIS_FEE_AMT, TXN_TM, MCHT_PAY_AMT, BANK_PAY_AMT, USERORG_PAY_AMT)
+    values (#{stlmDate,jdbcType=CHAR}, #{inAcctDate,jdbcType=CHAR}, #{chlMerId,jdbcType=VARCHAR},
+      #{txnSeqId,jdbcType=VARCHAR}, #{chlMerName,jdbcType=VARCHAR}, #{chlSubMerId,jdbcType=VARCHAR},
+      #{chlSubMerName,jdbcType=VARCHAR}, #{txnAmt,jdbcType=VARCHAR}, #{setlAmt,jdbcType=VARCHAR},
+      #{setlFeeAmt,jdbcType=VARCHAR}, #{setlFeeAmtDis,jdbcType=VARCHAR}, #{setlAcctNo,jdbcType=VARCHAR},
+      #{setlAcctName,jdbcType=VARCHAR}, #{setlAcctType,jdbcType=VARCHAR}, #{setlAcctInstitute2,jdbcType=VARCHAR},
+      #{setlAcctInstituteName2,jdbcType=VARCHAR}, #{agentId,jdbcType=CHAR}, #{agentName,jdbcType=VARCHAR},
+      #{agentSetlAcctNo,jdbcType=VARCHAR}, #{agentSetlAcctName,jdbcType=VARCHAR}, #{agentSetlFeeAmt,jdbcType=VARCHAR},
+      #{tramFeeAmt,jdbcType=VARCHAR}, #{localFeeAmt,jdbcType=VARCHAR}, #{pagyNo,jdbcType=CHAR},
+      #{outAcctNo,jdbcType=VARCHAR}, #{localFeeAcct,jdbcType=VARCHAR}, #{agFee,jdbcType=VARCHAR},
+      #{inAcctStat,jdbcType=CHAR}, #{orderType,jdbcType=VARCHAR}, #{stlStatus,jdbcType=VARCHAR},
+      #{refundAccType,jdbcType=VARCHAR}, #{stlType,jdbcType=VARCHAR}, #{subStlDate,jdbcType=VARCHAR},
+      #{commissionAmt,jdbcType=VARCHAR}, #{bankCouponAmt,jdbcType=VARCHAR}, #{bankHbAmt,jdbcType=VARCHAR},
+      #{logisFee,jdbcType=VARCHAR}, #{logisType,jdbcType=VARCHAR}, #{logisPartnerCode,jdbcType=VARCHAR},
+      #{pointDedcutAmt,jdbcType=VARCHAR}, #{openBrc,jdbcType=VARCHAR}, #{batchNo,jdbcType=VARCHAR},
+      #{brandFee,jdbcType=VARCHAR}, #{txnType,jdbcType=VARCHAR}, #{fundChannel,jdbcType=VARCHAR},
+      to_char(sysdate,'yyyymmddhh24miss'),#{logisFeeAmt,jdbcType=VARCHAR}, #{txnTm,jdbcType=TIMESTAMP},
+      #{mchtPayAmt,jdbcType=VARCHAR}, #{bankPayAmt,jdbcType=VARCHAR}, #{userorgPayAmt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl">
+    insert into BTH_MER_IN_ACC_DTL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stlmDate != null">
+        STLM_DATE,
+      </if>
+      <if test="inAcctDate != null">
+        IN_ACCT_DATE,
+      </if>
+      <if test="chlMerId != null">
+        CHL_MER_ID,
+      </if>
+      <if test="txnSeqId != null">
+        TXN_SEQ_ID,
+      </if>
+      <if test="chlMerName != null">
+        CHL_MER_NAME,
+      </if>
+      <if test="chlSubMerId != null">
+        CHL_SUB_MER_ID,
+      </if>
+      <if test="chlSubMerName != null">
+        CHL_SUB_MER_NAME,
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT,
+      </if>
+      <if test="setlAmt != null">
+        SETL_AMT,
+      </if>
+      <if test="setlFeeAmt != null">
+        SETL_FEE_AMT,
+      </if>
+      <if test="setlFeeAmtDis != null">
+        SETL_FEE_AMT_DIS,
+      </if>
+      <if test="setlAcctNo != null">
+        SETL_ACCT_NO,
+      </if>
+      <if test="setlAcctName != null">
+        SETL_ACCT_NAME,
+      </if>
+      <if test="setlAcctType != null">
+        SETL_ACCT_TYPE,
+      </if>
+      <if test="setlAcctInstitute2 != null">
+        SETL_ACCT_INSTITUTE2,
+      </if>
+      <if test="setlAcctInstituteName2 != null">
+        SETL_ACCT_INSTITUTE_NAME2,
+      </if>
+      <if test="agentId != null">
+        AGENT_ID,
+      </if>
+      <if test="agentName != null">
+        AGENT_NAME,
+      </if>
+      <if test="agentSetlAcctNo != null">
+        AGENT_SETL_ACCT_NO,
+      </if>
+      <if test="agentSetlAcctName != null">
+        AGENT_SETL_ACCT_NAME,
+      </if>
+      <if test="agentSetlFeeAmt != null">
+        AGENT_SETL_FEE_AMT,
+      </if>
+      <if test="tramFeeAmt != null">
+        TRAM_FEE_AMT,
+      </if>
+      <if test="localFeeAmt != null">
+        LOCAL_FEE_AMT,
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO,
+      </if>
+      <if test="outAcctNo != null">
+        OUT_ACCT_NO,
+      </if>
+      <if test="localFeeAcct != null">
+        LOCAL_FEE_ACCT,
+      </if>
+      <if test="agFee != null">
+        AG_FEE,
+      </if>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT,
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE,
+      </if>
+      <if test="stlStatus != null">
+        STL_STATUS,
+      </if>
+      <if test="refundAccType != null">
+        REFUND_ACC_TYPE,
+      </if>
+      <if test="stlType != null">
+        STL_TYPE,
+      </if>
+      <if test="subStlDate != null">
+        SUB_STL_DATE,
+      </if>
+      <if test="commissionAmt != null">
+        COMMISSION_AMT,
+      </if>
+      <if test="bankCouponAmt != null">
+        BANK_COUPON_AMT,
+      </if>
+      <if test="bankHbAmt != null">
+        BANK_HB_AMT,
+      </if>
+      <if test="logisFee != null">
+        LOGIS_FEE,
+      </if>
+      <if test="logisType != null">
+        LOGIS_TYPE,
+      </if>
+      <if test="logisPartnerCode != null">
+        LOGIS_PARTNER_CODE,
+      </if>
+      <if test="pointDedcutAmt != null">
+        POINT_DEDCUT_AMT,
+      </if>
+      <if test="openBrc != null">
+        OPEN_BRC,
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO,
+      </if>
+      <if test="brandFee != null">
+        BRAND_FEE,
+      </if>
+      <if test="txnType != null">
+        TXN_TYPE,
+      </if>
+      <if test="fundChannel != null">
+        FUND_CHANNEL,
+      </if>
+<!--       <if test="updateDate != null"> -->
+        UPDATE_DATE,
+<!--       </if> -->
+      <if test="subStlStatus != null">
+        SUB_STL_STATUS,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="logisFeeAmt != null">
+        LOGIS_FEE_AMT,
+      </if>
+      <if test="txnTm != null">
+        TXN_TM,
+      </if>
+       <if test="mchtPayAmt != null">
+        MCHT_PAY_AMT,
+      </if>
+      <if test="bankPayAmt != null">
+        BANK_PAY_AMT,
+      </if>
+      <if test="userorgPayAmt != null">
+        USERORG_PAY_AMT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stlmDate != null">
+        #{stlmDate,jdbcType=CHAR},
+      </if>
+      <if test="inAcctDate != null">
+        #{inAcctDate,jdbcType=CHAR},
+      </if>
+      <if test="chlMerId != null">
+        #{chlMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSeqId != null">
+        #{txnSeqId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerName != null">
+        #{chlMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerId != null">
+        #{chlSubMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerName != null">
+        #{chlSubMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAmt != null">
+        #{setlAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlFeeAmt != null">
+        #{setlFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlFeeAmtDis != null">
+        #{setlFeeAmtDis,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctNo != null">
+        #{setlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctName != null">
+        #{setlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctType != null">
+        #{setlAcctType,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctInstitute2 != null">
+        #{setlAcctInstitute2,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctInstituteName2 != null">
+        #{setlAcctInstituteName2,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=CHAR},
+      </if>
+      <if test="agentName != null">
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlAcctNo != null">
+        #{agentSetlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlAcctName != null">
+        #{agentSetlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlFeeAmt != null">
+        #{agentSetlFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tramFeeAmt != null">
+        #{tramFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="localFeeAmt != null">
+        #{localFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null">
+        #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="outAcctNo != null">
+        #{outAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="localFeeAcct != null">
+        #{localFeeAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="agFee != null">
+        #{agFee,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctStat != null">
+        #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="stlStatus != null">
+        #{stlStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAccType != null">
+        #{refundAccType,jdbcType=VARCHAR},
+      </if>
+      <if test="stlType != null">
+        #{stlType,jdbcType=VARCHAR},
+      </if>
+      <if test="subStlDate != null">
+        #{subStlDate,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionAmt != null">
+        #{commissionAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCouponAmt != null">
+        #{bankCouponAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankHbAmt != null">
+        #{bankHbAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="logisFee != null">
+        #{logisFee,jdbcType=VARCHAR},
+      </if>
+      <if test="logisType != null">
+        #{logisType,jdbcType=VARCHAR},
+      </if>
+      <if test="logisPartnerCode != null">
+        #{logisPartnerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDedcutAmt != null">
+        #{pointDedcutAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="openBrc != null">
+        #{openBrc,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandFee != null">
+        #{brandFee,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null">
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null">
+        #{fundChannel,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updateDate != null"> -->
+        to_char(sysdate,'yyyymmddhh24miss'),
+<!--       </if> -->
+      <if test="subStlStatus != null">
+        #{subStlStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="logisFeeAmt != null">
+        #{logisFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTm != null">
+        #{txnTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mchtPayAmt != null">
+        #{mchtPayAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankPayAmt != null">
+        #{bankPayAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="userorgPayAmt != null">
+        #{userorgPayAmt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl">
+    update BTH_MER_IN_ACC_DTL
+    <set>
+      <if test="chlMerName != null">
+        CHL_MER_NAME = #{chlMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerId != null">
+        CHL_SUB_MER_ID = #{chlSubMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerName != null">
+        CHL_SUB_MER_NAME = #{chlSubMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAmt != null">
+        SETL_AMT = #{setlAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlFeeAmt != null">
+        SETL_FEE_AMT = #{setlFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlFeeAmtDis != null">
+        SETL_FEE_AMT_DIS = #{setlFeeAmtDis,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctNo != null">
+        SETL_ACCT_NO = #{setlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctName != null">
+        SETL_ACCT_NAME = #{setlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctType != null">
+        SETL_ACCT_TYPE = #{setlAcctType,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctInstitute2 != null">
+        SETL_ACCT_INSTITUTE2 = #{setlAcctInstitute2,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctInstituteName2 != null">
+        SETL_ACCT_INSTITUTE_NAME2 = #{setlAcctInstituteName2,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        AGENT_ID = #{agentId,jdbcType=CHAR},
+      </if>
+      <if test="agentName != null">
+        AGENT_NAME = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlAcctNo != null">
+        AGENT_SETL_ACCT_NO = #{agentSetlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlAcctName != null">
+        AGENT_SETL_ACCT_NAME = #{agentSetlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlFeeAmt != null">
+        AGENT_SETL_FEE_AMT = #{agentSetlFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tramFeeAmt != null">
+        TRAM_FEE_AMT = #{tramFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="localFeeAmt != null">
+        LOCAL_FEE_AMT = #{localFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="outAcctNo != null">
+        OUT_ACCT_NO = #{outAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="localFeeAcct != null">
+        LOCAL_FEE_ACCT = #{localFeeAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="agFee != null">
+        AG_FEE = #{agFee,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="stlStatus != null">
+        STL_STATUS = #{stlStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAccType != null">
+        REFUND_ACC_TYPE = #{refundAccType,jdbcType=VARCHAR},
+      </if>
+      <if test="stlType != null">
+        STL_TYPE = #{stlType,jdbcType=VARCHAR},
+      </if>
+      <if test="subStlDate != null">
+        SUB_STL_DATE = #{subStlDate,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionAmt != null">
+        COMMISSION_AMT = #{commissionAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCouponAmt != null">
+        BANK_COUPON_AMT = #{bankCouponAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankHbAmt != null">
+        BANK_HB_AMT = #{bankHbAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="logisFee != null">
+        LOGIS_FEE = #{logisFee,jdbcType=VARCHAR},
+      </if>
+      <if test="logisType != null">
+        LOGIS_TYPE = #{logisType,jdbcType=VARCHAR},
+      </if>
+      <if test="logisPartnerCode != null">
+        LOGIS_PARTNER_CODE = #{logisPartnerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDedcutAmt != null">
+        POINT_DEDCUT_AMT = #{pointDedcutAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="openBrc != null">
+        OPEN_BRC = #{openBrc,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandFee != null">
+        BRAND_FEE = #{brandFee,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null">
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null">
+        FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updateDate != null"> -->
+        UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+<!--       </if> -->
+    </set>
+    where STLM_DATE = #{stlmDate,jdbcType=CHAR}
+      and IN_ACCT_DATE = #{inAcctDate,jdbcType=CHAR}
+      and CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR}
+      and TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl">
+    update BTH_MER_IN_ACC_DTL
+    set CHL_MER_NAME = #{chlMerName,jdbcType=VARCHAR},
+      CHL_SUB_MER_ID = #{chlSubMerId,jdbcType=VARCHAR},
+      CHL_SUB_MER_NAME = #{chlSubMerName,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      SETL_AMT = #{setlAmt,jdbcType=VARCHAR},
+      SETL_FEE_AMT = #{setlFeeAmt,jdbcType=VARCHAR},
+      SETL_FEE_AMT_DIS = #{setlFeeAmtDis,jdbcType=VARCHAR},
+      SETL_ACCT_NO = #{setlAcctNo,jdbcType=VARCHAR},
+      SETL_ACCT_NAME = #{setlAcctName,jdbcType=VARCHAR},
+      SETL_ACCT_TYPE = #{setlAcctType,jdbcType=VARCHAR},
+      SETL_ACCT_INSTITUTE2 = #{setlAcctInstitute2,jdbcType=VARCHAR},
+      SETL_ACCT_INSTITUTE_NAME2 = #{setlAcctInstituteName2,jdbcType=VARCHAR},
+      AGENT_ID = #{agentId,jdbcType=CHAR},
+      AGENT_NAME = #{agentName,jdbcType=VARCHAR},
+      AGENT_SETL_ACCT_NO = #{agentSetlAcctNo,jdbcType=VARCHAR},
+      AGENT_SETL_ACCT_NAME = #{agentSetlAcctName,jdbcType=VARCHAR},
+      AGENT_SETL_FEE_AMT = #{agentSetlFeeAmt,jdbcType=VARCHAR},
+      TRAM_FEE_AMT = #{tramFeeAmt,jdbcType=VARCHAR},
+      LOCAL_FEE_AMT = #{localFeeAmt,jdbcType=VARCHAR},
+      PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      OUT_ACCT_NO = #{outAcctNo,jdbcType=VARCHAR},
+      LOCAL_FEE_ACCT = #{localFeeAcct,jdbcType=VARCHAR},
+      AG_FEE = #{agFee,jdbcType=VARCHAR},
+      IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      STL_STATUS = #{stlStatus,jdbcType=VARCHAR},
+      REFUND_ACC_TYPE = #{refundAccType,jdbcType=VARCHAR},
+      STL_TYPE = #{stlType,jdbcType=VARCHAR},
+      SUB_STL_DATE = #{subStlDate,jdbcType=VARCHAR},
+      COMMISSION_AMT = #{commissionAmt,jdbcType=VARCHAR},
+      BANK_COUPON_AMT = #{bankCouponAmt,jdbcType=VARCHAR},
+      BANK_HB_AMT = #{bankHbAmt,jdbcType=VARCHAR},
+      LOGIS_FEE = #{logisFee,jdbcType=VARCHAR},
+      LOGIS_TYPE = #{logisType,jdbcType=VARCHAR},
+      LOGIS_PARTNER_CODE = #{logisPartnerCode,jdbcType=VARCHAR},
+      POINT_DEDCUT_AMT = #{pointDedcutAmt,jdbcType=VARCHAR},
+      OPEN_BRC = #{openBrc,jdbcType=VARCHAR},
+      BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      BRAND_FEE = #{brandFee,jdbcType=VARCHAR},
+      TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+    where STLM_DATE = #{stlmDate,jdbcType=CHAR}
+      and IN_ACCT_DATE = #{inAcctDate,jdbcType=CHAR}
+      and CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR}
+      and TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+  </update>
+
+
+
+
+	<resultMap id="BthMerInAccDtlVo" type="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtlVo">
+		<id column="STLM_DATE" jdbcType="CHAR" property="stlmDate" />
+		<id column="IN_ACCT_DATE" jdbcType="CHAR" property="inAcctDate" />
+		<id column="CHL_MER_ID" jdbcType="VARCHAR" property="chlMerId" />
+		<id column="TXN_SEQ_ID" jdbcType="VARCHAR" property="txnSeqId" />
+		<result column="CHL_MER_NAME" jdbcType="VARCHAR" property="chlMerName" />
+		<result column="CHL_SUB_MER_ID" jdbcType="VARCHAR" property="chlSubMerId" />
+		<result column="CHL_SUB_MER_NAME" jdbcType="VARCHAR" property="chlSubMerName" />
+		<result column="TXN_AMT" jdbcType="VARCHAR" property="txnAmt" />
+		<result column="SETL_AMT" jdbcType="VARCHAR" property="setlAmt" />
+		<result column="SETL_FEE_AMT" jdbcType="VARCHAR" property="setlFeeAmt" />
+		<result column="SETL_FEE_AMT_DIS" jdbcType="VARCHAR" property="setlFeeAmtDis" />
+		<result column="SETL_ACCT_NO" jdbcType="VARCHAR" property="setlAcctNo" />
+		<result column="SETL_ACCT_NAME" jdbcType="VARCHAR" property="setlAcctName" />
+		<result column="SETL_ACCT_TYPE" jdbcType="VARCHAR" property="setlAcctType" />
+		<result column="SETL_ACCT_INSTITUTE2" jdbcType="VARCHAR" property="setlAcctInstitute2" />
+		<result column="SETL_ACCT_INSTITUTE_NAME2" jdbcType="VARCHAR" property="setlAcctInstituteName2" />
+		<result column="AGENT_ID" jdbcType="CHAR" property="agentId" />
+		<result column="AGENT_NAME" jdbcType="VARCHAR" property="agentName" />
+		<result column="AGENT_SETL_ACCT_NO" jdbcType="VARCHAR" property="agentSetlAcctNo" />
+		<result column="AGENT_SETL_ACCT_NAME" jdbcType="VARCHAR" property="agentSetlAcctName" />
+		<result column="AGENT_SETL_FEE_AMT" jdbcType="VARCHAR" property="agentSetlFeeAmt" />
+		<result column="TRAM_FEE_AMT" jdbcType="VARCHAR" property="tramFeeAmt" />
+		<result column="LOCAL_FEE_AMT" jdbcType="VARCHAR" property="localFeeAmt" />
+		<result column="PAGY_NO" jdbcType="CHAR" property="pagyNo" />
+		<result column="OUT_ACCT_NO" jdbcType="VARCHAR" property="outAcctNo" />
+		<result column="LOCAL_FEE_ACCT" jdbcType="VARCHAR" property="localFeeAcct" />
+		<result column="AG_FEE" jdbcType="VARCHAR" property="agFee" />
+		<result column="IN_ACCT_STAT" jdbcType="CHAR" property="inAcctStat" />
+		<result column="PAGY_PROD_ID" jdbcType="CHAR" property="pagyProdId" />
+		<result column="PAGY_PROD_MN" jdbcType="VARCHAR" property="pagyProdMn" />
+		<result column="ORDER_TM" jdbcType="VARCHAR" property="orderTm" />
+		<result column="ACCT_TYPE_ID" jdbcType="VARCHAR" property="acctTypeId" />
+		<result column="TXN_TYPE_NO" jdbcType="VARCHAR" property="txnTypeNo" />
+		<result column="ORDER_TYPE" jdbcType="VARCHAR" property="orderType" />
+		<result column="CHL_NO" jdbcType="CHAR" property="chlNo" />
+		<result column="ACPT_CHL_NO" jdbcType="CHAR" property="acptChlNo" />
+		<result column="COMMISSION_AMT" jdbcType="VARCHAR" property="commissionAmt" />
+        <!-- 增加批次号  -->
+        <result column="BATCH_NO" jdbcType="VARCHAR" property="batchNo" />
+        <result column="UPDATE_DATE" jdbcType="VARCHAR" property="updateDate" />
+        <result column="MCHT_COUPON_AMT" jdbcType="VARCHAR" property="mchtCouponAmt" />
+        <!--  订单金额 -->
+        <result column="ORDER_TXN_AMT" jdbcType="VARCHAR" property="orderTxnAmt" />
+	</resultMap>
+
+
+	<!-- <delete id="delByStlmDate" parameterType="string"> -->
+	<!-- DELETE FROM -->
+	<!-- BTH_MER_IN_ACC_DTL WHERE STLM_DATE = #{settleDate,jdbcType=CHAR} -->
+	<!-- </delete> -->
+
+	<!-- void queryByMchtAndInAcctDate(@Param("mchtId") String mchtId,@Param("qryDate")
+		String qryDate); -->
+
+    <select id="queryInAccStatByMchtAndInAcctDate" resultType="string">
+		select bmiad.IN_ACCT_STAT
+		from
+		BTH_MER_IN_ACC_DTL bmiad
+		inner
+		join PAY_ORDER_INFO poi
+		on
+		bmiad.txn_seq_id =
+		poi.order_ssn
+		where
+		bmiad.chl_mer_id = #{mchtId}
+		and bmiad.IN_ACCT_DATE = #{qryDate}  GROUP BY bmiad.IN_ACCT_STAT
+	</select>
+
+
+
+	<select id="queryByMchtAndInAcctDate" resultMap="BthMerInAccDtlVo">
+		select *
+		from
+		(select row_.*, rownum rownum_
+		from (select bmiad.*, to_char(poi.order_tm,'yyyymmddhh24miss') order_tm,poi.acct_type_id,poi.Txn_Type_No,poi.chl_no,poi.acpt_chl_no,poi.txn_amt AS order_txn_amt,poi.MCHT_COUPON_AMT
+		from
+		BTH_MER_IN_ACC_DTL bmiad
+		inner
+		join PAY_ORDER_INFO poi
+		on
+		bmiad.txn_seq_id =
+		poi.order_ssn
+		where
+		bmiad.chl_mer_id = #{mchtId}
+		and bmiad.IN_ACCT_DATE =
+		#{qryDate}  ORDER BY bmiad.IN_ACCT_DATE DESC,bmiad.TXN_SEQ_ID DESC ) row_
+		where rownum
+		&lt;=
+		#{pageSize})
+		where rownum_ &gt;
+		#{pageNo}
+	</select>
+
+	<select id="queryByMchtAndMonth" resultType="com.scrcu.ebank.ebap.batch.bean.dto.MonthlyBill">
+		select
+		sum(decode(bmiad.ORDER_TYPE ,'01',bmiad.TXN_AMT,'02',-bmiad.TXN_AMT)) txnAmt ,
+		sum(decode(bmiad.ORDER_TYPE ,'01',bmiad.SETL_AMT,'02',-bmiad.SETL_AMT) ) inAcctAmt,
+		count(1)
+		txnCount,
+		<!--max(bmiad.IN_ACCT_STAT) inAcctStat,-->
+        CASE
+        WHEN MIN(IN_ACCT_STAT) = '2' AND MAX(IN_ACCT_STAT) = '2' THEN
+        '2'
+        WHEN MIN(IN_ACCT_STAT) = '1' AND MAX(IN_ACCT_STAT) = '1' THEN
+        '1'
+        WHEN MIN(IN_ACCT_STAT) = '0' AND MAX(IN_ACCT_STAT) = '0' THEN
+        '0'
+        ELSE
+        '3'
+        END AS inAcctStat,
+		bmiad.IN_ACCT_DATE txnTime
+		from
+		BTH_MER_IN_ACC_DTL bmiad
+		inner join PAY_ORDER_INFO poi on
+		bmiad.txn_seq_id = poi.order_ssn
+		where bmiad.IN_ACCT_DATE
+		between #{startDate} and #{endDate}
+		and
+		bmiad.chl_mer_id =
+		#{mchtId,jdbcType=VARCHAR}
+        <!--  传入交易标志不为空 , 只查询正交易   -->
+		<if test="txnFlag != null">
+        and bmiad.ORDER_TYPE = '01'
+        </if>
+		group by
+		bmiad.IN_ACCT_DATE order by txnTime
+
+
+	</select>
+    <select id="queryByMchtAndTxnTm" resultType="com.scrcu.ebank.ebap.batch.bean.dto.MonthlyBill">
+      select
+      sum(decode(bmiad.ORDER_TYPE ,'01',bmiad.TXN_AMT,'02',-bmiad.TXN_AMT)) txnAmt ,
+      sum(decode(bmiad.ORDER_TYPE ,'01',bmiad.SETL_AMT,'02',-bmiad.SETL_AMT) ) inAcctAmt,
+      count(1)
+      txnCount,
+      <!--max(bmiad.IN_ACCT_STAT) inAcctStat,-->
+      CASE
+      WHEN MIN(IN_ACCT_STAT) = '2' AND MAX(IN_ACCT_STAT) = '2' THEN
+      '2'
+      WHEN MIN(IN_ACCT_STAT) = '1' AND MAX(IN_ACCT_STAT) = '1' THEN
+      '1'
+      WHEN MIN(IN_ACCT_STAT) = '0' AND MAX(IN_ACCT_STAT) = '0' THEN
+      '0'
+      ELSE
+      '3'
+      END AS inAcctStat,
+      to_char(poi.ORDER_TM, 'yyyyMMdd') txnTime
+      from
+      BTH_MER_IN_ACC_DTL bmiad
+      inner join PAY_ORDER_INFO poi on
+      bmiad.txn_seq_id = poi.order_ssn
+      where to_char(poi.ORDER_TM, 'yyyyMMdd')
+      between #{startDate} and #{endDate}
+      and
+      bmiad.chl_mer_id =
+      #{mchtId,jdbcType=VARCHAR}
+      <!--  传入交易标志不为空 , 只查询正交易   -->
+      <if test="txnFlag != null">
+        and bmiad.ORDER_TYPE = '01'
+      </if>
+      group by
+      to_char(poi.ORDER_TM, 'yyyyMMdd') order by txnTime
+    </select>
+
+    <!--  交易金额汇总不包括退款 (包括营销 ,从订单表取得,即订单金额) , 笔数汇总不包括退款  , 入账金额需减去退款    -->
+	<select id="queryMerInAccDtlByMchtIdAndTime" resultMap="BthMerInAccDtlVo">
+       select
+           nvl(sum(decode(bmiad.ORDER_TYPE,'01',poi.txn_amt,'02',0)), 0) txn_amt,
+           nvl(sum(decode(bmiad.ORDER_TYPE,'01',bmiad.SETL_AMT,'02',-bmiad.SETL_AMT)), 0) SETL_AMT,
+           nvl(sum(decode(bmiad.ORDER_TYPE,'01',poi.MCHT_COUPON_AMT,'02',0)),0) MCHT_COUPON_AMT,
+           COUNT(decode(bmiad.ORDER_TYPE,'01',1,'02',null))    totalTxnCount
+        from BTH_MER_IN_ACC_DTL bmiad
+        inner join PAY_ORDER_INFO poi on bmiad.txn_seq_id = poi.order_ssn
+        where bmiad.chl_mer_id = #{mchtId}
+        and to_char(poi.order_tm,'yyyyMMdd') between #{startDate} and #{endDate}
+	</select>
+	<!-- 计算综合 -->
+	<select id="queryMerSum" resultMap="BthMerInAccDtlVo">
+       select
+           nvl(sum(decode(bmiad.ORDER_TYPE,'01',poi.txn_amt,'02',0)), 0) txn_amt,
+           nvl(sum(decode(bmiad.ORDER_TYPE,'01',bmiad.SETL_AMT,'02',-bmiad.SETL_AMT)), 0) SETL_AMT,
+           nvl(sum(decode(bmiad.ORDER_TYPE,'01',poi.MCHT_COUPON_AMT,'02',0)),0) MCHT_COUPON_AMT,
+           COUNT(decode(bmiad.ORDER_TYPE,'01',1,'02',null))    totalTxnCount
+        from BTH_MER_IN_ACC_DTL bmiad
+        inner join PAY_ORDER_INFO poi on bmiad.txn_seq_id = poi.order_ssn
+        where bmiad.chl_mer_id like #{mchtId}
+        and to_char(poi.order_tm,'yyyyMMdd') between #{startDate} and #{endDate}
+	</select>
+
+	<delete id="delByStlmDate" parameterType="string">
+		DELETE FROM
+		BTH_MER_IN_ACC_DTL WHERE STLM_DATE = #{settleDate,jdbcType=CHAR}
+	</delete>
+
+	<select id="selectByTxnSeqId" parameterType="string" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BTH_MER_IN_ACC_DTL
+		where TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="querybthMerInAccDtlByWhere" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BTH_MER_IN_ACC_DTL
+		where CHL_MER_ID = #{chlMerId}
+		and in_acct_date
+		= SUBSTR(#{inAcctTime}, 1, 8)
+		and SETL_ACCT_NO = #{inAcctNo}
+		and
+		out_acct_no = #{outAcctNo}
+		<!-- and batch_no=#{pch} -->
+	</select>
+
+	<select id="selectByMerIdOrderType" parameterType="string" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccInfo">
+		SELECT CHL_MER_ID AS chlMerId,SUM(TXN_AMT) AS txnAmt ,
+		SUM(1) AS txnCount
+		,SUM(SETL_FEE_AMT) AS feeAmt
+		FROM BTH_MER_IN_ACC_DTL
+		WHERE ORDER_TYPE = #{orderType}
+		AND IN_ACCT_DATE = #{stlmDate}
+		AND
+		CHL_MER_ID = #{merId}
+		GROUP BY CHL_MER_ID
+	</select>
+
+	<select id="queryDailyStatis" resultType="com.scrcu.ebank.ebap.batch.bean.dto.DailyStatis">
+		select
+		     bmiad.in_acct_date txnDate,
+             count(decode(bmiad.order_type,'01',bmiad.in_acct_date,'02',null)) monthCnt,
+             sum(decode(bmiad.order_type,'01',poi.txn_amt,'02',0)) monthTxnAmt,
+             sum(decode(bmiad.order_type,'01',bmiad.setl_amt,'02',-bmiad.setl_amt)) monthInAcctAmt
+		from BTH_MER_IN_ACC_DTL bmiad
+		     inner join PAY_ORDER_INFO poi on bmiad.txn_seq_id = poi.order_ssn
+		where bmiad.chl_mer_id = #{mchtId}
+		     and to_char(poi.order_tm,'yyyyMMdd') between #{startDate} and #{endDate}
+		group by
+		     bmiad.in_acct_date order by txnDate asc
+	</select>
+
+	<!-- 根据渠道,结算日期统计清分数据 -->
+	<select id="countClearingDataByChnlAndStldate" parameterType="java.util.Map" resultType="int">
+		select
+		count(1)
+		from BTH_MER_IN_ACC_DTL
+		where
+		STLM_DATE = #{stlDate} and
+		PAGY_NO = #{channel}
+	</select>
+
+  <!-- 根据渠道,结算日期查询清分数据 -->
+  <select id="selectClearingDataByChnlAndStldate" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from BTH_MER_IN_ACC_DTL
+    where
+    STLM_DATE = #{stlDate} and
+    STL_STATUS =
+    #{stlStatus} and
+    PAGY_NO = #{channel}
+  </select>
+
+	<!-- 根据渠道,结算日期查询清分数据 -->
+	<update id="updateOrderStlStatusByTxnSeqId" parameterType="java.util.Map">
+		update
+		BTH_MER_IN_ACC_DTL
+		set STL_STATUS = #{stlStatus}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+		where TXN_SEQ_ID
+		= #{txnSeqId}
+	</update>
+    <update id="updateOrderStlStatusByTxnSeqIdList" parameterType="java.util.Map">
+      update bth_mer_in_acc_dtl
+      set STL_STATUS = #{stlStatus}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+      where TXN_SEQ_ID in
+      <foreach collection="txnSeqIdList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </update>
+
+    <!-- 批量修改入账明细表状态 -->
+    <update id="updateOrderStlStatusBatch" parameterType="java.util.Map">
+      update bth_mer_in_acc_dtl t
+        set t.stl_status = #{stlStatusNew,jdbcType=VARCHAR}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        where t.stlm_date = #{stlmDate,jdbcType=CHAR}
+          and t.pagy_no = #{pagyNo,jdbcType=CHAR}
+          and t.stl_status = #{stlStatusOld,jdbcType=VARCHAR}
+          or t.stl_status = #{stlStatusOldOL,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 将id插入临时表 -->
+    <insert id="insertIdRecord" parameterType="map">
+      insert into bth_clearing_id_record (id,create_time)
+      <foreach collection="txnSeqIdList" index="index" item="item" open="(" separator="union all" close=")">
+        select #{item}, sysdate from dual
+      </foreach>
+    </insert>
+
+
+	<!-- BthMerInAccDtlVo queryTotalTxnAmtAndTotalTxnCountByMchtAndMonth(String
+		mchtId, String month); -->
+	<select id="queryTotalTxnAmtAndTotalTxnCountByMchtAndMonth" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtlVo">
+		select sum(txnAmt) totalTxnAmt,sum(txnCount) totalTxnCount
+		from (
+		select sum(decode(bmiad.ORDER_TYPE ,'01',bmiad.TXN_AMT,'02',-bmiad.TXN_AMT)) txnAmt ,
+		sum(decode(bmiad.ORDER_TYPE ,'01',bmiad.SETL_AMT,'02',-bmiad.SETL_AMT)) inAcctAmt,
+		count(1) txnCount,
+		bmiad.IN_ACCT_DATE txnTime
+		from
+		BTH_MER_IN_ACC_DTL bmiad
+		inner join PAY_ORDER_INFO poi on
+		bmiad.txn_seq_id = poi.order_ssn
+		where
+		bmiad.IN_ACCT_DATE
+		between #{startDate} and #{endDate} and
+		bmiad.chl_mer_id =
+		#{mchtId}
+        <!--  传入交易标志不为空 , 只查询正交易   -->
+        <if test="txnFlag != null">
+            and bmiad.ORDER_TYPE = '01'
+        </if>
+		group by bmiad.IN_ACCT_DATE order by txnTime )
+	</select>
+
+    <!-- 统计商户金额笔数 -->
+	<select id="sumTxnAmtFeeAmt" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccInfo">
+		SELECT
+            SUM(decode(order_type,'01',TXN_AMT,'02',-TXN_AMT))/100 as txnAmt,
+            SUM(decode(order_type,'01',SETL_FEE_AMT,'02',-SETL_FEE_AMT))/100 AS feeAmt,
+            COUNT(0) as txnCount
+        FROM
+		BTH_MER_IN_ACC_DTL
+		WHERE  TXN_SEQ_ID in  (
+            SELECT DISTINCT ORDER_ID FROM BTH_SET_CAPITAL_DETAIL
+            WHERE BATCH_NO = #{capBatchNo,jdbcType=VARCHAR}  and  ENTRY_TYPE in (#{entryType,jdbcType=VARCHAR},#{entryType2,jdbcType=VARCHAR})
+            and MER_ID = #{merId,jdbcType=VARCHAR}
+		)
+	</select>
+	<!-- int queryCount(String mchtId, String qryDate); -->
+	<select id="queryCount" resultType="int">
+		select count(1)
+		from
+		BTH_MER_IN_ACC_DTL bmiad
+		left
+		join PAY_ORDER_INFO poi
+		on
+		bmiad.txn_seq_id
+		=
+		poi.order_ssn
+		left join
+		pagy_prod_info ppi on
+		poi.pagy_prod_code =
+		ppi.pagy_prod_id
+		where
+		bmiad.chl_mer_id = #{mchtId}
+		and
+		bmiad.IN_ACCT_DATE
+		=
+		#{qryDate}
+	</select>
+
+
+	<update id="updateByOrderSsns" parameterType="map">
+		UPDATE BTH_MER_IN_ACC_DTL
+		<set>
+			<if test="batchNo != null">
+				BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+			</if>
+			<if test="inAcctDate != null">
+				IN_ACCT_DATE = #{inAcctDate,jdbcType=VARCHAR},
+			</if>
+			<if test="inAcctStat != null">
+				IN_ACCT_STAT = #{inAcctStat,jdbcType=VARCHAR},
+			</if>
+			<if test="stlStatus != null">
+				STL_STATUS = #{stlStatus,jdbcType=VARCHAR},
+			</if>
+			 UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+		</set>
+		WHERE TXN_SEQ_ID in  (SELECT DISTINCT ORDER_ID FROM BTH_SET_CAPITAL_DETAIL WHERE BATCH_NO = #{batchNo,jdbcType=VARCHAR})
+	</update>
+
+  <select id="selectByBatchNo" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtlInfo">
+		SELECT
+            dtl.PAGY_NO AS pagySysNo,
+            dtl.TXN_TYPE AS txnType,
+            ord.ORDER_TM AS orderTm,
+            dtl.SETL_AMT/100 AS setlAmt,
+            dtl.TXN_AMT/100 AS txnAmt,
+            ord.BANK_COUPON_AMT/100 AS bankCouponAmt,
+            ord.MCHT_COUPON_AMT/100 AS mchtCouponAmt,
+            dtl.SETL_FEE_AMT/100 AS setlFeeAmt,
+		    dtl.TXN_SEQ_ID AS txnSeqId,
+		    ( select DEAL_REMARK from BTH_SET_CAPITAL_DETAIL
+            WHERE   BATCH_NO = #{batchNo,jdbcType=VARCHAR}
+            and CHL_MER_ID = #{merId,jdbcType=VARCHAR} and ENTRY_TYPE in ('01','99')
+            and ORDER_ID = dtl.TXN_SEQ_ID
+            and rownum=1) AS statMark,
+            dtl.in_acct_stat AS inAcctStat
+
+		FROM
+		    BTH_MER_IN_ACC_DTL dtl
+		LEFT JOIN
+	  	    PAY_ORDER_INFO ord
+		ON
+		    dtl.TXN_SEQ_ID = ord.ORDER_SSN
+		WHERE dtl.TXN_SEQ_ID in
+		(
+            select DISTINCT ORDER_ID from BTH_SET_CAPITAL_DETAIL
+            WHERE   BATCH_NO = #{batchNo,jdbcType=VARCHAR}
+            and CHL_MER_ID = #{merId,jdbcType=VARCHAR} and ENTRY_TYPE in ('01','99')
+		)
+	</select>
+
+
+
+	<select id="queryByTxnSeqIdAndPch" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from BTH_MER_IN_ACC_DTL where txn_seq_id=#{txnSeqId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="dtl_selectByOrderSsn" parameterType="map" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM BTH_MER_IN_ACC_DTL
+		WHERE TXN_SEQ_ID = #{orderSsn,jdbcType=VARCHAR}
+		and BATCH_NO = #{pch,jdbcType=VARCHAR}
+	</select>
+
+	<update id="dtl_updateByOrderSsn" parameterType="map">
+		UPDATE BTH_MER_IN_ACC_DTL SET BATCH_NO = #{batchNo, jdbcType=VARCHAR}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss') WHERE
+		TXN_SEQ_ID = #{orderSsn,jdbcType=VARCHAR }
+	</update>
+
+  <select id="selectByMerTxn" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccMchts">
+		 SELECT
+            dtl.CHL_MER_ID AS merId,
+            SUM(decode(dtl.ORDER_TYPE,'01',dtl.SETL_AMT ,'02',-dtl.SETL_AMT))/100 AS setlAmt,
+            COUNT(0) AS txnCount,
+            SUM(decode(dtl.ORDER_TYPE,'01',dtl.TXN_AMT ,'02',-dtl.TXN_AMT))/100 AS txnAmt,
+            SUM(decode(dtl.ORDER_TYPE,'01',dtl.SETL_FEE_AMT ,'02',-dtl.SETL_FEE_AMT))/100 AS setlFeeAmt,
+             CASE
+         WHEN MIN(dtl.IN_ACCT_STAT) = '2' AND MAX(dtl.IN_ACCT_STAT) = '2' THEN
+          '2'
+         WHEN MIN(dtl.IN_ACCT_STAT) = '1' AND MAX(dtl.IN_ACCT_STAT) = '1' THEN
+          '1'
+         WHEN MIN(dtl.IN_ACCT_STAT) = '0' AND MAX(dtl.IN_ACCT_STAT) = '0' THEN
+          '0'
+         ELSE
+          '3'
+       END AS inAcctStat,
+            SUM(decode(dtl.ORDER_TYPE,'01',dtl.COMMISSION_AMT ,'02',-dtl.COMMISSION_AMT))/100 AS upCommissionAmt
+		FROM
+		    BTH_MER_IN_ACC_DTL dtl
+		WHERE dtl.CHL_MER_ID = #{merId,jdbcType=VARCHAR} AND dtl.IN_ACCT_DATE =
+		#{inAcctDate,jdbcType=VARCHAR}
+		GROUP BY
+		dtl.CHL_MER_ID
+	</select>
+    <select id="selectByMerTxnList" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccMchts">
+		 SELECT
+            dtl.CHL_MER_ID AS merId,
+            SUM(decode(dtl.ORDER_TYPE,'01',dtl.SETL_AMT ,'02',-dtl.SETL_AMT))/100 AS setlAmt,
+            COUNT(0) AS txnCount,
+            SUM(decode(dtl.ORDER_TYPE,'01',dtl.TXN_AMT ,'02',-dtl.TXN_AMT))/100 AS txnAmt,
+            SUM(decode(dtl.ORDER_TYPE,'01',dtl.SETL_FEE_AMT ,'02',-dtl.SETL_FEE_AMT))/100 AS setlFeeAmt,
+             CASE
+         WHEN MIN(dtl.IN_ACCT_STAT) = '2' AND MAX(dtl.IN_ACCT_STAT) = '2' THEN
+          '2'
+         WHEN MIN(dtl.IN_ACCT_STAT) = '1' AND MAX(dtl.IN_ACCT_STAT) = '1' THEN
+          '1'
+         WHEN MIN(dtl.IN_ACCT_STAT) = '0' AND MAX(dtl.IN_ACCT_STAT) = '0' THEN
+          '0'
+         ELSE
+          '3'
+       END AS inAcctStat,
+            SUM(decode(dtl.ORDER_TYPE,'01',dtl.COMMISSION_AMT ,'02',-dtl.COMMISSION_AMT))/100 AS upCommissionAmt
+		FROM
+		    BTH_MER_IN_ACC_DTL dtl
+		WHERE dtl.CHL_MER_ID = #{merId,jdbcType=VARCHAR} AND dtl.IN_ACCT_DATE <![CDATA[<=]]> #{beginDate,jdbcType=VARCHAR} and dtl.IN_ACCT_DATE >=	#{endDate,jdbcType=VARCHAR}
+		GROUP BY
+		dtl.CHL_MER_ID
+	</select>
+
+
+
+  <select id="selectByMerTxnDtl" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccMchtsDtl">
+        SELECT
+            to_char(ord.ORDER_TM,'yyyymmddhh24miss') AS orderTm,
+            ord.ORDER_SSN AS orderSsn,
+            dtl.ORDER_TYPE AS txnType,
+            dtl.SETL_AMT/100 AS setlAmt,
+            dtl.TXN_AMT/100 AS txnAmt,
+            ord.MCHT_COUPON_AMT/100 AS mchtCouponAmt,
+            ord.BANK_COUPON_AMT/100 AS bankCouponAmt,
+            decode(dtl.ORDER_TYPE,'01',ord.TXN_AMT - ord.TXN_RFD_AMT_SUM,'02',0)/100 AS returnAmt,
+            dtl.SETL_FEE_AMT/100 AS setlFeeAmt,
+             ( select DEAL_REMARK from BTH_SET_CAPITAL_DETAIL
+            WHERE  ENTRY_TYPE in ('01','99')
+            and ORDER_ID = dtl.TXN_SEQ_ID
+            and rownum=1) AS statMark,
+            dtl.in_acct_stat as inAcctStat
+		FROM
+		    BTH_MER_IN_ACC_DTL dtl
+		LEFT JOIN
+		    PAY_ORDER_INFO ord
+		ON
+            dtl.TXN_SEQ_ID = ord.ORDER_SSN WHERE dtl.CHL_MER_ID = #{merId,jdbcType=VARCHAR}
+            AND dtl.IN_ACCT_DATE = #{inAcctDate,jdbcType=VARCHAR} and dtl.TXN_TYPE not in ('O1000006' , 'O2000006')
+	</select>
+  <select id="selectByMerTxnDtlDown" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccMchtsDtl">
+        SELECT
+            to_char(ord.ORDER_TM,'yyyymmddhh24miss') AS orderTm,
+            ord.ORDER_SSN AS orderSsn,
+            dtl.ORDER_TYPE AS txnType,
+            dtl.SETL_AMT/100 AS setlAmt,
+            dtl.TXN_AMT/100 AS txnAmt,
+            ord.MCHT_COUPON_AMT/100 AS mchtCouponAmt,
+            ord.BANK_COUPON_AMT/100 AS bankCouponAmt,
+            decode(dtl.ORDER_TYPE,'01',ord.TXN_AMT - ord.TXN_RFD_AMT_SUM,'02',0)/100 AS returnAmt,
+            dtl.SETL_FEE_AMT/100 AS setlFeeAmt,
+             ( select DEAL_REMARK from BTH_SET_CAPITAL_DETAIL
+            WHERE  ENTRY_TYPE in ('01','99')
+            and ORDER_ID = dtl.TXN_SEQ_ID
+            and rownum=1) AS statMark,
+            dtl.in_acct_stat as inAcctStat
+		FROM
+		    BTH_MER_IN_ACC_DTL dtl
+		LEFT JOIN
+		    PAY_ORDER_INFO ord
+		ON
+            dtl.TXN_SEQ_ID = ord.ORDER_SSN WHERE dtl.CHL_MER_ID = #{merId,jdbcType=VARCHAR}
+            AND dtl.IN_ACCT_DATE >= #{beginDate,jdbcType=VARCHAR} AND dtl.IN_ACCT_DATE <![CDATA[<=]]> #{endDate,jdbcType=VARCHAR} and dtl.TXN_TYPE not in ('O1000006' , 'O2000006') order by IN_ACCT_DATE desc
+	</select>
+
+    <select id="selectByMerTxnDtlOnline" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccMchtsDtl">
+        SELECT
+            SUB_ORDER_TM AS orderTm,
+            ord.SUB_ORDER_SSN AS orderSsn,
+            dtl.ORDER_TYPE AS txnType,
+            dtl.SETL_AMT/100 AS setlAmt,
+            dtl.TXN_AMT/100 AS txnAmt,
+            ord.MCHT_COUPON_AMT/100 AS mchtCouponAmt,
+            ord.BANK_COUPON_AMT/100 AS bankCouponAmt,
+            decode(dtl.ORDER_TYPE,'01',ord.REFUND_AMOUNT ,'02',0)/100 AS returnAmt,
+            dtl.SETL_FEE_AMT/100 AS setlFeeAmt
+		FROM
+		    BTH_MER_IN_ACC_DTL dtl
+		LEFT JOIN
+		    PAY_SUB_ORDER_INFO ord
+		ON
+            dtl.TXN_SEQ_ID = ord.SUB_ORDER_SSN WHERE dtl.CHL_MER_ID = #{merId,jdbcType=VARCHAR}
+            AND dtl.IN_ACCT_DATE = #{inAcctDate,jdbcType=VARCHAR} and dtl.TXN_TYPE in ('O1000006' , 'O2000006')
+	</select>
+  <select id="selectByMerTxnDtlOnlineDown" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccMchtsDtl">
+        SELECT
+            SUB_ORDER_TM AS orderTm,
+            ord.SUB_ORDER_SSN AS orderSsn,
+            dtl.ORDER_TYPE AS txnType,
+            dtl.SETL_AMT/100 AS setlAmt,
+            dtl.TXN_AMT/100 AS txnAmt,
+            ord.MCHT_COUPON_AMT/100 AS mchtCouponAmt,
+            ord.BANK_COUPON_AMT/100 AS bankCouponAmt,
+            decode(dtl.ORDER_TYPE,'01',ord.REFUND_AMOUNT ,'02',0)/100 AS returnAmt,
+            dtl.SETL_FEE_AMT/100 AS setlFeeAmt
+		FROM
+		    BTH_MER_IN_ACC_DTL dtl
+		LEFT JOIN
+		    PAY_SUB_ORDER_INFO ord
+		ON
+            dtl.TXN_SEQ_ID = ord.SUB_ORDER_SSN WHERE dtl.CHL_MER_ID = #{merId,jdbcType=VARCHAR}
+            AND dtl.IN_ACCT_DATE >= #{beginDate,jdbcType=VARCHAR} AND dtl.IN_ACCT_DATE <![CDATA[<=]]> #{endDate,jdbcType=VARCHAR} and dtl.TXN_TYPE in ('O1000006' , 'O2000006')  order by IN_ACCT_DATE desc
+	</select>
+
+
+	<select id="queryStateByMchtIdAndStartDateAndEndDate" resultType="com.scrcu.ebank.ebap.batch.bean.dto.MonthlyBill">
+		 select bmiad.IN_ACCT_DATE txnTime, bmiad.in_acct_stat inAcctStat
+   from BTH_MER_IN_ACC_DTL bmiad
+  inner join PAY_ORDER_INFO poi on bmiad.txn_seq_id = poi.order_ssn
+  where bmiad.IN_ACCT_DATE between #{startDate} and #{endDate}
+    and bmiad.chl_mer_id = #{mchtId}
+  group by bmiad.IN_ACCT_DATE, bmiad.in_acct_stat
+  order by txnTime
+	</select>
+
+<!-- 		List<BthMerInAccDtlVo> queryAccCount(@Param("mchtId") String mchtId,@Param("qryDate") String qryDate); -->
+	<select id="queryAccCount" resultMap="BthMerInAccDtlVo">
+		select nvl(sum(poi.MCHT_COUPON_AMT), 0) MCHT_COUPON_AMT,
+       nvl(sum(bmiad.txn_amt), 0) txn_amt,
+       nvl(sum(bmiad.SETL_FEE_AMT), 0) SETL_FEE_AMT,
+       nvl(sum(bmiad.COMMISSION_AMT), 0) COMMISSION_AMT,
+       bmiad.order_type,bmiad.in_acct_date
+  from BTH_MER_IN_ACC_DTL bmiad
+ inner join PAY_ORDER_INFO poi on bmiad.txn_seq_id = poi.order_ssn
+ where bmiad.chl_mer_id = #{mchtId}
+   and bmiad.IN_ACCT_DATE = #{qryDate}
+   group by bmiad.order_type,in_acct_date
+	</select>
+
+
+
+    <select id="selectGroupByMchtFundType" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerTxnCountInfo">
+        SELECT
+            CHL_MER_ID       AS chlMerId,
+            FUND_CHANNEL     AS fundChannel,
+            COUNT(0)         AS txnCount,
+            SUM(TXN_AMT)/100 AS txnAmt
+        FROM
+            BTH_MER_IN_ACC_DTL
+        WHERE
+            '20'||(SUBSTR(TXN_SEQ_ID,1,6)) BETWEEN #{startTime,jdbcType=VARCHAR} AND #{endTime,jdbcType=VARCHAR}
+        AND CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR}
+        GROUP BY
+            CHL_MER_ID,
+            FUND_CHANNEL
+        HAVING
+            SUM(TXN_AMT)/100 BETWEEN #{startTxnAmt,jdbcType=VARCHAR} AND #{endTxnAmt,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryGSCommissionAmt" resultMap="BthMerInAccDtlVo">
+		select
+           bmiad.order_type,
+           nvl(sum(bmiad.COMMISSION_AMT), 0) COMMISSION_AMT
+        from BTH_MER_IN_ACC_DTL bmiad
+        inner join PAY_ORDER_INFO poi on bmiad.txn_seq_id = poi.order_ssn
+        INNER JOIN (SELECT DISTINCT ORDER_ID FROM BTH_SET_CAPITAL_DETAIL WHERE ENTRY_TYPE = '14' AND DEAL_RESULT = '02' ) bcd ON bmiad.txn_seq_id = bcd.order_id
+        where bmiad.chl_mer_id IN (SELECT MCHT_ID FROM MCHT_BASE_INFO WHERE PAR_MCH_ID = #{mchtId,jdbcType=VARCHAR })
+           and bmiad.in_acct_date = #{qryDate}
+           group by bmiad.order_type
+	</select>
+
+<!--     List<BthMerInAccDtl> querySubMchtAll(@Param("mchtId") String mchtId,@Param("qryDate") String qryDate); -->
+    <select id="querySubMchtAll" resultMap="BaseResultMap">
+   select distinct bmiad.in_acct_date,bmiad.chl_mer_id from BTH_MER_IN_ACC_DTL bmiad
+   inner join PAY_ORDER_INFO poi on bmiad.txn_seq_id = poi.order_ssn
+   where bmiad.chl_mer_id IN (SELECT MCHT_ID FROM MCHT_BASE_INFO WHERE PAR_MCH_ID = #{mchtId,jdbcType=VARCHAR })
+     and bmiad.in_acct_date = #{qryDate}
+    </select>
+
+
+    <select id="selectTransferInfoByMer" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select chl_mer_id,sum(txn_amt) txn_amt from
+		(
+			select
+			substr(chl_mer_id,0,15) as chl_mer_id,sum(txn_amt - setl_fee_amt - commission_amt - logis_fee)  as txn_amt
+			from BTH_MER_IN_ACC_DTL
+			where order_type = '01' and
+				  STL_TYPE= '03' and
+				  (SUB_STL_STATUS=#{subStlStatus,jdbcType=VARCHAR} or SUB_STL_STATUS='03') and
+		          STL_STATUS=#{stlStatus,jdbcType=VARCHAR} and
+		          <![CDATA[SUB_STL_DATE <= #{subStlDate}]]>
+			group by substr(chl_mer_id,0,15)
+			union all
+			(select substr(chl_mer_id,0,15) as chl_mer_id,sum(txn_amt - setl_fee_amt - commission_amt - logis_fee) * -1 as txn_amt
+			from BTH_MER_IN_ACC_DTL
+			where order_type = '02' and
+				  STL_TYPE= '03' and
+				  (SUB_STL_STATUS=#{subStlStatus,jdbcType=VARCHAR} or SUB_STL_STATUS='03') and
+		          STL_STATUS=#{stlStatus,jdbcType=VARCHAR} and
+		          <![CDATA[SUB_STL_DATE <= #{subStlDate}]]>
+			group by substr(chl_mer_id,0,15))
+		) group by chl_mer_id
+	</select>
+
+	<!--<update id="updateJs2StatusByMer" parameterType="map">-->
+		<!--UPDATE BTH_MER_IN_ACC_DTL SET -->
+		<!--SUB_STL_STATUS=#{subStlResult,jdbcType=VARCHAR}  -->
+		<!--WHERE-->
+		<!--chl_mer_id like #{chlMerId,jdbcType=VARCHAR} and -->
+		<!--(SUB_STL_STATUS=#{subStlStatus,jdbcType=VARCHAR} or SUB_STL_STATUS='03') and-->
+		 <!--<![CDATA[SUB_STL_DATE <= #{subStlDate}]]>-->
+	<!--</update>-->
+
+	 <select id="selectRetOrderInfoByOriOrderSsn" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from BTH_MER_IN_ACC_DTL
+        where AGENT_NAME = #{oriOrderSsn}
+        order by TXN_SEQ_ID asc
+    </select>
+
+    <update id="updateJs2StatusByMer" parameterType="map">
+		UPDATE BTH_MER_IN_ACC_DTL SET
+		SUB_STL_STATUS=#{subStlResult,jdbcType=VARCHAR} , UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+		WHERE
+		chl_mer_id like #{chlMerId,jdbcType=VARCHAR} and
+		(SUB_STL_STATUS=#{subStlStatus,jdbcType=VARCHAR} or SUB_STL_STATUS='03') and
+		 <![CDATA[SUB_STL_DATE <= #{subStlDate}]]>
+	</update>
+
+	<update id="updateMerInAccDtlTransferStatus" parameterType="map">
+		UPDATE BTH_MER_IN_ACC_DTL SET
+		SUB_STL_STATUS=#{subStlResult,jdbcType=VARCHAR},
+		UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+		WHERE
+		chl_mer_id like #{chlMerId,jdbcType=VARCHAR} and
+		SUB_STL_STATUS=#{subStlStatus,jdbcType=VARCHAR}
+	</update>
+
+  <select id="queryCommissionAmt" parameterType="map" resultType="java.lang.String">
+    SELECT to_char(sum(decode(order_type,'01',COMMISSION_AMT,'02',-COMMISSION_AMT)))
+    FROM BTH_MER_IN_ACC_DTL
+    WHERE CHL_MER_ID IN
+    <foreach collection="subMchtIds" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND IN_ACCT_DATE = #{txnTime}
+  </select>
+
+	<update id="updateMerInAccDtlByOrderId" parameterType="map">
+		UPDATE BTH_MER_IN_ACC_DTL SET
+		SUB_STL_STATUS=#{subStlResult,jdbcType=VARCHAR},
+		UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+		WHERE
+		TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+	</update>
+
+	<select id="countMerAccInDtlByTransferStatus" resultType="int" parameterType="java.util.Map">
+        select count(1)
+        from BTH_MER_IN_ACC_DTL
+        where
+        SUB_STL_STATUS=#{subStlResult,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectMerAccInDtlByTransferStatus" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select *
+        from BTH_MER_IN_ACC_DTL
+        where
+        SUB_STL_STATUS=#{subStlResult,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateMerInAccDtlBySubStlStatus" parameterType="map">
+		UPDATE BTH_MER_IN_ACC_DTL SET
+		SUB_STL_STATUS=#{subStlResult,jdbcType=VARCHAR}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+		WHERE
+		SUB_STL_STATUS=#{subStlStatus,jdbcType=VARCHAR}
+	</update>
+
+	<select id="countStlSuccOrderOfCurrDate" resultType="int" parameterType="java.util.Map">
+        select count(1)
+        from BTH_MER_IN_ACC_DTL
+        where
+        UPDATE_DATE like #{updateDate,jdbcType=VARCHAR} and
+        STL_STATUS in ('02','03')
+    </select>
+
+    <select id="selectStlSuccOrderOfCurrDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select *
+        from BTH_MER_IN_ACC_DTL
+        where
+        UPDATE_DATE like #{updateDate,jdbcType=VARCHAR} and
+        STL_STATUS in ('02','03')
+    </select>
+
+	<update id="updateStlDateByTxnSeqId" parameterType="map">
+		UPDATE BTH_MER_IN_ACC_DTL SET
+		STLM_DATE=#{stlmDate,jdbcType=VARCHAR},
+		IN_ACCT_DATE=#{inAcctDate,jdbcType=VARCHAR}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+		WHERE
+		TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR} and
+		STLM_DATE = '99991230'
+	</update>
+
+	<!-- 查询平台商户对账数据 -->
+	<select id="selectChkDataByPlatMerNo" resultMap="BaseResultMap2" parameterType="java.util.Map">
+      select stl.*,nvl(sub.sub_order_time,to_char(txn_tm,'yyyymmdd')) sub_order_time,sub.sub_order_ssn,nvl(sub.order_ssn,stl.txn_seq_id) order_ssn,sub.req_sub_order_ssn,nvl(sub.pay_status_update_time,to_char(txn_tm,'yyyymmddhh24miss')) pay_status_update_time from
+      (
+        	select txn_seq_id,order_type,chl_mer_id,chl_mer_name, '01' as cur,txn_amt,setl_fee_amt,txn_tm,
+        	 case
+                  when TXN_TYPE not in ('O1000006', 'O2000006')
+                    then '扫码支付'
+                      else
+                        ''
+                        end as PAY_CHANNEL,
+        	fund_channel
+	        from BTH_MER_IN_ACC_DTL
+	        where
+	        CREATE_DATE = #{createDate,jdbcType=VARCHAR} and
+	        <!--TXN_TYPE IN ('O1000006','O2000006') AND-->
+	         (
+		        substr(CHL_MER_ID,0,15) in
+	            (
+	        	select MCHT_NO
+	        	from MCHT_ORG_REL
+	            where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+	            ) or substr(CHL_MER_ID,0,15) = #{platMerNo,jdbcType=VARCHAR}
+	        )
+        ) stl
+        left join
+        (
+        	select substr(sub_order_tm,0,8) as sub_order_time,sub_order_ssn,order_ssn,req_sub_order_ssn,pay_status_update_time
+	        from pay_sub_order_info
+	        where
+	         (  substr(SUB_MCHT_ID,0,15) in
+	            (
+	        	select MCHT_NO
+	        	from MCHT_ORG_REL
+	            where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+	            ) or substr(SUB_MCHT_ID,0,15) = #{platMerNo,jdbcType=VARCHAR} )
+        ) sub
+        on sub.sub_order_ssn = stl.txn_seq_id
+    </select>
+  <!-- 查询平台商户所有对账数据 -->
+  <select id="selectChkDataByPlatMerNoAll" resultMap="BaseResultMap2" parameterType="java.util.Map">
+    select stl.*,sub.* from
+    (
+    select txn_seq_id,order_type,chl_mer_id,chl_mer_name, '01' as cur,txn_amt,setl_fee_amt,fund_channel,txn_type
+    from BTH_MER_IN_ACC_DTL
+    where
+    CREATE_DATE = #{createDate,jdbcType=VARCHAR} and
+    TXN_TYPE IN ('O1000006','O2000006') AND
+    (
+    substr(CHL_MER_ID,0,15) in
+    (
+    select MCHT_NO
+    from MCHT_ORG_REL
+    where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+    ) or substr(CHL_MER_ID,0,15) = #{platMerNo,jdbcType=VARCHAR}
+    )
+    ) stl
+    left join
+    (
+    select substr(sub_order_tm,0,8) as sub_order_time,sub_order_ssn,order_ssn,req_sub_order_ssn,pay_status_update_time
+    from pay_sub_order_info
+    where
+    (  substr(SUB_MCHT_ID,0,15) in
+    (
+    select MCHT_NO
+    from MCHT_ORG_REL
+    where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+    ) or substr(SUB_MCHT_ID,0,15) = #{platMerNo,jdbcType=VARCHAR} )
+    ) sub
+    on sub.sub_order_ssn = stl.txn_seq_id
+    UNION ALL
+    select stl.txn_seq_id,stl.order_type,stl.chl_mer_id,stl.chl_mer_name,'01' AS cur,stl.txn_amt,stl.setl_fee_amt,stl.fund_channel,stl.txn_type,to_char(poi.order_tm,'yyyymmdd') as SUB_ORDER_TIME,'' as SUB_ORDER_SSN,TXN_SEQ_ID as ORDER_SSN,poi.REQ_ORDER_SSN as REQ_SUB_ORDER_SSN,'' as PAY_STATUS_UPDATE_TIME from
+    (
+    select txn_seq_id,order_type,chl_mer_id,chl_mer_name, '01' as cur,txn_amt,setl_fee_amt,fund_channel,txn_tm,txn_type
+    from BTH_MER_IN_ACC_DTL
+    where
+    CREATE_DATE = #{createDate,jdbcType=VARCHAR} and
+    TXN_TYPE NOT IN ('O1000006','O2000006') AND
+    (
+    substr(CHL_MER_ID,0,15) in
+    (
+    select MCHT_NO
+    from MCHT_ORG_REL
+    where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+    ) or CHL_MER_ID = #{platMerNo,jdbcType=VARCHAR}
+    )
+    ) stl
+    left join pay_order_info poi on (stl.txn_seq_id=poi.order_ssn and stl.txn_tm = poi.order_tm)
+  </select>
+
+    <select id="selectChkFileCountDataByPlatMerNo" resultMap="BaseResultMap2" parameterType="java.util.Map">
+       	select count(1) as row_count,sum(txn_amt-setl_fee_amt) as txn_amt
+        from BTH_MER_IN_ACC_DTL
+        where
+        CREATE_DATE = #{createDate,jdbcType=VARCHAR} and
+        TXN_TYPE IN ('O1000006','O2000006') AND
+        (
+        	CHL_MER_ID in
+	        (
+	        	select MCHT_NO
+	        	from MCHT_ORG_REL
+	            where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+	        )
+	        or CHL_MER_ID = #{platMerNo,jdbcType=VARCHAR}
+        )
+    </select>
+  <select id="selectChkFileCountDataByPlatMerNoAll" resultMap="BaseResultMap2" parameterType="java.util.Map">
+    select count(1) as row_count,sum(txn_amt-setl_fee_amt) as txn_amt
+    from BTH_MER_IN_ACC_DTL
+    where
+    CREATE_DATE = #{createDate,jdbcType=VARCHAR} AND
+    (
+    CHL_MER_ID in
+    (
+    select MCHT_NO
+    from MCHT_ORG_REL
+    where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+    )
+    or CHL_MER_ID = #{platMerNo,jdbcType=VARCHAR}
+    )
+  </select>
+
+    <select id="selectStlFileCountDataByPlatMerNo" resultMap="BaseResultMap2" parameterType="java.util.Map">
+      select count(1) as row_count,sum(txn_amt-setl_fee_amt) as txn_amt
+      from BTH_MER_IN_ACC_DTL
+      where
+      UPDATE_DATE like #{updateDate,jdbcType=VARCHAR} and
+      STL_STATUS = #{stlStatus,jdbcType=VARCHAR} and
+      TXN_TYPE IN ('O1000006','O2000006') AND
+      (
+          CHL_MER_ID in
+          (
+          select MCHT_NO
+          from MCHT_ORG_REL
+          where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+          )
+      or CHL_MER_ID = #{platMerNo,jdbcType=VARCHAR}
+      )
+    </select>
+
+    <!-- 查询一级商户对账数据 -->
+    <select id="selectChkDataByMerNo" resultMap="BaseResultMap2" parameterType="java.util.Map">
+    	select stl.*,SUB_ORDER_TIME,SUB_ORDER_SSN,ORDER_SSN,REQ_SUB_ORDER_SSN,PAY_STATUS_UPDATE_TIME from
+        (
+        	select txn_seq_id,order_type,chl_mer_id,chl_mer_name, '01' as cur,txn_amt,setl_fee_amt,fund_channel
+	        from BTH_MER_IN_ACC_DTL
+	        where
+	        CREATE_DATE = #{createDate,jdbcType=VARCHAR} and
+	        TXN_TYPE IN ('O1000006','O2000006') AND
+            substr(CHL_MER_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+        ) stl
+        left join
+        (
+        	SELECT SUBSTR(SUB_ORDER_TM,0,8) AS SUB_ORDER_TIME,SUB_ORDER_SSN,ORDER_SSN,REQ_SUB_ORDER_SSN,PAY_STATUS_UPDATE_TIME
+	        from pay_sub_order_info
+	        where
+	        substr(SUB_MCHT_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+        ) sub
+        on sub.sub_order_ssn = stl.txn_seq_id
+    </select>
+  <!-- 查询一级商户所有对账数据 -->
+  <select id="selectChkDataByMerNoAll" resultMap="BaseResultMap2" parameterType="java.util.Map">
+    select stl.*,SUB_ORDER_TIME,SUB_ORDER_SSN,ORDER_SSN,REQ_SUB_ORDER_SSN,PAY_STATUS_UPDATE_TIME from
+    (
+    select txn_seq_id,order_type,chl_mer_id,chl_mer_name, '01' as cur,txn_amt,setl_fee_amt,fund_channel,txn_type
+    from BTH_MER_IN_ACC_DTL
+    where
+    CREATE_DATE = #{createDate,jdbcType=VARCHAR} and
+    TXN_TYPE IN ('O1000006','O2000006') AND
+    substr(CHL_MER_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+    ) stl
+    left join
+    (
+    SELECT SUBSTR(SUB_ORDER_TM,0,8) AS SUB_ORDER_TIME,SUB_ORDER_SSN,ORDER_SSN,REQ_SUB_ORDER_SSN,PAY_STATUS_UPDATE_TIME
+    from pay_sub_order_info
+    where
+    substr(SUB_MCHT_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+    ) sub
+    on sub.sub_order_ssn = stl.txn_seq_id
+    UNION ALL
+    select stl.txn_seq_id,stl.order_type,stl.chl_mer_id,stl.chl_mer_name,'01' AS cur,stl.txn_amt,stl.setl_fee_amt,stl.fund_channel,stl.txn_type,to_char(poi.order_tm,'yyyymmdd') as SUB_ORDER_TIME,'' as SUB_ORDER_SSN,TXN_SEQ_ID as ORDER_SSN,poi.REQ_ORDER_SSN as REQ_SUB_ORDER_SSN,'' as PAY_STATUS_UPDATE_TIME from
+    (
+    select txn_seq_id,order_type,chl_mer_id,chl_mer_name, '01' as cur,txn_amt,setl_fee_amt,fund_channel,txn_tm,txn_type
+    from BTH_MER_IN_ACC_DTL
+    where
+    CREATE_DATE = #{createDate,jdbcType=VARCHAR} and
+    TXN_TYPE NOT IN ('O1000006','O2000006') AND
+    substr(CHL_MER_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+    ) stl
+    left join pay_order_info poi on (stl.txn_seq_id=poi.order_ssn and stl.txn_tm = poi.order_tm)
+  </select>
+
+    <select id="selectChkFileCountDataByMerNo" resultMap="BaseResultMap2" parameterType="java.util.Map">
+       	select count(1) as row_count,sum(txn_amt-setl_fee_amt) as txn_amt
+        from BTH_MER_IN_ACC_DTL
+        where
+        CREATE_DATE = #{createDate,jdbcType=VARCHAR} and
+        TXN_TYPE IN ('O1000006','O2000006') AND
+        substr(CHL_MER_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+    </select>
+  <select id="selectChkFileCountDataByMerNoAll" resultMap="BaseResultMap2" parameterType="java.util.Map">
+    select count(1) as row_count,sum(txn_amt-setl_fee_amt) as txn_amt
+    from BTH_MER_IN_ACC_DTL
+    where
+    CREATE_DATE = #{createDate,jdbcType=VARCHAR} AND
+    substr(CHL_MER_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+  </select>
+
+    <select id="selectStlFileCountDataByMerNo" resultMap="BaseResultMap2" parameterType="java.util.Map">
+      select count(1) as row_count,sum(txn_amt-setl_fee_amt) as txn_amt
+      from BTH_MER_IN_ACC_DTL
+      where
+      UPDATE_DATE like #{updateDate,jdbcType=VARCHAR} and
+      STL_STATUS = #{stlStatus,jdbcType=VARCHAR} and
+      TXN_TYPE IN ('O1000006','O2000006')  AND
+      substr(CHL_MER_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+    </select>
+    <!-- 查询平台商户结算数据 -->
+	<select id="selectStlDataByPlatMerNo" resultMap="BaseResultMap2" parameterType="java.util.Map">
+        select stl.*,sub.* from
+        (
+        	select STLM_DATE,txn_seq_id,order_type,chl_mer_id,chl_mer_name, '01' as cur,txn_amt,setl_fee_amt,
+        	         fund_channel,substr(UPDATE_DATE,0,8) as UPDATE_DATE
+	        from BTH_MER_IN_ACC_DTL
+	        where
+	         UPDATE_DATE like #{updateDate,jdbcType=VARCHAR} and
+        	 TXN_TYPE IN ('O1000006','O2000006') AND
+             STL_STATUS = #{stlResult,jdbcType=VARCHAR} and
+	         (
+		        substr(CHL_MER_ID,0,15) in
+	            (
+	        	select MCHT_NO
+	        	from MCHT_ORG_REL
+	            where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+	            ) or CHL_MER_ID = #{platMerNo,jdbcType=VARCHAR}
+	        )
+        ) stl
+        left join
+        (
+        	select substr(sub_order_tm,0,8) as sub_order_time,sub_order_ssn,order_ssn,req_sub_order_ssn,pay_status_update_time
+	        from pay_sub_order_info
+	        where
+	         (  substr(SUB_MCHT_ID,0,15) in
+	            (
+	        	select MCHT_NO
+	        	from MCHT_ORG_REL
+	            where ORG_ID = #{platMerNo,jdbcType=VARCHAR}
+	            ) or SUB_MCHT_ID = #{platMerNo,jdbcType=VARCHAR} )
+        ) sub
+        on sub.sub_order_ssn = stl.txn_seq_id
+    </select>
+    <!-- 查询一级商户结算数据 -->
+    <select id="selectStlDataByMerNo" resultMap="BaseResultMap2" parameterType="java.util.Map">
+        select stl.*,SUB_ORDER_TIME,SUB_ORDER_SSN,ORDER_SSN,REQ_SUB_ORDER_SSN,PAY_STATUS_UPDATE_TIME from
+        (
+        	select STLM_DATE,txn_seq_id,order_type,chl_mer_id,chl_mer_name, '01' as cur,txn_amt,setl_fee_amt,fund_channel,substr(UPDATE_DATE,0,8) as UPDATE_DATE
+	        from BTH_MER_IN_ACC_DTL
+	        where
+	        UPDATE_DATE like #{updateDate,jdbcType=VARCHAR} and
+        	TXN_TYPE IN ('O1000006','O2000006') AND
+        	STL_STATUS = #{stlResult,jdbcType=VARCHAR} and
+            substr(CHL_MER_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+        ) stl
+        left join
+        (
+        	SELECT SUBSTR(SUB_ORDER_TM,0,8) AS SUB_ORDER_TIME,SUB_ORDER_SSN,ORDER_SSN,REQ_SUB_ORDER_SSN,PAY_STATUS_UPDATE_TIME
+	        from pay_sub_order_info
+	        where
+	        substr(SUB_MCHT_ID,0,15) = #{merNo,jdbcType=VARCHAR}
+        ) sub
+        on sub.sub_order_ssn = stl.txn_seq_id
+    </select>
+
+    <!-- 根据入账日期 商户号  查询明细表信息   -->
+    <select id="selectByInAccDateMerId" resultMap="BaseResultMap2" parameterType="map">
+          select <include refid="Base_Column_List" /> from BTH_MER_IN_ACC_DTL dtl
+          where  dtl.CHL_MER_ID = #{merId,jdbcType=VARCHAR} AND dtl.IN_ACCT_DATE =#{inAcctDate,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据入账日期 , 下级商户号查询明细表信息  -->
+    <select id="queryByMchtIdAndInaccDate" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+            CHL_MER_ID,
+            IN_ACCT_DATE,
+            decode(ORDER_TYPE ,'01',COMMISSION_AMT,'02',-COMMISSION_AMT)/100 COMMISSION_AMT
+        FROM BTH_MER_IN_ACC_DTL
+          WHERE CHL_MER_ID IN (SELECT MCHT_ID FROM MCHT_BASE_INFO WHERE PAR_MCH_ID = #{merId,jdbcType=VARCHAR})
+          AND IN_ACCT_DATE = #{inAcctDate,jdbcType=VARCHAR}
+    </select>
+
+
+    <!-- 根据订单号修改明细表 -->
+    <update id="updateByTxnSeqId" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl" >
+        UPDATE BTH_MER_IN_ACC_DTL
+        <set>
+            <if test="inAcctDate != null">
+                IN_ACCT_DATE = #{inAcctDate,jdbcType=CHAR},
+            </if>
+            <if test="inAcctStat != null">
+                IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+            </if>
+            <if test="stlStatus != null">
+                STL_STATUS = #{stlStatus,jdbcType=VARCHAR},
+            </if>
+<!--             <if test="updateDate != null"> -->
+                UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+<!--             </if> -->
+        </set>
+        where  TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+
+    </update>
+
+    <select id="selectCommissionAmtBySubMerIdAndTxnTm" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.vo.MerCommissionVo">
+        SELECT
+            TO_CHAR(pay.ORDER_TM, 'yyyyMMdd')  AS inAcctDate,
+            SUM(nvl(decode(dtl.order_type,'01',dtl.COMMISSION_AMT,'02',-dtl.COMMISSION_AMT),0)) AS commissionAmt
+        FROM
+            bth_mer_in_acc_dtl dtl
+        INNER JOIN
+            pay_order_info pay
+        ON
+            dtl.txn_seq_id = pay.order_ssn
+        INNER JOIN (SELECT DISTINCT ORDER_ID FROM BTH_SET_CAPITAL_DETAIL WHERE ENTRY_TYPE = '14' AND DEAL_RESULT = '02' ) cap
+        ON
+            dtl.txn_seq_id = cap.ORDER_ID
+        WHERE
+            TO_CHAR(pay.ORDER_TM, 'yyyyMMdd') BETWEEN #{startDate, jdbcType=VARCHAR} AND  #{endDate, jdbcType=VARCHAR}
+        AND chl_mer_id IN (select MCHT_ID FROM MCHT_BASE_INFO WHERE PAR_MCH_ID = #{mchtId,jdbcType=VARCHAR })
+        <!--  传入交易标志不为空 , 只查询正交易   -->
+        <if test="txnFlag != null">
+            and dtl.ORDER_TYPE = '01'
+        </if>
+        GROUP BY TO_CHAR(pay.ORDER_TM, 'yyyyMMdd') ORDER BY TO_CHAR(pay.ORDER_TM, 'yyyyMMdd') ASC
+    </select>
+
+
+    <select id="selectCommissionAmtBySubMerIdAndInAcctDate" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.vo.MerCommissionVo">
+        SELECT
+        dtl.IN_ACCT_DATE AS inAcctDate,
+        SUM(nvl(decode(dtl.order_type,'01',dtl.COMMISSION_AMT,'02',-dtl.COMMISSION_AMT),0)) AS commissionAmt
+        FROM
+        bth_mer_in_acc_dtl dtl
+        INNER JOIN
+        pay_order_info pay
+        ON
+        dtl.txn_seq_id = pay.order_ssn
+        INNER JOIN (SELECT DISTINCT ORDER_ID FROM BTH_SET_CAPITAL_DETAIL WHERE ENTRY_TYPE = '14' AND DEAL_RESULT = '02' ) cap
+        ON
+        dtl.txn_seq_id = cap.ORDER_ID
+        WHERE
+        dtl.IN_ACCT_DATE BETWEEN #{startDate, jdbcType=VARCHAR} AND  #{endDate, jdbcType=VARCHAR}
+        AND chl_mer_id IN (select MCHT_ID FROM MCHT_BASE_INFO WHERE PAR_MCH_ID = #{mchtId,jdbcType=VARCHAR })
+        <!--  传入交易标志不为空 , 只查询正交易   -->
+        <if test="txnFlag != null">
+            and dtl.ORDER_TYPE = '01'
+        </if>
+        GROUP BY dtl.IN_ACCT_DATE ORDER BY dtl.IN_ACCT_DATE ASC
+
+    </select>
+
+    <select id="prdCountByBatchNo" parameterType="string" resultType="com.scrcu.ebank.ebap.batch.bean.vo.InAccMerVo">
+        SELECT max(a.CHL_MER_ID) AS mchtId ,
+        max(a.CHL_MER_NAME )AS mchtNm,
+        decode(a.PAGY_NO,'604','本行','605','微信','606','支付宝','607','银联二维码','608','银联全渠道')  AS pagyNm,
+        max(a.in_acct_date) AS inAccFailDate ,
+        COUNT(decode(a.ORDER_TYPE ,'01',0,'02',NULL)) AS txnCount,
+        SUM(decode(a.ORDER_TYPE ,'01',a.TXN_AMT,'02',0))/100 AS txnAmt ,
+        COUNT(decode(a.ORDER_TYPE ,'01',NULL,'02',0)) AS rtnCount,
+        SUM(decode(a.ORDER_TYPE ,'01',0,'02',a.TXN_AMT))/100 AS rtnAmt ,
+        SUM(decode(a.ORDER_TYPE ,'01',a.SETL_FEE_AMT,'02',0))/100 AS txnFee ,
+        SUM(decode(a.ORDER_TYPE ,'01',0,'02',a.SETL_FEE_AMT))/100 AS rtnFee ,
+        SUM(decode(a.ORDER_TYPE ,'01',a.COMMISSION_AMT,'02',-a.COMMISSION_AMT))/100 AS commisonAmt ,
+        SUM(decode(a.ORDER_TYPE ,'01',a.SETL_AMT,'02',-a.SETL_AMT))/100 AS planInAccAmt ,
+        0 AS realInAccAmt ,
+        '入账失败' AS inAccRst,
+        max(b.STAT_MARK) AS failReason
+        FROM BTH_MER_IN_ACC_DTL a  LEFT JOIN  BTH_MER_IN_ACC b  ON a.BATCH_NO = b.BATCH_NO
+        WHERE a.BATCH_NO  In(Select Batch_No From Bth_Mer_In_Acc Where In_Acct_Stat = '2' And In_Acct_Type = '01')
+        GROUP BY a.BATCH_NO,a.PAGY_NO,a.in_acct_date   ORDER BY  a.PAGY_NO,inAccFailDate ASC
+    </select>
+
+
+    <select id="prdCountFailRecord" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.vo.InAccMerVo">
+        SELECT
+            max(a.CHL_MER_ID) AS mchtId ,
+            max(a.CHL_MER_NAME )AS mchtNm,
+            decode(a.PAGY_NO,'604','本行','605','微信','606','支付宝','607','银联二维码','608','银联全渠道')  AS pagyNm,
+            max(a.in_acct_date) AS inAccFailDate ,
+            COUNT(decode(a.ORDER_TYPE ,'01',0,'02',NULL)) AS txnCount,
+            to_char(SUM(decode(a.ORDER_TYPE ,'01',a.TXN_AMT,'02',0))/100) AS txnAmt ,
+            COUNT(decode(a.ORDER_TYPE ,'01',NULL,'02',0)) AS rtnCount,
+            to_char(SUM(decode(a.ORDER_TYPE ,'01',0,'02',a.TXN_AMT))/100) AS rtnAmt ,
+            to_char(SUM(decode(a.ORDER_TYPE ,'01',a.SETL_FEE_AMT,'02',0))/100) AS txnFee ,
+            to_char(SUM(decode(a.ORDER_TYPE ,'01',0,'02',a.SETL_FEE_AMT))/100) AS rtnFee ,
+            to_char(SUM(decode(a.ORDER_TYPE ,'01',a.COMMISSION_AMT,'02',-a.COMMISSION_AMT))/100) AS commisonAmt ,
+            to_char(SUM(decode(a.ORDER_TYPE ,'01',a.SETL_AMT,'02',-a.SETL_AMT))/100) AS planInAccAmt ,
+            0 AS realInAccAmt ,
+            '入账失败' AS inAccRst,
+            #{statMark,jdbcType=VARCHAR} AS failReason
+        FROM BTH_MER_IN_ACC_DTL a
+        WHERE a.TXN_SEQ_ID IN
+        (
+            select DISTINCT b.ORDER_ID FROM BTH_SET_CAPITAL_DETAIL b
+            WHERE  b.BATCH_NO = #{batchNo ,jdbcType=VARCHAR}  and b.MER_ID = #{chlMerId, jdbcType=VARCHAR} and b.ENTRY_TYPE IN ('01','99')
+        )
+        GROUP BY a.PAGY_NO   ORDER BY  a.PAGY_NO ASC
+    </select>
+
+
+    <select id="txnCountAmtSumGroupByPagyNo" parameterType="string" resultType="com.scrcu.ebank.ebap.batch.bean.vo.TxnCountVo">
+        Select Fund_Channel as fundChannel ,Count(0) as txnCount, Sum(Decode(Order_Type,'01',Setl_Amt,'02',-Setl_Amt))/100 as amt
+        From Bth_Mer_In_Acc_Dtl Where In_Acct_Date = #{runDate,jdbcType=VARCHAR }  And In_Acct_Stat = '1' And  Txn_Type not  in ('O1000006','O2000006')
+        group by pagy_no,fund_channel  order by pagy_no,fund_channel
+    </select>
+
+    <select id="txnCountAmtSumGroupByPagyNoOnline" parameterType="string" resultType="com.scrcu.ebank.ebap.batch.bean.vo.TxnCountVo">
+        Select Fund_Channel  as  fundChannel ,Count(0) as  txnCount, Sum(Decode(Order_Type,'01',Setl_Amt,'02',-Setl_Amt))/100 as amt
+        From Bth_Mer_In_Acc_Dtl Where In_Acct_Date = #{runDate,jdbcType=VARCHAR }  And In_Acct_Stat = '1' And  Txn_Type in ('O1000006','O2000006')
+        group by pagy_no,fund_channel  order by pagy_no,fund_channel
+    </select>
+
+
+    <select id="selectInAccEndTm" resultType="string" parameterType="string">
+        SELECT substr(max(update_date),9,2)||':'||substr(max(update_date),11,2)  as END_TM
+        FROM  ( select update_date  from BTH_MER_IN_ACC_DTL where  in_acct_date = #{runDate,jdbcType=VARCHAR } and IN_ACCT_STAT IN ('1','2') and update_date is not  null
+        group by update_date)
+    </select>
+
+    <select id="selectForMerNum" parameterType="string" resultType="int">
+        SELECT COUNT(0) AS MER_NUM FROM (SELECT Distinct CHL_MER_ID FROM BTH_MER_IN_ACC_DTL
+        WHERE  IN_ACCT_STAT = '1' and  in_acct_date =  #{runDate,jdbcType=VARCHAR })
+    </select>
+
+    <!-- 查询当日不分润订单（行内费率小于等于渠道费率） -->
+    <select id="counTxnSeqIdsByUpdateDate" parameterType="java.util.Map" resultType="int">
+      select count(txn_seq_id) from BTH_MER_IN_ACC_DTL
+      where
+      UPDATE_DATE like #{updateDate} AND
+      STL_STATUS = #{stlStatus} AND
+      <![CDATA[SETL_FEE_AMT < TRAM_FEE_AMT]]>
+    </select>
+
+    <!-- 查询当日不分润订单（行内费率小于等于渠道费率） -->
+    <select id="selectTxnSeqIdsByUpdateDate" parameterType="java.util.Map" resultType="String">
+      select txn_seq_id
+      FROM
+        (
+          select a.*
+          from
+            (
+              select txn_seq_id,rownum rn from BTH_MER_IN_ACC_DTL
+              where UPDATE_DATE >= #{updateDateStart}
+                and <![CDATA[ UPDATE_DATE <= #{updateDateEnd} ]]>
+                AND STL_STATUS = #{stlStatus}
+                AND ORDER_TYPE = #{orderType}
+                AND <![CDATA[to_number(SETL_FEE_AMT) <= to_number(TRAM_FEE_AMT) AND to_number(SETL_FEE_AMT) > 0]]>
+                order by rowid
+            ) a
+          where <![CDATA[rownum <= #{endIdx}]]>
+        )
+      WHERE <![CDATA[rn >= #{startIdx}
+      ]]>
+    </select>
+
+  <!-- 查询当日不分润订单（行内费率小于等于渠道费率） -->
+  <select id="selectVatDataByTxnSeqId" parameterType="java.util.Map" resultMap="BaseResultMap">
+     select * from BTH_MER_IN_ACC_DTL
+      where UPDATE_DATE like #{updateDate}
+        AND TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+  </select>
+
+   <update id="updateMerInAccDtlStlAcctbyMerid" parameterType="map">
+        update BTH_MER_IN_ACC_DTL
+        set SETL_ACCT_NO = #{newAcctNo,jdbcType=VARCHAR},
+             SETL_ACCT_NAME = #{newAcctName,jdbcType=VARCHAR}, UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE
+        CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR} AND
+        <![CDATA[STL_STATUS <> #{stlStatus}]]>
+   </update>
+
+   <update id="updateStlmDateByNoticeStatus" parameterType="map">
+        update bth_mer_in_acc_dtl
+        set stlm_date = to_char(sysdate+1,'yyyyMMdd'),in_acct_date = to_char(sysdate+1,'yyyyMMdd'), UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        where stlm_date = '99991230' and
+        (substr(create_date,3,6)-substr(txn_seq_id,1,6)) > 2 AND
+        txn_seq_id in
+        (select sub_order_ssn from pay_sub_order_info where auto_settle_flag in ('1','2'))
+   </update>
+
+
+    <!-- 更新明细表 -->
+    <update id="updateByCapBatchNo" parameterType="map">
+        UPDATE BTH_MER_IN_ACC_DTL
+        set IN_ACCT_DATE = #{inAcctDate,jdbcType=VARCHAR},IN_ACCT_STAT = #{inAcctStat,jdbcType=VARCHAR}, STL_STATUS = #{stlStatus,jdbcType=VARCHAR}
+        , UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE TXN_SEQ_ID in  (
+            SELECT DISTINCT ORDER_ID FROM BTH_SET_CAPITAL_DETAIL
+            WHERE BATCH_NO = #{capBatchNo,jdbcType=VARCHAR}  and  ENTRY_TYPE in ('01','99')
+            and MER_ID = #{merId,jdbcType=VARCHAR}
+        )
+    </update>
+
+    <!-- 更新明细表 批量更新 -->
+    <update id="updateByMerIdList" parameterType="map">
+      update bth_mer_in_acc_dtl t
+        set IN_ACCT_DATE = #{inAcctDate,jdbcType=VARCHAR},IN_ACCT_STAT = #{inAcctStat,jdbcType=VARCHAR}, STL_STATUS = #{stlStatus,jdbcType=VARCHAR}
+        , UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        where exists (select 1
+          from bth_set_capital_detail a
+          where a.mer_id = t.chl_mer_id
+          and a.order_id = t.txn_seq_id
+          and a.BATCH_NO = #{capBatchNo,jdbcType=VARCHAR}
+          and a.entry_type in ('01', '99')
+          and a.mer_id in
+          <foreach collection="merIdList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+          </foreach>)
+    </update>
+
+    <!-- 根据入账日期与商户号统计入账金额 -->
+    <select id="countInAccAmt" resultType="string" parameterType="map">
+          SELECT to_char(nvl(SUM(decode(ORDER_TYPE ,'01',SETL_AMT,'02',-SETL_AMT)),0)) AS inAccAmt FROM BTH_MER_IN_ACC_DTL
+          WHERE CHL_MER_ID = #{mchtId,jdbcType=VARCHAR} and IN_ACCT_DATE = #{inAccDate , jdbcType=VARCHAR}
+    </select>
+
+  <!-- 批量更新 -->
+  <update id="batchUpdateBak">
+    begin
+    <foreach collection="updList" separator=";" item="item" index="index" >
+      UPDATE BTH_MER_IN_ACC_DTL
+      <set>
+        <if test="item.inAcctDate != null">
+          IN_ACCT_DATE = #{item.inAcctDate,jdbcType=CHAR},
+        </if>
+        <if test="item.inAcctStat != null">
+          IN_ACCT_STAT = #{item.inAcctStat,jdbcType=CHAR},
+        </if>
+        <if test="item.stlStatus != null">
+          STL_STATUS = #{item.stlStatus,jdbcType=VARCHAR},
+        </if>
+<!--         <if test="item.updateDate != null"> -->
+          UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+<!--         </if> -->
+      </set>
+      where  TXN_SEQ_ID = #{item.txnSeqId,jdbcType=VARCHAR}
+    </foreach>
+    ; end;
+  </update>
+
+  <update id="batchUpdate">
+    update bth_mer_in_acc_dtl a
+    set (a.in_acct_date,
+    a.in_acct_stat,
+    a.stl_status,
+    a.update_date) =
+    (select decode(b.in_acct_date,null,a.in_acct_date,b.in_acct_date),in_acct_stat,stl_status,update_date
+    from (
+    <foreach collection="updList" index="index" item="item" separator="union all">
+      select #{item.txnSeqId,jdbcType=VARCHAR} txn_seq_id,
+      #{item.inAcctDate,jdbcType=VARCHAR} in_acct_date,
+      #{item.inAcctStat,jdbcType=VARCHAR} in_acct_stat,
+      #{item.stlStatus,jdbcType=VARCHAR} stl_status,
+      to_char(sysdate,'yyyymmddhh24miss') update_date
+      from dual
+    </foreach>
+    ) b where a.txn_seq_id=b.txn_seq_id) where exists (select 1 from (
+    <foreach collection="updList" index="index" item="item" separator="union all">
+      select #{item.txnSeqId,jdbcType=VARCHAR} txn_seq_id from dual
+    </foreach>
+    ) b where a.txn_seq_id=b.txn_seq_id)
+  </update>
+
+  <update id="updateByOrderSsn" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl">
+    update BTH_MER_IN_ACC_DTL
+    <set>
+      <if test="stlmDate != null">
+        STLM_DATE = #{stlmDate,jdbcType=CHAR},
+      </if>
+      <if test="inAcctDate != null">
+        IN_ACCT_DATE = #{inAcctDate,jdbcType=CHAR},
+      </if>
+      <if test="chlMerId != null">
+        CHL_MER_ID = #{chlMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSeqId != null">
+        TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlMerName != null">
+        CHL_MER_NAME = #{chlMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerId != null">
+        CHL_SUB_MER_ID = #{chlSubMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="chlSubMerName != null">
+        CHL_SUB_MER_NAME = #{chlSubMerName,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT = #{txnAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAmt != null">
+        SETL_AMT = #{setlAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlFeeAmt != null">
+        SETL_FEE_AMT = #{setlFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="setlFeeAmtDis != null">
+        SETL_FEE_AMT_DIS = #{setlFeeAmtDis,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctNo != null">
+        SETL_ACCT_NO = #{setlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctName != null">
+        SETL_ACCT_NAME = #{setlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctType != null">
+        SETL_ACCT_TYPE = #{setlAcctType,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctInstitute2 != null">
+        SETL_ACCT_INSTITUTE2 = #{setlAcctInstitute2,jdbcType=VARCHAR},
+      </if>
+      <if test="setlAcctInstituteName2 != null">
+        SETL_ACCT_INSTITUTE_NAME2 = #{setlAcctInstituteName2,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        AGENT_ID = #{agentId,jdbcType=CHAR},
+      </if>
+      <if test="agentName != null">
+        AGENT_NAME = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlAcctNo != null">
+        AGENT_SETL_ACCT_NO = #{agentSetlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlAcctName != null">
+        AGENT_SETL_ACCT_NAME = #{agentSetlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentSetlFeeAmt != null">
+        AGENT_SETL_FEE_AMT = #{agentSetlFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="tramFeeAmt != null">
+        TRAM_FEE_AMT = #{tramFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="localFeeAmt != null">
+        LOCAL_FEE_AMT = #{localFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO = #{pagyNo,jdbcType=CHAR},
+      </if>
+      <if test="outAcctNo != null">
+        OUT_ACCT_NO = #{outAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="localFeeAcct != null">
+        LOCAL_FEE_ACCT = #{localFeeAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="agFee != null">
+        AG_FEE = #{agFee,jdbcType=VARCHAR},
+      </if>
+      <if test="inAcctStat != null">
+        IN_ACCT_STAT = #{inAcctStat,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="stlStatus != null">
+        STL_STATUS = #{stlStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAccType != null">
+        REFUND_ACC_TYPE = #{refundAccType,jdbcType=VARCHAR},
+      </if>
+      <if test="stlType != null">
+        STL_TYPE = #{stlType,jdbcType=VARCHAR},
+      </if>
+      <if test="subStlDate != null">
+        SUB_STL_DATE = #{subStlDate,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionAmt != null">
+        COMMISSION_AMT = #{commissionAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCouponAmt != null">
+        BANK_COUPON_AMT = #{bankCouponAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="bankHbAmt != null">
+        BANK_HB_AMT = #{bankHbAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="logisFee != null">
+        LOGIS_FEE = #{logisFee,jdbcType=VARCHAR},
+      </if>
+      <if test="logisType != null">
+        LOGIS_TYPE = #{logisType,jdbcType=VARCHAR},
+      </if>
+      <if test="logisPartnerCode != null">
+        LOGIS_PARTNER_CODE = #{logisPartnerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDedcutAmt != null">
+        POINT_DEDCUT_AMT = #{pointDedcutAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="openBrc != null">
+        OPEN_BRC = #{openBrc,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null">
+        BATCH_NO = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandFee != null">
+        BRAND_FEE = #{brandFee,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null">
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="fundChannel != null">
+        FUND_CHANNEL = #{fundChannel,jdbcType=VARCHAR},
+      </if>
+<!--       <if test="updateDate != null"> -->
+        UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+<!--       </if> -->
+    </set>
+    where TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+    AND STL_STATUS = '05'
+  </update>
+
+  <!-- 根据创建日期清理数据 -->
+  <delete id="recovery">
+    delete from BTH_MER_IN_ACC_DTL
+    where CREATE_DATE = #{createDate,jdbcType=VARCHAR}
+  </delete>
+
+  <!-- 根据渠道,结算日期统计清分数据 -->
+  <select id="cleCount" resultType="int">
+    select
+    count(1)
+    from BTH_MER_IN_ACC_DTL
+    where
+    STLM_DATE = #{stlDate} and
+    PAGY_NO = #{channel}
+  </select>
+
+  <!-- 根据渠道,结算日期分页查询清分数据 -->
+  <!-- and txn_seq_id='60641552994934657996740000182380' -->
+  <select id="getCleaDateList" resultMap="BaseResultMap">
+    select * FROM
+    (
+    select a.*,rownum rn from
+    (
+    select
+    <include refid="Base_Column_List" />
+    from BTH_MER_IN_ACC_DTL
+    where STLM_DATE = #{stlDate}
+    and PAGY_NO = #{channel}
+    and (stl_status = '00' or stl_status = '04')
+    ) a where <![CDATA[rownum <= #{maxIndex}]]>
+    ) WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+  <select id="getCleaDateListTemp" resultMap="BaseResultMap">
+    select * FROM
+    (
+    select a.*,rownum rn from
+    (
+    select
+    <include refid="Base_Column_List" />
+    from BTH_MER_IN_ACC_DTL_TEMP_${channel}
+    where STLM_DATE = #{stlDate}
+    and PAGY_NO = #{channel}
+    and (stl_status = '00' or stl_status = '04')
+    order by txn_seq_id
+    ) a where <![CDATA[rownum <= #{maxIndex}]]>
+    ) WHERE <![CDATA[rn >= #{minIndex}]]>
+  </select>
+  <select id="getCleaDateAllList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from BTH_MER_IN_ACC_DTL
+    where
+    STLM_DATE = #{stlDate} and
+    PAGY_NO = #{channel}
+    order by TXN_SEQ_ID
+  </select>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch">
+      INSERT INTO BTH_MER_IN_ACC_DTL
+      (
+      STLM_DATE, IN_ACCT_DATE, CHL_MER_ID,
+      TXN_SEQ_ID, CHL_MER_NAME, CHL_SUB_MER_ID,
+      CHL_SUB_MER_NAME, TXN_AMT, SETL_AMT,
+      SETL_FEE_AMT, SETL_FEE_AMT_DIS, SETL_ACCT_NO,
+      SETL_ACCT_NAME, SETL_ACCT_TYPE, SETL_ACCT_INSTITUTE2,
+      SETL_ACCT_INSTITUTE_NAME2, AGENT_ID, AGENT_NAME,
+      AGENT_SETL_ACCT_NO, AGENT_SETL_ACCT_NAME, AGENT_SETL_FEE_AMT,
+      TRAM_FEE_AMT, LOCAL_FEE_AMT, PAGY_NO,
+      OUT_ACCT_NO, LOCAL_FEE_ACCT, AG_FEE,
+      IN_ACCT_STAT, ORDER_TYPE, STL_STATUS,
+      REFUND_ACC_TYPE, STL_TYPE, SUB_STL_DATE,
+      COMMISSION_AMT, BANK_COUPON_AMT, BANK_HB_AMT,
+      LOGIS_FEE, LOGIS_TYPE, LOGIS_PARTNER_CODE,
+      POINT_DEDCUT_AMT, OPEN_BRC, BATCH_NO,
+      BRAND_FEE, TXN_TYPE, FUND_CHANNEL, UPDATE_DATE,
+      CREATE_DATE, SUB_STL_STATUS, CHNL_FEE_FLAG,
+      LOGIS_FEE_AMT, TXN_TM, MCHT_PAY_AMT, BANK_PAY_AMT, USERORG_PAY_AMT
+      )
+      <foreach collection="insertList" index="index" item="item" separator="union all">
+        (SELECT #{item.stlmDate,jdbcType=CHAR}, #{item.inAcctDate,jdbcType=CHAR}, #{item.chlMerId,jdbcType=VARCHAR},
+        #{item.txnSeqId,jdbcType=VARCHAR}, #{item.chlMerName,jdbcType=VARCHAR}, #{item.chlSubMerId,jdbcType=VARCHAR},
+        #{item.chlSubMerName,jdbcType=VARCHAR}, #{item.txnAmt,jdbcType=VARCHAR}, #{item.setlAmt,jdbcType=VARCHAR},
+        #{item.setlFeeAmt,jdbcType=VARCHAR}, #{item.setlFeeAmtDis,jdbcType=VARCHAR}, #{item.setlAcctNo,jdbcType=VARCHAR},
+        #{item.setlAcctName,jdbcType=VARCHAR}, #{item.setlAcctType,jdbcType=VARCHAR}, #{item.setlAcctInstitute2,jdbcType=VARCHAR},
+        #{item.setlAcctInstituteName2,jdbcType=VARCHAR}, #{item.agentId,jdbcType=CHAR}, #{item.agentName,jdbcType=VARCHAR},
+        #{item.agentSetlAcctNo,jdbcType=VARCHAR}, #{item.agentSetlAcctName,jdbcType=VARCHAR}, #{item.agentSetlFeeAmt,jdbcType=VARCHAR},
+        #{item.tramFeeAmt,jdbcType=VARCHAR}, #{item.localFeeAmt,jdbcType=VARCHAR}, #{item.pagyNo,jdbcType=CHAR},
+        #{item.outAcctNo,jdbcType=VARCHAR}, #{item.localFeeAcct,jdbcType=VARCHAR}, #{item.agFee,jdbcType=VARCHAR},
+        #{item.inAcctStat,jdbcType=CHAR}, #{item.orderType,jdbcType=VARCHAR}, #{item.stlStatus,jdbcType=VARCHAR},
+        #{item.refundAccType,jdbcType=VARCHAR}, #{item.stlType,jdbcType=VARCHAR}, #{item.subStlDate,jdbcType=VARCHAR},
+        #{item.commissionAmt,jdbcType=VARCHAR}, #{item.bankCouponAmt,jdbcType=VARCHAR}, #{item.bankHbAmt,jdbcType=VARCHAR},
+        #{item.logisFee,jdbcType=VARCHAR}, #{item.logisType,jdbcType=VARCHAR}, #{item.logisPartnerCode,jdbcType=VARCHAR},
+        #{item.pointDedcutAmt,jdbcType=VARCHAR}, #{item.openBrc,jdbcType=VARCHAR}, #{item.batchNo,jdbcType=VARCHAR},
+        #{item.brandFee,jdbcType=VARCHAR}, #{item.txnType,jdbcType=VARCHAR}, #{item.fundChannel,jdbcType=VARCHAR},
+        to_char(sysdate,'yyyymmddhh24miss'),  #{item.createDate,jdbcType=VARCHAR},  #{item.subStlStatus,jdbcType=VARCHAR},
+        #{item.chnlFeeFlag,jdbcType=VARCHAR},  #{item.logisFeeAmt,jdbcType=VARCHAR}, #{item.txnTm,jdbcType=TIMESTAMP},
+        #{item.mchtPayAmt,jdbcType=VARCHAR}, #{item.bankPayAmt,jdbcType=VARCHAR}, #{item.userorgPayAmt,jdbcType=VARCHAR}
+        FROM DUAL)
+      </foreach>
+    </insert>
+
+    <!-- 批量插入临时表 -->
+    <insert id="insertBatchTemp">
+      INSERT INTO BTH_MER_IN_ACC_DTL_temp
+      (
+      STLM_DATE, IN_ACCT_DATE, CHL_MER_ID,
+      TXN_SEQ_ID, CHL_MER_NAME, CHL_SUB_MER_ID,
+      CHL_SUB_MER_NAME, TXN_AMT, SETL_AMT,
+      SETL_FEE_AMT, SETL_FEE_AMT_DIS, SETL_ACCT_NO,
+      SETL_ACCT_NAME, SETL_ACCT_TYPE, SETL_ACCT_INSTITUTE2,
+      SETL_ACCT_INSTITUTE_NAME2, AGENT_ID, AGENT_NAME,
+      AGENT_SETL_ACCT_NO, AGENT_SETL_ACCT_NAME, AGENT_SETL_FEE_AMT,
+      TRAM_FEE_AMT, LOCAL_FEE_AMT, PAGY_NO,
+      OUT_ACCT_NO, LOCAL_FEE_ACCT, AG_FEE,
+      IN_ACCT_STAT, ORDER_TYPE, STL_STATUS,
+      REFUND_ACC_TYPE, STL_TYPE, SUB_STL_DATE,
+      COMMISSION_AMT, BANK_COUPON_AMT, BANK_HB_AMT,
+      LOGIS_FEE, LOGIS_TYPE, LOGIS_PARTNER_CODE,
+      POINT_DEDCUT_AMT, OPEN_BRC, BATCH_NO,
+      BRAND_FEE, TXN_TYPE, FUND_CHANNEL, UPDATE_DATE,
+      CREATE_DATE, SUB_STL_STATUS, CHNL_FEE_FLAG,
+      LOGIS_FEE_AMT, TXN_TM, MCHT_PAY_AMT, BANK_PAY_AMT, USERORG_PAY_AMT
+      )
+      <foreach collection="insertList" index="index" item="item" separator="union all">
+        (SELECT #{item.stlmDate,jdbcType=CHAR}, #{item.inAcctDate,jdbcType=CHAR}, #{item.chlMerId,jdbcType=VARCHAR},
+        #{item.txnSeqId,jdbcType=VARCHAR}, #{item.chlMerName,jdbcType=VARCHAR}, #{item.chlSubMerId,jdbcType=VARCHAR},
+        #{item.chlSubMerName,jdbcType=VARCHAR}, #{item.txnAmt,jdbcType=VARCHAR}, #{item.setlAmt,jdbcType=VARCHAR},
+        #{item.setlFeeAmt,jdbcType=VARCHAR}, #{item.setlFeeAmtDis,jdbcType=VARCHAR}, #{item.setlAcctNo,jdbcType=VARCHAR},
+        #{item.setlAcctName,jdbcType=VARCHAR}, #{item.setlAcctType,jdbcType=VARCHAR}, #{item.setlAcctInstitute2,jdbcType=VARCHAR},
+        #{item.setlAcctInstituteName2,jdbcType=VARCHAR}, #{item.agentId,jdbcType=CHAR}, #{item.agentName,jdbcType=VARCHAR},
+        #{item.agentSetlAcctNo,jdbcType=VARCHAR}, #{item.agentSetlAcctName,jdbcType=VARCHAR}, #{item.agentSetlFeeAmt,jdbcType=VARCHAR},
+        #{item.tramFeeAmt,jdbcType=VARCHAR}, #{item.localFeeAmt,jdbcType=VARCHAR}, #{item.pagyNo,jdbcType=CHAR},
+        #{item.outAcctNo,jdbcType=VARCHAR}, #{item.localFeeAcct,jdbcType=VARCHAR}, #{item.agFee,jdbcType=VARCHAR},
+        #{item.inAcctStat,jdbcType=CHAR}, #{item.orderType,jdbcType=VARCHAR}, #{item.stlStatus,jdbcType=VARCHAR},
+        #{item.refundAccType,jdbcType=VARCHAR}, #{item.stlType,jdbcType=VARCHAR}, #{item.subStlDate,jdbcType=VARCHAR},
+        #{item.commissionAmt,jdbcType=VARCHAR}, #{item.bankCouponAmt,jdbcType=VARCHAR}, #{item.bankHbAmt,jdbcType=VARCHAR},
+        #{item.logisFee,jdbcType=VARCHAR}, #{item.logisType,jdbcType=VARCHAR}, #{item.logisPartnerCode,jdbcType=VARCHAR},
+        #{item.pointDedcutAmt,jdbcType=VARCHAR}, #{item.openBrc,jdbcType=VARCHAR}, #{item.batchNo,jdbcType=VARCHAR},
+        #{item.brandFee,jdbcType=VARCHAR}, #{item.txnType,jdbcType=VARCHAR}, #{item.fundChannel,jdbcType=VARCHAR},
+        to_char(sysdate,'yyyymmddhh24miss'),  #{item.createDate,jdbcType=VARCHAR},  #{item.subStlStatus,jdbcType=VARCHAR},
+        #{item.chnlFeeFlag,jdbcType=VARCHAR},  #{item.logisFeeAmt,jdbcType=VARCHAR}, #{item.txnTm,jdbcType=TIMESTAMP},
+        #{item.mchtPayAmt,jdbcType=VARCHAR}, #{item.bankPayAmt,jdbcType=VARCHAR}, #{item.userorgPayAmt,jdbcType=VARCHAR}
+        FROM DUAL)
+      </foreach>
+    </insert>
+
+  <!-- 统计商户金额笔数 -->
+  <select id="sumTxnAmtFeeAmtT0" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccInfo">
+		SELECT
+            SUM(decode(order_type,'01',TXN_AMT,'02',-TXN_AMT))/100 as txnAmt,
+            SUM(decode(order_type,'01',SETL_FEE_AMT,'02',-SETL_FEE_AMT))/100 AS feeAmt,
+            COUNT(0) as txnCount
+        FROM
+		BTH_MER_IN_ACC_DTL a,keep_acc_info b
+		WHERE  a.TXN_SEQ_ID in  (
+            SELECT DISTINCT ORDER_ID FROM BTH_SET_CAPITAL_DETAIL
+            WHERE CLEA_TIME = #{cleaTime,jdbcType=VARCHAR}  and  ENTRY_TYPE in (#{entryType,jdbcType=VARCHAR})
+            and MER_ID = #{merId,jdbcType=VARCHAR}
+
+		)
+    and a.TXN_SEQ_ID = b.order_ssn
+    and b.state in ('02','04')
+    and b.is_sync = '01'
+    and b.real_tm_flag = '00'
+	</select>
+
+  <!-- 批量更新为T+0完善数据 -->
+  <update id="batchUpdateForT0-bak" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerInAccDtl">
+
+    UPDATE BTH_MER_IN_ACC_DTL
+    <set>
+      <if test="fundChannel != null">
+        FUND_CHANNEL = #{fundChannel,jdbcType=CHAR},
+      </if>
+      <if test="stlmDate != null">
+        STLM_DATE = #{stlmDate,jdbcType=CHAR},
+      </if>
+      <if test="logisFee != null">
+        LOGIS_FEE = #{logisFee,jdbcType=CHAR},
+      </if>
+      <if test="bankHbAmt != null">
+        BANK_HB_AMT = #{bankHbAmt,jdbcType=CHAR},
+      </if>
+      <if test="tramFeeAmt != null">
+        TRAM_FEE_AMT = #{tramFeeAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDedcutAmt != null">
+        POINT_DEDCUT_AMT = #{pointDedcutAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="brandFee != null">
+        BRAND_FEE = #{brandFee,jdbcType=VARCHAR},
+      </if>
+      <if test="pagyNo != null">
+        PAGY_NO = #{pagyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="stlStatus != null">
+        STL_STATUS = #{stlStatus,jdbcType=VARCHAR},
+      </if>
+        UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+    </set>
+    where  TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+  </update>
+    <update id="batchUpdateForT0" parameterType="java.util.List">
+      update bth_mer_in_acc_dtl a
+      set (
+          fund_channel,
+          stlm_date,
+          logis_fee,
+          bank_hb_amt,
+          tram_fee_amt,
+          point_dedcut_amt,
+          brand_fee,
+          pagy_no,
+          stl_status,
+          update_date
+          ) =
+      (select fund_channel,
+              stlm_date,
+              logis_fee,
+              bank_hb_amt,
+              tram_fee_amt,
+              point_dedcut_amt,
+              brand_fee,
+              pagy_no,
+              stl_status,
+              update_date
+      from (
+      <foreach collection="bthMerInAccDtlList" index="index" item="item" separator="union all">
+        select #{item.txnSeqId,jdbcType=VARCHAR} txn_seq_id,
+          #{item.fundChannel,jdbcType=CHAR} fund_channel,
+          #{item.stlmDate,jdbcType=CHAR} stlm_date,
+          #{item.logisFee,jdbcType=CHAR} logis_fee,
+          #{item.bankHbAmt,jdbcType=CHAR} bank_hb_amt,
+          #{item.tramFeeAmt,jdbcType=VARCHAR} tram_fee_amt,
+          #{item.pointDedcutAmt,jdbcType=VARCHAR} point_dedcut_amt,
+          #{item.brandFee,jdbcType=VARCHAR} brand_fee,
+          #{item.pagyNo,jdbcType=VARCHAR} pagy_no,
+        #{item.stlStatus,jdbcType=VARCHAR} stl_status,
+        to_char(sysdate,'yyyymmddhh24miss') update_date
+        from dual
+      </foreach>
+      ) b where a.txn_seq_id=b.txn_seq_id) where exists (select 1 from (
+      <foreach collection="bthMerInAccDtlList" index="index" item="item" separator="union all">
+        select #{item.txnSeqId,jdbcType=VARCHAR} txn_seq_id from dual
+      </foreach>
+      ) b where a.txn_seq_id=b.txn_seq_id)
+    </update>
+
+  <!-- 根据入账日期与商户号统计入账金额 -->
+  <select id="countInAccAmtT0" resultType="string" parameterType="map">
+          SELECT to_char(nvl(SUM(decode(ORDER_TYPE ,'01',SETL_AMT,'02',-SETL_AMT)),0)) AS inAccAmt FROM BTH_MER_IN_ACC_DTL
+          WHERE CHL_MER_ID = #{mchtId,jdbcType=VARCHAR} and IN_ACCT_DATE = #{inAccDate , jdbcType=VARCHAR}
+          AND IN_ACCT_STAT = '1'
+    </select>
+  <select id="selectUpdateDate"  resultType="String" parameterType="java.lang.String">
+    select to_date(IN_ACCT_DATE,'yyyymmdd')
+        from BTH_MER_IN_ACC_DTL
+    where TXN_SEQ_ID = #{txnSeqId,jdbcType=VARCHAR}
+        and IN_ACCT_STAT ='1'
+
+  </select>
+
+  <!-- 批量设置线下未清分订单清分状态为未清分 -->
+  <update id="updateNotClearingOrderSsnList" parameterType="java.util.Map">
+    update
+    BTH_MER_IN_ACC_DTL
+    set update_date = to_char(sysdate,'yyyymmddhh24miss'),STL_STATUS='04'
+    where txn_seq_id in
+    <foreach collection="notClearingOrderSsnList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+  <delete id="clearBthMerInAccDtlTemp" parameterType="map">
+    truncate table bth_mer_in_acc_dtl_temp_${pagyNo}
+  </delete>
+  <delete id="clearBthMerInAccDtlTempNoPagy" parameterType="map">
+    truncate table bth_mer_in_acc_dtl_temp
+  </delete>
+  <delete id="clearBthMerInAccDtl" parameterType="java.util.Map">
+    delete from bth_mer_in_acc_dtl t
+      where exists (select 1
+        from bth_mer_in_acc_dtl_temp a
+        where t.stlm_date = a.stlm_date
+        and t.in_acct_date = a.in_acct_date
+        and t.chl_mer_id = a.chl_mer_id
+        and t.txn_seq_id = a.txn_seq_id)
+  </delete>
+  <insert id="initBthMerInAccDtlTemp" parameterType="map">
+    insert /*+ append nologging */ into bth_mer_in_acc_dtl_temp_${pagyNo}
+      select *
+      from bth_mer_in_acc_dtl t
+    where t.stlm_date = #{stlmDate}
+      and t.pagy_no = #{pagyNo}
+      and (stl_status = '00' or stl_status = '04')
+  </insert>
+
+  <!-- 将入账明细临时表中数据回迁入正式表 -->
+  <insert id="insertMerInAccDtlFromTemp">
+    insert /*+ append nologging */ into bth_mer_in_acc_dtl
+    select *
+    from bth_mer_in_acc_dtl_temp t
+  </insert>
+
+  <!-- 查询清算日入账明细总交易笔数和总交易金额 -->
+  <select id="checkSumInAccAmtDtl" parameterType="map" resultType="com.scrcu.ebank.ebap.batch.bean.dto.BthMerTxnCountInfo">
+    select count(0) as txnCount,
+    sum(case when a.order_type='01' then setl_amt when a.order_type='02' and a.REFUND_ACC_TYPE!='02' then to_char(-setl_amt)
+                          when a.order_type='02' and a.REFUND_ACC_TYPE ='02' then to_char(setl_fee_amt) end)/100 as txnAmt
+        from bth_mer_in_acc_dtl a
+        where stlm_date = #{stlmDate , jdbcType=VARCHAR} and SETL_ACCT_TYPE = '0'
+        and not exists (select 1 from keep_acc_info b where is_sync = '01' and real_tm_flag = '00' and a.txn_seq_id = b.order_ssn)
+  </select>
+
+  <!-- 他行更新明细表 -->
+  <update id="updateByCapBatchNoOther" parameterType="map">
+        UPDATE BTH_MER_IN_ACC_DTL
+        set IN_ACCT_DATE = #{inAcctDate,jdbcType=VARCHAR},IN_ACCT_STAT = #{inAcctStat,jdbcType=VARCHAR}, STL_STATUS = #{stlStatus,jdbcType=VARCHAR}
+        , UPDATE_DATE = to_char(sysdate,'yyyymmddhh24miss')
+        WHERE TXN_SEQ_ID in  (
+            SELECT DISTINCT ORDER_ID FROM BTH_SET_CAPITAL_DETAIL
+            WHERE BATCH_NO = #{capBatchNo,jdbcType=VARCHAR}  and  ENTRY_TYPE in ('01','99')
+            and MER_ID = #{merId,jdbcType=VARCHAR}
+            and ACCOUNT_TYPE = '1'
+        )
+    </update>
+</mapper>

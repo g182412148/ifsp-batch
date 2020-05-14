@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.SettleAccModTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.SettleAccModTask" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="MCHT_ID" property="mchtId" jdbcType="VARCHAR" />
+    <result column="SETTL_ACCT_NAME_OLD" property="settlAcctNameOld" jdbcType="VARCHAR" />
+    <result column="SETTL_ACCT_NO_OLD" property="settlAcctNoOld" jdbcType="VARCHAR" />
+    <result column="SETTL_ACCT_TYPE_OLD" property="settlAcctTypeOld" jdbcType="CHAR" />
+    <result column="SETTL_ACCT_ORG_ID_OLD" property="settlAcctOrgIdOld" jdbcType="VARCHAR" />
+    <result column="SETTL_ACCT_ORG_NAME_OLD" property="settlAcctOrgNameOld" jdbcType="VARCHAR" />
+    <result column="SETTL_ACCT_NAME" property="settlAcctName" jdbcType="VARCHAR" />
+    <result column="SETTL_ACCT_NO" property="settlAcctNo" jdbcType="VARCHAR" />
+    <result column="SETTL_ACCT_TYPE" property="settlAcctType" jdbcType="CHAR" />
+    <result column="SETTL_ACCT_ORG_ID" property="settlAcctOrgId" jdbcType="VARCHAR" />
+    <result column="SETTL_ACCT_ORG_NAME" property="settlAcctOrgName" jdbcType="VARCHAR" />
+    <result column="CRE_TM" property="creTm" jdbcType="TIMESTAMP" />
+    <result column="UPD_TM" property="updTm" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID,MCHT_ID, SETTL_ACCT_NAME_OLD, SETTL_ACCT_NO_OLD, SETTL_ACCT_TYPE_OLD, SETTL_ACCT_ORG_ID_OLD,
+    SETTL_ACCT_ORG_NAME_OLD, SETTL_ACCT_NAME, SETTL_ACCT_NO, SETTL_ACCT_TYPE, SETTL_ACCT_ORG_ID, 
+    SETTL_ACCT_ORG_NAME, CRE_TM, UPD_TM, STATUS, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SETTLE_ACC_MOD_TASK
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SETTLE_ACC_MOD_TASK
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SettleAccModTask" >
+    insert into SETTLE_ACC_MOD_TASK (ID,MCHT_ID, SETTL_ACCT_NAME_OLD, SETTL_ACCT_NO_OLD,
+      SETTL_ACCT_TYPE_OLD, SETTL_ACCT_ORG_ID_OLD, SETTL_ACCT_ORG_NAME_OLD, 
+      SETTL_ACCT_NAME, SETTL_ACCT_NO, SETTL_ACCT_TYPE, 
+      SETTL_ACCT_ORG_ID, SETTL_ACCT_ORG_NAME, CRE_TM, 
+      UPD_TM, STATUS, REMARK
+      )
+    values (#{id,jdbcType=VARCHAR}, #{mchtId,jdbcType=VARCHAR},#{settlAcctNameOld,jdbcType=VARCHAR}, #{settlAcctNoOld,jdbcType=VARCHAR},
+      #{settlAcctTypeOld,jdbcType=CHAR}, #{settlAcctOrgIdOld,jdbcType=VARCHAR}, #{settlAcctOrgNameOld,jdbcType=VARCHAR}, 
+      #{settlAcctName,jdbcType=VARCHAR}, #{settlAcctNo,jdbcType=VARCHAR}, #{settlAcctType,jdbcType=CHAR}, 
+      #{settlAcctOrgId,jdbcType=VARCHAR}, #{settlAcctOrgName,jdbcType=VARCHAR}, #{creTm,jdbcType=TIMESTAMP}, 
+      #{updTm,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SettleAccModTask" >
+    insert into SETTLE_ACC_MOD_TASK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="settlAcctNameOld != null" >
+        SETTL_ACCT_NAME_OLD,
+      </if>
+      <if test="settlAcctNoOld != null" >
+        SETTL_ACCT_NO_OLD,
+      </if>
+      <if test="settlAcctTypeOld != null" >
+        SETTL_ACCT_TYPE_OLD,
+      </if>
+      <if test="settlAcctOrgIdOld != null" >
+        SETTL_ACCT_ORG_ID_OLD,
+      </if>
+      <if test="settlAcctOrgNameOld != null" >
+        SETTL_ACCT_ORG_NAME_OLD,
+      </if>
+      <if test="settlAcctName != null" >
+        SETTL_ACCT_NAME,
+      </if>
+      <if test="settlAcctNo != null" >
+        SETTL_ACCT_NO,
+      </if>
+      <if test="settlAcctType != null" >
+        SETTL_ACCT_TYPE,
+      </if>
+      <if test="settlAcctOrgId != null" >
+        SETTL_ACCT_ORG_ID,
+      </if>
+      <if test="settlAcctOrgName != null" >
+        SETTL_ACCT_ORG_NAME,
+      </if>
+      <if test="creTm != null" >
+        CRE_TM,
+      </if>
+      <if test="updTm != null" >
+        UPD_TM,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctNameOld != null" >
+        #{settlAcctNameOld,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctNoOld != null" >
+        #{settlAcctNoOld,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctTypeOld != null" >
+        #{settlAcctTypeOld,jdbcType=CHAR},
+      </if>
+      <if test="settlAcctOrgIdOld != null" >
+        #{settlAcctOrgIdOld,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctOrgNameOld != null" >
+        #{settlAcctOrgNameOld,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctName != null" >
+        #{settlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctNo != null" >
+        #{settlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctType != null" >
+        #{settlAcctType,jdbcType=CHAR},
+      </if>
+      <if test="settlAcctOrgId != null" >
+        #{settlAcctOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctOrgName != null" >
+        #{settlAcctOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="creTm != null" >
+        #{creTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTm != null" >
+        #{updTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SettleAccModTask" >
+    update SETTLE_ACC_MOD_TASK
+    <set >
+      <if test="mchtId != null" >
+        MCHT_ID = #{mchtId,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctNameOld != null" >
+        SETTL_ACCT_NAME_OLD = #{settlAcctNameOld,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctNoOld != null" >
+        SETTL_ACCT_NO_OLD = #{settlAcctNoOld,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctTypeOld != null" >
+        SETTL_ACCT_TYPE_OLD = #{settlAcctTypeOld,jdbcType=CHAR},
+      </if>
+      <if test="settlAcctOrgIdOld != null" >
+        SETTL_ACCT_ORG_ID_OLD = #{settlAcctOrgIdOld,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctOrgNameOld != null" >
+        SETTL_ACCT_ORG_NAME_OLD = #{settlAcctOrgNameOld,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctName != null" >
+        SETTL_ACCT_NAME = #{settlAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctNo != null" >
+        SETTL_ACCT_NO = #{settlAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctType != null" >
+        SETTL_ACCT_TYPE = #{settlAcctType,jdbcType=CHAR},
+      </if>
+      <if test="settlAcctOrgId != null" >
+        SETTL_ACCT_ORG_ID = #{settlAcctOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="settlAcctOrgName != null" >
+        SETTL_ACCT_ORG_NAME = #{settlAcctOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="creTm != null" >
+        CRE_TM = #{creTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTm != null" >
+        UPD_TM = #{updTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.SettleAccModTask" >
+    update SETTLE_ACC_MOD_TASK
+    set SETTL_ACCT_NAME_OLD = #{settlAcctNameOld,jdbcType=VARCHAR},
+      SETTL_ACCT_NO_OLD = #{settlAcctNoOld,jdbcType=VARCHAR},
+      SETTL_ACCT_TYPE_OLD = #{settlAcctTypeOld,jdbcType=CHAR},
+      SETTL_ACCT_ORG_ID_OLD = #{settlAcctOrgIdOld,jdbcType=VARCHAR},
+      SETTL_ACCT_ORG_NAME_OLD = #{settlAcctOrgNameOld,jdbcType=VARCHAR},
+      SETTL_ACCT_NAME = #{settlAcctName,jdbcType=VARCHAR},
+      SETTL_ACCT_NO = #{settlAcctNo,jdbcType=VARCHAR},
+      SETTL_ACCT_TYPE = #{settlAcctType,jdbcType=CHAR},
+      SETTL_ACCT_ORG_ID = #{settlAcctOrgId,jdbcType=VARCHAR},
+      SETTL_ACCT_ORG_NAME = #{settlAcctOrgName,jdbcType=VARCHAR},
+      CRE_TM = #{creTm,jdbcType=TIMESTAMP},
+      UPD_TM = #{updTm,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectModifiedAccByStatus" parameterType="map" resultMap="BaseResultMap">
+       select  <include refid="Base_Column_List" />
+       from SETTLE_ACC_MOD_TASK
+       where STATUS = #{status,jdbcType=CHAR} order by CRE_TM
+  </select>
+
+  <update id="updateStautsById" parameterType="map" >
+       update SETTLE_ACC_MOD_TASK set STATUS = #{status,jdbcType=CHAR}
+       where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

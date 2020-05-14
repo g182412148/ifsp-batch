@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.ErrInfoMapper" >
+
+  <!--获取前一天的差错  插入差错详情表-->
+  <select id="getYestodayErrInfo">
+    select * from bill_reco_err
+    where reco_date = to_date(to_char(sysdate-1,'yyyyMMdd'),'yyyyMMdd')
+  </select>
+
+    <resultMap id="ErrInfoMap" type="com.scrcu.ebank.ebap.batch.bean.dto.ErrInfo" >
+        <id column="ID" property="id" jdbcType="VARCHAR" />
+        <result column="ORDER_SSN" property="orderSsn" jdbcType="VARCHAR" />
+        <result column="ORDER_TM" property="orderTm" jdbcType="TIMESTAMP" />
+        <result column="TXN_SSN" property="txnSsn" jdbcType="VARCHAR" />
+        <result column="SUB_ORDER_SSN" property="subOrderSsn" jdbcType="VARCHAR" />
+        <result column="TXN_TYPE" property="orderTranType" jdbcType="VARCHAR" />
+        <result column="LOCAL_TXN_STATE" property="localTxnState" jdbcType="VARCHAR" />
+        <result column="OUTER_TXN_STATE" property="outerTxnState" jdbcType="VARCHAR" />
+        <result column="FEE_AMT" property="pagyFeeAmt" jdbcType="DECIMAL" />
+        <result column="ERR_ACCT_NO" property="errAcctNo" jdbcType="VARCHAR" />
+        <result column="PAY_AMT" property="payAmt" jdbcType="DECIMAL" />
+        <result column="BANK_COUPON_AMT" property="bankCouponAmt" jdbcType="DECIMAL" />
+        <result column="IN_FEE_AMT" property="inFeeAmt" jdbcType="DECIMAL" />
+        <result column="SETTL_AMT" property="settlAmt" jdbcType="DECIMAL" />
+        <result column="ERR_ACCT_NO" property="errAcctNo" jdbcType="VARCHAR" />
+
+        <result column="ERR_CHLN_NO" property="errChlnNo" jdbcType="VARCHAR" />
+        <result column="ERR_TRAN_TYPE" property="errTranType" jdbcType="VARCHAR" />
+        <result column="MCHT_ORG_ID" property="mchtOrgId" jdbcType="VARCHAR" />
+        <result column="OP_ORG_ID" property="opOrgId" jdbcType="VARCHAR" />
+        <result column="CORE_ACC_SSN" property="coreAccSsn" jdbcType="VARCHAR" />
+        <result column="CORE_ACC_TM" property="coreAccTm" jdbcType="TIMESTAMP" />
+        <result column="CORE_ACC_AMT" property="coreAccAmt" jdbcType="TIMESTAMP" />
+        <result column="CHK_RST" property="chkRst" jdbcType="VARCHAR" />
+        <result column="SETTL_ACCT_NO" property="settlAcctNo" jdbcType="VARCHAR" />
+        <result column="SETTL_ACCT_TYPE" property="settlAcctType" jdbcType="VARCHAR" />
+        <result column="FEERED_FLAG" property="feeredFlag" jdbcType="VARCHAR" />
+        <result column="LIQ_ACCT_NO" property="liqAcctNo" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        ID,ERR_ACCT_NO,PAY_AMT,BANK_COUPON_AMT,IN_FEE_AMT,
+        PAGY_FEE_AMT,ERR_CHLN_NO,ERR_TRAN_TYPE,SETTL_ACCT_TYPE,
+        MCHT_ORG_ID,OP_ORG_ID,CORE_ACC_SSN,CORE_ACC_TM,
+        CORE_ACC_AMT,CHK_RST,ERR_TYPE,FEERED_FLAG,ERR_RETURN_RST,
+        ERR_MATCH_FLAG,ORDER_SSN,SUB_ORDER_SSN,TXN_SSN,ORDER_TM,
+        LIQ_ACCT_NO,SETTL_ACCT_NO,ORDER_TRAN_TYPE,PAGY_TYPE,ERR_STATE,
+        ERR_ACC_STATE,CREATED_DATE,UPDATED_DATE,LOCAL_TXN_STATE,OUTER_TXN_STATE
+    </sql>
+
+    <update id="updateErrInfoBatch">
+        update BILL_RECO_ERR_INFO
+        set
+
+        <trim prefix="core_acc_ssn =case" suffix="end,">
+            <foreach collection="list" item="item" index="index">
+                when ID = #{item.id} then #{item.coreAccSsn,jdbcType=VARCHAR}
+            </foreach>
+        </trim>
+        <trim prefix="core_acc_tm =case" suffix="end,">
+            <foreach collection="list" item="item" index="index">
+                when ID = #{item.id} then #{item.coreAccTm,jdbcType=TIMESTAMP}
+            </foreach>
+        </trim>
+        <trim prefix="core_acc_amt =case" suffix="end,">
+            <foreach collection="list" item="item" index="index">
+                when ID = #{item.id} then #{item.coreAccAmt,jdbcType=DECIMAL}
+            </foreach>
+        </trim>
+        <trim prefix="err_return_rst =case" suffix="end,">
+            <foreach collection="list" item="item" index="index">
+                when ID = #{item.id} then #{item.errReturnRst,jdbcType=VARCHAR}
+            </foreach>
+        </trim>
+        <trim prefix="err_match_flag =case" suffix="end,">
+            <foreach collection="list" item="item" index="index">
+                when ID = #{item.id} then #{item.erratchMFlag,jdbcType=VARCHAR}
+            </foreach>
+        </trim>
+        <trim prefix="err_state =case" suffix="end,">
+            <foreach collection="list" item="item" index="index">
+                when ID = #{item.id} then #{item.errState,jdbcType=VARCHAR}
+            </foreach>
+        </trim>
+        <trim prefix="err_acc_state =case" suffix="end">
+            <foreach collection="list" item="item" index="index">
+                when ID = #{item.id} then #{item.errAccState,jdbcType=VARCHAR}
+            </foreach>
+        </trim>
+
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id,jdbcType=VARCHAR,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+
+    <!--获取需要推送的数据-->
+    <select id="getErrFileInfo" resultMap="ErrInfoMap">
+        select
+        <include refid="Base_Column_List" />
+        from BILL_RECO_ERR_INFO
+        where err_state = '00'
+        and (pagy_type != '99' or err_match_flag = '0')
+        and err_acc_state = '02'
+    </select>
+
+    <insert id="insertErrInfoBatch">
+        INSERT INTO bill_reco_err_info(
+        ID,ERR_ACCT_NO,PAY_AMT,BANK_COUPON_AMT,IN_FEE_AMT,PAGY_FEE_AMT,
+        SETTL_AMT,ERR_CHLN_NO,ERR_TRAN_TYPE,MCHT_ORG_ID,OP_ORG_ID,
+        CORE_ACC_SSN,CORE_ACC_TM,CORE_ACC_AMT,CHK_RST,ERR_TYPE,
+        FEERED_FLAG,ERR_RETURN_RST,ERR_MATCH_FLAG,ORDER_SSN,SUB_ORDER_SSN,
+        TXN_SSN,ORDER_TM,LIQ_ACCT_NO,SETTL_ACCT_NO,ORDER_TRAN_TYPE,
+        PAGY_TYPE,ERR_STATE,ERR_ACC_STATE,CREATED_DATE,UPDATED_DATE,SETTL_ACCT_TYPE,
+        LOCAL_TXN_STATE,OUTER_TXN_STATE
+        )
+        <foreach collection="list" index="index" item="item" separator="union all">
+            (select
+            #{item.id,jdbcType=VARCHAR},#{item.errAcctNo,jdbcType=VARCHAR}, #{item.payAmt,jdbcType=DECIMAL}, #{item.bankCouponAmt,jdbcType=DECIMAL},
+            #{item.inFeeAmt,jdbcType=DECIMAL},#{item.pagyFeeAmt,jdbcType=DECIMAL},#{item.settlAmt,jdbcType=DECIMAL},#{item.errChlnNo,jdbcType=VARCHAR},
+            #{item.errTranType,jdbcType=VARCHAR},#{item.mchtOrgId,jdbcType=VARCHAR},#{item.opOrgId,jdbcType=VARCHAR},
+            #{item.coreAccSsn,jdbcType=VARCHAR},#{item.coreAccTm,jdbcType=TIMESTAMP},#{item.coreAccAmt,jdbcType=DECIMAL},
+            #{item.chkRst,jdbcType=VARCHAR},#{item.errType,jdbcType=VARCHAR},#{item.feeredFlag,jdbcType=VARCHAR},
+            #{item.errReturnRst,jdbcType=VARCHAR},#{item.erratchMFlag,jdbcType=VARCHAR},#{item.orderSsn,jdbcType=VARCHAR},
+            #{item.subOrderSsn,jdbcType=VARCHAR},#{item.txnSsn,jdbcType=VARCHAR},#{item.orderTm,jdbcType=TIMESTAMP},
+            #{item.liqAcctNo,jdbcType=VARCHAR},#{item.settlAcctNo,jdbcType=VARCHAR},#{item.orderTranType,jdbcType=VARCHAR},
+            #{item.pagyType,jdbcType=VARCHAR},#{item.errState,jdbcType=VARCHAR},#{item.errAccState,jdbcType=VARCHAR},
+            sysdate CREATED_DATE,sysdate UPDATED_DATE,#{item.settlAcctType,jdbcType=VARCHAR},
+            #{item.localTxnState,jdbcType=VARCHAR},#{item.outerTxnState,jdbcType=VARCHAR}
+            FROM DUAL)
+        </foreach>
+    </insert>
+
+  <!--获取微信 差错-->
+  <select id="getWxErrInfo" parameterType="java.util.Date" resultMap="ErrInfoMap">
+    select
+        a.txn_ssn,
+        decode(b.TXN_TYPE,null,c.TXN_TYPE,b.TXN_TYPE) txn_type,
+        a.local_txn_state,
+        a.outer_txn_state,
+        '10' pagyType,
+        b.FEE_AMT,
+        decode(b.TXN_TIME,null,c.TXN_TIME,b.TXN_TIME) ORDER_TM
+    from
+        bill_reco_err a,wx_bill_outer b,wx_bill_local c
+    where
+      a.txn_ssn = c.txn_ssn(+)
+      and a.txn_ssn = b.txn_ssn(+)
+      and a.reco_date = #{recoDate,jdbcType=TIMESTAMP}
+      and a.txn_ssn in
+        (
+            select txn_ssn from wx_bill_local
+            union all
+            select txn_ssn from wx_bill_outer
+        )
+  </select>
+
+    <!--获取支付宝 差错-->
+    <select id="getAliErrInfo" parameterType="java.util.Date" resultMap="ErrInfoMap">
+    select
+        a.txn_ssn,
+        decode(b.TXN_TYPE,null,c.TXN_TYPE,b.TXN_TYPE) txn_type,
+        a.local_txn_state,
+        a.outer_txn_state,
+        '20' pagyType,
+        b.FEE_AMT,
+        decode(b.TXN_TIME,null,c.TXN_TIME,b.TXN_TIME) ORDER_TM
+    from
+        bill_reco_err a,ali_bill_outer b,ali_bill_local c
+    where
+      a.order_id = c.txn_ssn(+)
+      and a.txn_ssn = b.txn_ssn(+)
+      and a.reco_date = #{recoDate,jdbcType=TIMESTAMP}
+      and a.txn_ssn in
+        (
+            select txn_ssn from ali_bill_local
+            union all
+            select txn_ssn from ali_bill_outer
+        )
+  </select>
+
+
+    <!--获取银联 差错-->
+    <select id="getUnionErrInfo" parameterType="java.util.Date" resultMap="ErrInfoMap">
+    select
+        a.txn_ssn,
+        decode(b.TXN_TYPE,null,c.TXN_TYPE,b.TXN_TYPE) txn_type,
+        a.local_txn_state,
+        a.outer_txn_state,
+        '00' pagyType,
+        b.CUSTOMER_FEE FEE_AMT,
+        decode(b.TXN_TIME,null,c.TXN_TIME,b.TXN_TIME) ORDER_TM
+    from
+        bill_reco_err a,union_bill_outer b,union_bill_local c
+    where
+      a.order_id = c.txn_ssn(+)
+      and a.txn_ssn = b.txn_ssn(+)
+      and a.reco_date = #{recoDate,jdbcType=TIMESTAMP}
+      and a.txn_ssn in
+        (
+            select txn_ssn from union_bill_local
+            union all
+            select txn_ssn from union_bill_outer
+        )
+
+  </select>
+
+
+</mapper>

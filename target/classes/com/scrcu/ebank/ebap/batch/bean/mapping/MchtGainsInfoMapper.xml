@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scrcu.ebank.ebap.batch.bean.mapper.MchtGainsInfoMapper">
+  <resultMap id="BaseResultMap" type="com.scrcu.ebank.ebap.batch.bean.dto.MchtGainsInfo">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="ACC_CHNL_NO" jdbcType="CHAR" property="accChnlNo" />
+    <result column="ACCT_TYPE" jdbcType="CHAR" property="acctType" />
+    <result column="CELLECT_ORG_DIST" jdbcType="DECIMAL" property="cellectOrgDist" />
+    <result column="SEND_ORG_DIST" jdbcType="DECIMAL" property="sendOrgDist" />
+    <result column="PROXY_ORG_DIST" jdbcType="DECIMAL" property="proxyOrgDist" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="CRT_TLR" jdbcType="VARCHAR" property="crtTlr" />
+    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+    <result column="UPD_TLR" jdbcType="VARCHAR" property="updTlr" />
+    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+    <result column="PARTERN_ID" jdbcType="VARCHAR" property="parternId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACC_CHNL_NO, ACCT_TYPE, CELLECT_ORG_DIST, SEND_ORG_DIST, PROXY_ORG_DIST, STATUS, 
+    CRT_TLR, CRT_DT, UPD_TLR, UPD_DT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from MCHT_GAINS_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from MCHT_GAINS_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtGainsInfo">
+    insert into MCHT_GAINS_INFO (ID, ACC_CHNL_NO, ACCT_TYPE, 
+      CELLECT_ORG_DIST, SEND_ORG_DIST, PROXY_ORG_DIST, 
+      STATUS, CRT_TLR, CRT_DT, 
+      UPD_TLR, UPD_DT)
+    values (#{id,jdbcType=VARCHAR}, #{accChnlNo,jdbcType=CHAR}, #{acctType,jdbcType=CHAR}, 
+      #{cellectOrgDist,jdbcType=DECIMAL}, #{sendOrgDist,jdbcType=DECIMAL}, #{proxyOrgDist,jdbcType=DECIMAL}, 
+      #{status,jdbcType=CHAR}, #{crtTlr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, 
+      #{updTlr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtGainsInfo">
+    insert into MCHT_GAINS_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accChnlNo != null">
+        ACC_CHNL_NO,
+      </if>
+      <if test="acctType != null">
+        ACCT_TYPE,
+      </if>
+      <if test="cellectOrgDist != null">
+        CELLECT_ORG_DIST,
+      </if>
+      <if test="sendOrgDist != null">
+        SEND_ORG_DIST,
+      </if>
+      <if test="proxyOrgDist != null">
+        PROXY_ORG_DIST,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="crtTlr != null">
+        CRT_TLR,
+      </if>
+      <if test="crtDt != null">
+        CRT_DT,
+      </if>
+      <if test="updTlr != null">
+        UPD_TLR,
+      </if>
+      <if test="updDt != null">
+        UPD_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="accChnlNo != null">
+        #{accChnlNo,jdbcType=CHAR},
+      </if>
+      <if test="acctType != null">
+        #{acctType,jdbcType=CHAR},
+      </if>
+      <if test="cellectOrgDist != null">
+        #{cellectOrgDist,jdbcType=DECIMAL},
+      </if>
+      <if test="sendOrgDist != null">
+        #{sendOrgDist,jdbcType=DECIMAL},
+      </if>
+      <if test="proxyOrgDist != null">
+        #{proxyOrgDist,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="crtTlr != null">
+        #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updTlr != null">
+        #{updTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtGainsInfo">
+    update MCHT_GAINS_INFO
+    <set>
+      <if test="accChnlNo != null">
+        ACC_CHNL_NO = #{accChnlNo,jdbcType=CHAR},
+      </if>
+      <if test="acctType != null">
+        ACCT_TYPE = #{acctType,jdbcType=CHAR},
+      </if>
+      <if test="cellectOrgDist != null">
+        CELLECT_ORG_DIST = #{cellectOrgDist,jdbcType=DECIMAL},
+      </if>
+      <if test="sendOrgDist != null">
+        SEND_ORG_DIST = #{sendOrgDist,jdbcType=DECIMAL},
+      </if>
+      <if test="proxyOrgDist != null">
+        PROXY_ORG_DIST = #{proxyOrgDist,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="crtTlr != null">
+        CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updTlr != null">
+        UPD_TLR = #{updTlr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scrcu.ebank.ebap.batch.bean.dto.MchtGainsInfo">
+    update MCHT_GAINS_INFO
+    set ACC_CHNL_NO = #{accChnlNo,jdbcType=CHAR},
+      ACCT_TYPE = #{acctType,jdbcType=CHAR},
+      CELLECT_ORG_DIST = #{cellectOrgDist,jdbcType=DECIMAL},
+      SEND_ORG_DIST = #{sendOrgDist,jdbcType=DECIMAL},
+      PROXY_ORG_DIST = #{proxyOrgDist,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=CHAR},
+      CRT_TLR = #{crtTlr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_TLR = #{updTlr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据渠道查询机构分润比例信息 -->
+  <select id="selectGainsInfoByChnl" parameterType="java.util.Map" resultMap="BaseResultMap">
+     	select
+      	  <include refid="Base_Column_List" />
+      	from MCHT_GAINS_INFO
+      	where 
+      	ACC_CHNL_NO = #{accChnlNo,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 根据渠道查询机构分润比例信息 -->
+  <select id="selectServiceInfoByChnl" parameterType="java.util.Map" resultMap="BaseResultMap">
+     select
+     a.PARTERN_ID,a.ACC_CHNL_NO, a.ACCT_TYPE, a.CELLECT_ORG_DIST, a.SEND_ORG_DIST, a.PROXY_ORG_DIST
+    from PARTERN_GAINS_INFO a where a.PARTERN_ID=(select b.PARTERN_ID from PARTERN_INFO b where b.PARTERN_CODE=#{parternId,jdbcType=VARCHAR})
+    and
+    a.ACC_CHNL_NO = #{accChnlNo,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>
